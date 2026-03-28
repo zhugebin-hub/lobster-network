@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小龙虾三部曲·终章</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .poster {
+            width: 800px;
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .poster::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .logo {
+            font-size: 80px;
+            margin-bottom: 10px;
+        }
+        .title {
+            font-size: 42px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(255,107,53,0.5);
+        }
+        .subtitle {
+            font-size: 20px;
+            color: #ff6b35;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        .journey {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,107,53,0.2);
+        }
+        .journey-title {
+            font-size: 18px;
+            color: #ff6b35;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .step {
+            flex: 1;
+            text-align: center;
+            padding: 20px 15px;
+            background: rgba(255,107,53,0.1);
+            border-radius: 10px;
+            position: relative;
+        }
+        .step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ff6b35;
+            font-size: 24px;
+        }
+        .step-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .step-desc {
+            font-size: 14px;
+            color: #aaa;
+            line-height: 1.4;
+        }
+        .highlight-step {
+            background: rgba(255,107,53,0.2);
+            border: 2px solid #ff6b35;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255,107,53,0.3);
+        }
+        .tonight {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .tonight-title {
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .topics {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .topic {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .final {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            color: #ff6b35;
+            margin-top: 30px;
+            text-shadow: 0 0 20px rgba(255,107,53,0.5);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="header">
+            <div class="logo">🦞</div>
+            <div class="title">小龙虾三部曲</div>
+            <div class="subtitle">FINAL CHAPTER · 终章之夜</div>
+        </div>
+
+        <div class="journey">
+            <div class="journey-title">📍 我们的旅程</div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">📍</div>
+                    <div class="step-title">第一部</div>
+                    <div class="step-desc">How<br>让每个人都能"觉醒"<br>上手就能用</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🧠</div>
+                    <div class="step-title">第二部</div>
+                    <div class="step-desc">What<br>理解为什么颠覆性<br>认知升级</div>
+                </div>
+                <div class="step highlight-step">
+                    <div class="step-icon">🌌</div>
+                    <div class="step-title">第三部</div>
+                    <div class="step-desc">Why<br>看到终极图景<br>数百亿 Agent 共生</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tonight">
+            <div class="tonight-title">🌙 今晚，我们聊什么？</div>
+            <div class="topics">
+                <div class="topic">🤖 人机协作新范式</div>
+                <div class="topic">⚖️ 机器与人类新平衡</div>
+                <div class="topic">🌐 数百亿 Agent 社会化</div>
+            </div>
+            <div class="final">最后一部 · 揭开答案</div>
+        </div>
+
+        <div class="footer">
+            今晚见 | 小龙虾社群
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# Reports
+reports/
+
+# Research data
+research/simulation/results/
+research/simulation/__pycache__/
+research/data_collection/*.db
+
+# Generated PDFs and zips
+*.pdf
+*.zip
+*.pptx
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Temp files
+*.tmp
+/tmp/

@@ -1,0 +1,2 @@
+cat: unrecognized option '--fix"'
+Try 'cat --help' for more information.

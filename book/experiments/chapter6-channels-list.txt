@@ -1,0 +1,18 @@
+│
+◇  Doctor warnings ───────────────────────────────────────────────────╮
+│                                                                     │
+│  - channels.dingtalk.allowFrom: set to ["*"] (required by           │
+│    dmPolicy="open")                                                 │
+│  - Run "openclaw doctor --fix" to add missing allowFrom wildcards.  │
+│                                                                     │
+├─────────────────────────────────────────────────────────────────────╯
+Chat channels:
+- WeCom default: not configured, enabled
+- DingTalk default: configured, enabled
+
+Auth providers (OAuth + API keys):
+- none
+
+Usage: no provider usage available.
+
+Docs: https://docs.openclaw.ai/gateway/configuration

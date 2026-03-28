@@ -1,0 +1,18 @@
+│
+◇  Doctor warnings ───────────────────────────────────────────────────╮
+│                                                                     │
+│  - channels.dingtalk.allowFrom: set to ["*"] (required by           │
+│    dmPolicy="open")                                                 │
+│  - Run "openclaw doctor --fix" to add missing allowFrom wildcards.  │
+│                                                                     │
+├─────────────────────────────────────────────────────────────────────╯
+📦 searxng ✓ Ready
+
+Privacy-respecting metasearch using your local SearXNG instance. Search the web, images, news, and more without external API dependencies.
+
+Details:
+  Source: openclaw-workspace
+  Path: ~/.openclaw/workspace/skills/searxng/SKILL.md
+  Homepage: https://searxng.org
+
+Tip: use `npx clawhub` to search, install, and sync skills.

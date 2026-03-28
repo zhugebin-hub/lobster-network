@@ -1,0 +1,10 @@
+│
+◇  Doctor warnings ───────────────────────────────────────────────────╮
+│                                                                     │
+│  - channels.dingtalk.allowFrom: set to ["*"] (required by           │
+│    dmPolicy="open")                                                 │
+│  - Run "openclaw doctor --fix" to add missing allowFrom wildcards.  │
+│                                                                     │
+├─────────────────────────────────────────────────────────────────────╯
+ID                                   Name                     Schedule                         Next       Last       Status    Target    Agent ID   Model               
+045e9ebe-de12-42da-933e-4fdc17ea6ccc 每日邮件检查                   every 30m                        in 30m     -          idle      isolated  -          -

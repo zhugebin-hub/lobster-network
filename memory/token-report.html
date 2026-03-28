@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token 使用详细报告</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #333;
+        }
+        h1 {
+            color: #1a1a2e;
+            border-bottom: 3px solid #ff6b35;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+        h2 {
+            color: #16213e;
+            margin-top: 30px;
+            border-left: 4px solid #ff6b35;
+            padding-left: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        th {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 12px 8px;
+            text-align: left;
+        }
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        tr:hover {
+            background-color: #fff3e0;
+        }
+        .highlight {
+            background-color: #ffe0b2 !important;
+            font-weight: bold;
+        }
+        .meta {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .total-box {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .total-box h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        .total-box .amount {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+        @media print {
+            body { padding: 20px; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <h1>📊 Token 使用详细报告</h1>
+    
+    <div class="meta">
+        <strong>生成时间:</strong> 2026-03-26 16:24 (Asia/Shanghai)<br>
+        <strong>模型:</strong> qwen3.5-plus (DashScope)<br>
+        <strong>价格标准:</strong> 输入 ¥0.004/1K tokens | 输出 ¥0.012/1K tokens
+    </div>
+
+    <div class="total-box">
+        <h3>💰 总成本</h3>
+        <div class="amount">¥457.55</div>
+        <div>总 Tokens: 113,656,648</div>
+    </div>
+
+    <h2>📈 总体统计</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>指标</th>
+                <th>数值</th>
+                <th>人民币成本</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>总会话数</strong></td>
+                <td>59</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><strong>总输入 Tokens</strong></td>
+                <td>113,291,999</td>
+                <td>¥453.17</td>
+            </tr>
+            <tr>
+                <td><strong>总输出 Tokens</strong></td>
+                <td>364,649</td>
+                <td>¥4.38</td>
+            </tr>
+            <tr class="highlight">
+                <td><strong>总计</strong></td>
+                <td><strong>113,656,648</strong></td>
+                <td><strong>¥457.55</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>👥 按用户统计</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>用户</th>
+                <th>会话数</th>
+                <th>输入 Tokens</th>
+                <th>输出 Tokens</th>
+                <th>总 Tokens</th>
+                <th>输入成本 (¥)</th>
+                <th>输出成本 (¥)</th>
+                <th>总成本 (¥)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>未知用户</td>
+                <td>55</td>
+                <td>108,066,163</td>
+                <td>314,465</td>
+                <td>108,380,628</td>
+                <td>¥432.26</td>
+                <td>¥3.77</td>
+                <td><strong>¥436.03</strong></td>
+            </tr>
+            <tr>
+                <td>dingtalk 群聊</td>
+                <td>2</td>
+                <td>3,515,268</td>
+                <td>35,518</td>
+                <td>3,550,786</td>
+                <td>¥14.06</td>
+                <td>¥0.43</td>
+                <td><strong>¥14.49</strong></td>
+            </tr>
+            <tr>
+                <td>陈俊烨 (03373037366737633702)</td>
+                <td>1</td>
+                <td>1,206,921</td>
+                <td>7,393</td>
+                <td>1,214,314</td>
+                <td>¥4.83</td>
+                <td>¥0.09</td>
+                <td><strong>¥4.92</strong></td>
+            </tr>
+            <tr class="highlight">
+                <td><strong>诸葛斌 (086209361535510921)</strong></td>
+                <td><strong>1</strong></td>
+                <td><strong>403,608</strong></td>
+                <td><strong>6,975</strong></td>
+                <td><strong>410,583</strong></td>
+                <td><strong>¥1.61</strong></td>
+                <td><strong>¥0.08</strong></td>
+                <td><strong>¥1.70</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>📋 会话详情 (Top 20)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>排名</th>
+                <th>用户</th>
+                <th>会话 ID</th>
+                <th>总 Tokens</th>
+                <th>输入</th>
+                <th>输出</th>
+                <th>成本 (¥)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="highlight">
+                <td>1</td>
+                <td>未知用户</td>
+                <td>452bef71-b7d1-41c6-a10b-dc4630bf55fa</td>
+                <td>70,915,734</td>
+                <td>70,835,696</td>
+                <td>80,038</td>
+                <td>¥284.30</td>
+            </tr>
+            <tr class="highlight">
+                <td>2</td>
+                <td>未知用户</td>
+                <td>e24222ab-56b2-4d45-a179-a17a983b3447</td>
+                <td>15,016,089</td>
+                <td>14,935,503</td>
+                <td>80,586</td>
+                <td>¥60.71</td>
+            </tr>
+            <tr class="highlight">
+                <td>3</td>
+                <td>未知用户</td>
+                <td>d2da8c18-477c-44db-92b9-e3896ff22674</td>
+                <td>8,842,500</td>
+                <td>8,796,736</td>
+                <td>45,764</td>
+                <td>¥35.74</td>
+            </tr>
+            <tr class="highlight">
+                <td>4</td>
+                <td>未知用户</td>
+                <td>ff7dc144-a97d-4fe0-abed-a081ad83ef6a</td>
+                <td>8,378,583</td>
+                <td>8,346,447</td>
+                <td>32,136</td>
+                <td>¥33.77</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>dingtalk 群聊</td>
+                <td>ebd95ba1-8849-4440-a29a-6867d52285d0</td>
+                <td>2,907,907</td>
+                <td>2,893,706</td>
+                <td>14,201</td>
+                <td>¥11.75</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>未知用户</td>
+                <td>97d069e3-3e2a-448c-9e1f-e1d8e2cfd279</td>
+                <td>1,328,842</td>
+                <td>1,316,083</td>
+                <td>12,759</td>
+                <td>¥5.42</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>未知用户</td>
+                <td>fcc3c47e-5923-4ca1-be36-e07e21f7ed6f</td>
+                <td>1,290,020</td>
+                <td>1,277,925</td>
+                <td>12,095</td>
+                <td>¥5.26</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>陈俊烨</td>
+                <td>1c7a723e-a224-4844-b0bd-363f825bd79f</td>
+                <td>1,214,314</td>
+                <td>1,206,921</td>
+                <td>7,393</td>
+                <td>¥4.92</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>dingtalk 群聊</td>
+                <td>a312b378-5290-49ea-9223-5de0ca0b075c</td>
+                <td>642,879</td>
+                <td>621,562</td>
+                <td>21,317</td>
+                <td>¥2.74</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>未知用户</td>
+                <td>af0c0891-eb42-4806-8965-44529f098fa3</td>
+                <td>473,599</td>
+                <td>470,117</td>
+                <td>3,482</td>
+                <td>¥1.92</td>
+            </tr>
+            <tr class="highlight">
+                <td>11</td>
+                <td><strong>诸葛斌</strong></td>
+                <td>1cf5a68c-e733-43f5-9a12-fcb7a784887a</td>
+                <td>410,583</td>
+                <td>403,608</td>
+                <td>6,975</td>
+                <td>¥1.70</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>未知用户</td>
+                <td>bba3ed30-9d6c-4085-9b2b-4f172061ad45</td>
+                <td>389,488</td>
+                <td>385,417</td>
+                <td>4,071</td>
+                <td>¥1.59</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>未知用户</td>
+                <td>fe8e13d0-6076-4a05-8760-8d312a6f9de4</td>
+                <td>319,409</td>
+                <td>315,118</td>
+                <td>4,291</td>
+                <td>¥1.31</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>未知用户</td>
+                <td>b027d59e-a12a-4149-94d9-1d8d5b37544a</td>
+                <td>195,219</td>
+                <td>191,382</td>
+                <td>3,837</td>
+                <td>¥0.81</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>未知用户</td>
+                <td>95783ed5-0da4-45a4-ad15-a748a1de6d53</td>
+                <td>182,269</td>
+                <td>180,416</td>
+                <td>1,853</td>
+                <td>¥0.74</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>未知用户</td>
+                <td>4c5f7da6-791e-4ed7-af0b-5e594d3889aa</td>
+                <td>102,084</td>
+                <td>98,479</td>
+                <td>3,605</td>
+                <td>¥0.44</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>未知用户</td>
+                <td>a5111600-9d88-46de-8a84-411310bbf9a4</td>
+                <td>64,391</td>
+                <td>63,315</td>
+                <td>1,076</td>
+                <td>¥0.27</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>未知用户</td>
+                <td>59bac527-6f7b-42ae-a4d0-b08fa79ea6e0</td>
+                <td>64,092</td>
+                <td>62,893</td>
+                <td>1,199</td>
+                <td>¥0.27</td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>未知用户</td>
+                <td>65b48faf-7c70-4fd9-8d62-e0b3dfa03f50</td>
+                <td>61,009</td>
+                <td>59,320</td>
+                <td>1,689</td>
+                <td>¥0.26</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>未知用户</td>
+                <td>77d0bd8c-6dd4-4b2f-9a03-7a7071ba1cd8</td>
+                <td>53,877</td>
+                <td>52,483</td>
+                <td>1,394</td>
+                <td>¥0.23</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>💡 说明</h2>
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>价格计算</strong></td>
+                <td>输入：¥0.004 / 1,000 tokens (DashScope qwen3.5-plus)<br>输出：¥0.012 / 1,000 tokens (DashScope qwen3.5-plus)</td>
+            </tr>
+            <tr>
+                <td><strong>用户分类</strong></td>
+                <td>• 诸葛斌：当前钉钉直聊用户<br>• 陈俊烨：历史钉钉用户<br>• dingtalk 群聊：钉钉群聊会话<br>• 未知用户：无法从会话文件中识别用户的会话（可能是历史会话或其他渠道）</td>
+            </tr>
+            <tr>
+                <td><strong>注意事项</strong></td>
+                <td>• 部分"未知用户"可能是早期会话，用户信息未完整记录<br>• 成本估算基于 DashScope 公开价格，实际成本可能因套餐/优惠有所不同<br>• 数据来源于本地会话日志，仅统计已保存的会话</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer">
+        <p><em>报告生成完成 | OpenClaw Token Monitor</em></p>
+    </div>
+</body>
+</html>

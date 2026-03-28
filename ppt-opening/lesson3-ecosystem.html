@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三课：小龙虾生态 - 数百亿 Agent 社会化分工</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #001a1a; overflow: hidden; font-family: 'Courier New', monospace; }
+        #canvas { position: fixed; top: 0; left: 0; z-index: 1; }
+        #content { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; text-align: center; color: #00cc66; width: 90%; max-width: 1100px; }
+        .scene { display: none; animation: fadeIn 2s; }
+        .scene.active { display: block; }
+        .title { font-size: 3em; font-weight: bold; letter-spacing: 0.2em; margin-bottom: 20px; text-shadow: 0 0 20px #00cc66; }
+        .subtitle { font-size: 1.6em; margin-bottom: 30px; color: #00ff88; }
+        .ecosystem { position: relative; height: 400px; margin: 30px 0; }
+        .pool { border: 3px solid #00cc66; border-radius: 50%; width: 350px; height: 350px; margin: 0 auto; position: relative; background: rgba(0,50,30,0.5); animation: rotate 60s linear infinite; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .agent { position: absolute; font-size: 2em; animation: orbit 10s linear infinite; }
+        .agent:nth-child(1) { top: 10%; left: 50%; animation-delay: 0s; }
+        .agent:nth-child(2) { top: 30%; right: 10%; animation-delay: 2s; }
+        .agent:nth-child(3) { bottom: 30%; left: 10%; animation-delay: 4s; }
+        .agent:nth-child(4) { bottom: 10%; right: 30%; animation-delay: 6s; }
+        @keyframes orbit { from { transform: rotate(0deg) translateX(150px) rotate(0deg); } to { transform: rotate(360deg) translateX(150px) rotate(-360deg); } }
+        .cost-comparison { display: flex; justify-content: center; gap: 40px; margin: 30px 0; }
+        .cost-card { border: 2px solid #00cc66; padding: 25px; min-width: 250px; background: rgba(0,30,20,0.8); }
+        .cost-card h3 { font-size: 1.4em; margin-bottom: 15px; }
+        .cost-item { display: flex; justify-content: space-between; margin: 10px 0; font-size: 1.1em; }
+        .cost-label { color: #00aa66; }
+        .cost-value { color: #00ff88; font-weight: bold; }
+        .cost-total { border-top: 2px solid #00cc66; margin-top: 15px; padding-top: 15px; font-size: 1.3em; font-weight: bold; }
+        .agent-types { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin: 30px 0; }
+        .type-card { border: 2px solid #00cc66; padding: 20px; background: rgba(0,30,20,0.8); }
+        .type-icon { font-size: 3em; margin-bottom: 15px; }
+        .type-name { font-size: 1.2em; color: #00ff88; margin-bottom: 10px; }
+        .type-desc { font-size: 0.95em; color: #00aa66; line-height: 1.5; }
+        .org-chart { margin: 30px 0; }
+        .org-box { border: 2px solid #00cc66; padding: 20px 40px; background: rgba(0,30,20,0.8); font-size: 1.3em; display: inline-block; }
+        .org-workers { display: flex; gap: 20px; justify-content: center; margin-top: 20px; }
+        .risks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 30px 0; }
+        .risk-card { border: 2px solid #ff6600; padding: 20px; background: rgba(30,10,0,0.8); }
+        .risk-icon { font-size: 2.5em; margin-bottom: 10px; }
+        .risk-name { font-size: 1.2em; color: #ff8800; margin-bottom: 8px; }
+        .risk-desc { font-size: 0.95em; color: #ffaa00; }
+        .quote { font-size: 1.8em; font-style: italic; margin: 40px 0; padding: 30px; border-left: 5px solid #00cc66; border-right: 5px solid #00cc66; background: rgba(0,30,20,0.6); }
+        .cta { font-size: 2.5em; font-weight: bold; margin-top: 40px; animation: pulse 2s infinite; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.6; } }
+        .progress-bar { position: fixed; bottom: 0; left: 0; height: 5px; background: #00cc66; z-index: 100; }
+        .timer { position: fixed; top: 20px; right: 20px; font-size: 1.5em; color: #00cc66; z-index: 100; }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="timer" id="timer">60s</div>
+    <div id="content">
+        <div class="scene" id="scene1">
+            <div class="title">🦞 龙虾池生态</div>
+            <div class="subtitle">数百亿 AI Agent 的社会化分工</div>
+        </div>
+        <div class="scene" id="scene2">
+            <div class="title">生态系统模型</div>
+            <div class="ecosystem">
+                <div class="pool">
+                    <div class="agent">🤖</div>
+                    <div class="agent">🤖</div>
+                    <div class="agent">🤖</div>
+                    <div class="agent">🤖</div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: center; gap: 40px; margin-top: 20px;">
+                <div><span style="color:#00ff88">●</span> 龙虾（AI Agent）</div>
+                <div><span style="color:#00ff88">●</span> 池水（数据流）</div>
+                <div><span style="color:#00ff88">●</span> 食物（算力）</div>
+            </div>
+        </div>
+        <div class="scene" id="scene3">
+            <div class="title">成本革命</div>
+            <div class="cost-comparison">
+                <div class="cost-card">
+                    <h3>👤 人类员工</h3>
+                    <div class="cost-item"><span class="cost-label">基本工资</span><span class="cost-value">¥10,000</span></div>
+                    <div class="cost-item"><span class="cost-label">加班费</span><span class="cost-value">¥2,000</span></div>
+                    <div class="cost-item"><span class="cost-label">办公场地</span><span class="cost-value">¥3,000</span></div>
+                    <div class="cost-total">总计：¥15,000/月</div>
+                </div>
+                <div class="cost-card">
+                    <h3>🤖 AI Agent</h3>
+                    <div class="cost-item"><span class="cost-label">Token</span><span class="cost-value">¥500</span></div>
+                    <div class="cost-item"><span class="cost-label">GPU</span><span class="cost-value">¥200</span></div>
+                    <div class="cost-item"><span class="cost-label">存储</span><span class="cost-value">¥100</span></div>
+                    <div class="cost-total">总计：¥1,000/月</div>
+                </div>
+            </div>
+            <div style="font-size: 1.5em; color: #00ff88;">成本比：1:15 | 效率比：1:10~100</div>
+        </div>
+        <div class="scene" id="scene4">
+            <div class="title">社会化分工体系</div>
+            <div class="agent-types">
+                <div class="type-card">
+                    <div class="type-icon">👁️</div>
+                    <div class="type-name">感知型</div>
+                    <div class="type-desc">信息收集<br>监控预警<br>数据爬虫</div>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">🧠</div>
+                    <div class="type-name">思考型</div>
+                    <div class="type-desc">逻辑推理<br>策略规划<br>数据分析</div>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">🦾</div>
+                    <div class="type-name">执行型</div>
+                    <div class="type-desc">任务执行<br>文档处理<br>代码生成</div>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">🎯</div>
+                    <div class="type-name">协调型</div>
+                    <div class="type-desc">团队核心<br>资源调度<br>任务分配</div>
+                </div>
+            </div>
+        </div>
+        <div class="scene" id="scene5">
+            <div class="title">未来组织架构</div>
+            <div class="org-chart">
+                <div class="org-box">👤 人类管理者<br><span style="font-size:0.7em">目标定义·异常处理·伦理决策·创造力</span></div>
+                <div style="font-size: 2em; margin: 15px 0;">↓</div>
+                <div class="org-workers">
+                    <div class="org-box">🤖 AI 员工 1<br><span style="font-size:0.7em">全链路执行·7×24</span></div>
+                    <div class="org-box">🤖 AI 员工 2<br><span style="font-size:0.7em">全链路执行·7×24</span></div>
+                    <div class="org-box">🤖 AI 员工 3<br><span style="font-size:0.7em">全链路执行·7×24</span></div>
+                </div>
+            </div>
+            <div class="quote" style="margin-top: 30px;">
+                "从执行者 → 定义者<br>从操作者 → 监督者<br>从重复劳动 → 创新创造"
+            </div>
+        </div>
+        <div class="scene" id="scene6">
+            <div class="title">风险与挑战</div>
+            <div class="risks">
+                <div class="risk-card">
+                    <div class="risk-icon">🔥</div>
+                    <div class="risk-name">算力通胀</div>
+                    <div class="risk-desc">电力短缺<br>成本上升<br>碳排放增加</div>
+                </div>
+                <div class="risk-card">
+                    <div class="risk-icon">🔒</div>
+                    <div class="risk-name">安全失控</div>
+                    <div class="risk-desc">幻觉决策<br>恶意注入<br>权限滥用</div>
+                </div>
+                <div class="risk-card">
+                    <div class="risk-icon">👥</div>
+                    <div class="risk-name">结构性失业</div>
+                    <div class="risk-desc">岗位替代<br>技能转型<br>社会适应</div>
+                </div>
+            </div>
+        </div>
+        <div class="scene" id="scene7">
+            <div class="quote">
+                "让 AI 处理繁琐<br>释放人类的创造力"
+            </div>
+            <div class="cta">🦞 2036 · Ev < 1%</div>
+            <div class="subtitle" style="margin-top: 30px;">人机协作新纪元</div>
+        </div>
+    </div>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const chars = '01AI Ecosystem Agent Lobster Pool Ev 01 アイウエオカキクケコサシスセソタチツテト';
+        const charArray = chars.split('');
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+        for (let i = 0; i < columns; i++) drops[i] = Math.random() * -100;
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 26, 26, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00cc66';
+            ctx.font = fontSize + 'px monospace';
+            for (let i = 0; i < drops.length; i++) {
+                ctx.fillText(charArray[Math.floor(Math.random() * charArray.length)], i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        const scenes = [
+            { id: 'scene1', start: 0, duration: 8 },
+            { id: 'scene2', start: 8, duration: 10 },
+            { id: 'scene3', start: 18, duration: 12 },
+            { id: 'scene4', start: 30, duration: 10 },
+            { id: 'scene5', start: 40, duration: 10 },
+            { id: 'scene6', start: 50, duration: 10 }
+        ];
+        let startTime = null;
+        function updateScene(elapsed) {
+            const progress = (elapsed / 1000) / 60 * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            const secondsLeft = Math.max(0, 60 - Math.floor(elapsed / 1000));
+            document.getElementById('timer').textContent = secondsLeft + 's';
+            scenes.forEach(scene => {
+                const el = document.getElementById(scene.id);
+                if (elapsed >= scene.start * 1000 && elapsed < (scene.start + scene.duration) * 1000) el.classList.add('active');
+                else el.classList.remove('active');
+            });
+            if (elapsed < 60000) requestAnimationFrame(updateTimestamp);
+        }
+        function updateTimestamp(timestamp) {
+            if (!startTime) startTime = timestamp;
+            updateScene(timestamp - startTime);
+        }
+        setInterval(drawMatrix, 33);
+        requestAnimationFrame(updateTimestamp);
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+        document.addEventListener('click', () => { startTime = null; requestAnimationFrame(updateTimestamp); });
+    </script>
+</body>
+</html>
