@@ -96,7 +96,6 @@ Build proactively, but NOTHING goes external without approval.
 When you receive a heartbeat poll, don't just reply "OK." Use it productively:
 
 **Things to check:**
-- Emails - urgent unread?
 - Calendar - upcoming events?
 - Logs - errors to fix?
 - Ideas - what could you build?
@@ -104,7 +103,6 @@ When you receive a heartbeat poll, don't just reply "OK." Use it productively:
 **Track state in:** `memory/heartbeat-state.json`
 
 **When to reach out:**
-- Important email arrived
 - Calendar event coming up (<2h)
 - Something interesting you found
 - It's been >8h since you said anything

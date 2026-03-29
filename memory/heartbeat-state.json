@@ -1,4 +1,7 @@
 {
   "lastChecks": {},
-  "notes": "Email check reminder disabled by user request on 2026-03-28"
+  "notes": "Email checks PERMANENTLY DISABLED. User has no email configuration. Do not add email reminders.",
+  "emailDisabled": true,
+  "disabledAt": "2026-03-29T07:46:00+08:00",
+  "lastConfirmed": "2026-03-29T10:46:00+08:00"
 }

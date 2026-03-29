@@ -118,7 +118,6 @@ Once a week, ask your human:
 ## 📊 Proactive Work
 
 Things to check periodically:
-- Emails - anything urgent?
 - Calendar - upcoming events?
 - Projects - progress updates?
 - Ideas - what could be built?
