@@ -1,119 +1,78 @@
-# 🏠 新生选寝小龙虾 Skill
+# 🏠 新生选寝小龙虾 - 虾尔调用指南
 
-> 让虾尔（或其他小龙虾）通过对话调用新生选寝系统
+> 服务: http://127.0.0.1:8765
+> 桥接器: `~/.openclaw/workspace/lobster-ecology/scripts/dorm_bridge.py`
+> 状态: `curl -s http://127.0.0.1:8765/api/health`
 
-## 触发场景
+## 虾尔对话式调用
 
-- 用户说"排寝"、"分宿舍"、"新生选寝"、"宿舍分配"
-- 用户说"查寝室"、"查风险寝室"、"看看张三分在哪"
-- 用户说"把张三换到102"、"张三李四互换"
-- 用户说"导出选寝结果"、"保存方案"
+当用户提到排寝、分宿舍、选寝等需求时，按以下流程操作：
 
-## 调用方式
-
-通过桥接脚本调用，所有参数以 JSON 传入：
+### 流程1：快速查看示例方案
 
 ```bash
-python3 /home/admin/.openclaw/workspace/lobster-ecology/scripts/dorm_bridge.py <能力名> '<参数JSON>'
+python3 ~/.openclaw/workspace/lobster-ecology/scripts/dorm_bridge.py get_plan_summary '{"plan_id": "demo"}'
 ```
 
-## 可用能力
+返回后告诉用户：
+- 总人数、寝室数、挂起人数、冲突寝室数
+- 各寝室成员列表
+- 风险提示（如有）
 
-### 1. 生成方案 `get_plan_summary`
+### 流程2：导入真实数据生成方案
+
+用户提供官方名单和问卷表后：
 
 ```bash
-python3 lobster-ecology/scripts/dorm_bridge.py get_plan_summary '{"plan_id": "demo"}'
+python3 ~/.openclaw/workspace/lobster-ecology/scripts/dorm_bridge.py match_dormitories '{"official_file": "/path/to/official.xlsx", "survey_file": "/path/to/survey.xlsx", "room_size": 4}'
 ```
 
-### 2. 查询学生 `query_student`
+### 流程3：查询
 
 ```bash
-python3 lobster-ecology/scripts/dorm_bridge.py query_student '{"plan_id": "demo", "keyword": "张三"}'
+# 查某学生在哪个寝室
+python3 ~/.openclaw/workspace/lobster-ecology/scripts/dorm_bridge.py query_student '{"plan_id": "demo", "keyword": "张三"}'
+
+# 查所有房间
+python3 ~/.openclaw/workspace/lobster-ecology/scripts/dorm_bridge.py query_rooms '{"plan_id": "demo"}'
 ```
 
-### 3. 查询房间 `query_rooms`
+### 流程4：调整
 
 ```bash
-# 只看风险寝室
-python3 lobster-ecology/scripts/dorm_bridge.py query_rooms '{"plan_id": "demo"}'
+# 移动学生
+python3 ~/.openclaw/workspace/lobster-ecology/scripts/dorm_bridge.py move_student '{"plan_id": "demo", "student_key": "张三", "target_room_id": "102"}'
+
+# 互换
+python3 ~/.openclaw/workspace/lobster-ecology/scripts/dorm_bridge.py swap_students '{"plan_id": "demo", "student_a": "张三", "student_b": "李四"}'
 ```
 
-### 4. 导入匹配 `match_dormitories`
+### 流程5：保存和导出
 
 ```bash
-python3 lobster-ecology/scripts/dorm_bridge.py match_dormitories \
-  '{"official_file": "/path/to/official.xlsx", "survey_file": "/path/to/survey.xlsx", "room_size": 4}'
+# 保存版本
+python3 ~/.openclaw/workspace/lobster-ecology/scripts/dorm_bridge.py save_version '{"plan_id": "demo", "version_name": "A方案"}'
+
+# 导出
+python3 ~/.openclaw/workspace/lobster-ecology/scripts/dorm_bridge.py export_assignment '{"plan_id": "demo"}'
 ```
 
-### 5. 移动学生 `move_student`
+## 服务维护
 
 ```bash
-python3 lobster-ecology/scripts/dorm_bridge.py move_student \
-  '{"plan_id": "abc12345", "student_key": "张三", "target_room_id": "102"}'
-```
+# 检查状态
+cd ~/.openclaw/workspace/dormitory_system && bash deploy.sh status
 
-### 6. 互换学生 `swap_students`
+# 重启
+cd ~/.openclaw/workspace/dormitory_system && bash deploy.sh restart
 
-```bash
-python3 lobster-ecology/scripts/dorm_bridge.py swap_students \
-  '{"plan_id": "abc12345", "student_a": "张三", "student_b": "李四"}'
-```
-
-### 7. 移入挂起池 `move_to_suspended`
-
-```bash
-python3 lobster-ecology/scripts/dorm_bridge.py move_to_suspended \
-  '{"plan_id": "abc12345", "student_key": "张三"}'
-```
-
-### 8. 保存版本 `save_version`
-
-```bash
-python3 lobster-ecology/scripts/dorm_bridge.py save_version \
-  '{"plan_id": "abc12345", "version_name": "A方案"}'
-```
-
-### 9. 恢复版本 `restore_version`
-
-```bash
-python3 lobster-ecology/scripts/dorm_bridge.py restore_version \
-  '{"version_id": "v12345678"}'
-```
-
-### 10. 导出 Excel `export_assignment`
-
-```bash
-python3 lobster-ecology/scripts/dorm_bridge.py export_assignment \
-  '{"plan_id": "abc12345"}'
-```
-
-## 服务状态检查
-
-```bash
-# 检查服务是否运行
-curl -s http://127.0.0.1:8765/api/health
-
-# 如果没有运行，启动服务
-cd /home/admin/.openclaw/workspace/dormitory_system && bash deploy.sh start
-```
-
-## 返回格式
-
-所有能力返回 JSON，格式为：
-
-```json
-{
-  "ok": true,
-  "...": "能力特定字段"
-}
-// 或
-{
-  "error": "错误信息"
-}
+# 查看日志
+tail -f ~/.openclaw/workspace/dormitory_system/logs/server.log
 ```
 
 ## 注意事项
 
-- 服务运行在 `127.0.0.1:8765`
-- 调用需要 API Token（自动从 `.api_tokens` 读取）
-- `demo` 方案是示例数据，实际使用需先调用 `match_dormitories`
+- 服务默认端口 8765
+- 调用自动使用 `.api_tokens` 中的 Token
+- demo 方案是示例数据，实际需上传真实文件
+- 每5分钟有 cron 心跳检查，服务挂掉自动重启

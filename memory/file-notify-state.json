@@ -1,16 +1,5 @@
 {
   "notifiedFiles": [
-    "work_orig_fill",
-    "work_template",
-    "work_template_fill",
-    "work_tmpl_v2",
-    "work_v2",
-    "work_v3",
-    "work_v4",
-    "69d55c18-3127-41c2-8a39-5aab59684dd8.ogg",
-    "e014ce41-1bf9-44ba-bb1d-c20eebfaf0f2.ogg",
-    "1ae186c8-b51c-4d4a-9898-c120824707c6.ogg",
-    "af68eaa1-472e-4c4e-a178-a965019e739f.ogg",
     "6376f666-f99f-4d1f-a64a-317712206f56.ogg",
     "e31f2c52-42ee-4f95-9244-c01297887a9d.ogg",
     "e7d205c6-6fe5-413f-8037-b094801130d4.ogg",
@@ -99,6 +88,17 @@
     "5baec5e3-3d91-4bf5-b08f-fd54a0924114.docx",
     "104c9e8c-9884-4d36-a495-c6664188bebe.docx",
     "b12c2f60-48ba-44fe-98a9-846861515209.docx",
-    "c1e4ac05-df1d-4ebf-9964-c04b4df8be78.docx"
+    "c1e4ac05-df1d-4ebf-9964-c04b4df8be78.docx",
+    "b2ca2530-format-fixed.docx",
+    "b2ca2530-format-final.docx",
+    "b2ca2530-with-toc-field.docx",
+    "b2ca2530-clean.docx",
+    "b2ca2530-clean.pdf",
+    "heading_pages.json",
+    "b2ca2530-with-manual-toc.docx",
+    "b6991655-741f-47cb-8593-0016d163b3b1.docx",
+    "a8e8a2b5-d93a-42ef-8584-8fa716d087e4.docx",
+    "b6991655-with-footnotes.docx",
+    "b377dcf9-ff4d-4a02-88c6-7ce50668137b.docx"
   ]
 }
