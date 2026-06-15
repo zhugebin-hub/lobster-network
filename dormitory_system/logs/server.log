@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/admin/.openclaw/workspace/dormitory_system/server.py", line 32, in <module>
+    TOKENS_FILE = BASE_DIR / ".api_tokens"
+                  ^^^^^^^^
+NameError: name 'BASE_DIR' is not defined
