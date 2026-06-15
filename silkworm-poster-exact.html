@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蚕的一生</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;700&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    width: 1190px;
+    min-height: 1684px;
+    background: linear-gradient(180deg, #d4edda 0%, #c3e6cb 30%, #a8d5a7 70%, #95c995 100%);
+    font-family: 'Noto Sans SC', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .container {
+    position: relative;
+    padding: 30px 40px;
+  }
+  
+  /* 背景桑叶装饰 */
+  .bg-leaf {
+    position: absolute;
+    opacity: 0.12;
+    z-index: 0;
+  }
+  .bg-leaf.l1 { top: 80px; left: 20px; width: 120px; transform: rotate(-25deg); }
+  .bg-leaf.l2 { top: 150px; right: 30px; width: 100px; transform: rotate(35deg); }
+  .bg-leaf.l3 { bottom: 150px; left: 30px; width: 130px; transform: rotate(-15deg); }
+  .bg-leaf.l4 { bottom: 100px; right: 40px; width: 110px; transform: rotate(25deg); }
+  
+  /* 标题椭圆框 */
+  .title-oval {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 520px;
+    height: 100px;
+    background: linear-gradient(180deg, #5dade2 0%, #4a90d9 50%, #3a7bc8 100%);
+    border-radius: 50%;
+    border: 4px solid #2c5f8d;
+    box-shadow: 4px 4px 0 rgba(44,95,141,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  
+  .main-title {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 72px;
+    color: #ffb347;
+    letter-spacing: 25px;
+    text-shadow: 2px 2px 0 #cc6600;
+  }
+  
+  /* 卡片样式 */
+  .card {
+    position: absolute;
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px 18px 18px 18px;
+    border: 2px solid #333;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.15);
+    z-index: 10;
+    width: 310px;
+  }
+  
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55px;
+    height: 18px;
+    background: #f9e79f;
+    border-radius: 2px;
+    opacity: 0.9;
+    border: 1px solid #d4ac0d;
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .card-badge {
+    background: linear-gradient(180deg, #ff8c42 0%, #e67e22 100%);
+    color: white;
+    padding: 3px 14px;
+    border-radius: 18px;
+    font-size: 14px;
+    font-weight: 700;
+    border: 2px solid #333;
+    white-space: nowrap;
+  }
+  
+  .card-date {
+    font-size: 12px;
+    color: #666;
+    margin-left: 10px;
+    font-style: italic;
+  }
+  
+  .weather {
+    display: inline-block;
+    background: #e8f4fd;
+    padding: 1px 6px;
+    border-radius: 6px;
+    font-size: 11px;
+    color: #2980b9;
+    margin-left: 5px;
+    border: 1px solid #85c1e9;
+  }
+  
+  .card-text {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #333;
+    text-align: justify;
+  }
+  
+  .card-text b {
+    color: #e74c3c;
+    font-weight: 700;
+  }
+  
+  /* 各卡片位置 */
+  .card-1 { top: 175px; left: 35px; transform: rotate(-3deg); }
+  .card-2 { top: 175px; right: 35px; transform: rotate(2deg); }
+  .card-3 { top: 335px; left: 35px; transform: rotate(-2deg); }
+  .card-4 { top: 335px; right: 35px; transform: rotate(3deg); }
+  .card-5 { top: 495px; left: 35px; transform: rotate(-3deg); }
+  .card-6 { top: 495px; right: 35px; transform: rotate(2deg); }
+  .card-7 { bottom: 180px; left: 50px; transform: rotate(-2deg); }
+  .card-8 { bottom: 180px; right: 50px; transform: rotate(3deg); }
+  
+  /* 中央圆形桑叶 */
+  .center-circle {
+    position: absolute;
+    top: 380px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 420px;
+    height: 420px;
+    background: linear-gradient(135deg, #58b95e 0%, #4caf50 50%, #43a047 100%);
+    border-radius: 50%;
+    border: 3px solid #2e7d32;
+    z-index: 1;
+    opacity: 0.85;
+  }
+  
+  .center-circle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #2e7d32;
+    transform: translateY(-50%);
+  }
+  
+  .center-circle::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: #2e7d32;
+    transform: translateX(-50%);
+  }
+  
+  /* 红色箭头 */
+  .arrow {
+    position: absolute;
+    font-size: 32px;
+    color: #e74c3c;
+    z-index: 8;
+  }
+  .arrow-1 { top: 295px; left: 345px; transform: rotate(45deg); }
+  .arrow-2 { top: 295px; right: 345px; transform: rotate(135deg); }
+  .arrow-3 { top: 455px; left: 345px; transform: rotate(45deg); }
+  .arrow-4 { top: 455px; right: 345px; transform: rotate(135deg); }
+  .arrow-5 { top: 615px; left: 345px; transform: rotate(45deg); }
+  .arrow-6 { top: 615px; right: 345px; transform: rotate(135deg); }
+  .arrow-7 { bottom: 330px; left: 42%; transform: rotate(180deg); }
+  .arrow-8 { bottom: 330px; right: 42%; transform: rotate(0deg); }
+  
+  /* 蚕宝宝插图 */
+  .silkworm {
+    position: absolute;
+    font-size: 60px;
+    z-index: 9;
+  }
+  .sw-1 { top: 245px; left: 350px; transform: rotate(10deg); }
+  .sw-2 { top: 245px; right: 350px; transform: rotate(-10deg); }
+  .sw-3 { top: 405px; left: 350px; transform: rotate(10deg); }
+  .sw-4 { top: 405px; right: 350px; transform: rotate(-10deg); }
+  .sw-5 { top: 565px; left: 350px; transform: rotate(10deg); }
+  .sw-6 { top: 565px; right: 350px; transform: rotate(-10deg); }
+  .sw-7 { bottom: 290px; left: 50%; transform: translateX(-50%); }
+  .sw-8 { bottom: 290px; right: 350px; transform: rotate(-10deg); }
+  
+  /* 底部文字 */
+  .footer-text {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    color: #555;
+    z-index: 10;
+  }
+  
+  /* 签名框 */
+  .sign-box {
+    position: absolute;
+    bottom: 55px;
+    right: 40px;
+    background: rgba(255,255,255,0.85);
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 2px dashed #666;
+    z-index: 10;
+  }
+  
+  .sign-line {
+    margin: 6px 0;
+    font-size: 13px;
+    color: #555;
+  }
+  
+  .sign-line .line {
+    display: inline-block;
+    width: 100px;
+    border-bottom: 2px dotted #999;
+  }
+</style>
+</head>
+<body>
+  <!-- 背景桑叶 -->
+  <svg class="bg-leaf l1" viewBox="0 0 200 150">
+    <path fill="#4caf50" d="M100 10 Q120 40 150 50 Q180 60 190 90 Q180 120 150 130 Q100 145 50 130 Q20 120 10 90 Q20 60 50 50 Q80 40 100 10 Z"/>
+  </svg>
+  <svg class="bg-leaf l2" viewBox="0 0 200 150">
+    <path fill="#4caf50" d="M100 10 Q120 40 150 50 Q180 60 190 90 Q180 120 150 130 Q100 145 50 130 Q20 120 10 90 Q20 60 50 50 Q80 40 100 10 Z"/>
+  </svg>
+  <svg class="bg-leaf l3" viewBox="0 0 200 150">
+    <path fill="#4caf50" d="M100 10 Q120 40 150 50 Q180 60 190 90 Q180 120 150 130 Q100 145 50 130 Q20 120 10 90 Q20 60 50 50 Q80 40 100 10 Z"/>
+  </svg>
+  <svg class="bg-leaf l4" viewBox="0 0 200 150">
+    <path fill="#4caf50" d="M100 10 Q120 40 150 50 Q180 60 190 90 Q180 120 150 130 Q100 145 50 130 Q20 120 10 90 Q20 60 50 50 Q80 40 100 10 Z"/>
+  </svg>
+  
+  <div class="container">
+    <!-- 标题 -->
+    <div class="title-oval">
+      <div class="main-title">蚕的一生</div>
+    </div>
+    
+    <!-- 中央圆形 -->
+    <div class="center-circle"></div>
+    
+    <!-- 箭头 -->
+    <div class="arrow arrow-1">➤</div>
+    <div class="arrow arrow-2">➤</div>
+    <div class="arrow arrow-3">➤</div>
+    <div class="arrow arrow-4">➤</div>
+    <div class="arrow arrow-5">➤</div>
+    <div class="arrow arrow-6">➤</div>
+    <div class="arrow arrow-7">➤</div>
+    <div class="arrow arrow-8">➤</div>
+    
+    <!-- 蚕宝宝 -->
+    <div class="silkworm sw-1">🥚</div>
+    <div class="silkworm sw-2">🐜</div>
+    <div class="silkworm sw-3">🐛</div>
+    <div class="silkworm sw-4">🐛</div>
+    <div class="silkworm sw-5">🐛</div>
+    <div class="silkworm sw-6">🐛</div>
+    <div class="silkworm sw-7">🧶</div>
+    <div class="silkworm sw-8">🦋</div>
+    
+    <!-- 卡片 1 -->
+    <div class="card card-1">
+      <div class="card-header">
+        <div class="card-badge">1. 蚕卵</div>
+        <div class="card-date">3 月 10 日左右 <span class="weather">☀️ 晴</span></div>
+      </div>
+      <div class="card-text">
+        蚕卵<b>椭圆形</b>，像<b>芝麻</b>一样大！刚产下是<b>淡黄色</b>，慢慢变成<b>紫灰色</b>。用放大镜看，表面有细细的纹路哦！
+      </div>
+    </div>
+    
+    <!-- 卡片 2 -->
+    <div class="card card-2">
+      <div class="card-header">
+        <div class="card-badge">2. 蚁蚕（1 龄）</div>
+        <div class="card-date">3 月 20 日左右 <span class="weather">☁️ 多云</span></div>
+      </div>
+      <div class="card-text">
+        蚕宝宝孵化了！因为又<b>黑</b>又<b>小</b>，像小蚂蚁，所以叫"<b>蚁蚕</b>"。只有<b>2-3 毫米</b>长，浑身长满细毛，最喜欢吃嫩桑叶！
+      </div>
+    </div>
+    
+    <!-- 卡片 3 -->
+    <div class="card card-3">
+      <div class="card-header">
+        <div class="card-badge">3. 幼蚕（2 龄）</div>
+        <div class="card-date">3 月 25 日左右 <span class="weather">☀️ 晴</span></div>
+      </div>
+      <div class="card-text">
+        大约 5-6 天后经历<b>第一次蜕皮</b>！这时头部为赤黑色，胸部部位已经变白，体长约<b>0.5-1.5 厘米</b>。
+      </div>
+    </div>
+    
+    <!-- 卡片 4 -->
+    <div class="card card-4">
+      <div class="card-header">
+        <div class="card-badge">4. 幼蚕（3 龄）</div>
+        <div class="card-date">3 月 30 日左右 <span class="weather">☀️ 晴</span></div>
+      </div>
+      <div class="card-text">
+        二龄幼蚕大约 4-5 天后经历<b>第二次蜕皮</b>！这时它的体长约为<b>1.5 厘米～2.2 厘米</b>之间，身体变得更白了。
+      </div>
+    </div>
+    
+    <!-- 卡片 5 -->
+    <div class="card card-5">
+      <div class="card-header">
+        <div class="card-badge">5. 幼蚕（4 龄）</div>
+        <div class="card-date">4 月 5 日左右 <span class="weather">☁️ 多云</span></div>
+      </div>
+      <div class="card-text">
+        这时的蚕宝宝变得更<b>大</b>了，体长<b>3-4 厘米</b>，身体斑纹也变得更加清晰了，食量越来越大！
+      </div>
+    </div>
+    
+    <!-- 卡片 6 -->
+    <div class="card card-6">
+      <div class="card-header">
+        <div class="card-badge">6. 熟龄（蚕宝宝吐丝）</div>
+        <div class="card-date">4 月 15 日左右 <span class="weather">☀️ 晴</span></div>
+      </div>
+      <div class="card-text">
+        这时期的蚕宝宝完全<b>停止进食</b>，身体缩短，胸部明显变得<b>透明</b>，蚕头胸部昂起，开始寻找角落<b>吐丝结茧</b>！
+      </div>
+    </div>
+    
+    <!-- 卡片 7 -->
+    <div class="card card-7">
+      <div class="card-header">
+        <div class="card-badge">7. 蚕宝结茧</div>
+        <div class="card-date">4 月 19 日～4 月 28 日 <span class="weather">☀️ 晴</span></div>
+      </div>
+      <div class="card-text">
+        蚕茧呈<b>椭圆形</b>，颜色是<b>乳白色</b>的，长 3-4 厘米，直径大约 1.7-2.1 厘米，摸上去软软的～
+      </div>
+    </div>
+    
+    <!-- 卡片 8 -->
+    <div class="card card-8">
+      <div class="card-header">
+        <div class="card-badge">8. 破茧成蛾</div>
+        <div class="card-date">5 月 5 日左右 <span class="weather">☁️ 多云</span></div>
+      </div>
+      <div class="card-text">
+        等了 19 天，蚕蛹终于<b>羽化成蛾</b>！蚕茧被咬开一个洞，蚕蛾缓缓爬出，有翅膀但不会飞，会产下新的卵 🔄
+      </div>
+    </div>
+    
+    <!-- 签名框 -->
+    <div class="sign-box">
+      <div class="sign-line">姓名：<span class="line"></span></div>
+      <div class="sign-line">班级：<span class="line"></span></div>
+      <div class="sign-line">日期：<span class="line"></span></div>
+    </div>
+    
+    <!-- 底部文字 -->
+    <div class="footer-text">三年级科学实践作业 · 蚕的一生观察记录</div>
+  </div>
+</body>
+</html>

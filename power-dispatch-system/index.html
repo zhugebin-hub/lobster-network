@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能电力调度系统 | Smart Power Dispatch System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+                <span>智能电力调度系统</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>调度看板</span>
+                </a>
+                <a href="#" class="nav-item" data-page="load-forecast">
+                    <i class="fas fa-chart-line"></i>
+                    <span>负荷预测</span>
+                </a>
+                <a href="#" class="nav-item" data-page="real-time">
+                    <i class="fas fa-clock"></i>
+                    <span>实时监控</span>
+                </a>
+                <a href="#" class="nav-item" data-page="emergency">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>应急处理</span>
+                </a>
+                <a href="#" class="nav-item" data-page="new-energy">
+                    <i class="fas fa-leaf"></i>
+                    <span>新能源</span>
+                </a>
+                <a href="#" class="nav-item" data-page="reports">
+                    <i class="fas fa-file-alt"></i>
+                    <span>报表中心</span>
+                </a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="system-status">
+                <span class="status-indicator online"></span>
+                <span class="status-text">系统正常</span>
+            </div>
+            <div class="current-time" id="currentTime">--</div>
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>调度员：李工</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- 调度看板页面 -->
+        <section class="page active" id="dashboard">
+            <div class="page-header">
+                <h1><i class="fas fa-tachometer-alt"></i> 调度看板</h1>
+                <div class="page-actions">
+                    <button class="btn btn-primary" onclick="refreshData()">
+                        <i class="fas fa-sync-alt"></i> 刷新数据
+                    </button>
+                    <button class="btn btn-success" onclick="exportReport()">
+                        <i class="fas fa-download"></i> 导出报表
+                    </button>
+                </div>
+            </div>
+
+            <!-- 关键指标卡片 -->
+            <div class="kpi-cards">
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">当前负荷</div>
+                        <div class="kpi-value" id="currentLoad">3,245</div>
+                        <div class="kpi-unit">MW</div>
+                        <div class="kpi-trend up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>5.2%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">发电出力</div>
+                        <div class="kpi-value" id="powerOutput">3,380</div>
+                        <div class="kpi-unit">MW</div>
+                        <div class="kpi-trend up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>3.8%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">
+                        <i class="fas fa-circle-notch"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">系统频率</div>
+                        <div class="kpi-value" id="systemFreq">50.02</div>
+                        <div class="kpi-unit">Hz</div>
+                        <div class="kpi-trend stable">
+                            <i class="fas fa-minus"></i>
+                            <span>正常</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">新能源占比</div>
+                        <div class="kpi-value" id="newEnergyRatio">28.5</div>
+                        <div class="kpi-unit">%</div>
+                        <div class="kpi-trend up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>12.3%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%)">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">备用容量</div>
+                        <div class="kpi-value" id="reserveCapacity">425</div>
+                        <div class="kpi-unit">MW</div>
+                        <div class="kpi-trend stable">
+                            <i class="fas fa-check"></i>
+                            <span>充足</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)">
+                        <i class="fas fa-thermometer-half"></i>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">今日最高负荷</div>
+                        <div class="kpi-value" id="todayMaxLoad">4,120</div>
+                        <div class="kpi-unit">MW</div>
+                        <div class="kpi-trend up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>8.5%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 主要图表区 -->
+            <div class="charts-grid">
+                <div class="chart-card large">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-chart-area"></i> 24 小时负荷曲线</h3>
+                        <div class="chart-actions">
+                            <button class="btn-icon" onclick="toggleChartType('load')"><i class="fas fa-chart-line"></i></button>
+                            <button class="btn-icon" onclick="expandChart('loadChart')"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <div id="loadChart" class="chart-container"></div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-chart-pie"></i> 发电结构</h3>
+                    </div>
+                    <div class="chart-body">
+                        <div id="powerMixChart" class="chart-container"></div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-network-wired"></i> 电网拓扑</h3>
+                    </div>
+                    <div class="chart-body">
+                        <div id="gridTopologyChart" class="chart-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 告警与事件 -->
+            <div class="alerts-section">
+                <div class="alerts-card">
+                    <div class="section-header">
+                        <h3><i class="fas fa-bell"></i> 实时告警</h3>
+                        <span class="badge badge-warning" id="alertCount">3</span>
+                    </div>
+                    <div class="alerts-list" id="alertsList">
+                        <div class="alert-item warning">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <div class="alert-content">
+                                <div class="alert-title">110kV 城东线负荷接近上限</div>
+                                <div class="alert-info">
+                                    <span class="alert-time">14:28:35</span>
+                                    <span class="alert-level">警告</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert-item info">
+                            <i class="fas fa-info-circle"></i>
+                            <div class="alert-content">
+                                <div class="alert-title">3 号发电机组完成检修并网</div>
+                                <div class="alert-info">
+                                    <span class="alert-time">14:15:20</span>
+                                    <span class="alert-level">提示</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert-item warning">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <div class="alert-content">
+                                <div class="alert-title">光伏电站出力波动较大</div>
+                                <div class="alert-info">
+                                    <span class="alert-time">13:52:10</span>
+                                    <span class="alert-level">警告</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alerts-card">
+                    <div class="section-header">
+                        <h3><i class="fas fa-history"></i> 调度日志</h3>
+                    </div>
+                    <div class="log-list" id="dispatchLog">
+                        <div class="log-item">
+                            <span class="log-time">14:30</span>
+                            <span class="log-content">调整 2 号机组出力至 85%</span>
+                            <span class="log-user">李工</span>
+                        </div>
+                        <div class="log-item">
+                            <span class="log-time">14:15</span>
+                            <span class="log-content">批准 3 号机组并网申请</span>
+                            <span class="log-user">李工</span>
+                        </div>
+                        <div class="log-item">
+                            <span class="log-time">14:00</span>
+                            <span class="log-content">执行晚高峰调度预案</span>
+                            <span class="log-user">李工</span>
+                        </div>
+                        <div class="log-item">
+                            <span class="log-time">13:45</span>
+                            <span class="log-content">完成负荷预测数据更新</span>
+                            <span class="log-user">系统</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 负荷预测页面 -->
+        <section class="page" id="load-forecast">
+            <div class="page-header">
+                <h1><i class="fas fa-chart-line"></i> 负荷预测</h1>
+                <div class="page-actions">
+                    <select class="select-input" id="forecastType">
+                        <option value="short">短期预测（24h）</option>
+                        <option value="mid">中期预测（7 天）</option>
+                        <option value="long">长期预测（30 天）</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="runForecast()">
+                        <i class="fas fa-magic"></i> AI 预测
+                    </button>
+                </div>
+            </div>
+
+            <div class="forecast-container">
+                <div class="forecast-chart">
+                    <div id="forecastChart" class="chart-container-large"></div>
+                </div>
+
+                <div class="forecast-methods">
+                    <h3><i class="fas fa-brain"></i> 预测方法</h3>
+                    <div class="method-cards">
+                        <div class="method-card active" data-method="ai">
+                            <i class="fas fa-brain"></i>
+                            <div class="method-name">AI 神经网络</div>
+                            <div class="method-accuracy">准确率 96.8%</div>
+                        </div>
+                        <div class="method-card" data-method="time">
+                            <i class="fas fa-clock"></i>
+                            <div class="method-name">时间序列</div>
+                            <div class="method-accuracy">准确率 92.3%</div>
+                        </div>
+                        <div class="method-card" data-method="regression">
+                            <i class="fas fa-square-root-alt"></i>
+                            <div class="method-name">回归分析</div>
+                            <div class="method-accuracy">准确率 89.5%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="forecast-data">
+                    <h3><i class="fas fa-table"></i> 预测数据</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>时段</th>
+                                <th>预测负荷 (MW)</th>
+                                <th>实际负荷 (MW)</th>
+                                <th>偏差 (%)</th>
+                                <th>置信度</th>
+                            </tr>
+                        </thead>
+                        <tbody id="forecastTable">
+                            <tr>
+                                <td>15:00</td>
+                                <td>3,450</td>
+                                <td>3,420</td>
+                                <td class="positive">+0.88%</td>
+                                <td>
+                                    <div class="confidence-bar">
+                                        <div class="confidence-fill" style="width: 96%"></div>
+                                        <span>96%</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>16:00</td>
+                                <td>3,680</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>
+                                    <div class="confidence-bar">
+                                        <div class="confidence-fill" style="width: 94%"></div>
+                                        <span>94%</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>17:00</td>
+                                <td>3,920</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>
+                                    <div class="confidence-bar">
+                                        <div class="confidence-fill" style="width: 92%"></div>
+                                        <span>92%</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>18:00</td>
+                                <td>4,150</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>
+                                    <div class="confidence-bar">
+                                        <div class="confidence-fill" style="width: 90%"></div>
+                                        <span>90%</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>19:00</td>
+                                <td>4,380</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>
+                                    <div class="confidence-bar">
+                                        <div class="confidence-fill" style="width: 88%"></div>
+                                        <span>88%</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>20:00</td>
+                                <td>4,280</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>
+                                    <div class="confidence-bar">
+                                        <div class="confidence-fill" style="width: 89%"></div>
+                                        <span>89%</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 实时监控页面 -->
+        <section class="page" id="real-time">
+            <div class="page-header">
+                <h1><i class="fas fa-clock"></i> 实时监控</h1>
+                <div class="page-actions">
+                    <button class="btn btn-warning" onclick="toggleAlarmSound()">
+                        <i class="fas fa-volume-up"></i> 告警音：开
+                    </button>
+                    <button class="btn btn-primary" onclick="refreshRealTime()">
+                        <i class="fas fa-sync-alt"></i> 刷新
+                    </button>
+                </div>
+            </div>
+
+            <div class="monitor-grid">
+                <div class="monitor-card full-width">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-map-marked-alt"></i> 电网实时监控</h3>
+                        <div class="legend">
+                            <span class="legend-item"><span class="legend-dot normal"></span>正常</span>
+                            <span class="legend-item"><span class="legend-dot warning"></span>警告</span>
+                            <span class="legend-item"><span class="legend-dot critical"></span>严重</span>
+                        </div>
+                    </div>
+                    <div class="grid-map" id="gridMap">
+                        <!-- 电网拓扑图将在这里绘制 -->
+                        <svg viewBox="0 0 800 500" class="grid-svg">
+                            <!-- 变电站节点 -->
+                            <g class="substation" data-id="sub1" data-name="中心变电站" data-voltage="500kV">
+                                <circle cx="400" cy="250" r="40" class="node-circle normal"/>
+                                <text x="400" y="255" text-anchor="middle" class="node-label">中心变</text>
+                                <text x="400" y="270" text-anchor="middle" class="node-voltage">500kV</text>
+                            </g>
+                            
+                            <g class="substation" data-id="sub2" data-name="城东变电站" data-voltage="220kV">
+                                <circle cx="200" cy="150" r="30" class="node-circle normal"/>
+                                <text x="200" y="155" text-anchor="middle" class="node-label">城东变</text>
+                                <text x="200" y="170" text-anchor="middle" class="node-voltage">220kV</text>
+                            </g>
+                            
+                            <g class="substation" data-id="sub3" data-name="城西变电站" data-voltage="220kV">
+                                <circle cx="600" cy="150" r="30" class="node-circle normal"/>
+                                <text x="600" y="155" text-anchor="middle" class="node-label">城西变</text>
+                                <text x="600" y="170" text-anchor="middle" class="node-voltage">220kV</text>
+                            </g>
+                            
+                            <g class="substation" data-id="sub4" data-name="城南变电站" data-voltage="220kV">
+                                <circle cx="250" cy="380" r="30" class="node-circle normal"/>
+                                <text x="250" y="385" text-anchor="middle" class="node-label">城南变</text>
+                                <text x="250" y="400" text-anchor="middle" class="node-voltage">220kV</text>
+                            </g>
+                            
+                            <g class="substation" data-id="sub5" data-name="城北变电站" data-voltage="220kV">
+                                <circle cx="550" cy="380" r="30" class="node-circle normal"/>
+                                <text x="550" y="385" text-anchor="middle" class="node-label">城北变</text>
+                                <text x="550" y="400" text-anchor="middle" class="node-voltage">220kV</text>
+                            </g>
+
+                            <!-- 输电线路 -->
+                            <line x1="400" y1="250" x2="200" y2="150" class="power-line normal" data-flow="85%"/>
+                            <line x1="400" y1="250" x2="600" y2="150" class="power-line normal" data-flow="78%"/>
+                            <line x1="400" y1="250" x2="250" y2="380" class="power-line normal" data-flow="65%"/>
+                            <line x1="400" y1="250" x2="550" y2="380" class="power-line normal" data-flow="72%"/>
+                            <line x1="200" y1="150" x2="250" y2="380" class="power-line normal" data-flow="45%"/>
+                            <line x1="600" y1="150" x2="550" y2="380" class="power-line normal" data-flow="52%"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="monitor-card">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-bolt"></i> 母线电压</h3>
+                    </div>
+                    <div class="voltage-grid" id="voltageGrid">
+                        <div class="voltage-item">
+                            <div class="voltage-label">500kV 母线</div>
+                            <div class="voltage-value">502.3 kV</div>
+                            <div class="voltage-bar">
+                                <div class="voltage-fill normal" style="width: 100.5%"></div>
+                            </div>
+                        </div>
+                        <div class="voltage-item">
+                            <div class="voltage-label">220kV 母线 A</div>
+                            <div class="voltage-value">221.5 kV</div>
+                            <div class="voltage-bar">
+                                <div class="voltage-fill normal" style="width: 100.7%"></div>
+                            </div>
+                        </div>
+                        <div class="voltage-item">
+                            <div class="voltage-label">220kV 母线 B</div>
+                            <div class="voltage-value">220.8 kV</div>
+                            <div class="voltage-bar">
+                                <div class="voltage-fill normal" style="width: 100.4%"></div>
+                            </div>
+                        </div>
+                        <div class="voltage-item">
+                            <div class="voltage-label">110kV 母线</div>
+                            <div class="voltage-value">110.2 kV</div>
+                            <div class="voltage-bar">
+                                <div class="voltage-fill normal" style="width: 100.2%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="monitor-card">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-tachometer-alt"></i> 系统频率</h3>
+                    </div>
+                    <div class="frequency-display">
+                        <div class="freq-value" id="freqDisplay">50.02 Hz</div>
+                        <div class="freq-chart">
+                            <canvas id="freqChart"></canvas>
+                        </div>
+                        <div class="freq-stats">
+                            <div class="freq-stat">
+                                <span class="stat-label">最高</span>
+                                <span class="stat-value">50.08 Hz</span>
+                            </div>
+                            <div class="freq-stat">
+                                <span class="stat-label">最低</span>
+                                <span class="stat-value">49.95 Hz</span>
+                            </div>
+                            <div class="freq-stat">
+                                <span class="stat-label">平均</span>
+                                <span class="stat-value">50.01 Hz</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 应急处理页面 -->
+        <section class="page" id="emergency">
+            <div class="page-header">
+                <h1><i class="fas fa-exclamation-triangle"></i> 应急处理</h1>
+                <div class="page-actions">
+                    <button class="btn btn-danger" onclick="startEmergencyDrill()">
+                        <i class="fas fa-play"></i> 启动演练
+                    </button>
+                    <button class="btn btn-primary" onclick="viewEmergencyPlan()">
+                        <i class="fas fa-book"></i> 查看预案
+                    </button>
+                </div>
+            </div>
+
+            <div class="emergency-container">
+                <div class="emergency-status">
+                    <div class="status-card current">
+                        <div class="status-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="status-content">
+                            <div class="status-title">当前状态</div>
+                            <div class="status-value">正常运行</div>
+                            <div class="status-desc">电网运行平稳，无异常告警</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="emergency-cases">
+                    <h3><i class="fas fa-folder-open"></i> 典型故障案例</h3>
+                    <div class="case-list">
+                        <div class="case-card" onclick="showCaseDetail(1)">
+                            <div class="case-header">
+                                <span class="case-type type-fault">线路故障</span>
+                                <span class="case-level level-major">重大</span>
+                            </div>
+                            <div class="case-title">220kV 城东线雷击跳闸</div>
+                            <div class="case-info">
+                                <span><i class="fas fa-clock"></i> 2026-04-15 14:28</span>
+                                <span><i class="fas fa-hourglass-half"></i> 处置时间：30 分钟</span>
+                            </div>
+                        </div>
+
+                        <div class="case-card" onclick="showCaseDetail(2)">
+                            <div class="case-header">
+                                <span class="case-type type-overload">过载</span>
+                                <span class="case-level level-warning">警告</span>
+                            </div>
+                            <div class="case-title">110kV 主变过载</div>
+                            <div class="case-info">
+                                <span><i class="fas fa-clock"></i> 2026-04-10 19:15</span>
+                                <span><i class="fas fa-hourglass-half"></i> 处置时间：15 分钟</span>
+                            </div>
+                        </div>
+
+                        <div class="case-card" onclick="showCaseDetail(3)">
+                            <div class="case-header">
+                                <span class="case-type type-voltage">电压异常</span>
+                                <span class="case-level level-minor">一般</span>
+                            </div>
+                            <div class="case-title">10kV 母线电压偏低</div>
+                            <div class="case-info">
+                                <span><i class="fas fa-clock"></i> 2026-04-08 10:30</span>
+                                <span><i class="fas fa-hourglass-half"></i> 处置时间：20 分钟</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="emergency-procedures">
+                    <h3><i class="fas fa-list-ol"></i> 应急处置流程</h3>
+                    <div class="procedure-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">故障发现</div>
+                                <div class="step-desc">监控系统告警，调度员确认故障信息</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">初步判断</div>
+                                <div class="step-desc">分析故障类型、影响范围、严重程度</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">启动预案</div>
+                                <div class="step-desc">根据故障等级启动相应应急预案</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title">调度处置</div>
+                                <div class="step-desc">下达调度指令，调整运行方式</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <div class="step-title">恢复供电</div>
+                                <div class="step-desc">故障隔离后恢复非故障区域供电</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <div class="step-title">总结评估</div>
+                                <div class="step-desc">记录处置过程，总结经验教训</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 新能源页面 -->
+        <section class="page" id="new-energy">
+            <div class="page-header">
+                <h1><i class="fas fa-leaf"></i> 新能源管理</h1>
+                <div class="page-actions">
+                    <button class="btn btn-primary" onclick="refreshNewEnergy()">
+                        <i class="fas fa-sync-alt"></i> 刷新数据
+                    </button>
+                </div>
+            </div>
+
+            <div class="new-energy-container">
+                <div class="ne-overview">
+                    <div class="ne-card">
+                        <div class="ne-icon solar">
+                            <i class="fas fa-solar-panel"></i>
+                        </div>
+                        <div class="ne-content">
+                            <div class="ne-label">光伏总出力</div>
+                            <div class="ne-value">520 <span class="ne-unit">MW</span></div>
+                            <div class="ne-trend up">↑ 15.3%</div>
+                        </div>
+                    </div>
+                    <div class="ne-card">
+                        <div class="ne-icon wind">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div class="ne-content">
+                            <div class="ne-label">风电总出力</div>
+                            <div class="ne-value">385 <span class="ne-unit">MW</span></div>
+                            <div class="ne-trend down">↓ 8.2%</div>
+                        </div>
+                    </div>
+                    <div class="ne-card">
+                        <div class="ne-icon storage">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                        <div class="ne-content">
+                            <div class="ne-label">储能 SOC</div>
+                            <div class="ne-value">78 <span class="ne-unit">%</span></div>
+                            <div class="ne-trend stable">→ 稳定</div>
+                        </div>
+                    </div>
+                    <div class="ne-card">
+                        <div class="ne-icon ratio">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="ne-content">
+                            <div class="ne-label">新能源渗透率</div>
+                            <div class="ne-value">28.5 <span class="ne-unit">%</span></div>
+                            <div class="ne-trend up">↑ 12.3%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ne-charts">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3><i class="fas fa-chart-area"></i> 新能源出力曲线</h3>
+                        </div>
+                        <div class="chart-body">
+                            <div id="neOutputChart" class="chart-container"></div>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3><i class="fas fa-map-marked-alt"></i> 新能源场站分布</h3>
+                        </div>
+                        <div class="chart-body">
+                            <div id="neDistributionChart" class="chart-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ne-stations">
+                    <h3><i class="fas fa-list"></i> 新能源场站列表</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>场站名称</th>
+                                <th>类型</th>
+                                <th>装机容量 (MW)</th>
+                                <th>当前出力 (MW)</th>
+                                <th>利用率</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>城东光伏电站</td>
+                                <td><i class="fas fa-solar-panel"></i> 光伏</td>
+                                <td>200</td>
+                                <td>185</td>
+                                <td>92.5%</td>
+                                <td><span class="status-badge online">运行中</span></td>
+                            </tr>
+                            <tr>
+                                <td>城西光伏电站</td>
+                                <td><i class="fas fa-solar-panel"></i> 光伏</td>
+                                <td>150</td>
+                                <td>138</td>
+                                <td>92.0%</td>
+                                <td><span class="status-badge online">运行中</span></td>
+                            </tr>
+                            <tr>
+                                <td>北山风电场</td>
+                                <td><i class="fas fa-wind"></i> 风电</td>
+                                <td>300</td>
+                                <td>245</td>
+                                <td>81.7%</td>
+                                <td><span class="status-badge online">运行中</span></td>
+                            </tr>
+                            <tr>
+                                <td>南山风电场</td>
+                                <td><i class="fas fa-wind"></i> 风电</td>
+                                <td>250</td>
+                                <td>140</td>
+                                <td>56.0%</td>
+                                <td><span class="status-badge warning">低风速</span></td>
+                            </tr>
+                            <tr>
+                                <td>中心储能站</td>
+                                <td><i class="fas fa-battery-full"></i> 储能</td>
+                                <td>100</td>
+                                <td>-25</td>
+                                <td>78.0%</td>
+                                <td><span class="status-badge charging">充电中</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 报表中心页面 -->
+        <section class="page" id="reports">
+            <div class="page-header">
+                <h1><i class="fas fa-file-alt"></i> 报表中心</h1>
+                <div class="page-actions">
+                    <input type="date" class="date-input" id="reportDate">
+                    <button class="btn btn-primary" onclick="generateReport()">
+                        <i class="fas fa-file-export"></i> 生成报表
+                    </button>
+                </div>
+            </div>
+
+            <div class="reports-container">
+                <div class="report-types">
+                    <h3><i class="fas fa-folder"></i> 报表类型</h3>
+                    <div class="type-grid">
+                        <div class="type-card" onclick="selectReportType('daily')">
+                            <i class="fas fa-calendar-day"></i>
+                            <span>日报</span>
+                        </div>
+                        <div class="type-card" onclick="selectReportType('weekly')">
+                            <i class="fas fa-calendar-week"></i>
+                            <span>周报</span>
+                        </div>
+                        <div class="type-card" onclick="selectReportType('monthly')">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>月报</span>
+                        </div>
+                        <div class="type-card" onclick="selectReportType('analysis')">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>分析报告</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-list">
+                    <h3><i class="fas fa-history"></i> 历史报表</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>报表名称</th>
+                                <th>类型</th>
+                                <th>日期</th>
+                                <th>大小</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>调度运行日报</td>
+                                <td>日报</td>
+                                <td>2026-04-21</td>
+                                <td>2.5 MB</td>
+                                <td>
+                                    <button class="btn-icon-sm"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon-sm"><i class="fas fa-download"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>负荷预测周报</td>
+                                <td>周报</td>
+                                <td>2026-04-14</td>
+                                <td>5.8 MB</td>
+                                <td>
+                                    <button class="btn-icon-sm"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon-sm"><i class="fas fa-download"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>新能源消纳月报</td>
+                                <td>月报</td>
+                                <td>2026-03-31</td>
+                                <td>12.3 MB</td>
+                                <td>
+                                    <button class="btn-icon-sm"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon-sm"><i class="fas fa-download"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>电网运行分析报告</td>
+                                <td>分析报告</td>
+                                <td>2026-03-31</td>
+                                <td>18.6 MB</td>
+                                <td>
+                                    <button class="btn-icon-sm"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon-sm"><i class="fas fa-download"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 侧边栏（可展开） -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>快捷操作</h3>
+            <button class="btn-close" onclick="toggleSidebar()">×</button>
+        </div>
+        <div class="sidebar-content">
+            <div class="quick-action">
+                <i class="fas fa-bolt"></i>
+                <span>负荷控制</span>
+            </div>
+            <div class="quick-action">
+                <i class="fas fa-exchange-alt"></i>
+                <span>潮流调整</span>
+            </div>
+            <div class="quick-action">
+                <i class="fas fa-phone-alt"></i>
+                <span>调度通话</span>
+            </div>
+            <div class="quick-action">
+                <i class="fas fa-clipboard-list"></i>
+                <span>操作票</span>
+            </div>
+            <div class="quick-action">
+                <i class="fas fa-cog"></i>
+                <span>系统设置</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-left">
+            <span>© 2026 智能电力调度系统 | 浙江工商大学 人工智能学院</span>
+        </div>
+        <div class="footer-center">
+            <span>数据更新：<span id="lastUpdate">--:--:--</span></span>
+        </div>
+        <div class="footer-right">
+            <button class="btn-icon" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+            <button class="btn-icon" onclick="showHelp()"><i class="fas fa-question-circle"></i></button>
+            <button class="btn-icon" onclick="toggleFullScreen()"><i class="fas fa-expand"></i></button>
+        </div>
+    </footer>
+
+    <!-- 模态框 -->
+    <div class="modal" id="caseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">故障案例详情</h3>
+                <button class="btn-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 案例详情内容 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/data.js"></script>
+</body>
+</html>

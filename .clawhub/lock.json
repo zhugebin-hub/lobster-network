@@ -32,6 +32,82 @@
     "learn-cog": {
       "version": "1.0.3",
       "installedAt": 1774619041575
+    },
+    "cron-helper": {
+      "version": "1.0.0",
+      "installedAt": 1775883541364
+    },
+    "schedule-reminder": {
+      "version": "1.0.1",
+      "installedAt": 1775883603314
+    },
+    "notify": {
+      "version": "1.0.1",
+      "installedAt": 1775883661137
+    },
+    "study-habits": {
+      "version": "1.0.0",
+      "installedAt": 1775883845007
+    },
+    "resume-cv-builder": {
+      "version": "1.0.0",
+      "installedAt": 1776231562197
+    },
+    "resume-generator-cn": {
+      "version": "1.0.0",
+      "installedAt": 1776231911710
+    },
+    "resume-helper": {
+      "version": "1.0.0",
+      "installedAt": 1776232871327
+    },
+    "cn-resume-optimizer": {
+      "version": "1.0.0",
+      "installedAt": 1776233115289
+    },
+    "resume-coach": {
+      "version": "1.0.2",
+      "installedAt": 1776233176207
+    },
+    "clawcv": {
+      "version": "1.1.0",
+      "installedAt": 1776233536389
+    },
+    "deep-search": {
+      "version": "1.0.0",
+      "installedAt": 1777614060926
+    },
+    "web-search": {
+      "version": "1.0.0",
+      "installedAt": 1779976154345
+    },
+    "academic-writer": {
+      "version": "0.1.0",
+      "installedAt": 1780128878045
+    },
+    "latex": {
+      "version": "1.0.0",
+      "installedAt": 1780128882261
+    },
+    "citation-check-citation-management": {
+      "version": "0.1.0",
+      "installedAt": 1780128888519
+    },
+    "huimai-paper-writing": {
+      "version": "1.0.0",
+      "installedAt": 1780128894976
+    },
+    "ppt": {
+      "version": "1.0.0",
+      "installedAt": 1780893079134
+    },
+    "academic-presentation": {
+      "version": "1.0.1",
+      "installedAt": 1780893083879
+    },
+    "course-ppt-generator": {
+      "version": "1.0.2",
+      "installedAt": 1780893092562
     }
   }
 }

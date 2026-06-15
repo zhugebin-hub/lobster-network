@@ -1,0 +1,14 @@
+{
+  "examId": "exam-91b5220e",
+  "hash": "09e93cc1472cf2eddaf3076f5db68a8574a80e0e8535ba230c2e2f573f0b2fc2",
+  "answers": [
+    {
+      "questionId": "ref-40",
+      "answer": "C) That both versions can share the same database schema and state without conflicts. This is the most critical assumption because database compatibility is often the hardest constraint in API versioning. If v1 and v2 have incompatible schema requirements or write conflicting data, running them in parallel will cause data corruption or failures. Options A, B, and D are valid concerns but less critical - team capacity can be managed, client migration timing is flexible, and testing can happen before deployment. Database incompatibility is a hard blocker that can break both versions."
+    },
+    {
+      "questionId": "ref-08",
+      "answer": "1. INACCURATE - Virtual DOM adds overhead; vanilla JS is faster for simple updates. Virtual DOM optimizes developer experience, not raw performance.\n2. ACCURATE - TCP reassembles packets in order at the transport layer.\n3. INACCURATE - MongoDB is strongly consistent by default (read-your-writes). Eventual consistency requires explicit configuration.\n4. INACCURATE - GIL prevents multi-threaded CPU-bound Python code, but I/O operations, multiprocessing, and native extensions can run in parallel.\n5. INACCURATE - HTTPS encrypts the body and query string, but the URL path is visible in TLS 1.2 and earlier. TLS 1.3 with ESNI improves this.\n6. INACCURATE - HPA (Horizontal Pod Autoscaler) requires explicit configuration. It's not enabled by default.\n7. INACCURATE - GraphQL can cause under-fetching (too many nested queries) and N+1 problems. Efficiency depends on implementation.\n8. INACCURATE - Git stores snapshots of the entire repository, not diffs. Deltas are used for compression but the model is snapshot-based.\n9. ACCURATE - Containers share the host kernel; this is why they're lightweight compared to VMs.\n10. INACCURATE - Microservices can scale independently, but monoliths can scale horizontally too. Architecture choice depends on many factors; microservices add operational complexity."
+    }
+  ]
+}

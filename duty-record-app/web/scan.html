@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学校值班记录系统 - 扫码访问</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #4A90D9 0%, #67B26F 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 100%;
+    }
+    .logo {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      color: #999;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+    .qr-container {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+    .qr-code {
+      width: 256px;
+      height: 256px;
+      margin: 0 auto;
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+    }
+    .tip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .tip .icon {
+      font-size: 20px;
+    }
+    .features {
+      text-align: left;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .features h3 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 12px;
+    }
+    .features ul {
+      list-style: none;
+      color: #666;
+      font-size: 14px;
+    }
+    .features li {
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    .features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #4A90D9;
+      font-weight: bold;
+    }
+    .footer {
+      color: #999;
+      font-size: 12px;
+    }
+    .wechat-icon {
+      color: #07C160;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">🏫</div>
+    <h1>学校值班记录系统</h1>
+    <p class="subtitle">初中部 · 3 年级 24 班</p>
+
+    <div class="qr-container">
+      <div class="qr-code">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://172.24.56.3:3000" alt="二维码" style="width: 100%; height: 100%;">
+      </div>
+    </div>
+
+    <div class="tip">
+      <span class="icon">📱</span>
+      <span>打开微信 扫一扫</span>
+      <span class="icon wechat-icon">💬</span>
+    </div>
+
+    <div class="features">
+      <h3>📋 功能说明</h3>
+      <ul>
+        <li>值班记录打分（卫生/纪律/学习）</li>
+        <li>现场拍照上传</li>
+        <li>查看历史记录</li>
+        <li>AI 周报自动生成</li>
+        <li>支持 24 个班级管理</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <p>默认账号：admin / admin123</p>
+      <p style="margin-top: 8px;">扫码后在浏览器中打开使用</p>
+    </div>
+  </div>
+
+  <script>
+    // 自动获取当前服务器 IP 并更新二维码
+    const currentHost = window.location.hostname;
+    const currentPort = window.location.port || '3000';
+    const accessUrl = `http://${currentHost}:${currentPort}`;
+    
+    // 更新二维码
+    const qrImg = document.querySelector('.qr-code img');
+    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=${encodeURIComponent(accessUrl)}`;
+  </script>
+</body>
+</html>

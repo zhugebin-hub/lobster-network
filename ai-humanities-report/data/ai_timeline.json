@@ -1,0 +1,98 @@
+[
+  {
+    "year": 1950,
+    "event": "图灵发表《计算机器与智能》",
+    "category": "理论",
+    "significance": "提出'机器能否思考'的问题"
+  },
+  {
+    "year": 1956,
+    "event": "达特茅斯会议",
+    "category": "事件",
+    "significance": "AI学科正式诞生"
+  },
+  {
+    "year": 1958,
+    "event": "感知机问世",
+    "category": "算法",
+    "significance": "最早的神经网络模型"
+  },
+  {
+    "year": 1966,
+    "event": "ELIZA聊天机器人",
+    "category": "应用",
+    "significance": "第一个自然语言对话系统"
+  },
+  {
+    "year": 1974,
+    "event": "第一次AI寒冬",
+    "category": "事件",
+    "significance": "感知机局限性被揭示，资金减少"
+  },
+  {
+    "year": 1986,
+    "event": "反向传播算法普及",
+    "category": "算法",
+    "significance": "神经网络训练的关键突破"
+  },
+  {
+    "year": 1997,
+    "event": "Deep Blue击败卡斯帕罗夫",
+    "category": "应用",
+    "significance": "AI在特定领域超越人类"
+  },
+  {
+    "year": 2006,
+    "event": "深度学习概念提出",
+    "category": "理论",
+    "significance": "Hinton提出深度信念网络"
+  },
+  {
+    "year": 2012,
+    "event": "AlexNet夺冠ImageNet",
+    "category": "事件",
+    "significance": "深度学习在CV领域的突破"
+  },
+  {
+    "year": 2014,
+    "event": "GAN诞生",
+    "category": "算法",
+    "significance": "生成对抗网络开创生成式AI"
+  },
+  {
+    "year": 2017,
+    "event": "Transformer架构提出",
+    "category": "算法",
+    "significance": "注意力机制成为主流"
+  },
+  {
+    "year": 2018,
+    "event": "BERT发布",
+    "category": "模型",
+    "significance": "预训练+微调范式确立"
+  },
+  {
+    "year": 2020,
+    "event": "GPT-3发布",
+    "category": "模型",
+    "significance": "175B参数，涌现能力显现"
+  },
+  {
+    "year": 2022,
+    "event": "ChatGPT发布",
+    "category": "事件",
+    "significance": "AI进入大众视野"
+  },
+  {
+    "year": 2023,
+    "event": "GPT-4发布",
+    "category": "模型",
+    "significance": "多模态大模型新高度"
+  },
+  {
+    "year": 2024,
+    "event": "AI应用爆发",
+    "category": "事件",
+    "significance": "AI融入各行各业"
+  }
+]

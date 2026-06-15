@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杭州烟草销售数据分析 - 教学版</title>
+    <!-- 引入 ECharts -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        /* 指标卡片 */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .metric-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .metric-card .value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .metric-card .label {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        /* 图表容器 */
+        .charts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .chart-box {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .chart-box h3 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .chart {
+            width: 100%;
+            height: 400px;
+        }
+        
+        /* 表格 */
+        .table-box {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:hover {
+            background: #f5f5f5;
+        }
+        
+        /* 导航标签 */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            background: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .tab-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* 页脚 */
+        .footer {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .charts {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .metric-card .value {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 标题 -->
+        <div class="header">
+            <h1>📊 杭州烟草销售数据分析</h1>
+            <p>教学案例版 | HTML + ECharts + Python</p>
+        </div>
+        
+        <!-- 导航标签 -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('overview')"> 数据概览</button>
+            <button class="tab-btn" onclick="switchTab('brand')">🚬 品牌分析</button>
+            <button class="tab-btn" onclick="switchTab('shop')">🏪 店铺排名</button>
+            <button class="tab-btn" onclick="switchTab('trend')">📈 销售趋势</button>
+        </div>
+        
+        <!-- 数据概览 -->
+        <div id="overview" class="tab-content active">
+            <!-- 指标卡片 -->
+            <div class="metrics">
+                <div class="metric-card">
+                    <div class="value" id="total-sales">¥0</div>
+                    <div class="label">💰 总销售额</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value" id="total-qty">0</div>
+                    <div class="label">📦 总销量</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value" id="avg-sales">¥0</div>
+                    <div class="label">📊 平均单笔</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value" id="shop-count">0</div>
+                    <div class="label">🏪 店铺数量</div>
+                </div>
+            </div>
+            
+            <!-- 图表 -->
+            <div class="charts">
+                <div class="chart-box">
+                    <h3>各档次销售占比</h3>
+                    <div id="category-pie" class="chart"></div>
+                </div>
+                <div class="chart-box">
+                    <h3>销售额分布</h3>
+                    <div id="sales-hist" class="chart"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 品牌分析 -->
+        <div id="brand" class="tab-content">
+            <div class="charts">
+                <div class="chart-box">
+                    <h3>品牌销售额排名</h3>
+                    <div id="brand-bar" class="chart"></div>
+                </div>
+                <div class="chart-box">
+                    <h3>品牌销量 vs 销售额</h3>
+                    <div id="brand-scatter" class="chart"></div>
+                </div>
+            </div>
+            <div class="table-box">
+                <h3>品牌销售详情</h3>
+                <table id="brand-table">
+                    <thead>
+                        <tr>
+                            <th>排名</th>
+                            <th>品牌</th>
+                            <th>总销量 (条)</th>
+                            <th>总销售额 (元)</th>
+                            <th>档次</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 店铺排名 -->
+        <div id="shop" class="tab-content">
+            <div class="chart-box">
+                <h3>店铺销售额 TOP10</h3>
+                <div id="shop-bar" class="chart"></div>
+            </div>
+            <div class="table-box">
+                <h3>店铺销售排名</h3>
+                <table id="shop-table">
+                    <thead>
+                        <tr>
+                            <th>排名</th>
+                            <th>店铺名称</th>
+                            <th>区域</th>
+                            <th>总销量 (条)</th>
+                            <th>总销售额 (元)</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 销售趋势 -->
+        <div id="trend" class="tab-content">
+            <div class="chart-box">
+                <h3>每日销售趋势</h3>
+                <div id="daily-line" class="chart"></div>
+            </div>
+            <div class="chart-box">
+                <h3>月度销售趋势</h3>
+                <div id="monthly-bar" class="chart"></div>
+            </div>
+        </div>
+        
+        <!-- 页脚 -->
+        <div class="footer">
+            <p>🦞 杭州烟草销售数据分析系统（教学案例版）</p>
+            <p>技术栈：HTML + ECharts + Python | 适用于信息技术课程教学</p>
+            <p>开发时间：2026 年 4 月 | 指导教师：图图老师</p>
+        </div>
+    </div>
+    
+    <script>
+        // ==================== 数据加载 ====================
+        let salesData = [];
+        
+        // 从 JSON 文件加载数据
+        fetch('data/sales_data.json')
+            .then(response => response.json())
+            .then(data => {
+                salesData = data;
+                initOverview();
+            })
+            .catch(error => {
+                console.error('数据加载失败:', error);
+                // 使用模拟数据
+                salesData = generateMockData();
+                initOverview();
+            });
+        
+        // 生成模拟数据（备用）
+        function generateMockData() {
+            const categories = ['高档', '中档', '低档'];
+            const brands = ['中华', '利群', '芙蓉王', '黄鹤楼', '南京', '黄山', '玉溪', '云烟'];
+            const shops = [
+                '上城区卷烟专卖店', '下城区烟草直营店', '江宁区便民烟酒店',
+                '拱墅区旗舰体验店', '西湖区旅游特产店', '滨江区高新园店',
+                '萧山区机场店', '余杭区未来科技城店', '临安区景区店', '富阳区商业中心店'
+            ];
+            
+            const data = [];
+            for (let i = 0; i < 1000; i++) {
+                data.push({
+                    日期: '2025-' + String(Math.floor(Math.random() * 12) + 1).padStart(2, '0') + '-' + String(Math.floor(Math.random() * 28) + 1).padStart(2, '0'),
+                    店铺名称: shops[Math.floor(Math.random() * shops.length)],
+                    区域: '西湖区',
+                    品牌: brands[Math.floor(Math.random() * brands.length)],
+                    档次: categories[Math.floor(Math.random() * categories.length)],
+                    销售数量: Math.floor(Math.random() * 50) + 1,
+                    销售金额: Math.floor(Math.random() * 5000) + 100
+                });
+            }
+            return data;
+        }
+        
+        // ==================== 初始化概览页 ====================
+        function initOverview() {
+            // 计算指标
+            const totalSales = salesData.reduce((sum, item) => sum + item.销售金额, 0);
+            const totalQty = salesData.reduce((sum, item) => sum + item.销售数量, 0);
+            const avgSales = totalSales / salesData.length;
+            const shopCount = [...new Set(salesData.map(item => item.店铺名称))].length;
+            
+            // 更新指标卡片
+            document.getElementById('total-sales').textContent = '¥' + totalSales.toLocaleString();
+            document.getElementById('total-qty').textContent = totalQty.toLocaleString() + ' 条';
+            document.getElementById('avg-sales').textContent = '¥' + Math.round(avgSales).toLocaleString();
+            document.getElementById('shop-count').textContent = shopCount + ' 家';
+            
+            // 按档次汇总
+            const categoryData = {};
+            salesData.forEach(item => {
+                categoryData[item.档次] = (categoryData[item.档次] || 0) + item.销售金额;
+            });
+            
+            // 绘制饼图
+            const categoryPie = echarts.init(document.getElementById('category-pie'));
+            categoryPie.setOption({
+                tooltip: { trigger: 'item', formatter: '{b}: ¥{c} ({d}%)' },
+                legend: { top: '5%', left: 'center' },
+                series: [{
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    data: Object.entries(categoryData).map(([name, value]) => ({ name, value })),
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    },
+                    label: { formatter: '{b}: ¥{c}' }
+                }]
+            });
+            
+            // 销售额分布
+            const salesRanges = [
+                { min: 0, max: 500, count: 0 },
+                { min: 500, max: 1000, count: 0 },
+                { min: 1000, max: 2000, count: 0 },
+                { min: 2000, max: 3000, count: 0 },
+                { min: 3000, max: 5000, count: 0 },
+                { min: 5000, max: 999999, count: 0 }
+            ];
+            
+            salesData.forEach(item => {
+                salesRanges.forEach(range => {
+                    if (item.销售金额 >= range.min && item.销售金额 < range.max) {
+                        range.count++;
+                    }
+                });
+            });
+            
+            const salesHist = echarts.init(document.getElementById('sales-hist'));
+            salesHist.setOption({
+                tooltip: { trigger: 'axis' },
+                xAxis: {
+                    type: 'category',
+                    data: ['0-500', '500-1000', '1000-2000', '2000-3000', '3000-5000', '5000+']
+                },
+                yAxis: { type: 'value', name: '笔数' },
+                series: [{
+                    type: 'bar',
+                    data: salesRanges.map(r => r.count),
+                    itemStyle: { color: '#667eea' }
+                }]
+            });
+            
+            // 初始化其他页面
+            initBrand();
+            initShop();
+            initTrend();
+        }
+        
+        // ==================== 品牌分析页 ====================
+        function initBrand() {
+            const brandData = {};
+            salesData.forEach(item => {
+                if (!brandData[item.品牌]) {
+                    brandData[item.品牌] = { 销量：0, 销售额：0 };
+                }
+                brandData[item.品牌].销量 += item.销售数量;
+                brandData[item.品牌].销售额 += item.销售金额;
+            });
+            
+            const sortedBrands = Object.entries(brandData)
+                .sort((a, b) => b[1].销售额 - a[1].销售额);
+            
+            // 品牌柱状图
+            const brandBar = echarts.init(document.getElementById('brand-bar'));
+            brandBar.setOption({
+                tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+                xAxis: { type: 'category', data: sortedBrands.map(b => b[0]) },
+                yAxis: { type: 'value', name: '销售额 (元)' },
+                series: [{
+                    type: 'bar',
+                    data: sortedBrands.map(b => b[1].销售额),
+                    itemStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: '#667eea' },
+                            { offset: 1, color: '#764ba2' }
+                        ])
+                    }
+                }]
+            });
+            
+            // 散点图
+            const brandScatter = echarts.init(document.getElementById('brand-scatter'));
+            brandScatter.setOption({
+                tooltip: {
+                    formatter: function (param) {
+                        return param.data[2] + '<br/>销量：' + param.data[0] + ' 条<br/>销售额：¥' + param.data[1];
+                    }
+                },
+                xAxis: { type: 'value', name: '销量 (条)', scale: true },
+                yAxis: { type: 'value', name: '销售额 (元)', scale: true },
+                series: [{
+                    type: 'scatter',
+                    data: sortedBrands.map(b => [b[1].销量，b[1].销售额，b[0]]),
+                    symbolSize: 20,
+                    itemStyle: { color: '#667eea' }
+                }]
+            });
+            
+            // 填充表格
+            const tbody = document.querySelector('#brand-table tbody');
+            tbody.innerHTML = sortedBrands.map((b, i) => `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${b[0]}</td>
+                    <td>${b[1].销量.toLocaleString()}</td>
+                    <td>¥${b[1].销售额.toLocaleString()}</td>
+                    <td>${b[1].销售额 > 1000000 ? '高档' : '中档'}</td>
+                </tr>
+            `).join('');
+        }
+        
+        // ==================== 店铺排名页 ====================
+        function initShop() {
+            const shopData = {};
+            salesData.forEach(item => {
+                if (!shopData[item.店铺名称]) {
+                    shopData[item.店铺名称] = { 区域：item.区域，销量：0, 销售额：0 };
+                }
+                shopData[item.店铺名称].销量 += item.销售数量;
+                shopData[item.店铺名称].销售额 += item.销售金额;
+            });
+            
+            const sortedShops = Object.entries(shopData)
+                .sort((a, b) => b[1].销售额 - a[1].销售额);
+            
+            // 店铺柱状图
+            const shopBar = echarts.init(document.getElementById('shop-bar'));
+            shopBar.setOption({
+                tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+                xAxis: { type: 'value', name: '销售额 (元)' },
+                yAxis: {
+                    type: 'category',
+                    data: sortedShops.slice(0, 10).map(s => s[0]),
+                    axisLabel: { interval: 0, rotate: 0 }
+                },
+                series: [{
+                    type: 'bar',
+                    data: sortedShops.slice(0, 10).map(s => s[1].销售额),
+                    itemStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                            { offset: 0, color: '#667eea' },
+                            { offset: 1, color: '#764ba2' }
+                        ])
+                    }
+                }]
+            });
+            
+            // 填充表格
+            const tbody = document.querySelector('#shop-table tbody');
+            tbody.innerHTML = sortedShops.map((s, i) => `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${s[0]}</td>
+                    <td>${s[1].区域}</td>
+                    <td>${s[1].销量.toLocaleString()}</td>
+                    <td>¥${s[1].销售额.toLocaleString()}</td>
+                </tr>
+            `).join('');
+        }
+        
+        // ==================== 销售趋势页 ====================
+        function initTrend() {
+            // 按日期汇总
+            const dailyData = {};
+            salesData.forEach(item => {
+                dailyData[item.日期] = (dailyData[item.日期] || 0) + item.销售金额;
+            });
+            
+            const sortedDates = Object.entries(dailyData).sort((a, b) => a[0].localeCompare(b[0]));
+            
+            // 每日趋势
+            const dailyLine = echarts.init(document.getElementById('daily-line'));
+            dailyLine.setOption({
+                tooltip: { trigger: 'axis' },
+                xAxis: {
+                    type: 'category',
+                    data: sortedDates.map(d => d[0]),
+                    axisLabel: { rotate: 45 }
+                },
+                yAxis: { type: 'value', name: '销售额 (元)' },
+                series: [{
+                    type: 'line',
+                    data: sortedDates.map(d => d[1]),
+                    smooth: true,
+                    areaStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: 'rgba(102, 126, 234, 0.5)' },
+                            { offset: 1, color: 'rgba(102, 126, 234, 0.1)' }
+                        ])
+                    },
+                    lineStyle: { color: '#667eea', width: 2 }
+                }]
+            });
+            
+            // 按月汇总
+            const monthlyData = {};
+            salesData.forEach(item => {
+                const month = item.日期.substring(0, 7);
+                monthlyData[month] = (monthlyData[month] || 0) + item.销售金额;
+            });
+            
+            const sortedMonths = Object.entries(monthlyData).sort((a, b) => a[0].localeCompare(b[0]));
+            
+            // 月度趋势
+            const monthlyBar = echarts.init(document.getElementById('monthly-bar'));
+            monthlyBar.setOption({
+                tooltip: { trigger: 'axis' },
+                xAxis: { type: 'category', data: sortedMonths.map(m => m[0]) },
+                yAxis: { type: 'value', name: '销售额 (元)' },
+                series: [{
+                    type: 'bar',
+                    data: sortedMonths.map(m => m[1]),
+                    itemStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: '#667eea' },
+                            { offset: 1, color: '#764ba2' }
+                        ])
+                    }
+                }]
+            });
+        }
+        
+        // ==================== 标签切换 ====================
+        function switchTab(tabId) {
+            // 隐藏所有内容
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            // 显示选中内容
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+            
+            // 重新调整图表大小
+            setTimeout(() => {
+                window.dispatchEvent(new Event('resize'));
+            }, 100);
+        }
+        
+        // 窗口大小变化时重新调整图表
+        window.addEventListener('resize', () => {
+            echarts.getInstanceByDom(document.getElementById('category-pie'))?.resize();
+            echarts.getInstanceByDom(document.getElementById('sales-hist'))?.resize();
+            echarts.getInstanceByDom(document.getElementById('brand-bar'))?.resize();
+            echarts.getInstanceByDom(document.getElementById('brand-scatter'))?.resize();
+            echarts.getInstanceByDom(document.getElementById('shop-bar'))?.resize();
+            echarts.getInstanceByDom(document.getElementById('daily-line'))?.resize();
+            echarts.getInstanceByDom(document.getElementById('monthly-bar'))?.resize();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "token-tracker",
+  "version": "2.0.0",
+  "description": "Token consumption tracking and optimization tool for OpenClaw",
+  "main": "token-tracker-entry.ts",
+  "scripts": {
+    "token": "tsx token-tracker-entry.ts",
+    "token:today": "tsx token-tracker-entry.ts today",
+    "token:w": "tsx token-tracker-entry.ts week",
+    "token:a": "tsx token-tracker-entry.ts total",
+    "token:h": "tsx token-tracker-entry.ts history",
+    "token:s": "tsx token-tracker-entry.ts save",
+    "token:cleanup": "tsx token-tracker-entry.ts cleanup",
+    "token:reset": "tsx token-tracker-entry.ts reset",
+    "token:i": "tsx token-tracker-entry.ts interactive"
+  },
+  "keywords": [
+    "token",
+    "tracker",
+    "optimization",
+    "openclaw"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.0.0"
+  }
+}

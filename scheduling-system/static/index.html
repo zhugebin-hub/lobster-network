@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学校排课系统 v1.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        /* 顶部导航栏 */
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar h1 {
+            color: #667eea;
+            font-size: 1.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .nav-links button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: #667eea;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nav-links button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+        
+        /* 主内容区 */
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        /* 统计卡片 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-card h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card p {
+            opacity: 0.9;
+        }
+        
+        /* 表单样式 */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5568d3;
+        }
+        
+        .btn-success {
+            background: #48bb78;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #38a169;
+        }
+        
+        .btn-danger {
+            background: #f56565;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #e53e3e;
+        }
+        
+        .btn-secondary {
+            background: #a0aec0;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #718096;
+        }
+        
+        /* 表格样式 */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background: #f7fafc;
+            color: #555;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: #f7fafc;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .actions button {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.875rem;
+        }
+        
+        /* 工具栏 */
+        .toolbar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        /* 课表网格 */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1px;
+            background: #e0e0e0;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .schedule-cell {
+            background: white;
+            padding: 1rem;
+            min-height: 80px;
+        }
+        
+        .schedule-cell.header {
+            background: #667eea;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .schedule-cell.period {
+            background: #f7fafc;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .schedule-cell.class {
+            background: #e6f3ff;
+            padding: 0.5rem;
+        }
+        
+        .schedule-cell.empty {
+            background: #fafafa;
+        }
+        
+        /* 模态框 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal.show {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .modal-close:hover {
+            color: #333;
+        }
+        
+        /* 提示消息 */
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .alert-success {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        
+        .alert-error {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+        
+        .alert-info {
+            background: #bee3f8;
+            color: #2c5282;
+        }
+        
+        /* 页面切换 */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* 加载动画 */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #667eea;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <h1>📚 学校排课系统</h1>
+        <div class="nav-links">
+            <button onclick="showPage('home')">🏠 首页</button>
+            <button onclick="showPage('teachers')">👨‍🏫 教师管理</button>
+            <button onclick="showPage('classes')">🏫 班级管理</button>
+            <button onclick="showPage('courses')">📖 课程设置</button>
+            <button onclick="showPage('meetings')">📅 会议时间</button>
+            <button onclick="showPage('schedule')">📋 排课系统</button>
+        </div>
+    </nav>
+    
+    <!-- 主内容区 -->
+    <div class="container">
+        
+        <!-- 首页 -->
+        <div id="home" class="page active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="stat-teachers">0</h3>
+                    <p>教师人数</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="stat-classes">0</h3>
+                    <p>班级数量</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="stat-courses">0</h3>
+                    <p>课程数量</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="stat-schedules">0</h3>
+                    <p>已排课节数</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>👋 欢迎使用学校排课系统</h2>
+                <div style="line-height: 1.8; color: #555;">
+                    <p><strong>使用流程：</strong></p>
+                    <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>👨‍🏫 先录入教师信息</li>
+                        <li>🏫 再录入班级信息</li>
+                        <li>📖 然后设置课程（班级 + 教师 + 科目）</li>
+                        <li>📅 设置会议时间（可选）</li>
+                        <li>📋 最后点击"自动排课"</li>
+                    </ol>
+                    <p style="margin-top: 1rem;"><strong>提示：</strong>系统会自动检测时间和人员冲突，确保课表合理。</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 教师管理 -->
+        <div id="teachers" class="page">
+            <div class="card">
+                <h2>👨‍🏫 教师管理</h2>
+                <div class="toolbar">
+                    <button class="btn btn-primary" onclick="openTeacherModal()">➕ 添加教师</button>
+                    <button class="btn btn-secondary" onclick="loadTeachers()">🔄 刷新</button>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>姓名</th>
+                                <th>学科</th>
+                                <th>周课时上限</th>
+                                <th>电话</th>
+                                <th>备注</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teachers-table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 班级管理 -->
+        <div id="classes" class="page">
+            <div class="card">
+                <h2>🏫 班级管理</h2>
+                <div class="toolbar">
+                    <button class="btn btn-primary" onclick="openClassModal()">➕ 添加班级</button>
+                    <button class="btn btn-secondary" onclick="loadClasses()">🔄 刷新</button>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>班级名称</th>
+                                <th>年级</th>
+                                <th>学生数</th>
+                                <th>班主任</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="classes-table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 课程设置 -->
+        <div id="courses" class="page">
+            <div class="card">
+                <h2>📖 课程设置</h2>
+                <div class="toolbar">
+                    <button class="btn btn-primary" onclick="openCourseModal()">➕ 添加课程</button>
+                    <button class="btn btn-secondary" onclick="loadCourses()">🔄 刷新</button>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>班级</th>
+                                <th>教师</th>
+                                <th>科目</th>
+                                <th>周课时</th>
+                                <th>连堂</th>
+                                <th>特殊要求</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="courses-table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 会议时间 -->
+        <div id="meetings" class="page">
+            <div class="card">
+                <h2>📅 会议时间设置</h2>
+                <div class="toolbar">
+                    <button class="btn btn-primary" onclick="openMeetingModal()">➕ 添加会议</button>
+                    <button class="btn btn-secondary" onclick="loadMeetings()">🔄 刷新</button>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>会议名称</th>
+                                <th>星期</th>
+                                <th>节次</th>
+                                <th>每周重复</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="meetings-table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 排课系统 -->
+        <div id="schedule" class="page">
+            <div class="card">
+                <h2>📋 自动排课</h2>
+                <div class="toolbar">
+                    <button class="btn btn-success" onclick="runSchedule()">🚀 开始排课</button>
+                    <button class="btn btn-danger" onclick="resetData()">⚠️ 清空数据</button>
+                </div>
+                <div id="schedule-result"></div>
+            </div>
+            
+            <div class="card">
+                <h2>👁️ 课表查看</h2>
+                <div class="form-group">
+                    <label>选择班级：</label>
+                    <select id="schedule-class-select" onchange="loadSchedule()">
+                        <option value="">-- 请选择班级 --</option>
+                    </select>
+                </div>
+                <div id="schedule-view"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 教师模态框 -->
+    <div id="teacher-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>添加教师</h3>
+                <button class="modal-close" onclick="closeModal('teacher-modal')">&times;</button>
+            </div>
+            <form onsubmit="saveTeacher(event)">
+                <div class="form-group">
+                    <label>姓名 *</label>
+                    <input type="text" id="teacher-name" required>
+                </div>
+                <div class="form-group">
+                    <label>学科 *</label>
+                    <input type="text" id="teacher-subject" required placeholder="如：语文、数学、英语">
+                </div>
+                <div class="form-group">
+                    <label>周课时上限</label>
+                    <input type="number" id="teacher-max-hours" value="16" min="1" max="30">
+                </div>
+                <div class="form-group">
+                    <label>电话</label>
+                    <input type="text" id="teacher-phone">
+                </div>
+                <div class="form-group">
+                    <label>备注</label>
+                    <textarea id="teacher-notes" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">💾 保存</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- 班级模态框 -->
+    <div id="class-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>添加班级</h3>
+                <button class="modal-close" onclick="closeModal('class-modal')">&times;</button>
+            </div>
+            <form onsubmit="saveClass(event)">
+                <div class="form-group">
+                    <label>班级名称 *</label>
+                    <input type="text" id="class-name" required placeholder="如：高一 (1) 班">
+                </div>
+                <div class="form-group">
+                    <label>年级 *</label>
+                    <select id="class-grade" required>
+                        <option value="">-- 请选择 --</option>
+                        <option>高一</option>
+                        <option>高二</option>
+                        <option>高三</option>
+                        <option>初一</option>
+                        <option>初二</option>
+                        <option>初三</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>学生数</label>
+                    <input type="number" id="class-students" value="45" min="1">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">💾 保存</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- 课程模态框 -->
+    <div id="course-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>添加课程</h3>
+                <button class="modal-close" onclick="closeModal('course-modal')">&times;</button>
+            </div>
+            <form onsubmit="saveCourse(event)">
+                <div class="form-group">
+                    <label>班级 *</label>
+                    <select id="course-class" required></select>
+                </div>
+                <div class="form-group">
+                    <label>教师 *</label>
+                    <select id="course-teacher" required></select>
+                </div>
+                <div class="form-group">
+                    <label>科目 *</label>
+                    <input type="text" id="course-subject" required>
+                </div>
+                <div class="form-group">
+                    <label>周课时</label>
+                    <input type="number" id="course-hours" value="2" min="1" max="10">
+                </div>
+                <div class="form-group">
+                    <label>连堂</label>
+                    <select id="course-consecutive">
+                        <option value="1">单节</option>
+                        <option value="2">连堂 (2 节)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>特殊要求</label>
+                    <input type="text" id="course-requirements" placeholder="如：不排周一第一节">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">💾 保存</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- 会议模态框 -->
+    <div id="meeting-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>添加会议时间</h3>
+                <button class="modal-close" onclick="closeModal('meeting-modal')">&times;</button>
+            </div>
+            <form onsubmit="saveMeeting(event)">
+                <div class="form-group">
+                    <label>会议名称 *</label>
+                    <input type="text" id="meeting-name" required placeholder="如：升旗仪式">
+                </div>
+                <div class="form-group">
+                    <label>星期 *</label>
+                    <select id="meeting-day" required>
+                        <option value="1">周一</option>
+                        <option value="2">周二</option>
+                        <option value="3">周三</option>
+                        <option value="4">周四</option>
+                        <option value="5">周五</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>节次 *</label>
+                    <select id="meeting-period" required>
+                        <option value="1">第 1 节</option>
+                        <option value="2">第 2 节</option>
+                        <option value="3">第 3 节</option>
+                        <option value="4">第 4 节</option>
+                        <option value="5">第 5 节</option>
+                        <option value="6">第 6 节</option>
+                        <option value="7">第 7 节</option>
+                        <option value="8">第 8 节</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="meeting-recurring" checked> 每周重复
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">💾 保存</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        const API_BASE = '';
+        
+        // 页面切换
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            // 加载对应数据
+            if (pageId === 'home') loadStats();
+            if (pageId === 'teachers') loadTeachers();
+            if (pageId === 'classes') loadClasses();
+            if (pageId === 'courses') loadCourses();
+            if (pageId === 'meetings') loadMeetings();
+            if (pageId === 'schedule') loadScheduleClasses();
+        }
+        
+        // 模态框控制
+        function openTeacherModal() {
+            document.getElementById('teacher-modal').classList.add('show');
+        }
+        
+        function openClassModal() {
+            document.getElementById('class-modal').classList.add('show');
+        }
+        
+        function openCourseModal() {
+            loadClassesForSelect();
+            loadTeachersForSelect();
+            document.getElementById('course-modal').classList.add('show');
+        }
+        
+        function openMeetingModal() {
+            document.getElementById('meeting-modal').classList.add('show');
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+        
+        // 加载统计数据
+        async function loadStats() {
+            const res = await fetch(`${API_BASE}/api/stats`);
+            const stats = await res.json();
+            document.getElementById('stat-teachers').textContent = stats.teachers;
+            document.getElementById('stat-classes').textContent = stats.classes;
+            document.getElementById('stat-courses').textContent = stats.courses;
+            document.getElementById('stat-schedules').textContent = stats.schedules;
+        }
+        
+        // 加载教师列表
+        async function loadTeachers() {
+            const res = await fetch(`${API_BASE}/api/teachers`);
+            const teachers = await res.json();
+            const tbody = document.getElementById('teachers-table');
+            tbody.innerHTML = teachers.map(t => `
+                <tr>
+                    <td>${t.id}</td>
+                    <td>${t.name}</td>
+                    <td>${t.subject}</td>
+                    <td>${t.max_weekly_hours}</td>
+                    <td>${t.phone || '-'}</td>
+                    <td>${t.notes || '-'}</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deleteTeacher(${t.id})">删除</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        // 保存教师
+        async function saveTeacher(e) {
+            e.preventDefault();
+            const data = {
+                name: document.getElementById('teacher-name').value,
+                subject: document.getElementById('teacher-subject').value,
+                max_weekly_hours: parseInt(document.getElementById('teacher-max-hours').value),
+                phone: document.getElementById('teacher-phone').value,
+                notes: document.getElementById('teacher-notes').value
+            };
+            
+            await fetch(`${API_BASE}/api/teachers`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            
+            closeModal('teacher-modal');
+            e.target.reset();
+            loadTeachers();
+            loadStats();
+        }
+        
+        // 删除教师
+        async function deleteTeacher(id) {
+            if (!confirm('确定删除该教师？')) return;
+            await fetch(`${API_BASE}/api/teachers/${id}`, { method: 'DELETE' });
+            loadTeachers();
+            loadStats();
+        }
+        
+        // 加载班级列表
+        async function loadClasses() {
+            const res = await fetch(`${API_BASE}/api/classes`);
+            const classes = await res.json();
+            const tbody = document.getElementById('classes-table');
+            tbody.innerHTML = classes.map(c => `
+                <tr>
+                    <td>${c.id}</td>
+                    <td>${c.name}</td>
+                    <td>${c.grade}</td>
+                    <td>${c.student_count}</td>
+                    <td>${c.homeroom_teacher_name || '-'}</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deleteClass(${c.id})">删除</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        // 保存班级
+        async function saveClass(e) {
+            e.preventDefault();
+            const data = {
+                name: document.getElementById('class-name').value,
+                grade: document.getElementById('class-grade').value,
+                student_count: parseInt(document.getElementById('class-students').value)
+            };
+            
+            await fetch(`${API_BASE}/api/classes`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            
+            closeModal('class-modal');
+            e.target.reset();
+            loadClasses();
+            loadStats();
+        }
+        
+        // 删除班级
+        async function deleteClass(id) {
+            if (!confirm('确定删除该班级？')) return;
+            await fetch(`${API_BASE}/api/classes/${id}`, { method: 'DELETE' });
+            loadClasses();
+            loadStats();
+        }
+        
+        // 加载课程列表
+        async function loadCourses() {
+            const res = await fetch(`${API_BASE}/api/courses`);
+            const courses = await res.json();
+            const tbody = document.getElementById('courses-table');
+            tbody.innerHTML = courses.map(c => `
+                <tr>
+                    <td>${c.id}</td>
+                    <td>${c.class_name}</td>
+                    <td>${c.teacher_name}</td>
+                    <td>${c.subject}</td>
+                    <td>${c.weekly_hours}</td>
+                    <td>${c.consecutive == 2 ? '连堂' : '单节'}</td>
+                    <td>${c.requirements || '-'}</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deleteCourse(${c.id})">删除</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        // 加载班级下拉框
+        async function loadClassesForSelect() {
+            const res = await fetch(`${API_BASE}/api/classes`);
+            const classes = await res.json();
+            const select = document.getElementById('course-class');
+            select.innerHTML = '<option value="">-- 请选择班级 --</option>' +
+                classes.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+        }
+        
+        // 加载教师下拉框
+        async function loadTeachersForSelect() {
+            const res = await fetch(`${API_BASE}/api/teachers`);
+            const teachers = await res.json();
+            const select = document.getElementById('course-teacher');
+            select.innerHTML = '<option value="">-- 请选择教师 --</option>' +
+                teachers.map(t => `<option value="${t.id}">${t.name} (${t.subject})</option>`).join('');
+        }
+        
+        // 保存课程
+        async function saveCourse(e) {
+            e.preventDefault();
+            const data = {
+                class_id: parseInt(document.getElementById('course-class').value),
+                teacher_id: parseInt(document.getElementById('course-teacher').value),
+                subject: document.getElementById('course-subject').value,
+                weekly_hours: parseInt(document.getElementById('course-hours').value),
+                consecutive: parseInt(document.getElementById('course-consecutive').value),
+                requirements: document.getElementById('course-requirements').value
+            };
+            
+            await fetch(`${API_BASE}/api/courses`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            
+            closeModal('course-modal');
+            e.target.reset();
+            loadCourses();
+            loadStats();
+        }
+        
+        // 删除课程
+        async function deleteCourse(id) {
+            if (!confirm('确定删除该课程？')) return;
+            await fetch(`${API_BASE}/api/courses/${id}`, { method: 'DELETE' });
+            loadCourses();
+            loadStats();
+        }
+        
+        // 加载会议列表
+        async function loadMeetings() {
+            const res = await fetch(`${API_BASE}/api/meetings`);
+            const meetings = await res.json();
+            const days = ['', '周一', '周二', '周三', '周四', '周五'];
+            const tbody = document.getElementById('meetings-table');
+            tbody.innerHTML = meetings.map(m => `
+                <tr>
+                    <td>${m.id}</td>
+                    <td>${m.name}</td>
+                    <td>${days[m.day_of_week]}</td>
+                    <td>第${m.period}节</td>
+                    <td>${m.recurring ? '是' : '否'}</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deleteMeeting(${m.id})">删除</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        // 保存会议
+        async function saveMeeting(e) {
+            e.preventDefault();
+            const data = {
+                name: document.getElementById('meeting-name').value,
+                day_of_week: parseInt(document.getElementById('meeting-day').value),
+                period: parseInt(document.getElementById('meeting-period').value),
+                recurring: document.getElementById('meeting-recurring').checked
+            };
+            
+            await fetch(`${API_BASE}/api/meetings`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            
+            closeModal('meeting-modal');
+            e.target.reset();
+            loadMeetings();
+        }
+        
+        // 删除会议
+        async function deleteMeeting(id) {
+            if (!confirm('确定删除该会议时间？')) return;
+            await fetch(`${API_BASE}/api/meetings/${id}`, { method: 'DELETE' });
+            loadMeetings();
+        }
+        
+        // 执行排课
+        async function runSchedule() {
+            const resultDiv = document.getElementById('schedule-result');
+            resultDiv.innerHTML = '<div class="loading"><div class="spinner"></div>正在排课中...</div>';
+            
+            const res = await fetch(`${API_BASE}/api/schedule/run`, { method: 'POST' });
+            const result = await res.json();
+            
+            if (result.success) {
+                resultDiv.innerHTML = `<div class="alert alert-success">✅ 排课完成！共安排 ${result.count} 节课</div>`;
+                loadStats();
+            } else {
+                resultDiv.innerHTML = `<div class="alert alert-error">❌ 排课失败：${result.error}</div>`;
+            }
+        }
+        
+        // 重置数据
+        async function resetData() {
+            if (!confirm('⚠️ 警告：此操作将清空所有数据！确定继续？')) return;
+            await fetch(`${API_BASE}/api/reset`, { method: 'POST' });
+            alert('数据已清空');
+            loadStats();
+        }
+        
+        // 加载班级课表
+        async function loadScheduleClasses() {
+            const res = await fetch(`${API_BASE}/api/classes`);
+            const classes = await res.json();
+            const select = document.getElementById('schedule-class-select');
+            select.innerHTML = '<option value="">-- 请选择班级 --</option>' +
+                classes.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+        }
+        
+        // 加载课表
+        async function loadSchedule() {
+            const classId = document.getElementById('schedule-class-select').value;
+            const viewDiv = document.getElementById('schedule-view');
+            
+            if (!classId) {
+                viewDiv.innerHTML = '';
+                return;
+            }
+            
+            const res = await fetch(`${API_BASE}/api/schedule/${classId}`);
+            const schedules = await res.json();
+            
+            const days = ['', '周一', '周二', '周三', '周四', '周五'];
+            let html = '<div class="schedule-grid">';
+            
+            // 表头
+            html += '<div class="schedule-cell header">班级</div>';
+            for (let d = 1; d <= 5; d++) {
+                html += `<div class="schedule-cell header">${days[d]}</div>`;
+            }
+            
+            // 节次行
+            for (let p = 1; p <= 8; p++) {
+                html += `<div class="schedule-cell period">第${p}节</div>`;
+                for (let d = 1; d <= 5; d++) {
+                    const schedule = schedules.find(s => s.day_of_week === d && s.period === p);
+                    if (schedule) {
+                        html += `<div class="schedule-cell class">
+                            <strong>${schedule.subject}</strong><br>
+                            <small>${schedule.teacher_name}</small>
+                        </div>`;
+                    } else {
+                        html += '<div class="schedule-cell empty"></div>';
+                    }
+                }
+            }
+            
+            html += '</div>';
+            viewDiv.innerHTML = html;
+        }
+        
+        // 初始化
+        loadStats();
+    </script>
+</body>
+</html>

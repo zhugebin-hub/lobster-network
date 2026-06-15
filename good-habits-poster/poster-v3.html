@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>初中生十条好习惯 - 海报</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1920px;
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* 背景装饰 */
+  .bg-pattern {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(255,107,107,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(78,205,196,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(255,230,109,0.1) 0%, transparent 40%);
+  }
+  
+  .container {
+    position: relative;
+    z-index: 10;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* 顶部标题区 */
+  .header {
+    text-align: center;
+    padding: 60px 40px 40px;
+    position: relative;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  }
+  .header-icon {
+    font-size: 90px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 30px rgba(255,200,0,0.5));
+  }
+  .header h1 {
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: 10px;
+    background: linear-gradient(135deg, #FFE66D, #FF6B6B, #4ECDC4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    text-shadow: none;
+  }
+  .header .subtitle {
+    font-size: 28px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 15px;
+    font-weight: 400;
+  }
+  
+  /* 内容区 */
+  .content {
+    flex: 1;
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .habits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  .habit-item {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+    border-radius: 16px;
+    padding: 22px 30px;
+    border-left: 6px solid;
+    position: relative;
+    overflow: hidden;
+  }
+  .habit-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 120px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05));
+  }
+  
+  .habit-item:nth-child(1) { border-left-color: #FF6B6B; }
+  .habit-item:nth-child(2) { border-left-color: #4ECDC4; }
+  .habit-item:nth-child(3) { border-left-color: #FFE66D; }
+  .habit-item:nth-child(4) { border-left-color: #a8e6cf; }
+  .habit-item:nth-child(5) { border-left-color: #fd79a8; }
+  .habit-item:nth-child(6) { border-left-color: #74b9ff; }
+  .habit-item:nth-child(7) { border-left-color: #636e72; }
+  .habit-item:nth-child(8) { border-left-color: #fdcb6e; }
+  .habit-item:nth-child(9) { border-left-color: #55efc4; }
+  .habit-item:nth-child(10) { border-left-color: #a29bfe; }
+  
+  .habit-num {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 900;
+    flex-shrink: 0;
+    color: #fff;
+    margin-right: 22px;
+  }
+  .habit-item:nth-child(1) .habit-num { background: linear-gradient(135deg, #FF6B6B, #ee5a24); }
+  .habit-item:nth-child(2) .habit-num { background: linear-gradient(135deg, #4ECDC4, #0abde3); }
+  .habit-item:nth-child(3) .habit-num { background: linear-gradient(135deg, #f9ca24, #f0932b); }
+  .habit-item:nth-child(4) .habit-num { background: linear-gradient(135deg, #a8e6cf, #6ab04c); }
+  .habit-item:nth-child(5) .habit-num { background: linear-gradient(135deg, #fd79a8, #e84393); }
+  .habit-item:nth-child(6) .habit-num { background: linear-gradient(135deg, #74b9ff, #0984e3); }
+  .habit-item:nth-child(7) .habit-num { background: linear-gradient(135deg, #636e72, #2d3436); }
+  .habit-item:nth-child(8) .habit-num { background: linear-gradient(135deg, #fdcb6e, #e17055); }
+  .habit-item:nth-child(9) .habit-num { background: linear-gradient(135deg, #55efc4, #00b894); }
+  .habit-item:nth-child(10) .habit-num { background: linear-gradient(135deg, #a29bfe, #6c5ce7); }
+  
+  .habit-icon {
+    font-size: 38px;
+    margin-right: 20px;
+    flex-shrink: 0;
+  }
+  .habit-text {
+    font-size: 42px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 4px;
+    flex: 1;
+  }
+  .habit-arrow {
+    font-size: 28px;
+    color: rgba(255,255,255,0.3);
+    flex-shrink: 0;
+  }
+  
+  /* 底部 */
+  .footer {
+    text-align: center;
+    padding: 30px 40px 50px;
+    position: relative;
+  }
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  }
+  .footer .slogan {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 10px;
+    background: linear-gradient(135deg, #FFE66D, #4ECDC4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+  }
+  .footer .emoji-row {
+    font-size: 40px;
+    letter-spacing: 15px;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+  }
+</style>
+</head>
+<body>
+  <div class="bg-pattern"></div>
+  
+  <div class="container">
+    <div class="header">
+      <div class="header-icon">🌟</div>
+      <h1>初中生十条好习惯</h1>
+      <div class="subtitle">好 习 惯 伴 我 成 长</div>
+    </div>
+    
+    <div class="content">
+      <div class="habits-list">
+        <div class="habit-item">
+          <div class="habit-num">01</div>
+          <div class="habit-icon">👋</div>
+          <div class="habit-text">见老师问声好</div>
+          <div class="habit-arrow">›</div>
+        </div>
+        <div class="habit-item">
+          <div class="habit-num">02</div>
+          <div class="habit-icon">🧹</div>
+          <div class="habit-text">保持环境整洁</div>
+          <div class="habit-arrow">›</div>
+        </div>
+        <div class="habit-item">
+          <div class="habit-num">03</div>
+          <div class="habit-icon">🍽️</div>
+          <div class="habit-text">文明排队用餐</div>
+          <div class="habit-arrow">›</div>
+        </div>
+        <div class="habit-item">
+          <div class="habit-num">04</div>
+          <div class="habit-icon">🤫</div>
+          <div class="habit-text">课间文明休息</div>
+          <div class="habit-arrow">›</div>
+        </div>
+        <div class="habit-item">
+          <div class="habit-num">05</div>
+          <div class="habit-icon">🏃</div>
+          <div class="habit-text">认真做好两操</div>
+          <div class="habit-arrow">›</div>
+        </div>
+        <div class="habit-item">
+          <div class="habit-num">06</div>
+          <div class="habit-icon">📚</div>
+          <div class="habit-text">上课认真听讲</div>
+          <div class="habit-arrow">›</div>
+        </div>
+        <div class="habit-item">
+          <div class="habit-num">07</div>
+          <div class="habit-icon">✍️</div>
+          <div class="habit-text">按时上交作业</div>
+          <div class="habit-arrow">›</div>
+        </div>
+        <div class="habit-item">
+          <div class="habit-num">08</div>
+          <div class="habit-icon">🤝</div>
+          <div class="habit-text">团结友爱同学</div>
+          <div class="habit-arrow">›</div>
+        </div>
+        <div class="habit-item">
+          <div class="habit-num">09</div>
+          <div class="habit-icon">💯</div>
+          <div class="habit-text">诚实守信践诺</div>
+          <div class="habit-arrow">›</div>
+        </div>
+        <div class="habit-item">
+          <div class="habit-num">10</div>
+          <div class="habit-icon">🏫</div>
+          <div class="habit-text">爱护学校公物</div>
+          <div class="habit-arrow">›</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <div class="slogan">积 极 向 上 · 健 康 成 长</div>
+      <div class="emoji-row">🌱 📖 🎯 🌈 ⭐</div>
+    </div>
+  </div>
+</body>
+</html>

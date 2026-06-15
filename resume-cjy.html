@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈俊烨 - 个人简历</title>
+    <style>
+        :root {
+            --zjgsu-blue: #1E5F9E;
+            --zjgsu-light-blue: #4A90D9;
+            --zjgsu-dark: #0D3A5F;
+            --text-primary: #2C3E50;
+            --text-secondary: #5D6D7E;
+            --bg-light: #F8F9FA;
+            --border-color: #E1E8ED;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 15mm;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--zjgsu-blue) 0%, var(--zjgsu-light-blue) 100%);
+            color: white;
+            padding: 30px;
+            margin: -15mm -15mm 30px -15mm;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .header .title {
+            font-size: 14px;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        
+        .header .contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        
+        .header .contact span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            color: var(--zjgsu-blue);
+            font-size: 18px;
+            font-weight: 600;
+            border-bottom: 2px solid var(--zjgsu-blue);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title::before {
+            content: "◆";
+            color: var(--zjgsu-light-blue);
+        }
+        
+        .education-item, .experience-item, .award-item {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 3px solid var(--border-color);
+        }
+        
+        .education-item:hover, .experience-item:hover, .award-item:hover {
+            border-left-color: var(--zjgsu-light-blue);
+            transition: border-color 0.3s;
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+        
+        .item-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 15px;
+        }
+        
+        .item-subtitle {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-style: italic;
+        }
+        
+        .item-date {
+            color: var(--zjgsu-blue);
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .item-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .skill-item {
+            background: var(--bg-light);
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--zjgsu-light-blue);
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            color: var(--zjgsu-blue);
+            margin-bottom: 3px;
+        }
+        
+        .skill-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 15px;
+            padding-left: 15px;
+        }
+        
+        .timeline-item::before {
+            content: "●";
+            position: absolute;
+            left: -24px;
+            color: var(--zjgsu-light-blue);
+            font-size: 12px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #F8F9FA 0%, #E8F4F8 100%);
+            border: 1px solid var(--zjgsu-light-blue);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .highlight-title {
+            color: var(--zjgsu-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .highlight-content {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+        
+        .zjgsu-logo {
+            text-align: right;
+            font-size: 12px;
+            color: var(--zjgsu-blue);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        @media print {
+            body {
+                padding: 10mm;
+            }
+            .header {
+                margin: -10mm -10mm 20px -10mm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>陈俊烨 (CJY)</h1>
+        <div class="title">Vibe Coder | AI 教育系统数字化探索者 | 未来课堂开发者 | AI 多模态应用</div>
+        <div class="contact">
+            <span>📧 邮箱：[待补充]</span>
+            <span>📱 手机：[待补充]</span>
+            <span>🌐 网站：https://cjy-websites.zeabur.app</span>
+            <span>🎓 浙江工商大学 人工智能学院</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">教育背景</div>
+        <div class="education-item">
+            <div class="item-header">
+                <span class="item-title">浙江工商大学 人工智能学院</span>
+                <span class="item-date">硕士研究生</span>
+            </div>
+            <div class="item-subtitle">人工智能方向</div>
+        </div>
+        <div class="education-item">
+            <div class="item-header">
+                <span class="item-title">软件工程专业</span>
+                <span class="item-date">本科</span>
+            </div>
+            <div class="item-subtitle">基础编程与大数据方向 · Web 前后端开发 · Java 编程</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">核心技能</div>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-name">🤖 AI 应用开发</div>
+                <div class="skill-desc">Agent 开发、多模态 AI 应用、MCP 协议</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">📚 教育数字化</div>
+                <div class="skill-desc">智能教育系统、未来课堂解决方案</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">💻 全栈开发</div>
+                <div class="skill-desc">Web 前后端、Java、大数据处理</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">🎪 活动策划</div>
+                <div class="skill-desc">黑客松组织与管理、技术社区运营</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">校内经历</div>
+        <div class="experience-item">
+            <div class="item-header">
+                <span class="item-title">信电学院"未来课堂"智能体开发者</span>
+            </div>
+            <div class="item-description">
+                <p>• 与诸葛斌导师合作探索"小龙虾"课程项目</p>
+                <p>• 开发多个校园服务智能体：会议室预约小龙虾、智慧就业小龙虾、图书管理小龙虾</p>
+                <p>• 担任小龙虾企业家培训助教</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">竞赛奖项</div>
+        <div class="award-item">
+            <div class="item-header">
+                <span class="item-title">GDPS Astron 产业智变黑客松</span>
+                <span class="item-date">2026.03.29</span>
+            </div>
+            <div class="item-description" style="color: var(--zjgsu-blue); font-weight: 600;">🏆 一等奖</div>
+        </div>
+        <div class="award-item">
+            <div class="item-header">
+                <span class="item-title">商汤龙虾节 SenseAudio & AudioClaw 多场景 Skills 创新赛</span>
+                <span class="item-date">2026.03.29</span>
+            </div>
+            <div class="item-description" style="color: var(--zjgsu-blue); font-weight: 600;">🥈 二等奖</div>
+        </div>
+        <div class="award-item">
+            <div class="item-header">
+                <span class="item-title">上海徐汇 Agent 进化酒馆黑客松</span>
+                <span class="item-date">2026.03.29</span>
+            </div>
+            <div class="item-description" style="color: var(--zjgsu-blue); font-weight: 600;">🌟 最佳人气奖</div>
+        </div>
+        <div class="award-item">
+            <div class="item-header">
+                <span class="item-title">百度千帆 Agent 训练营</span>
+                <span class="item-date">2026.01.22</span>
+            </div>
+            <div class="item-description" style="color: var(--zjgsu-blue); font-weight: 600;">🔧 最佳技术奖</div>
+        </div>
+        <div class="award-item">
+            <div class="item-header">
+                <span class="item-title">浙江工商大学信电学院 AI 应用创新大赛</span>
+                <span class="item-date">2026.01.08</span>
+            </div>
+            <div class="item-description" style="color: var(--zjgsu-blue); font-weight: 600;">🏆 一等奖</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">黑客松活动经历</div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="item-date">2025.11.22</div>
+                <div class="item-title">魔搭社区开发者嘉年华·支付宝 MCP 开发黑客松</div>
+                <div class="item-description">首次参赛</div>
+            </div>
+            <div class="timeline-item">
+                <div class="item-date">2025.11.30</div>
+                <div class="item-title">Way to AGI 上海站</div>
+                <div class="item-description">全球 30+ 城市联动，泰国清迈分会场</div>
+            </div>
+            <div class="timeline-item">
+                <div class="item-date">2026.01.16-01.18</div>
+                <div class="item-title">环球黑客松杭州站</div>
+                <div class="item-description">志愿者 + 参赛者</div>
+            </div>
+            <div class="timeline-item">
+                <div class="item-date">2026.01.23-01.25</div>
+                <div class="item-title">上海黑客松 Less is More</div>
+                <div class="item-description">志愿者 + 参赛者</div>
+            </div>
+            <div class="timeline-item">
+                <div class="item-date">2026.01.31-02.02</div>
+                <div class="item-title">南京模法学院 S2 赛季"以赛促产"黑客松</div>
+                <div class="item-description">志愿者</div>
+            </div>
+            <div class="timeline-item">
+                <div class="item-date">2026.02.07-02.08</div>
+                <div class="item-title">全国 10 城联动汤泉黑客松 - 太原站</div>
+                <div class="item-description" style="color: var(--zjgsu-blue); font-weight: 600;">主办方负责人（首次从志愿者转变为管理者）</div>
+            </div>
+            <div class="timeline-item">
+                <div class="item-date">2026.03.07-03.08</div>
+                <div class="item-title">中国高校联盟 AI Hackathon Tour</div>
+                <div class="item-description">协办方（高校联赛物资准备、浙大线下复赛协办）</div>
+            </div>
+            <div class="timeline-item">
+                <div class="item-date">2026.03.14-03.15</div>
+                <div class="item-title">中国高校联盟 AI Hackathon Tour 西安交通大学站</div>
+                <div class="item-description">协办方（线下复赛协办）</div>
+            </div>
+            <div class="timeline-item">
+                <div class="item-date">2026.03.22</div>
+                <div class="item-title">浙江省青年创业协会养龙虾🦞培训</div>
+            </div>
+            <div class="timeline-item">
+                <div class="item-date">2026.04.09</div>
+                <div class="item-title">小红书黑客松巅峰赛</div>
+                <div class="item-description">志愿者工作人员 + 参赛者</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <div class="highlight-title">🌟 个人亮点</div>
+        <div class="highlight-content">
+            <p><strong>从参与者到组织者:</strong> 完成从黑客松志愿者到主办方负责人的角色转变</p>
+            <p><strong>技术 + 社区双驱动:</strong> 既深耕 AI 技术开发，又积极参与技术社区建设</p>
+            <p><strong>教育创新探索:</strong> 将 AI 智能体融入校园服务，探索未来课堂新形态</p>
+            <p><strong>持续学习能力:</strong> 2 年内参与 15+ 场黑客松活动，保持技术敏锐度</p>
+        </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top: 15px;">
+        <div class="highlight-title">🦞 特色项目</div>
+        <div class="highlight-content">
+            <p><strong>小龙虾智能体系列</strong> - 将 AI 智能体接入校园课程与服务场景，探索 AI 在教育领域的创新应用，打造有温度、有记忆的智能助手</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>简历更新时间：2026 年 4 月</p>
+        <div class="zjgsu-logo">浙江工商大学 信电学院</div>
+    </div>
+</body>
+</html>

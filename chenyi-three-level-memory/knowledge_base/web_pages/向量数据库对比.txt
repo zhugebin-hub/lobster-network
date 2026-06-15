@@ -1,0 +1,41 @@
+【知识文档】
+类别：数据库 | 可信度：中 | 日期：2026-03-12
+
+向量数据库是存储和检索高维向量数据的专业数据库。
+
+主流向量数据库对比：
+
+1. ChromaDB
+   - 开源、轻量级
+   - 适合开发和测试
+   - 支持本地和分布式部署
+   - 嵌入：OpenAI、Cohere等
+
+2. Milvus
+   - 开源、高性能
+   - 支持十亿级向量
+   - 分布式架构
+   - 丰富的索引类型（IVF、HNSW、PQ）
+
+3. Pinecone
+   - 商业、全托管
+   - 易用性强
+   - 自动扩展
+   - 适合生产环境
+
+4. Weaviate
+   - 开源、支持混合搜索
+   - 内置向量生成
+   - GraphQL接口
+   - 模块化设计
+
+5. FAISS（Facebook AI Similarity Search）
+   - 开源、由Meta开发
+   - 高效的相似度搜索
+   - 支持GPU加速
+   - 适合研究场景
+
+选择建议：
+- 开发测试：ChromaDB、FAISS
+- 生产环境：Milvus、Pinecone
+- 需要混合搜索：Weaviate

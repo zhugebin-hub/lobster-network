@@ -1,0 +1,72 @@
+{
+  "sessions": {
+    "default_session": {
+      "created": 1778757337.7705486,
+      "last_access": 1778757337.7775095,
+      "messages": [
+        {
+          "role": "user",
+          "content": "什么是机器学习？",
+          "timestamp": 1778757337.7705507,
+          "tags": []
+        },
+        {
+          "role": "assistant",
+          "content": "📚 根据知识库信息：\n\n> 【知识片段1】类别：LLM | 可信度：高 | 来源：行业报告\n\n日期：2024-03-01\n\n大语言模型（Large Language Model, LLM）是基于Transformer架构、在大规模文本数据上预训练的深度学习模型。\n\n代表模型：\n\n- GPT系列：GPT-3（175B参数）、GPT-4\n\n- Claude系列：Anthropic开发，注重安全性\n\n- LLaMA系列：Meta开源，LLaMA-2、LLaMA-3\n\n- 通义千问：阿里巴巴开发，Qwen系列\n\n- 文心一言：百度开发\n\n- GLM：清华大学和智谱AI开发\n\n核心技术：\n\n1. 预训练（Pre-training）\n\n- 自监督...\n\n> 【知识片段2】类别：课件 | 可信度：高 | 来源：浙江工商大学AI学院课件\n\n日期：2024-03-20\n\n一、决策树（Decision Tree）\n\n原理：通过一系列if-then规则对数据进行分类或回归。\n\n核心问题：如何选择最优划分特征？\n\n- 信息增益（ID3）：选择信息增益最大的特征\n\n- 信息增益率（C4.5）：解决信息增益偏向多值特征的问题\n\n- 基尼不纯度（CART）：Gini = 1 - Σ(p_i)²\n\n过拟合与剪枝：\n\n- 预剪枝：限制树的最大深度、最小样本数\n\n- 后剪枝：生成完整树后自底向上剪枝\n\n二、集成学习（Ensemble Learning）\n\n核心思想：组合多个弱学习器，...\n\n💡 以上信息来自长期记忆（RAG知识库），引用已标注来源。",
+          "timestamp": 1778757337.7714417,
+          "tags": []
+        },
+        {
+          "role": "user",
+          "content": "深度学习有哪些主要架构？",
+          "timestamp": 1778757337.7719493,
+          "tags": []
+        },
+        {
+          "role": "assistant",
+          "content": "📚 根据知识库信息：\n\n> 【知识片段1】类别：RL | 可信度：高 | 来源：教材\n\n日期：2024-03-05\n\n强化学习（Reinforcement Learning, RL）是机器学习的重要分支，研究智能体如何在环境中通过试错学习最优策略。\n\n核心概念：\n\n- 智能体（Agent）：做出决策的学习者\n\n- 环境（Environment）：智能体交互的外部世界\n\n- 状态（State）：环境的当前情况\n\n- 动作（Action）：智能体可以执行的操作\n\n- 奖励（Reward）：环境对动作的反馈信号\n\n- 策略（Policy）：状态到动作的映射函数\n\n- 价值函数（Value Function）：评估状态或状态-动作对的长期回报...\n\n> 【知识片段2】类别：网页 | 可信度：高 | 来源：AI行业博客\n\n日期：2024-04-10\n\n生成式AI（Generative AI）是指能够生成新内容（文本、图像、音频、视频）的AI系统。\n\n一、主要生成模型\n\n1. GAN（生成对抗网络）\n\n- 生成器G：生成假数据\n\n- 判别器D：区分真假数据\n\n- 对抗训练：G和D互相博弈，共同进步\n\n- 代表：StyleGAN、CycleGAN\n\n- 问题：训练不稳定、模式崩溃\n\n2. VAE（变分自编码器）\n\n- 编码器：输入 → 潜在空间分布\n\n- 解码器：潜在采样 → 重建输入\n\n- 损失：重构损失 + KL散度\n\n- 特点：生成的图像较模糊\n\n3. 扩...\n\n💡 以上信息来自长期记忆（RAG知识库），引用已标注来源。\n\n📋 （当前对话已进行3轮，短期记忆正常工作）",
+          "timestamp": 1778757337.7726703,
+          "tags": []
+        },
+        {
+          "role": "user",
+          "content": "Transformer的原理是什么？",
+          "timestamp": 1778757337.773078,
+          "tags": []
+        },
+        {
+          "role": "assistant",
+          "content": "📚 根据知识库信息：\n\n> 【知识片段1】类别：课件 | 可信度：高 | 来源：浙江工商大学AI学院课件\n\n日期：2024-04-01\n\nTransformer架构（2017年，Vaswani et al. \"Attention Is All You Need\"）\n\n一、核心组件\n\n1. 自注意力机制（Self-Attention）\n\n- Query（查询）、Key（键）、Value（值）\n\n- Attention(Q, K, V) = softmax(QK^T / √d_k) * V\n\n- 缩放因子√d_k防止梯度消失\n\n2. 多头注意力（Multi-Head Attention）\n\n- 将Q、K、V分成h个头分别计算注意力\n\n- ...\n\n> 【知识片段2】类别：AI伦理 | 可信度：高 | 来源：行业报告\n\n日期：2024-03-10\n\n随着AI技术的快速发展，AI伦理和安全问题日益受到关注。\n\n主要伦理问题：\n\n1. 偏见与公平性\n\n- 训练数据中的偏见会被模型学习和放大\n\n- 案例：招聘AI歧视女性、面部识别对少数族裔准确率较低\n\n- 解决：多样化数据集、公平性约束、偏见检测\n\n2. 隐私保护\n\n- 大规模数据收集和使用中的隐私风险\n\n- 差分隐私、联邦学习等隐私保护技术\n\n- GDPR等法规约束\n\n3. 可解释性\n\n- 深度学习模型的\"黑盒\"特性\n\n- 可解释AI（XAI）的重要性\n\n- 方法：LIME、SHAP、注意力可视化\n\n4. 责...\n\n💡 以上信息来自长期记忆（RAG知识库），引用已标注来源。\n\n📋 （当前对话已进行5轮，短期记忆正常工作）",
+          "timestamp": 1778757337.7737918,
+          "tags": []
+        },
+        {
+          "role": "user",
+          "content": "RAG技术有什么用？",
+          "timestamp": 1778757337.774321,
+          "tags": []
+        },
+        {
+          "role": "assistant",
+          "content": "📚 根据知识库信息：\n\n> 【知识片段1】类别：LLM | 可信度：高 | 来源：行业报告\n\n日期：2024-03-01\n\n大语言模型（Large Language Model, LLM）是基于Transformer架构、在大规模文本数据上预训练的深度学习模型。\n\n代表模型：\n\n- GPT系列：GPT-3（175B参数）、GPT-4\n\n- Claude系列：Anthropic开发，注重安全性\n\n- LLaMA系列：Meta开源，LLaMA-2、LLaMA-3\n\n- 通义千问：阿里巴巴开发，Qwen系列\n\n- 文心一言：百度开发\n\n- GLM：清华大学和智谱AI开发\n\n核心技术：\n\n1. 预训练（Pre-training）\n\n- 自监督...\n\n> 【知识片段2】类别：课件 | 可信度：高 | 来源：浙江工商大学AI学院课件\n\n日期：2024-04-01\n\nTransformer架构（2017年，Vaswani et al. \"Attention Is All You Need\"）\n\n一、核心组件\n\n1. 自注意力机制（Self-Attention）\n\n- Query（查询）、Key（键）、Value（值）\n\n- Attention(Q, K, V) = softmax(QK^T / √d_k) * V\n\n- 缩放因子√d_k防止梯度消失\n\n2. 多头注意力（Multi-Head Attention）\n\n- 将Q、K、V分成h个头分别计算注意力\n\n- ...\n\n💡 以上信息来自长期记忆（RAG知识库），引用已标注来源。\n\n📋 （当前对话已进行5轮，短期记忆正常工作）",
+          "timestamp": 1778757337.7756112,
+          "tags": []
+        },
+        {
+          "role": "user",
+          "content": "AI伦理问题有哪些？",
+          "timestamp": 1778757337.776256,
+          "tags": []
+        },
+        {
+          "role": "assistant",
+          "content": "📚 根据知识库信息：\n\n> 【知识片段1】类别：课件 | 可信度：高 | 来源：浙江工商大学AI学院课件\n\n日期：2024-04-01\n\nTransformer架构（2017年，Vaswani et al. \"Attention Is All You Need\"）\n\n一、核心组件\n\n1. 自注意力机制（Self-Attention）\n\n- Query（查询）、Key（键）、Value（值）\n\n- Attention(Q, K, V) = softmax(QK^T / √d_k) * V\n\n- 缩放因子√d_k防止梯度消失\n\n2. 多头注意力（Multi-Head Attention）\n\n- 将Q、K、V分成h个头分别计算注意力\n\n- ...\n\n> 【知识片段2】- 艺术创作、广告设计、游戏素材\n\n- 医学影像生成、数据增强\n\n- 视频生成、3D内容生成\n\n💡 以上信息来自长期记忆（RAG知识库），引用已标注来源。\n\n📋 （当前对话已进行5轮，短期记忆正常工作）",
+          "timestamp": 1778757337.777509,
+          "tags": []
+        }
+      ],
+      "tags": []
+    }
+  },
+  "updated": "2026-05-14T19:15:37.777596"
+}

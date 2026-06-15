@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="诸葛斌" />
+  <title>诸葛斌与阿里钉钉小龙虾：AI 智能体教育实践案例</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">诸葛斌与阿里钉钉小龙虾：AI 智能体教育实践案例</h1>
+<p class="author">诸葛斌</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#诸葛斌与阿里钉钉小龙虾ai-智能体教育实践案例"
+id="toc-诸葛斌与阿里钉钉小龙虾ai-智能体教育实践案例">🦞
+诸葛斌与”阿里钉钉小龙虾”：AI 智能体教育实践案例</a>
+<ul>
+<li><a href="#一案例背景" id="toc-一案例背景">一、案例背景</a></li>
+<li><a href="#二诸葛斌的核心角色"
+id="toc-二诸葛斌的核心角色">二、诸葛斌的核心角色</a></li>
+<li><a href="#三教学案例库"
+id="toc-三教学案例库">三、教学案例库</a></li>
+<li><a href="#四企业应用延伸"
+id="toc-四企业应用延伸">四、企业应用延伸</a></li>
+<li><a href="#五技术架构详解"
+id="toc-五技术架构详解">五、技术架构详解</a></li>
+<li><a href="#六核心理念" id="toc-六核心理念">六、核心理念</a></li>
+<li><a href="#七未来展望" id="toc-七未来展望">七、未来展望</a></li>
+<li><a href="#八附录" id="toc-八附录">八、附录</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="诸葛斌与阿里钉钉小龙虾ai-智能体教育实践案例">🦞
+诸葛斌与”阿里钉钉小龙虾”：AI 智能体教育实践案例</h1>
+<p><strong>案例类型</strong>: 教育创新 / AI 智能体应用 / 产教融合<br />
+<strong>生成时间</strong>: 2026 年 4 月 22 日<br />
+<strong>案例编号</strong>: LOBSTER-EDU-2026-001</p>
+<hr />
+<h2 id="一案例背景">一、案例背景</h2>
+<h3 id="什么是小龙虾">1.1 什么是”小龙虾”？</h3>
+<p><strong>“阿里钉钉小龙虾”</strong> 并非官方产品名称，而是对
+<strong>OpenClaw 开源 AI 智能体框架</strong> 的形象化、趣味化昵称。</p>
+<table>
+<thead>
+<tr>
+<th>特征</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>名称来源</strong></td>
+<td>OpenClaw 图标形似龙虾钳子，社区戏称为”小龙虾”</td>
+</tr>
+<tr>
+<td><strong>技术本质</strong></td>
+<td>开源 AI 智能体 (Agent) 框架，支持多模态任务执行</td>
+</tr>
+<tr>
+<td><strong>核心优势</strong></td>
+<td>专属运行环境 + 长效记忆能力 + 钉钉原生集成</td>
+</tr>
+<tr>
+<td><strong>定位</strong></td>
+<td>能”干实事”的 AI 员工，而非仅能聊天的机器人</td>
+</tr>
+</tbody>
+</table>
+<h3 id="为什么是钉钉">1.2 为什么是钉钉？</h3>
+<p>钉钉作为中国最大的企业级协同办公平台，拥有： - ✅ 1900 万+ 企业组织 -
+✅ 5 亿+ 个人用户 - ✅ 完整的 API 生态（日历、审批、任务、组织架构） -
+✅ 开放机器人接入能力</p>
+<p>将 OpenClaw 接入钉钉，意味着 AI 智能体可以： - 📅 自动管理日程和会议
+- 📋 处理审批流程 - 📊 生成业务报表 - 💬 在群聊中协同工作</p>
+<hr />
+<h2 id="二诸葛斌的核心角色">二、诸葛斌的核心角色</h2>
+<h3 id="布道师从技术到教育的桥梁">2.1 布道师：从技术到教育的桥梁</h3>
+<p><strong>诸葛斌</strong>，浙江工商大学人工智能学院教师，是 OpenClaw
+框架在高校教学和实践应用中的<strong>重要推动者</strong>。</p>
+<h4 id="核心使命">核心使命</h4>
+<blockquote>
+<p>将 OpenClaw
+从一个技术框架，转变为普通学生和研究者也能轻松上手的实用工具。</p>
+</blockquote>
+<h4 id="关键行动">关键行动</h4>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>行动</th>
+<th>描述</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>举办实操讲座</strong></td>
+<td>在信电学院、人工智能学院举办”云养小龙虾实操”讲座</td>
+<td>覆盖 200+ 学生</td>
+</tr>
+<tr>
+<td><strong>打破技术门槛</strong></td>
+<td>不讲空泛理论，从零开始手把手教学</td>
+<td>零基础学生可上手</td>
+</tr>
+<tr>
+<td><strong>解决实际问题</strong></td>
+<td>强调 OpenClaw 处理复杂、流程化任务的能力</td>
+<td>学完就能用</td>
+</tr>
+</tbody>
+</table>
+<h4 id="讲座内容大纲">讲座内容大纲</h4>
+<pre><code>┌─────────────────────────────────────────────┐
+│        &quot;云养小龙虾&quot;实操讲座 (4 小时)          │
+├─────────────────────────────────────────────┤
+│  模块 1：认识小龙虾 (30 分钟)                 │
+│  - 什么是 OpenClaw？                        │
+│  - 与普通 AI 的区别（记忆、执行、集成）       │
+│  - 应用场景演示                              │
+├─────────────────────────────────────────────┤
+│  模块 2：环境搭建 (60 分钟)                  │
+│  - 选购服务器（阿里云/本地）                 │
+│  - 部署 OpenClaw 框架                       │
+│  - 配置基础技能                              │
+├─────────────────────────────────────────────┤
+│  模块 3：接入钉钉 (90 分钟) ⭐核心环节        │
+│  - 创建钉钉机器人                            │
+│  - 配置 Webhook 和回调                       │
+│  - 实现消息收发和任务执行                    │
+│  - 打造个人 AI 员工                          │
+├─────────────────────────────────────────────┤
+│  模块 4：实战项目 (60 分钟)                  │
+│  - 会议室预约智能体                          │
+│  - 智慧就业助手                              │
+│  - 虚拟炒股竞技                              │
+└─────────────────────────────────────────────┘</code></pre>
+<hr />
+<h3 id="关键实践将小龙虾接入钉钉">2.2 关键实践：将”小龙虾”接入钉钉</h3>
+<p>这是整个实操环节中<strong>最具吸引力的一步</strong>，也是”阿里钉钉小龙虾”说法的直接来源。</p>
+<h4 id="实施步骤">实施步骤</h4>
+<pre><code>步骤 1: 创建钉钉机器人
+  ↓
+  进入钉钉群 → 群设置 → 智能群助手 → 添加机器人
+  ↓
+步骤 2: 配置 Webhook
+  ↓
+  获取 access_token 和 secret
+  配置安全设置（IP 白名单/加签）
+  ↓
+步骤 3: 部署 OpenClaw
+  ↓
+  安装技能包 (lobster-network)
+  配置环境变量 (LOBSTER_DINGTALK_WEBHOOK)
+  ↓
+步骤 4: 测试通信
+  ↓
+  发送测试消息 → 钉钉群收到 → AI 回复
+  ↓
+步骤 5: 上线运行
+  ↓
+  配置 systemd 服务 / cron 定时任务
+  实现 7×24 小时在线</code></pre>
+<h4 id="实现价值">实现价值</h4>
+<table>
+<thead>
+<tr>
+<th>价值维度</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>打造 AI 员工</strong></td>
+<td>OpenClaw 化身为可处理实际工作的”数字龙虾”</td>
+</tr>
+<tr>
+<td><strong>融入工作流</strong></td>
+<td>真正进入日常学习和工作流程，而非孤立存在</td>
+</tr>
+<tr>
+<td><strong>学用闭环</strong></td>
+<td>实现”学完就能用”，学习成果立即可见</td>
+</tr>
+<tr>
+<td><strong>可扩展性</strong></td>
+<td>支持多龙虾协作网络，构建智能体生态</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="成果与影响指导学生取得佳绩">2.3
+成果与影响：指导学生取得佳绩</h3>
+<p>诸葛斌老师的教学成果得到了<strong>实战验证</strong>。</p>
+<h4 id="明星学生陈俊烨-cjy">明星学生：陈俊烨 (CJY)</h4>
+<p><strong>身份</strong>: 浙江工商大学人工智能学院硕士研究生<br />
+<strong>角色</strong>:
+信电学院”未来课堂”智能体开发者、诸葛斌导师核心合作者</p>
+<h4 id="获奖记录-2026-年">获奖记录 (2026 年)</h4>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 35%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>时间</th>
+<th>赛事名称</th>
+<th>奖项</th>
+<th>作品</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>03.29</td>
+<td><strong>首届阿里小龙虾大会</strong></td>
+<td>🏆 黑客松勇士</td>
+<td>OpenClaw 创新应用</td>
+</tr>
+<tr>
+<td>03.29</td>
+<td>GDPS Astron 产业智变黑客松</td>
+<td>🥇 一等奖</td>
+<td>AI 智能体项目</td>
+</tr>
+<tr>
+<td>03.29</td>
+<td>商汤龙虾节 SenseAudio 多场景创新赛</td>
+<td>🥈 二等奖</td>
+<td>多模态 AI 应用</td>
+</tr>
+<tr>
+<td>03.29</td>
+<td>上海徐汇 Agent 进化酒馆黑客松</td>
+<td>🌟 最佳人气奖</td>
+<td>Agent 创新项目</td>
+</tr>
+<tr>
+<td>01.22</td>
+<td>百度千帆 Agent 训练营</td>
+<td>🏅 最佳技术奖</td>
+<td>AI Agent 开发</td>
+</tr>
+<tr>
+<td>01.08</td>
+<td>浙江工商大学 AI 应用创新大赛</td>
+<td>🥇 一等奖</td>
+<td>校园服务智能体</td>
+</tr>
+</tbody>
+</table>
+<h4 id="成长轨迹">成长轨迹</h4>
+<pre><code>2025.11  首次参赛（魔搭社区黑客松）→ 参与者
+    ↓
+2026.02  太原站黑客松 → 主办方负责人（角色转变）
+    ↓
+2026.03  中国高校联盟 AI Hackathon Tour → 协办方
+    ↓
+2026.03  阿里小龙虾大会 → 🏆 黑客松勇士（巅峰成就）</code></pre>
+<p><strong>2 年内参与 15+
+场黑客松活动</strong>，完成从参与者到组织者、从志愿者到协办方的蜕变。</p>
+<hr />
+<h2 id="三教学案例库">三、教学案例库</h2>
+<p>诸葛斌老师采用”<strong>做中学</strong>”的教学理念，将每次师生互动整理为可复用的教学案例。</p>
+<h3 id="已归档案例清单">3.1 已归档案例清单</h3>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 31%" />
+<col style="width: 18%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr>
+<th>编号</th>
+<th>案例名称</th>
+<th>主题</th>
+<th>核心技能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td>人机协作设计数字人文课程</td>
+<td>课程设计</td>
+<td>对话协作、内容生成</td>
+</tr>
+<tr>
+<td>001</td>
+<td>天下无贼台词与钉钉导出案例</td>
+<td>文件处理</td>
+<td>钉钉聊天记录导出、案例整理</td>
+</tr>
+<tr>
+<td>002</td>
+<td>小论文撰写与投稿实战</td>
+<td>学术写作</td>
+<td>期刊选择、投稿信、格式调整</td>
+</tr>
+<tr>
+<td>002</td>
+<td>数据分析系统开发案例</td>
+<td>系统开发</td>
+<td>数据分析、可视化、报告生成</td>
+</tr>
+<tr>
+<td>003</td>
+<td>虚拟炒股竞技案例</td>
+<td>金融应用</td>
+<td>API 调用、交易策略、自动汇报</td>
+</tr>
+<tr>
+<td>004</td>
+<td>钉钉 AI 助理教材</td>
+<td>综合应用</td>
+<td>钉钉集成、工作流编排</td>
+</tr>
+<tr>
+<td>006</td>
+<td>Manus 电力调度三部曲案例</td>
+<td>行业应用</td>
+<td>电力系统、调度优化</td>
+</tr>
+</tbody>
+</table>
+<h3 id="案例结构模板">3.2 案例结构模板</h3>
+<p>每个教学案例包含：</p>
+<pre><code>案例文档/
+├── 01_案例文档.md          # 案例背景、目标、流程
+├── 02_产出物/              # 学生作品、生成文件
+│   ├── 论文/报告
+│   └── 代码/配置
+├── 03_输入材料/            # 原始素材、参考资料
+└── 04_对话记录/            # 完整聊天记录清单
+    └── 聊天记录清单.md</code></pre>
+<h3 id="案例教学价值">3.3 案例教学价值</h3>
+<table>
+<thead>
+<tr>
+<th>价值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>可复用</strong></td>
+<td>其他教师可直接采用或改编</td>
+</tr>
+<tr>
+<td><strong>可追溯</strong></td>
+<td>保留完整对话记录，便于复盘</td>
+</tr>
+<tr>
+<td><strong>可评估</strong></td>
+<td>有明确产出物和评估标准</td>
+</tr>
+<tr>
+<td><strong>可迭代</strong></td>
+<td>持续更新优化，形成版本演进</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="四企业应用延伸">四、企业应用延伸</h2>
+<h3 id="野风集团培训方案-2026-年-4-月">4.1 野风集团培训方案 (2026 年 4
+月)</h3>
+<p>基于高校成功经验，诸葛斌老师团队将”小龙虾”模式延伸至企业培训。</p>
+<h4 id="六大应用场景">六大应用场景</h4>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 42%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr>
+<th>场景</th>
+<th>痛点</th>
+<th>小龙虾解决方案</th>
+<th>预期收益</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>会议管理</strong></td>
+<td>纪要整理耗时、待办遗漏</td>
+<td>自动录音转写→AI 提取→创建任务</td>
+<td>93% 时间节省</td>
+</tr>
+<tr>
+<td><strong>项目管理</strong></td>
+<td>进度跟踪困难、风险滞后</td>
+<td>低代码预警规则→自动审批→周报推送</td>
+<td>90% 配置时间节省</td>
+</tr>
+<tr>
+<td><strong>团队管理</strong></td>
+<td>员工信息维护繁琐</td>
+<td>组织架构同步→个性化祝福→绩效聚合</td>
+<td>100% 维护时间节省</td>
+</tr>
+<tr>
+<td><strong>业务运营</strong></td>
+<td>数据对接成本高</td>
+<td>DataWorks 集成→QuickBI 分析→AI 解读</td>
+<td>80% 对接周期缩短</td>
+</tr>
+<tr>
+<td><strong>知识管理</strong></td>
+<td>制度查询困难</td>
+<td>向量检索→RAG 增强→来源追溯</td>
+<td>95% 查询时间节省</td>
+</tr>
+<tr>
+<td><strong>跨部门协作</strong></td>
+<td>系统割裂、工单分错</td>
+<td>API 网关统一→NLP 智能路由→全流程记录</td>
+<td>75% 分错率降低</td>
+</tr>
+</tbody>
+</table>
+<h4 id="培训体系小龙虾三部曲">培训体系：小龙虾三部曲</h4>
+<pre><code>┌─────────────────────────────────────────────┐
+│           三部曲成长路径                    │
+├─────────────────────────────────────────────┤
+│                                             │
+│   第一部：认知 (2 周)                        │
+│   → 什么是企业级智能体                      │
+│   → 能力边界与安全架构                      │
+│                                             │
+│   第二部：技能 (2 周)                        │
+│   → 有效提问技巧                            │
+│   → 低代码配置实战                          │
+│                                             │
+│   第三部：理念 (2 周)                        │
+│   → 人机共生模型                            │
+│   → 双向成长：你训练我，我成就你            │
+│                                             │
+└─────────────────────────────────────────────┘</code></pre>
+<h3 id="预期收益">4.2 预期收益</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>人均节省时间</td>
+<td>2 小时/天</td>
+</tr>
+<tr>
+<td>ROI 回收期</td>
+<td>3-6 个月</td>
+</tr>
+<tr>
+<td>三年 TCO 降低</td>
+<td>40% (相比传统 AI)</td>
+</tr>
+<tr>
+<td>待办遗漏率降低</td>
+<td>80%</td>
+</tr>
+<tr>
+<td>合同漏签率降低</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="五技术架构详解">五、技术架构详解</h2>
+<h3 id="龙虾网络-lobster-network">5.1 龙虾网络 (Lobster Network)</h3>
+<p>支持多智能体协作的分布式架构：</p>
+<pre><code>                    ┌─────────────────┐
+                    │   钉钉群入口     │
+                    │ (人类可见界面)   │
+                    └────────┬────────┘
+                             │
+              ┌──────────────┼──────────────┐
+              │              │              │
+              ↓              ↓              ↓
+       ┌──────────┐  ┌──────────┐  ┌──────────┐
+       │ lobster  │  │ lobster  │  │ lobster  │
+       │   001    │  │   002    │  │   003    │
+       │ (调度中枢)│  │ (工作节点)│  │ (工作节点)│
+       └────┬─────┘  └────┬─────┘  └────┬─────┘
+            │             │             │
+            └─────────────┼─────────────┘
+                          │
+              ┌───────────┴───────────┐
+              │    共享消息日志        │
+              │ (Git 同步/HTTP 服务)    │
+              └───────────────────────┘</code></pre>
+<h3 id="核心组件">5.2 核心组件</h3>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>功能</th>
+<th>技术栈</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>wrapper.py</strong></td>
+<td>HTTP API 封装</td>
+<td>Python + Flask</td>
+</tr>
+<tr>
+<td><strong>dingtalk_sender.py</strong></td>
+<td>钉钉消息发送</td>
+<td>钉钉开放 API</td>
+</tr>
+<tr>
+<td><strong>lobster_scheduler.py</strong></td>
+<td>任务调度核心</td>
+<td>Python + cron</td>
+</tr>
+<tr>
+<td><strong>systemd 服务</strong></td>
+<td>开机自启、进程管理</td>
+<td>Linux systemd</td>
+</tr>
+</tbody>
+</table>
+<h3 id="配置示例">5.3 配置示例</h3>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 环境变量配置</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">LOBSTER_BOT_ID</span><span class="op">=</span>lobster-001</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">LOBSTER_DINGTALK_WEBHOOK</span><span class="op">=</span>https://oapi.dingtalk.com/robot/send<span class="pp">?</span>access_token=xxx</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">LOBSTER_MESSAGE_LOG</span><span class="op">=</span>/home/admin/.openclaw/workspace/lobster-messages.json</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 启动服务</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> ~/.openclaw/workspace/lobster-network/wrapper.py <span class="dt">\</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">--lobster-id</span><span class="op">=</span>lobster-001 <span class="dt">\</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">--port</span><span class="op">=</span>8001</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 配置自动轮询 (每分钟)</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="ex">*/1</span> <span class="pp">*</span> <span class="pp">*</span> <span class="pp">*</span> <span class="pp">*</span> cd ~/.openclaw/workspace/skills/lobster-network <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="ex">./lobster-dingtalk.sh</span> poll <span class="op">&gt;&gt;</span> ~/lobster-network.log <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span></span></code></pre></div>
+<hr />
+<h2 id="六核心理念">六、核心理念</h2>
+<h3 id="人机协作观">6.1 人机协作观</h3>
+<blockquote>
+<p><strong>“你不是在’用’我，你是在’训练’我。”</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>“最好的效果是：有一天你不需要我了，因为我已经帮你变得足够强大。”</strong></p>
+</blockquote>
+<h3 id="双向成长模型">6.2 双向成长模型</h3>
+<pre><code>┌─────────────────────────────────────────────┐
+│              双向成长循环                    │
+├─────────────────────────────────────────────┤
+│                                             │
+│   学生 ──────→ 训练 AI ←────── AI           │
+│    │            │              │            │
+│    │            ↓              │            │
+│    │      能力提升/反馈        │            │
+│    │            │              │            │
+│    ↓            ↓              ↓            │
+│  更高效的     更智能的      更懂你的        │
+│  工作方式     协作伙伴      个性化服务      │
+│                                             │
+└─────────────────────────────────────────────┘</code></pre>
+<h3 id="教育价值">6.3 教育价值</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>传统 AI 教育</th>
+<th>小龙虾模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>学习曲线</strong></td>
+<td>陡峭，需编程基础</td>
+<td>平缓，零基础可上手</td>
+</tr>
+<tr>
+<td><strong>学习成果</strong></td>
+<td>理论知识为主</td>
+<td>可运行的 AI 员工</td>
+</tr>
+<tr>
+<td><strong>学习动机</strong></td>
+<td>考试/学分驱动</td>
+<td>实际需求驱动</td>
+</tr>
+<tr>
+<td><strong>学习周期</strong></td>
+<td>学期制</td>
+<td>4 小时实操即可上手</td>
+</tr>
+<tr>
+<td><strong>可扩展性</strong></td>
+<td>个人学习</td>
+<td>多智能体协作生态</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="七未来展望">七、未来展望</h2>
+<h3 id="短期目标-2026-年">7.1 短期目标 (2026 年)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />完成 10+
+个教学案例标准化</label></li>
+<li><label><input type="checkbox" />培养 50+
+名”小龙虾驯养师”学生</label></li>
+<li><label><input type="checkbox" />落地 3+ 家企业试点应用</label></li>
+<li><label><input
+type="checkbox" />举办第二届阿里小龙虾大会</label></li>
+</ul>
+<h3 id="中期目标-2027-年">7.2 中期目标 (2027 年)</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />出版《云养小龙虾：AI
+智能体实战指南》教材</label></li>
+<li><label><input
+type="checkbox" />建立”小龙虾”认证体系（初级/中级/高级驯养师）</label></li>
+<li><label><input type="checkbox" />拓展至 10+ 所高校课程</label></li>
+<li><label><input type="checkbox" />构建龙虾网络协作生态 (100+
+节点)</label></li>
+</ul>
+<h3 id="长期愿景">7.3 长期愿景</h3>
+<blockquote>
+<p><strong>让每个大学生都拥有自己的 AI 智能体助手，</strong> <strong>让
+AI 成为像 Word、Excel 一样的基础技能。</strong></p>
+</blockquote>
+<hr />
+<h2 id="八附录">八、附录</h2>
+<h3 id="相关资源">8.1 相关资源</h3>
+<table>
+<thead>
+<tr>
+<th>资源</th>
+<th>链接/位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenClaw 官方文档</td>
+<td>https://docs.openclaw.ai</td>
+</tr>
+<tr>
+<td>技能市场</td>
+<td>https://clawhub.com</td>
+</tr>
+<tr>
+<td>社区 Discord</td>
+<td>https://discord.com/invite/clawd</td>
+</tr>
+<tr>
+<td>本地技能路径</td>
+<td><code>~/.openclaw/workspace/skills/lobster-network/</code></td>
+</tr>
+<tr>
+<td>教学案例库</td>
+<td><code>~/.openclaw/workspace/teaching_cases/</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="联系信息">8.2 联系信息</h3>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>联系方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>诸葛斌 (导师)</td>
+<td>钉钉 ID: 086209361535510921</td>
+</tr>
+<tr>
+<td>陈俊烨 (核心开发者)</td>
+<td>待补充</td>
+</tr>
+<tr>
+<td>孙豪 (龙虾网络技能作者)</td>
+<td>待补充</td>
+</tr>
+<tr>
+<td>技术支持群</td>
+<td>钉钉群”智能体小龙虾测试”</td>
+</tr>
+</tbody>
+</table>
+<h3 id="文档版本">8.3 文档版本</h3>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>日期</th>
+<th>更新内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-04-22</td>
+<td>初始版本，整合本地文档与用户提供信息</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>🦞 案例结束</strong></p>
+<p><em>本案例由诸葛虾 (lobster-001)
+整理生成，如有更新需求请联系诸葛斌老师或直接在钉钉群中@我。</em></p>
+</body>
+</html>

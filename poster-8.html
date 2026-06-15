@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>八年级五一假期德育实践作业</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    width: 210mm;
+    height: 297mm;
+    font-family: 'Noto Sans SC', sans-serif;
+    background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 50%, #E8F0FE 100%);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* 装饰背景 */
+  .bg-pattern {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.05;
+    background-image: 
+      radial-gradient(circle at 15% 25%, #2E7D32 2px, transparent 2px),
+      radial-gradient(circle at 85% 75%, #1565C0 2px, transparent 2px),
+      radial-gradient(circle at 50% 50%, #2E7D32 1.5px, transparent 1.5px);
+    background-size: 55px 55px, 70px 70px, 45px 45px;
+  }
+  
+  /* 顶部装饰条 */
+  .top-banner {
+    background: linear-gradient(135deg, #1565C0 0%, #1E88E5 50%, #42A5F5 100%);
+    padding: 28px 40px 22px;
+    text-align: center;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+  
+  .top-banner::before {
+    content: '🏛️';
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 42px;
+  }
+  
+  .top-banner::after {
+    content: '📸';
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 42px;
+  }
+  
+  .school-name {
+    font-size: 15px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  
+  .grade-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.2);
+    display: inline-block;
+    padding: 3px 16px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .main-title {
+    font-size: 36px;
+    font-weight: 900;
+    color: #FFF;
+    text-shadow: 2px 3px 6px rgba(0,0,0,0.2);
+    letter-spacing: 4px;
+  }
+  
+  /* 主题区域 */
+  .theme-section {
+    margin: 20px 35px 0;
+    background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+    border-radius: 20px;
+    padding: 22px 28px;
+    border: 3px solid #42A5F5;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(21,101,192,0.15);
+  }
+  
+  .theme-badge {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #1565C0, #1E88E5);
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 900;
+    padding: 6px 28px;
+    border-radius: 20px;
+    letter-spacing: 3px;
+    box-shadow: 0 3px 10px rgba(21,101,192,0.3);
+  }
+  
+  .theme-text {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0D47A1;
+    letter-spacing: 2px;
+  }
+  
+  .theme-sub {
+    text-align: center;
+    font-size: 15px;
+    color: #1565C0;
+    margin-top: 6px;
+  }
+  
+  /* 内容区域 */
+  .content-area {
+    display: flex;
+    gap: 18px;
+    margin: 18px 35px;
+  }
+  
+  .content-card {
+    flex: 1;
+    background: #FFF;
+    border-radius: 16px;
+    padding: 18px 16px;
+    border: 2.5px solid;
+    position: relative;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+  }
+  
+  .content-card.task {
+    border-color: #42A5F5;
+    background: linear-gradient(180deg, #F5FAFF, #FFF);
+  }
+  
+  .content-card.require {
+    border-color: #66BB6A;
+    background: linear-gradient(180deg, #F5FFF8, #FFF);
+  }
+  
+  .card-icon {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  
+  .card-title {
+    font-size: 16px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px dashed;
+  }
+  
+  .task .card-title { color: #1565C0; border-color: #90CAF9; }
+  .require .card-title { color: #2E7D32; border-color: #A5D6A7; }
+  
+  .card-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .card-list li {
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+  }
+  
+  .card-list li::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .task .card-list li::before {
+    content: '🔹';
+    font-size: 11px;
+  }
+  
+  .require .card-list li::before {
+    content: '✅';
+    font-size: 11px;
+  }
+  
+  /* 小报内容提示 */
+  .poster-tip {
+    margin: 0 35px 15px;
+    background: linear-gradient(135deg, #E8F5E9, #F1F8E9);
+    border-radius: 14px;
+    padding: 16px 22px;
+    border: 2px solid #81C784;
+  }
+  
+  .poster-tip-title {
+    font-size: 14px;
+    font-weight: 900;
+    color: #2E7D32;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  
+  .poster-tip-content {
+    font-size: 12px;
+    color: #33691E;
+    line-height: 1.8;
+    text-align: center;
+  }
+  
+  /* 注意事项 */
+  .notice-section {
+    margin: 0 35px 15px;
+    background: linear-gradient(135deg, #FFF9E6, #FFF3D0);
+    border-radius: 14px;
+    padding: 16px 22px;
+    border: 2px solid #FFD54F;
+  }
+  
+  .notice-title {
+    font-size: 15px;
+    font-weight: 900;
+    color: #E65100;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  
+  .notice-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .notice-list li {
+    flex: 1;
+    min-width: 45%;
+    font-size: 12px;
+    color: #5D4037;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 10px;
+    text-align: center;
+    line-height: 1.6;
+  }
+  
+  .notice-list li span {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 3px;
+  }
+  
+  /* 底部 */
+  .footer {
+    text-align: center;
+    padding: 0 35px;
+    margin-top: 8px;
+  }
+  
+  .footer-deco {
+    font-size: 28px;
+    letter-spacing: 12px;
+    margin-bottom: 6px;
+  }
+  
+  .footer-text {
+    font-size: 12px;
+    color: #546E7A;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  /* 漫画装饰 */
+  .manga-deco {
+    position: absolute;
+    font-size: 50px;
+    opacity: 0.12;
+  }
+  
+  .manga-deco.d1 { top: 140px; right: 20px; transform: rotate(15deg); }
+  .manga-deco.d2 { bottom: 80px; left: 15px; transform: rotate(-10deg); }
+  .manga-deco.d3 { top: 200px; left: 10px; font-size: 35px; transform: rotate(20deg); }
+  
+  /* 角花 */
+  .corner {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    opacity: 0.2;
+  }
+  .corner.tl { top: 10px; left: 10px; border-top: 4px solid #1565C0; border-left: 4px solid #1565C0; border-radius: 8px 0 0 0; }
+  .corner.tr { top: 10px; right: 10px; border-top: 4px solid #1565C0; border-right: 4px solid #1565C0; border-radius: 0 8px 0 0; }
+  .corner.bl { bottom: 10px; left: 10px; border-bottom: 4px solid #1565C0; border-left: 4px solid #1565C0; border-radius: 0 0 0 8px; }
+  .corner.br { bottom: 10px; right: 10px; border-bottom: 4px solid #1565C0; border-right: 4px solid #1565C0; border-radius: 0 0 8px 0; }
+</style>
+</head>
+<body>
+  <div class="bg-pattern"></div>
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+  <div class="manga-deco d1">🏯</div>
+  <div class="manga-deco d2">👷</div>
+  <div class="manga-deco d3">🌉</div>
+  
+  <!-- 顶部横幅 -->
+  <div class="top-banner">
+    <div class="school-name">东北师范大学南湖实验教育集团</div>
+    <div class="grade-label">📚 八年级 · 五一假期德育实践作业</div>
+    <div class="main-title">五一劳动节</div>
+  </div>
+  
+  <!-- 主题 -->
+  <div class="theme-section">
+    <div class="theme-badge">🎯 主 题</div>
+    <div class="theme-text">"发现嘉兴 · 礼赞劳动"</div>
+    <div class="theme-sub">—— 家乡文化与劳动精神微调查</div>
+  </div>
+  
+  <!-- 双栏内容 -->
+  <div class="content-area">
+    <div class="content-card task">
+      <div class="card-icon">📋</div>
+      <div class="card-title">作业内容（任选其一）</div>
+      <ul class="card-list">
+        <li><b>文化探访：</b>选择嘉兴的一处文化地标（如：月河历史街区、乌镇/西塘古镇、嘉兴粽子文化博物馆、梅湾街等）</li>
+        <li><b>劳动者访谈：</b>访谈一位身边的普通劳动者（环卫工、店员、司机、快递员、保安、志愿者等），了解他们的工作日常和故事</li>
+        <li><b>实践参与：</b>参与一次力所能及的家庭劳动或社区劳动</li>
+      </ul>
+    </div>
+    
+    <div class="content-card require">
+      <div class="card-icon">📝</div>
+      <div class="card-title">作业要求</div>
+      <ul class="card-list">
+        <li>制作一份<b>手绘或电子小报</b>，标题自拟</li>
+        <li>内容可包含：家乡文化地标介绍、劳动者故事记录</li>
+        <li>"我与地标"合影、参与劳动的照片</li>
+        <li>你的发现和感受等</li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- 小报内容提示 -->
+  <div class="poster-tip">
+    <div class="poster-tip-title">🎨 小报内容参考</div>
+    <div class="poster-tip-content">
+      文化地标介绍 &nbsp;|&nbsp; 劳动者故事记录 &nbsp;|&nbsp; "我与地标"合影 &nbsp;|&nbsp; 劳动照片 &nbsp;|&nbsp; 发现与感受
+    </div>
+  </div>
+  
+  <!-- 注意事项 -->
+  <div class="notice-section">
+    <div class="notice-title">⚠️ 注意事项</div>
+    <ul class="notice-list">
+      <li><span>👨‍👩‍👧</span>可以和家人一起，但核心内容由学生完成</li>
+      <li><span>📍</span>选择离家较近、安全的地方</li>
+      <li><span>📷</span>拍照时注意安全，禁止攀爬危险建筑</li>
+      <li><span>🤝</span>访谈时态度诚恳，尊重劳动者</li>
+    </ul>
+  </div>
+  
+  <!-- 底部 -->
+  <div class="footer">
+    <div class="footer-deco">🏯 🌉 📸 🎋 🎏</div>
+    <div class="footer-text">劳动最光荣 · 实践出真知 · 五一快乐</div>
+  </div>
+</body>
+</html>

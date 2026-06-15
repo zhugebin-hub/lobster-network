@@ -1,17 +1,52 @@
 ---
 name: dingtalk-file-transfer-enhance
-description: 增强钉钉文件传输能力 - 支持大文件接收、分片传输、断点续传。解决钉钉机器人文件传输限制问题。
+description: 增强钉钉文件传输能力 - 支持大文件接收、分片传输、断点续传、文件位置通知。解决钉钉机器人文件传输限制问题。
 metadata:
   openclaw:
     emoji: "📦"
     os: [darwin, linux, windows]
 author: OpenClaw
-version: 1.0.0
+version: 1.1.0
 ---
 
 # 📦 钉钉文件传输增强技能
 
-**功能**: 增强钉钉大文件传输能力，支持最大 100MB 文件接收
+**功能**: 增强钉钉大文件传输能力，支持最大 100MB 文件接收 + 自动通知文件保存位置
+
+---
+
+## 🎯 核心功能
+
+### 1. 大文件传输增强
+- 支持最大 100MB 文件接收（原 20MB）
+- 分片传输、断点续传
+- 自动压缩优化
+
+### 2. 🆕 文件位置自动通知
+当用户发送文件时，自动回复文件保存位置，方便后续查找和引用。
+
+**触发条件**: 检测到用户发送任意类型文件（图片/文档/音频/视频）
+
+**回复模板**:
+```
+🦞 小龙虾收到啦！你的文件已经乖乖躺好咯~
+
+📁 文件位置：/home/admin/.openclaw/media/inbound/{filename}
+📊 文件大小：{size}
+📅 接收时间：{timestamp}
+```
+
+**配置选项** (可选):
+```json
+{
+  "channels": {
+    "dingtalk": {
+      "notifyFileLocation": true,  // 是否启用位置通知
+      "fileLocationTemplate": "🦞 小龙虾收到啦！..."  // 自定义回复模板
+    }
+  }
+}
+```
 
 ---
 
@@ -166,6 +201,44 @@ du -sh ~/.openclaw/media/inbound/*
 
 ---
 
+## 🤖 AI 助手集成指南
+
+### 在 SOUL.md 或技能中添加文件处理逻辑
+
+如果你希望 AI 助手在收到文件时自动通知位置，可以在系统提示或技能中添加以下规则：
+
+```markdown
+## 文件处理规则
+
+当用户发送文件时：
+1. 文件自动保存到 `/home/admin/.openclaw/media/inbound/`
+2. 回复格式：
+   🦞 收到啦！文件已保存到：`/home/admin/.openclaw/media/inbound/{filename}`
+   - 大小：{size}
+   - 类型：{type}
+```
+
+### 示例代码（钉钉插件钩子）
+
+在 `~/.openclaw/extensions/dingtalk/src/message-handler.ts` 中添加：
+
+```typescript
+// 文件位置通知钩子
+async function notifyFileLocation(message: DingTalkMessage) {
+  if (message.mediaType && message.mediaPath) {
+    const fileName = path.basename(message.mediaPath);
+    const fileSize = formatBytes(message.mediaSize);
+    const reply = `🦞 小龙虾收到啦！你的文件已经乖乖躺好咯~\n\n` +
+                  `📁 文件位置：\`${message.mediaPath}\`\n` +
+                  `📊 文件大小：${fileSize}\n` +
+                  `📅 接收时间：${new Date().toLocaleString('zh-CN')}`;
+    await sendMessage(message.conversationId, reply);
+  }
+}
+```
+
+---
+
 ## 💡 最佳实践
 
 ### 1. 文件命名规范
@@ -234,6 +307,64 @@ zip -9 文件.zip 原文件
 
 ---
 
+## 🚀 启动文件位置通知服务
+
+### 方法一：手动启动（测试用）
+
+```bash
+# 给脚本添加执行权限
+chmod +x ~/.openclaw/workspace/skills/dingtalk-file-transfer-enhance/file-notify.js
+
+# 运行脚本
+node ~/.openclaw/workspace/skills/dingtalk-file-transfer-enhance/file-notify.js
+```
+
+### 方法二：作为系统服务（推荐）
+
+创建 systemd 服务文件 `~/.config/systemd/user/dingtalk-file-notify.service`:
+
+```ini
+[Unit]
+Description=🦞 钉钉文件位置通知服务
+After=network.target openclaw-gateway.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /home/admin/.openclaw/workspace/skills/dingtalk-file-transfer-enhance/file-notify.js
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+```
+
+启动服务：
+```bash
+# 重载 systemd
+systemctl --user daemon-reload
+
+# 启用并启动服务
+systemctl --user enable --now dingtalk-file-notify.service
+
+# 查看状态
+systemctl --user status dingtalk-file-notify.service
+
+# 查看日志
+journalctl --user -u dingtalk-file-notify.service -f
+```
+
+### 方法三：添加 cron 定时检查
+
+```bash
+# 编辑 crontab
+crontab -e
+
+# 添加每 5 分钟检查一次
+*/5 * * * * node /home/admin/.openclaw/workspace/skills/dingtalk-file-transfer-enhance/file-notify.js >> /tmp/dingtalk-file-notify.log 2>&1
+```
+
+---
+
 ## 🔗 相关资源
 
 - [钉钉开放平台 - 文件上传](https://open.dingtalk.com/document/orgapp-server/upload-media-files)
@@ -251,4 +382,13 @@ zip -9 文件.zip 原文件
 
 ---
 
-*技能版本：1.0.0 | 更新时间：2026-03-28*
+## 📝 更新日志
+
+| 版本 | 日期 | 更新内容 |
+|------|------|---------|
+| 1.1.0 | 2026-03-31 | 🆕 新增文件位置自动通知功能、添加 file-notify.js 脚本 |
+| 1.0.0 | 2026-03-28 | 初始版本：大文件传输增强 |
+
+---
+
+*技能版本：1.1.0 | 更新时间：2026-03-31*

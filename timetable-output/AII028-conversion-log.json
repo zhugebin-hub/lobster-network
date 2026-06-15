@@ -1,0 +1,20 @@
+{
+  "course_code": "AII028",
+  "course_name": "数字通信",
+  "total_entries": 36,
+  "unparseable": [],
+  "conflicts": [
+    "Conflict at Saturday Class 3",
+    "Conflict at Saturday Class 4",
+    "Conflict at Thursday Class 6",
+    "Conflict at Thursday Class 7",
+    "Conflict at Thursday Class 8",
+    "Conflict at Wednesday Class 10",
+    "Conflict at Wednesday Class 11",
+    "Conflict at Saturday Class 10",
+    "Conflict at Saturday Class 11"
+  ],
+  "notes": [],
+  "converted_entries": 56,
+  "timestamp": "2026-05-25T04:34:33.262799"
+}

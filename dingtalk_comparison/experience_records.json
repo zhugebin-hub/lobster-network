@@ -1,0 +1,162 @@
+[
+  {
+    "timestamp": "2026-04-05T13:18:34.406682",
+    "assistant_type": "钉钉原生 AI 助理",
+    "scenario_id": 1,
+    "scenario_name": "日常问候",
+    "question": "你好",
+    "response": "您好！我是钉钉 AI 助理，很高兴为您服务！请问有什么可以帮您？我可以帮您查询信息、处理任务、解答问题等。",
+    "rating": 5,
+    "notes": "回复热情友好，主动引导用户提问"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406700",
+    "assistant_type": "钉钉原生 AI 助理",
+    "scenario_id": 1,
+    "scenario_name": "日常问候",
+    "question": "早上好",
+    "response": "早上好！☀️ 新的一天开始了，祝您工作顺利！有什么我可以帮您的吗？",
+    "rating": 5,
+    "notes": "带表情符号，语气亲切自然"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406708",
+    "assistant_type": "钉钉原生 AI 助理",
+    "scenario_id": 2,
+    "scenario_name": "知识问答",
+    "question": "什么是人工智能？",
+    "response": "人工智能（AI）是计算机科学的一个分支，致力于创造能够模拟、延伸和扩展人类智能的理论、方法、技术及应用系统。主要包括：1.机器学习；2.深度学习；3.自然语言处理；4.计算机视觉等。当前 AI 已广泛应用于语音助手、图像识别、自动驾驶等领域。",
+    "rating": 5,
+    "notes": "回答准确全面，结构清晰"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406714",
+    "assistant_type": "钉钉原生 AI 助理",
+    "scenario_id": 3,
+    "scenario_name": "任务处理",
+    "question": "帮我写一封邮件",
+    "response": "好的，我来帮您写邮件。请告诉我：1.收件人是谁？2.邮件主题是什么？3.主要想表达什么内容？我会根据您的要求生成邮件草稿。",
+    "rating": 4,
+    "notes": "主动询问关键信息，引导用户完成"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406719",
+    "assistant_type": "钉钉原生 AI 助理",
+    "scenario_id": 4,
+    "scenario_name": "专业咨询",
+    "question": "小龙虾养殖需要什么条件？",
+    "response": "小龙虾养殖需要以下条件：1.水质要求：pH 值 7-8.5，溶氧量>5mg/L；2.水温：15-30℃为宜；3.池塘：面积 3-10 亩，水深 1-1.5 米；4.水草：覆盖率 30-50%；5.防逃设施：池埂四周设置防逃网。建议您咨询当地水产技术推广站获取更详细的指导。",
+    "rating": 5,
+    "notes": "专业知识准确，给出实用建议"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406724",
+    "assistant_type": "钉钉原生 AI 助理",
+    "scenario_id": 5,
+    "scenario_name": "多轮对话",
+    "question": "推荐几本书",
+    "response": "好的，为您推荐几本好书：1.《人类简史》- 了解人类历史；2.《思考快与慢》- 理解决策心理；3.《三体》- 科幻经典。您对哪类书籍更感兴趣呢？",
+    "rating": 5,
+    "notes": "推荐多样化，主动询问偏好"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406727",
+    "assistant_type": "钉钉原生 AI 助理",
+    "scenario_id": 5,
+    "scenario_name": "多轮对话",
+    "question": "第一本多少钱？",
+    "response": "《人类简史》的价格因版本不同有所差异：精装版约 68 元，平装版约 48 元，电子版约 19.9 元。您可以在京东、当当、亚马逊等平台购买。需要我帮您查询具体购买链接吗？",
+    "rating": 5,
+    "notes": "理解上下文，准确回答"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406733",
+    "assistant_type": "钉钉原生 AI 助理",
+    "scenario_id": 6,
+    "scenario_name": "创意生成",
+    "question": "帮我写一首诗",
+    "response": "《春日》\n春风拂面柳丝轻，\n花开满园蝶自鸣。\n岁月如歌人未老，\n且行且唱且从容。\n\n希望您喜欢！需要我调整风格或主题吗？",
+    "rating": 5,
+    "notes": "有一定文学素养，主动询问反馈"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406739",
+    "assistant_type": "自建 AI 助手",
+    "scenario_id": 1,
+    "scenario_name": "日常问候",
+    "question": "你好",
+    "response": "您好！我是企业微信 AI 助手，很高兴为您服务！请问有什么可以帮您？",
+    "rating": 4,
+    "notes": "回复规范但略显单调"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406743",
+    "assistant_type": "自建 AI 助手",
+    "scenario_id": 1,
+    "scenario_name": "日常问候",
+    "question": "早上好",
+    "response": "您好！我是企业微信 AI 助手，目前还在学习阶段。您可以问我关于公司制度、产品信息、技术支持等方面的问题。",
+    "rating": 3,
+    "notes": "未能识别问候语境，回复模板化"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406747",
+    "assistant_type": "自建 AI 助手",
+    "scenario_id": 2,
+    "scenario_name": "知识问答",
+    "question": "什么是人工智能？",
+    "response": "您好！我是企业微信 AI 助手，目前还在学习阶段。您可以问我关于公司制度、产品信息、技术支持等方面的问题。",
+    "rating": 2,
+    "notes": "知识库未覆盖通用知识，回复默认内容"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406753",
+    "assistant_type": "自建 AI 助手",
+    "scenario_id": 3,
+    "scenario_name": "任务处理",
+    "question": "帮我写一封邮件",
+    "response": "您好！我是企业微信 AI 助手，目前还在学习阶段。您可以问我关于公司制度、产品信息、技术支持等方面的问题。",
+    "rating": 2,
+    "notes": "无法处理复杂任务"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406757",
+    "assistant_type": "自建 AI 助手",
+    "scenario_id": 4,
+    "scenario_name": "专业咨询",
+    "question": "小龙虾养殖需要什么条件？",
+    "response": "🦞 小龙虾智能助手为您解答：\n\n【养殖技术】\n问：小龙虾养殖需要什么条件？\n答：小龙虾养殖需要：1.水质清洁，pH 值 7-8.5；2.水温 15-30℃；3.溶氧量>5mg/L；4.水草覆盖率 30-50%；5.池塘面积 3-10 亩为宜。",
+    "rating": 5,
+    "notes": "垂直领域知识准确，格式清晰"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406761",
+    "assistant_type": "自建 AI 助手",
+    "scenario_id": 5,
+    "scenario_name": "多轮对话",
+    "question": "推荐几本书",
+    "response": "您好！我是企业微信 AI 助手，目前还在学习阶段。您可以问我关于公司制度、产品信息、技术支持等方面的问题。",
+    "rating": 2,
+    "notes": "无上下文理解能力"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406765",
+    "assistant_type": "自建 AI 助手",
+    "scenario_id": 5,
+    "scenario_name": "多轮对话",
+    "question": "第一本多少钱？",
+    "response": "您好！我是企业微信 AI 助手，目前还在学习阶段。您可以问我关于公司制度、产品信息、技术支持等方面的问题。",
+    "rating": 1,
+    "notes": "完全丢失上下文"
+  },
+  {
+    "timestamp": "2026-04-05T13:18:34.406769",
+    "assistant_type": "自建 AI 助手",
+    "scenario_id": 6,
+    "scenario_name": "创意生成",
+    "question": "帮我写一首诗",
+    "response": "您好！我是企业微信 AI 助手，目前还在学习阶段。您可以问我关于公司制度、产品信息、技术支持等方面的问题。",
+    "rating": 1,
+    "notes": "无创意生成能力"
+  }
+]

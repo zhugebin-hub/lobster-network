@@ -1,0 +1,16 @@
+{
+  "name": "小陈",
+  "role": "围棋学员",
+  "created_at": "2026-05-20 20:28:38",
+  "current_level": "30级",
+  "current_phase": 1,
+  "current_week": 1,
+  "current_day": 1,
+  "total_training_hours": 0,
+  "total_problems_solved": 0,
+  "total_games_played": 0,
+  "win_rate": 0.0,
+  "strengths": [],
+  "weaknesses": [],
+  "last_training_date": null
+}

@@ -1,0 +1,99 @@
+flowchart TD
+    Start([开始]) --> Setup[系统初始化 setup]
+    
+    subgraph Setup_Process [初始化过程]
+        Setup --> S1[串口初始化 Serial.begin 115200]
+        S1 --> S2[I2S 音频接口初始化 i2s_init]
+        S2 --> S3[I2S 引脚配置 i2s_setpin]
+        S3 --> S4[WiFi 连接 Luo_iPhone]
+        S4 --> S5{WiFi 连接成功？}
+        S5 -->|否 | S6[等待并打印. ]
+        S6 --> S4
+        S5 -->|是 | S7[打印 IP 地址]
+        S7 --> S8[LED 引脚初始化 GREEN/RED/BLUE]
+        S8 --> S9[LED 初始状态全灭]
+        S9 --> S10[配置 Web 服务器 80 端口]
+        S10 --> S11[启动 WebSocket 81 端口]
+    end
+    
+    S11 --> Loop[主循环 loop]
+    
+    subgraph Main_Loop [主循环体]
+        Loop --> L1[处理 WebSocket 连接 webSocket.loop]
+        L1 --> L2[处理 HTTP 请求 server.handleClient]
+        L2 --> L3[I2S 读取音频数据 512 采样点]
+        L3 --> L4{读取成功？}
+        L4 -->|否 | L1
+        L4 -->|是 | L5[FFT 频谱分析 FFT_Operation]
+        L5 --> L6[数据归一化 constrain128]
+        L6 --> L7[检查触发条件 Check_Start]
+        L7 --> L8[发送数据到 WebSocket Send_Msg]
+        L8 --> L1
+    end
+    
+    subgraph FFT_Detail [FFT 处理详细流程]
+        L5 --> F1[填充 vReal/vImag 数组]
+        F1 --> F2[汉明窗加权 windowing]
+        F2 --> F3[计算 FFT compute]
+        F3 --> F4[计算幅值 complexToMagnitude]
+        F4 --> F5[清空 bands 数组]
+        F5 --> F6[计算频率分辨率 binSize]
+        F6 --> F7[设置 8 个频段 bin 范围]
+        F7 --> F8[遍历 FFT 结果 1 到 BLOCK_SIZE/2]
+        F8 --> F9{vReal[i] > 2000 ?}
+        F9 -->|否 | F12[继续下一个 i]
+        F9 -->|是 | F10[判断属于哪个频段]
+        F10 --> F11[更新该频段最大值 bands[band]]
+        F11 --> F12
+        F12 --> F13{还有下一个 i ?}
+        F13 -->|是 | F8
+        F13 -->|否 | F14[输出 bands 数组 8 个频段]
+    end
+    
+    subgraph Data_Collect [数据收集逻辑 Check_Start]
+        L7 --> C1[计算总能量 bsum = Σbands]
+        C1 --> C2{bsum >= Threshold_HIGH 且 record_count==-1 ?}
+        C2 -->|否 | C3[返回]
+        C2 -->|是 | C4[data_count++]
+        C4 --> C5{data_count == 100 ?}
+        C5 -->|是 | C6[红灯亮 LED_RED HIGH]
+        C5 -->|否 | C7{data_count > 100 ?}
+        C7 -->|是 | C8[蓝灯亮 LED_BLUE HIGH]
+        C7 -->|否 | C9{data_count > 0 ?}
+        C9 -->|是 | C10[绿灯亮 LED_GREEN HIGH]
+        C9 -->|否 | C3
+        C10 --> C11[record_count = 0]
+        C6 --> C11
+        C8 --> C11
+        C11 --> C12{record_count < 30 ?}
+        C12 -->|是 | C13[记录当前 bands 到 8 个数组]
+        C13 --> C14[record_count++]
+        C14 --> C12
+        C12 -->|否 | C15{record_count == 30 ?}
+        C15 -->|否 | C3
+        C15 -->|是 | C16[串口打印 30 组 CSV 数据]
+        C16 --> C17[record_count = -1]
+        C17 --> C3
+    end
+    
+    subgraph WebSocket_Send [数据发送 Send_Msg]
+        L8 --> W1[构建 JSON 数组]
+        W1 --> W2[遍历 8 个频段]
+        W2 --> W3[添加 bin 标签和 value 值]
+        W3 --> W4{还有下一个频段？}
+        W4 -->|是 | W2
+        W4 -->|否 | W5[WebSocket 广播 JSON 数据]
+    end
+    
+    Setup_Process --> FFT_Detail
+    Main_Loop --> Data_Collect
+    Main_Loop --> WebSocket_Send
+
+    style Start fill:#90EE90,stroke:#333,stroke-width:2px
+    style Setup fill:#87CEEB,stroke:#333,stroke-width:2px
+    style Loop fill:#FFD700,stroke:#333,stroke-width:2px
+    style Setup_Process fill:#e1f5fe,stroke:#333,stroke-width:1px
+    style Main_Loop fill:#fff3e0,stroke:#333,stroke-width:1px
+    style FFT_Detail fill:#f3e5f5,stroke:#333,stroke-width:1px
+    style Data_Collect fill:#e8f5e9,stroke:#333,stroke-width:1px
+    style WebSocket_Send fill:#fce4ec,stroke:#333,stroke-width:1px

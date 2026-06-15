@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1779719910698,
+    "user_id": "诸葛斌",
+    "user_name": "诸葛斌",
+    "category": "全部",
+    "total_questions": 8,
+    "score": 63,
+    "answers": [
+      {
+        "question": "我国宪法规定公民享有什么自由？",
+        "userAnswer": "B. 宗教信仰自由",
+        "correctAnswer": "D. 以上都是",
+        "isCorrect": false
+      },
+      {
+        "question": "《宗教事务条例》自哪一年开始施行？",
+        "userAnswer": "A. 2004 年",
+        "correctAnswer": "B. 2005 年",
+        "isCorrect": false
+      },
+      {
+        "question": "《道德经》的作者是谁？",
+        "userAnswer": "B. 老子",
+        "correctAnswer": "B. 老子",
+        "isCorrect": true
+      },
+      {
+        "question": "《道藏》是什么？",
+        "userAnswer": "A. 道教经典总集",
+        "correctAnswer": "A. 道教经典总集",
+        "isCorrect": true
+      },
+      {
+        "question": "道教的核心教义是什么？",
+        "userAnswer": "B. 道法自然",
+        "correctAnswer": "B. 道法自然",
+        "isCorrect": true
+      },
+      {
+        "question": "内丹修炼的三个主要阶段是？",
+        "userAnswer": "B. 炼气化精、炼神化气、炼虚还神",
+        "correctAnswer": "A. 炼精化气、炼气化神、炼神还虚",
+        "isCorrect": false
+      },
+      {
+        "question": "道教正式形成于哪个朝代？",
+        "userAnswer": "A. 汉朝",
+        "correctAnswer": "A. 汉朝",
+        "isCorrect": true
+      },
+      {
+        "question": "道教的标志性符号是？",
+        "userAnswer": "B. 太极图",
+        "correctAnswer": "B. 太极图",
+        "isCorrect": true
+      }
+    ],
+    "created_at": "2026-05-25T14:38:30.698Z"
+  }
+]

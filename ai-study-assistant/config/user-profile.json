@@ -1,0 +1,33 @@
+{
+  "user": {
+    "name": "徐杰",
+    "studentId": "待填写",
+    "major": "人工智能",
+    "university": "浙江工商大学"
+  },
+  "preferences": {
+    "reminderChannel": "dingtalk",
+    "searchEngine": "searxng",
+    "reportFormat": "docx",
+    "timezone": "Asia/Shanghai"
+  },
+  "learning": {
+    "subjects": [
+      "人工智能基础",
+      "机器学习",
+      "深度学习",
+      "自然语言处理"
+    ],
+    "dailyGoal": {
+      "studyHours": 2,
+      "reviewTime": "20:00"
+    }
+  },
+  "notifications": {
+    "enabled": true,
+    "quietHours": {
+      "start": "23:00",
+      "end": "08:00"
+    }
+  }
+}

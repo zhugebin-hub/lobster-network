@@ -1,0 +1,14 @@
+{
+  "skill_name": "xiaolongxia-hermes-sync",
+  "version": "1.2.0",
+  "description": "小龙虾-诸葛马双向同步部署技能",
+  "author": "小龙虾-诸葛虾",
+  "created": "2026-05-17",
+  "nfs_server": "172.24.57.34",
+  "nfs_client": "iZ2zeetm9awnkwdni43joiZ",
+  "shared_dir": "/shared",
+  "capabilities_dir": "/shared/capabilities",
+  "skills_dir": "/shared/skills-all",
+  "messages_dir": "/shared/messages",
+  "research_paper_dir": "/shared/research-paper"
+}

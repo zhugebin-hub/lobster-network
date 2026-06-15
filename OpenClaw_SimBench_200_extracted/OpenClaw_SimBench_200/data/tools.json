@@ -1,0 +1,140 @@
+[
+  {
+    "name": "query_meeting_room",
+    "category": "office",
+    "description": "查询满足时间、楼栋与容量约束的会议室",
+    "parameters": {
+      "type": "object",
+      "required": ["date", "start_time", "end_time", "capacity", "building"],
+      "properties": {
+        "date": {"type": "string"},
+        "start_time": {"type": "string"},
+        "end_time": {"type": "string"},
+        "capacity": {"type": "integer", "minimum": 1},
+        "building": {"type": "string", "enum": ["A", "B", "C"]}
+      }
+    }
+  },
+  {
+    "name": "create_calendar_event",
+    "category": "office",
+    "description": "创建日历事件并写入参会人",
+    "parameters": {
+      "type": "object",
+      "required": ["title", "date", "start_time", "end_time", "attendees"],
+      "properties": {
+        "title": {"type": "string"},
+        "date": {"type": "string"},
+        "start_time": {"type": "string"},
+        "end_time": {"type": "string"},
+        "attendees": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  },
+  {
+    "name": "send_notification",
+    "category": "office",
+    "description": "发送通知消息",
+    "parameters": {
+      "type": "object",
+      "required": ["channel", "recipients", "message"],
+      "properties": {
+        "channel": {"type": "string", "enum": ["email", "sms", "dingtalk"]},
+        "recipients": {"type": "array", "items": {"type": "string"}},
+        "message": {"type": "string"}
+      }
+    }
+  },
+  {
+    "name": "get_weather",
+    "category": "query",
+    "description": "查询指定城市日期的天气",
+    "parameters": {
+      "type": "object",
+      "required": ["city", "date"],
+      "properties": {
+        "city": {"type": "string"},
+        "date": {"type": "string"}
+      }
+    }
+  },
+  {
+    "name": "query_job_posting",
+    "category": "query",
+    "description": "查询岗位信息",
+    "parameters": {
+      "type": "object",
+      "required": ["keyword", "city"],
+      "properties": {
+        "keyword": {"type": "string"},
+        "city": {"type": "string"}
+      }
+    }
+  },
+  {
+    "name": "query_student_profile",
+    "category": "query",
+    "description": "查询学生背景资料",
+    "parameters": {
+      "type": "object",
+      "required": ["student_id"],
+      "properties": {
+        "student_id": {"type": "string"}
+      }
+    }
+  },
+  {
+    "name": "generate_resume",
+    "category": "document",
+    "description": "根据学生信息和目标岗位生成简历内容",
+    "parameters": {
+      "type": "object",
+      "required": ["student_id", "target_job", "style"],
+      "properties": {
+        "student_id": {"type": "string"},
+        "target_job": {"type": "string"},
+        "style": {"type": "string", "enum": ["campus", "formal", "technical"]}
+      }
+    }
+  },
+  {
+    "name": "fill_pdf_template",
+    "category": "document",
+    "description": "将内容填入模板并导出 PDF",
+    "parameters": {
+      "type": "object",
+      "required": ["template_id", "content_id", "output_name"],
+      "properties": {
+        "template_id": {"type": "string"},
+        "content_id": {"type": "string"},
+        "output_name": {"type": "string"}
+      }
+    }
+  },
+  {
+    "name": "rank_candidates",
+    "category": "data",
+    "description": "按规则对候选人排序",
+    "parameters": {
+      "type": "object",
+      "required": ["candidate_ids", "criterion"],
+      "properties": {
+        "candidate_ids": {"type": "array", "items": {"type": "string"}},
+        "criterion": {"type": "string", "enum": ["skill", "match", "score"]}
+      }
+    }
+  },
+  {
+    "name": "export_csv",
+    "category": "data",
+    "description": "导出 CSV 文件",
+    "parameters": {
+      "type": "object",
+      "required": ["records", "filename"],
+      "properties": {
+        "records": {"type": "array"},
+        "filename": {"type": "string"}
+      }
+    }
+  }
+]

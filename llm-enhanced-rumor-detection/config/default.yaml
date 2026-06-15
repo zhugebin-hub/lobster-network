@@ -1,0 +1,75 @@
+# Model Configuration
+model:
+  name: "LLMEnhancedMIL"
+  
+  # Post Encoder (FIXED: use formal encoder for paper reproduction)
+  post_encoder:
+    sentence_bert_model: "paraphrase-multilingual-MiniLM-L12-v2"  # Multilingual Sentence-BERT for Chinese
+    bert_model: "bert-base-chinese"  # 标准中文 BERT
+    hidden_dim: 768
+    dropout: 0.1
+    retention_ratio: 0.3  # rho parameter (paper best value)
+    
+  # MIL Configuration
+  mil:
+    num_rumor_classes: 2  # Weibo: non-rumor / rumor
+    num_stance_classes: 4  # S, D, Q, C
+    num_binary_classifiers: 8  # Nr * Ns = 2 * 4
+    
+  # Attention Mechanisms
+  attention:
+    local_retention_ratio: 0.5  # lambda parameter (paper best value)
+    global_attention_dim: 256
+    
+  # LLM Configuration
+  llm:
+    # DeepSeek model used via OpenAI-compatible API
+    model: "deepseek-chat"
+    # Base URL for DeepSeek OpenAI-compatible endpoint
+    base_url: "https://api.deepseek.com/v1"
+    max_tokens: 150
+    temperature: 0.3
+
+# Training Configuration
+training:
+  batch_size: 1  # 使用1避免变长序列的batch问题
+  learning_rate: 0.001  # paper value (was 2e-5, too small)
+  num_epochs_phase1: 10  # 先跑 10 个 epoch 验证（原 200）
+  num_epochs_phase2: 5   # 先跑 5 个 epoch 验证（原 100）
+  warmup_steps: 0
+  weight_decay: 0.0
+  gradient_clip_norm: 1.0
+
+  # Early stopping
+  patience: 30
+  min_delta: 0.001
+
+# Data Configuration
+data:
+  max_posts_per_claim: 50   # 从 100 降到 50，减少内存占用和训练时间
+  max_post_length: 64       # 从 128 降到 64
+  max_explanation_length: 128  # 从 256 降到 128
+  
+  # Dataset paths
+  train_data: "data/processed/weibo_train.json"
+  val_data: "data/processed/weibo_val.json"
+  test_data: "data/processed/weibo_test.json"
+
+# Evaluation Configuration
+evaluation:
+  metrics: ["accuracy", "precision", "recall", "f1"]
+  save_predictions: true
+  
+# Logging Configuration
+logging:
+  log_dir: "logs"
+  tensorboard_dir: "runs"
+  save_every_n_epochs: 5
+  
+# Hardware Configuration
+device: "cuda"  # or "cpu"
+num_workers: 0  # 修改为0避免Windows多进程问题
+pin_memory: false  # 修改为false避免CPU上的问题
+
+# LLM Configuration
+use_mock_llm: true  # true=Mock解释（快速训练，强烈推荐）；false=调用真实DeepSeek API（极慢，不推荐直接训练用）

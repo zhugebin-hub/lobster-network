@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 信电研究生复试英语听力系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .main-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+
+        .draw-section {
+            text-align: center;
+        }
+
+        .draw-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.5em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .draw-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .draw-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .draw-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .result-section {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .result-section.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .topic-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .topic-header h2 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        .topic-header .topic-number {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .audio-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .audio-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .audio-controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .play-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            background: #5568d3;
+            transform: scale(1.05);
+        }
+
+        .play-btn.playing {
+            background: #e74c3c;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .prompts-section {
+            background: #fff3cd;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .prompts-section h3 {
+            color: #856404;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .prompts-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .prompts-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #856404;
+            font-size: 1.05em;
+        }
+
+        .prompts-list li:before {
+            content: "❓";
+            position: absolute;
+            left: 0;
+        }
+
+        .scoring-section {
+            background: #d4edda;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #28a745;
+        }
+
+        .scoring-section h3 {
+            color: #155724;
+            margin-bottom: 15px;
+        }
+
+        .scoring-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .scoring-table th,
+        .scoring-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .scoring-table th {
+            background: #28a745;
+            color: white;
+        }
+
+        .scoring-table tr:last-child td {
+            border-bottom: none;
+            font-weight: bold;
+            background: #f8f9fa;
+        }
+
+        .score-input {
+            width: 80px;
+            padding: 8px;
+            border: 2px solid #dee2e6;
+            border-radius: 5px;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        .score-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .total-score {
+            font-size: 1.3em;
+            color: #28a745;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-export {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .btn-export:hover {
+            background: #138496;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .stats-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-top: 20px;
+        }
+
+        .stats-section h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .stat-card .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            padding: 20px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .draw-btn {
+                padding: 15px 40px;
+                font-size: 1.2em;
+            }
+
+            .main-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 信电研究生复试英语听力系统</h1>
+            <p>Electrical Engineering Graduate English Listening Assessment</p>
+        </header>
+
+        <div class="main-card">
+            <div class="draw-section">
+                <button class="draw-btn" onclick="drawTopic()" id="drawBtn">
+                    🎲 随机抽题
+                </button>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>正在抽题中...</p>
+            </div>
+
+            <div class="result-section" id="resultSection">
+                <div class="topic-header">
+                    <h2 id="topicTitle">Topic Title</h2>
+                    <div class="topic-number" id="topicNumber">Topic #</div>
+                </div>
+
+                <div class="audio-section">
+                    <h3>🔊 听力播放</h3>
+                    <div class="audio-controls">
+                        <button class="play-btn" onclick="playAudio()" id="playBtn">
+                            ▶️ 播放听力
+                        </button>
+                        <button class="play-btn" onclick="stopAudio()" id="stopBtn" style="background: #e74c3c;">
+                            ⏹️ 停止
+                        </button>
+                        <span id="audioStatus" style="color: #666; margin-left: 10px;"></span>
+                    </div>
+                    <p style="color: #999; margin-top: 15px; font-style: italic;">
+                        💡 请考生仔细听听力内容，听完后进行复述
+                    </p>
+                </div>
+
+                <div class="prompts-section" id="examinerSection" style="display: none;">
+                    <h3>❓ 复述提示（考官参考）</h3>
+                    <ul class="prompts-list" id="promptsList">
+                        <li>Loading...</li>
+                    </ul>
+                </div>
+
+                <div class="scoring-section" id="scoringSection" style="display: none;">
+                    <h3>📊 评分表</h3>
+                    <table class="scoring-table">
+                        <thead>
+                            <tr>
+                                <th>评分维度</th>
+                                <th>分值</th>
+                                <th>得分</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>内容完整性</td>
+                                <td>40 分</td>
+                                <td><input type="number" class="score-input" id="score1" min="0" max="40" value="0" onchange="calculateTotal()"></td>
+                            </tr>
+                            <tr>
+                                <td>准确性</td>
+                                <td>30 分</td>
+                                <td><input type="number" class="score-input" id="score2" min="0" max="30" value="0" onchange="calculateTotal()"></td>
+                            </tr>
+                            <tr>
+                                <td>语言表达</td>
+                                <td>20 分</td>
+                                <td><input type="number" class="score-input" id="score3" min="0" max="20" value="0" onchange="calculateTotal()"></td>
+                            </tr>
+                            <tr>
+                                <td>逻辑组织</td>
+                                <td>10 分</td>
+                                <td><input type="number" class="score-input" id="score4" min="0" max="10" value="0" onchange="calculateTotal()"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">总分</td>
+                                <td class="total-score" id="totalScore">0 / 100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="action-btn btn-next" onclick="drawTopic()">
+                        🎲 抽取下一题
+                    </button>
+                    <button class="action-btn btn-export" onclick="exportResult()" id="exportBtn" style="display: none;">
+                        📥 导出结果
+                    </button>
+                    <button class="action-btn" onclick="toggleExaminerMode()" style="background: #6c757d; color: white;">
+                        👤 考官模式
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h3>📈 使用统计</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number" id="statTotal">0</div>
+                    <div class="label">已抽题次数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="statToday">0</div>
+                    <div class="label">今日抽题</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="statAvgScore">-</div>
+                    <div class="label">平均分数</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 信电研究生复试系统 | 共 50 道专业英语听力题目</p>
+        </footer>
+    </div>
+
+    <script>
+        // 题库数据（50 道题）
+        const topics = [
+            { number: 1, title: "Artificial Intelligence", audio: "Artificial intelligence has revolutionized many industries in recent years. Machine learning algorithms can now recognize patterns in data, make predictions, and even create content. Deep learning, a subset of machine learning, uses neural networks with multiple layers to process complex information. Applications range from image recognition in healthcare to autonomous vehicles on our roads. However, ethical concerns about AI decision-making and job displacement remain important topics of discussion among researchers and policymakers.", prompts: ["What is the relationship between machine learning and deep learning?", "Name two applications of AI mentioned.", "What concerns are raised about AI?"] },
+            { number: 2, title: "5G Communication", audio: "Fifth-generation wireless technology, or 5G, offers significantly faster data speeds and lower latency compared to previous generations. With speeds up to 100 times faster than 4G, 5G enables new applications like remote surgery, smart cities, and enhanced virtual reality experiences. The technology uses higher frequency bands and small cell networks to achieve these improvements. However, the infrastructure costs are substantial, and coverage in rural areas remains a challenge for telecom operators worldwide.", prompts: ["How much faster is 5G compared to 4G?", "What are two new applications enabled by 5G?", "What challenges does 5G deployment face?"] },
+            { number: 3, title: "Internet of Things", audio: "The Internet of Things connects everyday devices to the internet, allowing them to send and receive data. Smart home devices like thermostats, security cameras, and voice assistants are common examples. In industrial settings, IoT sensors monitor equipment performance and predict maintenance needs. Security is a major concern, as connected devices can be vulnerable to hacking. Experts estimate that by 2030, there will be over 50 billion IoT devices globally, transforming how we live and work.", prompts: ["What does IoT allow devices to do?", "Give two examples of IoT applications.", "What is the main security concern mentioned?"] },
+            { number: 4, title: "Cloud Computing", audio: "Cloud computing provides on-demand access to computing resources over the internet. Instead of owning physical servers, companies can rent computing power from providers like Amazon Web Services, Microsoft Azure, and Google Cloud. This model offers flexibility, scalability, and cost savings. There are three main service models: Infrastructure as a Service, Platform as a Service, and Software as a Service. Data privacy and vendor lock-in are common concerns organizations must consider when migrating to the cloud.", prompts: ["What is the main advantage of cloud computing over physical servers?", "Name the three major cloud providers mentioned.", "What are two concerns about cloud adoption?"] },
+            { number: 5, title: "Cybersecurity", audio: "Cybersecurity protects computer systems and networks from digital attacks. Common threats include malware, phishing, ransomware, and data breaches. Organizations implement multiple layers of defense, including firewalls, encryption, and employee training. The average cost of a data breach has risen to over four million dollars. As remote work becomes more common, securing home networks and personal devices has become increasingly important for maintaining organizational security.", prompts: ["Name three types of cyber threats mentioned.", "What is the average cost of a data breach?", "Why has remote work increased security challenges?"] },
+            { number: 6, title: "Quantum Computing", audio: "Quantum computers use quantum mechanical phenomena like superposition and entanglement to process information. Unlike classical bits that are either zero or one, quantum bits or qubits can exist in multiple states simultaneously. This allows quantum computers to solve certain problems exponentially faster than traditional computers. Potential applications include drug discovery, cryptography, and optimization problems. However, quantum computers require extremely cold temperatures and are still in early development stages.", prompts: ["What is the difference between classical bits and qubits?", "Name two potential applications of quantum computing.", "What are the current limitations of quantum computers?"] },
+            { number: 7, title: "Blockchain Technology", audio: "Blockchain is a distributed ledger technology that records transactions across multiple computers securely and transparently. Each block contains a cryptographic hash of the previous block, creating an immutable chain. Bitcoin was the first major application, but blockchain now supports smart contracts, supply chain tracking, and digital identity verification. The technology eliminates the need for intermediaries, reducing costs and increasing trust. Energy consumption and scalability remain significant challenges for widespread adoption.", prompts: ["How does blockchain ensure security?", "What was the first major blockchain application?", "Name two challenges blockchain faces."] },
+            { number: 8, title: "Renewable Energy Systems", audio: "Renewable energy systems convert natural resources like sunlight, wind, and water into electricity. Solar panels use photovoltaic cells to generate power from sunlight, while wind turbines convert kinetic energy from air movement. Smart grids integrate these variable energy sources with traditional power systems. Energy storage solutions like batteries are crucial for managing supply and demand. The transition to renewable energy is essential for reducing carbon emissions and combating climate change.", prompts: ["How do solar panels generate electricity?", "Why are energy storage solutions important?", "What is the environmental benefit of renewable energy?"] },
+            { number: 9, title: "Autonomous Vehicles", audio: "Autonomous vehicles use sensors, cameras, and artificial intelligence to navigate without human input. Levels of autonomy range from driver assistance features to fully self-driving capabilities. The technology promises to reduce accidents caused by human error and improve transportation efficiency. Regulatory frameworks and liability questions remain unresolved. Major tech companies and traditional automakers are investing billions in developing and testing self-driving technology on public roads.", prompts: ["What technologies do autonomous vehicles use?", "What is the main safety benefit mentioned?", "What unresolved issues exist for autonomous vehicles?"] },
+            { number: 10, title: "Big Data Analytics", audio: "Big data analytics examines large datasets to uncover patterns, correlations, and insights. The three V's characterize big data: volume, velocity, and variety. Organizations use analytics for customer segmentation, fraud detection, and operational optimization. Tools like Hadoop and Spark enable distributed processing of massive datasets. Privacy concerns arise when personal information is collected and analyzed. Data scientists combine statistical knowledge with programming skills to extract meaningful conclusions from complex data.", prompts: ["What are the three V's of big data?", "Name two business applications of big data analytics.", "What privacy concern is mentioned?"] },
+            { number: 11, title: "Edge Computing", audio: "Edge computing processes data closer to where it is generated rather than sending everything to centralized cloud servers. This reduces latency and bandwidth usage, which is critical for real-time applications like autonomous driving and industrial automation. Edge devices include routers, gateways, and specialized hardware with computing capabilities. The approach complements cloud computing by handling time-sensitive tasks locally while sending aggregated data to the cloud for long-term storage and analysis.", prompts: ["Where does edge computing process data?", "Why is reduced latency important for edge computing?", "How does edge computing relate to cloud computing?"] },
+            { number: 12, title: "Neural Networks", audio: "Neural networks are computing systems inspired by biological neural networks in the human brain. They consist of interconnected nodes organized in layers: input, hidden, and output layers. During training, the network adjusts connection weights based on input data and desired outputs. Convolutional neural networks excel at image processing, while recurrent neural networks handle sequential data like text and speech. Training deep neural networks requires significant computational resources and large labeled datasets.", prompts: ["What are the three types of layers in a neural network?", "Which type of neural network is used for image processing?", "What does training a neural network require?"] },
+            { number: 13, title: "Semiconductor Manufacturing", audio: "Semiconductor manufacturing is one of the most complex industrial processes. Chips are created on silicon wafers through hundreds of steps including lithography, etching, and doping. Modern processors contain billions of transistors measured in nanometers. Leading foundries like TSMC and Samsung compete to produce smaller, more efficient chips. The industry faces challenges from supply chain disruptions and geopolitical tensions. Advanced packaging techniques now stack multiple chips to improve performance and reduce size.", prompts: ["Name three steps in semiconductor manufacturing.", "Which companies are mentioned as leading foundries?", "What is a current challenge for the semiconductor industry?"] },
+            { number: 14, title: "Wireless Sensor Networks", audio: "Wireless sensor networks consist of distributed devices that monitor physical or environmental conditions. Each sensor node collects data and communicates wirelessly with other nodes or a central gateway. Applications include environmental monitoring, agricultural precision farming, and structural health monitoring of buildings and bridges. Energy efficiency is crucial since many sensors operate on batteries in remote locations. Mesh networking allows data to hop between nodes, extending the network's range and reliability.", prompts: ["What do wireless sensor networks monitor?", "Name two applications mentioned.", "Why is energy efficiency important for sensor networks?"] },
+            { number: 15, title: "Computer Vision", audio: "Computer vision enables machines to interpret and understand visual information from the world. Applications include facial recognition, medical image analysis, and quality control in manufacturing. Deep learning has dramatically improved accuracy in object detection and image classification. Self-driving cars use computer vision to identify pedestrians, traffic signs, and lane markings. Privacy concerns arise when facial recognition is deployed in public spaces without proper regulation and consent.", prompts: ["What does computer vision enable machines to do?", "Name two applications of computer vision.", "What privacy concern is mentioned?"] },
+            { number: 16, title: "Software Defined Networking", audio: "Software Defined Networking separates the control plane from the data plane in network architecture. This allows network administrators to manage traffic flow centrally through software rather than configuring individual routers and switches. SDN provides greater flexibility, programmability, and automation in network management. Use cases include data center optimization, network virtualization, and dynamic bandwidth allocation. Security concerns exist because the centralized controller becomes a potential single point of failure.", prompts: ["What does SDN separate in network architecture?", "What advantage does SDN provide over traditional networking?", "What is a security concern with SDN?"] },
+            { number: 17, title: "Augmented Reality", audio: "Augmented reality overlays digital information onto the real world through devices like smartphones, tablets, or specialized glasses. Unlike virtual reality, which creates entirely synthetic environments, AR enhances existing surroundings. Applications range from gaming and entertainment to industrial training and remote assistance. Apple's ARKit and Google's ARCore provide development platforms for mobile AR experiences. Technical challenges include accurate spatial mapping, occlusion handling, and battery consumption on mobile devices.", prompts: ["How is augmented reality different from virtual reality?", "Name two applications of AR.", "What are two technical challenges for AR?"] },
+            { number: 18, title: "Database Systems", audio: "Database systems organize and store data for efficient retrieval and manipulation. Relational databases use structured tables with predefined schemas and support SQL queries. NoSQL databases handle unstructured data and scale horizontally across multiple servers. NewSQL combines the scalability of NoSQL with the consistency guarantees of relational databases. Database administrators ensure data integrity, security, and performance through backup strategies, indexing, and query optimization.", prompts: ["What is the main characteristic of relational databases?", "How do NoSQL databases differ from relational databases?", "What are three responsibilities of database administrators?"] },
+            { number: 19, title: "Robotics", audio: "Robotics combines mechanical engineering, electronics, and computer science to create autonomous machines. Industrial robots perform repetitive tasks in manufacturing with high precision and speed. Collaborative robots, or cobots, work safely alongside humans in shared workspaces. Mobile robots navigate environments using sensors and mapping algorithms. Ethical considerations include job displacement, safety standards, and the potential for autonomous weapons systems.", prompts: ["What three fields does robotics combine?", "What is the difference between industrial robots and cobots?", "Name two ethical considerations in robotics."] },
+            { number: 20, title: "Signal Processing", audio: "Signal processing analyzes and modifies signals to extract information or improve quality. Digital signal processing converts analog signals to digital form for computational manipulation. Applications include audio compression, image enhancement, and radar systems. The Fast Fourier Transform is a fundamental algorithm for analyzing frequency components. Real-time signal processing requires specialized hardware like DSPs or FPGAs to meet timing constraints in communication and control systems.", prompts: ["What does signal processing do?", "Name two applications of signal processing.", "What hardware is used for real-time signal processing?"] },
+            { number: 21, title: "MLOps", audio: "MLOps applies DevOps principles to machine learning model development and deployment. It automates the pipeline from data collection to model training, validation, and production deployment. Continuous integration and continuous deployment ensure models are regularly updated with new data. Model monitoring detects performance degradation and data drift over time. Collaboration between data scientists, engineers, and operations teams is essential for successful MLOps implementation.", prompts: ["What does MLOps stand for?", "What does the MLOps pipeline automate?", "Why is model monitoring important?"] },
+            { number: 22, title: "Embedded Systems", audio: "Embedded systems are specialized computing systems designed for specific functions within larger systems. They are found in appliances, vehicles, medical devices, and industrial equipment. Microcontrollers with integrated memory and peripherals form the core of most embedded systems. Real-time operating systems ensure predictable response times for time-critical applications. Power efficiency and reliability are paramount since many embedded systems operate continuously for years without maintenance.", prompts: ["What are embedded systems designed for?", "Name three places where embedded systems are found.", "Why are power efficiency and reliability important for embedded systems?"] },
+            { number: 23, title: "Natural Language Processing", audio: "Natural Language Processing enables computers to understand, interpret, and generate human language. Applications include machine translation, sentiment analysis, and chatbots. Transformer architectures like BERT and GPT have revolutionized NLP performance. Challenges include handling ambiguity, sarcasm, and cultural context in language. Low-resource languages lack sufficient training data, creating disparities in NLP capabilities across different languages and dialects.", prompts: ["What does NLP enable computers to do?", "Name two NLP applications.", "What challenge exists for low-resource languages?"] },
+            { number: 24, title: "Optical Communication", audio: "Optical communication transmits information using light through fiber optic cables. Light signals can travel long distances with minimal loss compared to electrical signals. Dense wavelength division multiplexing allows multiple signals on different wavelengths to share the same fiber. Undersea cables form the backbone of global internet infrastructure. Emerging technologies like free-space optical communication enable wireless high-speed links between buildings and satellites.", prompts: ["What does optical communication use to transmit information?", "What advantage does light have over electrical signals?", "What is an emerging optical communication technology?"] },
+            { number: 25, title: "Distributed Systems", audio: "Distributed systems consist of multiple computers working together as a unified system. They provide fault tolerance, scalability, and improved performance through parallel processing. Challenges include maintaining consistency across nodes, handling network partitions, and coordinating distributed transactions. Consensus algorithms like Paxos and Raft ensure agreement among distributed nodes. Microservices architecture has popularized distributed system design in modern software development.", prompts: ["What are three benefits of distributed systems?", "Name two challenges in distributed systems.", "What do consensus algorithms ensure?"] },
+            { number: 26, title: "Computer Graphics", audio: "Computer graphics generate and manipulate visual content using computers. Rendering techniques convert 3D models into 2D images with realistic lighting and shadows. Ray tracing simulates the physical behavior of light for photorealistic images. Real-time graphics power video games and virtual reality experiences. Graphics processing units accelerate parallel computations required for rendering complex scenes with millions of polygons.", prompts: ["What does rendering do in computer graphics?", "What does ray tracing simulate?", "What hardware accelerates computer graphics?"] },
+            { number: 27, title: "Information Security", audio: "Information security protects data from unauthorized access, use, disclosure, and destruction. The CIA triad represents core principles: Confidentiality, Integrity, and Availability. Encryption transforms readable data into ciphertext that requires a key to decrypt. Multi-factor authentication adds layers of security beyond passwords. Social engineering attacks exploit human psychology rather than technical vulnerabilities, making user awareness training essential.", prompts: ["What does the CIA triad stand for?", "What does encryption do?", "Why is user awareness training important?"] },
+            { number: 28, title: "Network Protocols", audio: "Network protocols define rules for communication between devices on a network. TCP/IP is the foundation of internet communication, ensuring reliable data delivery. HTTP and HTTPS govern web traffic, with HTTPS adding encryption for security. DNS translates domain names to IP addresses for routing. The transition to IPv6 addresses the exhaustion of IPv4 addresses and provides enhanced security features.", prompts: ["What is the foundation protocol of internet communication?", "What is the difference between HTTP and HTTPS?", "Why is IPv6 being adopted?"] },
+            { number: 29, title: "Data Compression", audio: "Data compression reduces the size of data for efficient storage and transmission. Lossless compression preserves all original information, used for text and executable files. Lossy compression sacrifices some quality for greater size reduction, suitable for images, audio, and video. Common formats include ZIP for files, JPEG for images, and MP3 for audio. Compression algorithms exploit patterns and redundancy in data to achieve size reduction.", prompts: ["What is the difference between lossless and lossy compression?", "Name three compression formats mentioned.", "How do compression algorithms achieve size reduction?"] },
+            { number: 30, title: "Operating Systems", audio: "Operating systems manage computer hardware and software resources. They provide essential services like process scheduling, memory management, and file systems. Linux dominates server and embedded markets due to its open-source nature and customizability. Windows remains popular for desktop computing with extensive software compatibility. Mobile operating systems like iOS and Android optimize for touch interfaces and battery efficiency.", prompts: ["What are three services provided by operating systems?", "Why is Linux popular for servers?", "What do mobile operating systems optimize for?"] },
+            { number: 31, title: "Antenna Design", audio: "Antennas transmit and receive electromagnetic waves for wireless communication. Design considerations include frequency range, gain, directivity, and physical size. Patch antennas are compact and commonly used in mobile devices. Parabolic dish antennas provide high gain for satellite communication. Multiple-input multiple-output technology uses multiple antennas to increase data throughput and reliability in wireless systems.", prompts: ["What are four design considerations for antennas?", "Where are patch antennas commonly used?", "What does MIMO technology use multiple antennas for?"] },
+            { number: 32, title: "Compiler Design", audio: "Compilers translate high-level programming languages into machine code. The compilation process includes lexical analysis, parsing, optimization, and code generation. Optimizing compilers improve program performance through techniques like loop unrolling and instruction scheduling. Just-in-time compilation translates code at runtime for flexibility. Interpreter-based approaches execute code line by line, trading performance for ease of debugging and platform independence.", prompts: ["What does a compiler do?", "Name three stages of the compilation process.", "What is the trade-off of interpreter-based approaches?"] },
+            { number: 33, title: "Power Electronics", audio: "Power electronics control and convert electrical power using electronic devices. Applications include power supplies, motor drives, and renewable energy systems. Transistors like MOSFETs and IGBTs switch high currents efficiently. Switching converters regulate voltage with minimal energy loss. Wide bandgap semiconductors like silicon carbide enable higher efficiency and operating temperatures in power systems.", prompts: ["What does power electronics do?", "Name two applications of power electronics.", "What advantage do wide bandgap semiconductors provide?"] },
+            { number: 34, title: "Version Control", audio: "Version control systems track changes to code and files over time. Git is the most popular distributed version control system used by developers worldwide. Branches allow parallel development of features without affecting the main codebase. Merge conflicts occur when changes overlap and must be resolved manually. Platforms like GitHub and GitLab provide collaboration features including code review, issue tracking, and continuous integration.", prompts: ["What does version control track?", "What is the purpose of branches in version control?", "Name two collaboration features provided by GitHub or GitLab."] },
+            { number: 35, title: "Microwave Engineering", audio: "Microwave engineering deals with electromagnetic waves in the gigahertz frequency range. Applications include radar systems, satellite communication, and microwave ovens. Waveguides transmit microwave signals with lower loss than conventional cables. Antenna design is critical for directing microwave energy efficiently. 5G networks utilize millimeter-wave frequencies for high-speed wireless communication, requiring new approaches to signal propagation and coverage.", prompts: ["What frequency range does microwave engineering deal with?", "Name three applications of microwave engineering.", "Why do 5G networks require new approaches?"] },
+            { number: 36, title: "Algorithm Design", audio: "Algorithm design creates step-by-step procedures for solving computational problems. Efficiency is measured by time complexity and space complexity using Big O notation. Divide and conquer breaks problems into smaller subproblems solved recursively. Dynamic programming stores intermediate results to avoid redundant calculations. Greedy algorithms make locally optimal choices at each step, though they don't always guarantee global optimality.", prompts: ["How is algorithm efficiency measured?", "What does divide and conquer do?", "What is a limitation of greedy algorithms?"] },
+            { number: 37, title: "Biomedical Engineering", audio: "Biomedical engineering applies engineering principles to healthcare and medicine. Medical devices include pacemakers, insulin pumps, and imaging equipment like MRI and CT scanners. Biosensors detect biological markers for disease diagnosis and monitoring. Prosthetics and exoskeletons restore or enhance human physical capabilities. Regulatory approval processes ensure medical devices meet safety and efficacy standards before clinical use.", prompts: ["What does biomedical engineering apply?", "Name three medical devices mentioned.", "Why do medical devices need regulatory approval?"] },
+            { number: 38, title: "Parallel Computing", audio: "Parallel computing executes multiple calculations simultaneously to solve problems faster. Multi-core processors contain multiple processing units on a single chip. Graphics processing units excel at parallel operations for graphics and scientific computing. Distributed computing clusters connect many computers for large-scale problems. Amdahl's law describes the theoretical speedup limit based on the parallelizable portion of a program.", prompts: ["What is the goal of parallel computing?", "What hardware excels at parallel operations?", "What does Amdahl's law describe?"] },
+            { number: 39, title: "Control Systems", audio: "Control systems regulate the behavior of dynamic systems to achieve desired outputs. Feedback loops compare actual output with desired reference and adjust inputs accordingly. PID controllers are widely used in industrial applications for temperature, pressure, and speed control. Stability analysis ensures systems don't oscillate or diverge uncontrollably. Modern control theory uses state-space representation for complex multi-variable systems.", prompts: ["What do control systems regulate?", "What do feedback loops compare?", "What are PID controllers used for?"] },
+            { number: 40, title: "Data Visualization", audio: "Data visualization presents data graphically to reveal patterns and insights. Charts, graphs, and dashboards help analysts communicate findings effectively. Good visualization follows principles of clarity, accuracy, and efficiency. Tools like Tableau, Power BI, and Python libraries enable interactive visualizations. Misleading visualizations can distort data through inappropriate scales or cherry-picked time ranges, emphasizing the need for ethical practices.", prompts: ["What is the purpose of data visualization?", "Name three visualization tools mentioned.", "How can visualizations be misleading?"] },
+            { number: 41, title: "Nanotechnology", audio: "Nanotechnology manipulates matter at the atomic and molecular scale, typically below 100 nanometers. Applications include stronger materials, targeted drug delivery, and more efficient solar cells. Carbon nanotubes exhibit exceptional strength and electrical conductivity. Quantum dots emit specific wavelengths of light for display technologies. Safety concerns exist about nanoparticle toxicity and environmental impact, requiring careful regulation and research.", prompts: ["At what scale does nanotechnology operate?", "Name three applications of nanotechnology.", "What safety concerns exist for nanotechnology?"] },
+            { number: 42, title: "Software Testing", audio: "Software testing verifies that programs function correctly and meet requirements. Unit tests check individual components in isolation. Integration tests verify interactions between components. Automated testing frameworks run tests repeatedly during development. Test-driven development writes tests before implementing functionality, ensuring code meets specifications from the start. Code coverage metrics indicate what percentage of code is exercised by tests.", prompts: ["What does unit testing check?", "What is test-driven development?", "What do code coverage metrics indicate?"] },
+            { number: 43, title: "Satellite Communication", audio: "Satellite communication relays signals between ground stations via orbiting satellites. Geostationary satellites remain fixed above one point on Earth, ideal for broadcasting. Low Earth orbit satellites provide lower latency for internet services. Signal delay and atmospheric interference affect communication quality. Satellite constellations like Starlink aim to provide global broadband coverage, especially for remote and underserved areas.", prompts: ["How does satellite communication work?", "What is the advantage of geostationary satellites?", "What is the goal of satellite constellations like Starlink?"] },
+            { number: 44, title: "Human-Computer Interaction", audio: "Human-Computer Interaction studies how people interact with computers and design user interfaces. Usability testing evaluates how easily users accomplish tasks with a system. Accessibility ensures interfaces work for people with disabilities through screen readers and keyboard navigation. User experience design considers emotions and perceptions beyond mere functionality. Mobile interfaces require special attention to touch gestures, screen sizes, and context of use.", prompts: ["What does HCI study?", "What does accessibility ensure?", "What do mobile interfaces require special attention to?"] },
+            { number: 45, title: "Digital Signal Processing", audio: "Digital Signal Processing converts real-world signals into digital form for analysis and manipulation. Sampling converts continuous signals to discrete values at regular intervals. The Nyquist theorem states sampling rate must be at least twice the highest frequency component. Filters remove unwanted frequencies from signals. DSP applications include audio processing, image enhancement, and telecommunications where signal quality is critical.", prompts: ["What does DSP convert?", "What does the Nyquist theorem state?", "Name two DSP applications mentioned."] },
+            { number: 46, title: "Machine Vision", audio: "Machine vision enables machines to inspect and analyze visual information for industrial applications. Quality control systems detect defects in manufactured products automatically. Barcode readers and optical character recognition identify products and documents. Three-dimensional vision systems measure dimensions and guide robotic assembly. Lighting design is crucial for consistent image acquisition in varying production environments.", prompts: ["What is machine vision used for in industry?", "Name two applications of machine vision.", "Why is lighting design important for machine vision?"] },
+            { number: 47, title: "Network Security", audio: "Network security protects data during transmission across computer networks. Firewalls filter incoming and outgoing traffic based on security rules. Intrusion detection systems monitor network activity for suspicious patterns. Virtual private networks encrypt connections over public networks for remote access. Zero trust architecture assumes no user or device is trustworthy by default, requiring continuous verification.", prompts: ["What does network security protect?", "What do firewalls do?", "What is the principle of zero trust architecture?"] },
+            { number: 48, title: "Smart Grids", audio: "Smart grids modernize electrical grids with digital technology and two-way communication. Smart meters provide real-time consumption data to utilities and consumers. Demand response programs adjust electricity usage during peak periods to balance supply. Distributed energy resources like rooftop solar integrate with the main grid. Cybersecurity is critical as increased connectivity creates more potential attack vectors.", prompts: ["What technology do smart grids use?", "What do smart meters provide?", "Why is cybersecurity critical for smart grids?"] },
+            { number: 49, title: "Cognitive Computing", audio: "Cognitive computing systems simulate human thought processes in complex situations. They combine artificial intelligence, machine learning, and natural language processing. IBM Watson is a well-known cognitive computing platform used in healthcare and finance. These systems learn from interactions and improve over time. Ethical considerations include bias in training data and transparency in decision-making processes.", prompts: ["What does cognitive computing simulate?", "Name three technologies cognitive computing combines.", "What ethical consideration is mentioned?"] },
+            { number: 50, title: "Future of Computing", audio: "The future of computing includes emerging technologies beyond traditional silicon-based processors. Neuromorphic chips mimic brain architecture for efficient AI processing. Optical computing uses light instead of electricity for potentially faster operations. Biological computing explores DNA and molecular structures for data storage and processing. These technologies promise to overcome current limitations in power consumption and computational capacity.", prompts: ["What do neuromorphic chips mimic?", "What does optical computing use instead of electricity?", "What limitations do emerging technologies aim to overcome?"] }
+        ];
+
+        // 状态变量
+        let currentTopic = null;
+        let audio = null;
+        let isPlaying = false;
+        let stats = {
+            total: 0,
+            today: 0,
+            lastDate: null,
+            scores: []
+        };
+
+        // 初始化
+        function init() {
+            loadStats();
+            checkToday();
+            updateStatsDisplay();
+        }
+
+        // 加载统计
+        function loadStats() {
+            const saved = localStorage.getItem('listeningStats');
+            if (saved) {
+                stats = JSON.parse(saved);
+            }
+        }
+
+        // 保存统计
+        function saveStats() {
+            localStorage.setItem('listeningStats', JSON.stringify(stats));
+        }
+
+        // 检查是否是同一天
+        function checkToday() {
+            const today = new Date().toDateString();
+            if (stats.lastDate !== today) {
+                stats.today = 0;
+                stats.lastDate = today;
+                saveStats();
+            }
+        }
+
+        // 更新统计显示
+        function updateStatsDisplay() {
+            document.getElementById('statTotal').textContent = stats.total;
+            document.getElementById('statToday').textContent = stats.today;
+            if (stats.scores.length > 0) {
+                const avg = Math.round(stats.scores.reduce((a, b) => a + b, 0) / stats.scores.length);
+                document.getElementById('statAvgScore').textContent = avg;
+            }
+        }
+
+        // 随机抽题
+        function drawTopic() {
+            // 显示加载动画
+            document.getElementById('loading').classList.add('show');
+            document.getElementById('resultSection').classList.remove('show');
+            document.getElementById('drawBtn').disabled = true;
+
+            // 模拟加载延迟
+            setTimeout(() => {
+                // 随机选择题目
+                const randomIndex = Math.floor(Math.random() * topics.length);
+                currentTopic = topics[randomIndex];
+
+                // 更新显示
+                document.getElementById('topicTitle').textContent = currentTopic.title;
+                document.getElementById('topicNumber').textContent = `Topic ${currentTopic.number} / 50`;
+
+                // 更新提示
+                const promptsHtml = currentTopic.prompts.map(p => `<li>${p}</li>`).join('');
+                document.getElementById('promptsList').innerHTML = promptsHtml;
+
+                // 重置评分
+                document.getElementById('score1').value = 0;
+                document.getElementById('score2').value = 0;
+                document.getElementById('score3').value = 0;
+                document.getElementById('score4').value = 0;
+                document.getElementById('totalScore').textContent = '0 / 100';
+
+                // 停止当前音频
+                stopAudio();
+
+                // 隐藏加载动画，显示结果
+                document.getElementById('loading').classList.remove('show');
+                document.getElementById('resultSection').classList.add('show');
+                document.getElementById('drawBtn').disabled = false;
+
+                // 更新统计
+                stats.total++;
+                stats.today++;
+                saveStats();
+                updateStatsDisplay();
+
+            }, 500);
+        }
+
+        // 播放音频（使用浏览器 TTS）
+        function playAudio() {
+            if (!currentTopic) return;
+
+            if (isPlaying) {
+                stopAudio();
+                return;
+            }
+
+            // 使用 Web Speech API
+            if ('speechSynthesis' in window) {
+                // 停止之前的语音
+                window.speechSynthesis.cancel();
+
+                const utterance = new SpeechSynthesisUtterance(currentTopic.audio);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                utterance.pitch = 1.0;
+                utterance.volume = 1.0;
+
+                utterance.onstart = () => {
+                    isPlaying = true;
+                    document.getElementById('playBtn').textContent = '⏸️ 暂停';
+                    document.getElementById('playBtn').classList.add('playing');
+                    document.getElementById('audioStatus').textContent = '正在播放...';
+                };
+
+                utterance.onend = () => {
+                    isPlaying = false;
+                    document.getElementById('playBtn').textContent = '▶️ 播放音频';
+                    document.getElementById('playBtn').classList.remove('playing');
+                    document.getElementById('audioStatus').textContent = '播放完成';
+                };
+
+                utterance.onerror = (event) => {
+                    isPlaying = false;
+                    document.getElementById('playBtn').textContent = '▶️ 播放音频';
+                    document.getElementById('playBtn').classList.remove('playing');
+                    document.getElementById('audioStatus').textContent = '播放出错';
+                    console.error('TTS Error:', event);
+                };
+
+                window.speechSynthesis.speak(utterance);
+                audio = utterance;
+            } else {
+                alert('您的浏览器不支持语音合成，请使用 Chrome、Edge 或 Safari 浏览器。');
+            }
+        }
+
+        // 停止音频
+        function stopAudio() {
+            if (window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+            }
+            isPlaying = false;
+            document.getElementById('playBtn').textContent = '▶️ 播放音频';
+            document.getElementById('playBtn').classList.remove('playing');
+            document.getElementById('audioStatus').textContent = '';
+        }
+
+        // 计算总分
+        function calculateTotal() {
+            const s1 = parseInt(document.getElementById('score1').value) || 0;
+            const s2 = parseInt(document.getElementById('score2').value) || 0;
+            const s3 = parseInt(document.getElementById('score3').value) || 0;
+            const s4 = parseInt(document.getElementById('score4').value) || 0;
+            const total = s1 + s2 + s3 + s4;
+            document.getElementById('totalScore').textContent = `${total} / 100`;
+            return total;
+        }
+
+        // 导出结果
+        function exportResult() {
+            if (!currentTopic) return;
+
+            const total = calculateTotal();
+            const date = new Date().toLocaleString('zh-CN');
+
+            const content = `
+信电研究生复试英语听力评分记录
+================================
+
+日期：${date}
+题目：Topic ${currentTopic.number} - ${currentTopic.title}
+
+评分详情：
+- 内容完整性：${document.getElementById('score1').value} / 40
+- 准确性：${document.getElementById('score2').value} / 30
+- 语言表达：${document.getElementById('score3').value} / 20
+- 逻辑组织：${document.getElementById('score4').value} / 10
+
+总分：${total} / 100
+
+听力文本：
+${currentTopic.audio}
+
+复述提示：
+${currentTopic.prompts.map(p => '- ' + p).join('\n')}
+            `.trim();
+
+            // 保存到记录
+            stats.scores.push(total);
+            saveStats();
+            updateStatsDisplay();
+
+            // 下载文件
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `听力评分_Topic${currentTopic.number}_${Date.now()}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            alert('评分结果已导出！');
+        }
+
+        // 页面加载时初始化
+        window.onload = init;
+
+        // 考官模式开关
+        let examinerMode = false;
+
+        function toggleExaminerMode() {
+            examinerMode = !examinerMode;
+            
+            const promptsSection = document.getElementById('examinerSection');
+            const scoringSection = document.getElementById('scoringSection');
+            const exportBtn = document.getElementById('exportBtn');
+            
+            if (examinerMode) {
+                // 输入密码验证
+                const password = prompt('请输入考官密码（默认：1234）:', '');
+                if (password !== '1234') {
+                    examinerMode = false;
+                    alert('密码错误');
+                    return;
+                }
+                
+                promptsSection.style.display = 'block';
+                scoringSection.style.display = 'block';
+                exportBtn.style.display = 'inline-block';
+                alert('已进入考官模式 - 考官可见内容已显示');
+            } else {
+                promptsSection.style.display = 'none';
+                scoringSection.style.display = 'none';
+                exportBtn.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

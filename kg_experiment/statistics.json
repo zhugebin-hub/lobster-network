@@ -1,0 +1,19 @@
+{
+  "total_entities": 20,
+  "total_relations": 18,
+  "entity_types": {
+    "疾病": 3,
+    "症状": 5,
+    "药品": 4,
+    "检查": 4,
+    "科室": 2,
+    "医生": 2
+  },
+  "relation_types": {
+    "has_symptom": 5,
+    "treated_by": 4,
+    "requires_test": 4,
+    "belongs_to_dept": 3,
+    "has_doctor": 2
+  }
+}

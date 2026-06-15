@@ -1,0 +1,54 @@
+【知识文档】AI模型部署与优化
+类别：网页 | 可信度：高 | 来源：技术博客
+日期：2024-04-20
+
+一、模型优化技术
+
+1. 量化（Quantization）
+   - 将FP32权重转换为INT8或FP16
+   - 减少模型大小，加速推理
+   - 方法：PTQ（训练后量化）、QAT（量化感知训练）
+   - 压缩比：FP32→INT8约4倍
+
+2. 剪枝（Pruning）
+   - 移除不重要的权重或神经元
+   - 非结构化剪枝：单个权重
+   - 结构化剪枝：整个通道/滤波器
+   - 流程：训练→剪枝→微调
+
+3. 知识蒸馏（Knowledge Distillation）
+   - 大模型（教师）指导小模型（学生）
+   - 学生模型学习教师的软标签
+   - 损失：L = α*L_hard + (1-α)*L_soft
+
+4. 低秩适配（LoRA）
+   - 在预训练模型旁路添加低秩矩阵
+   - 只训练少量参数，大幅降低显存需求
+   - ΔW = B * A，其中rank(B) = rank(A) = r << d
+
+二、部署方式
+
+1. 云端部署
+   - API服务：FastAPI + 模型推理
+   - 容器化：Docker + Kubernetes
+   - 自动扩缩容：根据请求量动态调整
+
+2. 边缘部署
+   - 移动端：TensorFlow Lite、Core ML
+   - 嵌入式：TensorRT、ONNX Runtime
+   - 模型压缩：量化+剪枝+蒸馏
+
+三、推理框架
+
+- TensorFlow Serving：TF生态
+- TorchServe：PyTorch生态
+- vLLM：高效LLM推理，支持PagedAttention
+- TensorRT-LLM：NVIDIA优化
+- Ollama：本地LLM部署
+
+四、性能指标
+
+- 吞吐量（Throughput）：每秒处理请求数
+- 延迟（Latency）：单个请求响应时间
+- 显存占用：模型加载所需显存
+- 并发能力：同时处理的请求数

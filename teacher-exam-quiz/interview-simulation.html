@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教师资格面试模拟题库 - 高中信息技术</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        /* 面试模式选择 */
+        .mode-selector {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .mode-selector h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .mode-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .mode-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .mode-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .mode-card.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .mode-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .mode-card p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .mode-card .time {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .mode-card.selected .time {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* 面试准备区 */
+        .prep-area {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .prep-area.show {
+            display: block;
+        }
+
+        .prep-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .timer {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            background: #f0f0ff;
+            padding: 15px 30px;
+            border-radius: 15px;
+        }
+
+        .timer.warning {
+            color: #f39c12;
+            animation: pulse 1s infinite;
+        }
+
+        .timer.danger {
+            color: #e74c3c;
+            animation: pulse 0.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .question-display {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .question-display h3 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .question-display .text {
+            font-size: 1.5em;
+            line-height: 1.8;
+        }
+
+        .question-display .requirements {
+            margin-top: 20px;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .question-display .requirements h4 {
+            margin-bottom: 10px;
+        }
+
+        .question-display .requirements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .question-display .requirements li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .question-display .requirements li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #2ecc71;
+        }
+
+        .btn-warning {
+            background: #f39c12;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #e67e22;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+
+        /* 答题区域 */
+        .answer-area {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .answer-area.show {
+            display: block;
+        }
+
+        .answer-area h3 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .answer-textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            line-height: 1.8;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .answer-textarea:focus {
+            border-color: #667eea;
+        }
+
+        /* 评分区域 */
+        .score-area {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .score-area.show {
+            display: block;
+        }
+
+        .score-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .score-total {
+            font-size: 4em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .score-label {
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .score-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .score-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .score-item h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .score-item .score {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .score-item .feedback {
+            margin-top: 10px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* 参考答案 */
+        .reference-answer {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .reference-answer h4 {
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+
+        .reference-answer .content {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .reference-answer .key-points {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .reference-answer .key-points h5 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .reference-answer .key-points ul {
+            padding-left: 20px;
+        }
+
+        .reference-answer .key-points li {
+            margin: 8px 0;
+            color: #555;
+        }
+
+        /* 进度条 */
+        .progress-bar {
+            background: white;
+            border-radius: 20px;
+            padding: 20px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .progress-track {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 5px;
+            transition: width 0.3s;
+        }
+
+        /* 历史记录 */
+        .history-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .history-section h3 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .history-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .history-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .history-item .info {
+            flex: 1;
+        }
+
+        .history-item .info h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .history-item .info p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .history-item .score-badge {
+            background: #667eea;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        /* 统计卡片 */
+        .stats-bar {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .timer {
+                font-size: 1.8em;
+                padding: 10px 20px;
+            }
+
+            .question-display .text {
+                font-size: 1.2em;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎤 教师资格面试模拟题库</h1>
+            <p>江苏省苏州市吴江区 · 高中信息技术学科</p>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number" id="total-practice">0</div>
+                <div class="stat-label">练习次数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="avg-score">0</div>
+                <div class="stat-label">平均分数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="best-score">0</div>
+                <div class="stat-label">最高分数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="total-time">0</div>
+                <div class="stat-label">练习时长 (分钟)</div>
+            </div>
+        </div>
+
+        <!-- 面试模式选择 -->
+        <div class="mode-selector">
+            <h2>🎯 选择面试模拟模式</h2>
+            <div class="mode-cards">
+                <div class="mode-card" data-mode="structured" data-time="15">
+                    <h3>📋 结构化面试</h3>
+                    <p>回答 2 道结构化问题，考察教育理念、应急应变、综合分析等能力</p>
+                    <span class="time">⏱️ 15 分钟</span>
+                </div>
+                <div class="mode-card" data-mode="trial" data-time="20">
+                    <h3>👨‍🏫 试讲模拟</h3>
+                    <p>随机抽取试讲题目，进行 10 分钟无生试讲，展示教学设计与实施能力</p>
+                    <span class="time">⏱️ 20 分钟（含备课 10 分钟）</span>
+                </div>
+                <div class="mode-card" data-mode="defense" data-time="10">
+                    <h3>🛡️ 答辩模拟</h3>
+                    <p>针对试讲内容进行答辩，考官追问 2-3 个问题</p>
+                    <span class="time">⏱️ 10 分钟</span>
+                </div>
+                <div class="mode-card" data-mode="full" data-time="45">
+                    <h3>🎬 全真模拟</h3>
+                    <p>完整面试流程：结构化 + 试讲 + 答辩，全真模拟考场环境</p>
+                    <span class="time">⏱️ 45 分钟</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 进度条 -->
+        <div class="progress-bar" id="progress-bar" style="display: none;">
+            <div class="progress-info">
+                <span id="progress-text">当前进度：第 1/2 题</span>
+                <span id="progress-percent">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- 准备区域 -->
+        <div class="prep-area" id="prep-area">
+            <div class="prep-header">
+                <h2>📝 面试题目</h2>
+                <div class="timer" id="timer">15:00</div>
+            </div>
+
+            <div class="question-display" id="question-display">
+                <!-- 题目内容动态加载 -->
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="start-answer-btn" onclick="startAnswer()">✍️ 开始作答</button>
+                <button class="btn btn-warning" onclick="showHint()">💡 查看提示</button>
+                <button class="btn btn-secondary" onclick="nextQuestion()">➡️ 下一题</button>
+                <button class="btn btn-success" onclick="finishInterview()">✅ 完成面试</button>
+            </div>
+
+            <div class="hint-box" id="hint-box" style="display: none; background: #fff3cd; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #f39c12;">
+                <h4>💡 答题提示</h4>
+                <p id="hint-text"></p>
+            </div>
+        </div>
+
+        <!-- 答题区域 -->
+        <div class="answer-area" id="answer-area">
+            <h3>✍️ 请输入你的回答</h3>
+            <textarea class="answer-textarea" id="answer-input" placeholder="请在此输入你的回答内容...（结构化建议 300-500 字，试讲请写出教学设计要点）"></textarea>
+            <div class="action-buttons" style="margin-top: 20px;">
+                <button class="btn btn-success" onclick="submitAnswer()">📤 提交答案</button>
+                <button class="btn btn-secondary" onclick="cancelAnswer()">❌ 取消</button>
+            </div>
+        </div>
+
+        <!-- 评分区域 -->
+        <div class="score-area" id="score-area">
+            <div class="score-header">
+                <div class="score-total" id="score-total">0</div>
+                <div class="score-label">总分 / 100 分</div>
+            </div>
+
+            <div class="score-items" id="score-items">
+                <!-- 评分项动态加载 -->
+            </div>
+
+            <div class="reference-answer" id="reference-answer">
+                <h4>📖 参考答案与评分标准</h4>
+                <div class="content" id="reference-content"></div>
+            </div>
+
+            <div class="action-buttons" style="margin-top: 30px;">
+                <button class="btn btn-primary" onclick="startNewPractice()">🔄 再次练习</button>
+                <button class="btn btn-secondary" onclick="viewHistory()">📜 查看历史记录</button>
+            </div>
+        </div>
+
+        <!-- 历史记录 -->
+        <div class="history-section" id="history-section">
+            <h3>📜 练习历史</h3>
+            <div class="history-list" id="history-list">
+                <!-- 历史记录动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 题库数据 - 面试专用
+        const interviewQuestions = {
+            structured: [
+                {
+                    id: 1,
+                    type: "综合分析",
+                    text: "有人说'信息技术教师就是教学生打字的'，你怎么看待这种观点？",
+                    requirements: [
+                        "请分析这种观点的片面性",
+                        "阐述信息技术课程的核心价值",
+                        "说明信息技术教师的真实角色"
+                    ],
+                    hint: "从信息素养、计算思维、数字化能力等角度分析",
+                    reference: {
+                        content: "这种观点是片面的，反映了对信息技术课程的误解。信息技术课程远不止教授打字技能。",
+                        keyPoints: [
+                            "信息技术课程目标：培养信息素养、计算思维、数字化学习与创新能力",
+                            "课程内容涵盖：算法与编程、数据处理、网络通信、人工智能等",
+                            "教师角色：学生信息素养的引导者、数字化学习的促进者、创新思维的培养者",
+                            "时代需求：在数字化时代，信息技术教育是培养未来公民必备素养的关键"
+                        ]
+                    },
+                    scoreCriteria: {
+                        "观点分析": 30,
+                        "专业理解": 30,
+                        "逻辑表达": 20,
+                        "教育情怀": 20
+                    }
+                },
+                {
+                    id: 2,
+                    type: "应急应变",
+                    text: "在讲授'Python 编程基础'时，你发现大部分学生跟不上进度，课堂气氛沉闷，你怎么办？",
+                    requirements: [
+                        "分析学生跟不上的可能原因",
+                        "提出具体的调整策略",
+                        "说明如何调动课堂气氛"
+                    ],
+                    hint: "从学情分析、教学调整、互动设计等方面思考",
+                    reference: {
+                        content: "面对这种情况，我会冷静分析原因并及时调整教学策略。",
+                        keyPoints: [
+                            "快速诊断：通过提问或练习了解学生困难点（概念理解？语法障碍？逻辑困难？）",
+                            "调整节奏：放慢进度，增加示例演示，分解难点",
+                            "分层教学：为基础弱的学生提供额外指导，为学有余力的学生提供拓展任务",
+                            "增加互动：采用小组合作、编程竞赛、作品展示等方式活跃气氛",
+                            "课后跟进：布置分层作业，提供学习资源，安排辅导时间"
+                        ]
+                    },
+                    scoreCriteria: {
+                        "问题分析": 25,
+                        "应对策略": 35,
+                        "教学效果": 25,
+                        "反思改进": 15
+                    }
+                },
+                {
+                    id: 3,
+                    type: "教育理念",
+                    text: "如何在信息技术教学中落实'以学生为中心'的教学理念？请结合具体教学案例说明。",
+                    requirements: [
+                        "阐述'以学生为中心'的内涵",
+                        "提出具体的实施策略",
+                        "结合教学案例说明"
+                    ],
+                    hint: "可从项目式学习、探究式学习、合作学习等角度举例",
+                    reference: {
+                        content: "'以学生为中心'强调学生是学习的主体，教师是引导者和促进者。",
+                        keyPoints: [
+                            "理念内涵：尊重学生主体地位，关注学生需求和差异，促进学生主动建构知识",
+                            "实施策略：项目式学习（如设计班级网站）、探究式学习（如探索算法效率）、合作学习（如小组编程）",
+                            "案例：在'数据处理'教学中，让学生自主选择感兴趣的数据主题（运动、音乐、学习等），用 Excel 进行分析并展示",
+                            "评价方式：采用多元评价，关注过程性评价，鼓励学生自评互评"
+                        ]
+                    },
+                    scoreCriteria: {
+                        "理念理解": 30,
+                        "策略可行性": 30,
+                        "案例质量": 25,
+                        "表达清晰": 15
+                    }
+                },
+                {
+                    id: 4,
+                    type: "职业认知",
+                    text: "你认为一名优秀的信息技术教师应该具备哪些核心素养？你为什么想当信息技术教师？",
+                    requirements: [
+                        "分析信息技术教师的核心素养",
+                        "结合个人经历说明从教动机",
+                        "表达教育理想和职业规划"
+                    ],
+                    hint: "从专业能力、教学能力、师德修养等角度分析",
+                    reference: {
+                        content: "优秀的信息技术教师应具备多维度的核心素养。",
+                        keyPoints: [
+                            "专业素养：扎实的信息技术专业知识，持续学习新技术的能力",
+                            "教学素养：教学设计能力、课堂管理能力、评价反馈能力",
+                            "信息素养：良好的信息意识、计算思维、数字化学习能力",
+                            "师德修养：关爱学生、为人师表、教育情怀",
+                            "从教动机：对信息技术的热爱、对教育事业的认同、对学生成长的期待"
+                        ]
+                    },
+                    scoreCriteria: {
+                        "素养理解": 30,
+                        "动机真诚": 30,
+                        "职业规划": 25,
+                        "表达感染力": 15
+                    }
+                }
+            ],
+            trial: [
+                {
+                    id: 101,
+                    topic: "算法的概念",
+                    grade: "高一必修 1",
+                    text: "请为'算法的概念'这一内容进行试讲设计",
+                    requirements: [
+                        "试讲时间：10 分钟",
+                        "要有完整的教学环节（导入、新授、练习、小结）",
+                        "体现学生主体地位和互动设计",
+                        "板书设计合理"
+                    ],
+                    hint: "可从生活实例导入，如做菜食谱、导航路线等",
+                    reference: {
+                        content: "【教学目标】\n1. 理解算法的概念和特征\n2. 能够用自然语言描述简单算法\n3. 体会算法在生活中的应用\n\n【教学重难点】\n重点：算法的概念和特征\n难点：算法的有穷性和确定性理解\n\n【教学过程】\n1. 导入（2 分钟）：展示'番茄炒蛋'食谱，提问'这是算法吗？'\n2. 新授（5 分钟）：\n   - 算法定义：解决问题的步骤序列\n   - 算法特征：有穷性、确定性、输入、输出、可行性\n   - 举例：导航路线选择、搜索引擎排序\n3. 练习（2 分钟）：让学生描述'泡一杯茶'的算法\n4. 小结（1 分钟）：回顾算法概念，布置思考题\n\n【板书设计】\n算法的概念\n定义：解决问题的步骤序列\n特征：有穷性、确定性、输入、输出、可行性",
+                        keyPoints: [
+                            "导入贴近生活，激发学生兴趣",
+                            "概念讲解清晰，举例恰当",
+                            "学生活动设计合理，体现主体地位",
+                            "板书简洁明了，重点突出",
+                            "时间分配合理，环节完整"
+                        ]
+                    },
+                    scoreCriteria: {
+                        "教学目标": 20,
+                        "内容设计": 30,
+                        "教学方法": 25,
+                        "板书设计": 15,
+                        "语言表达": 10
+                    }
+                },
+                {
+                    id: 102,
+                    topic: "Python 分支结构",
+                    grade: "高一必修 1",
+                    text: "请为'Python 分支结构（if 语句）'这一内容进行试讲设计",
+                    requirements: [
+                        "试讲时间：10 分钟",
+                        "要有代码演示环节",
+                        "设计学生实践活动",
+                        "体现计算思维培养"
+                    ],
+                    hint: "可设计'成绩等级判断'等贴近学生的案例",
+                    reference: {
+                        content: "【教学目标】\n1. 理解分支结构的作用和执行流程\n2. 掌握 if、if-else、if-elif-else 语句的语法\n3. 能够运用分支结构解决实际问题\n\n【教学重难点】\n重点：if 语句的语法和执行流程\n难点：多分支条件的逻辑设计\n\n【教学过程】\n1. 导入（2 分钟）：展示'成绩等级判断'问题，引发思考\n2. 新授（5 分钟）：\n   - 单分支：if 条件：\n   - 双分支：if-else\n   - 多分支：if-elif-else\n   - 代码演示：成绩等级判断程序\n3. 练习（2 分钟）：设计'体温检测'程序（正常/发热）\n4. 小结（1 分钟）：总结分支结构应用场景\n\n【板书设计】\nPython 分支结构\nif 条件:\n    语句块\nif-else\nif-elif-else",
+                        keyPoints: [
+                            "案例选择贴近学生生活",
+                            "代码演示规范清晰",
+                            "学生练习设计合理",
+                            "注重计算思维培养",
+                            "语法讲解准确"
+                        ]
+                    },
+                    scoreCriteria: {
+                        "教学目标": 20,
+                        "内容设计": 30,
+                        "教学方法": 25,
+                        "板书设计": 15,
+                        "语言表达": 10
+                    }
+                },
+                {
+                    id: 103,
+                    topic: "数据处理与分析",
+                    grade: "高二选择性必修 2",
+                    text: "请为'Excel 数据分析'这一内容进行试讲设计",
+                    requirements: [
+                        "试讲时间：10 分钟",
+                        "要涉及数据排序、筛选、图表等功能",
+                        "设计探究性学习任务",
+                        "体现数据素养培养"
+                    ],
+                    hint: "可用班级成绩、运动数据等真实数据",
+                    reference: {
+                        content: "【教学目标】\n1. 掌握 Excel 数据排序、筛选的基本操作\n2. 能够根据分析目的选择合适的图表类型\n3. 培养数据意识和数据分析能力\n\n【教学重难点】\n重点：数据排序、筛选、图表创建\n难点：根据分析目的选择合适的可视化方式\n\n【教学过程】\n1. 导入（2 分钟）：展示班级月考成绩表，提问'如何分析？'\n2. 新授（5 分钟）：\n   - 数据排序：按总分/单科排序\n   - 数据筛选：筛选优秀/及格学生\n   - 图表制作：柱状图、折线图、饼图的选择\n3. 练习（2 分钟）：分析班级运动會数据\n4. 小结（1 分钟）：强调数据驱动的决策思维\n\n【板书设计】\nExcel 数据分析\n排序 → 发现极值\n筛选 → 定位目标\n图表 → 可视化呈现",
+                        keyPoints: [
+                            "使用真实数据增强代入感",
+                            "操作演示清晰规范",
+                            "注重数据思维培养",
+                            "学生探究任务设计合理",
+                            "强调数据伦理意识"
+                        ]
+                    },
+                    scoreCriteria: {
+                        "教学目标": 20,
+                        "内容设计": 30,
+                        "教学方法": 25,
+                        "板书设计": 15,
+                        "语言表达": 10
+                    }
+                }
+            ],
+            defense: [
+                {
+                    id: 201,
+                    type: "教学反思",
+                    text: "刚才的试讲中，你觉得自己的教学亮点是什么？还有什么需要改进的地方？",
+                    hint: "客观评价自己，既展示自信也体现反思能力",
+                    reference: {
+                        content: "【回答要点】\n\n亮点：\n1. 教学设计完整，环节清晰\n2. 案例选择贴近学生生活\n3. 注重学生活动和互动设计\n4. 板书设计规范\n\n改进：\n1. 时间把控可以更精准\n2. 可以增加更多分层任务\n3. 评价方式可以更多元",
+                        keyPoints: [
+                            "客观自我评价",
+                            "亮点具体明确",
+                            "改进方向可行",
+                            "体现反思意识"
+                        ]
+                    }
+                },
+                {
+                    id: 202,
+                    type: "知识追问",
+                    text: "你在板书设计中提到了算法的'有穷性'，如果一个程序进入死循环，它还是算法吗？为什么？",
+                    hint: "从算法定义出发，区分算法与程序",
+                    reference: {
+                        content: "【回答要点】\n\n严格来说，进入死循环的程序不符合算法的'有穷性'特征，不能称为算法。\n\n算法必须在有限步骤内结束，而死循环无法在有限步骤内终止。\n\n但在实际编程中，某些服务程序（如操作系统、服务器）设计为持续运行，这类程序不是传统意义上的算法，而是应用程序。",
+                        keyPoints: [
+                            "准确理解算法定义",
+                            "区分算法与程序概念",
+                            "能举例说明边界情况",
+                            "逻辑清晰"
+                        ]
+                    }
+                },
+                {
+                    id: 203,
+                    type: "教学延伸",
+                    text: "如果让你为这节课设计课后作业，你会怎么设计？如何体现分层教学？",
+                    hint: "从基础巩固、能力提升、拓展探究三个层次设计",
+                    reference: {
+                        content: "【回答要点】\n\n基础层（必做）：\n- 完成教材练习题\n- 复习课堂案例代码\n\n提升层（选做）：\n- 修改课堂程序，增加功能\n- 设计类似问题的解决方案\n\n拓展层（挑战）：\n- 探究相关拓展知识\n- 完成小项目/小作品\n- 撰写学习反思",
+                        keyPoints: [
+                            "作业设计有层次",
+                            "符合学生差异",
+                            "注重实践应用",
+                            "评价方式多元"
+                        ]
+                    }
+                }
+            ]
+        };
+
+        // 状态管理
+        let currentMode = null;
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let timerInterval = null;
+        let timeRemaining = 0;
+        let practiceHistory = [];
+        let totalTime = 0;
+
+        // 初始化
+        function init() {
+            loadHistory();
+            updateStats();
+            
+            // 模式选择
+            document.querySelectorAll('.mode-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    currentMode = this.dataset.mode;
+                });
+            });
+        }
+
+        // 开始面试
+        function startInterview() {
+            if (!currentMode) {
+                alert('请先选择面试模式！');
+                return;
+            }
+
+            // 根据模式加载题目
+            if (currentMode === 'structured') {
+                currentQuestions = shuffleArray(interviewQuestions.structured).slice(0, 2);
+            } else if (currentMode === 'trial') {
+                currentQuestions = shuffleArray(interviewQuestions.trial).slice(0, 1);
+            } else if (currentMode === 'defense') {
+                currentQuestions = shuffleArray(interviewQuestions.defense).slice(0, 2);
+            } else if (currentMode === 'full') {
+                currentQuestions = [
+                    ...shuffleArray(interviewQuestions.structured).slice(0, 2),
+                    ...shuffleArray(interviewQuestions.trial).slice(0, 1),
+                    ...shuffleArray(interviewQuestions.defense).slice(0, 2)
+                ];
+            }
+
+            currentIndex = 0;
+            const totalTimeEl = document.querySelector('.mode-card.selected').dataset.time;
+            timeRemaining = parseInt(totalTimeEl) * 60;
+
+            // 显示准备区域
+            document.getElementById('prep-area').classList.add('show');
+            document.getElementById('progress-bar').style.display = 'block';
+            document.getElementById('score-area').classList.remove('show');
+            document.getElementById('answer-area').classList.remove('show');
+
+            // 启动计时器
+            startTimer();
+            
+            // 加载第一题
+            loadQuestion();
+            updateProgress();
+
+            // 滚动到准备区域
+            document.getElementById('prep-area').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 加载题目
+        function loadQuestion() {
+            const question = currentQuestions[currentIndex];
+            const display = document.getElementById('question-display');
+            
+            let html = `
+                <h3>题目 ${currentIndex + 1} / ${currentQuestions.length} · ${question.type || question.topic}</h3>
+                <div class="text">${question.text}</div>
+                <div class="requirements">
+                    <h4>答题要求：</h4>
+                    <ul>
+                        ${question.requirements.map(r => `<li>${r}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            
+            display.innerHTML = html;
+            
+            // 隐藏提示
+            document.getElementById('hint-box').style.display = 'none';
+        }
+
+        // 启动计时器
+        function startTimer() {
+            updateTimerDisplay();
+            
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    alert('时间到！请提交答案。');
+                }
+            }, 1000);
+        }
+
+        // 更新计时器显示
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            const timerEl = document.getElementById('timer');
+            timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // 颜色变化
+            timerEl.classList.remove('warning', 'danger');
+            if (timeRemaining <= 60) {
+                timerEl.classList.add('danger');
+            } else if (timeRemaining <= 180) {
+                timerEl.classList.add('warning');
+            }
+        }
+
+        // 更新进度
+        function updateProgress() {
+            const percent = ((currentIndex + 1) / currentQuestions.length) * 100;
+            document.getElementById('progress-fill').style.width = percent + '%';
+            document.getElementById('progress-text').textContent = `当前进度：第 ${currentIndex + 1}/${currentQuestions.length} 题`;
+            document.getElementById('progress-percent').textContent = Math.round(percent) + '%';
+        }
+
+        // 开始作答
+        function startAnswer() {
+            document.getElementById('answer-area').classList.add('show');
+            document.getElementById('answer-input').value = '';
+            document.getElementById('answer-input').focus();
+            document.getElementById('answer-area').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 提交答案
+        function submitAnswer() {
+            const answer = document.getElementById('answer-input').value;
+            if (!answer.trim()) {
+                alert('请输入回答内容！');
+                return;
+            }
+
+            // 保存答案（可扩展为提交评分）
+            const question = currentQuestions[currentIndex];
+            question.userAnswer = answer;
+            
+            document.getElementById('answer-area').classList.remove('show');
+            
+            // 显示评分
+            showScore(question);
+        }
+
+        // 取消作答
+        function cancelAnswer() {
+            document.getElementById('answer-area').classList.remove('show');
+        }
+
+        // 显示评分
+        function showScore(question) {
+            document.getElementById('score-area').classList.add('show');
+            
+            // 计算分数（简化版，实际可接入 AI 评分）
+            const criteria = question.scoreCriteria;
+            let totalScore = 0;
+            let scoreHtml = '';
+            
+            for (const [item, maxScore] of Object.entries(criteria)) {
+                // 模拟评分（实际应根据答案质量评分）
+                const score = Math.floor(maxScore * (0.7 + Math.random() * 0.3));
+                totalScore += score;
+                scoreHtml += `
+                    <div class="score-item">
+                        <h4>${item}</h4>
+                        <div class="score">${score} / ${maxScore}</div>
+                        <div class="feedback">${getFeedback(score, maxScore)}</div>
+                    </div>
+                `;
+            }
+            
+            document.getElementById('score-total').textContent = totalScore;
+            document.getElementById('score-items').innerHTML = scoreHtml;
+            
+            // 参考答案
+            document.getElementById('reference-content').innerHTML = `
+                <p>${question.reference.content}</p>
+                <div class="key-points">
+                    <h5>答题要点：</h5>
+                    <ul>
+                        ${question.reference.keyPoints.map(p => `<li>${p}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            
+            // 保存历史记录
+            saveHistory(question, totalScore);
+            
+            document.getElementById('score-area').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 获取反馈
+        function getFeedback(score, maxScore) {
+            const ratio = score / maxScore;
+            if (ratio >= 0.9) return "优秀！表现非常出色 👍";
+            if (ratio >= 0.75) return "良好，继续保持 👌";
+            if (ratio >= 0.6) return "合格，还有提升空间 💪";
+            return "需要加强练习，加油！📚";
+        }
+
+        // 下一题
+        function nextQuestion() {
+            if (currentIndex < currentQuestions.length - 1) {
+                currentIndex++;
+                loadQuestion();
+                updateProgress();
+                document.getElementById('score-area').classList.remove('show');
+                document.getElementById('prep-area').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                finishInterview();
+            }
+        }
+
+        // 完成面试
+        function finishInterview() {
+            clearInterval(timerInterval);
+            const usedTime = (parseInt(document.querySelector('.mode-card.selected').dataset.time) * 60) - timeRemaining;
+            totalTime += Math.floor(usedTime / 60);
+            
+            alert('面试完成！请查看评分和参考答案。');
+            updateStats();
+        }
+
+        // 查看提示
+        function showHint() {
+            const question = currentQuestions[currentIndex];
+            document.getElementById('hint-text').textContent = question.hint;
+            document.getElementById('hint-box').style.display = 'block';
+        }
+
+        // 开始新的练习
+        function startNewPractice() {
+            document.getElementById('score-area').classList.remove('show');
+            document.getElementById('prep-area').classList.remove('show');
+            document.getElementById('progress-bar').style.display = 'none';
+            document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
+            currentMode = null;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 保存历史
+        function saveHistory(question, score) {
+            const record = {
+                date: new Date().toLocaleString('zh-CN'),
+                mode: getModeName(currentMode),
+                question: question.text.substring(0, 50) + '...',
+                score: score,
+                type: question.type || question.topic
+            };
+            practiceHistory.unshift(record);
+            if (practiceHistory.length > 20) {
+                practiceHistory.pop();
+            }
+            localStorage.setItem('interviewHistory', JSON.stringify(practiceHistory));
+            loadHistory();
+        }
+
+        // 加载历史
+        function loadHistory() {
+            const saved = localStorage.getItem('interviewHistory');
+            if (saved) {
+                practiceHistory = JSON.parse(saved);
+            }
+            renderHistory();
+        }
+
+        // 渲染历史
+        function renderHistory() {
+            const list = document.getElementById('history-list');
+            if (practiceHistory.length === 0) {
+                list.innerHTML = '<p style="color: #666; text-align: center; padding: 20px;">暂无练习记录，开始第一次模拟面试吧！</p>';
+                return;
+            }
+            
+            list.innerHTML = practiceHistory.map(record => `
+                <div class="history-item">
+                    <div class="info">
+                        <h4>${record.type}</h4>
+                        <p>${record.mode} · ${record.date}</p>
+                        <p style="font-size: 13px; color: #999;">${record.question}</p>
+                    </div>
+                    <div class="score-badge">${record.score}分</div>
+                </div>
+            `).join('');
+        }
+
+        // 查看历史
+        function viewHistory() {
+            document.getElementById('history-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 更新统计
+        function updateStats() {
+            document.getElementById('total-practice').textContent = practiceHistory.length;
+            
+            if (practiceHistory.length > 0) {
+                const avg = Math.round(practiceHistory.reduce((sum, r) => sum + r.score, 0) / practiceHistory.length);
+                const best = Math.max(...practiceHistory.map(r => r.score));
+                document.getElementById('avg-score').textContent = avg;
+                document.getElementById('best-score').textContent = best;
+            }
+            
+            document.getElementById('total-time').textContent = totalTime;
+        }
+
+        // 获取模式名称
+        function getModeName(mode) {
+            const names = {
+                'structured': '结构化面试',
+                'trial': '试讲模拟',
+                'defense': '答辩模拟',
+                'full': '全真模拟'
+            };
+            return names[mode] || mode;
+        }
+
+        // 数组洗牌
+        function shuffleArray(array) {
+            const newArr = [...array];
+            for (let i = newArr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+            }
+            return newArr;
+        }
+
+        // 绑定开始按钮
+        document.querySelector('.mode-selector .btn-primary')?.remove();
+        const startBtn = document.createElement('button');
+        startBtn.className = 'btn btn-primary';
+        startBtn.style.cssText = 'width: 100%; margin-top: 20px; padding: 20px; font-size: 18px;';
+        startBtn.textContent = '🚀 开始面试';
+        startBtn.onclick = startInterview;
+        document.querySelector('.mode-selector').appendChild(startBtn);
+
+        // 初始化
+        init();
+    </script>
+</body>
+</html>

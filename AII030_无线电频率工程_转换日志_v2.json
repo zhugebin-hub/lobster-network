@@ -1,0 +1,100 @@
+{
+  "mode": "redraw_single_file_no_template",
+  "source_file": "AII030-无线电频率工程.xlsx",
+  "output": "AII030_无线电频率工程_英方课表_v2.xls",
+  "courses": [
+    {
+      "file": "AII030-无线电频率工程.xlsx",
+      "course_code": "AII030",
+      "course_name": "无线电频率工程",
+      "event_count": 27,
+      "sheet": "H6109Z无线电频率工程",
+      "token_estimate": {
+        "note": "估算值，不是精确 API 计费；脚本本身不调用大模型。用于判断上传一门中方课表给 Agent 转换时的大致 token 消耗。",
+        "method": "mixed_zh_en_chars_estimate_plus_skill_overhead",
+        "source_file_size_bytes": 5844,
+        "source_text_chars": 2408,
+        "generated_cell_text_chars": 1291,
+        "event_count": 27,
+        "warning_count": 0,
+        "estimated_input_tokens": 1970,
+        "estimated_output_tokens": 604,
+        "estimated_total_tokens": 2574,
+        "human_readable": "约 2,574 tokens / 门课"
+      },
+      "status": "redrawn_converted"
+    }
+  ],
+  "warnings": [
+    {
+      "event": {
+        "course_code": "AII030",
+        "course_name": "无线电频率工程",
+        "source_file": "AII030-无线电频率工程.xlsx",
+        "raw": "朱咸寅未评级/(3-5节)5周/下沙 萨塞克斯301/(2025-2026-2)-AII030-01B/AI通信2202/32/未安排/ /理论:64,实验:32/10/160",
+        "day": "Wednesday",
+        "start_period": 3,
+        "end_period": 5,
+        "weeks": "5",
+        "location": "下沙 萨塞克斯301",
+        "room_text": "Building Lab, Room 301",
+        "class_text": "CE 2202",
+        "section_code": "(2025-2026-2)-AII030-01B",
+        "class_type": "Lab",
+        "explicit_period": true
+      },
+      "warning": "No empty subcolumn available; appended into occupied cell"
+    },
+    {
+      "event": {
+        "course_code": "AII030",
+        "course_name": "无线电频率工程",
+        "source_file": "AII030-无线电频率工程.xlsx",
+        "raw": "朱咸寅未评级/(6-7节)7周/下沙 萨塞克斯315/(2025-2026-2)-AII030-01B/AI通信2202/32/未安排/ /理论:64,实验:32/10/160",
+        "day": "Thursday",
+        "start_period": 6,
+        "end_period": 7,
+        "weeks": "7",
+        "location": "下沙 萨塞克斯315",
+        "room_text": "Building Lab, Room 315",
+        "class_text": "CE 2202",
+        "section_code": "(2025-2026-2)-AII030-01B",
+        "class_type": "Lab",
+        "explicit_period": true
+      },
+      "warning": "No empty subcolumn available; appended into occupied cell"
+    },
+    {
+      "event": {
+        "course_code": "AII030",
+        "course_name": "无线电频率工程",
+        "source_file": "AII030-无线电频率工程.xlsx",
+        "raw": "朱咸寅未评级/(8-8节)7周/下沙 萨塞克斯315/(2025-2026-2)-AII030-01B/AI通信2202/32/未安排/ /理论:64,实验:32/10/160",
+        "day": "Thursday",
+        "start_period": 8,
+        "end_period": 8,
+        "weeks": "7",
+        "location": "下沙 萨塞克斯315",
+        "room_text": "Building Lab, Room 315",
+        "class_text": "CE 2202",
+        "section_code": "(2025-2026-2)-AII030-01B",
+        "class_type": "Lab",
+        "explicit_period": true
+      },
+      "warning": "No empty subcolumn available; appended into occupied cell"
+    }
+  ],
+  "token_estimate": {
+    "note": "估算值，不是精确 API 计费；脚本本身不调用大模型。用于判断上传一门中方课表给 Agent 转换时的大致 token 消耗。",
+    "method": "mixed_zh_en_chars_estimate_plus_skill_overhead",
+    "source_file_size_bytes": 5844,
+    "source_text_chars": 2408,
+    "generated_cell_text_chars": 1291,
+    "event_count": 27,
+    "warning_count": 0,
+    "estimated_input_tokens": 1970,
+    "estimated_output_tokens": 604,
+    "estimated_total_tokens": 2574,
+    "human_readable": "约 2,574 tokens / 门课"
+  }
+}

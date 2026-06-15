@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蚕的一生 - 科学实践海报</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    width: 1190px;
+    min-height: 1684px;
+    background: linear-gradient(135deg, #f8faf8 0%, #f0f7f0 25%, #faf9f3 65%, #fdf9f5 100%);
+    font-family: 'Noto Sans SC', sans-serif;
+    position: relative;
+  }
+  
+  /* 背景桑叶装饰 */
+  .bg-leaf {
+    position: absolute;
+    opacity: 0.06;
+    z-index: 0;
+  }
+  .bg-leaf.l1 { top: 30px; left: 40px; width: 120px; }
+  .bg-leaf.l2 { top: 150px; right: 60px; width: 90px; }
+  .bg-leaf.l3 { bottom: 200px; left: 50px; width: 100px; }
+  .bg-leaf.l4 { bottom: 80px; right: 50px; width: 110px; }
+  
+  .leaf-svg {
+    fill: #4a7c59;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+    padding: 40px 50px;
+  }
+  
+  /* 标题区域 */
+  .header {
+    text-align: center;
+    margin-bottom: 35px;
+  }
+  
+  .main-title {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 76px;
+    color: #2d5a3d;
+    letter-spacing: 18px;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+  
+  .title-icon {
+    display: inline-block;
+    font-size: 50px;
+    vertical-align: middle;
+    margin: 0 15px;
+  }
+  
+  .sub-title {
+    font-size: 19px;
+    color: #6b8f71;
+    letter-spacing: 6px;
+    font-weight: 300;
+  }
+  
+  .title-line {
+    width: 380px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #4a7c59 25%, #4a7c59 75%, transparent);
+    margin: 18px auto 0;
+  }
+  
+  /* 阶段卡片 */
+  .stage-wrapper {
+    margin-bottom: 12px;
+  }
+  
+  .stage-card {
+    display: flex;
+    background: rgba(255,255,255,0.88);
+    border-radius: 18px;
+    padding: 24px;
+    border: 1.5px solid rgba(74,124,89,0.12);
+    box-shadow: 0 3px 18px rgba(45,90,61,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .stage-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    border-radius: 18px 0 0 18px;
+  }
+  
+  .stage-1::before { background: linear-gradient(180deg, #a68456, #c4a574); }
+  .stage-2::before { background: linear-gradient(180deg, #525252, #6e6e6e); }
+  .stage-3::before { background: linear-gradient(180deg, #66bb6a, #81c784); }
+  .stage-4::before { background: linear-gradient(180deg, #dcb06a, #f0c87a); }
+  
+  .stage-num {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 900;
+    color: white;
+    flex-shrink: 0;
+    margin-right: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .stage-1 .stage-num { background: linear-gradient(135deg, #a68456, #c4a574); }
+  .stage-2 .stage-num { background: linear-gradient(135deg, #525252, #6e6e6e); }
+  .stage-3 .stage-num { background: linear-gradient(135deg, #66bb6a, #81c784); }
+  .stage-4 .stage-num { background: linear-gradient(135deg, #dcb06a, #f0c87a); color: #5a4a2a; }
+  
+  .stage-illus {
+    width: 170px;
+    height: 150px;
+    border-radius: 12px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    font-size: 65px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .stage-1 .stage-illus { 
+    background: linear-gradient(135deg, #faf5eb, #f5ebd5);
+    font-size: 55px;
+  }
+  .stage-2 .stage-illus { 
+    background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+    font-size: 60px;
+  }
+  .stage-3 .stage-illus { 
+    background: linear-gradient(135deg, #e8f5e9, #dcedc8);
+    font-size: 70px;
+  }
+  .stage-4 .stage-illus { 
+    background: linear-gradient(135deg, #fff8e1, #ffecb3);
+    font-size: 65px;
+  }
+  
+  .stage-text {
+    flex: 1;
+  }
+  
+  .stage-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  
+  .stage-1 .stage-title { color: #8b6f47; }
+  .stage-2 .stage-title { color: #4a4a4a; }
+  .stage-3 .stage-title { color: #3d8b3f; }
+  .stage-4 .stage-title { color: #9a7b4f; }
+  
+  .stage-time {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 8px;
+    font-weight: 300;
+  }
+  
+  .stage-text-desc {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #555;
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-align: justify;
+  }
+  
+  .diary-section {
+    background: linear-gradient(135deg, rgba(74,124,89,0.05), rgba(74,124,89,0.02));
+    border-radius: 10px;
+    padding: 11px 14px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #666;
+    border-left: 3px solid #4a7c59;
+  }
+  
+  .diary-prefix {
+    font-weight: 700;
+    color: #4a7c59;
+    margin-right: 4px;
+  }
+  
+  /* 向下箭头 */
+  .arrow {
+    text-align: center;
+    font-size: 20px;
+    color: #4a7c59;
+    opacity: 0.35;
+    margin: 3px 0;
+  }
+  
+  /* 知识框 */
+  .info-box {
+    background: linear-gradient(135deg, rgba(74,124,89,0.06), rgba(74,124,89,0.02));
+    border-radius: 14px;
+    padding: 17px 20px;
+    margin: 18px 0;
+    border: 1px dashed rgba(74,124,89,0.28);
+  }
+  
+  .info-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #4a7c59;
+    margin-bottom: 9px;
+  }
+  
+  .info-content {
+    font-size: 13px;
+    line-height: 1.85;
+    color: #666;
+    font-weight: 300;
+  }
+  
+  .info-content b {
+    color: #4a7c59;
+    font-weight: 600;
+  }
+  
+  /* 底部 */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    margin-top: 22px;
+    border-top: 1px solid rgba(74,124,89,0.12);
+  }
+  
+  .footer-left {
+    font-size: 13px;
+    color: #888;
+  }
+  
+  .footer-right {
+    font-size: 12px;
+    color: #999;
+    text-align: right;
+    line-height: 1.7;
+  }
+  
+  .photo-area {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  
+  .photo-frame {
+    width: 65px;
+    height: 65px;
+    border: 2px dashed #ccc;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #bbb;
+    background: rgba(255,255,255,0.6);
+  }
+  
+  .sign-line {
+    margin-top: 4px;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+  <!-- 背景桑叶 SVG -->
+  <svg class="bg-leaf l1" viewBox="0 0 100 100">
+    <path class="leaf-svg" d="M50 5 Q60 20 70 25 Q85 30 95 40 Q90 55 80 65 Q70 75 50 90 Q30 75 20 65 Q10 55 5 40 Q15 30 30 25 Q40 20 50 5 Z"/>
+  </svg>
+  <svg class="bg-leaf l2" viewBox="0 0 100 100">
+    <path class="leaf-svg" d="M50 5 Q60 20 70 25 Q85 30 95 40 Q90 55 80 65 Q70 75 50 90 Q30 75 20 65 Q10 55 5 40 Q15 30 30 25 Q40 20 50 5 Z"/>
+  </svg>
+  <svg class="bg-leaf l3" viewBox="0 0 100 100">
+    <path class="leaf-svg" d="M50 5 Q60 20 70 25 Q85 30 95 40 Q90 55 80 65 Q70 75 50 90 Q30 75 20 65 Q10 55 5 40 Q15 30 30 25 Q40 20 50 5 Z"/>
+  </svg>
+  <svg class="bg-leaf l4" viewBox="0 0 100 100">
+    <path class="leaf-svg" d="M50 5 Q60 20 70 25 Q85 30 95 40 Q90 55 80 65 Q70 75 50 90 Q30 75 20 65 Q10 55 5 40 Q15 30 30 25 Q40 20 50 5 Z"/>
+  </svg>
+  
+  <div class="container">
+    <!-- 标题 -->
+    <div class="header">
+      <div class="main-title">
+        <span class="title-icon">🐛</span>蚕的一生<span class="title-icon">🦋</span>
+      </div>
+      <div class="sub-title">—— 科学观察实践海报 ——</div>
+      <div class="title-line"></div>
+    </div>
+    
+    <!-- 阶段一：蚕卵 -->
+    <div class="stage-wrapper">
+      <div class="stage-card stage-1">
+        <div class="stage-num">一</div>
+        <div class="stage-illus">🥚</div>
+        <div class="stage-text">
+          <div class="stage-title">蚕 卵</div>
+          <div class="stage-time"> 观察时间：3 月下旬 — 4 月初（约 10-14 天）</div>
+          <div class="stage-text-desc">
+            蚕卵呈椭圆形，像芝麻一样大小。刚产下的卵是淡黄色或黄色的，经过 1-2 天慢慢变成灰绿色或紫灰色，说明蚕宝宝快要孵化了。卵的表面微微凹陷，用放大镜看能看到细细的纹路。
+          </div>
+          <div class="diary-section">
+            <span class="diary-prefix">📝 观察日记：</span>
+            "今天发现蚕卵的颜色变深了，从淡黄色变成了紫灰色，妈妈说这说明蚕宝宝快要出来了！我用放大镜仔细观察，每一颗卵都小小的，像一粒粒黑芝麻。"
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="arrow">️</div>
+    
+    <!-- 阶段二：蚁蚕 -->
+    <div class="stage-wrapper">
+      <div class="stage-card stage-2">
+        <div class="stage-num">二</div>
+        <div class="stage-illus">🐜</div>
+        <div class="stage-text">
+          <div class="stage-title">蚁 蚕</div>
+          <div class="stage-time">📅 观察时间：4 月初（约 3-5 天）</div>
+          <div class="stage-text-desc">
+            蚕宝宝从卵里孵化出来了！因为又黑又小，像小蚂蚁，所以叫"蚁蚕"。身体长约 2-3 毫米，浑身长满细毛。刚孵化时它们会慢慢爬出来，迫不及待地寻找食物——新鲜的嫩桑叶是它们的最爱！
+          </div>
+          <div class="diary-section">
+            <span class="diary-prefix">📝 观察日记：</span>
+            "蚕宝宝终于孵化了！它们黑黑小小的，真的好像小蚂蚁呀！我小心翼翼地用羽毛把它们扫到桑叶上，它们一碰到桑叶就开始啃，吃得可香了。"
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="arrow">⬇️</div>
+    
+    <!-- 阶段三：蚕宝宝成长 -->
+    <div class="stage-wrapper">
+      <div class="stage-card stage-3">
+        <div class="stage-num">三</div>
+        <div class="stage-illus">🐛</div>
+        <div class="stage-text">
+          <div class="stage-title">蚕宝宝成长期</div>
+          <div class="stage-time">📅 观察时间：4 月中旬 — 5 月中旬（约 25-30 天）</div>
+          <div class="stage-text-desc">
+            这是蚕生长最快的时期！蚕宝宝会经历四次蜕皮（一龄→五龄），身体从黑色变成白色，从几毫米长到 6-7 厘米。它们每天都在不停地吃桑叶，食量越来越大，排出的粪便也从黑色变成绿色。蜕皮时它们会抬起头一动不动，好像在睡觉。
+          </div>
+          <div class="diary-section">
+            <span class="diary-prefix">📝 观察日记：</span>
+            "蚕宝宝已经长到我的手指那么长了！白白胖胖的，摸上去凉凉的、软软的。它们吃桑叶的声音沙沙沙，像下雨一样。今天发现有一条蚕在蜕皮，它抬着头一动不动，我都不敢碰它。"
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="arrow">⬇️</div>
+    
+    <!-- 阶段四：结茧化蛾 -->
+    <div class="stage-wrapper">
+      <div class="stage-card stage-4">
+        <div class="stage-num">四</div>
+        <div class="stage-illus">🦋</div>
+        <div class="stage-text">
+          <div class="stage-title">结茧 · 化蛾 · 产卵</div>
+          <div class="stage-time">📅 观察时间：5 月下旬 — 6 月（约 20-30 天）</div>
+          <div class="stage-text-desc">
+            五龄蚕成熟后，身体变得透明发亮，开始寻找角落吐丝结茧。蚕茧有白色、黄色或粉色。在茧里，蚕变成蛹，再经过 10-15 天，蚕蛾破茧而出！蚕蛾不会飞，只会扇翅膀、交配。雌蛾产下卵后，生命的循环又开始了 🔄
+          </div>
+          <div class="diary-section">
+            <span class="diary-prefix">📝 观察日记：</span>
+            "蚕宝宝开始结茧了！它们吐出细细的丝，把自己裹在里面，过了两天就看到了一个完整的茧，摸上去软软的。两周后，蚕蛾破茧而出，白白的身子，小小的翅膀，好神奇的生命旅程！"
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 知识小贴士 -->
+    <div class="info-box">
+      <div class="info-title">💡 知识小贴士</div>
+      <div class="info-content">
+        <b>🐛 分类：</b>蚕是鳞翅目昆虫，学名 <em>Bombyx mori</em>，完全变态发育（卵→幼虫→蛹→成虫）<br>
+        <b>🍃 食性：</b>蚕只吃桑叶，每天要喂 3-4 次新鲜桑叶<br>
+        <b>🧵 蚕丝：</b>一根蚕丝最长可达 1500 米！中国古代就学会了养蚕缫丝<br>
+        <b>🔄 生命周期：</b>蚕的一生约 50-60 天，一条雌蛾可产 400-500 粒卵
+      </div>
+    </div>
+    
+    <!-- 底部 -->
+    <div class="footer">
+      <div class="footer-left">
+         科学实践作业 · 蚕的一生观察记录
+      </div>
+      <div class="footer-right">
+        <div>📸 此处可粘贴观察照片（2-3 张）</div>
+        <div class="photo-area">
+          <div class="photo-frame">照片 1</div>
+          <div class="photo-frame">照片 2</div>
+          <div class="photo-frame">照片 3</div>
+        </div>
+        <div class="sign-line">
+          ✏️ 姓名：______ &nbsp;&nbsp; 班级：______ &nbsp;&nbsp; 日期：______
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

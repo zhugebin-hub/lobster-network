@@ -1,0 +1,26 @@
+{
+  "name": "lobster-network",
+  "version": "1.0.0",
+  "description": "🦞 小龙虾机器人互联网络 - 让多个钉钉机器人可以互相看到并交流消息",
+  "author": "OpenClaw Community",
+  "license": "MIT",
+  "keywords": [
+    "lobster",
+    "network",
+    "robot",
+    "dingtalk",
+    "multi-bot",
+    "communication"
+  ],
+  "scripts": {
+    "send": "./lobster-network.sh send",
+    "poll": "./lobster-network.sh poll",
+    "status": "./lobster-network.sh status",
+    "cleanup": "./lobster-network.sh cleanup"
+  },
+  "config": {
+    "defaultBotId": "lobster-001",
+    "messageFile": "~/.openclaw/workspace/lobster-messages.json",
+    "pollIntervalSeconds": 30
+  }
+}
