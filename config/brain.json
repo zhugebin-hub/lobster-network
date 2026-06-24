@@ -22,8 +22,14 @@
       "level": "1级",
       "total_problems_solved": 847,
       "wrong_book_count": 23,
-      "strengths": ["死活基础", "手筋基础"],
-      "weaknesses": ["定式变化", "官子计算"]
+      "strengths": [
+        "死活基础",
+        "手筋基础"
+      ],
+      "weaknesses": [
+        "定式变化",
+        "官子计算"
+      ]
     },
     "zhuguxia": {
       "phase": 2,
@@ -32,22 +38,31 @@
       "level": "初段",
       "total_problems_solved": 1023,
       "wrong_book_count": 18,
-      "strengths": ["计算速度", "手筋应用"],
-      "weaknesses": ["布局理论", "官子精度"]
+      "strengths": [
+        "计算速度",
+        "手筋应用"
+      ],
+      "weaknesses": [
+        "布局理论",
+        "官子精度"
+      ]
     }
   },
   "network_stats": {
     "total_messages": 2847,
     "emergence_events": 156,
     "portals_created": 23,
-    "collaboration_tasks": 89
+    "collaboration_tasks": 89,
+    "total_nodes": 6
   },
-  "last_updated": "2026-06-25T06:10:00+08:00",
+  "last_updated": "2026-06-25T06:20:00+08:00",
   "agents": [
     "xiaochen",
     "zhuguxia",
     "hermes",
-    "qoder"
+    "qoder",
+    "lobster-001",
+    "museum-001"
   ],
   "version": "2.0",
   "created": "2026-05-26T15:46:00+08:00"
