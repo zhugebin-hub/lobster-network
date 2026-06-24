@@ -48,7 +48,7 @@ web/
 
 Web 界面通过 RESTful API 与后端通信。
 
-详见 [API 文档](../../api/openapi.yaml)
+详见 [API 文档](../api/openapi.yaml)
 
 ## 许可证
 
