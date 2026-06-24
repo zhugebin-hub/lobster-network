@@ -1,5 +1,5 @@
 """
-小龙虾网络核心模块 V2.2
+小龙虾网络核心模块 V2.1
 """
 
 from .node import Node
@@ -10,8 +10,11 @@ from .node_registry import NodeRegistry, NodeRegistration
 from .lobster_network import LobsterNetwork
 from .trading import TradingSystem, Task, Product, Order, UserProfile
 from .token_economy import TokenEconomy, Transaction, Block, Wallet
+from .smart_contract import SmartContractSystem, SmartContract, ContractCondition
+from .cross_chain import CrossChainSystem, LiquidityPool, CrossChainTransaction, BridgeNode
+from .multi_currency import MultiCurrencySystem, MultiCurrencyWallet, ExchangeRecord
 
-__version__ = "0.4.2"
+__version__ = "0.4.1"
 __all__ = [
     "Node",
     "DialogueEngine",
@@ -32,4 +35,14 @@ __all__ = [
     "Transaction",
     "Block",
     "Wallet",
+    "SmartContractSystem",
+    "SmartContract",
+    "ContractCondition",
+    "CrossChainSystem",
+    "LiquidityPool",
+    "CrossChainTransaction",
+    "BridgeNode",
+    "MultiCurrencySystem",
+    "MultiCurrencyWallet",
+    "ExchangeRecord",
 ]
