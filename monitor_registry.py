@@ -17,7 +17,7 @@ from pathlib import Path
 
 # 路径配置
 SHARED_DIR = "/shared"
-REGISTRY_DIR = f"{SHARED_DIR}/lobster-network-v040"
+REGISTRY_DIR = f"{SHARED_DIR}/registry"
 REGISTRY_FILE = f"{REGISTRY_DIR}/registry.json"
 MONITOR_LOG = f"{SHARED_DIR}/logs/registry_monitor.log"
 REPORT_DIR = f"{SHARED_DIR}/reports"
