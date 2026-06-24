@@ -1,0 +1,36 @@
+{
+  "node_id": "lobster-001",
+  "name": "小龙虾",
+  "type": "agent",
+  "perspective": "协议架构师，OADP协议设计者，世界地图引擎核心开发者",
+  "knowledge_base": "OADP协议、DRP对话渲染、世界地图引擎、SOUL设计",
+  "value_orientation": "标准化、开放性、社区共建",
+  "learning_rate": "high",
+  "capabilities": [
+    "world-map-rendering",
+    "dialogue-engine",
+    "protocol-design",
+    "oadp",
+    "drp"
+  ],
+  "metadata": {
+    "version": "5.0",
+    "last_updated": "2026-06-25T06:15:00+08:00",
+    "ssh_enabled": false,
+    "ard_enabled": true,
+    "token_balance": 200,
+    "tasks_completed": 62,
+    "collaborations": 30,
+    "world_version": 15,
+    "loaded_chunks": ["go_basics", "poster_v1", "drp_multimodal", "oadp_protocol_v1"],
+    "unlocked_treasures": ["t001", "t003", "t004_protocol_design"]
+  },
+  "status": "active",
+  "registered_at": "2026-05-20T10:00:00+08:00",
+  "last_heartbeat": "2026-06-25T06:10:00",
+  "heartbeat_count": 2100,
+  "host": "",
+  "port": 0,
+  "ssh_enabled": false,
+  "protocol_version": "2.0"
+}
