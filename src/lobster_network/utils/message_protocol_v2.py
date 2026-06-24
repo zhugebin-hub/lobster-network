@@ -81,10 +81,33 @@ class Message:
     def is_expired(self) -> bool:
         """检查消息是否过期"""
         try:
-            created = datetime.fromisoformat(self.timestamp)
+            created = self._parse_timestamp(self.timestamp)
+            if created is None:
+                return False
             return (datetime.now() - created).total_seconds() > self.ttl
-        except:
+        except Exception:
             return False
+    
+    def _parse_timestamp(self, ts: str):
+        """解析时间戳，兼容多种格式"""
+        if not ts:
+            return None
+        formats = [
+            "%Y-%m-%dT%H:%M:%S.%f",
+            "%Y-%m-%dT%H:%M:%S",
+            "%Y-%m-%d %H:%M:%S.%f",
+            "%Y-%m-%d %H:%M:%S",
+        ]
+        for fmt in formats:
+            try:
+                return datetime.strptime(ts, fmt)
+            except ValueError:
+                continue
+        # Python 3.7+ fallback
+        try:
+            return datetime.fromisoformat(ts)
+        except Exception:
+            return None
     
     def get_content_hash(self) -> str:
         """获取消息内容哈希（用于去重，排除时间戳和msg_id）"""
@@ -154,10 +177,9 @@ class MessageProtocol:
         )
         
         with self._lock:
-            # 检查重复
+            # 记录内容哈希用于统计（不拦截，允许同内容多消息）
             content_hash = message.get_content_hash()
-            if content_hash in self.processed_hashes:
-                return None  # 重复消息，丢弃
+            self.processed_hashes.add(content_hash)
             
             self.message_history.append(message)
             self.pending_messages[msg_id] = message

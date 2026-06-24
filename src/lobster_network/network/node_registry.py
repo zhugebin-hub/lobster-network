@@ -242,6 +242,23 @@ class NodeRegistry:
                 "nodes": {nid: n.to_dict() for nid, n in self.nodes.items()},
             }
     
+    def _parse_iso(self, s: str) -> Optional[datetime]:
+        """兼容 Python 3.6 的 ISO 时间解析"""
+        if not s:
+            return None
+        formats = [
+            "%Y-%m-%dT%H:%M:%S.%f",
+            "%Y-%m-%dT%H:%M:%S",
+            "%Y-%m-%d %H:%M:%S.%f",
+            "%Y-%m-%d %H:%M:%S",
+        ]
+        for fmt in formats:
+            try:
+                return datetime.strptime(s, fmt)
+            except ValueError:
+                continue
+        return None
+
     def check_health(self) -> Dict:
         """
         检查所有节点健康状态
@@ -254,20 +271,19 @@ class NodeRegistry:
             unhealthy = []
             
             for node_id, node in self.nodes.items():
-                try:
-                    last_hb = datetime.fromisoformat(node.last_heartbeat)
-                    elapsed = (now - last_hb).total_seconds()
-                    
-                    if elapsed > self.heartbeat_timeout * 2:
-                        node.status = "dead"
-                        unhealthy.append(node_id)
-                        self._trigger_callback("status_change", node)
-                    elif elapsed > self.heartbeat_timeout:
-                        node.status = "inactive"
-                        unhealthy.append(node_id)
-                        self._trigger_callback("status_change", node)
-                except:
-                    pass
+                last_hb = self._parse_iso(node.last_heartbeat)
+                if last_hb is None:
+                    continue
+                elapsed = (now - last_hb).total_seconds()
+                
+                if elapsed > self.heartbeat_timeout * 2:
+                    node.status = "dead"
+                    unhealthy.append(node_id)
+                    self._trigger_callback("status_change", node)
+                elif elapsed > self.heartbeat_timeout:
+                    node.status = "inactive"
+                    unhealthy.append(node_id)
+                    self._trigger_callback("status_change", node)
             
             return {
                 "total": len(self.nodes),
