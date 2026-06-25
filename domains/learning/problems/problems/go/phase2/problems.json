@@ -1,8 +1,8 @@
 {
   "domain": "go",
   "phase": "phase2",
-  "total": 58,
-  "generated_at": "2026-06-25T08:34:48.764434",
+  "total": 120,
+  "generated_at": "2026-06-25T20:40:26.021026",
   "problems": [
     {
       "problem_id": "go-phase2-w5-小目定式·一间高挂-001",
@@ -19,7 +19,7 @@
       "knowledge_points": [
         "小目定式·一间高挂"
       ],
-      "created_at": "2026-06-25T08:34:48.760186"
+      "created_at": "2026-06-25T20:40:26.004771"
     },
     {
       "problem_id": "go-phase2-w5-小目定式·一间高挂-002",
@@ -36,7 +36,7 @@
       "knowledge_points": [
         "小目定式·一间高挂"
       ],
-      "created_at": "2026-06-25T08:34:48.760198"
+      "created_at": "2026-06-25T20:40:26.004791"
     },
     {
       "problem_id": "go-phase2-w5-小目定式·二间高挂-001",
@@ -53,7 +53,7 @@
       "knowledge_points": [
         "小目定式·二间高挂"
       ],
-      "created_at": "2026-06-25T08:34:48.760209"
+      "created_at": "2026-06-25T20:40:26.004810"
     },
     {
       "problem_id": "go-phase2-w5-小目定式·二间高挂-002",
@@ -70,7 +70,7 @@
       "knowledge_points": [
         "小目定式·二间高挂"
       ],
-      "created_at": "2026-06-25T08:34:48.760220"
+      "created_at": "2026-06-25T20:40:26.004833"
     },
     {
       "problem_id": "go-phase2-w5-星位定式-001",
@@ -87,7 +87,7 @@
       "knowledge_points": [
         "星位定式"
       ],
-      "created_at": "2026-06-25T08:34:48.760232"
+      "created_at": "2026-06-25T20:40:26.004851"
     },
     {
       "problem_id": "go-phase2-w5-星位定式-002",
@@ -104,7 +104,7 @@
       "knowledge_points": [
         "星位定式"
       ],
-      "created_at": "2026-06-25T08:34:48.760242"
+      "created_at": "2026-06-25T20:40:26.004868"
     },
     {
       "problem_id": "go-phase2-w5-三三定式-001",
@@ -121,7 +121,7 @@
       "knowledge_points": [
         "三三定式"
       ],
-      "created_at": "2026-06-25T08:34:48.760253"
+      "created_at": "2026-06-25T20:40:26.004885"
     },
     {
       "problem_id": "go-phase2-w5-三三定式-002",
@@ -138,7 +138,75 @@
       "knowledge_points": [
         "三三定式"
       ],
-      "created_at": "2026-06-25T08:34:48.760266"
+      "created_at": "2026-06-25T20:40:26.004901"
+    },
+    {
+      "problem_id": "go-phase2-w5-目外定式-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 5,
+      "topic": "目外定式",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "目外定式 #1",
+      "description": "目外定式基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "目外定式"
+      ],
+      "created_at": "2026-06-25T20:40:26.004924"
+    },
+    {
+      "problem_id": "go-phase2-w5-目外定式-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 5,
+      "topic": "目外定式",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "目外定式 #2",
+      "description": "目外定式判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "目外定式"
+      ],
+      "created_at": "2026-06-25T20:40:26.004946"
+    },
+    {
+      "problem_id": "go-phase2-w5-高目定式-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 5,
+      "topic": "高目定式",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高目定式 #1",
+      "description": "高目定式基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高目定式"
+      ],
+      "created_at": "2026-06-25T20:40:26.004969"
+    },
+    {
+      "problem_id": "go-phase2-w5-高目定式-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 5,
+      "topic": "高目定式",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高目定式 #2",
+      "description": "高目定式判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高目定式"
+      ],
+      "created_at": "2026-06-25T20:40:26.004988"
     },
     {
       "problem_id": "go-phase2-w6-定式选择原则-001",
@@ -155,7 +223,7 @@
       "knowledge_points": [
         "定式选择原则"
       ],
-      "created_at": "2026-06-25T08:34:48.760279"
+      "created_at": "2026-06-25T20:40:26.006419"
     },
     {
       "problem_id": "go-phase2-w6-定式选择原则-002",
@@ -172,7 +240,7 @@
       "knowledge_points": [
         "定式选择原则"
       ],
-      "created_at": "2026-06-25T08:34:48.760289"
+      "created_at": "2026-06-25T20:40:26.007294"
     },
     {
       "problem_id": "go-phase2-w6-定式后续变化-001",
@@ -189,7 +257,7 @@
       "knowledge_points": [
         "定式后续变化"
       ],
-      "created_at": "2026-06-25T08:34:48.760301"
+      "created_at": "2026-06-25T20:40:26.007333"
     },
     {
       "problem_id": "go-phase2-w6-定式后续变化-002",
@@ -206,7 +274,7 @@
       "knowledge_points": [
         "定式后续变化"
       ],
-      "created_at": "2026-06-25T08:34:48.760311"
+      "created_at": "2026-06-25T20:40:26.007352"
     },
     {
       "problem_id": "go-phase2-w6-定式与布局配合-001",
@@ -223,7 +291,7 @@
       "knowledge_points": [
         "定式与布局配合"
       ],
-      "created_at": "2026-06-25T08:34:48.760327"
+      "created_at": "2026-06-25T20:40:26.007441"
     },
     {
       "problem_id": "go-phase2-w6-定式与布局配合-002",
@@ -240,7 +308,7 @@
       "knowledge_points": [
         "定式与布局配合"
       ],
-      "created_at": "2026-06-25T08:34:48.760342"
+      "created_at": "2026-06-25T20:40:26.007458"
     },
     {
       "problem_id": "go-phase2-w6-定式常见错误-001",
@@ -257,7 +325,7 @@
       "knowledge_points": [
         "定式常见错误"
       ],
-      "created_at": "2026-06-25T08:34:48.760361"
+      "created_at": "2026-06-25T20:40:26.007477"
     },
     {
       "problem_id": "go-phase2-w6-定式常见错误-002",
@@ -274,7 +342,75 @@
       "knowledge_points": [
         "定式常见错误"
       ],
-      "created_at": "2026-06-25T08:34:48.760372"
+      "created_at": "2026-06-25T20:40:26.007490"
+    },
+    {
+      "problem_id": "go-phase2-w6-定式变着-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 6,
+      "topic": "定式变着",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "定式变着 #1",
+      "description": "定式变着基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式变着"
+      ],
+      "created_at": "2026-06-25T20:40:26.007503"
+    },
+    {
+      "problem_id": "go-phase2-w6-定式变着-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 6,
+      "topic": "定式变着",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "定式变着 #2",
+      "description": "定式变着判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式变着"
+      ],
+      "created_at": "2026-06-25T20:40:26.007515"
+    },
+    {
+      "problem_id": "go-phase2-w6-定式陷阱-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 6,
+      "topic": "定式陷阱",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "定式陷阱 #1",
+      "description": "定式陷阱基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式陷阱"
+      ],
+      "created_at": "2026-06-25T20:40:26.007533"
+    },
+    {
+      "problem_id": "go-phase2-w6-定式陷阱-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 6,
+      "topic": "定式陷阱",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "定式陷阱 #2",
+      "description": "定式陷阱判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式陷阱"
+      ],
+      "created_at": "2026-06-25T20:40:26.007545"
     },
     {
       "problem_id": "go-phase2-w7-挂角方式-001",
@@ -291,7 +427,7 @@
       "knowledge_points": [
         "挂角方式"
       ],
-      "created_at": "2026-06-25T08:34:48.760384"
+      "created_at": "2026-06-25T20:40:26.007562"
     },
     {
       "problem_id": "go-phase2-w7-挂角方式-002",
@@ -308,7 +444,7 @@
       "knowledge_points": [
         "挂角方式"
       ],
-      "created_at": "2026-06-25T08:34:48.760394"
+      "created_at": "2026-06-25T20:40:26.007583"
     },
     {
       "problem_id": "go-phase2-w7-夹击手法-001",
@@ -325,7 +461,7 @@
       "knowledge_points": [
         "夹击手法"
       ],
-      "created_at": "2026-06-25T08:34:48.760406"
+      "created_at": "2026-06-25T20:40:26.007601"
     },
     {
       "problem_id": "go-phase2-w7-夹击手法-002",
@@ -342,7 +478,7 @@
       "knowledge_points": [
         "夹击手法"
       ],
-      "created_at": "2026-06-25T08:34:48.760417"
+      "created_at": "2026-06-25T20:40:26.007617"
     },
     {
       "problem_id": "go-phase2-w7-拆边原则-001",
@@ -359,7 +495,7 @@
       "knowledge_points": [
         "拆边原则"
       ],
-      "created_at": "2026-06-25T08:34:48.760428"
+      "created_at": "2026-06-25T20:40:26.007634"
     },
     {
       "problem_id": "go-phase2-w7-拆边原则-002",
@@ -376,7 +512,7 @@
       "knowledge_points": [
         "拆边原则"
       ],
-      "created_at": "2026-06-25T08:34:48.760440"
+      "created_at": "2026-06-25T20:40:26.007661"
     },
     {
       "problem_id": "go-phase2-w7-根据地-001",
@@ -393,7 +529,7 @@
       "knowledge_points": [
         "根据地"
       ],
-      "created_at": "2026-06-25T08:34:48.760451"
+      "created_at": "2026-06-25T20:40:26.007675"
     },
     {
       "problem_id": "go-phase2-w7-根据地-002",
@@ -410,7 +546,75 @@
       "knowledge_points": [
         "根据地"
       ],
-      "created_at": "2026-06-25T08:34:48.760462"
+      "created_at": "2026-06-25T20:40:26.007689"
+    },
+    {
+      "problem_id": "go-phase2-w7-尖冲-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 7,
+      "topic": "尖冲",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "尖冲 #1",
+      "description": "尖冲基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "尖冲"
+      ],
+      "created_at": "2026-06-25T20:40:26.007701"
+    },
+    {
+      "problem_id": "go-phase2-w7-尖冲-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 7,
+      "topic": "尖冲",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "尖冲 #2",
+      "description": "尖冲判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "尖冲"
+      ],
+      "created_at": "2026-06-25T20:40:26.007712"
+    },
+    {
+      "problem_id": "go-phase2-w7-浅消-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 7,
+      "topic": "浅消",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "浅消 #1",
+      "description": "浅消基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "浅消"
+      ],
+      "created_at": "2026-06-25T20:40:26.007727"
+    },
+    {
+      "problem_id": "go-phase2-w7-浅消-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 7,
+      "topic": "浅消",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "浅消 #2",
+      "description": "浅消判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "浅消"
+      ],
+      "created_at": "2026-06-25T20:40:26.007738"
     },
     {
       "problem_id": "go-phase2-w8-布局基础·三连星-001",
@@ -427,7 +631,7 @@
       "knowledge_points": [
         "布局基础·三连星"
       ],
-      "created_at": "2026-06-25T08:34:48.760477"
+      "created_at": "2026-06-25T20:40:26.007804"
     },
     {
       "problem_id": "go-phase2-w8-布局基础·三连星-002",
@@ -444,7 +648,7 @@
       "knowledge_points": [
         "布局基础·三连星"
       ],
-      "created_at": "2026-06-25T08:34:48.760487"
+      "created_at": "2026-06-25T20:40:26.007881"
     },
     {
       "problem_id": "go-phase2-w8-布局基础·中国流-001",
@@ -461,7 +665,7 @@
       "knowledge_points": [
         "布局基础·中国流"
       ],
-      "created_at": "2026-06-25T08:34:48.760517"
+      "created_at": "2026-06-25T20:40:26.007896"
     },
     {
       "problem_id": "go-phase2-w8-布局基础·中国流-002",
@@ -478,7 +682,7 @@
       "knowledge_points": [
         "布局基础·中国流"
       ],
-      "created_at": "2026-06-25T08:34:48.760530"
+      "created_at": "2026-06-25T20:40:26.007907"
     },
     {
       "problem_id": "go-phase2-w8-布局基础·小林流-001",
@@ -495,7 +699,7 @@
       "knowledge_points": [
         "布局基础·小林流"
       ],
-      "created_at": "2026-06-25T08:34:48.760542"
+      "created_at": "2026-06-25T20:40:26.007919"
     },
     {
       "problem_id": "go-phase2-w8-布局基础·小林流-002",
@@ -512,7 +716,7 @@
       "knowledge_points": [
         "布局基础·小林流"
       ],
-      "created_at": "2026-06-25T08:34:48.760552"
+      "created_at": "2026-06-25T20:40:26.007930"
     },
     {
       "problem_id": "go-phase2-w8-布局中盘过渡-001",
@@ -529,7 +733,7 @@
       "knowledge_points": [
         "布局中盘过渡"
       ],
-      "created_at": "2026-06-25T08:34:48.760564"
+      "created_at": "2026-06-25T20:40:26.007952"
     },
     {
       "problem_id": "go-phase2-w8-布局中盘过渡-002",
@@ -546,7 +750,75 @@
       "knowledge_points": [
         "布局中盘过渡"
       ],
-      "created_at": "2026-06-25T08:34:48.760574"
+      "created_at": "2026-06-25T20:40:26.007962"
+    },
+    {
+      "problem_id": "go-phase2-w8-平行布局-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 8,
+      "topic": "平行布局",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "平行布局 #1",
+      "description": "平行布局基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "平行布局"
+      ],
+      "created_at": "2026-06-25T20:40:26.007974"
+    },
+    {
+      "problem_id": "go-phase2-w8-平行布局-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 8,
+      "topic": "平行布局",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "平行布局 #2",
+      "description": "平行布局判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "平行布局"
+      ],
+      "created_at": "2026-06-25T20:40:26.007985"
+    },
+    {
+      "problem_id": "go-phase2-w8-对角布局-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 8,
+      "topic": "对角布局",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "对角布局 #1",
+      "description": "对角布局基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "对角布局"
+      ],
+      "created_at": "2026-06-25T20:40:26.008002"
+    },
+    {
+      "problem_id": "go-phase2-w8-对角布局-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 8,
+      "topic": "对角布局",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "对角布局 #2",
+      "description": "对角布局判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "对角布局"
+      ],
+      "created_at": "2026-06-25T20:40:26.008020"
     },
     {
       "problem_id": "go-phase2-w9-中盘战斗基础-001",
@@ -563,7 +835,7 @@
       "knowledge_points": [
         "中盘战斗基础"
       ],
-      "created_at": "2026-06-25T08:34:48.760587"
+      "created_at": "2026-06-25T20:40:26.008042"
     },
     {
       "problem_id": "go-phase2-w9-中盘战斗基础-002",
@@ -580,7 +852,7 @@
       "knowledge_points": [
         "中盘战斗基础"
       ],
-      "created_at": "2026-06-25T08:34:48.760599"
+      "created_at": "2026-06-25T20:40:26.008061"
     },
     {
       "problem_id": "go-phase2-w9-攻防要点-001",
@@ -597,7 +869,7 @@
       "knowledge_points": [
         "攻防要点"
       ],
-      "created_at": "2026-06-25T08:34:48.760615"
+      "created_at": "2026-06-25T20:40:26.008078"
     },
     {
       "problem_id": "go-phase2-w9-攻防要点-002",
@@ -614,7 +886,7 @@
       "knowledge_points": [
         "攻防要点"
       ],
-      "created_at": "2026-06-25T08:34:48.760631"
+      "created_at": "2026-06-25T20:40:26.008094"
     },
     {
       "problem_id": "go-phase2-w9-厚薄判断-001",
@@ -631,7 +903,7 @@
       "knowledge_points": [
         "厚薄判断"
       ],
-      "created_at": "2026-06-25T08:34:48.760648"
+      "created_at": "2026-06-25T20:40:26.008309"
     },
     {
       "problem_id": "go-phase2-w9-厚薄判断-002",
@@ -648,7 +920,7 @@
       "knowledge_points": [
         "厚薄判断"
       ],
-      "created_at": "2026-06-25T08:34:48.760664"
+      "created_at": "2026-06-25T20:40:26.008355"
     },
     {
       "problem_id": "go-phase2-w9-形势判断基础-001",
@@ -665,7 +937,7 @@
       "knowledge_points": [
         "形势判断基础"
       ],
-      "created_at": "2026-06-25T08:34:48.760681"
+      "created_at": "2026-06-25T20:40:26.008385"
     },
     {
       "problem_id": "go-phase2-w9-形势判断基础-002",
@@ -682,7 +954,75 @@
       "knowledge_points": [
         "形势判断基础"
       ],
-      "created_at": "2026-06-25T08:34:48.760696"
+      "created_at": "2026-06-25T20:40:26.008397"
+    },
+    {
+      "problem_id": "go-phase2-w9-打入技巧-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 9,
+      "topic": "打入技巧",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "打入技巧 #1",
+      "description": "打入技巧基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "打入技巧"
+      ],
+      "created_at": "2026-06-25T20:40:26.008409"
+    },
+    {
+      "problem_id": "go-phase2-w9-打入技巧-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 9,
+      "topic": "打入技巧",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "打入技巧 #2",
+      "description": "打入技巧判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "打入技巧"
+      ],
+      "created_at": "2026-06-25T20:40:26.008419"
+    },
+    {
+      "problem_id": "go-phase2-w9-治孤技巧-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 9,
+      "topic": "治孤技巧",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "治孤技巧 #1",
+      "description": "治孤技巧基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "治孤技巧"
+      ],
+      "created_at": "2026-06-25T20:40:26.008431"
+    },
+    {
+      "problem_id": "go-phase2-w9-治孤技巧-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 9,
+      "topic": "治孤技巧",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "治孤技巧 #2",
+      "description": "治孤技巧判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "治孤技巧"
+      ],
+      "created_at": "2026-06-25T20:40:26.008446"
     },
     {
       "problem_id": "go-phase2-w10-手筋基础·吃子手筋-001",
@@ -699,7 +1039,7 @@
       "knowledge_points": [
         "手筋基础·吃子手筋"
       ],
-      "created_at": "2026-06-25T08:34:48.760723"
+      "created_at": "2026-06-25T20:40:26.008462"
     },
     {
       "problem_id": "go-phase2-w10-手筋基础·吃子手筋-002",
@@ -716,7 +1056,7 @@
       "knowledge_points": [
         "手筋基础·吃子手筋"
       ],
-      "created_at": "2026-06-25T08:34:48.760740"
+      "created_at": "2026-06-25T20:40:26.008475"
     },
     {
       "problem_id": "go-phase2-w10-手筋基础·连接手筋-001",
@@ -733,7 +1073,7 @@
       "knowledge_points": [
         "手筋基础·连接手筋"
       ],
-      "created_at": "2026-06-25T08:34:48.760756"
+      "created_at": "2026-06-25T20:40:26.008486"
     },
     {
       "problem_id": "go-phase2-w10-手筋基础·连接手筋-002",
@@ -750,7 +1090,7 @@
       "knowledge_points": [
         "手筋基础·连接手筋"
       ],
-      "created_at": "2026-06-25T08:34:48.760767"
+      "created_at": "2026-06-25T20:40:26.008496"
     },
     {
       "problem_id": "go-phase2-w10-手筋基础·死活手筋-001",
@@ -767,7 +1107,7 @@
       "knowledge_points": [
         "手筋基础·死活手筋"
       ],
-      "created_at": "2026-06-25T08:34:48.760780"
+      "created_at": "2026-06-25T20:40:26.008513"
     },
     {
       "problem_id": "go-phase2-w10-手筋基础·死活手筋-002",
@@ -784,7 +1124,7 @@
       "knowledge_points": [
         "手筋基础·死活手筋"
       ],
-      "created_at": "2026-06-25T08:34:48.760790"
+      "created_at": "2026-06-25T20:40:26.008529"
     },
     {
       "problem_id": "go-phase2-w10-手筋综合应用-001",
@@ -801,7 +1141,7 @@
       "knowledge_points": [
         "手筋综合应用"
       ],
-      "created_at": "2026-06-25T08:34:48.760802"
+      "created_at": "2026-06-25T20:40:26.008549"
     },
     {
       "problem_id": "go-phase2-w10-手筋综合应用-002",
@@ -818,7 +1158,75 @@
       "knowledge_points": [
         "手筋综合应用"
       ],
-      "created_at": "2026-06-25T08:34:48.760816"
+      "created_at": "2026-06-25T20:40:26.008563"
+    },
+    {
+      "problem_id": "go-phase2-w10-对杀手筋-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 10,
+      "topic": "对杀手筋",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "对杀手筋 #1",
+      "description": "对杀手筋基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "对杀手筋"
+      ],
+      "created_at": "2026-06-25T20:40:26.008588"
+    },
+    {
+      "problem_id": "go-phase2-w10-对杀手筋-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 10,
+      "topic": "对杀手筋",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "对杀手筋 #2",
+      "description": "对杀手筋判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "对杀手筋"
+      ],
+      "created_at": "2026-06-25T20:40:26.008600"
+    },
+    {
+      "problem_id": "go-phase2-w10-官子手筋-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 10,
+      "topic": "官子手筋",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "官子手筋 #1",
+      "description": "官子手筋基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子手筋"
+      ],
+      "created_at": "2026-06-25T20:40:26.008611"
+    },
+    {
+      "problem_id": "go-phase2-w10-官子手筋-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 10,
+      "topic": "官子手筋",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "官子手筋 #2",
+      "description": "官子手筋判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子手筋"
+      ],
+      "created_at": "2026-06-25T20:40:26.008622"
     },
     {
       "problem_id": "go-phase2-w11-官子基础·大小计算-001",
@@ -835,7 +1243,7 @@
       "knowledge_points": [
         "官子基础·大小计算"
       ],
-      "created_at": "2026-06-25T08:34:48.760834"
+      "created_at": "2026-06-25T20:40:26.008638"
     },
     {
       "problem_id": "go-phase2-w11-官子基础·大小计算-002",
@@ -852,7 +1260,7 @@
       "knowledge_points": [
         "官子基础·大小计算"
       ],
-      "created_at": "2026-06-25T08:34:48.760844"
+      "created_at": "2026-06-25T20:40:26.008648"
     },
     {
       "problem_id": "go-phase2-w11-官子基础·先手官子-001",
@@ -869,7 +1277,7 @@
       "knowledge_points": [
         "官子基础·先手官子"
       ],
-      "created_at": "2026-06-25T08:34:48.760860"
+      "created_at": "2026-06-25T20:40:26.008660"
     },
     {
       "problem_id": "go-phase2-w11-官子基础·先手官子-002",
@@ -886,7 +1294,7 @@
       "knowledge_points": [
         "官子基础·先手官子"
       ],
-      "created_at": "2026-06-25T08:34:48.760872"
+      "created_at": "2026-06-25T20:40:26.008676"
     },
     {
       "problem_id": "go-phase2-w11-官子基础·后手官子-001",
@@ -903,7 +1311,7 @@
       "knowledge_points": [
         "官子基础·后手官子"
       ],
-      "created_at": "2026-06-25T08:34:48.760884"
+      "created_at": "2026-06-25T20:40:26.008688"
     },
     {
       "problem_id": "go-phase2-w11-官子基础·后手官子-002",
@@ -920,7 +1328,7 @@
       "knowledge_points": [
         "官子基础·后手官子"
       ],
-      "created_at": "2026-06-25T08:34:48.760894"
+      "created_at": "2026-06-25T20:40:26.008699"
     },
     {
       "problem_id": "go-phase2-w11-官子综合练习-001",
@@ -937,7 +1345,7 @@
       "knowledge_points": [
         "官子综合练习"
       ],
-      "created_at": "2026-06-25T08:34:48.760906"
+      "created_at": "2026-06-25T20:40:26.008710"
     },
     {
       "problem_id": "go-phase2-w11-官子综合练习-002",
@@ -954,7 +1362,177 @@
       "knowledge_points": [
         "官子综合练习"
       ],
-      "created_at": "2026-06-25T08:34:48.760919"
+      "created_at": "2026-06-25T20:40:26.008720"
+    },
+    {
+      "problem_id": "go-phase2-w11-逆收官子-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 11,
+      "topic": "逆收官子",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "逆收官子 #1",
+      "description": "逆收官子基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "逆收官子"
+      ],
+      "created_at": "2026-06-25T20:40:26.008732"
+    },
+    {
+      "problem_id": "go-phase2-w11-逆收官子-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 11,
+      "topic": "逆收官子",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "逆收官子 #2",
+      "description": "逆收官子判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "逆收官子"
+      ],
+      "created_at": "2026-06-25T20:40:26.008747"
+    },
+    {
+      "problem_id": "go-phase2-w11-双方先手官子-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 11,
+      "topic": "双方先手官子",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "双方先手官子 #1",
+      "description": "双方先手官子基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "双方先手官子"
+      ],
+      "created_at": "2026-06-25T20:40:26.008761"
+    },
+    {
+      "problem_id": "go-phase2-w11-双方先手官子-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 11,
+      "topic": "双方先手官子",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "双方先手官子 #2",
+      "description": "双方先手官子判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "双方先手官子"
+      ],
+      "created_at": "2026-06-25T20:40:26.008771"
+    },
+    {
+      "problem_id": "go-phase2-w12-实战对局分析-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 12,
+      "topic": "实战对局分析",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "实战对局分析 #1",
+      "description": "实战对局分析基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "实战对局分析"
+      ],
+      "created_at": "2026-06-25T20:40:26.008783"
+    },
+    {
+      "problem_id": "go-phase2-w12-实战对局分析-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 12,
+      "topic": "实战对局分析",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "实战对局分析 #2",
+      "description": "实战对局分析判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "实战对局分析"
+      ],
+      "created_at": "2026-06-25T20:40:26.008793"
+    },
+    {
+      "problem_id": "go-phase2-w12-名局研究-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 12,
+      "topic": "名局研究",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "名局研究 #1",
+      "description": "名局研究基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "名局研究"
+      ],
+      "created_at": "2026-06-25T20:40:26.008807"
+    },
+    {
+      "problem_id": "go-phase2-w12-名局研究-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 12,
+      "topic": "名局研究",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "名局研究 #2",
+      "description": "名局研究判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "名局研究"
+      ],
+      "created_at": "2026-06-25T20:40:26.008817"
+    },
+    {
+      "problem_id": "go-phase2-w12-复盘技巧-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 12,
+      "topic": "复盘技巧",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "复盘技巧 #1",
+      "description": "复盘技巧基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "复盘技巧"
+      ],
+      "created_at": "2026-06-25T20:40:26.008832"
+    },
+    {
+      "problem_id": "go-phase2-w12-复盘技巧-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 12,
+      "topic": "复盘技巧",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "复盘技巧 #2",
+      "description": "复盘技巧判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "复盘技巧"
+      ],
+      "created_at": "2026-06-25T20:40:26.008842"
     },
     {
       "problem_id": "go-phase2-w12-第二阶段综合考核-001",
@@ -971,7 +1549,7 @@
       "knowledge_points": [
         "第二阶段综合考核"
       ],
-      "created_at": "2026-06-25T08:34:48.760931"
+      "created_at": "2026-06-25T20:40:26.008853"
     },
     {
       "problem_id": "go-phase2-w12-第二阶段综合考核-002",
@@ -988,7 +1566,483 @@
       "knowledge_points": [
         "第二阶段综合考核"
       ],
-      "created_at": "2026-06-25T08:34:48.760946"
+      "created_at": "2026-06-25T20:40:26.008863"
+    },
+    {
+      "problem_id": "go-phase2-w12-综合练习-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 12,
+      "topic": "综合练习",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "综合练习 #1",
+      "description": "综合练习基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "综合练习"
+      ],
+      "created_at": "2026-06-25T20:40:26.008875"
+    },
+    {
+      "problem_id": "go-phase2-w12-综合练习-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 12,
+      "topic": "综合练习",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "综合练习 #2",
+      "description": "综合练习判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "综合练习"
+      ],
+      "created_at": "2026-06-25T20:40:26.008885"
+    },
+    {
+      "problem_id": "go-phase2-w12-阶段测试-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 12,
+      "topic": "阶段测试",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "阶段测试 #1",
+      "description": "阶段测试基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "阶段测试"
+      ],
+      "created_at": "2026-06-25T20:40:26.008896"
+    },
+    {
+      "problem_id": "go-phase2-w12-阶段测试-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 12,
+      "topic": "阶段测试",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "阶段测试 #2",
+      "description": "阶段测试判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "阶段测试"
+      ],
+      "created_at": "2026-06-25T20:40:26.008912"
+    },
+    {
+      "problem_id": "go-phase2-w13-中盘战术综合-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 13,
+      "topic": "中盘战术综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "中盘战术综合 #1",
+      "description": "中盘战术综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "中盘战术综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.008925"
+    },
+    {
+      "problem_id": "go-phase2-w13-中盘战术综合-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 13,
+      "topic": "中盘战术综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "中盘战术综合 #2",
+      "description": "中盘战术综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "中盘战术综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.008937"
+    },
+    {
+      "problem_id": "go-phase2-w13-攻防转换-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 13,
+      "topic": "攻防转换",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "攻防转换 #1",
+      "description": "攻防转换基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "攻防转换"
+      ],
+      "created_at": "2026-06-25T20:40:26.008949"
+    },
+    {
+      "problem_id": "go-phase2-w13-攻防转换-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 13,
+      "topic": "攻防转换",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "攻防转换 #2",
+      "description": "攻防转换判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "攻防转换"
+      ],
+      "created_at": "2026-06-25T20:40:26.008959"
+    },
+    {
+      "problem_id": "go-phase2-w13-模样与实地-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 13,
+      "topic": "模样与实地",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "模样与实地 #1",
+      "description": "模样与实地基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "模样与实地"
+      ],
+      "created_at": "2026-06-25T20:40:26.008970"
+    },
+    {
+      "problem_id": "go-phase2-w13-模样与实地-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 13,
+      "topic": "模样与实地",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "模样与实地 #2",
+      "description": "模样与实地判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "模样与实地"
+      ],
+      "created_at": "2026-06-25T20:40:26.008990"
+    },
+    {
+      "problem_id": "go-phase2-w13-厚薄运用-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 13,
+      "topic": "厚薄运用",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "厚薄运用 #1",
+      "description": "厚薄运用基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "厚薄运用"
+      ],
+      "created_at": "2026-06-25T20:40:26.009001"
+    },
+    {
+      "problem_id": "go-phase2-w13-厚薄运用-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 13,
+      "topic": "厚薄运用",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "厚薄运用 #2",
+      "description": "厚薄运用判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "厚薄运用"
+      ],
+      "created_at": "2026-06-25T20:40:26.009012"
+    },
+    {
+      "problem_id": "go-phase2-w13-全局观-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 13,
+      "topic": "全局观",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "全局观 #1",
+      "description": "全局观基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "全局观"
+      ],
+      "created_at": "2026-06-25T20:40:26.009023"
+    },
+    {
+      "problem_id": "go-phase2-w13-全局观-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 13,
+      "topic": "全局观",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "全局观 #2",
+      "description": "全局观判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "全局观"
+      ],
+      "created_at": "2026-06-25T20:40:26.009033"
+    },
+    {
+      "problem_id": "go-phase2-w13-战术选择-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 13,
+      "topic": "战术选择",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "战术选择 #1",
+      "description": "战术选择基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "战术选择"
+      ],
+      "created_at": "2026-06-25T20:40:26.009045"
+    },
+    {
+      "problem_id": "go-phase2-w13-战术选择-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 13,
+      "topic": "战术选择",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "战术选择 #2",
+      "description": "战术选择判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "战术选择"
+      ],
+      "created_at": "2026-06-25T20:40:26.009055"
+    },
+    {
+      "problem_id": "go-phase2-w14-定式综合应用-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 14,
+      "topic": "定式综合应用",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "定式综合应用 #1",
+      "description": "定式综合应用基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式综合应用"
+      ],
+      "created_at": "2026-06-25T20:40:26.009070"
+    },
+    {
+      "problem_id": "go-phase2-w14-定式综合应用-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 14,
+      "topic": "定式综合应用",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "定式综合应用 #2",
+      "description": "定式综合应用判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式综合应用"
+      ],
+      "created_at": "2026-06-25T20:40:26.009085"
+    },
+    {
+      "problem_id": "go-phase2-w14-布局综合-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 14,
+      "topic": "布局综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "布局综合 #1",
+      "description": "布局综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009145"
+    },
+    {
+      "problem_id": "go-phase2-w14-布局综合-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 14,
+      "topic": "布局综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "布局综合 #2",
+      "description": "布局综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009165"
+    },
+    {
+      "problem_id": "go-phase2-w14-中盘综合-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 14,
+      "topic": "中盘综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "中盘综合 #1",
+      "description": "中盘综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "中盘综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009188"
+    },
+    {
+      "problem_id": "go-phase2-w14-中盘综合-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 14,
+      "topic": "中盘综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "中盘综合 #2",
+      "description": "中盘综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "中盘综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009204"
+    },
+    {
+      "problem_id": "go-phase2-w14-官子综合-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 14,
+      "topic": "官子综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "官子综合 #1",
+      "description": "官子综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009221"
+    },
+    {
+      "problem_id": "go-phase2-w14-官子综合-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 14,
+      "topic": "官子综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "官子综合 #2",
+      "description": "官子综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009243"
+    },
+    {
+      "problem_id": "go-phase2-w14-实战综合-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 14,
+      "topic": "实战综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "实战综合 #1",
+      "description": "实战综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "实战综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009320"
+    },
+    {
+      "problem_id": "go-phase2-w14-实战综合-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 14,
+      "topic": "实战综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "实战综合 #2",
+      "description": "实战综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "实战综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009337"
+    },
+    {
+      "problem_id": "go-phase2-w14-阶段考核-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 14,
+      "topic": "阶段考核",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "阶段考核 #1",
+      "description": "阶段考核基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "阶段考核"
+      ],
+      "created_at": "2026-06-25T20:40:26.009348"
+    },
+    {
+      "problem_id": "go-phase2-w14-阶段考核-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 14,
+      "topic": "阶段考核",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "阶段考核 #2",
+      "description": "阶段考核判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "阶段考核"
+      ],
+      "created_at": "2026-06-25T20:40:26.009359"
     }
   ]
 }

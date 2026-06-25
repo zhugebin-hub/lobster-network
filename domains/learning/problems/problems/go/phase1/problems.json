@@ -1,8 +1,8 @@
 {
   "domain": "go",
   "phase": "phase1",
-  "total": 33,
-  "generated_at": "2026-06-25T08:34:48.762222",
+  "total": 73,
+  "generated_at": "2026-06-25T20:40:26.015707",
   "problems": [
     {
       "problem_id": "go-phase1-w1-气的概念-001",
@@ -19,7 +19,7 @@
       "knowledge_points": [
         "气的概念"
       ],
-      "created_at": "2026-06-25T08:34:48.759602"
+      "created_at": "2026-06-25T20:40:26.003367"
     },
     {
       "problem_id": "go-phase1-w1-气的概念-002",
@@ -36,7 +36,7 @@
       "knowledge_points": [
         "气的概念"
       ],
-      "created_at": "2026-06-25T08:34:48.759634"
+      "created_at": "2026-06-25T20:40:26.003434"
     },
     {
       "problem_id": "go-phase1-w1-吃子基础-001",
@@ -47,13 +47,13 @@
       "type": "选择",
       "difficulty": "入门",
       "title": "吃子基础 #1",
-      "description": "黑棋有5口气，白棋有1口气，谁先吃谁？",
+      "description": "黑棋有4口气，白棋有4口气，谁先吃谁？",
       "answer": "标准答案",
       "solution": "详细解析",
       "knowledge_points": [
         "吃子基础"
       ],
-      "created_at": "2026-06-25T08:34:48.759654"
+      "created_at": "2026-06-25T20:40:26.003455"
     },
     {
       "problem_id": "go-phase1-w1-吃子基础-002",
@@ -70,7 +70,7 @@
       "knowledge_points": [
         "吃子基础"
       ],
-      "created_at": "2026-06-25T08:34:48.759665"
+      "created_at": "2026-06-25T20:40:26.003471"
     },
     {
       "problem_id": "go-phase1-w1-吃子基础-003",
@@ -87,7 +87,7 @@
       "knowledge_points": [
         "吃子基础"
       ],
-      "created_at": "2026-06-25T08:34:48.759677"
+      "created_at": "2026-06-25T20:40:26.003488"
     },
     {
       "problem_id": "go-phase1-w1-禁入点-001",
@@ -104,7 +104,7 @@
       "knowledge_points": [
         "禁入点"
       ],
-      "created_at": "2026-06-25T08:34:48.759691"
+      "created_at": "2026-06-25T20:40:26.003510"
     },
     {
       "problem_id": "go-phase1-w1-禁入点-002",
@@ -121,7 +121,7 @@
       "knowledge_points": [
         "禁入点"
       ],
-      "created_at": "2026-06-25T08:34:48.759704"
+      "created_at": "2026-06-25T20:40:26.003535"
     },
     {
       "problem_id": "go-phase1-w1-打吃-001",
@@ -138,7 +138,7 @@
       "knowledge_points": [
         "打吃"
       ],
-      "created_at": "2026-06-25T08:34:48.759717"
+      "created_at": "2026-06-25T20:40:26.003553"
     },
     {
       "problem_id": "go-phase1-w1-打吃-002",
@@ -155,7 +155,75 @@
       "knowledge_points": [
         "打吃"
       ],
-      "created_at": "2026-06-25T08:34:48.759828"
+      "created_at": "2026-06-25T20:40:26.003577"
+    },
+    {
+      "problem_id": "go-phase1-w1-提子规则-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "提子规则",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "提子规则 #1",
+      "description": "提子规则基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "提子规则"
+      ],
+      "created_at": "2026-06-25T20:40:26.003597"
+    },
+    {
+      "problem_id": "go-phase1-w1-提子规则-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "提子规则",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "提子规则 #2",
+      "description": "提子规则判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "提子规则"
+      ],
+      "created_at": "2026-06-25T20:40:26.003609"
+    },
+    {
+      "problem_id": "go-phase1-w1-禁着点-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "禁着点",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "禁着点 #1",
+      "description": "禁着点基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "禁着点"
+      ],
+      "created_at": "2026-06-25T20:40:26.003621"
+    },
+    {
+      "problem_id": "go-phase1-w1-禁着点-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "禁着点",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "禁着点 #2",
+      "description": "禁着点判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "禁着点"
+      ],
+      "created_at": "2026-06-25T20:40:26.003632"
     },
     {
       "problem_id": "go-phase1-w2-连接与切断-001",
@@ -166,13 +234,13 @@
       "type": "选择",
       "difficulty": "入门",
       "title": "连接与切断 #1",
-      "description": "黑棋应该连接白棋",
+      "description": "黑棋应该切断白棋",
       "answer": "标准答案",
       "solution": "详细解析",
       "knowledge_points": [
         "连接与切断"
       ],
-      "created_at": "2026-06-25T08:34:48.759850"
+      "created_at": "2026-06-25T20:40:26.003665"
     },
     {
       "problem_id": "go-phase1-w2-连接与切断-002",
@@ -189,7 +257,7 @@
       "knowledge_points": [
         "连接与切断"
       ],
-      "created_at": "2026-06-25T08:34:48.759861"
+      "created_at": "2026-06-25T20:40:26.003681"
     },
     {
       "problem_id": "go-phase1-w2-逃子-001",
@@ -206,7 +274,7 @@
       "knowledge_points": [
         "逃子"
       ],
-      "created_at": "2026-06-25T08:34:48.759874"
+      "created_at": "2026-06-25T20:40:26.003709"
     },
     {
       "problem_id": "go-phase1-w2-逃子-002",
@@ -223,7 +291,7 @@
       "knowledge_points": [
         "逃子"
       ],
-      "created_at": "2026-06-25T08:34:48.759884"
+      "created_at": "2026-06-25T20:40:26.003724"
     },
     {
       "problem_id": "go-phase1-w2-双打吃-001",
@@ -240,7 +308,7 @@
       "knowledge_points": [
         "双打吃"
       ],
-      "created_at": "2026-06-25T08:34:48.759904"
+      "created_at": "2026-06-25T20:40:26.003744"
     },
     {
       "problem_id": "go-phase1-w2-双打吃-002",
@@ -257,7 +325,7 @@
       "knowledge_points": [
         "双打吃"
       ],
-      "created_at": "2026-06-25T08:34:48.759915"
+      "created_at": "2026-06-25T20:40:26.003760"
     },
     {
       "problem_id": "go-phase1-w2-征子-001",
@@ -274,7 +342,7 @@
       "knowledge_points": [
         "征子"
       ],
-      "created_at": "2026-06-25T08:34:48.759927"
+      "created_at": "2026-06-25T20:40:26.003772"
     },
     {
       "problem_id": "go-phase1-w2-征子-002",
@@ -291,7 +359,75 @@
       "knowledge_points": [
         "征子"
       ],
-      "created_at": "2026-06-25T08:34:48.759938"
+      "created_at": "2026-06-25T20:40:26.003783"
+    },
+    {
+      "problem_id": "go-phase1-w2-门吃-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "门吃",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "门吃 #1",
+      "description": "门吃基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "门吃"
+      ],
+      "created_at": "2026-06-25T20:40:26.003795"
+    },
+    {
+      "problem_id": "go-phase1-w2-门吃-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "门吃",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "门吃 #2",
+      "description": "门吃判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "门吃"
+      ],
+      "created_at": "2026-06-25T20:40:26.003809"
+    },
+    {
+      "problem_id": "go-phase1-w2-抱吃-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "抱吃",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "抱吃 #1",
+      "description": "抱吃基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "抱吃"
+      ],
+      "created_at": "2026-06-25T20:40:26.003821"
+    },
+    {
+      "problem_id": "go-phase1-w2-抱吃-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "抱吃",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "抱吃 #2",
+      "description": "抱吃判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "抱吃"
+      ],
+      "created_at": "2026-06-25T20:40:26.003831"
     },
     {
       "problem_id": "go-phase1-w3-扑与倒扑-001",
@@ -308,7 +444,7 @@
       "knowledge_points": [
         "扑与倒扑"
       ],
-      "created_at": "2026-06-25T08:34:48.759951"
+      "created_at": "2026-06-25T20:40:26.003845"
     },
     {
       "problem_id": "go-phase1-w3-扑与倒扑-002",
@@ -325,7 +461,7 @@
       "knowledge_points": [
         "扑与倒扑"
       ],
-      "created_at": "2026-06-25T08:34:48.759962"
+      "created_at": "2026-06-25T20:40:26.003856"
     },
     {
       "problem_id": "go-phase1-w3-枷吃-001",
@@ -342,7 +478,7 @@
       "knowledge_points": [
         "枷吃"
       ],
-      "created_at": "2026-06-25T08:34:48.759978"
+      "created_at": "2026-06-25T20:40:26.003868"
     },
     {
       "problem_id": "go-phase1-w3-枷吃-002",
@@ -359,7 +495,7 @@
       "knowledge_points": [
         "枷吃"
       ],
-      "created_at": "2026-06-25T08:34:48.759992"
+      "created_at": "2026-06-25T20:40:26.003878"
     },
     {
       "problem_id": "go-phase1-w3-接不归-001",
@@ -376,7 +512,7 @@
       "knowledge_points": [
         "接不归"
       ],
-      "created_at": "2026-06-25T08:34:48.760004"
+      "created_at": "2026-06-25T20:40:26.003978"
     },
     {
       "problem_id": "go-phase1-w3-接不归-002",
@@ -393,7 +529,7 @@
       "knowledge_points": [
         "接不归"
       ],
-      "created_at": "2026-06-25T08:34:48.760015"
+      "created_at": "2026-06-25T20:40:26.004000"
     },
     {
       "problem_id": "go-phase1-w3-倒脱靴-001",
@@ -410,7 +546,7 @@
       "knowledge_points": [
         "倒脱靴"
       ],
-      "created_at": "2026-06-25T08:34:48.760026"
+      "created_at": "2026-06-25T20:40:26.004013"
     },
     {
       "problem_id": "go-phase1-w3-倒脱靴-002",
@@ -427,7 +563,75 @@
       "knowledge_points": [
         "倒脱靴"
       ],
-      "created_at": "2026-06-25T08:34:48.760037"
+      "created_at": "2026-06-25T20:40:26.004027"
+    },
+    {
+      "problem_id": "go-phase1-w3-胀死牛-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "胀死牛",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "胀死牛 #1",
+      "description": "胀死牛基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "胀死牛"
+      ],
+      "created_at": "2026-06-25T20:40:26.004039"
+    },
+    {
+      "problem_id": "go-phase1-w3-胀死牛-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "胀死牛",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "胀死牛 #2",
+      "description": "胀死牛判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "胀死牛"
+      ],
+      "created_at": "2026-06-25T20:40:26.004050"
+    },
+    {
+      "problem_id": "go-phase1-w3-倒扑-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "倒扑",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "倒扑 #1",
+      "description": "倒扑基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "倒扑"
+      ],
+      "created_at": "2026-06-25T20:40:26.004062"
+    },
+    {
+      "problem_id": "go-phase1-w3-倒扑-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "倒扑",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "倒扑 #2",
+      "description": "倒扑判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "倒扑"
+      ],
+      "created_at": "2026-06-25T20:40:26.004079"
     },
     {
       "problem_id": "go-phase1-w4-两眼活棋-001",
@@ -444,7 +648,7 @@
       "knowledge_points": [
         "两眼活棋"
       ],
-      "created_at": "2026-06-25T08:34:48.760049"
+      "created_at": "2026-06-25T20:40:26.004094"
     },
     {
       "problem_id": "go-phase1-w4-两眼活棋-002",
@@ -461,7 +665,7 @@
       "knowledge_points": [
         "两眼活棋"
       ],
-      "created_at": "2026-06-25T08:34:48.760059"
+      "created_at": "2026-06-25T20:40:26.004175"
     },
     {
       "problem_id": "go-phase1-w4-基本死活-001",
@@ -472,13 +676,13 @@
       "type": "判断",
       "difficulty": "入门",
       "title": "基本死活 #1",
-      "description": "白棋是劫",
+      "description": "白棋是死",
       "answer": "标准答案",
       "solution": "详细解析",
       "knowledge_points": [
         "基本死活"
       ],
-      "created_at": "2026-06-25T08:34:48.760075"
+      "created_at": "2026-06-25T20:40:26.004202"
     },
     {
       "problem_id": "go-phase1-w4-基本死活-002",
@@ -495,7 +699,7 @@
       "knowledge_points": [
         "基本死活"
       ],
-      "created_at": "2026-06-25T08:34:48.760085"
+      "created_at": "2026-06-25T20:40:26.004218"
     },
     {
       "problem_id": "go-phase1-w4-劫的概念-001",
@@ -512,7 +716,7 @@
       "knowledge_points": [
         "劫的概念"
       ],
-      "created_at": "2026-06-25T08:34:48.760096"
+      "created_at": "2026-06-25T20:40:26.004299"
     },
     {
       "problem_id": "go-phase1-w4-劫的概念-002",
@@ -529,7 +733,75 @@
       "knowledge_points": [
         "劫的概念"
       ],
-      "created_at": "2026-06-25T08:34:48.760143"
+      "created_at": "2026-06-25T20:40:26.004317"
+    },
+    {
+      "problem_id": "go-phase1-w4-缓气劫-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "缓气劫",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "缓气劫 #1",
+      "description": "缓气劫基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "缓气劫"
+      ],
+      "created_at": "2026-06-25T20:40:26.004332"
+    },
+    {
+      "problem_id": "go-phase1-w4-缓气劫-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "缓气劫",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "缓气劫 #2",
+      "description": "缓气劫判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "缓气劫"
+      ],
+      "created_at": "2026-06-25T20:40:26.004345"
+    },
+    {
+      "problem_id": "go-phase1-w4-紧气劫-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "紧气劫",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "紧气劫 #1",
+      "description": "紧气劫基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "紧气劫"
+      ],
+      "created_at": "2026-06-25T20:40:26.004358"
+    },
+    {
+      "problem_id": "go-phase1-w4-紧气劫-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "紧气劫",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "紧气劫 #2",
+      "description": "紧气劫判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "紧气劫"
+      ],
+      "created_at": "2026-06-25T20:40:26.004369"
     },
     {
       "problem_id": "go-phase1-w4-第一阶段考核-001",
@@ -546,7 +818,7 @@
       "knowledge_points": [
         "第一阶段考核"
       ],
-      "created_at": "2026-06-25T08:34:48.760155"
+      "created_at": "2026-06-25T20:40:26.004395"
     },
     {
       "problem_id": "go-phase1-w4-第一阶段考核-002",
@@ -563,7 +835,415 @@
       "knowledge_points": [
         "第一阶段考核"
       ],
-      "created_at": "2026-06-25T08:34:48.760166"
+      "created_at": "2026-06-25T20:40:26.004406"
+    },
+    {
+      "problem_id": "go-phase1-w5-吃子技巧综合-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "吃子技巧综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "吃子技巧综合 #1",
+      "description": "吃子技巧综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "吃子技巧综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.004422"
+    },
+    {
+      "problem_id": "go-phase1-w5-吃子技巧综合-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "吃子技巧综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "吃子技巧综合 #2",
+      "description": "吃子技巧综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "吃子技巧综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.004433"
+    },
+    {
+      "problem_id": "go-phase1-w5-连接技巧-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "连接技巧",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "连接技巧 #1",
+      "description": "连接技巧基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "连接技巧"
+      ],
+      "created_at": "2026-06-25T20:40:26.004444"
+    },
+    {
+      "problem_id": "go-phase1-w5-连接技巧-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "连接技巧",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "连接技巧 #2",
+      "description": "连接技巧判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "连接技巧"
+      ],
+      "created_at": "2026-06-25T20:40:26.004455"
+    },
+    {
+      "problem_id": "go-phase1-w5-切断技巧-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "切断技巧",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "切断技巧 #1",
+      "description": "切断技巧基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "切断技巧"
+      ],
+      "created_at": "2026-06-25T20:40:26.004466"
+    },
+    {
+      "problem_id": "go-phase1-w5-切断技巧-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "切断技巧",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "切断技巧 #2",
+      "description": "切断技巧判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "切断技巧"
+      ],
+      "created_at": "2026-06-25T20:40:26.004477"
+    },
+    {
+      "problem_id": "go-phase1-w5-逃子技巧-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "逃子技巧",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "逃子技巧 #1",
+      "description": "逃子技巧基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "逃子技巧"
+      ],
+      "created_at": "2026-06-25T20:40:26.004488"
+    },
+    {
+      "problem_id": "go-phase1-w5-逃子技巧-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "逃子技巧",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "逃子技巧 #2",
+      "description": "逃子技巧判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "逃子技巧"
+      ],
+      "created_at": "2026-06-25T20:40:26.004501"
+    },
+    {
+      "problem_id": "go-phase1-w5-对杀基础-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "对杀基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "对杀基础 #1",
+      "description": "对杀基础基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "对杀基础"
+      ],
+      "created_at": "2026-06-25T20:40:26.004514"
+    },
+    {
+      "problem_id": "go-phase1-w5-对杀基础-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "对杀基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "对杀基础 #2",
+      "description": "对杀基础判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "对杀基础"
+      ],
+      "created_at": "2026-06-25T20:40:26.004527"
+    },
+    {
+      "problem_id": "go-phase1-w5-双活基础-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "双活基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "双活基础 #1",
+      "description": "双活基础基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "双活基础"
+      ],
+      "created_at": "2026-06-25T20:40:26.004538"
+    },
+    {
+      "problem_id": "go-phase1-w5-双活基础-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "双活基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "双活基础 #2",
+      "description": "双活基础判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "双活基础"
+      ],
+      "created_at": "2026-06-25T20:40:26.004548"
+    },
+    {
+      "problem_id": "go-phase1-w6-死活综合练习-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "死活综合练习",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "死活综合练习 #1",
+      "description": "死活综合练习基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "死活综合练习"
+      ],
+      "created_at": "2026-06-25T20:40:26.004561"
+    },
+    {
+      "problem_id": "go-phase1-w6-死活综合练习-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "死活综合练习",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "死活综合练习 #2",
+      "description": "死活综合练习判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "死活综合练习"
+      ],
+      "created_at": "2026-06-25T20:40:26.004580"
+    },
+    {
+      "problem_id": "go-phase1-w6-手筋基础-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "手筋基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "手筋基础 #1",
+      "description": "手筋基础基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "手筋基础"
+      ],
+      "created_at": "2026-06-25T20:40:26.004592"
+    },
+    {
+      "problem_id": "go-phase1-w6-手筋基础-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "手筋基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "手筋基础 #2",
+      "description": "手筋基础判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "手筋基础"
+      ],
+      "created_at": "2026-06-25T20:40:26.004603"
+    },
+    {
+      "problem_id": "go-phase1-w6-官子入门-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "官子入门",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "官子入门 #1",
+      "description": "官子入门基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子入门"
+      ],
+      "created_at": "2026-06-25T20:40:26.004614"
+    },
+    {
+      "problem_id": "go-phase1-w6-官子入门-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "官子入门",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "官子入门 #2",
+      "description": "官子入门判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子入门"
+      ],
+      "created_at": "2026-06-25T20:40:26.004625"
+    },
+    {
+      "problem_id": "go-phase1-w6-布局入门-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "布局入门",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "布局入门 #1",
+      "description": "布局入门基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局入门"
+      ],
+      "created_at": "2026-06-25T20:40:26.004642"
+    },
+    {
+      "problem_id": "go-phase1-w6-布局入门-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "布局入门",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "布局入门 #2",
+      "description": "布局入门判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局入门"
+      ],
+      "created_at": "2026-06-25T20:40:26.004658"
+    },
+    {
+      "problem_id": "go-phase1-w6-实战入门-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "实战入门",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "实战入门 #1",
+      "description": "实战入门基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "实战入门"
+      ],
+      "created_at": "2026-06-25T20:40:26.004684"
+    },
+    {
+      "problem_id": "go-phase1-w6-实战入门-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "实战入门",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "实战入门 #2",
+      "description": "实战入门判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "实战入门"
+      ],
+      "created_at": "2026-06-25T20:40:26.004700"
+    },
+    {
+      "problem_id": "go-phase1-w6-阶段考核-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "阶段考核",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "阶段考核 #1",
+      "description": "阶段考核基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "阶段考核"
+      ],
+      "created_at": "2026-06-25T20:40:26.004718"
+    },
+    {
+      "problem_id": "go-phase1-w6-阶段考核-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "阶段考核",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "阶段考核 #2",
+      "description": "阶段考核判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "阶段考核"
+      ],
+      "created_at": "2026-06-25T20:40:26.004734"
     }
   ]
 }

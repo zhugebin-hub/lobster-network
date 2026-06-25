@@ -1,8 +1,8 @@
 {
   "domain": "poster",
   "phase": "phase3",
-  "total": 64,
-  "generated_at": "2026-06-25T13:23:36.233929",
+  "total": 145,
+  "generated_at": "2026-06-25T20:42:04.694524",
   "problems": [
     {
       "problem_id": "poster-phase3-w11-AI辅助设计-001",
@@ -19,7 +19,7 @@
       "knowledge_points": [
         "AI辅助设计"
       ],
-      "created_at": "2026-06-25T13:23:36.222874"
+      "created_at": "2026-06-25T20:42:04.684488"
     },
     {
       "problem_id": "poster-phase3-w11-AI辅助设计-002",
@@ -36,7 +36,7 @@
       "knowledge_points": [
         "AI辅助设计"
       ],
-      "created_at": "2026-06-25T13:23:36.222879"
+      "created_at": "2026-06-25T20:42:04.684491"
     },
     {
       "problem_id": "poster-phase3-w11-AI辅助设计-003",
@@ -53,7 +53,7 @@
       "knowledge_points": [
         "AI辅助设计"
       ],
-      "created_at": "2026-06-25T13:23:36.222885"
+      "created_at": "2026-06-25T20:42:04.684495"
     },
     {
       "problem_id": "poster-phase3-w11-AI辅助设计-004",
@@ -70,7 +70,7 @@
       "knowledge_points": [
         "AI辅助设计"
       ],
-      "created_at": "2026-06-25T13:23:36.222889"
+      "created_at": "2026-06-25T20:42:04.684497"
     },
     {
       "problem_id": "poster-phase3-w11-Midjourney提示词-001",
@@ -87,7 +87,7 @@
       "knowledge_points": [
         "Midjourney提示词"
       ],
-      "created_at": "2026-06-25T13:23:36.222894"
+      "created_at": "2026-06-25T20:42:04.684509"
     },
     {
       "problem_id": "poster-phase3-w11-Midjourney提示词-002",
@@ -104,7 +104,7 @@
       "knowledge_points": [
         "Midjourney提示词"
       ],
-      "created_at": "2026-06-25T13:23:36.222897"
+      "created_at": "2026-06-25T20:42:04.684512"
     },
     {
       "problem_id": "poster-phase3-w11-Midjourney提示词-003",
@@ -121,7 +121,7 @@
       "knowledge_points": [
         "Midjourney提示词"
       ],
-      "created_at": "2026-06-25T13:23:36.222900"
+      "created_at": "2026-06-25T20:42:04.684515"
     },
     {
       "problem_id": "poster-phase3-w11-DALL-E应用-001",
@@ -138,7 +138,7 @@
       "knowledge_points": [
         "DALL-E应用"
       ],
-      "created_at": "2026-06-25T13:23:36.222905"
+      "created_at": "2026-06-25T20:42:04.684519"
     },
     {
       "problem_id": "poster-phase3-w11-DALL-E应用-002",
@@ -155,7 +155,7 @@
       "knowledge_points": [
         "DALL-E应用"
       ],
-      "created_at": "2026-06-25T13:23:36.222908"
+      "created_at": "2026-06-25T20:42:04.684522"
     },
     {
       "problem_id": "poster-phase3-w11-DALL-E应用-003",
@@ -172,7 +172,7 @@
       "knowledge_points": [
         "DALL-E应用"
       ],
-      "created_at": "2026-06-25T13:23:36.222911"
+      "created_at": "2026-06-25T20:42:04.684525"
     },
     {
       "problem_id": "poster-phase3-w11-Stable Diffusion-001",
@@ -189,7 +189,7 @@
       "knowledge_points": [
         "Stable Diffusion"
       ],
-      "created_at": "2026-06-25T13:23:36.222916"
+      "created_at": "2026-06-25T20:42:04.684529"
     },
     {
       "problem_id": "poster-phase3-w11-Stable Diffusion-002",
@@ -206,7 +206,7 @@
       "knowledge_points": [
         "Stable Diffusion"
       ],
-      "created_at": "2026-06-25T13:23:36.222919"
+      "created_at": "2026-06-25T20:42:04.684535"
     },
     {
       "problem_id": "poster-phase3-w11-Stable Diffusion-003",
@@ -223,7 +223,109 @@
       "knowledge_points": [
         "Stable Diffusion"
       ],
-      "created_at": "2026-06-25T13:23:36.222922"
+      "created_at": "2026-06-25T20:42:04.684538"
+    },
+    {
+      "problem_id": "poster-phase3-w11-AI设计伦理-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 11,
+      "topic": "AI设计伦理",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI设计伦理 #1",
+      "description": "AI设计伦理基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI设计伦理"
+      ],
+      "created_at": "2026-06-25T20:42:04.684542"
+    },
+    {
+      "problem_id": "poster-phase3-w11-AI设计伦理-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 11,
+      "topic": "AI设计伦理",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI设计伦理 #2",
+      "description": "AI设计伦理判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI设计伦理"
+      ],
+      "created_at": "2026-06-25T20:42:04.684545"
+    },
+    {
+      "problem_id": "poster-phase3-w11-AI设计伦理-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 11,
+      "topic": "AI设计伦理",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "AI设计伦理 #3",
+      "description": "AI设计伦理填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI设计伦理"
+      ],
+      "created_at": "2026-06-25T20:42:04.684548"
+    },
+    {
+      "problem_id": "poster-phase3-w11-AI设计趋势-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 11,
+      "topic": "AI设计趋势",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI设计趋势 #1",
+      "description": "AI设计趋势基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI设计趋势"
+      ],
+      "created_at": "2026-06-25T20:42:04.684552"
+    },
+    {
+      "problem_id": "poster-phase3-w11-AI设计趋势-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 11,
+      "topic": "AI设计趋势",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI设计趋势 #2",
+      "description": "AI设计趋势判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI设计趋势"
+      ],
+      "created_at": "2026-06-25T20:42:04.684555"
+    },
+    {
+      "problem_id": "poster-phase3-w11-AI设计趋势-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 11,
+      "topic": "AI设计趋势",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "AI设计趋势 #3",
+      "description": "AI设计趋势填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI设计趋势"
+      ],
+      "created_at": "2026-06-25T20:42:04.684560"
     },
     {
       "problem_id": "poster-phase3-w12-设计思维-001",
@@ -240,7 +342,7 @@
       "knowledge_points": [
         "设计思维"
       ],
-      "created_at": "2026-06-25T13:23:36.222926"
+      "created_at": "2026-06-25T20:42:04.684565"
     },
     {
       "problem_id": "poster-phase3-w12-设计思维-002",
@@ -257,7 +359,7 @@
       "knowledge_points": [
         "设计思维"
       ],
-      "created_at": "2026-06-25T13:23:36.222929"
+      "created_at": "2026-06-25T20:42:04.684569"
     },
     {
       "problem_id": "poster-phase3-w12-设计思维-003",
@@ -274,7 +376,7 @@
       "knowledge_points": [
         "设计思维"
       ],
-      "created_at": "2026-06-25T13:23:36.222932"
+      "created_at": "2026-06-25T20:42:04.684572"
     },
     {
       "problem_id": "poster-phase3-w12-用户调研-001",
@@ -291,7 +393,7 @@
       "knowledge_points": [
         "用户调研"
       ],
-      "created_at": "2026-06-25T13:23:36.222939"
+      "created_at": "2026-06-25T20:42:04.684578"
     },
     {
       "problem_id": "poster-phase3-w12-用户调研-002",
@@ -308,7 +410,7 @@
       "knowledge_points": [
         "用户调研"
       ],
-      "created_at": "2026-06-25T13:23:36.222941"
+      "created_at": "2026-06-25T20:42:04.684581"
     },
     {
       "problem_id": "poster-phase3-w12-用户调研-003",
@@ -325,7 +427,7 @@
       "knowledge_points": [
         "用户调研"
       ],
-      "created_at": "2026-06-25T13:23:36.222945"
+      "created_at": "2026-06-25T20:42:04.684587"
     },
     {
       "problem_id": "poster-phase3-w12-A/B测试-001",
@@ -342,7 +444,7 @@
       "knowledge_points": [
         "A/B测试"
       ],
-      "created_at": "2026-06-25T13:23:36.222949"
+      "created_at": "2026-06-25T20:42:04.684591"
     },
     {
       "problem_id": "poster-phase3-w12-A/B测试-002",
@@ -359,7 +461,7 @@
       "knowledge_points": [
         "A/B测试"
       ],
-      "created_at": "2026-06-25T13:23:36.222955"
+      "created_at": "2026-06-25T20:42:04.684594"
     },
     {
       "problem_id": "poster-phase3-w12-A/B测试-003",
@@ -376,7 +478,7 @@
       "knowledge_points": [
         "A/B测试"
       ],
-      "created_at": "2026-06-25T13:23:36.222960"
+      "created_at": "2026-06-25T20:42:04.684599"
     },
     {
       "problem_id": "poster-phase3-w12-迭代优化-001",
@@ -393,7 +495,7 @@
       "knowledge_points": [
         "迭代优化"
       ],
-      "created_at": "2026-06-25T13:23:36.222964"
+      "created_at": "2026-06-25T20:42:04.684603"
     },
     {
       "problem_id": "poster-phase3-w12-迭代优化-002",
@@ -410,7 +512,7 @@
       "knowledge_points": [
         "迭代优化"
       ],
-      "created_at": "2026-06-25T13:23:36.222967"
+      "created_at": "2026-06-25T20:42:04.684606"
     },
     {
       "problem_id": "poster-phase3-w12-迭代优化-003",
@@ -427,7 +529,109 @@
       "knowledge_points": [
         "迭代优化"
       ],
-      "created_at": "2026-06-25T13:23:36.222970"
+      "created_at": "2026-06-25T20:42:04.684611"
+    },
+    {
+      "problem_id": "poster-phase3-w12-用户画像-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 12,
+      "topic": "用户画像",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "用户画像 #1",
+      "description": "用户画像基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "用户画像"
+      ],
+      "created_at": "2026-06-25T20:42:04.684615"
+    },
+    {
+      "problem_id": "poster-phase3-w12-用户画像-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 12,
+      "topic": "用户画像",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "用户画像 #2",
+      "description": "用户画像判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "用户画像"
+      ],
+      "created_at": "2026-06-25T20:42:04.684623"
+    },
+    {
+      "problem_id": "poster-phase3-w12-用户画像-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 12,
+      "topic": "用户画像",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "用户画像 #3",
+      "description": "用户画像填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "用户画像"
+      ],
+      "created_at": "2026-06-25T20:42:04.684625"
+    },
+    {
+      "problem_id": "poster-phase3-w12-用户旅程-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 12,
+      "topic": "用户旅程",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "用户旅程 #1",
+      "description": "用户旅程基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "用户旅程"
+      ],
+      "created_at": "2026-06-25T20:42:04.684629"
+    },
+    {
+      "problem_id": "poster-phase3-w12-用户旅程-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 12,
+      "topic": "用户旅程",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "用户旅程 #2",
+      "description": "用户旅程判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "用户旅程"
+      ],
+      "created_at": "2026-06-25T20:42:04.684632"
+    },
+    {
+      "problem_id": "poster-phase3-w12-用户旅程-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 12,
+      "topic": "用户旅程",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "用户旅程 #3",
+      "description": "用户旅程填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "用户旅程"
+      ],
+      "created_at": "2026-06-25T20:42:04.684635"
     },
     {
       "problem_id": "poster-phase3-w13-跨平台设计-001",
@@ -444,7 +648,7 @@
       "knowledge_points": [
         "跨平台设计"
       ],
-      "created_at": "2026-06-25T13:23:36.222974"
+      "created_at": "2026-06-25T20:42:04.684642"
     },
     {
       "problem_id": "poster-phase3-w13-跨平台设计-002",
@@ -461,7 +665,7 @@
       "knowledge_points": [
         "跨平台设计"
       ],
-      "created_at": "2026-06-25T13:23:36.222977"
+      "created_at": "2026-06-25T20:42:04.684645"
     },
     {
       "problem_id": "poster-phase3-w13-跨平台设计-003",
@@ -478,7 +682,7 @@
       "knowledge_points": [
         "跨平台设计"
       ],
-      "created_at": "2026-06-25T13:23:36.222980"
+      "created_at": "2026-06-25T20:42:04.684648"
     },
     {
       "problem_id": "poster-phase3-w13-Web+Mobile+Print-001",
@@ -495,7 +699,7 @@
       "knowledge_points": [
         "Web+Mobile+Print"
       ],
-      "created_at": "2026-06-25T13:23:36.222988"
+      "created_at": "2026-06-25T20:42:04.684652"
     },
     {
       "problem_id": "poster-phase3-w13-Web+Mobile+Print-002",
@@ -512,7 +716,7 @@
       "knowledge_points": [
         "Web+Mobile+Print"
       ],
-      "created_at": "2026-06-25T13:23:36.222990"
+      "created_at": "2026-06-25T20:42:04.684655"
     },
     {
       "problem_id": "poster-phase3-w13-Web+Mobile+Print-003",
@@ -529,7 +733,7 @@
       "knowledge_points": [
         "Web+Mobile+Print"
       ],
-      "created_at": "2026-06-25T13:23:36.222993"
+      "created_at": "2026-06-25T20:42:04.684658"
     },
     {
       "problem_id": "poster-phase3-w13-品牌延展-001",
@@ -546,7 +750,7 @@
       "knowledge_points": [
         "品牌延展"
       ],
-      "created_at": "2026-06-25T13:23:36.222997"
+      "created_at": "2026-06-25T20:42:04.684661"
     },
     {
       "problem_id": "poster-phase3-w13-品牌延展-002",
@@ -563,7 +767,7 @@
       "knowledge_points": [
         "品牌延展"
       ],
-      "created_at": "2026-06-25T13:23:36.222999"
+      "created_at": "2026-06-25T20:42:04.684667"
     },
     {
       "problem_id": "poster-phase3-w13-品牌延展-003",
@@ -580,7 +784,7 @@
       "knowledge_points": [
         "品牌延展"
       ],
-      "created_at": "2026-06-25T13:23:36.223002"
+      "created_at": "2026-06-25T20:42:04.684669"
     },
     {
       "problem_id": "poster-phase3-w13-设计系统-001",
@@ -597,7 +801,7 @@
       "knowledge_points": [
         "设计系统"
       ],
-      "created_at": "2026-06-25T13:23:36.223006"
+      "created_at": "2026-06-25T20:42:04.684673"
     },
     {
       "problem_id": "poster-phase3-w13-设计系统-002",
@@ -614,7 +818,7 @@
       "knowledge_points": [
         "设计系统"
       ],
-      "created_at": "2026-06-25T13:23:36.223011"
+      "created_at": "2026-06-25T20:42:04.684676"
     },
     {
       "problem_id": "poster-phase3-w13-设计系统-003",
@@ -631,7 +835,109 @@
       "knowledge_points": [
         "设计系统"
       ],
-      "created_at": "2026-06-25T13:23:36.223016"
+      "created_at": "2026-06-25T20:42:04.684681"
+    },
+    {
+      "problem_id": "poster-phase3-w13-设计令牌-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 13,
+      "topic": "设计令牌",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计令牌 #1",
+      "description": "设计令牌基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计令牌"
+      ],
+      "created_at": "2026-06-25T20:42:04.684685"
+    },
+    {
+      "problem_id": "poster-phase3-w13-设计令牌-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 13,
+      "topic": "设计令牌",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计令牌 #2",
+      "description": "设计令牌判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计令牌"
+      ],
+      "created_at": "2026-06-25T20:42:04.684688"
+    },
+    {
+      "problem_id": "poster-phase3-w13-设计令牌-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 13,
+      "topic": "设计令牌",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计令牌 #3",
+      "description": "设计令牌填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计令牌"
+      ],
+      "created_at": "2026-06-25T20:42:04.684694"
+    },
+    {
+      "problem_id": "poster-phase3-w13-组件库-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 13,
+      "topic": "组件库",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "组件库 #1",
+      "description": "组件库基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "组件库"
+      ],
+      "created_at": "2026-06-25T20:42:04.684700"
+    },
+    {
+      "problem_id": "poster-phase3-w13-组件库-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 13,
+      "topic": "组件库",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "组件库 #2",
+      "description": "组件库判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "组件库"
+      ],
+      "created_at": "2026-06-25T20:42:04.684703"
+    },
+    {
+      "problem_id": "poster-phase3-w13-组件库-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 13,
+      "topic": "组件库",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "组件库 #3",
+      "description": "组件库填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "组件库"
+      ],
+      "created_at": "2026-06-25T20:42:04.684706"
     },
     {
       "problem_id": "poster-phase3-w14-高效工作流-001",
@@ -648,7 +954,7 @@
       "knowledge_points": [
         "高效工作流"
       ],
-      "created_at": "2026-06-25T13:23:36.223021"
+      "created_at": "2026-06-25T20:42:04.684716"
     },
     {
       "problem_id": "poster-phase3-w14-高效工作流-002",
@@ -665,7 +971,7 @@
       "knowledge_points": [
         "高效工作流"
       ],
-      "created_at": "2026-06-25T13:23:36.223023"
+      "created_at": "2026-06-25T20:42:04.684719"
     },
     {
       "problem_id": "poster-phase3-w14-高效工作流-003",
@@ -682,7 +988,7 @@
       "knowledge_points": [
         "高效工作流"
       ],
-      "created_at": "2026-06-25T13:23:36.223026"
+      "created_at": "2026-06-25T20:42:04.684725"
     },
     {
       "problem_id": "poster-phase3-w14-模板化生产-001",
@@ -699,7 +1005,7 @@
       "knowledge_points": [
         "模板化生产"
       ],
-      "created_at": "2026-06-25T13:23:36.223032"
+      "created_at": "2026-06-25T20:42:04.684732"
     },
     {
       "problem_id": "poster-phase3-w14-模板化生产-002",
@@ -716,7 +1022,7 @@
       "knowledge_points": [
         "模板化生产"
       ],
-      "created_at": "2026-06-25T13:23:36.223035"
+      "created_at": "2026-06-25T20:42:04.684735"
     },
     {
       "problem_id": "poster-phase3-w14-模板化生产-003",
@@ -733,7 +1039,7 @@
       "knowledge_points": [
         "模板化生产"
       ],
-      "created_at": "2026-06-25T13:23:36.223038"
+      "created_at": "2026-06-25T20:42:04.684741"
     },
     {
       "problem_id": "poster-phase3-w14-批量生成-001",
@@ -750,7 +1056,7 @@
       "knowledge_points": [
         "批量生成"
       ],
-      "created_at": "2026-06-25T13:23:36.223042"
+      "created_at": "2026-06-25T20:42:04.684748"
     },
     {
       "problem_id": "poster-phase3-w14-批量生成-002",
@@ -767,7 +1073,7 @@
       "knowledge_points": [
         "批量生成"
       ],
-      "created_at": "2026-06-25T13:23:36.223045"
+      "created_at": "2026-06-25T20:42:04.684750"
     },
     {
       "problem_id": "poster-phase3-w14-批量生成-003",
@@ -784,7 +1090,7 @@
       "knowledge_points": [
         "批量生成"
       ],
-      "created_at": "2026-06-25T13:23:36.223047"
+      "created_at": "2026-06-25T20:42:04.684753"
     },
     {
       "problem_id": "poster-phase3-w14-自动化脚本-001",
@@ -801,7 +1107,7 @@
       "knowledge_points": [
         "自动化脚本"
       ],
-      "created_at": "2026-06-25T13:23:36.223059"
+      "created_at": "2026-06-25T20:42:04.684766"
     },
     {
       "problem_id": "poster-phase3-w14-自动化脚本-002",
@@ -818,7 +1124,7 @@
       "knowledge_points": [
         "自动化脚本"
       ],
-      "created_at": "2026-06-25T13:23:36.223061"
+      "created_at": "2026-06-25T20:42:04.684769"
     },
     {
       "problem_id": "poster-phase3-w14-自动化脚本-003",
@@ -835,7 +1141,109 @@
       "knowledge_points": [
         "自动化脚本"
       ],
-      "created_at": "2026-06-25T13:23:36.223064"
+      "created_at": "2026-06-25T20:42:04.684772"
+    },
+    {
+      "problem_id": "poster-phase3-w14-CI/CD设计-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 14,
+      "topic": "CI/CD设计",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "CI/CD设计 #1",
+      "description": "CI/CD设计基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "CI/CD设计"
+      ],
+      "created_at": "2026-06-25T20:42:04.684776"
+    },
+    {
+      "problem_id": "poster-phase3-w14-CI/CD设计-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 14,
+      "topic": "CI/CD设计",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "CI/CD设计 #2",
+      "description": "CI/CD设计判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "CI/CD设计"
+      ],
+      "created_at": "2026-06-25T20:42:04.684779"
+    },
+    {
+      "problem_id": "poster-phase3-w14-CI/CD设计-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 14,
+      "topic": "CI/CD设计",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "CI/CD设计 #3",
+      "description": "CI/CD设计填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "CI/CD设计"
+      ],
+      "created_at": "2026-06-25T20:42:04.684782"
+    },
+    {
+      "problem_id": "poster-phase3-w14-设计自动化-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 14,
+      "topic": "设计自动化",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计自动化 #1",
+      "description": "设计自动化基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计自动化"
+      ],
+      "created_at": "2026-06-25T20:42:04.684785"
+    },
+    {
+      "problem_id": "poster-phase3-w14-设计自动化-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 14,
+      "topic": "设计自动化",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计自动化 #2",
+      "description": "设计自动化判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计自动化"
+      ],
+      "created_at": "2026-06-25T20:42:04.684790"
+    },
+    {
+      "problem_id": "poster-phase3-w14-设计自动化-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 14,
+      "topic": "设计自动化",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计自动化 #3",
+      "description": "设计自动化填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计自动化"
+      ],
+      "created_at": "2026-06-25T20:42:04.684793"
     },
     {
       "problem_id": "poster-phase3-w15-设计评审-001",
@@ -852,7 +1260,7 @@
       "knowledge_points": [
         "设计评审"
       ],
-      "created_at": "2026-06-25T13:23:36.223071"
+      "created_at": "2026-06-25T20:42:04.684798"
     },
     {
       "problem_id": "poster-phase3-w15-设计评审-002",
@@ -869,7 +1277,7 @@
       "knowledge_points": [
         "设计评审"
       ],
-      "created_at": "2026-06-25T13:23:36.223074"
+      "created_at": "2026-06-25T20:42:04.684801"
     },
     {
       "problem_id": "poster-phase3-w15-设计评审-003",
@@ -886,7 +1294,7 @@
       "knowledge_points": [
         "设计评审"
       ],
-      "created_at": "2026-06-25T13:23:36.223077"
+      "created_at": "2026-06-25T20:42:04.684803"
     },
     {
       "problem_id": "poster-phase3-w15-同行反馈-001",
@@ -903,7 +1311,7 @@
       "knowledge_points": [
         "同行反馈"
       ],
-      "created_at": "2026-06-25T13:23:36.223083"
+      "created_at": "2026-06-25T20:42:04.684807"
     },
     {
       "problem_id": "poster-phase3-w15-同行反馈-002",
@@ -920,7 +1328,7 @@
       "knowledge_points": [
         "同行反馈"
       ],
-      "created_at": "2026-06-25T13:23:36.223085"
+      "created_at": "2026-06-25T20:42:04.684810"
     },
     {
       "problem_id": "poster-phase3-w15-同行反馈-003",
@@ -937,7 +1345,7 @@
       "knowledge_points": [
         "同行反馈"
       ],
-      "created_at": "2026-06-25T13:23:36.223088"
+      "created_at": "2026-06-25T20:42:04.684822"
     },
     {
       "problem_id": "poster-phase3-w15-客户沟通-001",
@@ -954,7 +1362,7 @@
       "knowledge_points": [
         "客户沟通"
       ],
-      "created_at": "2026-06-25T13:23:36.223094"
+      "created_at": "2026-06-25T20:42:04.684826"
     },
     {
       "problem_id": "poster-phase3-w15-客户沟通-002",
@@ -971,7 +1379,7 @@
       "knowledge_points": [
         "客户沟通"
       ],
-      "created_at": "2026-06-25T13:23:36.223100"
+      "created_at": "2026-06-25T20:42:04.684829"
     },
     {
       "problem_id": "poster-phase3-w15-客户沟通-003",
@@ -988,7 +1396,7 @@
       "knowledge_points": [
         "客户沟通"
       ],
-      "created_at": "2026-06-25T13:23:36.223120"
+      "created_at": "2026-06-25T20:42:04.684832"
     },
     {
       "problem_id": "poster-phase3-w15-作品展示-001",
@@ -1005,7 +1413,7 @@
       "knowledge_points": [
         "作品展示"
       ],
-      "created_at": "2026-06-25T13:23:36.223236"
+      "created_at": "2026-06-25T20:42:04.684838"
     },
     {
       "problem_id": "poster-phase3-w15-作品展示-002",
@@ -1022,7 +1430,7 @@
       "knowledge_points": [
         "作品展示"
       ],
-      "created_at": "2026-06-25T13:23:36.223243"
+      "created_at": "2026-06-25T20:42:04.684841"
     },
     {
       "problem_id": "poster-phase3-w15-作品展示-003",
@@ -1039,7 +1447,109 @@
       "knowledge_points": [
         "作品展示"
       ],
-      "created_at": "2026-06-25T13:23:36.223246"
+      "created_at": "2026-06-25T20:42:04.684844"
+    },
+    {
+      "problem_id": "poster-phase3-w15-设计演讲-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 15,
+      "topic": "设计演讲",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计演讲 #1",
+      "description": "设计演讲基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计演讲"
+      ],
+      "created_at": "2026-06-25T20:42:04.684851"
+    },
+    {
+      "problem_id": "poster-phase3-w15-设计演讲-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 15,
+      "topic": "设计演讲",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计演讲 #2",
+      "description": "设计演讲判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计演讲"
+      ],
+      "created_at": "2026-06-25T20:42:04.684854"
+    },
+    {
+      "problem_id": "poster-phase3-w15-设计演讲-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 15,
+      "topic": "设计演讲",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计演讲 #3",
+      "description": "设计演讲填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计演讲"
+      ],
+      "created_at": "2026-06-25T20:42:04.684857"
+    },
+    {
+      "problem_id": "poster-phase3-w15-设计文档-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 15,
+      "topic": "设计文档",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计文档 #1",
+      "description": "设计文档基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计文档"
+      ],
+      "created_at": "2026-06-25T20:42:04.684861"
+    },
+    {
+      "problem_id": "poster-phase3-w15-设计文档-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 15,
+      "topic": "设计文档",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计文档 #2",
+      "description": "设计文档判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计文档"
+      ],
+      "created_at": "2026-06-25T20:42:04.684864"
+    },
+    {
+      "problem_id": "poster-phase3-w15-设计文档-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 15,
+      "topic": "设计文档",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计文档 #3",
+      "description": "设计文档填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计文档"
+      ],
+      "created_at": "2026-06-25T20:42:04.684867"
     },
     {
       "problem_id": "poster-phase3-w16-第三阶段综合考核-001",
@@ -1056,7 +1566,7 @@
       "knowledge_points": [
         "第三阶段综合考核"
       ],
-      "created_at": "2026-06-25T13:23:36.223252"
+      "created_at": "2026-06-25T20:42:04.684871"
     },
     {
       "problem_id": "poster-phase3-w16-第三阶段综合考核-002",
@@ -1073,7 +1583,7 @@
       "knowledge_points": [
         "第三阶段综合考核"
       ],
-      "created_at": "2026-06-25T13:23:36.223255"
+      "created_at": "2026-06-25T20:42:04.684876"
     },
     {
       "problem_id": "poster-phase3-w16-第三阶段综合考核-003",
@@ -1090,7 +1600,874 @@
       "knowledge_points": [
         "第三阶段综合考核"
       ],
-      "created_at": "2026-06-25T13:23:36.223272"
+      "created_at": "2026-06-25T20:42:04.684879"
+    },
+    {
+      "problem_id": "poster-phase3-w16-综合测试-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "综合测试",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "综合测试 #1",
+      "description": "综合测试基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "综合测试"
+      ],
+      "created_at": "2026-06-25T20:42:04.684886"
+    },
+    {
+      "problem_id": "poster-phase3-w16-综合测试-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "综合测试",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "综合测试 #2",
+      "description": "综合测试判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "综合测试"
+      ],
+      "created_at": "2026-06-25T20:42:04.684889"
+    },
+    {
+      "problem_id": "poster-phase3-w16-综合测试-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "综合测试",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "综合测试 #3",
+      "description": "综合测试填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "综合测试"
+      ],
+      "created_at": "2026-06-25T20:42:04.684892"
+    },
+    {
+      "problem_id": "poster-phase3-w16-实战项目-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "实战项目",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "实战项目 #1",
+      "description": "实战项目基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "实战项目"
+      ],
+      "created_at": "2026-06-25T20:42:04.684896"
+    },
+    {
+      "problem_id": "poster-phase3-w16-实战项目-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "实战项目",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "实战项目 #2",
+      "description": "实战项目判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "实战项目"
+      ],
+      "created_at": "2026-06-25T20:42:04.684901"
+    },
+    {
+      "problem_id": "poster-phase3-w16-实战项目-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "实战项目",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "实战项目 #3",
+      "description": "实战项目填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "实战项目"
+      ],
+      "created_at": "2026-06-25T20:42:04.684906"
+    },
+    {
+      "problem_id": "poster-phase3-w16-作品合集-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "作品合集",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "作品合集 #1",
+      "description": "作品合集基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "作品合集"
+      ],
+      "created_at": "2026-06-25T20:42:04.684910"
+    },
+    {
+      "problem_id": "poster-phase3-w16-作品合集-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "作品合集",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "作品合集 #2",
+      "description": "作品合集判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "作品合集"
+      ],
+      "created_at": "2026-06-25T20:42:04.684913"
+    },
+    {
+      "problem_id": "poster-phase3-w16-作品合集-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "作品合集",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "作品合集 #3",
+      "description": "作品合集填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "作品合集"
+      ],
+      "created_at": "2026-06-25T20:42:04.684916"
+    },
+    {
+      "problem_id": "poster-phase3-w16-职业准备-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "职业准备",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "职业准备 #1",
+      "description": "职业准备基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "职业准备"
+      ],
+      "created_at": "2026-06-25T20:42:04.684920"
+    },
+    {
+      "problem_id": "poster-phase3-w16-职业准备-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "职业准备",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "职业准备 #2",
+      "description": "职业准备判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "职业准备"
+      ],
+      "created_at": "2026-06-25T20:42:04.684922"
+    },
+    {
+      "problem_id": "poster-phase3-w16-职业准备-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "职业准备",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "职业准备 #3",
+      "description": "职业准备填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "职业准备"
+      ],
+      "created_at": "2026-06-25T20:42:04.684928"
+    },
+    {
+      "problem_id": "poster-phase3-w16-阶段总结-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "阶段总结",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "阶段总结 #1",
+      "description": "阶段总结基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "阶段总结"
+      ],
+      "created_at": "2026-06-25T20:42:04.684932"
+    },
+    {
+      "problem_id": "poster-phase3-w16-阶段总结-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "阶段总结",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "阶段总结 #2",
+      "description": "阶段总结判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "阶段总结"
+      ],
+      "created_at": "2026-06-25T20:42:04.684935"
+    },
+    {
+      "problem_id": "poster-phase3-w16-阶段总结-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "阶段总结",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "阶段总结 #3",
+      "description": "阶段总结填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "阶段总结"
+      ],
+      "created_at": "2026-06-25T20:42:04.684938"
+    },
+    {
+      "problem_id": "poster-phase3-w17-高级AI设计-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "高级AI设计",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级AI设计 #1",
+      "description": "高级AI设计基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级AI设计"
+      ],
+      "created_at": "2026-06-25T20:42:04.684942"
+    },
+    {
+      "problem_id": "poster-phase3-w17-高级AI设计-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "高级AI设计",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级AI设计 #2",
+      "description": "高级AI设计判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级AI设计"
+      ],
+      "created_at": "2026-06-25T20:42:04.684945"
+    },
+    {
+      "problem_id": "poster-phase3-w17-高级AI设计-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "高级AI设计",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "高级AI设计 #3",
+      "description": "高级AI设计填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级AI设计"
+      ],
+      "created_at": "2026-06-25T20:42:04.684954"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI工作流-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI工作流",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI工作流 #1",
+      "description": "AI工作流基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI工作流"
+      ],
+      "created_at": "2026-06-25T20:42:04.684963"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI工作流-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI工作流",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI工作流 #2",
+      "description": "AI工作流判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI工作流"
+      ],
+      "created_at": "2026-06-25T20:42:04.684966"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI工作流-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI工作流",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "AI工作流 #3",
+      "description": "AI工作流填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI工作流"
+      ],
+      "created_at": "2026-06-25T20:42:04.684968"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI协作-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI协作",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI协作 #1",
+      "description": "AI协作基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI协作"
+      ],
+      "created_at": "2026-06-25T20:42:04.684972"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI协作-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI协作",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI协作 #2",
+      "description": "AI协作判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI协作"
+      ],
+      "created_at": "2026-06-25T20:42:04.684975"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI协作-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI协作",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "AI协作 #3",
+      "description": "AI协作填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI协作"
+      ],
+      "created_at": "2026-06-25T20:42:04.684978"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI创新-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI创新",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI创新 #1",
+      "description": "AI创新基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI创新"
+      ],
+      "created_at": "2026-06-25T20:42:04.684984"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI创新-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI创新",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI创新 #2",
+      "description": "AI创新判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI创新"
+      ],
+      "created_at": "2026-06-25T20:42:04.684987"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI创新-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI创新",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "AI创新 #3",
+      "description": "AI创新填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI创新"
+      ],
+      "created_at": "2026-06-25T20:42:04.684990"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI伦理-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI伦理",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI伦理 #1",
+      "description": "AI伦理基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI伦理"
+      ],
+      "created_at": "2026-06-25T20:42:04.684994"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI伦理-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI伦理",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI伦理 #2",
+      "description": "AI伦理判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI伦理"
+      ],
+      "created_at": "2026-06-25T20:42:04.684999"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI伦理-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI伦理",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "AI伦理 #3",
+      "description": "AI伦理填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI伦理"
+      ],
+      "created_at": "2026-06-25T20:42:04.685073"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI未来-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI未来",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI未来 #1",
+      "description": "AI未来基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI未来"
+      ],
+      "created_at": "2026-06-25T20:42:04.685078"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI未来-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI未来",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI未来 #2",
+      "description": "AI未来判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI未来"
+      ],
+      "created_at": "2026-06-25T20:42:04.685083"
+    },
+    {
+      "problem_id": "poster-phase3-w17-AI未来-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "AI未来",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "AI未来 #3",
+      "description": "AI未来填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI未来"
+      ],
+      "created_at": "2026-06-25T20:42:04.685086"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计领导力-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计领导力",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计领导力 #1",
+      "description": "设计领导力基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计领导力"
+      ],
+      "created_at": "2026-06-25T20:42:04.685091"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计领导力-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计领导力",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计领导力 #2",
+      "description": "设计领导力判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计领导力"
+      ],
+      "created_at": "2026-06-25T20:42:04.685094"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计领导力-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计领导力",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计领导力 #3",
+      "description": "设计领导力填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计领导力"
+      ],
+      "created_at": "2026-06-25T20:42:04.685097"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计管理-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计管理",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计管理 #1",
+      "description": "设计管理基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计管理"
+      ],
+      "created_at": "2026-06-25T20:42:04.685101"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计管理-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计管理",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计管理 #2",
+      "description": "设计管理判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计管理"
+      ],
+      "created_at": "2026-06-25T20:42:04.685146"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计管理-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计管理",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计管理 #3",
+      "description": "设计管理填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计管理"
+      ],
+      "created_at": "2026-06-25T20:42:04.685167"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计战略-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计战略",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计战略 #1",
+      "description": "设计战略基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计战略"
+      ],
+      "created_at": "2026-06-25T20:42:04.685175"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计战略-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计战略",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计战略 #2",
+      "description": "设计战略判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计战略"
+      ],
+      "created_at": "2026-06-25T20:42:04.685180"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计战略-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计战略",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计战略 #3",
+      "description": "设计战略填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计战略"
+      ],
+      "created_at": "2026-06-25T20:42:04.685185"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计创新-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计创新",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计创新 #1",
+      "description": "设计创新基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计创新"
+      ],
+      "created_at": "2026-06-25T20:42:04.685192"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计创新-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计创新",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计创新 #2",
+      "description": "设计创新判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计创新"
+      ],
+      "created_at": "2026-06-25T20:42:04.685197"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计创新-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计创新",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计创新 #3",
+      "description": "设计创新填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计创新"
+      ],
+      "created_at": "2026-06-25T20:42:04.685202"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计教育-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计教育",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计教育 #1",
+      "description": "设计教育基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计教育"
+      ],
+      "created_at": "2026-06-25T20:42:04.685215"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计教育-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计教育",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计教育 #2",
+      "description": "设计教育判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计教育"
+      ],
+      "created_at": "2026-06-25T20:42:04.685220"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计教育-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计教育",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计教育 #3",
+      "description": "设计教育填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计教育"
+      ],
+      "created_at": "2026-06-25T20:42:04.685224"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计未来-001",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计未来",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计未来 #1",
+      "description": "设计未来基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计未来"
+      ],
+      "created_at": "2026-06-25T20:42:04.685229"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计未来-002",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计未来",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计未来 #2",
+      "description": "设计未来判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计未来"
+      ],
+      "created_at": "2026-06-25T20:42:04.685232"
+    },
+    {
+      "problem_id": "poster-phase3-w18-设计未来-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "设计未来",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计未来 #3",
+      "description": "设计未来填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计未来"
+      ],
+      "created_at": "2026-06-25T20:42:04.685234"
     }
   ]
 }

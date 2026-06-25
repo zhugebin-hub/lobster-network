@@ -16,46 +16,70 @@ COURSE_OUTLINE = {
         "chapters": {
             "ch1": {
                 "title": "绪论",
-                "topics": ["网络演进4阶段", "传统网络", "SDN", "云计算", "AI云", "架构对比"]
+                "topics": ["网络演进4阶段", "传统网络", "SDN", "云计算", "AI云", "架构对比", "网络虚拟化", "网络自动化"]
             },
             "ch2_3": {
                 "title": "交换机原理与STP算法",
-                "topics": ["MAC地址学习", "数据帧转发", "STP根桥选举", "端口角色", "BPDU", "环路防止"]
+                "topics": ["MAC地址学习", "数据帧转发", "STP根桥选举", "端口角色", "BPDU", "环路防止", "VLAN基础", "端口安全"]
             },
             "ch4_5": {
                 "title": "路由器原理与路由协议",
-                "topics": ["数据包转发", "静态路由", "动态路由", "OSPF", "路由表"]
+                "topics": ["数据包转发", "静态路由", "动态路由", "OSPF", "路由表", "BGP基础", "路由策略", "路由过滤"]
+            },
+            "ch6_7": {
+                "title": "网络安全基础",
+                "topics": ["访问控制", "防火墙", "IPS/IDS", "加密技术", "认证授权", "安全策略", "漏洞扫描", "安全审计"]
+            },
+            "ch8_9": {
+                "title": "无线网络",
+                "topics": ["WiFi基础", "802.11标准", "无线安全", "无线漫游", "无线规划", "无线优化", "无线故障", "无线管理"]
             }
         },
-        "total_problems": 90
+        "total_problems": 150
     },
     "phase2": {
         "name": "SDN篇",
         "chapters": {
             "ch13": {
                 "title": "OpenFlow流表实战",
-                "topics": ["流表结构", "Mininet环境", "ODL控制器", "本地流表配置", "远程流表配置", "2s4h拓扑"]
+                "topics": ["流表结构", "Mininet环境", "ODL控制器", "本地流表配置", "远程流表配置", "2s4h拓扑", "流表优化", "流表监控"]
             },
             "ch14": {
                 "title": "VXLAN网络虚拟化",
-                "topics": ["VLAN局限", "VXLAN优势", "VTEP", "封装解封装", "MAC学习", "隧道传输"]
+                "topics": ["VLAN局限", "VXLAN优势", "VTEP", "封装解封装", "MAC学习", "隧道传输", "VXLAN安全", "VXLAN优化"]
             },
             "ch15": {
                 "title": "OpenFlow计量表与组表",
-                "topics": ["Meter表", "Select组表", "Fast Failover", "负载均衡", "故障转移", "流量模拟"]
+                "topics": ["Meter表", "Select组表", "Fast Failover", "负载均衡", "故障转移", "流量模拟", "QoS策略", "流量工程"]
+            },
+            "ch16": {
+                "title": "网络功能虚拟化",
+                "topics": ["NFV架构", "VNF部署", "NFV编排", "NFV管理", "NFV安全", "NFV优化", "NFV监控", "NFV测试"]
+            },
+            "ch17": {
+                "title": "软件定义广域网",
+                "topics": ["SD-WAN基础", "SD-WAN架构", "SD-WAN部署", "SD-WAN管理", "SD-WAN安全", "SD-WAN优化", "SD-WAN监控", "SD-WAN测试"]
             }
         },
-        "total_problems": 108
+        "total_problems": 160
     },
     "phase3": {
         "name": "融合篇",
         "chapters": {
             "ch16": {
                 "title": "云网一体化",
-                "topics": ["OpenStack", "OpenDayLight", "REST API", "Neutron配置", "ODL配置", "数据一致性"]
+                "topics": ["OpenStack", "OpenDayLight", "REST API", "Neutron配置", "ODL配置", "数据一致性", "云网安全", "云网优化"]
+            },
+            "ch17": {
+                "title": "网络自动化",
+                "topics": ["Ansible基础", "Python网络编程", "网络API", "网络监控", "网络故障", "网络优化", "网络报告", "网络审计"]
+            },
+            "ch18": {
+                "title": "AI网络",
+                "topics": ["AI网络基础", "AI网络架构", "AI网络部署", "AI网络管理", "AI网络安全", "AI网络优化", "AI网络监控", "AI网络测试"]
             }
         },
-        "total_problems": 36
+        "total_problems": 72
     }
 }
 

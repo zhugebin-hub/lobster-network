@@ -1,8 +1,8 @@
 {
   "domain": "go",
   "phase": "phase3",
-  "total": 58,
-  "generated_at": "2026-06-25T08:34:48.766706",
+  "total": 120,
+  "generated_at": "2026-06-25T20:40:26.026342",
   "problems": [
     {
       "problem_id": "go-phase3-w13-复杂定式变化-001",
@@ -19,7 +19,7 @@
       "knowledge_points": [
         "复杂定式变化"
       ],
-      "created_at": "2026-06-25T08:34:48.760972"
+      "created_at": "2026-06-25T20:40:26.009387"
     },
     {
       "problem_id": "go-phase3-w13-复杂定式变化-002",
@@ -36,7 +36,7 @@
       "knowledge_points": [
         "复杂定式变化"
       ],
-      "created_at": "2026-06-25T08:34:48.760990"
+      "created_at": "2026-06-25T20:40:26.009399"
     },
     {
       "problem_id": "go-phase3-w13-新型定式研究-001",
@@ -53,7 +53,7 @@
       "knowledge_points": [
         "新型定式研究"
       ],
-      "created_at": "2026-06-25T08:34:48.761012"
+      "created_at": "2026-06-25T20:40:26.009414"
     },
     {
       "problem_id": "go-phase3-w13-新型定式研究-002",
@@ -70,7 +70,7 @@
       "knowledge_points": [
         "新型定式研究"
       ],
-      "created_at": "2026-06-25T08:34:48.761031"
+      "created_at": "2026-06-25T20:40:26.009424"
     },
     {
       "problem_id": "go-phase3-w13-定式选择策略-001",
@@ -87,7 +87,7 @@
       "knowledge_points": [
         "定式选择策略"
       ],
-      "created_at": "2026-06-25T08:34:48.761043"
+      "created_at": "2026-06-25T20:40:26.009439"
     },
     {
       "problem_id": "go-phase3-w13-定式选择策略-002",
@@ -104,7 +104,7 @@
       "knowledge_points": [
         "定式选择策略"
       ],
-      "created_at": "2026-06-25T08:34:48.761053"
+      "created_at": "2026-06-25T20:40:26.009449"
     },
     {
       "problem_id": "go-phase3-w13-定式陷阱识别-001",
@@ -121,7 +121,7 @@
       "knowledge_points": [
         "定式陷阱识别"
       ],
-      "created_at": "2026-06-25T08:34:48.761065"
+      "created_at": "2026-06-25T20:40:26.009461"
     },
     {
       "problem_id": "go-phase3-w13-定式陷阱识别-002",
@@ -138,7 +138,75 @@
       "knowledge_points": [
         "定式陷阱识别"
       ],
-      "created_at": "2026-06-25T08:34:48.761078"
+      "created_at": "2026-06-25T20:40:26.009471"
+    },
+    {
+      "problem_id": "go-phase3-w13-定式创新-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 13,
+      "topic": "定式创新",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "定式创新 #1",
+      "description": "定式创新基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式创新"
+      ],
+      "created_at": "2026-06-25T20:40:26.009483"
+    },
+    {
+      "problem_id": "go-phase3-w13-定式创新-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 13,
+      "topic": "定式创新",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "定式创新 #2",
+      "description": "定式创新判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式创新"
+      ],
+      "created_at": "2026-06-25T20:40:26.009498"
+    },
+    {
+      "problem_id": "go-phase3-w13-定式综合-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 13,
+      "topic": "定式综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "定式综合 #1",
+      "description": "定式综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009509"
+    },
+    {
+      "problem_id": "go-phase3-w13-定式综合-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 13,
+      "topic": "定式综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "定式综合 #2",
+      "description": "定式综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009519"
     },
     {
       "problem_id": "go-phase3-w14-布局理论深化-001",
@@ -155,7 +223,7 @@
       "knowledge_points": [
         "布局理论深化"
       ],
-      "created_at": "2026-06-25T08:34:48.761090"
+      "created_at": "2026-06-25T20:40:26.009532"
     },
     {
       "problem_id": "go-phase3-w14-布局理论深化-002",
@@ -172,7 +240,7 @@
       "knowledge_points": [
         "布局理论深化"
       ],
-      "created_at": "2026-06-25T08:34:48.761118"
+      "created_at": "2026-06-25T20:40:26.009542"
     },
     {
       "problem_id": "go-phase3-w14-全局配合-001",
@@ -189,7 +257,7 @@
       "knowledge_points": [
         "全局配合"
       ],
-      "created_at": "2026-06-25T08:34:48.761130"
+      "created_at": "2026-06-25T20:40:26.009552"
     },
     {
       "problem_id": "go-phase3-w14-全局配合-002",
@@ -206,7 +274,7 @@
       "knowledge_points": [
         "全局配合"
       ],
-      "created_at": "2026-06-25T08:34:48.761141"
+      "created_at": "2026-06-25T20:40:26.009566"
     },
     {
       "problem_id": "go-phase3-w14-模样作战-001",
@@ -223,7 +291,7 @@
       "knowledge_points": [
         "模样作战"
       ],
-      "created_at": "2026-06-25T08:34:48.761153"
+      "created_at": "2026-06-25T20:40:26.009577"
     },
     {
       "problem_id": "go-phase3-w14-模样作战-002",
@@ -240,7 +308,7 @@
       "knowledge_points": [
         "模样作战"
       ],
-      "created_at": "2026-06-25T08:34:48.761163"
+      "created_at": "2026-06-25T20:40:26.009595"
     },
     {
       "problem_id": "go-phase3-w14-实地与外势-001",
@@ -257,7 +325,7 @@
       "knowledge_points": [
         "实地与外势"
       ],
-      "created_at": "2026-06-25T08:34:48.761175"
+      "created_at": "2026-06-25T20:40:26.009609"
     },
     {
       "problem_id": "go-phase3-w14-实地与外势-002",
@@ -274,7 +342,75 @@
       "knowledge_points": [
         "实地与外势"
       ],
-      "created_at": "2026-06-25T08:34:48.761185"
+      "created_at": "2026-06-25T20:40:26.009621"
+    },
+    {
+      "problem_id": "go-phase3-w14-布局创新-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 14,
+      "topic": "布局创新",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "布局创新 #1",
+      "description": "布局创新基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局创新"
+      ],
+      "created_at": "2026-06-25T20:40:26.009638"
+    },
+    {
+      "problem_id": "go-phase3-w14-布局创新-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 14,
+      "topic": "布局创新",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "布局创新 #2",
+      "description": "布局创新判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局创新"
+      ],
+      "created_at": "2026-06-25T20:40:26.009652"
+    },
+    {
+      "problem_id": "go-phase3-w14-布局综合-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 14,
+      "topic": "布局综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "布局综合 #1",
+      "description": "布局综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009672"
+    },
+    {
+      "problem_id": "go-phase3-w14-布局综合-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 14,
+      "topic": "布局综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "布局综合 #2",
+      "description": "布局综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009688"
     },
     {
       "problem_id": "go-phase3-w15-中盘战术·攻击-001",
@@ -291,7 +427,7 @@
       "knowledge_points": [
         "中盘战术·攻击"
       ],
-      "created_at": "2026-06-25T08:34:48.761201"
+      "created_at": "2026-06-25T20:40:26.009709"
     },
     {
       "problem_id": "go-phase3-w15-中盘战术·攻击-002",
@@ -308,7 +444,7 @@
       "knowledge_points": [
         "中盘战术·攻击"
       ],
-      "created_at": "2026-06-25T08:34:48.761212"
+      "created_at": "2026-06-25T20:40:26.009720"
     },
     {
       "problem_id": "go-phase3-w15-中盘战术·防守-001",
@@ -325,7 +461,7 @@
       "knowledge_points": [
         "中盘战术·防守"
       ],
-      "created_at": "2026-06-25T08:34:48.761223"
+      "created_at": "2026-06-25T20:40:26.009731"
     },
     {
       "problem_id": "go-phase3-w15-中盘战术·防守-002",
@@ -342,7 +478,7 @@
       "knowledge_points": [
         "中盘战术·防守"
       ],
-      "created_at": "2026-06-25T08:34:48.761234"
+      "created_at": "2026-06-25T20:40:26.009742"
     },
     {
       "problem_id": "go-phase3-w15-中盘战术·转换-001",
@@ -359,7 +495,7 @@
       "knowledge_points": [
         "中盘战术·转换"
       ],
-      "created_at": "2026-06-25T08:34:48.761246"
+      "created_at": "2026-06-25T20:40:26.009753"
     },
     {
       "problem_id": "go-phase3-w15-中盘战术·转换-002",
@@ -376,7 +512,7 @@
       "knowledge_points": [
         "中盘战术·转换"
       ],
-      "created_at": "2026-06-25T08:34:48.761256"
+      "created_at": "2026-06-25T20:40:26.009768"
     },
     {
       "problem_id": "go-phase3-w15-中盘战术·治孤-001",
@@ -393,7 +529,7 @@
       "knowledge_points": [
         "中盘战术·治孤"
       ],
-      "created_at": "2026-06-25T08:34:48.761270"
+      "created_at": "2026-06-25T20:40:26.009780"
     },
     {
       "problem_id": "go-phase3-w15-中盘战术·治孤-002",
@@ -410,7 +546,75 @@
       "knowledge_points": [
         "中盘战术·治孤"
       ],
-      "created_at": "2026-06-25T08:34:48.761281"
+      "created_at": "2026-06-25T20:40:26.009790"
+    },
+    {
+      "problem_id": "go-phase3-w15-中盘综合-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 15,
+      "topic": "中盘综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "中盘综合 #1",
+      "description": "中盘综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "中盘综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009804"
+    },
+    {
+      "problem_id": "go-phase3-w15-中盘综合-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 15,
+      "topic": "中盘综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "中盘综合 #2",
+      "description": "中盘综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "中盘综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009814"
+    },
+    {
+      "problem_id": "go-phase3-w15-战术创新-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 15,
+      "topic": "战术创新",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "战术创新 #1",
+      "description": "战术创新基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "战术创新"
+      ],
+      "created_at": "2026-06-25T20:40:26.009826"
+    },
+    {
+      "problem_id": "go-phase3-w15-战术创新-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 15,
+      "topic": "战术创新",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "战术创新 #2",
+      "description": "战术创新判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "战术创新"
+      ],
+      "created_at": "2026-06-25T20:40:26.009836"
     },
     {
       "problem_id": "go-phase3-w16-死活进阶·大龙生死-001",
@@ -427,7 +631,7 @@
       "knowledge_points": [
         "死活进阶·大龙生死"
       ],
-      "created_at": "2026-06-25T08:34:48.761293"
+      "created_at": "2026-06-25T20:40:26.009852"
     },
     {
       "problem_id": "go-phase3-w16-死活进阶·大龙生死-002",
@@ -444,7 +648,7 @@
       "knowledge_points": [
         "死活进阶·大龙生死"
       ],
-      "created_at": "2026-06-25T08:34:48.761303"
+      "created_at": "2026-06-25T20:40:26.009862"
     },
     {
       "problem_id": "go-phase3-w16-死活进阶·对杀-001",
@@ -461,7 +665,7 @@
       "knowledge_points": [
         "死活进阶·对杀"
       ],
-      "created_at": "2026-06-25T08:34:48.761386"
+      "created_at": "2026-06-25T20:40:26.009875"
     },
     {
       "problem_id": "go-phase3-w16-死活进阶·对杀-002",
@@ -478,7 +682,7 @@
       "knowledge_points": [
         "死活进阶·对杀"
       ],
-      "created_at": "2026-06-25T08:34:48.761399"
+      "created_at": "2026-06-25T20:40:26.009889"
     },
     {
       "problem_id": "go-phase3-w16-死活进阶·双活-001",
@@ -495,7 +699,7 @@
       "knowledge_points": [
         "死活进阶·双活"
       ],
-      "created_at": "2026-06-25T08:34:48.761414"
+      "created_at": "2026-06-25T20:40:26.009900"
     },
     {
       "problem_id": "go-phase3-w16-死活进阶·双活-002",
@@ -512,7 +716,7 @@
       "knowledge_points": [
         "死活进阶·双活"
       ],
-      "created_at": "2026-06-25T08:34:48.761429"
+      "created_at": "2026-06-25T20:40:26.009914"
     },
     {
       "problem_id": "go-phase3-w16-死活综合难题-001",
@@ -529,7 +733,7 @@
       "knowledge_points": [
         "死活综合难题"
       ],
-      "created_at": "2026-06-25T08:34:48.761440"
+      "created_at": "2026-06-25T20:40:26.009925"
     },
     {
       "problem_id": "go-phase3-w16-死活综合难题-002",
@@ -546,7 +750,75 @@
       "knowledge_points": [
         "死活综合难题"
       ],
-      "created_at": "2026-06-25T08:34:48.761450"
+      "created_at": "2026-06-25T20:40:26.009935"
+    },
+    {
+      "problem_id": "go-phase3-w16-死活创新-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "死活创新",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "死活创新 #1",
+      "description": "死活创新基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "死活创新"
+      ],
+      "created_at": "2026-06-25T20:40:26.009946"
+    },
+    {
+      "problem_id": "go-phase3-w16-死活创新-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "死活创新",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "死活创新 #2",
+      "description": "死活创新判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "死活创新"
+      ],
+      "created_at": "2026-06-25T20:40:26.009958"
+    },
+    {
+      "problem_id": "go-phase3-w16-死活综合-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "死活综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "死活综合 #1",
+      "description": "死活综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "死活综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009975"
+    },
+    {
+      "problem_id": "go-phase3-w16-死活综合-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 16,
+      "topic": "死活综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "死活综合 #2",
+      "description": "死活综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "死活综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.009992"
     },
     {
       "problem_id": "go-phase3-w17-官子进阶·微妙官子-001",
@@ -563,7 +835,7 @@
       "knowledge_points": [
         "官子进阶·微妙官子"
       ],
-      "created_at": "2026-06-25T08:34:48.761463"
+      "created_at": "2026-06-25T20:40:26.010008"
     },
     {
       "problem_id": "go-phase3-w17-官子进阶·微妙官子-002",
@@ -580,7 +852,7 @@
       "knowledge_points": [
         "官子进阶·微妙官子"
       ],
-      "created_at": "2026-06-25T08:34:48.761473"
+      "created_at": "2026-06-25T20:40:26.010030"
     },
     {
       "problem_id": "go-phase3-w17-官子进阶·逆收-001",
@@ -597,7 +869,7 @@
       "knowledge_points": [
         "官子进阶·逆收"
       ],
-      "created_at": "2026-06-25T08:34:48.761488"
+      "created_at": "2026-06-25T20:40:26.010046"
     },
     {
       "problem_id": "go-phase3-w17-官子进阶·逆收-002",
@@ -614,7 +886,7 @@
       "knowledge_points": [
         "官子进阶·逆收"
       ],
-      "created_at": "2026-06-25T08:34:48.761508"
+      "created_at": "2026-06-25T20:40:26.010056"
     },
     {
       "problem_id": "go-phase3-w17-官子进阶·劫争官子-001",
@@ -631,7 +903,7 @@
       "knowledge_points": [
         "官子进阶·劫争官子"
       ],
-      "created_at": "2026-06-25T08:34:48.761523"
+      "created_at": "2026-06-25T20:40:26.010070"
     },
     {
       "problem_id": "go-phase3-w17-官子进阶·劫争官子-002",
@@ -648,7 +920,7 @@
       "knowledge_points": [
         "官子进阶·劫争官子"
       ],
-      "created_at": "2026-06-25T08:34:48.761534"
+      "created_at": "2026-06-25T20:40:26.010080"
     },
     {
       "problem_id": "go-phase3-w17-官子精确计算-001",
@@ -665,7 +937,7 @@
       "knowledge_points": [
         "官子精确计算"
       ],
-      "created_at": "2026-06-25T08:34:48.761546"
+      "created_at": "2026-06-25T20:40:26.010092"
     },
     {
       "problem_id": "go-phase3-w17-官子精确计算-002",
@@ -682,7 +954,75 @@
       "knowledge_points": [
         "官子精确计算"
       ],
-      "created_at": "2026-06-25T08:34:48.761556"
+      "created_at": "2026-06-25T20:40:26.010116"
+    },
+    {
+      "problem_id": "go-phase3-w17-官子综合-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "官子综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "官子综合 #1",
+      "description": "官子综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.010134"
+    },
+    {
+      "problem_id": "go-phase3-w17-官子综合-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "官子综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "官子综合 #2",
+      "description": "官子综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.010145"
+    },
+    {
+      "problem_id": "go-phase3-w17-官子创新-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "官子创新",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "官子创新 #1",
+      "description": "官子创新基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子创新"
+      ],
+      "created_at": "2026-06-25T20:40:26.010156"
+    },
+    {
+      "problem_id": "go-phase3-w17-官子创新-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 17,
+      "topic": "官子创新",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "官子创新 #2",
+      "description": "官子创新判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子创新"
+      ],
+      "created_at": "2026-06-25T20:40:26.010169"
     },
     {
       "problem_id": "go-phase3-w18-复盘分析方法-001",
@@ -699,7 +1039,7 @@
       "knowledge_points": [
         "复盘分析方法"
       ],
-      "created_at": "2026-06-25T08:34:48.761571"
+      "created_at": "2026-06-25T20:40:26.010181"
     },
     {
       "problem_id": "go-phase3-w18-复盘分析方法-002",
@@ -716,7 +1056,7 @@
       "knowledge_points": [
         "复盘分析方法"
       ],
-      "created_at": "2026-06-25T08:34:48.761584"
+      "created_at": "2026-06-25T20:40:26.010192"
     },
     {
       "problem_id": "go-phase3-w18-AI复盘应用-001",
@@ -733,7 +1073,7 @@
       "knowledge_points": [
         "AI复盘应用"
       ],
-      "created_at": "2026-06-25T08:34:48.761596"
+      "created_at": "2026-06-25T20:40:26.010203"
     },
     {
       "problem_id": "go-phase3-w18-AI复盘应用-002",
@@ -750,7 +1090,7 @@
       "knowledge_points": [
         "AI复盘应用"
       ],
-      "created_at": "2026-06-25T08:34:48.761607"
+      "created_at": "2026-06-25T20:40:26.010217"
     },
     {
       "problem_id": "go-phase3-w18-名局研究-001",
@@ -767,7 +1107,7 @@
       "knowledge_points": [
         "名局研究"
       ],
-      "created_at": "2026-06-25T08:34:48.761620"
+      "created_at": "2026-06-25T20:40:26.010229"
     },
     {
       "problem_id": "go-phase3-w18-名局研究-002",
@@ -784,7 +1124,7 @@
       "knowledge_points": [
         "名局研究"
       ],
-      "created_at": "2026-06-25T08:34:48.761631"
+      "created_at": "2026-06-25T20:40:26.010242"
     },
     {
       "problem_id": "go-phase3-w18-个人棋风分析-001",
@@ -801,7 +1141,7 @@
       "knowledge_points": [
         "个人棋风分析"
       ],
-      "created_at": "2026-06-25T08:34:48.761642"
+      "created_at": "2026-06-25T20:40:26.010259"
     },
     {
       "problem_id": "go-phase3-w18-个人棋风分析-002",
@@ -818,7 +1158,75 @@
       "knowledge_points": [
         "个人棋风分析"
       ],
-      "created_at": "2026-06-25T08:34:48.761652"
+      "created_at": "2026-06-25T20:40:26.010419"
+    },
+    {
+      "problem_id": "go-phase3-w18-复盘综合-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "复盘综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "复盘综合 #1",
+      "description": "复盘综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "复盘综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.010435"
+    },
+    {
+      "problem_id": "go-phase3-w18-复盘综合-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "复盘综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "复盘综合 #2",
+      "description": "复盘综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "复盘综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.010445"
+    },
+    {
+      "problem_id": "go-phase3-w18-复盘创新-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "复盘创新",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "复盘创新 #1",
+      "description": "复盘创新基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "复盘创新"
+      ],
+      "created_at": "2026-06-25T20:40:26.010463"
+    },
+    {
+      "problem_id": "go-phase3-w18-复盘创新-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 18,
+      "topic": "复盘创新",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "复盘创新 #2",
+      "description": "复盘创新判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "复盘创新"
+      ],
+      "created_at": "2026-06-25T20:40:26.010473"
     },
     {
       "problem_id": "go-phase3-w19-比赛策略-001",
@@ -835,7 +1243,7 @@
       "knowledge_points": [
         "比赛策略"
       ],
-      "created_at": "2026-06-25T08:34:48.761667"
+      "created_at": "2026-06-25T20:40:26.010486"
     },
     {
       "problem_id": "go-phase3-w19-比赛策略-002",
@@ -852,7 +1260,7 @@
       "knowledge_points": [
         "比赛策略"
       ],
-      "created_at": "2026-06-25T08:34:48.761678"
+      "created_at": "2026-06-25T20:40:26.013331"
     },
     {
       "problem_id": "go-phase3-w19-时间管理-001",
@@ -869,7 +1277,7 @@
       "knowledge_points": [
         "时间管理"
       ],
-      "created_at": "2026-06-25T08:34:48.761691"
+      "created_at": "2026-06-25T20:40:26.013490"
     },
     {
       "problem_id": "go-phase3-w19-时间管理-002",
@@ -886,7 +1294,7 @@
       "knowledge_points": [
         "时间管理"
       ],
-      "created_at": "2026-06-25T08:34:48.761702"
+      "created_at": "2026-06-25T20:40:26.013514"
     },
     {
       "problem_id": "go-phase3-w19-心理调适-001",
@@ -903,7 +1311,7 @@
       "knowledge_points": [
         "心理调适"
       ],
-      "created_at": "2026-06-25T08:34:48.761713"
+      "created_at": "2026-06-25T20:40:26.013534"
     },
     {
       "problem_id": "go-phase3-w19-心理调适-002",
@@ -920,7 +1328,7 @@
       "knowledge_points": [
         "心理调适"
       ],
-      "created_at": "2026-06-25T08:34:48.761724"
+      "created_at": "2026-06-25T20:40:26.013559"
     },
     {
       "problem_id": "go-phase3-w19-实战模拟-001",
@@ -937,7 +1345,7 @@
       "knowledge_points": [
         "实战模拟"
       ],
-      "created_at": "2026-06-25T08:34:48.761740"
+      "created_at": "2026-06-25T20:40:26.013581"
     },
     {
       "problem_id": "go-phase3-w19-实战模拟-002",
@@ -954,7 +1362,75 @@
       "knowledge_points": [
         "实战模拟"
       ],
-      "created_at": "2026-06-25T08:34:48.761760"
+      "created_at": "2026-06-25T20:40:26.013601"
+    },
+    {
+      "problem_id": "go-phase3-w19-比赛综合-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 19,
+      "topic": "比赛综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "比赛综合 #1",
+      "description": "比赛综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "比赛综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.013625"
+    },
+    {
+      "problem_id": "go-phase3-w19-比赛综合-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 19,
+      "topic": "比赛综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "比赛综合 #2",
+      "description": "比赛综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "比赛综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.013647"
+    },
+    {
+      "problem_id": "go-phase3-w19-心理综合-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 19,
+      "topic": "心理综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "心理综合 #1",
+      "description": "心理综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "心理综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.013668"
+    },
+    {
+      "problem_id": "go-phase3-w19-心理综合-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 19,
+      "topic": "心理综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "心理综合 #2",
+      "description": "心理综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "心理综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.013687"
     },
     {
       "problem_id": "go-phase3-w20-第三阶段综合考核-001",
@@ -971,7 +1447,7 @@
       "knowledge_points": [
         "第三阶段综合考核"
       ],
-      "created_at": "2026-06-25T08:34:48.761782"
+      "created_at": "2026-06-25T20:40:26.013746"
     },
     {
       "problem_id": "go-phase3-w20-第三阶段综合考核-002",
@@ -988,7 +1464,585 @@
       "knowledge_points": [
         "第三阶段综合考核"
       ],
-      "created_at": "2026-06-25T08:34:48.761799"
+      "created_at": "2026-06-25T20:40:26.013765"
+    },
+    {
+      "problem_id": "go-phase3-w20-综合测试-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 20,
+      "topic": "综合测试",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "综合测试 #1",
+      "description": "综合测试基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "综合测试"
+      ],
+      "created_at": "2026-06-25T20:40:26.013784"
+    },
+    {
+      "problem_id": "go-phase3-w20-综合测试-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 20,
+      "topic": "综合测试",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "综合测试 #2",
+      "description": "综合测试判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "综合测试"
+      ],
+      "created_at": "2026-06-25T20:40:26.013800"
+    },
+    {
+      "problem_id": "go-phase3-w20-实战考核-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 20,
+      "topic": "实战考核",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "实战考核 #1",
+      "description": "实战考核基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "实战考核"
+      ],
+      "created_at": "2026-06-25T20:40:26.013819"
+    },
+    {
+      "problem_id": "go-phase3-w20-实战考核-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 20,
+      "topic": "实战考核",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "实战考核 #2",
+      "description": "实战考核判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "实战考核"
+      ],
+      "created_at": "2026-06-25T20:40:26.013835"
+    },
+    {
+      "problem_id": "go-phase3-w20-理论考核-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 20,
+      "topic": "理论考核",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "理论考核 #1",
+      "description": "理论考核基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "理论考核"
+      ],
+      "created_at": "2026-06-25T20:40:26.013854"
+    },
+    {
+      "problem_id": "go-phase3-w20-理论考核-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 20,
+      "topic": "理论考核",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "理论考核 #2",
+      "description": "理论考核判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "理论考核"
+      ],
+      "created_at": "2026-06-25T20:40:26.013895"
+    },
+    {
+      "problem_id": "go-phase3-w20-综合评定-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 20,
+      "topic": "综合评定",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "综合评定 #1",
+      "description": "综合评定基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "综合评定"
+      ],
+      "created_at": "2026-06-25T20:40:26.013913"
+    },
+    {
+      "problem_id": "go-phase3-w20-综合评定-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 20,
+      "topic": "综合评定",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "综合评定 #2",
+      "description": "综合评定判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "综合评定"
+      ],
+      "created_at": "2026-06-25T20:40:26.013928"
+    },
+    {
+      "problem_id": "go-phase3-w20-阶段总结-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 20,
+      "topic": "阶段总结",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "阶段总结 #1",
+      "description": "阶段总结基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "阶段总结"
+      ],
+      "created_at": "2026-06-25T20:40:26.013945"
+    },
+    {
+      "problem_id": "go-phase3-w20-阶段总结-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 20,
+      "topic": "阶段总结",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "阶段总结 #2",
+      "description": "阶段总结判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "阶段总结"
+      ],
+      "created_at": "2026-06-25T20:40:26.013961"
+    },
+    {
+      "problem_id": "go-phase3-w21-高级战术-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 21,
+      "topic": "高级战术",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级战术 #1",
+      "description": "高级战术基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级战术"
+      ],
+      "created_at": "2026-06-25T20:40:26.013987"
+    },
+    {
+      "problem_id": "go-phase3-w21-高级战术-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 21,
+      "topic": "高级战术",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级战术 #2",
+      "description": "高级战术判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级战术"
+      ],
+      "created_at": "2026-06-25T20:40:26.014004"
+    },
+    {
+      "problem_id": "go-phase3-w21-创新布局-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 21,
+      "topic": "创新布局",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "创新布局 #1",
+      "description": "创新布局基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "创新布局"
+      ],
+      "created_at": "2026-06-25T20:40:26.014044"
+    },
+    {
+      "problem_id": "go-phase3-w21-创新布局-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 21,
+      "topic": "创新布局",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "创新布局 #2",
+      "description": "创新布局判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "创新布局"
+      ],
+      "created_at": "2026-06-25T20:40:26.014061"
+    },
+    {
+      "problem_id": "go-phase3-w21-高级死活-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 21,
+      "topic": "高级死活",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级死活 #1",
+      "description": "高级死活基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级死活"
+      ],
+      "created_at": "2026-06-25T20:40:26.014080"
+    },
+    {
+      "problem_id": "go-phase3-w21-高级死活-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 21,
+      "topic": "高级死活",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级死活 #2",
+      "description": "高级死活判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级死活"
+      ],
+      "created_at": "2026-06-25T20:40:26.014098"
+    },
+    {
+      "problem_id": "go-phase3-w21-高级官子-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 21,
+      "topic": "高级官子",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级官子 #1",
+      "description": "高级官子基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级官子"
+      ],
+      "created_at": "2026-06-25T20:40:26.014169"
+    },
+    {
+      "problem_id": "go-phase3-w21-高级官子-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 21,
+      "topic": "高级官子",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级官子 #2",
+      "description": "高级官子判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级官子"
+      ],
+      "created_at": "2026-06-25T20:40:26.014184"
+    },
+    {
+      "problem_id": "go-phase3-w21-高级中盘-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 21,
+      "topic": "高级中盘",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级中盘 #1",
+      "description": "高级中盘基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级中盘"
+      ],
+      "created_at": "2026-06-25T20:40:26.014204"
+    },
+    {
+      "problem_id": "go-phase3-w21-高级中盘-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 21,
+      "topic": "高级中盘",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级中盘 #2",
+      "description": "高级中盘判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级中盘"
+      ],
+      "created_at": "2026-06-25T20:40:26.014229"
+    },
+    {
+      "problem_id": "go-phase3-w21-高级综合-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 21,
+      "topic": "高级综合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级综合 #1",
+      "description": "高级综合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.014246"
+    },
+    {
+      "problem_id": "go-phase3-w21-高级综合-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 21,
+      "topic": "高级综合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级综合 #2",
+      "description": "高级综合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级综合"
+      ],
+      "created_at": "2026-06-25T20:40:26.014262"
+    },
+    {
+      "problem_id": "go-phase3-w22-大师级定式-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 22,
+      "topic": "大师级定式",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "大师级定式 #1",
+      "description": "大师级定式基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "大师级定式"
+      ],
+      "created_at": "2026-06-25T20:40:26.014284"
+    },
+    {
+      "problem_id": "go-phase3-w22-大师级定式-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 22,
+      "topic": "大师级定式",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "大师级定式 #2",
+      "description": "大师级定式判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "大师级定式"
+      ],
+      "created_at": "2026-06-25T20:40:26.014301"
+    },
+    {
+      "problem_id": "go-phase3-w22-大师级布局-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 22,
+      "topic": "大师级布局",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "大师级布局 #1",
+      "description": "大师级布局基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "大师级布局"
+      ],
+      "created_at": "2026-06-25T20:40:26.014320"
+    },
+    {
+      "problem_id": "go-phase3-w22-大师级布局-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 22,
+      "topic": "大师级布局",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "大师级布局 #2",
+      "description": "大师级布局判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "大师级布局"
+      ],
+      "created_at": "2026-06-25T20:40:26.014335"
+    },
+    {
+      "problem_id": "go-phase3-w22-大师级中盘-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 22,
+      "topic": "大师级中盘",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "大师级中盘 #1",
+      "description": "大师级中盘基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "大师级中盘"
+      ],
+      "created_at": "2026-06-25T20:40:26.014365"
+    },
+    {
+      "problem_id": "go-phase3-w22-大师级中盘-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 22,
+      "topic": "大师级中盘",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "大师级中盘 #2",
+      "description": "大师级中盘判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "大师级中盘"
+      ],
+      "created_at": "2026-06-25T20:40:26.014405"
+    },
+    {
+      "problem_id": "go-phase3-w22-大师级官子-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 22,
+      "topic": "大师级官子",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "大师级官子 #1",
+      "description": "大师级官子基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "大师级官子"
+      ],
+      "created_at": "2026-06-25T20:40:26.014421"
+    },
+    {
+      "problem_id": "go-phase3-w22-大师级官子-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 22,
+      "topic": "大师级官子",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "大师级官子 #2",
+      "description": "大师级官子判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "大师级官子"
+      ],
+      "created_at": "2026-06-25T20:40:26.014436"
+    },
+    {
+      "problem_id": "go-phase3-w22-大师级实战-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 22,
+      "topic": "大师级实战",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "大师级实战 #1",
+      "description": "大师级实战基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "大师级实战"
+      ],
+      "created_at": "2026-06-25T20:40:26.014454"
+    },
+    {
+      "problem_id": "go-phase3-w22-大师级实战-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 22,
+      "topic": "大师级实战",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "大师级实战 #2",
+      "description": "大师级实战判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "大师级实战"
+      ],
+      "created_at": "2026-06-25T20:40:26.014483"
+    },
+    {
+      "problem_id": "go-phase3-w22-大师级考核-001",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 22,
+      "topic": "大师级考核",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "大师级考核 #1",
+      "description": "大师级考核基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "大师级考核"
+      ],
+      "created_at": "2026-06-25T20:40:26.014512"
+    },
+    {
+      "problem_id": "go-phase3-w22-大师级考核-002",
+      "domain": "go",
+      "phase": "phase3",
+      "week": 22,
+      "topic": "大师级考核",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "大师级考核 #2",
+      "description": "大师级考核判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "大师级考核"
+      ],
+      "created_at": "2026-06-25T20:40:26.014527"
     }
   ]
 }

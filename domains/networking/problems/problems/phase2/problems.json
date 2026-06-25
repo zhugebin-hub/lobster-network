@@ -1,8 +1,8 @@
 {
   "domain": "networking",
   "phase": "phase2",
-  "total": 54,
-  "generated_at": "2026-06-25T17:38:24.071554",
+  "total": 120,
+  "generated_at": "2026-06-25T20:41:13.526868",
   "problems": [
     {
       "problem_id": "net-phase2-ch13-流表结构-001",
@@ -23,7 +23,7 @@
       "knowledge_points": [
         "流表结构"
       ],
-      "created_at": "2026-06-25T17:38:24.066806"
+      "created_at": "2026-06-25T20:41:13.512308"
     },
     {
       "problem_id": "net-phase2-ch13-流表结构-002",
@@ -44,7 +44,7 @@
       "knowledge_points": [
         "流表结构"
       ],
-      "created_at": "2026-06-25T17:38:24.066812"
+      "created_at": "2026-06-25T20:41:13.512311"
     },
     {
       "problem_id": "net-phase2-ch13-流表结构-003",
@@ -65,7 +65,7 @@
       "knowledge_points": [
         "流表结构"
       ],
-      "created_at": "2026-06-25T17:38:24.066815"
+      "created_at": "2026-06-25T20:41:13.512314"
     },
     {
       "problem_id": "net-phase2-ch13-Mininet环境-001",
@@ -86,7 +86,7 @@
       "knowledge_points": [
         "Mininet环境"
       ],
-      "created_at": "2026-06-25T17:38:24.066822"
+      "created_at": "2026-06-25T20:41:13.512321"
     },
     {
       "problem_id": "net-phase2-ch13-Mininet环境-002",
@@ -107,7 +107,7 @@
       "knowledge_points": [
         "Mininet环境"
       ],
-      "created_at": "2026-06-25T17:38:24.066825"
+      "created_at": "2026-06-25T20:41:13.512325"
     },
     {
       "problem_id": "net-phase2-ch13-Mininet环境-003",
@@ -128,7 +128,7 @@
       "knowledge_points": [
         "Mininet环境"
       ],
-      "created_at": "2026-06-25T17:38:24.066828"
+      "created_at": "2026-06-25T20:41:13.512328"
     },
     {
       "problem_id": "net-phase2-ch13-ODL控制器-001",
@@ -149,7 +149,7 @@
       "knowledge_points": [
         "ODL控制器"
       ],
-      "created_at": "2026-06-25T17:38:24.066832"
+      "created_at": "2026-06-25T20:41:13.512332"
     },
     {
       "problem_id": "net-phase2-ch13-ODL控制器-002",
@@ -170,7 +170,7 @@
       "knowledge_points": [
         "ODL控制器"
       ],
-      "created_at": "2026-06-25T17:38:24.066835"
+      "created_at": "2026-06-25T20:41:13.512336"
     },
     {
       "problem_id": "net-phase2-ch13-ODL控制器-003",
@@ -191,7 +191,7 @@
       "knowledge_points": [
         "ODL控制器"
       ],
-      "created_at": "2026-06-25T17:38:24.066838"
+      "created_at": "2026-06-25T20:41:13.512339"
     },
     {
       "problem_id": "net-phase2-ch13-本地流表配置-001",
@@ -212,7 +212,7 @@
       "knowledge_points": [
         "本地流表配置"
       ],
-      "created_at": "2026-06-25T17:38:24.066845"
+      "created_at": "2026-06-25T20:41:13.512346"
     },
     {
       "problem_id": "net-phase2-ch13-本地流表配置-002",
@@ -233,7 +233,7 @@
       "knowledge_points": [
         "本地流表配置"
       ],
-      "created_at": "2026-06-25T17:38:24.066848"
+      "created_at": "2026-06-25T20:41:13.512349"
     },
     {
       "problem_id": "net-phase2-ch13-本地流表配置-003",
@@ -254,7 +254,7 @@
       "knowledge_points": [
         "本地流表配置"
       ],
-      "created_at": "2026-06-25T17:38:24.066851"
+      "created_at": "2026-06-25T20:41:13.512352"
     },
     {
       "problem_id": "net-phase2-ch13-远程流表配置-001",
@@ -275,7 +275,7 @@
       "knowledge_points": [
         "远程流表配置"
       ],
-      "created_at": "2026-06-25T17:38:24.066855"
+      "created_at": "2026-06-25T20:41:13.512361"
     },
     {
       "problem_id": "net-phase2-ch13-远程流表配置-002",
@@ -296,7 +296,7 @@
       "knowledge_points": [
         "远程流表配置"
       ],
-      "created_at": "2026-06-25T17:38:24.066861"
+      "created_at": "2026-06-25T20:41:13.512365"
     },
     {
       "problem_id": "net-phase2-ch13-远程流表配置-003",
@@ -317,7 +317,7 @@
       "knowledge_points": [
         "远程流表配置"
       ],
-      "created_at": "2026-06-25T17:38:24.066864"
+      "created_at": "2026-06-25T20:41:13.512367"
     },
     {
       "problem_id": "net-phase2-ch13-2s4h拓扑-001",
@@ -338,7 +338,7 @@
       "knowledge_points": [
         "2s4h拓扑"
       ],
-      "created_at": "2026-06-25T17:38:24.066868"
+      "created_at": "2026-06-25T20:41:13.512371"
     },
     {
       "problem_id": "net-phase2-ch13-2s4h拓扑-002",
@@ -359,7 +359,7 @@
       "knowledge_points": [
         "2s4h拓扑"
       ],
-      "created_at": "2026-06-25T17:38:24.066871"
+      "created_at": "2026-06-25T20:41:13.512374"
     },
     {
       "problem_id": "net-phase2-ch13-2s4h拓扑-003",
@@ -380,7 +380,133 @@
       "knowledge_points": [
         "2s4h拓扑"
       ],
-      "created_at": "2026-06-25T17:38:24.066874"
+      "created_at": "2026-06-25T20:41:13.512397"
+    },
+    {
+      "problem_id": "net-phase2-ch13-流表优化-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "流表优化",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - 流表优化 #1",
+      "description": "流表优化基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "流表优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.512403"
+    },
+    {
+      "problem_id": "net-phase2-ch13-流表优化-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "流表优化",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - 流表优化 #2",
+      "description": "流表优化判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "流表优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.512406"
+    },
+    {
+      "problem_id": "net-phase2-ch13-流表优化-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "流表优化",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow流表实战 - 流表优化 #3",
+      "description": "流表优化填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "流表优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.512409"
+    },
+    {
+      "problem_id": "net-phase2-ch13-流表监控-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "流表监控",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - 流表监控 #1",
+      "description": "流表监控基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "流表监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.512413"
+    },
+    {
+      "problem_id": "net-phase2-ch13-流表监控-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "流表监控",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - 流表监控 #2",
+      "description": "流表监控判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "流表监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.512418"
+    },
+    {
+      "problem_id": "net-phase2-ch13-流表监控-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "流表监控",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow流表实战 - 流表监控 #3",
+      "description": "流表监控填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "流表监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.512421"
     },
     {
       "problem_id": "net-phase2-ch14-VLAN局限-001",
@@ -401,7 +527,7 @@
       "knowledge_points": [
         "VLAN局限"
       ],
-      "created_at": "2026-06-25T17:38:24.066878"
+      "created_at": "2026-06-25T20:41:13.512429"
     },
     {
       "problem_id": "net-phase2-ch14-VLAN局限-002",
@@ -422,7 +548,7 @@
       "knowledge_points": [
         "VLAN局限"
       ],
-      "created_at": "2026-06-25T17:38:24.066881"
+      "created_at": "2026-06-25T20:41:13.512432"
     },
     {
       "problem_id": "net-phase2-ch14-VLAN局限-003",
@@ -443,7 +569,7 @@
       "knowledge_points": [
         "VLAN局限"
       ],
-      "created_at": "2026-06-25T17:38:24.066884"
+      "created_at": "2026-06-25T20:41:13.512435"
     },
     {
       "problem_id": "net-phase2-ch14-VXLAN优势-001",
@@ -464,7 +590,7 @@
       "knowledge_points": [
         "VXLAN优势"
       ],
-      "created_at": "2026-06-25T17:38:24.066891"
+      "created_at": "2026-06-25T20:41:13.512442"
     },
     {
       "problem_id": "net-phase2-ch14-VXLAN优势-002",
@@ -485,7 +611,7 @@
       "knowledge_points": [
         "VXLAN优势"
       ],
-      "created_at": "2026-06-25T17:38:24.066897"
+      "created_at": "2026-06-25T20:41:13.512445"
     },
     {
       "problem_id": "net-phase2-ch14-VXLAN优势-003",
@@ -506,7 +632,7 @@
       "knowledge_points": [
         "VXLAN优势"
       ],
-      "created_at": "2026-06-25T17:38:24.066901"
+      "created_at": "2026-06-25T20:41:13.512454"
     },
     {
       "problem_id": "net-phase2-ch14-VTEP-001",
@@ -527,7 +653,7 @@
       "knowledge_points": [
         "VTEP"
       ],
-      "created_at": "2026-06-25T17:38:24.066905"
+      "created_at": "2026-06-25T20:41:13.512459"
     },
     {
       "problem_id": "net-phase2-ch14-VTEP-002",
@@ -548,7 +674,7 @@
       "knowledge_points": [
         "VTEP"
       ],
-      "created_at": "2026-06-25T17:38:24.066908"
+      "created_at": "2026-06-25T20:41:13.512462"
     },
     {
       "problem_id": "net-phase2-ch14-VTEP-003",
@@ -569,7 +695,7 @@
       "knowledge_points": [
         "VTEP"
       ],
-      "created_at": "2026-06-25T17:38:24.066911"
+      "created_at": "2026-06-25T20:41:13.512465"
     },
     {
       "problem_id": "net-phase2-ch14-封装解封装-001",
@@ -590,7 +716,7 @@
       "knowledge_points": [
         "封装解封装"
       ],
-      "created_at": "2026-06-25T17:38:24.066915"
+      "created_at": "2026-06-25T20:41:13.512469"
     },
     {
       "problem_id": "net-phase2-ch14-封装解封装-002",
@@ -611,7 +737,7 @@
       "knowledge_points": [
         "封装解封装"
       ],
-      "created_at": "2026-06-25T17:38:24.066918"
+      "created_at": "2026-06-25T20:41:13.512472"
     },
     {
       "problem_id": "net-phase2-ch14-封装解封装-003",
@@ -632,7 +758,7 @@
       "knowledge_points": [
         "封装解封装"
       ],
-      "created_at": "2026-06-25T17:38:24.066921"
+      "created_at": "2026-06-25T20:41:13.512475"
     },
     {
       "problem_id": "net-phase2-ch14-MAC学习-001",
@@ -653,7 +779,7 @@
       "knowledge_points": [
         "MAC学习"
       ],
-      "created_at": "2026-06-25T17:38:24.066925"
+      "created_at": "2026-06-25T20:41:13.512479"
     },
     {
       "problem_id": "net-phase2-ch14-MAC学习-002",
@@ -674,7 +800,7 @@
       "knowledge_points": [
         "MAC学习"
       ],
-      "created_at": "2026-06-25T17:38:24.066928"
+      "created_at": "2026-06-25T20:41:13.512485"
     },
     {
       "problem_id": "net-phase2-ch14-MAC学习-003",
@@ -695,7 +821,7 @@
       "knowledge_points": [
         "MAC学习"
       ],
-      "created_at": "2026-06-25T17:38:24.066931"
+      "created_at": "2026-06-25T20:41:13.512494"
     },
     {
       "problem_id": "net-phase2-ch14-隧道传输-001",
@@ -716,7 +842,7 @@
       "knowledge_points": [
         "隧道传输"
       ],
-      "created_at": "2026-06-25T17:38:24.066935"
+      "created_at": "2026-06-25T20:41:13.512498"
     },
     {
       "problem_id": "net-phase2-ch14-隧道传输-002",
@@ -737,7 +863,7 @@
       "knowledge_points": [
         "隧道传输"
       ],
-      "created_at": "2026-06-25T17:38:24.066938"
+      "created_at": "2026-06-25T20:41:13.512911"
     },
     {
       "problem_id": "net-phase2-ch14-隧道传输-003",
@@ -758,7 +884,133 @@
       "knowledge_points": [
         "隧道传输"
       ],
-      "created_at": "2026-06-25T17:38:24.066941"
+      "created_at": "2026-06-25T20:41:13.512930"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VXLAN安全-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VXLAN安全",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - VXLAN安全 #1",
+      "description": "VXLAN安全基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VXLAN安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.512936"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VXLAN安全-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VXLAN安全",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - VXLAN安全 #2",
+      "description": "VXLAN安全判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VXLAN安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.512939"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VXLAN安全-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VXLAN安全",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "VXLAN网络虚拟化 - VXLAN安全 #3",
+      "description": "VXLAN安全填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VXLAN安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.512943"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VXLAN优化-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VXLAN优化",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - VXLAN优化 #1",
+      "description": "VXLAN优化基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VXLAN优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.512947"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VXLAN优化-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VXLAN优化",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - VXLAN优化 #2",
+      "description": "VXLAN优化判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VXLAN优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.512950"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VXLAN优化-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VXLAN优化",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "VXLAN网络虚拟化 - VXLAN优化 #3",
+      "description": "VXLAN优化填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VXLAN优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.512953"
     },
     {
       "problem_id": "net-phase2-ch15-Meter表-001",
@@ -779,7 +1031,7 @@
       "knowledge_points": [
         "Meter表"
       ],
-      "created_at": "2026-06-25T17:38:24.066945"
+      "created_at": "2026-06-25T20:41:13.512958"
     },
     {
       "problem_id": "net-phase2-ch15-Meter表-002",
@@ -800,7 +1052,7 @@
       "knowledge_points": [
         "Meter表"
       ],
-      "created_at": "2026-06-25T17:38:24.066948"
+      "created_at": "2026-06-25T20:41:13.512961"
     },
     {
       "problem_id": "net-phase2-ch15-Meter表-003",
@@ -821,7 +1073,7 @@
       "knowledge_points": [
         "Meter表"
       ],
-      "created_at": "2026-06-25T17:38:24.066952"
+      "created_at": "2026-06-25T20:41:13.512964"
     },
     {
       "problem_id": "net-phase2-ch15-Select组表-001",
@@ -842,7 +1094,7 @@
       "knowledge_points": [
         "Select组表"
       ],
-      "created_at": "2026-06-25T17:38:24.066956"
+      "created_at": "2026-06-25T20:41:13.512968"
     },
     {
       "problem_id": "net-phase2-ch15-Select组表-002",
@@ -863,7 +1115,7 @@
       "knowledge_points": [
         "Select组表"
       ],
-      "created_at": "2026-06-25T17:38:24.066960"
+      "created_at": "2026-06-25T20:41:13.512972"
     },
     {
       "problem_id": "net-phase2-ch15-Select组表-003",
@@ -884,7 +1136,7 @@
       "knowledge_points": [
         "Select组表"
       ],
-      "created_at": "2026-06-25T17:38:24.066963"
+      "created_at": "2026-06-25T20:41:13.512983"
     },
     {
       "problem_id": "net-phase2-ch15-Fast Failover-001",
@@ -905,7 +1157,7 @@
       "knowledge_points": [
         "Fast Failover"
       ],
-      "created_at": "2026-06-25T17:38:24.066967"
+      "created_at": "2026-06-25T20:41:13.512988"
     },
     {
       "problem_id": "net-phase2-ch15-Fast Failover-002",
@@ -926,7 +1178,7 @@
       "knowledge_points": [
         "Fast Failover"
       ],
-      "created_at": "2026-06-25T17:38:24.066970"
+      "created_at": "2026-06-25T20:41:13.512992"
     },
     {
       "problem_id": "net-phase2-ch15-Fast Failover-003",
@@ -947,7 +1199,7 @@
       "knowledge_points": [
         "Fast Failover"
       ],
-      "created_at": "2026-06-25T17:38:24.066973"
+      "created_at": "2026-06-25T20:41:13.512995"
     },
     {
       "problem_id": "net-phase2-ch15-负载均衡-001",
@@ -968,7 +1220,7 @@
       "knowledge_points": [
         "负载均衡"
       ],
-      "created_at": "2026-06-25T17:38:24.066980"
+      "created_at": "2026-06-25T20:41:13.513000"
     },
     {
       "problem_id": "net-phase2-ch15-负载均衡-002",
@@ -989,7 +1241,7 @@
       "knowledge_points": [
         "负载均衡"
       ],
-      "created_at": "2026-06-25T17:38:24.066984"
+      "created_at": "2026-06-25T20:41:13.513003"
     },
     {
       "problem_id": "net-phase2-ch15-负载均衡-003",
@@ -1010,7 +1262,7 @@
       "knowledge_points": [
         "负载均衡"
       ],
-      "created_at": "2026-06-25T17:38:24.066987"
+      "created_at": "2026-06-25T20:41:13.513016"
     },
     {
       "problem_id": "net-phase2-ch15-故障转移-001",
@@ -1031,7 +1283,7 @@
       "knowledge_points": [
         "故障转移"
       ],
-      "created_at": "2026-06-25T17:38:24.066994"
+      "created_at": "2026-06-25T20:41:13.513020"
     },
     {
       "problem_id": "net-phase2-ch15-故障转移-002",
@@ -1052,7 +1304,7 @@
       "knowledge_points": [
         "故障转移"
       ],
-      "created_at": "2026-06-25T17:38:24.066999"
+      "created_at": "2026-06-25T20:41:13.513023"
     },
     {
       "problem_id": "net-phase2-ch15-故障转移-003",
@@ -1073,7 +1325,7 @@
       "knowledge_points": [
         "故障转移"
       ],
-      "created_at": "2026-06-25T17:38:24.067003"
+      "created_at": "2026-06-25T20:41:13.513026"
     },
     {
       "problem_id": "net-phase2-ch15-流量模拟-001",
@@ -1094,7 +1346,7 @@
       "knowledge_points": [
         "流量模拟"
       ],
-      "created_at": "2026-06-25T17:38:24.067007"
+      "created_at": "2026-06-25T20:41:13.513033"
     },
     {
       "problem_id": "net-phase2-ch15-流量模拟-002",
@@ -1115,7 +1367,7 @@
       "knowledge_points": [
         "流量模拟"
       ],
-      "created_at": "2026-06-25T17:38:24.067010"
+      "created_at": "2026-06-25T20:41:13.513039"
     },
     {
       "problem_id": "net-phase2-ch15-流量模拟-003",
@@ -1136,7 +1388,1069 @@
       "knowledge_points": [
         "流量模拟"
       ],
-      "created_at": "2026-06-25T17:38:24.067013"
+      "created_at": "2026-06-25T20:41:13.513045"
+    },
+    {
+      "problem_id": "net-phase2-ch15-QoS策略-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "QoS策略",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow计量表与组表 - QoS策略 #1",
+      "description": "QoS策略基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "QoS策略"
+      ],
+      "created_at": "2026-06-25T20:41:13.513056"
+    },
+    {
+      "problem_id": "net-phase2-ch15-QoS策略-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "QoS策略",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow计量表与组表 - QoS策略 #2",
+      "description": "QoS策略判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "QoS策略"
+      ],
+      "created_at": "2026-06-25T20:41:13.513065"
+    },
+    {
+      "problem_id": "net-phase2-ch15-QoS策略-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "QoS策略",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow计量表与组表 - QoS策略 #3",
+      "description": "QoS策略填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "QoS策略"
+      ],
+      "created_at": "2026-06-25T20:41:13.513072"
+    },
+    {
+      "problem_id": "net-phase2-ch15-流量工程-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "流量工程",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow计量表与组表 - 流量工程 #1",
+      "description": "流量工程基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "流量工程"
+      ],
+      "created_at": "2026-06-25T20:41:13.513080"
+    },
+    {
+      "problem_id": "net-phase2-ch15-流量工程-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "流量工程",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow计量表与组表 - 流量工程 #2",
+      "description": "流量工程判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "流量工程"
+      ],
+      "created_at": "2026-06-25T20:41:13.513086"
+    },
+    {
+      "problem_id": "net-phase2-ch15-流量工程-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "流量工程",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow计量表与组表 - 流量工程 #3",
+      "description": "流量工程填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "流量工程"
+      ],
+      "created_at": "2026-06-25T20:41:13.513092"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV架构-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV架构",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - NFV架构 #1",
+      "description": "NFV架构基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV架构"
+      ],
+      "created_at": "2026-06-25T20:41:13.513157"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV架构-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV架构",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - NFV架构 #2",
+      "description": "NFV架构判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV架构"
+      ],
+      "created_at": "2026-06-25T20:41:13.513168"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV架构-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV架构",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络功能虚拟化 - NFV架构 #3",
+      "description": "NFV架构填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV架构"
+      ],
+      "created_at": "2026-06-25T20:41:13.513175"
+    },
+    {
+      "problem_id": "net-phase2-ch16-VNF部署-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "VNF部署",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - VNF部署 #1",
+      "description": "VNF部署基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "VNF部署"
+      ],
+      "created_at": "2026-06-25T20:41:13.513184"
+    },
+    {
+      "problem_id": "net-phase2-ch16-VNF部署-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "VNF部署",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - VNF部署 #2",
+      "description": "VNF部署判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "VNF部署"
+      ],
+      "created_at": "2026-06-25T20:41:13.513191"
+    },
+    {
+      "problem_id": "net-phase2-ch16-VNF部署-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "VNF部署",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络功能虚拟化 - VNF部署 #3",
+      "description": "VNF部署填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "VNF部署"
+      ],
+      "created_at": "2026-06-25T20:41:13.513197"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV编排-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV编排",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - NFV编排 #1",
+      "description": "NFV编排基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV编排"
+      ],
+      "created_at": "2026-06-25T20:41:13.513202"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV编排-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV编排",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - NFV编排 #2",
+      "description": "NFV编排判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV编排"
+      ],
+      "created_at": "2026-06-25T20:41:13.513206"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV编排-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV编排",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络功能虚拟化 - NFV编排 #3",
+      "description": "NFV编排填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV编排"
+      ],
+      "created_at": "2026-06-25T20:41:13.513211"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV管理-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV管理",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - NFV管理 #1",
+      "description": "NFV管理基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV管理"
+      ],
+      "created_at": "2026-06-25T20:41:13.513216"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV管理-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV管理",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - NFV管理 #2",
+      "description": "NFV管理判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV管理"
+      ],
+      "created_at": "2026-06-25T20:41:13.513219"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV管理-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV管理",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络功能虚拟化 - NFV管理 #3",
+      "description": "NFV管理填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV管理"
+      ],
+      "created_at": "2026-06-25T20:41:13.513223"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV安全-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV安全",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - NFV安全 #1",
+      "description": "NFV安全基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.513234"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV安全-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV安全",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - NFV安全 #2",
+      "description": "NFV安全判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.513238"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV安全-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV安全",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络功能虚拟化 - NFV安全 #3",
+      "description": "NFV安全填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.513244"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV优化-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV优化",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - NFV优化 #1",
+      "description": "NFV优化基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513248"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV优化-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV优化",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - NFV优化 #2",
+      "description": "NFV优化判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513252"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV优化-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV优化",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络功能虚拟化 - NFV优化 #3",
+      "description": "NFV优化填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513255"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV监控-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV监控",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - NFV监控 #1",
+      "description": "NFV监控基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.513259"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV监控-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV监控",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - NFV监控 #2",
+      "description": "NFV监控判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.513263"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV监控-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV监控",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络功能虚拟化 - NFV监控 #3",
+      "description": "NFV监控填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.513266"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV测试-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV测试",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - NFV测试 #1",
+      "description": "NFV测试基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV测试"
+      ],
+      "created_at": "2026-06-25T20:41:13.513279"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV测试-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV测试",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络功能虚拟化 - NFV测试 #2",
+      "description": "NFV测试判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV测试"
+      ],
+      "created_at": "2026-06-25T20:41:13.513282"
+    },
+    {
+      "problem_id": "net-phase2-ch16-NFV测试-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch16",
+      "topic": "NFV测试",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络功能虚拟化 - NFV测试 #3",
+      "description": "NFV测试填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "NFV测试"
+      ],
+      "created_at": "2026-06-25T20:41:13.513288"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN基础-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN基础 #1",
+      "description": "SD-WAN基础基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.513293"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN基础-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN基础 #2",
+      "description": "SD-WAN基础判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.513296"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN基础-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN基础",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "软件定义广域网 - SD-WAN基础 #3",
+      "description": "SD-WAN基础填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.513300"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN架构-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN架构",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN架构 #1",
+      "description": "SD-WAN架构基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN架构"
+      ],
+      "created_at": "2026-06-25T20:41:13.513312"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN架构-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN架构",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN架构 #2",
+      "description": "SD-WAN架构判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN架构"
+      ],
+      "created_at": "2026-06-25T20:41:13.513316"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN架构-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN架构",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "软件定义广域网 - SD-WAN架构 #3",
+      "description": "SD-WAN架构填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN架构"
+      ],
+      "created_at": "2026-06-25T20:41:13.513319"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN部署-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN部署",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN部署 #1",
+      "description": "SD-WAN部署基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN部署"
+      ],
+      "created_at": "2026-06-25T20:41:13.513327"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN部署-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN部署",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN部署 #2",
+      "description": "SD-WAN部署判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN部署"
+      ],
+      "created_at": "2026-06-25T20:41:13.513330"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN部署-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN部署",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "软件定义广域网 - SD-WAN部署 #3",
+      "description": "SD-WAN部署填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN部署"
+      ],
+      "created_at": "2026-06-25T20:41:13.513333"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN管理-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN管理",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN管理 #1",
+      "description": "SD-WAN管理基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN管理"
+      ],
+      "created_at": "2026-06-25T20:41:13.513338"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN管理-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN管理",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN管理 #2",
+      "description": "SD-WAN管理判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN管理"
+      ],
+      "created_at": "2026-06-25T20:41:13.513344"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN管理-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN管理",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "软件定义广域网 - SD-WAN管理 #3",
+      "description": "SD-WAN管理填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN管理"
+      ],
+      "created_at": "2026-06-25T20:41:13.513350"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN安全-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN安全",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN安全 #1",
+      "description": "SD-WAN安全基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.513355"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN安全-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN安全",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN安全 #2",
+      "description": "SD-WAN安全判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.513358"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN安全-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN安全",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "软件定义广域网 - SD-WAN安全 #3",
+      "description": "SD-WAN安全填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.513361"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN优化-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN优化",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN优化 #1",
+      "description": "SD-WAN优化基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513366"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN优化-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN优化",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN优化 #2",
+      "description": "SD-WAN优化判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513369"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN优化-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN优化",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "软件定义广域网 - SD-WAN优化 #3",
+      "description": "SD-WAN优化填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513375"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN监控-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN监控",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN监控 #1",
+      "description": "SD-WAN监控基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.513395"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN监控-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN监控",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN监控 #2",
+      "description": "SD-WAN监控判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.513399"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN监控-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN监控",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "软件定义广域网 - SD-WAN监控 #3",
+      "description": "SD-WAN监控填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.513402"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN测试-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN测试",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN测试 #1",
+      "description": "SD-WAN测试基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN测试"
+      ],
+      "created_at": "2026-06-25T20:41:13.513407"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN测试-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN测试",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "软件定义广域网 - SD-WAN测试 #2",
+      "description": "SD-WAN测试判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN测试"
+      ],
+      "created_at": "2026-06-25T20:41:13.513410"
+    },
+    {
+      "problem_id": "net-phase2-ch17-SD-WAN测试-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch17",
+      "topic": "SD-WAN测试",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "软件定义广域网 - SD-WAN测试 #3",
+      "description": "SD-WAN测试填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "SD-WAN测试"
+      ],
+      "created_at": "2026-06-25T20:41:13.513413"
     }
   ]
 }
