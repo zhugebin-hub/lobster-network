@@ -69,6 +69,79 @@ class TestWorldMapVersioning(unittest.TestCase):
         
         log = self.wm.get_update_log()
         self.assertGreaterEqual(len(log), 3)
+    
+    def test_get_version_history(self):
+        """测试获取版本历史"""
+        # 添加一些数据
+        for i in range(3):
+            chunk_data = {
+                "chunk_id": f"version_hist_{i:03d}",
+                "domain": "go",
+                "title": f"版本历史 {i}",
+                "description": f"测试版本历史 {i}",
+                "tags": ["version"],
+            }
+            self.wm.add_chunk(chunk_data, "test_agent")
+        
+        history = self.wm.get_version_history()
+        self.assertGreaterEqual(len(history), 3)
+        
+        # 检查历史记录格式
+        for entry in history:
+            self.assertIn("version", entry)
+            self.assertIn("timestamp", entry)
+            self.assertIn("total_chunks", entry)
+    
+    def test_get_version_info_current(self):
+        """测试获取当前版本信息"""
+        # 添加数据
+        chunk_data = {
+            "chunk_id": "version_info_test",
+            "domain": "protocol",
+            "title": "版本信息测试",
+            "description": "测试当前版本信息",
+            "tags": ["version"],
+        }
+        self.wm.add_chunk(chunk_data, "test_agent")
+        
+        m = self.wm.get_world_map()
+        current_version = m["version"]
+        
+        info = self.wm.get_version_info(current_version)
+        self.assertIsNotNone(info)
+        self.assertTrue(info["is_current"])
+    
+    def test_get_version_info_historical(self):
+        """测试获取历史版本信息"""
+        # 添加第一个 chunk
+        chunk_data1 = {
+            "chunk_id": "hist_v1",
+            "domain": "go",
+            "title": "历史版本 1",
+            "description": "测试历史版本",
+            "tags": ["history"],
+        }
+        self.wm.add_chunk(chunk_data1, "test_agent")
+        
+        # 获取版本 1 的信息
+        info = self.wm.get_version_info(1)
+        self.assertIsNotNone(info)
+        self.assertFalse(info["is_current"])
+        
+        # 添加第二个 chunk
+        chunk_data2 = {
+            "chunk_id": "hist_v2",
+            "domain": "go",
+            "title": "历史版本 2",
+            "description": "测试历史版本",
+            "tags": ["history"],
+        }
+        self.wm.add_chunk(chunk_data2, "test_agent")
+        
+        # 再次获取版本 1 的信息（应该来自历史快照）
+        info = self.wm.get_version_info(1)
+        self.assertIsNotNone(info)
+        self.assertEqual(info["version"], 1)
 
 
 class TestWorldMapMultiDomain(unittest.TestCase):

@@ -47,12 +47,36 @@ class WorldMap:
             "chunks": {},
             "treasures": {},
             "update_log": [],
+            "version_history": [],  # 版本历史记录
         }
 
     def _save(self):
         """持久化到文件"""
         self._map["updated_at"] = datetime.now().isoformat()
-        self._map["version"] = self._map.get("version", 1) + 1
+        
+        # 记录版本历史
+        old_version = self._map.get("version", 1)
+        new_version = old_version + 1
+        
+        # 保存当前状态快照到历史
+        snapshot = {
+            "version": old_version,
+            "timestamp": datetime.now().isoformat(),
+            "total_chunks": len(self._map["chunks"]),
+            "total_treasures": len(self._map["treasures"]),
+            "update_count": len(self._map["update_log"]),
+        }
+        
+        # 保留最近 100 个版本历史
+        if "version_history" not in self._map:
+            self._map["version_history"] = []
+        
+        self._map["version_history"].append(snapshot)
+        if len(self._map["version_history"]) > 100:
+            self._map["version_history"] = self._map["version_history"][-100:]
+        
+        self._map["version"] = new_version
+        
         with open(self.map_file, "w", encoding="utf-8") as f:
             json.dump(self._map, f, indent=2, ensure_ascii=False)
 
@@ -233,11 +257,59 @@ class WorldMap:
     # ========== 同步操作 ==========
 
     def get_world_map(self, version: int = None) -> Dict:
-        """获取完整世界地图"""
+        """获取完整世界地图（支持版本历史回溯）"""
         if version and version != self._map["version"]:
-            # TODO: 实现版本历史回溯
-            pass
+            # 版本历史回溯
+            if version < 1 or version >= self._map["version"]:
+                raise ValueError(f"Invalid version {version}. Current version: {self._map['version']}")
+            
+            # 从版本历史中查找
+            history = self._map.get("version_history", [])
+            target_snapshot = None
+            for snapshot in history:
+                if snapshot["version"] == version:
+                    target_snapshot = snapshot
+                    break
+            
+            if target_snapshot:
+                # 返回历史版本信息（只读）
+                return {
+                    "world_map_id": self.map_id,
+                    "version": version,
+                    "timestamp": target_snapshot["timestamp"],
+                    "total_chunks": target_snapshot["total_chunks"],
+                    "total_treasures": target_snapshot["total_treasures"],
+                    "update_count": target_snapshot["update_count"],
+                    "is_historical": True,
+                }
+            else:
+                # 历史快照不可用，返回当前版本
+                return self._map.copy()
+        
         return self._map.copy()
+    
+    def get_version_history(self, limit: int = 10) -> List[Dict]:
+        """获取版本历史"""
+        history = self._map.get("version_history", [])
+        return history[-limit:]
+    
+    def get_version_info(self, version: int) -> Optional[Dict]:
+        """获取指定版本的信息"""
+        if version == self._map["version"]:
+            return {
+                "version": version,
+                "timestamp": self._map["updated_at"],
+                "total_chunks": len(self._map["chunks"]),
+                "total_treasures": len(self._map["treasures"]),
+                "is_current": True,
+            }
+        
+        history = self._map.get("version_history", [])
+        for snapshot in history:
+            if snapshot["version"] == version:
+                snapshot["is_current"] = False
+                return snapshot
+        return None
 
     def sync_incremental(self, since_version: int, since_timestamp: str = None) -> Dict:
         """增量同步"""
