@@ -1,0 +1,1142 @@
+{
+  "domain": "networking",
+  "phase": "phase2",
+  "total": 54,
+  "generated_at": "2026-06-25T17:38:24.071554",
+  "problems": [
+    {
+      "problem_id": "net-phase2-ch13-流表结构-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "流表结构",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - 流表结构 #1",
+      "description": "流表结构基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "流表结构"
+      ],
+      "created_at": "2026-06-25T17:38:24.066806"
+    },
+    {
+      "problem_id": "net-phase2-ch13-流表结构-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "流表结构",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - 流表结构 #2",
+      "description": "流表结构判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "流表结构"
+      ],
+      "created_at": "2026-06-25T17:38:24.066812"
+    },
+    {
+      "problem_id": "net-phase2-ch13-流表结构-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "流表结构",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow流表实战 - 流表结构 #3",
+      "description": "流表结构填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "流表结构"
+      ],
+      "created_at": "2026-06-25T17:38:24.066815"
+    },
+    {
+      "problem_id": "net-phase2-ch13-Mininet环境-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "Mininet环境",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - Mininet环境 #1",
+      "description": "Mininet环境基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "Mininet环境"
+      ],
+      "created_at": "2026-06-25T17:38:24.066822"
+    },
+    {
+      "problem_id": "net-phase2-ch13-Mininet环境-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "Mininet环境",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - Mininet环境 #2",
+      "description": "Mininet环境判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "Mininet环境"
+      ],
+      "created_at": "2026-06-25T17:38:24.066825"
+    },
+    {
+      "problem_id": "net-phase2-ch13-Mininet环境-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "Mininet环境",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow流表实战 - Mininet环境 #3",
+      "description": "Mininet环境填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "Mininet环境"
+      ],
+      "created_at": "2026-06-25T17:38:24.066828"
+    },
+    {
+      "problem_id": "net-phase2-ch13-ODL控制器-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "ODL控制器",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - ODL控制器 #1",
+      "description": "ODL控制器基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "ODL控制器"
+      ],
+      "created_at": "2026-06-25T17:38:24.066832"
+    },
+    {
+      "problem_id": "net-phase2-ch13-ODL控制器-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "ODL控制器",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - ODL控制器 #2",
+      "description": "ODL控制器判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "ODL控制器"
+      ],
+      "created_at": "2026-06-25T17:38:24.066835"
+    },
+    {
+      "problem_id": "net-phase2-ch13-ODL控制器-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "ODL控制器",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow流表实战 - ODL控制器 #3",
+      "description": "ODL控制器填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "ODL控制器"
+      ],
+      "created_at": "2026-06-25T17:38:24.066838"
+    },
+    {
+      "problem_id": "net-phase2-ch13-本地流表配置-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "本地流表配置",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - 本地流表配置 #1",
+      "description": "本地流表配置基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "本地流表配置"
+      ],
+      "created_at": "2026-06-25T17:38:24.066845"
+    },
+    {
+      "problem_id": "net-phase2-ch13-本地流表配置-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "本地流表配置",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - 本地流表配置 #2",
+      "description": "本地流表配置判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "本地流表配置"
+      ],
+      "created_at": "2026-06-25T17:38:24.066848"
+    },
+    {
+      "problem_id": "net-phase2-ch13-本地流表配置-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "本地流表配置",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow流表实战 - 本地流表配置 #3",
+      "description": "本地流表配置填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "本地流表配置"
+      ],
+      "created_at": "2026-06-25T17:38:24.066851"
+    },
+    {
+      "problem_id": "net-phase2-ch13-远程流表配置-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "远程流表配置",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - 远程流表配置 #1",
+      "description": "远程流表配置基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "远程流表配置"
+      ],
+      "created_at": "2026-06-25T17:38:24.066855"
+    },
+    {
+      "problem_id": "net-phase2-ch13-远程流表配置-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "远程流表配置",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - 远程流表配置 #2",
+      "description": "远程流表配置判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "远程流表配置"
+      ],
+      "created_at": "2026-06-25T17:38:24.066861"
+    },
+    {
+      "problem_id": "net-phase2-ch13-远程流表配置-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "远程流表配置",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow流表实战 - 远程流表配置 #3",
+      "description": "远程流表配置填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "远程流表配置"
+      ],
+      "created_at": "2026-06-25T17:38:24.066864"
+    },
+    {
+      "problem_id": "net-phase2-ch13-2s4h拓扑-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "2s4h拓扑",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - 2s4h拓扑 #1",
+      "description": "2s4h拓扑基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "2s4h拓扑"
+      ],
+      "created_at": "2026-06-25T17:38:24.066868"
+    },
+    {
+      "problem_id": "net-phase2-ch13-2s4h拓扑-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "2s4h拓扑",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow流表实战 - 2s4h拓扑 #2",
+      "description": "2s4h拓扑判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "2s4h拓扑"
+      ],
+      "created_at": "2026-06-25T17:38:24.066871"
+    },
+    {
+      "problem_id": "net-phase2-ch13-2s4h拓扑-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch13",
+      "topic": "2s4h拓扑",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow流表实战 - 2s4h拓扑 #3",
+      "description": "2s4h拓扑填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowweb-3a49zyfd.manus.space",
+        "replay": "https://manus.im/share/AKGUSJvLReB7vsdiTmKsu1?replay=1"
+      },
+      "knowledge_points": [
+        "2s4h拓扑"
+      ],
+      "created_at": "2026-06-25T17:38:24.066874"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VLAN局限-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VLAN局限",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - VLAN局限 #1",
+      "description": "VLAN局限基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VLAN局限"
+      ],
+      "created_at": "2026-06-25T17:38:24.066878"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VLAN局限-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VLAN局限",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - VLAN局限 #2",
+      "description": "VLAN局限判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VLAN局限"
+      ],
+      "created_at": "2026-06-25T17:38:24.066881"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VLAN局限-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VLAN局限",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "VXLAN网络虚拟化 - VLAN局限 #3",
+      "description": "VLAN局限填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VLAN局限"
+      ],
+      "created_at": "2026-06-25T17:38:24.066884"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VXLAN优势-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VXLAN优势",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - VXLAN优势 #1",
+      "description": "VXLAN优势基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VXLAN优势"
+      ],
+      "created_at": "2026-06-25T17:38:24.066891"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VXLAN优势-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VXLAN优势",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - VXLAN优势 #2",
+      "description": "VXLAN优势判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VXLAN优势"
+      ],
+      "created_at": "2026-06-25T17:38:24.066897"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VXLAN优势-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VXLAN优势",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "VXLAN网络虚拟化 - VXLAN优势 #3",
+      "description": "VXLAN优势填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VXLAN优势"
+      ],
+      "created_at": "2026-06-25T17:38:24.066901"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VTEP-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VTEP",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - VTEP #1",
+      "description": "VTEP基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VTEP"
+      ],
+      "created_at": "2026-06-25T17:38:24.066905"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VTEP-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VTEP",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - VTEP #2",
+      "description": "VTEP判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VTEP"
+      ],
+      "created_at": "2026-06-25T17:38:24.066908"
+    },
+    {
+      "problem_id": "net-phase2-ch14-VTEP-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "VTEP",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "VXLAN网络虚拟化 - VTEP #3",
+      "description": "VTEP填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "VTEP"
+      ],
+      "created_at": "2026-06-25T17:38:24.066911"
+    },
+    {
+      "problem_id": "net-phase2-ch14-封装解封装-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "封装解封装",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - 封装解封装 #1",
+      "description": "封装解封装基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "封装解封装"
+      ],
+      "created_at": "2026-06-25T17:38:24.066915"
+    },
+    {
+      "problem_id": "net-phase2-ch14-封装解封装-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "封装解封装",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - 封装解封装 #2",
+      "description": "封装解封装判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "封装解封装"
+      ],
+      "created_at": "2026-06-25T17:38:24.066918"
+    },
+    {
+      "problem_id": "net-phase2-ch14-封装解封装-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "封装解封装",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "VXLAN网络虚拟化 - 封装解封装 #3",
+      "description": "封装解封装填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "封装解封装"
+      ],
+      "created_at": "2026-06-25T17:38:24.066921"
+    },
+    {
+      "problem_id": "net-phase2-ch14-MAC学习-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "MAC学习",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - MAC学习 #1",
+      "description": "MAC学习基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "MAC学习"
+      ],
+      "created_at": "2026-06-25T17:38:24.066925"
+    },
+    {
+      "problem_id": "net-phase2-ch14-MAC学习-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "MAC学习",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - MAC学习 #2",
+      "description": "MAC学习判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "MAC学习"
+      ],
+      "created_at": "2026-06-25T17:38:24.066928"
+    },
+    {
+      "problem_id": "net-phase2-ch14-MAC学习-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "MAC学习",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "VXLAN网络虚拟化 - MAC学习 #3",
+      "description": "MAC学习填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "MAC学习"
+      ],
+      "created_at": "2026-06-25T17:38:24.066931"
+    },
+    {
+      "problem_id": "net-phase2-ch14-隧道传输-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "隧道传输",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - 隧道传输 #1",
+      "description": "隧道传输基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "隧道传输"
+      ],
+      "created_at": "2026-06-25T17:38:24.066935"
+    },
+    {
+      "problem_id": "net-phase2-ch14-隧道传输-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "隧道传输",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "VXLAN网络虚拟化 - 隧道传输 #2",
+      "description": "隧道传输判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "隧道传输"
+      ],
+      "created_at": "2026-06-25T17:38:24.066938"
+    },
+    {
+      "problem_id": "net-phase2-ch14-隧道传输-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch14",
+      "topic": "隧道传输",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "VXLAN网络虚拟化 - 隧道传输 #3",
+      "description": "隧道传输填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://vxlananim-f9tuwrva.manus.space",
+        "replay": "https://manus.im/share/cmmsMVoGdsOZcYUz0uIRKI?replay=1"
+      },
+      "knowledge_points": [
+        "隧道传输"
+      ],
+      "created_at": "2026-06-25T17:38:24.066941"
+    },
+    {
+      "problem_id": "net-phase2-ch15-Meter表-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "Meter表",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow计量表与组表 - Meter表 #1",
+      "description": "Meter表基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "Meter表"
+      ],
+      "created_at": "2026-06-25T17:38:24.066945"
+    },
+    {
+      "problem_id": "net-phase2-ch15-Meter表-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "Meter表",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow计量表与组表 - Meter表 #2",
+      "description": "Meter表判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "Meter表"
+      ],
+      "created_at": "2026-06-25T17:38:24.066948"
+    },
+    {
+      "problem_id": "net-phase2-ch15-Meter表-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "Meter表",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow计量表与组表 - Meter表 #3",
+      "description": "Meter表填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "Meter表"
+      ],
+      "created_at": "2026-06-25T17:38:24.066952"
+    },
+    {
+      "problem_id": "net-phase2-ch15-Select组表-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "Select组表",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow计量表与组表 - Select组表 #1",
+      "description": "Select组表基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "Select组表"
+      ],
+      "created_at": "2026-06-25T17:38:24.066956"
+    },
+    {
+      "problem_id": "net-phase2-ch15-Select组表-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "Select组表",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow计量表与组表 - Select组表 #2",
+      "description": "Select组表判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "Select组表"
+      ],
+      "created_at": "2026-06-25T17:38:24.066960"
+    },
+    {
+      "problem_id": "net-phase2-ch15-Select组表-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "Select组表",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow计量表与组表 - Select组表 #3",
+      "description": "Select组表填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "Select组表"
+      ],
+      "created_at": "2026-06-25T17:38:24.066963"
+    },
+    {
+      "problem_id": "net-phase2-ch15-Fast Failover-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "Fast Failover",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow计量表与组表 - Fast Failover #1",
+      "description": "Fast Failover基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "Fast Failover"
+      ],
+      "created_at": "2026-06-25T17:38:24.066967"
+    },
+    {
+      "problem_id": "net-phase2-ch15-Fast Failover-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "Fast Failover",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow计量表与组表 - Fast Failover #2",
+      "description": "Fast Failover判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "Fast Failover"
+      ],
+      "created_at": "2026-06-25T17:38:24.066970"
+    },
+    {
+      "problem_id": "net-phase2-ch15-Fast Failover-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "Fast Failover",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow计量表与组表 - Fast Failover #3",
+      "description": "Fast Failover填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "Fast Failover"
+      ],
+      "created_at": "2026-06-25T17:38:24.066973"
+    },
+    {
+      "problem_id": "net-phase2-ch15-负载均衡-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "负载均衡",
+      "type": "选择",
+      "difficulty": "高级",
+      "title": "OpenFlow计量表与组表 - 负载均衡 #1",
+      "description": "Select组表用于实现{负载均衡}",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "负载均衡"
+      ],
+      "created_at": "2026-06-25T17:38:24.066980"
+    },
+    {
+      "problem_id": "net-phase2-ch15-负载均衡-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "负载均衡",
+      "type": "判断",
+      "difficulty": "高级",
+      "title": "OpenFlow计量表与组表 - 负载均衡 #2",
+      "description": "Fast Failover组表用于负载均衡（错，用于故障转移）",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "负载均衡"
+      ],
+      "created_at": "2026-06-25T17:38:24.066984"
+    },
+    {
+      "problem_id": "net-phase2-ch15-负载均衡-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "负载均衡",
+      "type": "填空",
+      "difficulty": "高级",
+      "title": "OpenFlow计量表与组表 - 负载均衡 #3",
+      "description": "Meter表主要用于实现_QoS限速_",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "负载均衡"
+      ],
+      "created_at": "2026-06-25T17:38:24.066987"
+    },
+    {
+      "problem_id": "net-phase2-ch15-故障转移-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "故障转移",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow计量表与组表 - 故障转移 #1",
+      "description": "故障转移基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "故障转移"
+      ],
+      "created_at": "2026-06-25T17:38:24.066994"
+    },
+    {
+      "problem_id": "net-phase2-ch15-故障转移-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "故障转移",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow计量表与组表 - 故障转移 #2",
+      "description": "故障转移判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "故障转移"
+      ],
+      "created_at": "2026-06-25T17:38:24.066999"
+    },
+    {
+      "problem_id": "net-phase2-ch15-故障转移-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "故障转移",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow计量表与组表 - 故障转移 #3",
+      "description": "故障转移填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "故障转移"
+      ],
+      "created_at": "2026-06-25T17:38:24.067003"
+    },
+    {
+      "problem_id": "net-phase2-ch15-流量模拟-001",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "流量模拟",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "OpenFlow计量表与组表 - 流量模拟 #1",
+      "description": "流量模拟基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "流量模拟"
+      ],
+      "created_at": "2026-06-25T17:38:24.067007"
+    },
+    {
+      "problem_id": "net-phase2-ch15-流量模拟-002",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "流量模拟",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "OpenFlow计量表与组表 - 流量模拟 #2",
+      "description": "流量模拟判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "流量模拟"
+      ],
+      "created_at": "2026-06-25T17:38:24.067010"
+    },
+    {
+      "problem_id": "net-phase2-ch15-流量模拟-003",
+      "domain": "networking",
+      "phase": "phase2",
+      "chapter": "ch15",
+      "topic": "流量模拟",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "OpenFlow计量表与组表 - 流量模拟 #3",
+      "description": "流量模拟填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://openflowdemo-2remyxaz.manus.space",
+        "replay": "https://manus.im/share/w8MsNkXbY2UNRpgAoHYRhw?replay=1"
+      },
+      "knowledge_points": [
+        "流量模拟"
+      ],
+      "created_at": "2026-06-25T17:38:24.067013"
+    }
+  ]
+}

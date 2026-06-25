@@ -1,0 +1,386 @@
+{
+  "domain": "networking",
+  "phase": "phase3",
+  "total": 18,
+  "generated_at": "2026-06-25T17:38:24.073800",
+  "problems": [
+    {
+      "problem_id": "net-phase3-ch16-OpenStack-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "OpenStack",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "云网一体化 - OpenStack #1",
+      "description": "OpenStack基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "OpenStack"
+      ],
+      "created_at": "2026-06-25T17:38:24.067023"
+    },
+    {
+      "problem_id": "net-phase3-ch16-OpenStack-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "OpenStack",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "云网一体化 - OpenStack #2",
+      "description": "OpenStack判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "OpenStack"
+      ],
+      "created_at": "2026-06-25T17:38:24.067031"
+    },
+    {
+      "problem_id": "net-phase3-ch16-OpenStack-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "OpenStack",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "云网一体化 - OpenStack #3",
+      "description": "OpenStack填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "OpenStack"
+      ],
+      "created_at": "2026-06-25T17:38:24.067034"
+    },
+    {
+      "problem_id": "net-phase3-ch16-OpenDayLight-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "OpenDayLight",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "云网一体化 - OpenDayLight #1",
+      "description": "OpenDayLight基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "OpenDayLight"
+      ],
+      "created_at": "2026-06-25T17:38:24.067039"
+    },
+    {
+      "problem_id": "net-phase3-ch16-OpenDayLight-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "OpenDayLight",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "云网一体化 - OpenDayLight #2",
+      "description": "OpenDayLight判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "OpenDayLight"
+      ],
+      "created_at": "2026-06-25T17:38:24.067042"
+    },
+    {
+      "problem_id": "net-phase3-ch16-OpenDayLight-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "OpenDayLight",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "云网一体化 - OpenDayLight #3",
+      "description": "OpenDayLight填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "OpenDayLight"
+      ],
+      "created_at": "2026-06-25T17:38:24.067045"
+    },
+    {
+      "problem_id": "net-phase3-ch16-REST API-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "REST API",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "云网一体化 - REST API #1",
+      "description": "REST API基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "REST API"
+      ],
+      "created_at": "2026-06-25T17:38:24.067049"
+    },
+    {
+      "problem_id": "net-phase3-ch16-REST API-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "REST API",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "云网一体化 - REST API #2",
+      "description": "REST API判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "REST API"
+      ],
+      "created_at": "2026-06-25T17:38:24.067052"
+    },
+    {
+      "problem_id": "net-phase3-ch16-REST API-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "REST API",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "云网一体化 - REST API #3",
+      "description": "REST API填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "REST API"
+      ],
+      "created_at": "2026-06-25T17:38:24.067055"
+    },
+    {
+      "problem_id": "net-phase3-ch16-Neutron配置-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "Neutron配置",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "云网一体化 - Neutron配置 #1",
+      "description": "Neutron配置基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "Neutron配置"
+      ],
+      "created_at": "2026-06-25T17:38:24.067060"
+    },
+    {
+      "problem_id": "net-phase3-ch16-Neutron配置-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "Neutron配置",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "云网一体化 - Neutron配置 #2",
+      "description": "Neutron配置判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "Neutron配置"
+      ],
+      "created_at": "2026-06-25T17:38:24.067063"
+    },
+    {
+      "problem_id": "net-phase3-ch16-Neutron配置-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "Neutron配置",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "云网一体化 - Neutron配置 #3",
+      "description": "Neutron配置填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "Neutron配置"
+      ],
+      "created_at": "2026-06-25T17:38:24.067066"
+    },
+    {
+      "problem_id": "net-phase3-ch16-ODL配置-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "ODL配置",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "云网一体化 - ODL配置 #1",
+      "description": "ODL配置基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "ODL配置"
+      ],
+      "created_at": "2026-06-25T17:38:24.067070"
+    },
+    {
+      "problem_id": "net-phase3-ch16-ODL配置-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "ODL配置",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "云网一体化 - ODL配置 #2",
+      "description": "ODL配置判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "ODL配置"
+      ],
+      "created_at": "2026-06-25T17:38:24.067073"
+    },
+    {
+      "problem_id": "net-phase3-ch16-ODL配置-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "ODL配置",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "云网一体化 - ODL配置 #3",
+      "description": "ODL配置填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "ODL配置"
+      ],
+      "created_at": "2026-06-25T17:38:24.067076"
+    },
+    {
+      "problem_id": "net-phase3-ch16-数据一致性-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "数据一致性",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "云网一体化 - 数据一致性 #1",
+      "description": "数据一致性基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "数据一致性"
+      ],
+      "created_at": "2026-06-25T17:38:24.067081"
+    },
+    {
+      "problem_id": "net-phase3-ch16-数据一致性-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "数据一致性",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "云网一体化 - 数据一致性 #2",
+      "description": "数据一致性判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "数据一致性"
+      ],
+      "created_at": "2026-06-25T17:38:24.067084"
+    },
+    {
+      "problem_id": "net-phase3-ch16-数据一致性-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "数据一致性",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "云网一体化 - 数据一致性 #3",
+      "description": "数据一致性填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "数据一致性"
+      ],
+      "created_at": "2026-06-25T17:38:24.067087"
+    }
+  ]
+}
