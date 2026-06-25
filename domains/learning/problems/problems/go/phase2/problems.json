@@ -1,0 +1,994 @@
+{
+  "domain": "go",
+  "phase": "phase2",
+  "total": 58,
+  "generated_at": "2026-06-25T08:34:48.764434",
+  "problems": [
+    {
+      "problem_id": "go-phase2-w5-小目定式·一间高挂-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 5,
+      "topic": "小目定式·一间高挂",
+      "type": "选择",
+      "difficulty": "初级",
+      "title": "小目定式·一间高挂 #1",
+      "description": "一间高挂后，黑棋常见应法有托",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "小目定式·一间高挂"
+      ],
+      "created_at": "2026-06-25T08:34:48.760186"
+    },
+    {
+      "problem_id": "go-phase2-w5-小目定式·一间高挂-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 5,
+      "topic": "小目定式·一间高挂",
+      "type": "判断",
+      "difficulty": "初级",
+      "title": "小目定式·一间高挂 #2",
+      "description": "这个定式结果是黑优",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "小目定式·一间高挂"
+      ],
+      "created_at": "2026-06-25T08:34:48.760198"
+    },
+    {
+      "problem_id": "go-phase2-w5-小目定式·二间高挂-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 5,
+      "topic": "小目定式·二间高挂",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "小目定式·二间高挂 #1",
+      "description": "小目定式·二间高挂基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "小目定式·二间高挂"
+      ],
+      "created_at": "2026-06-25T08:34:48.760209"
+    },
+    {
+      "problem_id": "go-phase2-w5-小目定式·二间高挂-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 5,
+      "topic": "小目定式·二间高挂",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "小目定式·二间高挂 #2",
+      "description": "小目定式·二间高挂判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "小目定式·二间高挂"
+      ],
+      "created_at": "2026-06-25T08:34:48.760220"
+    },
+    {
+      "problem_id": "go-phase2-w5-星位定式-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 5,
+      "topic": "星位定式",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "星位定式 #1",
+      "description": "星位定式基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "星位定式"
+      ],
+      "created_at": "2026-06-25T08:34:48.760232"
+    },
+    {
+      "problem_id": "go-phase2-w5-星位定式-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 5,
+      "topic": "星位定式",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "星位定式 #2",
+      "description": "星位定式判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "星位定式"
+      ],
+      "created_at": "2026-06-25T08:34:48.760242"
+    },
+    {
+      "problem_id": "go-phase2-w5-三三定式-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 5,
+      "topic": "三三定式",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "三三定式 #1",
+      "description": "三三定式基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "三三定式"
+      ],
+      "created_at": "2026-06-25T08:34:48.760253"
+    },
+    {
+      "problem_id": "go-phase2-w5-三三定式-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 5,
+      "topic": "三三定式",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "三三定式 #2",
+      "description": "三三定式判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "三三定式"
+      ],
+      "created_at": "2026-06-25T08:34:48.760266"
+    },
+    {
+      "problem_id": "go-phase2-w6-定式选择原则-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 6,
+      "topic": "定式选择原则",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "定式选择原则 #1",
+      "description": "定式选择原则基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式选择原则"
+      ],
+      "created_at": "2026-06-25T08:34:48.760279"
+    },
+    {
+      "problem_id": "go-phase2-w6-定式选择原则-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 6,
+      "topic": "定式选择原则",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "定式选择原则 #2",
+      "description": "定式选择原则判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式选择原则"
+      ],
+      "created_at": "2026-06-25T08:34:48.760289"
+    },
+    {
+      "problem_id": "go-phase2-w6-定式后续变化-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 6,
+      "topic": "定式后续变化",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "定式后续变化 #1",
+      "description": "定式后续变化基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式后续变化"
+      ],
+      "created_at": "2026-06-25T08:34:48.760301"
+    },
+    {
+      "problem_id": "go-phase2-w6-定式后续变化-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 6,
+      "topic": "定式后续变化",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "定式后续变化 #2",
+      "description": "定式后续变化判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式后续变化"
+      ],
+      "created_at": "2026-06-25T08:34:48.760311"
+    },
+    {
+      "problem_id": "go-phase2-w6-定式与布局配合-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 6,
+      "topic": "定式与布局配合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "定式与布局配合 #1",
+      "description": "定式与布局配合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式与布局配合"
+      ],
+      "created_at": "2026-06-25T08:34:48.760327"
+    },
+    {
+      "problem_id": "go-phase2-w6-定式与布局配合-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 6,
+      "topic": "定式与布局配合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "定式与布局配合 #2",
+      "description": "定式与布局配合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式与布局配合"
+      ],
+      "created_at": "2026-06-25T08:34:48.760342"
+    },
+    {
+      "problem_id": "go-phase2-w6-定式常见错误-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 6,
+      "topic": "定式常见错误",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "定式常见错误 #1",
+      "description": "定式常见错误基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式常见错误"
+      ],
+      "created_at": "2026-06-25T08:34:48.760361"
+    },
+    {
+      "problem_id": "go-phase2-w6-定式常见错误-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 6,
+      "topic": "定式常见错误",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "定式常见错误 #2",
+      "description": "定式常见错误判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "定式常见错误"
+      ],
+      "created_at": "2026-06-25T08:34:48.760372"
+    },
+    {
+      "problem_id": "go-phase2-w7-挂角方式-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 7,
+      "topic": "挂角方式",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "挂角方式 #1",
+      "description": "挂角方式基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "挂角方式"
+      ],
+      "created_at": "2026-06-25T08:34:48.760384"
+    },
+    {
+      "problem_id": "go-phase2-w7-挂角方式-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 7,
+      "topic": "挂角方式",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "挂角方式 #2",
+      "description": "挂角方式判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "挂角方式"
+      ],
+      "created_at": "2026-06-25T08:34:48.760394"
+    },
+    {
+      "problem_id": "go-phase2-w7-夹击手法-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 7,
+      "topic": "夹击手法",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "夹击手法 #1",
+      "description": "夹击手法基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "夹击手法"
+      ],
+      "created_at": "2026-06-25T08:34:48.760406"
+    },
+    {
+      "problem_id": "go-phase2-w7-夹击手法-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 7,
+      "topic": "夹击手法",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "夹击手法 #2",
+      "description": "夹击手法判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "夹击手法"
+      ],
+      "created_at": "2026-06-25T08:34:48.760417"
+    },
+    {
+      "problem_id": "go-phase2-w7-拆边原则-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 7,
+      "topic": "拆边原则",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "拆边原则 #1",
+      "description": "拆边原则基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "拆边原则"
+      ],
+      "created_at": "2026-06-25T08:34:48.760428"
+    },
+    {
+      "problem_id": "go-phase2-w7-拆边原则-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 7,
+      "topic": "拆边原则",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "拆边原则 #2",
+      "description": "拆边原则判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "拆边原则"
+      ],
+      "created_at": "2026-06-25T08:34:48.760440"
+    },
+    {
+      "problem_id": "go-phase2-w7-根据地-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 7,
+      "topic": "根据地",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "根据地 #1",
+      "description": "根据地基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "根据地"
+      ],
+      "created_at": "2026-06-25T08:34:48.760451"
+    },
+    {
+      "problem_id": "go-phase2-w7-根据地-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 7,
+      "topic": "根据地",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "根据地 #2",
+      "description": "根据地判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "根据地"
+      ],
+      "created_at": "2026-06-25T08:34:48.760462"
+    },
+    {
+      "problem_id": "go-phase2-w8-布局基础·三连星-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 8,
+      "topic": "布局基础·三连星",
+      "type": "选择",
+      "difficulty": "初级",
+      "title": "布局基础·三连星 #1",
+      "description": "三连星布局侧重实地",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局基础·三连星"
+      ],
+      "created_at": "2026-06-25T08:34:48.760477"
+    },
+    {
+      "problem_id": "go-phase2-w8-布局基础·三连星-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 8,
+      "topic": "布局基础·三连星",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "布局基础·三连星 #2",
+      "description": "三连星的第一手应下在_",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局基础·三连星"
+      ],
+      "created_at": "2026-06-25T08:34:48.760487"
+    },
+    {
+      "problem_id": "go-phase2-w8-布局基础·中国流-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 8,
+      "topic": "布局基础·中国流",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "布局基础·中国流 #1",
+      "description": "布局基础·中国流基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局基础·中国流"
+      ],
+      "created_at": "2026-06-25T08:34:48.760517"
+    },
+    {
+      "problem_id": "go-phase2-w8-布局基础·中国流-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 8,
+      "topic": "布局基础·中国流",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "布局基础·中国流 #2",
+      "description": "布局基础·中国流判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局基础·中国流"
+      ],
+      "created_at": "2026-06-25T08:34:48.760530"
+    },
+    {
+      "problem_id": "go-phase2-w8-布局基础·小林流-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 8,
+      "topic": "布局基础·小林流",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "布局基础·小林流 #1",
+      "description": "布局基础·小林流基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局基础·小林流"
+      ],
+      "created_at": "2026-06-25T08:34:48.760542"
+    },
+    {
+      "problem_id": "go-phase2-w8-布局基础·小林流-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 8,
+      "topic": "布局基础·小林流",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "布局基础·小林流 #2",
+      "description": "布局基础·小林流判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局基础·小林流"
+      ],
+      "created_at": "2026-06-25T08:34:48.760552"
+    },
+    {
+      "problem_id": "go-phase2-w8-布局中盘过渡-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 8,
+      "topic": "布局中盘过渡",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "布局中盘过渡 #1",
+      "description": "布局中盘过渡基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局中盘过渡"
+      ],
+      "created_at": "2026-06-25T08:34:48.760564"
+    },
+    {
+      "problem_id": "go-phase2-w8-布局中盘过渡-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 8,
+      "topic": "布局中盘过渡",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "布局中盘过渡 #2",
+      "description": "布局中盘过渡判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布局中盘过渡"
+      ],
+      "created_at": "2026-06-25T08:34:48.760574"
+    },
+    {
+      "problem_id": "go-phase2-w9-中盘战斗基础-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 9,
+      "topic": "中盘战斗基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "中盘战斗基础 #1",
+      "description": "中盘战斗基础基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "中盘战斗基础"
+      ],
+      "created_at": "2026-06-25T08:34:48.760587"
+    },
+    {
+      "problem_id": "go-phase2-w9-中盘战斗基础-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 9,
+      "topic": "中盘战斗基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "中盘战斗基础 #2",
+      "description": "中盘战斗基础判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "中盘战斗基础"
+      ],
+      "created_at": "2026-06-25T08:34:48.760599"
+    },
+    {
+      "problem_id": "go-phase2-w9-攻防要点-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 9,
+      "topic": "攻防要点",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "攻防要点 #1",
+      "description": "攻防要点基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "攻防要点"
+      ],
+      "created_at": "2026-06-25T08:34:48.760615"
+    },
+    {
+      "problem_id": "go-phase2-w9-攻防要点-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 9,
+      "topic": "攻防要点",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "攻防要点 #2",
+      "description": "攻防要点判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "攻防要点"
+      ],
+      "created_at": "2026-06-25T08:34:48.760631"
+    },
+    {
+      "problem_id": "go-phase2-w9-厚薄判断-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 9,
+      "topic": "厚薄判断",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "厚薄判断 #1",
+      "description": "厚薄判断基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "厚薄判断"
+      ],
+      "created_at": "2026-06-25T08:34:48.760648"
+    },
+    {
+      "problem_id": "go-phase2-w9-厚薄判断-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 9,
+      "topic": "厚薄判断",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "厚薄判断 #2",
+      "description": "厚薄判断判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "厚薄判断"
+      ],
+      "created_at": "2026-06-25T08:34:48.760664"
+    },
+    {
+      "problem_id": "go-phase2-w9-形势判断基础-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 9,
+      "topic": "形势判断基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "形势判断基础 #1",
+      "description": "形势判断基础基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "形势判断基础"
+      ],
+      "created_at": "2026-06-25T08:34:48.760681"
+    },
+    {
+      "problem_id": "go-phase2-w9-形势判断基础-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 9,
+      "topic": "形势判断基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "形势判断基础 #2",
+      "description": "形势判断基础判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "形势判断基础"
+      ],
+      "created_at": "2026-06-25T08:34:48.760696"
+    },
+    {
+      "problem_id": "go-phase2-w10-手筋基础·吃子手筋-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 10,
+      "topic": "手筋基础·吃子手筋",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "手筋基础·吃子手筋 #1",
+      "description": "手筋基础·吃子手筋基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "手筋基础·吃子手筋"
+      ],
+      "created_at": "2026-06-25T08:34:48.760723"
+    },
+    {
+      "problem_id": "go-phase2-w10-手筋基础·吃子手筋-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 10,
+      "topic": "手筋基础·吃子手筋",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "手筋基础·吃子手筋 #2",
+      "description": "手筋基础·吃子手筋判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "手筋基础·吃子手筋"
+      ],
+      "created_at": "2026-06-25T08:34:48.760740"
+    },
+    {
+      "problem_id": "go-phase2-w10-手筋基础·连接手筋-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 10,
+      "topic": "手筋基础·连接手筋",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "手筋基础·连接手筋 #1",
+      "description": "手筋基础·连接手筋基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "手筋基础·连接手筋"
+      ],
+      "created_at": "2026-06-25T08:34:48.760756"
+    },
+    {
+      "problem_id": "go-phase2-w10-手筋基础·连接手筋-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 10,
+      "topic": "手筋基础·连接手筋",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "手筋基础·连接手筋 #2",
+      "description": "手筋基础·连接手筋判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "手筋基础·连接手筋"
+      ],
+      "created_at": "2026-06-25T08:34:48.760767"
+    },
+    {
+      "problem_id": "go-phase2-w10-手筋基础·死活手筋-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 10,
+      "topic": "手筋基础·死活手筋",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "手筋基础·死活手筋 #1",
+      "description": "手筋基础·死活手筋基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "手筋基础·死活手筋"
+      ],
+      "created_at": "2026-06-25T08:34:48.760780"
+    },
+    {
+      "problem_id": "go-phase2-w10-手筋基础·死活手筋-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 10,
+      "topic": "手筋基础·死活手筋",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "手筋基础·死活手筋 #2",
+      "description": "手筋基础·死活手筋判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "手筋基础·死活手筋"
+      ],
+      "created_at": "2026-06-25T08:34:48.760790"
+    },
+    {
+      "problem_id": "go-phase2-w10-手筋综合应用-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 10,
+      "topic": "手筋综合应用",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "手筋综合应用 #1",
+      "description": "手筋综合应用基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "手筋综合应用"
+      ],
+      "created_at": "2026-06-25T08:34:48.760802"
+    },
+    {
+      "problem_id": "go-phase2-w10-手筋综合应用-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 10,
+      "topic": "手筋综合应用",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "手筋综合应用 #2",
+      "description": "手筋综合应用判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "手筋综合应用"
+      ],
+      "created_at": "2026-06-25T08:34:48.760816"
+    },
+    {
+      "problem_id": "go-phase2-w11-官子基础·大小计算-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 11,
+      "topic": "官子基础·大小计算",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "官子基础·大小计算 #1",
+      "description": "官子基础·大小计算基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子基础·大小计算"
+      ],
+      "created_at": "2026-06-25T08:34:48.760834"
+    },
+    {
+      "problem_id": "go-phase2-w11-官子基础·大小计算-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 11,
+      "topic": "官子基础·大小计算",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "官子基础·大小计算 #2",
+      "description": "官子基础·大小计算判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子基础·大小计算"
+      ],
+      "created_at": "2026-06-25T08:34:48.760844"
+    },
+    {
+      "problem_id": "go-phase2-w11-官子基础·先手官子-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 11,
+      "topic": "官子基础·先手官子",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "官子基础·先手官子 #1",
+      "description": "官子基础·先手官子基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子基础·先手官子"
+      ],
+      "created_at": "2026-06-25T08:34:48.760860"
+    },
+    {
+      "problem_id": "go-phase2-w11-官子基础·先手官子-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 11,
+      "topic": "官子基础·先手官子",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "官子基础·先手官子 #2",
+      "description": "官子基础·先手官子判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子基础·先手官子"
+      ],
+      "created_at": "2026-06-25T08:34:48.760872"
+    },
+    {
+      "problem_id": "go-phase2-w11-官子基础·后手官子-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 11,
+      "topic": "官子基础·后手官子",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "官子基础·后手官子 #1",
+      "description": "官子基础·后手官子基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子基础·后手官子"
+      ],
+      "created_at": "2026-06-25T08:34:48.760884"
+    },
+    {
+      "problem_id": "go-phase2-w11-官子基础·后手官子-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 11,
+      "topic": "官子基础·后手官子",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "官子基础·后手官子 #2",
+      "description": "官子基础·后手官子判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子基础·后手官子"
+      ],
+      "created_at": "2026-06-25T08:34:48.760894"
+    },
+    {
+      "problem_id": "go-phase2-w11-官子综合练习-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 11,
+      "topic": "官子综合练习",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "官子综合练习 #1",
+      "description": "官子综合练习基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子综合练习"
+      ],
+      "created_at": "2026-06-25T08:34:48.760906"
+    },
+    {
+      "problem_id": "go-phase2-w11-官子综合练习-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 11,
+      "topic": "官子综合练习",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "官子综合练习 #2",
+      "description": "官子综合练习判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "官子综合练习"
+      ],
+      "created_at": "2026-06-25T08:34:48.760919"
+    },
+    {
+      "problem_id": "go-phase2-w12-第二阶段综合考核-001",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 12,
+      "topic": "第二阶段综合考核",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "第二阶段综合考核 #1",
+      "description": "第二阶段综合考核基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "第二阶段综合考核"
+      ],
+      "created_at": "2026-06-25T08:34:48.760931"
+    },
+    {
+      "problem_id": "go-phase2-w12-第二阶段综合考核-002",
+      "domain": "go",
+      "phase": "phase2",
+      "week": 12,
+      "topic": "第二阶段综合考核",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "第二阶段综合考核 #2",
+      "description": "第二阶段综合考核判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "第二阶段综合考核"
+      ],
+      "created_at": "2026-06-25T08:34:48.760946"
+    }
+  ]
+}

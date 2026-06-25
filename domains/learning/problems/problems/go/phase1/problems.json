@@ -1,0 +1,569 @@
+{
+  "domain": "go",
+  "phase": "phase1",
+  "total": 33,
+  "generated_at": "2026-06-25T08:34:48.762222",
+  "problems": [
+    {
+      "problem_id": "go-phase1-w1-气的概念-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "气的概念",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "气的概念 #1",
+      "description": "气的概念基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "气的概念"
+      ],
+      "created_at": "2026-06-25T08:34:48.759602"
+    },
+    {
+      "problem_id": "go-phase1-w1-气的概念-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "气的概念",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "气的概念 #2",
+      "description": "气的概念判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "气的概念"
+      ],
+      "created_at": "2026-06-25T08:34:48.759634"
+    },
+    {
+      "problem_id": "go-phase1-w1-吃子基础-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "吃子基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "吃子基础 #1",
+      "description": "黑棋有5口气，白棋有1口气，谁先吃谁？",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "吃子基础"
+      ],
+      "created_at": "2026-06-25T08:34:48.759654"
+    },
+    {
+      "problem_id": "go-phase1-w1-吃子基础-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "吃子基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "吃子基础 #2",
+      "description": "图中黑棋能否被吃？（能/不能）",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "吃子基础"
+      ],
+      "created_at": "2026-06-25T08:34:48.759665"
+    },
+    {
+      "problem_id": "go-phase1-w1-吃子基础-003",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "吃子基础",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "吃子基础 #3",
+      "description": "黑棋需要下在_位置才能吃白",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "吃子基础"
+      ],
+      "created_at": "2026-06-25T08:34:48.759677"
+    },
+    {
+      "problem_id": "go-phase1-w1-禁入点-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "禁入点",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "禁入点 #1",
+      "description": "禁入点基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "禁入点"
+      ],
+      "created_at": "2026-06-25T08:34:48.759691"
+    },
+    {
+      "problem_id": "go-phase1-w1-禁入点-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "禁入点",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "禁入点 #2",
+      "description": "禁入点判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "禁入点"
+      ],
+      "created_at": "2026-06-25T08:34:48.759704"
+    },
+    {
+      "problem_id": "go-phase1-w1-打吃-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "打吃",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "打吃 #1",
+      "description": "打吃基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "打吃"
+      ],
+      "created_at": "2026-06-25T08:34:48.759717"
+    },
+    {
+      "problem_id": "go-phase1-w1-打吃-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "打吃",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "打吃 #2",
+      "description": "打吃判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "打吃"
+      ],
+      "created_at": "2026-06-25T08:34:48.759828"
+    },
+    {
+      "problem_id": "go-phase1-w2-连接与切断-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "连接与切断",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "连接与切断 #1",
+      "description": "黑棋应该连接白棋",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "连接与切断"
+      ],
+      "created_at": "2026-06-25T08:34:48.759850"
+    },
+    {
+      "problem_id": "go-phase1-w2-连接与切断-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "连接与切断",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "连接与切断 #2",
+      "description": "白棋的断点能否被利用？",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "连接与切断"
+      ],
+      "created_at": "2026-06-25T08:34:48.759861"
+    },
+    {
+      "problem_id": "go-phase1-w2-逃子-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "逃子",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "逃子 #1",
+      "description": "逃子基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "逃子"
+      ],
+      "created_at": "2026-06-25T08:34:48.759874"
+    },
+    {
+      "problem_id": "go-phase1-w2-逃子-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "逃子",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "逃子 #2",
+      "description": "逃子判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "逃子"
+      ],
+      "created_at": "2026-06-25T08:34:48.759884"
+    },
+    {
+      "problem_id": "go-phase1-w2-双打吃-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "双打吃",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "双打吃 #1",
+      "description": "双打吃基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "双打吃"
+      ],
+      "created_at": "2026-06-25T08:34:48.759904"
+    },
+    {
+      "problem_id": "go-phase1-w2-双打吃-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "双打吃",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "双打吃 #2",
+      "description": "双打吃判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "双打吃"
+      ],
+      "created_at": "2026-06-25T08:34:48.759915"
+    },
+    {
+      "problem_id": "go-phase1-w2-征子-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "征子",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "征子 #1",
+      "description": "征子基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "征子"
+      ],
+      "created_at": "2026-06-25T08:34:48.759927"
+    },
+    {
+      "problem_id": "go-phase1-w2-征子-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "征子",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "征子 #2",
+      "description": "征子判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "征子"
+      ],
+      "created_at": "2026-06-25T08:34:48.759938"
+    },
+    {
+      "problem_id": "go-phase1-w3-扑与倒扑-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "扑与倒扑",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "扑与倒扑 #1",
+      "description": "黑1应该倒扑",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "扑与倒扑"
+      ],
+      "created_at": "2026-06-25T08:34:48.759951"
+    },
+    {
+      "problem_id": "go-phase1-w3-扑与倒扑-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "扑与倒扑",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "扑与倒扑 #2",
+      "description": "黑棋扑入后，白棋必须_",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "扑与倒扑"
+      ],
+      "created_at": "2026-06-25T08:34:48.759962"
+    },
+    {
+      "problem_id": "go-phase1-w3-枷吃-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "枷吃",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "枷吃 #1",
+      "description": "枷吃基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "枷吃"
+      ],
+      "created_at": "2026-06-25T08:34:48.759978"
+    },
+    {
+      "problem_id": "go-phase1-w3-枷吃-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "枷吃",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "枷吃 #2",
+      "description": "枷吃判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "枷吃"
+      ],
+      "created_at": "2026-06-25T08:34:48.759992"
+    },
+    {
+      "problem_id": "go-phase1-w3-接不归-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "接不归",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "接不归 #1",
+      "description": "接不归基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "接不归"
+      ],
+      "created_at": "2026-06-25T08:34:48.760004"
+    },
+    {
+      "problem_id": "go-phase1-w3-接不归-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "接不归",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "接不归 #2",
+      "description": "接不归判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "接不归"
+      ],
+      "created_at": "2026-06-25T08:34:48.760015"
+    },
+    {
+      "problem_id": "go-phase1-w3-倒脱靴-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "倒脱靴",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "倒脱靴 #1",
+      "description": "倒脱靴基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "倒脱靴"
+      ],
+      "created_at": "2026-06-25T08:34:48.760026"
+    },
+    {
+      "problem_id": "go-phase1-w3-倒脱靴-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "倒脱靴",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "倒脱靴 #2",
+      "description": "倒脱靴判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "倒脱靴"
+      ],
+      "created_at": "2026-06-25T08:34:48.760037"
+    },
+    {
+      "problem_id": "go-phase1-w4-两眼活棋-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "两眼活棋",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "两眼活棋 #1",
+      "description": "两眼活棋基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "两眼活棋"
+      ],
+      "created_at": "2026-06-25T08:34:48.760049"
+    },
+    {
+      "problem_id": "go-phase1-w4-两眼活棋-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "两眼活棋",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "两眼活棋 #2",
+      "description": "两眼活棋判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "两眼活棋"
+      ],
+      "created_at": "2026-06-25T08:34:48.760059"
+    },
+    {
+      "problem_id": "go-phase1-w4-基本死活-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "基本死活",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "基本死活 #1",
+      "description": "白棋是劫",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "基本死活"
+      ],
+      "created_at": "2026-06-25T08:34:48.760075"
+    },
+    {
+      "problem_id": "go-phase1-w4-基本死活-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "基本死活",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "基本死活 #2",
+      "description": "黑棋点入_位置可杀白",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "基本死活"
+      ],
+      "created_at": "2026-06-25T08:34:48.760085"
+    },
+    {
+      "problem_id": "go-phase1-w4-劫的概念-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "劫的概念",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "劫的概念 #1",
+      "description": "劫的概念基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "劫的概念"
+      ],
+      "created_at": "2026-06-25T08:34:48.760096"
+    },
+    {
+      "problem_id": "go-phase1-w4-劫的概念-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "劫的概念",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "劫的概念 #2",
+      "description": "劫的概念判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "劫的概念"
+      ],
+      "created_at": "2026-06-25T08:34:48.760143"
+    },
+    {
+      "problem_id": "go-phase1-w4-第一阶段考核-001",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "第一阶段考核",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "第一阶段考核 #1",
+      "description": "第一阶段考核基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "第一阶段考核"
+      ],
+      "created_at": "2026-06-25T08:34:48.760155"
+    },
+    {
+      "problem_id": "go-phase1-w4-第一阶段考核-002",
+      "domain": "go",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "第一阶段考核",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "第一阶段考核 #2",
+      "description": "第一阶段考核判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "第一阶段考核"
+      ],
+      "created_at": "2026-06-25T08:34:48.760166"
+    }
+  ]
+}
