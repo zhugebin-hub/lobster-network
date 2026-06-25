@@ -1,0 +1,107 @@
+{
+  "phase": 2,
+  "name": "世界杯预测进阶",
+  "description": "多因素分析、赔率解读、数据模型",
+  "problems": [
+    {
+      "id": "fp2-001",
+      "type": "multi_factor",
+      "difficulty": "中级",
+      "question": "分析德国 vs 日本的多因素预测",
+      "context": {
+        "home_team": "德国",
+        "away_team": "日本",
+        "factors": {
+          "world_rank_diff": 4,
+          "home_advantage": 0.15,
+          "recent_form_diff": 0.10,
+          "h2h_record": "德国 3胜1平2负",
+          "injury_impact": "德国-0.05, 日本-0.08"
+        }
+      },
+      "answer": "德国胜（综合评分：德国 0.72 vs 日本 0.28）",
+      "confidence": 0.68,
+      "reasoning": "德国世界排名更高+主场优势+近期状态更好，但日本有伤病影响较小"
+    },
+    {
+      "id": "fp2-002",
+      "type": "odds_analysis",
+      "difficulty": "中级",
+      "question": "解读赔率：主胜 1.85，平局 3.40，主负 4.20",
+      "context": {
+        "home_win": 1.85,
+        "draw": 3.40,
+        "away_win": 4.20,
+        "implied_prob": {"home": 0.54, "draw": 0.29, "away": 0.24}
+      },
+      "options": ["主胜概率最高", "平局概率最高", "主负概率最高", "无法判断"],
+      "answer": "主胜概率最高",
+      "confidence": 0.75,
+      "reasoning": "赔率1.85对应隐含概率54%，为最高选项"
+    },
+    {
+      "id": "fp2-003",
+      "type": "data_model",
+      "difficulty": "中级",
+      "question": "使用泊松分布预测比分",
+      "context": {
+        "home_lambda": 1.8,
+        "away_lambda": 1.2,
+        "distribution": "poisson"
+      },
+      "options": ["1-1", "2-1", "2-0", "1-0"],
+      "answer": "2-1",
+      "confidence": 0.42,
+      "reasoning": "泊松分布计算：P(2-1) = P(2|1.8) × P(1|1.2) = 0.27 × 0.36 = 0.097，为最高概率比分"
+    },
+    {
+      "id": "fp2-004",
+      "type": "multi_factor",
+      "difficulty": "中级",
+      "question": "分析荷兰 vs 突尼斯的战术因素",
+      "context": {
+        "home_team": "荷兰",
+        "away_team": "突尼斯",
+        "tactics": {
+          "netherlands": "4-3-3 控球+反击",
+          "tunisia": "5-4-1 防守反击",
+          "key_matchup": "荷兰边路 vs 突尼斯5后卫"
+        }
+      },
+      "answer": "荷兰胜（战术克制，控球率预计60%+）",
+      "confidence": 0.70,
+      "reasoning": "荷兰4-3-3控球战术克制突尼斯5-4-1防守，边路突破是关键"
+    },
+    {
+      "id": "fp2-005",
+      "type": "value_bet",
+      "difficulty": "中级",
+      "question": "寻找价值投注：你的模型预测主胜概率60%，赔率1.85",
+      "context": {
+        "your_prob": 0.60,
+        "odds": 1.85,
+        "implied_prob": 0.54,
+        "expected_value": 0.11
+      },
+      "options": ["有正期望值，应该投注", "期望值为负，不应投注", "无法判断", "需要更多信息"],
+      "answer": "有正期望值，应该投注",
+      "confidence": 0.80,
+      "reasoning": "EV = 0.60 × 1.85 - 1 = 0.11 > 0，有正期望值"
+    },
+    {
+      "id": "fp2-006",
+      "type": "multi_factor",
+      "difficulty": "中级",
+      "question": "天气因素对预测的影响",
+      "context": {
+        "weather": "高温高湿（35°C，湿度85%）",
+        "teams": ["欧洲队", "热带球队"],
+        "impact": "体能消耗增加20%"
+      },
+      "options": ["热带球队占优", "欧洲队占优", "无影响", "看具体球队"],
+      "answer": "热带球队占优",
+      "confidence": 0.65,
+      "reasoning": "高温高湿环境对热带球队更有利，欧洲球队体能消耗更大"
+    }
+  ]
+}
