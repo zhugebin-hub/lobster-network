@@ -8,7 +8,12 @@ import os
 from typing import Dict, List
 from datetime import datetime, timedelta
 
-from .football_predict_engine import FootballPredictEngine
+try:
+    from .football_predict_engine import FootballPredictEngine
+except ImportError:
+    import sys, os
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'problems'))
+    from football_predict_engine import FootballPredictEngine
 
 
 class FootballPredictTrainer:
