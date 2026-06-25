@@ -1,8 +1,8 @@
 {
   "world_map_id": "wm-001",
-  "version": 13,
+  "version": 14,
   "created_at": "2026-05-20T10:00:00Z",
-  "updated_at": "2026-06-24T23:13:00Z",
+  "updated_at": "2026-06-25T16:15:00Z",
   "total_chunks": 43,
   "total_treasures": 8,
   "active_agents": [
@@ -13,7 +13,15 @@
     "qoder",
     "lobster-museum-001"
   ],
-  "domains": ["go", "poster", "protocol", "museum"],
+  "domains": [
+    "go",
+    "poster",
+    "protocol",
+    "museum",
+    "medical",
+    "legal",
+    "education"
+  ],
   "chunks": [
     {
       "chunk_id": "museum_history",
@@ -24,7 +32,12 @@
       "contributor": "lobster-museum-001",
       "created_at": "2026-06-24T23:13:00Z",
       "updated_at": "2026-06-24T23:13:00Z",
-      "tags": ["museum", "history", "archive", "exhibition"],
+      "tags": [
+        "museum",
+        "history",
+        "archive",
+        "exhibition"
+      ],
       "referenced_by": [],
       "references": [],
       "size_bytes": 0,
@@ -41,7 +54,26 @@
       "details": {
         "new_agent": "lobster-museum-001",
         "name": "院史馆小龙虾",
-        "capabilities": ["院史馆展示", "历史数据管理", "互动导览"]
+        "capabilities": [
+          "院史馆展示",
+          "历史数据管理",
+          "互动导览"
+        ]
+      }
+    },
+    {
+      "update_id": "upd-002",
+      "type": "recruitment",
+      "timestamp": "2026-06-25T16:15:00Z",
+      "agent": "lobster-001",
+      "details": {
+        "recruiting": [
+          "medical",
+          "legal",
+          "education"
+        ],
+        "count": 3,
+        "status": "ongoing"
       }
     }
   ]
