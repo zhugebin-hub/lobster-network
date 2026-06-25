@@ -58,6 +58,24 @@
           "accuracy": "100.0%"
         }
       ]
+    },
+    "qoder": {
+      "type": "实战型",
+      "completed_chapters": [],
+      "current_chapter": null,
+      "problems_solved": 0,
+      "problems_correct": 0,
+      "wrong_book": [],
+      "learning_log": []
+    },
+    "院史馆小龙虾": {
+      "type": "文化型",
+      "completed_chapters": [],
+      "current_chapter": null,
+      "problems_solved": 0,
+      "problems_correct": 0,
+      "wrong_book": [],
+      "learning_log": []
     }
   }
 }

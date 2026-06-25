@@ -1,0 +1,824 @@
+{
+  "domain": "cybersecurity",
+  "phase": "phase3",
+  "total": 48,
+  "generated_at": "2026-06-25T20:54:58.327097",
+  "problems": [
+    {
+      "problem_id": "cyber-phase3-ch7-APT攻击-001",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "APT攻击",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级威胁 - APT攻击 #1",
+      "description": "APT攻击基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "APT攻击"
+      ],
+      "created_at": "2026-06-25T20:54:58.321303"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-APT攻击-002",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "APT攻击",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级威胁 - APT攻击 #2",
+      "description": "APT攻击判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "APT攻击"
+      ],
+      "created_at": "2026-06-25T20:54:58.321305"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-APT攻击-003",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "APT攻击",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "高级威胁 - APT攻击 #3",
+      "description": "APT攻击填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "APT攻击"
+      ],
+      "created_at": "2026-06-25T20:54:58.321308"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-APT攻击-004",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "APT攻击",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "高级威胁 - APT攻击 #4",
+      "description": "APT攻击实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "APT攻击"
+      ],
+      "created_at": "2026-06-25T20:54:58.321311"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-零日漏洞-001",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "零日漏洞",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级威胁 - 零日漏洞 #1",
+      "description": "零日漏洞基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "零日漏洞"
+      ],
+      "created_at": "2026-06-25T20:54:58.321315"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-零日漏洞-002",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "零日漏洞",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级威胁 - 零日漏洞 #2",
+      "description": "零日漏洞判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "零日漏洞"
+      ],
+      "created_at": "2026-06-25T20:54:58.321320"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-零日漏洞-003",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "零日漏洞",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "高级威胁 - 零日漏洞 #3",
+      "description": "零日漏洞填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "零日漏洞"
+      ],
+      "created_at": "2026-06-25T20:54:58.321323"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-零日漏洞-004",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "零日漏洞",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "高级威胁 - 零日漏洞 #4",
+      "description": "零日漏洞实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "零日漏洞"
+      ],
+      "created_at": "2026-06-25T20:54:58.321328"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-恶意软件-001",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "恶意软件",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级威胁 - 恶意软件 #1",
+      "description": "恶意软件基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "恶意软件"
+      ],
+      "created_at": "2026-06-25T20:54:58.321332"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-恶意软件-002",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "恶意软件",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级威胁 - 恶意软件 #2",
+      "description": "恶意软件判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "恶意软件"
+      ],
+      "created_at": "2026-06-25T20:54:58.321355"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-恶意软件-003",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "恶意软件",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "高级威胁 - 恶意软件 #3",
+      "description": "恶意软件填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "恶意软件"
+      ],
+      "created_at": "2026-06-25T20:54:58.321360"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-恶意软件-004",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "恶意软件",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "高级威胁 - 恶意软件 #4",
+      "description": "恶意软件实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "恶意软件"
+      ],
+      "created_at": "2026-06-25T20:54:58.321365"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-高级持久化-001",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "高级持久化",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级威胁 - 高级持久化 #1",
+      "description": "高级持久化基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级持久化"
+      ],
+      "created_at": "2026-06-25T20:54:58.321375"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-高级持久化-002",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "高级持久化",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级威胁 - 高级持久化 #2",
+      "description": "高级持久化判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级持久化"
+      ],
+      "created_at": "2026-06-25T20:54:58.321380"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-高级持久化-003",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "高级持久化",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "高级威胁 - 高级持久化 #3",
+      "description": "高级持久化填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级持久化"
+      ],
+      "created_at": "2026-06-25T20:54:58.321384"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-高级持久化-004",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "高级持久化",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "高级威胁 - 高级持久化 #4",
+      "description": "高级持久化实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "高级持久化"
+      ],
+      "created_at": "2026-06-25T20:54:58.321388"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-隐蔽通道-001",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "隐蔽通道",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级威胁 - 隐蔽通道 #1",
+      "description": "隐蔽通道基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "隐蔽通道"
+      ],
+      "created_at": "2026-06-25T20:54:58.321399"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-隐蔽通道-002",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "隐蔽通道",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级威胁 - 隐蔽通道 #2",
+      "description": "隐蔽通道判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "隐蔽通道"
+      ],
+      "created_at": "2026-06-25T20:54:58.321404"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-隐蔽通道-003",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "隐蔽通道",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "高级威胁 - 隐蔽通道 #3",
+      "description": "隐蔽通道填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "隐蔽通道"
+      ],
+      "created_at": "2026-06-25T20:54:58.321408"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-隐蔽通道-004",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "隐蔽通道",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "高级威胁 - 隐蔽通道 #4",
+      "description": "隐蔽通道实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "隐蔽通道"
+      ],
+      "created_at": "2026-06-25T20:54:58.321416"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-威胁情报-001",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "威胁情报",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级威胁 - 威胁情报 #1",
+      "description": "威胁情报基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "威胁情报"
+      ],
+      "created_at": "2026-06-25T20:54:58.321421"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-威胁情报-002",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "威胁情报",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级威胁 - 威胁情报 #2",
+      "description": "威胁情报判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "威胁情报"
+      ],
+      "created_at": "2026-06-25T20:54:58.321424"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-威胁情报-003",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "威胁情报",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "高级威胁 - 威胁情报 #3",
+      "description": "威胁情报填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "威胁情报"
+      ],
+      "created_at": "2026-06-25T20:54:58.321427"
+    },
+    {
+      "problem_id": "cyber-phase3-ch7-威胁情报-004",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "威胁情报",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "高级威胁 - 威胁情报 #4",
+      "description": "威胁情报实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "威胁情报"
+      ],
+      "created_at": "2026-06-25T20:54:58.321430"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-零信任-001",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "零信任",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "安全架构 - 零信任 #1",
+      "description": "零信任基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "零信任"
+      ],
+      "created_at": "2026-06-25T20:54:58.321435"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-零信任-002",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "零信任",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "安全架构 - 零信任 #2",
+      "description": "零信任判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "零信任"
+      ],
+      "created_at": "2026-06-25T20:54:58.321457"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-零信任-003",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "零信任",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "安全架构 - 零信任 #3",
+      "description": "零信任填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "零信任"
+      ],
+      "created_at": "2026-06-25T20:54:58.321466"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-零信任-004",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "零信任",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "安全架构 - 零信任 #4",
+      "description": "零信任实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "零信任"
+      ],
+      "created_at": "2026-06-25T20:54:58.321472"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-微隔离-001",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "微隔离",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "安全架构 - 微隔离 #1",
+      "description": "微隔离基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "微隔离"
+      ],
+      "created_at": "2026-06-25T20:54:58.321478"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-微隔离-002",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "微隔离",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "安全架构 - 微隔离 #2",
+      "description": "微隔离判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "微隔离"
+      ],
+      "created_at": "2026-06-25T20:54:58.321481"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-微隔离-003",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "微隔离",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "安全架构 - 微隔离 #3",
+      "description": "微隔离填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "微隔离"
+      ],
+      "created_at": "2026-06-25T20:54:58.321491"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-微隔离-004",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "微隔离",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "安全架构 - 微隔离 #4",
+      "description": "微隔离实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "微隔离"
+      ],
+      "created_at": "2026-06-25T20:54:58.321494"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全设计-001",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全设计",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "安全架构 - 安全设计 #1",
+      "description": "安全设计基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全设计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321498"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全设计-002",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全设计",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "安全架构 - 安全设计 #2",
+      "description": "安全设计判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全设计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321501"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全设计-003",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全设计",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "安全架构 - 安全设计 #3",
+      "description": "安全设计填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全设计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321503"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全设计-004",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全设计",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "安全架构 - 安全设计 #4",
+      "description": "安全设计实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全设计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321506"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全开发-001",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全开发",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "安全架构 - 安全开发 #1",
+      "description": "安全开发基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全开发"
+      ],
+      "created_at": "2026-06-25T20:54:58.321513"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全开发-002",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全开发",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "安全架构 - 安全开发 #2",
+      "description": "安全开发判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全开发"
+      ],
+      "created_at": "2026-06-25T20:54:58.321517"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全开发-003",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全开发",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "安全架构 - 安全开发 #3",
+      "description": "安全开发填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全开发"
+      ],
+      "created_at": "2026-06-25T20:54:58.321523"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全开发-004",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全开发",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "安全架构 - 安全开发 #4",
+      "description": "安全开发实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全开发"
+      ],
+      "created_at": "2026-06-25T20:54:58.321529"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全运维-001",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全运维",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "安全架构 - 安全运维 #1",
+      "description": "安全运维基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全运维"
+      ],
+      "created_at": "2026-06-25T20:54:58.321533"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全运维-002",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全运维",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "安全架构 - 安全运维 #2",
+      "description": "安全运维判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全运维"
+      ],
+      "created_at": "2026-06-25T20:54:58.321535"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全运维-003",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全运维",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "安全架构 - 安全运维 #3",
+      "description": "安全运维填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全运维"
+      ],
+      "created_at": "2026-06-25T20:54:58.321538"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全运维-004",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全运维",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "安全架构 - 安全运维 #4",
+      "description": "安全运维实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全运维"
+      ],
+      "created_at": "2026-06-25T20:54:58.321541"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全治理-001",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全治理",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "安全架构 - 安全治理 #1",
+      "description": "安全治理基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全治理"
+      ],
+      "created_at": "2026-06-25T20:54:58.321545"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全治理-002",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全治理",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "安全架构 - 安全治理 #2",
+      "description": "安全治理判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全治理"
+      ],
+      "created_at": "2026-06-25T20:54:58.321547"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全治理-003",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全治理",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "安全架构 - 安全治理 #3",
+      "description": "安全治理填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全治理"
+      ],
+      "created_at": "2026-06-25T20:54:58.321553"
+    },
+    {
+      "problem_id": "cyber-phase3-ch8-安全治理-004",
+      "domain": "cybersecurity",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "安全治理",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "安全架构 - 安全治理 #4",
+      "description": "安全治理实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "安全治理"
+      ],
+      "created_at": "2026-06-25T20:54:58.321555"
+    }
+  ]
+}
