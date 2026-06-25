@@ -52,6 +52,7 @@ class WorldMap:
     def _save(self):
         """持久化到文件"""
         self._map["updated_at"] = datetime.now().isoformat()
+        self._map["version"] = self._map.get("version", 1) + 1
         with open(self.map_file, "w", encoding="utf-8") as f:
             json.dump(self._map, f, indent=2, ensure_ascii=False)
 
