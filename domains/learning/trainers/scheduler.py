@@ -49,7 +49,8 @@ class TrainingScheduler:
     def load_problem_bank(self):
         """加载题库"""
         problems = []
-        problems_dir = os.path.join(os.path.dirname(__file__), "problems", self.domain)
+        learning_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        problems_dir = os.path.join(learning_dir, "problems", "problems", self.domain)
 
         if not os.path.exists(problems_dir):
             return problems

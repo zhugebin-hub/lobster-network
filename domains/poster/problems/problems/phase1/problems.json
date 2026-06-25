@@ -2,7 +2,7 @@
   "domain": "poster",
   "phase": "phase1",
   "total": 46,
-  "generated_at": "2026-06-25T11:40:56.049784",
+  "generated_at": "2026-06-25T13:23:36.224443",
   "problems": [
     {
       "problem_id": "poster-phase1-w1-色彩理论-001",
@@ -19,7 +19,7 @@
       "knowledge_points": [
         "色彩理论"
       ],
-      "created_at": "2026-06-25T11:40:56.048571"
+      "created_at": "2026-06-25T13:23:36.221942"
     },
     {
       "problem_id": "poster-phase1-w1-色彩理论-002",
@@ -36,7 +36,7 @@
       "knowledge_points": [
         "色彩理论"
       ],
-      "created_at": "2026-06-25T11:40:56.048588"
+      "created_at": "2026-06-25T13:23:36.221961"
     },
     {
       "problem_id": "poster-phase1-w1-排版原则-001",
@@ -53,7 +53,7 @@
       "knowledge_points": [
         "排版原则"
       ],
-      "created_at": "2026-06-25T11:40:56.048594"
+      "created_at": "2026-06-25T13:23:36.221967"
     },
     {
       "problem_id": "poster-phase1-w1-排版原则-002",
@@ -70,7 +70,7 @@
       "knowledge_points": [
         "排版原则"
       ],
-      "created_at": "2026-06-25T11:40:56.048597"
+      "created_at": "2026-06-25T13:23:36.221972"
     },
     {
       "problem_id": "poster-phase1-w1-字体选择-001",
@@ -87,7 +87,7 @@
       "knowledge_points": [
         "字体选择"
       ],
-      "created_at": "2026-06-25T11:40:56.048602"
+      "created_at": "2026-06-25T13:23:36.222272"
     },
     {
       "problem_id": "poster-phase1-w1-字体选择-002",
@@ -104,7 +104,7 @@
       "knowledge_points": [
         "字体选择"
       ],
-      "created_at": "2026-06-25T11:40:56.048605"
+      "created_at": "2026-06-25T13:23:36.222284"
     },
     {
       "problem_id": "poster-phase1-w1-字体选择-003",
@@ -121,7 +121,7 @@
       "knowledge_points": [
         "字体选择"
       ],
-      "created_at": "2026-06-25T11:40:56.048608"
+      "created_at": "2026-06-25T13:23:36.222287"
     },
     {
       "problem_id": "poster-phase1-w1-视觉层次-001",
@@ -138,7 +138,7 @@
       "knowledge_points": [
         "视觉层次"
       ],
-      "created_at": "2026-06-25T11:40:56.048612"
+      "created_at": "2026-06-25T13:23:36.222293"
     },
     {
       "problem_id": "poster-phase1-w1-视觉层次-002",
@@ -155,7 +155,7 @@
       "knowledge_points": [
         "视觉层次"
       ],
-      "created_at": "2026-06-25T11:40:56.048615"
+      "created_at": "2026-06-25T13:23:36.222296"
     },
     {
       "problem_id": "poster-phase1-w1-视觉层次-003",
@@ -172,7 +172,7 @@
       "knowledge_points": [
         "视觉层次"
       ],
-      "created_at": "2026-06-25T11:40:56.048618"
+      "created_at": "2026-06-25T13:23:36.222311"
     },
     {
       "problem_id": "poster-phase1-w2-构图基础-001",
@@ -189,7 +189,7 @@
       "knowledge_points": [
         "构图基础"
       ],
-      "created_at": "2026-06-25T11:40:56.048623"
+      "created_at": "2026-06-25T13:23:36.222321"
     },
     {
       "problem_id": "poster-phase1-w2-构图基础-002",
@@ -206,7 +206,7 @@
       "knowledge_points": [
         "构图基础"
       ],
-      "created_at": "2026-06-25T11:40:56.048626"
+      "created_at": "2026-06-25T13:23:36.222324"
     },
     {
       "problem_id": "poster-phase1-w2-构图基础-003",
@@ -223,7 +223,7 @@
       "knowledge_points": [
         "构图基础"
       ],
-      "created_at": "2026-06-25T11:40:56.048629"
+      "created_at": "2026-06-25T13:23:36.222327"
     },
     {
       "problem_id": "poster-phase1-w2-黄金比例-001",
@@ -240,7 +240,7 @@
       "knowledge_points": [
         "黄金比例"
       ],
-      "created_at": "2026-06-25T11:40:56.048633"
+      "created_at": "2026-06-25T13:23:36.222331"
     },
     {
       "problem_id": "poster-phase1-w2-黄金比例-002",
@@ -257,7 +257,7 @@
       "knowledge_points": [
         "黄金比例"
       ],
-      "created_at": "2026-06-25T11:40:56.048636"
+      "created_at": "2026-06-25T13:23:36.222334"
     },
     {
       "problem_id": "poster-phase1-w2-黄金比例-003",
@@ -274,7 +274,7 @@
       "knowledge_points": [
         "黄金比例"
       ],
-      "created_at": "2026-06-25T11:40:56.048639"
+      "created_at": "2026-06-25T13:23:36.222337"
     },
     {
       "problem_id": "poster-phase1-w2-对称与平衡-001",
@@ -291,7 +291,7 @@
       "knowledge_points": [
         "对称与平衡"
       ],
-      "created_at": "2026-06-25T11:40:56.048643"
+      "created_at": "2026-06-25T13:23:36.222344"
     },
     {
       "problem_id": "poster-phase1-w2-对称与平衡-002",
@@ -308,7 +308,7 @@
       "knowledge_points": [
         "对称与平衡"
       ],
-      "created_at": "2026-06-25T11:40:56.048647"
+      "created_at": "2026-06-25T13:23:36.222347"
     },
     {
       "problem_id": "poster-phase1-w2-对称与平衡-003",
@@ -325,7 +325,7 @@
       "knowledge_points": [
         "对称与平衡"
       ],
-      "created_at": "2026-06-25T11:40:56.048649"
+      "created_at": "2026-06-25T13:23:36.222353"
     },
     {
       "problem_id": "poster-phase1-w2-留白艺术-001",
@@ -342,7 +342,7 @@
       "knowledge_points": [
         "留白艺术"
       ],
-      "created_at": "2026-06-25T11:40:56.048653"
+      "created_at": "2026-06-25T13:23:36.222357"
     },
     {
       "problem_id": "poster-phase1-w2-留白艺术-002",
@@ -359,7 +359,7 @@
       "knowledge_points": [
         "留白艺术"
       ],
-      "created_at": "2026-06-25T11:40:56.048656"
+      "created_at": "2026-06-25T13:23:36.222360"
     },
     {
       "problem_id": "poster-phase1-w2-留白艺术-003",
@@ -376,7 +376,7 @@
       "knowledge_points": [
         "留白艺术"
       ],
-      "created_at": "2026-06-25T11:40:56.048659"
+      "created_at": "2026-06-25T13:23:36.222363"
     },
     {
       "problem_id": "poster-phase1-w3-图片处理-001",
@@ -393,7 +393,7 @@
       "knowledge_points": [
         "图片处理"
       ],
-      "created_at": "2026-06-25T11:40:56.048668"
+      "created_at": "2026-06-25T13:23:36.222368"
     },
     {
       "problem_id": "poster-phase1-w3-图片处理-002",
@@ -410,7 +410,7 @@
       "knowledge_points": [
         "图片处理"
       ],
-      "created_at": "2026-06-25T11:40:56.048671"
+      "created_at": "2026-06-25T13:23:36.222370"
     },
     {
       "problem_id": "poster-phase1-w3-图片处理-003",
@@ -427,7 +427,7 @@
       "knowledge_points": [
         "图片处理"
       ],
-      "created_at": "2026-06-25T11:40:56.048680"
+      "created_at": "2026-06-25T13:23:36.222373"
     },
     {
       "problem_id": "poster-phase1-w3-滤镜应用-001",
@@ -444,7 +444,7 @@
       "knowledge_points": [
         "滤镜应用"
       ],
-      "created_at": "2026-06-25T11:40:56.048687"
+      "created_at": "2026-06-25T13:23:36.222381"
     },
     {
       "problem_id": "poster-phase1-w3-滤镜应用-002",
@@ -461,7 +461,7 @@
       "knowledge_points": [
         "滤镜应用"
       ],
-      "created_at": "2026-06-25T11:40:56.048690"
+      "created_at": "2026-06-25T13:23:36.222384"
     },
     {
       "problem_id": "poster-phase1-w3-滤镜应用-003",
@@ -478,7 +478,7 @@
       "knowledge_points": [
         "滤镜应用"
       ],
-      "created_at": "2026-06-25T11:40:56.048693"
+      "created_at": "2026-06-25T13:23:36.222387"
     },
     {
       "problem_id": "poster-phase1-w3-图层混合-001",
@@ -495,7 +495,7 @@
       "knowledge_points": [
         "图层混合"
       ],
-      "created_at": "2026-06-25T11:40:56.048697"
+      "created_at": "2026-06-25T13:23:36.222390"
     },
     {
       "problem_id": "poster-phase1-w3-图层混合-002",
@@ -512,7 +512,7 @@
       "knowledge_points": [
         "图层混合"
       ],
-      "created_at": "2026-06-25T11:40:56.048703"
+      "created_at": "2026-06-25T13:23:36.222393"
     },
     {
       "problem_id": "poster-phase1-w3-图层混合-003",
@@ -529,7 +529,7 @@
       "knowledge_points": [
         "图层混合"
       ],
-      "created_at": "2026-06-25T11:40:56.048706"
+      "created_at": "2026-06-25T13:23:36.222396"
     },
     {
       "problem_id": "poster-phase1-w3-蒙版技巧-001",
@@ -546,7 +546,7 @@
       "knowledge_points": [
         "蒙版技巧"
       ],
-      "created_at": "2026-06-25T11:40:56.048709"
+      "created_at": "2026-06-25T13:23:36.222403"
     },
     {
       "problem_id": "poster-phase1-w3-蒙版技巧-002",
@@ -563,7 +563,7 @@
       "knowledge_points": [
         "蒙版技巧"
       ],
-      "created_at": "2026-06-25T11:40:56.048712"
+      "created_at": "2026-06-25T13:23:36.222408"
     },
     {
       "problem_id": "poster-phase1-w3-蒙版技巧-003",
@@ -580,7 +580,7 @@
       "knowledge_points": [
         "蒙版技巧"
       ],
-      "created_at": "2026-06-25T11:40:56.048715"
+      "created_at": "2026-06-25T13:23:36.222413"
     },
     {
       "problem_id": "poster-phase1-w4-品牌一致性-001",
@@ -597,7 +597,7 @@
       "knowledge_points": [
         "品牌一致性"
       ],
-      "created_at": "2026-06-25T11:40:56.048719"
+      "created_at": "2026-06-25T13:23:36.222419"
     },
     {
       "problem_id": "poster-phase1-w4-品牌一致性-002",
@@ -614,7 +614,7 @@
       "knowledge_points": [
         "品牌一致性"
       ],
-      "created_at": "2026-06-25T11:40:56.048722"
+      "created_at": "2026-06-25T13:23:36.222424"
     },
     {
       "problem_id": "poster-phase1-w4-品牌一致性-003",
@@ -631,7 +631,7 @@
       "knowledge_points": [
         "品牌一致性"
       ],
-      "created_at": "2026-06-25T11:40:56.048726"
+      "created_at": "2026-06-25T13:23:36.222430"
     },
     {
       "problem_id": "poster-phase1-w4-Logo设计-001",
@@ -648,7 +648,7 @@
       "knowledge_points": [
         "Logo设计"
       ],
-      "created_at": "2026-06-25T11:40:56.048730"
+      "created_at": "2026-06-25T13:23:36.222436"
     },
     {
       "problem_id": "poster-phase1-w4-Logo设计-002",
@@ -665,7 +665,7 @@
       "knowledge_points": [
         "Logo设计"
       ],
-      "created_at": "2026-06-25T11:40:56.048732"
+      "created_at": "2026-06-25T13:23:36.222440"
     },
     {
       "problem_id": "poster-phase1-w4-Logo设计-003",
@@ -682,7 +682,7 @@
       "knowledge_points": [
         "Logo设计"
       ],
-      "created_at": "2026-06-25T11:40:56.048735"
+      "created_at": "2026-06-25T13:23:36.222444"
     },
     {
       "problem_id": "poster-phase1-w4-VI系统-001",
@@ -699,7 +699,7 @@
       "knowledge_points": [
         "VI系统"
       ],
-      "created_at": "2026-06-25T11:40:56.048739"
+      "created_at": "2026-06-25T13:23:36.222454"
     },
     {
       "problem_id": "poster-phase1-w4-VI系统-002",
@@ -716,7 +716,7 @@
       "knowledge_points": [
         "VI系统"
       ],
-      "created_at": "2026-06-25T11:40:56.048742"
+      "created_at": "2026-06-25T13:23:36.222458"
     },
     {
       "problem_id": "poster-phase1-w4-VI系统-003",
@@ -733,7 +733,7 @@
       "knowledge_points": [
         "VI系统"
       ],
-      "created_at": "2026-06-25T11:40:56.048745"
+      "created_at": "2026-06-25T13:23:36.222462"
     },
     {
       "problem_id": "poster-phase1-w4-第一阶段考核-001",
@@ -750,7 +750,7 @@
       "knowledge_points": [
         "第一阶段考核"
       ],
-      "created_at": "2026-06-25T11:40:56.048749"
+      "created_at": "2026-06-25T13:23:36.222467"
     },
     {
       "problem_id": "poster-phase1-w4-第一阶段考核-002",
@@ -767,7 +767,7 @@
       "knowledge_points": [
         "第一阶段考核"
       ],
-      "created_at": "2026-06-25T11:40:56.048752"
+      "created_at": "2026-06-25T13:23:36.222472"
     },
     {
       "problem_id": "poster-phase1-w4-第一阶段考核-003",
@@ -784,7 +784,7 @@
       "knowledge_points": [
         "第一阶段考核"
       ],
-      "created_at": "2026-06-25T11:40:56.048754"
+      "created_at": "2026-06-25T13:23:36.222477"
     }
   ]
 }

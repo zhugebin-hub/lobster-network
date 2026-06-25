@@ -2,7 +2,7 @@
   "domain": "poster",
   "phase": "phase2",
   "total": 63,
-  "generated_at": "2026-06-25T11:40:56.052362",
+  "generated_at": "2026-06-25T13:23:36.228634",
   "problems": [
     {
       "problem_id": "poster-phase2-w5-信息图表设计-001",
@@ -19,7 +19,7 @@
       "knowledge_points": [
         "信息图表设计"
       ],
-      "created_at": "2026-06-25T11:40:56.048759"
+      "created_at": "2026-06-25T13:23:36.222486"
     },
     {
       "problem_id": "poster-phase2-w5-信息图表设计-002",
@@ -36,7 +36,7 @@
       "knowledge_points": [
         "信息图表设计"
       ],
-      "created_at": "2026-06-25T11:40:56.048762"
+      "created_at": "2026-06-25T13:23:36.222493"
     },
     {
       "problem_id": "poster-phase2-w5-信息图表设计-003",
@@ -53,7 +53,7 @@
       "knowledge_points": [
         "信息图表设计"
       ],
-      "created_at": "2026-06-25T11:40:56.048765"
+      "created_at": "2026-06-25T13:23:36.222499"
     },
     {
       "problem_id": "poster-phase2-w5-数据可视化-001",
@@ -70,7 +70,7 @@
       "knowledge_points": [
         "数据可视化"
       ],
-      "created_at": "2026-06-25T11:40:56.048769"
+      "created_at": "2026-06-25T13:23:36.222509"
     },
     {
       "problem_id": "poster-phase2-w5-数据可视化-002",
@@ -87,7 +87,7 @@
       "knowledge_points": [
         "数据可视化"
       ],
-      "created_at": "2026-06-25T11:40:56.048772"
+      "created_at": "2026-06-25T13:23:36.222512"
     },
     {
       "problem_id": "poster-phase2-w5-数据可视化-003",
@@ -104,7 +104,7 @@
       "knowledge_points": [
         "数据可视化"
       ],
-      "created_at": "2026-06-25T11:40:56.048775"
+      "created_at": "2026-06-25T13:23:36.222515"
     },
     {
       "problem_id": "poster-phase2-w5-图标设计-001",
@@ -121,7 +121,7 @@
       "knowledge_points": [
         "图标设计"
       ],
-      "created_at": "2026-06-25T11:40:56.048781"
+      "created_at": "2026-06-25T13:23:36.222519"
     },
     {
       "problem_id": "poster-phase2-w5-图标设计-002",
@@ -138,7 +138,7 @@
       "knowledge_points": [
         "图标设计"
       ],
-      "created_at": "2026-06-25T11:40:56.048784"
+      "created_at": "2026-06-25T13:23:36.222522"
     },
     {
       "problem_id": "poster-phase2-w5-图标设计-003",
@@ -155,7 +155,7 @@
       "knowledge_points": [
         "图标设计"
       ],
-      "created_at": "2026-06-25T11:40:56.048787"
+      "created_at": "2026-06-25T13:23:36.222525"
     },
     {
       "problem_id": "poster-phase2-w5-插画基础-001",
@@ -172,7 +172,7 @@
       "knowledge_points": [
         "插画基础"
       ],
-      "created_at": "2026-06-25T11:40:56.048793"
+      "created_at": "2026-06-25T13:23:36.222532"
     },
     {
       "problem_id": "poster-phase2-w5-插画基础-002",
@@ -189,7 +189,7 @@
       "knowledge_points": [
         "插画基础"
       ],
-      "created_at": "2026-06-25T11:40:56.048796"
+      "created_at": "2026-06-25T13:23:36.222535"
     },
     {
       "problem_id": "poster-phase2-w5-插画基础-003",
@@ -206,7 +206,7 @@
       "knowledge_points": [
         "插画基础"
       ],
-      "created_at": "2026-06-25T11:40:56.048799"
+      "created_at": "2026-06-25T13:23:36.222537"
     },
     {
       "problem_id": "poster-phase2-w6-动态海报-001",
@@ -223,7 +223,7 @@
       "knowledge_points": [
         "动态海报"
       ],
-      "created_at": "2026-06-25T11:40:56.048803"
+      "created_at": "2026-06-25T13:23:36.222542"
     },
     {
       "problem_id": "poster-phase2-w6-动态海报-002",
@@ -240,7 +240,7 @@
       "knowledge_points": [
         "动态海报"
       ],
-      "created_at": "2026-06-25T11:40:56.048806"
+      "created_at": "2026-06-25T13:23:36.222545"
     },
     {
       "problem_id": "poster-phase2-w6-动态海报-003",
@@ -257,7 +257,7 @@
       "knowledge_points": [
         "动态海报"
       ],
-      "created_at": "2026-06-25T11:40:56.048809"
+      "created_at": "2026-06-25T13:23:36.222548"
     },
     {
       "problem_id": "poster-phase2-w6-GIF制作-001",
@@ -274,7 +274,7 @@
       "knowledge_points": [
         "GIF制作"
       ],
-      "created_at": "2026-06-25T11:40:56.048813"
+      "created_at": "2026-06-25T13:23:36.222551"
     },
     {
       "problem_id": "poster-phase2-w6-GIF制作-002",
@@ -291,7 +291,7 @@
       "knowledge_points": [
         "GIF制作"
       ],
-      "created_at": "2026-06-25T11:40:56.048816"
+      "created_at": "2026-06-25T13:23:36.222554"
     },
     {
       "problem_id": "poster-phase2-w6-GIF制作-003",
@@ -308,7 +308,7 @@
       "knowledge_points": [
         "GIF制作"
       ],
-      "created_at": "2026-06-25T11:40:56.048819"
+      "created_at": "2026-06-25T13:23:36.222557"
     },
     {
       "problem_id": "poster-phase2-w6-微交互动画-001",
@@ -325,7 +325,7 @@
       "knowledge_points": [
         "微交互动画"
       ],
-      "created_at": "2026-06-25T11:40:56.048822"
+      "created_at": "2026-06-25T13:23:36.222566"
     },
     {
       "problem_id": "poster-phase2-w6-微交互动画-002",
@@ -342,7 +342,7 @@
       "knowledge_points": [
         "微交互动画"
       ],
-      "created_at": "2026-06-25T11:40:56.048828"
+      "created_at": "2026-06-25T13:23:36.222569"
     },
     {
       "problem_id": "poster-phase2-w6-微交互动画-003",
@@ -359,7 +359,7 @@
       "knowledge_points": [
         "微交互动画"
       ],
-      "created_at": "2026-06-25T11:40:56.048830"
+      "created_at": "2026-06-25T13:23:36.222574"
     },
     {
       "problem_id": "poster-phase2-w6-视频封面-001",
@@ -376,7 +376,7 @@
       "knowledge_points": [
         "视频封面"
       ],
-      "created_at": "2026-06-25T11:40:56.048840"
+      "created_at": "2026-06-25T13:23:36.222580"
     },
     {
       "problem_id": "poster-phase2-w6-视频封面-002",
@@ -393,7 +393,7 @@
       "knowledge_points": [
         "视频封面"
       ],
-      "created_at": "2026-06-25T11:40:56.048843"
+      "created_at": "2026-06-25T13:23:36.222583"
     },
     {
       "problem_id": "poster-phase2-w6-视频封面-003",
@@ -410,7 +410,7 @@
       "knowledge_points": [
         "视频封面"
       ],
-      "created_at": "2026-06-25T11:40:56.048846"
+      "created_at": "2026-06-25T13:23:36.222586"
     },
     {
       "problem_id": "poster-phase2-w7-社交媒体海报-001",
@@ -427,7 +427,7 @@
       "knowledge_points": [
         "社交媒体海报"
       ],
-      "created_at": "2026-06-25T11:40:56.048850"
+      "created_at": "2026-06-25T13:23:36.222591"
     },
     {
       "problem_id": "poster-phase2-w7-社交媒体海报-002",
@@ -444,7 +444,7 @@
       "knowledge_points": [
         "社交媒体海报"
       ],
-      "created_at": "2026-06-25T11:40:56.048853"
+      "created_at": "2026-06-25T13:23:36.222594"
     },
     {
       "problem_id": "poster-phase2-w7-社交媒体海报-003",
@@ -461,7 +461,7 @@
       "knowledge_points": [
         "社交媒体海报"
       ],
-      "created_at": "2026-06-25T11:40:56.048855"
+      "created_at": "2026-06-25T13:23:36.222597"
     },
     {
       "problem_id": "poster-phase2-w7-小红书配图-001",
@@ -478,7 +478,7 @@
       "knowledge_points": [
         "小红书配图"
       ],
-      "created_at": "2026-06-25T11:40:56.048859"
+      "created_at": "2026-06-25T13:23:36.222604"
     },
     {
       "problem_id": "poster-phase2-w7-小红书配图-002",
@@ -495,7 +495,7 @@
       "knowledge_points": [
         "小红书配图"
       ],
-      "created_at": "2026-06-25T11:40:56.048862"
+      "created_at": "2026-06-25T13:23:36.222607"
     },
     {
       "problem_id": "poster-phase2-w7-小红书配图-003",
@@ -512,7 +512,7 @@
       "knowledge_points": [
         "小红书配图"
       ],
-      "created_at": "2026-06-25T11:40:56.048865"
+      "created_at": "2026-06-25T13:23:36.222610"
     },
     {
       "problem_id": "poster-phase2-w7-朋友圈海报-001",
@@ -529,7 +529,7 @@
       "knowledge_points": [
         "朋友圈海报"
       ],
-      "created_at": "2026-06-25T11:40:56.048869"
+      "created_at": "2026-06-25T13:23:36.222693"
     },
     {
       "problem_id": "poster-phase2-w7-朋友圈海报-002",
@@ -546,7 +546,7 @@
       "knowledge_points": [
         "朋友圈海报"
       ],
-      "created_at": "2026-06-25T11:40:56.048872"
+      "created_at": "2026-06-25T13:23:36.222698"
     },
     {
       "problem_id": "poster-phase2-w7-朋友圈海报-003",
@@ -563,7 +563,7 @@
       "knowledge_points": [
         "朋友圈海报"
       ],
-      "created_at": "2026-06-25T11:40:56.048874"
+      "created_at": "2026-06-25T13:23:36.222701"
     },
     {
       "problem_id": "poster-phase2-w7-Banner设计-001",
@@ -580,7 +580,7 @@
       "knowledge_points": [
         "Banner设计"
       ],
-      "created_at": "2026-06-25T11:40:56.048878"
+      "created_at": "2026-06-25T13:23:36.222706"
     },
     {
       "problem_id": "poster-phase2-w7-Banner设计-002",
@@ -597,7 +597,7 @@
       "knowledge_points": [
         "Banner设计"
       ],
-      "created_at": "2026-06-25T11:40:56.048881"
+      "created_at": "2026-06-25T13:23:36.222708"
     },
     {
       "problem_id": "poster-phase2-w7-Banner设计-003",
@@ -614,7 +614,7 @@
       "knowledge_points": [
         "Banner设计"
       ],
-      "created_at": "2026-06-25T11:40:56.048884"
+      "created_at": "2026-06-25T13:23:36.222711"
     },
     {
       "problem_id": "poster-phase2-w8-活动海报-001",
@@ -631,7 +631,7 @@
       "knowledge_points": [
         "活动海报"
       ],
-      "created_at": "2026-06-25T11:40:56.048891"
+      "created_at": "2026-06-25T13:23:36.222717"
     },
     {
       "problem_id": "poster-phase2-w8-活动海报-002",
@@ -648,7 +648,7 @@
       "knowledge_points": [
         "活动海报"
       ],
-      "created_at": "2026-06-25T11:40:56.048894"
+      "created_at": "2026-06-25T13:23:36.222731"
     },
     {
       "problem_id": "poster-phase2-w8-活动海报-003",
@@ -665,7 +665,7 @@
       "knowledge_points": [
         "活动海报"
       ],
-      "created_at": "2026-06-25T11:40:56.048897"
+      "created_at": "2026-06-25T13:23:36.222734"
     },
     {
       "problem_id": "poster-phase2-w8-学术海报-001",
@@ -682,7 +682,7 @@
       "knowledge_points": [
         "学术海报"
       ],
-      "created_at": "2026-06-25T11:40:56.048902"
+      "created_at": "2026-06-25T13:23:36.222738"
     },
     {
       "problem_id": "poster-phase2-w8-学术海报-002",
@@ -699,7 +699,7 @@
       "knowledge_points": [
         "学术海报"
       ],
-      "created_at": "2026-06-25T11:40:56.048907"
+      "created_at": "2026-06-25T13:23:36.222741"
     },
     {
       "problem_id": "poster-phase2-w8-学术海报-003",
@@ -716,7 +716,7 @@
       "knowledge_points": [
         "学术海报"
       ],
-      "created_at": "2026-06-25T11:40:56.049033"
+      "created_at": "2026-06-25T13:23:36.222744"
     },
     {
       "problem_id": "poster-phase2-w8-商业海报-001",
@@ -733,7 +733,7 @@
       "knowledge_points": [
         "商业海报"
       ],
-      "created_at": "2026-06-25T11:40:56.049043"
+      "created_at": "2026-06-25T13:23:36.222748"
     },
     {
       "problem_id": "poster-phase2-w8-商业海报-002",
@@ -750,7 +750,7 @@
       "knowledge_points": [
         "商业海报"
       ],
-      "created_at": "2026-06-25T11:40:56.049047"
+      "created_at": "2026-06-25T13:23:36.222751"
     },
     {
       "problem_id": "poster-phase2-w8-商业海报-003",
@@ -767,7 +767,7 @@
       "knowledge_points": [
         "商业海报"
       ],
-      "created_at": "2026-06-25T11:40:56.049050"
+      "created_at": "2026-06-25T13:23:36.222754"
     },
     {
       "problem_id": "poster-phase2-w8-公益海报-001",
@@ -784,7 +784,7 @@
       "knowledge_points": [
         "公益海报"
       ],
-      "created_at": "2026-06-25T11:40:56.049054"
+      "created_at": "2026-06-25T13:23:36.222760"
     },
     {
       "problem_id": "poster-phase2-w8-公益海报-002",
@@ -801,7 +801,7 @@
       "knowledge_points": [
         "公益海报"
       ],
-      "created_at": "2026-06-25T11:40:56.049063"
+      "created_at": "2026-06-25T13:23:36.222763"
     },
     {
       "problem_id": "poster-phase2-w8-公益海报-003",
@@ -818,7 +818,7 @@
       "knowledge_points": [
         "公益海报"
       ],
-      "created_at": "2026-06-25T11:40:56.049066"
+      "created_at": "2026-06-25T13:23:36.222766"
     },
     {
       "problem_id": "poster-phase2-w9-响应式设计-001",
@@ -835,7 +835,7 @@
       "knowledge_points": [
         "响应式设计"
       ],
-      "created_at": "2026-06-25T11:40:56.049071"
+      "created_at": "2026-06-25T13:23:36.222771"
     },
     {
       "problem_id": "poster-phase2-w9-响应式设计-002",
@@ -852,7 +852,7 @@
       "knowledge_points": [
         "响应式设计"
       ],
-      "created_at": "2026-06-25T11:40:56.049090"
+      "created_at": "2026-06-25T13:23:36.222773"
     },
     {
       "problem_id": "poster-phase2-w9-响应式设计-003",
@@ -869,7 +869,7 @@
       "knowledge_points": [
         "响应式设计"
       ],
-      "created_at": "2026-06-25T11:40:56.049093"
+      "created_at": "2026-06-25T13:23:36.222776"
     },
     {
       "problem_id": "poster-phase2-w9-多尺寸适配-001",
@@ -886,7 +886,7 @@
       "knowledge_points": [
         "多尺寸适配"
       ],
-      "created_at": "2026-06-25T11:40:56.049097"
+      "created_at": "2026-06-25T13:23:36.222780"
     },
     {
       "problem_id": "poster-phase2-w9-多尺寸适配-002",
@@ -903,7 +903,7 @@
       "knowledge_points": [
         "多尺寸适配"
       ],
-      "created_at": "2026-06-25T11:40:56.049100"
+      "created_at": "2026-06-25T13:23:36.222782"
     },
     {
       "problem_id": "poster-phase2-w9-多尺寸适配-003",
@@ -920,7 +920,7 @@
       "knowledge_points": [
         "多尺寸适配"
       ],
-      "created_at": "2026-06-25T11:40:56.049140"
+      "created_at": "2026-06-25T13:23:36.222785"
     },
     {
       "problem_id": "poster-phase2-w9-暗色模式-001",
@@ -937,7 +937,7 @@
       "knowledge_points": [
         "暗色模式"
       ],
-      "created_at": "2026-06-25T11:40:56.049147"
+      "created_at": "2026-06-25T13:23:36.222789"
     },
     {
       "problem_id": "poster-phase2-w9-暗色模式-002",
@@ -954,7 +954,7 @@
       "knowledge_points": [
         "暗色模式"
       ],
-      "created_at": "2026-06-25T11:40:56.049152"
+      "created_at": "2026-06-25T13:23:36.222793"
     },
     {
       "problem_id": "poster-phase2-w9-暗色模式-003",
@@ -971,7 +971,7 @@
       "knowledge_points": [
         "暗色模式"
       ],
-      "created_at": "2026-06-25T11:40:56.049156"
+      "created_at": "2026-06-25T13:23:36.222797"
     },
     {
       "problem_id": "poster-phase2-w9-无障碍设计-001",
@@ -988,7 +988,7 @@
       "knowledge_points": [
         "无障碍设计"
       ],
-      "created_at": "2026-06-25T11:40:56.049163"
+      "created_at": "2026-06-25T13:23:36.222808"
     },
     {
       "problem_id": "poster-phase2-w9-无障碍设计-002",
@@ -1005,7 +1005,7 @@
       "knowledge_points": [
         "无障碍设计"
       ],
-      "created_at": "2026-06-25T11:40:56.049180"
+      "created_at": "2026-06-25T13:23:36.222813"
     },
     {
       "problem_id": "poster-phase2-w9-无障碍设计-003",
@@ -1022,7 +1022,7 @@
       "knowledge_points": [
         "无障碍设计"
       ],
-      "created_at": "2026-06-25T11:40:56.049190"
+      "created_at": "2026-06-25T13:23:36.222823"
     },
     {
       "problem_id": "poster-phase2-w10-第二阶段综合考核-001",
@@ -1039,7 +1039,7 @@
       "knowledge_points": [
         "第二阶段综合考核"
       ],
-      "created_at": "2026-06-25T11:40:56.049199"
+      "created_at": "2026-06-25T13:23:36.222832"
     },
     {
       "problem_id": "poster-phase2-w10-第二阶段综合考核-002",
@@ -1056,7 +1056,7 @@
       "knowledge_points": [
         "第二阶段综合考核"
       ],
-      "created_at": "2026-06-25T11:40:56.049203"
+      "created_at": "2026-06-25T13:23:36.222838"
     },
     {
       "problem_id": "poster-phase2-w10-第二阶段综合考核-003",
@@ -1073,7 +1073,7 @@
       "knowledge_points": [
         "第二阶段综合考核"
       ],
-      "created_at": "2026-06-25T11:40:56.049207"
+      "created_at": "2026-06-25T13:23:36.222842"
     }
   ]
 }

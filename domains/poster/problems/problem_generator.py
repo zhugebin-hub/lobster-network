@@ -63,6 +63,23 @@ PROBLEM_TEMPLATES = {
     "AI辅助设计": [
         {"type": "选择", "difficulty": "初级", "template": "Midjourney中控制图片比例的参数是{--ar}"},
         {"type": "填空", "difficulty": "初级", "template": "DALL-E的提示词应该用_语言描述更准确"},
+        {"type": "编程", "difficulty": "中级", "template": "编写Midjourney提示词生成一张赛博朋克风格海报"},
+        {"type": "选择", "difficulty": "中级", "template": "Stable Diffusion中ControlNet的主要作用是{控制构图}"},
+    ],
+    "Midjourney提示词": [
+        {"type": "填空", "difficulty": "初级", "template": "Midjourney中--v参数控制_版本"},
+        {"type": "选择", "difficulty": "中级", "template": "--style raw参数的作用是{减少风格化}"},
+        {"type": "编程", "difficulty": "中级", "template": "用Midjourney生成一张极简主义风格海报的完整提示词"},
+    ],
+    "DALL-E应用": [
+        {"type": "选择", "difficulty": "初级", "template": "DALL-E 3支持的分辨率最高为_{1024x1024}"},
+        {"type": "填空", "difficulty": "中级", "template": "DALL-E的inpainting功能用于_局部重绘"},
+        {"type": "编程", "difficulty": "中级", "template": "编写DALL-E API调用代码生成一张海报"},
+    ],
+    "Stable Diffusion": [
+        {"type": "选择", "difficulty": "中级", "template": "SD中LoRA的作用是{微调模型}"},
+        {"type": "填空", "difficulty": "中级", "template": "SD的CFG Scale参数控制_提示词遵循度"},
+        {"type": "编程", "difficulty": "高级", "template": "编写SD WebUI API调用生成系列海报"},
     ],
 }
 

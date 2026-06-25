@@ -1,8 +1,8 @@
 {
   "domain": "poster",
   "phase": "phase3",
-  "total": 62,
-  "generated_at": "2026-06-25T11:40:56.055581",
+  "total": 64,
+  "generated_at": "2026-06-25T13:23:36.233929",
   "problems": [
     {
       "problem_id": "poster-phase3-w11-AI辅助设计-001",
@@ -19,7 +19,7 @@
       "knowledge_points": [
         "AI辅助设计"
       ],
-      "created_at": "2026-06-25T11:40:56.049214"
+      "created_at": "2026-06-25T13:23:36.222874"
     },
     {
       "problem_id": "poster-phase3-w11-AI辅助设计-002",
@@ -36,7 +36,41 @@
       "knowledge_points": [
         "AI辅助设计"
       ],
-      "created_at": "2026-06-25T11:40:56.049217"
+      "created_at": "2026-06-25T13:23:36.222879"
+    },
+    {
+      "problem_id": "poster-phase3-w11-AI辅助设计-003",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 11,
+      "topic": "AI辅助设计",
+      "type": "编程",
+      "difficulty": "中级",
+      "title": "AI辅助设计 #3",
+      "description": "编写Midjourney提示词生成一张赛博朋克风格海报",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI辅助设计"
+      ],
+      "created_at": "2026-06-25T13:23:36.222885"
+    },
+    {
+      "problem_id": "poster-phase3-w11-AI辅助设计-004",
+      "domain": "poster",
+      "phase": "phase3",
+      "week": 11,
+      "topic": "AI辅助设计",
+      "type": "选择",
+      "difficulty": "中级",
+      "title": "AI辅助设计 #4",
+      "description": "Stable Diffusion中ControlNet的主要作用是{控制构图}",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI辅助设计"
+      ],
+      "created_at": "2026-06-25T13:23:36.222889"
     },
     {
       "problem_id": "poster-phase3-w11-Midjourney提示词-001",
@@ -44,16 +78,16 @@
       "phase": "phase3",
       "week": 11,
       "topic": "Midjourney提示词",
-      "type": "选择",
-      "difficulty": "入门",
+      "type": "填空",
+      "difficulty": "初级",
       "title": "Midjourney提示词 #1",
-      "description": "Midjourney提示词基础题",
+      "description": "Midjourney中--v参数控制_版本",
       "answer": "标准答案",
       "solution": "详细解析",
       "knowledge_points": [
         "Midjourney提示词"
       ],
-      "created_at": "2026-06-25T11:40:56.049222"
+      "created_at": "2026-06-25T13:23:36.222894"
     },
     {
       "problem_id": "poster-phase3-w11-Midjourney提示词-002",
@@ -61,16 +95,16 @@
       "phase": "phase3",
       "week": 11,
       "topic": "Midjourney提示词",
-      "type": "判断",
-      "difficulty": "入门",
+      "type": "选择",
+      "difficulty": "中级",
       "title": "Midjourney提示词 #2",
-      "description": "Midjourney提示词判断题",
+      "description": "--style raw参数的作用是{减少风格化}",
       "answer": "标准答案",
       "solution": "详细解析",
       "knowledge_points": [
         "Midjourney提示词"
       ],
-      "created_at": "2026-06-25T11:40:56.049225"
+      "created_at": "2026-06-25T13:23:36.222897"
     },
     {
       "problem_id": "poster-phase3-w11-Midjourney提示词-003",
@@ -78,16 +112,16 @@
       "phase": "phase3",
       "week": 11,
       "topic": "Midjourney提示词",
-      "type": "填空",
-      "difficulty": "入门",
+      "type": "编程",
+      "difficulty": "中级",
       "title": "Midjourney提示词 #3",
-      "description": "Midjourney提示词填空题",
+      "description": "用Midjourney生成一张极简主义风格海报的完整提示词",
       "answer": "标准答案",
       "solution": "详细解析",
       "knowledge_points": [
         "Midjourney提示词"
       ],
-      "created_at": "2026-06-25T11:40:56.049228"
+      "created_at": "2026-06-25T13:23:36.222900"
     },
     {
       "problem_id": "poster-phase3-w11-DALL-E应用-001",
@@ -96,15 +130,15 @@
       "week": 11,
       "topic": "DALL-E应用",
       "type": "选择",
-      "difficulty": "入门",
+      "difficulty": "初级",
       "title": "DALL-E应用 #1",
-      "description": "DALL-E应用基础题",
+      "description": "DALL-E 3支持的分辨率最高为_{1024x1024}",
       "answer": "标准答案",
       "solution": "详细解析",
       "knowledge_points": [
         "DALL-E应用"
       ],
-      "created_at": "2026-06-25T11:40:56.049232"
+      "created_at": "2026-06-25T13:23:36.222905"
     },
     {
       "problem_id": "poster-phase3-w11-DALL-E应用-002",
@@ -112,16 +146,16 @@
       "phase": "phase3",
       "week": 11,
       "topic": "DALL-E应用",
-      "type": "判断",
-      "difficulty": "入门",
+      "type": "填空",
+      "difficulty": "中级",
       "title": "DALL-E应用 #2",
-      "description": "DALL-E应用判断题",
+      "description": "DALL-E的inpainting功能用于_局部重绘",
       "answer": "标准答案",
       "solution": "详细解析",
       "knowledge_points": [
         "DALL-E应用"
       ],
-      "created_at": "2026-06-25T11:40:56.049235"
+      "created_at": "2026-06-25T13:23:36.222908"
     },
     {
       "problem_id": "poster-phase3-w11-DALL-E应用-003",
@@ -129,16 +163,16 @@
       "phase": "phase3",
       "week": 11,
       "topic": "DALL-E应用",
-      "type": "填空",
-      "difficulty": "入门",
+      "type": "编程",
+      "difficulty": "中级",
       "title": "DALL-E应用 #3",
-      "description": "DALL-E应用填空题",
+      "description": "编写DALL-E API调用代码生成一张海报",
       "answer": "标准答案",
       "solution": "详细解析",
       "knowledge_points": [
         "DALL-E应用"
       ],
-      "created_at": "2026-06-25T11:40:56.049238"
+      "created_at": "2026-06-25T13:23:36.222911"
     },
     {
       "problem_id": "poster-phase3-w11-Stable Diffusion-001",
@@ -147,15 +181,15 @@
       "week": 11,
       "topic": "Stable Diffusion",
       "type": "选择",
-      "difficulty": "入门",
+      "difficulty": "中级",
       "title": "Stable Diffusion #1",
-      "description": "Stable Diffusion基础题",
+      "description": "SD中LoRA的作用是{微调模型}",
       "answer": "标准答案",
       "solution": "详细解析",
       "knowledge_points": [
         "Stable Diffusion"
       ],
-      "created_at": "2026-06-25T11:40:56.049243"
+      "created_at": "2026-06-25T13:23:36.222916"
     },
     {
       "problem_id": "poster-phase3-w11-Stable Diffusion-002",
@@ -163,16 +197,16 @@
       "phase": "phase3",
       "week": 11,
       "topic": "Stable Diffusion",
-      "type": "判断",
-      "difficulty": "入门",
+      "type": "填空",
+      "difficulty": "中级",
       "title": "Stable Diffusion #2",
-      "description": "Stable Diffusion判断题",
+      "description": "SD的CFG Scale参数控制_提示词遵循度",
       "answer": "标准答案",
       "solution": "详细解析",
       "knowledge_points": [
         "Stable Diffusion"
       ],
-      "created_at": "2026-06-25T11:40:56.049245"
+      "created_at": "2026-06-25T13:23:36.222919"
     },
     {
       "problem_id": "poster-phase3-w11-Stable Diffusion-003",
@@ -180,16 +214,16 @@
       "phase": "phase3",
       "week": 11,
       "topic": "Stable Diffusion",
-      "type": "填空",
-      "difficulty": "入门",
+      "type": "编程",
+      "difficulty": "高级",
       "title": "Stable Diffusion #3",
-      "description": "Stable Diffusion填空题",
+      "description": "编写SD WebUI API调用生成系列海报",
       "answer": "标准答案",
       "solution": "详细解析",
       "knowledge_points": [
         "Stable Diffusion"
       ],
-      "created_at": "2026-06-25T11:40:56.049248"
+      "created_at": "2026-06-25T13:23:36.222922"
     },
     {
       "problem_id": "poster-phase3-w12-设计思维-001",
@@ -206,7 +240,7 @@
       "knowledge_points": [
         "设计思维"
       ],
-      "created_at": "2026-06-25T11:40:56.049252"
+      "created_at": "2026-06-25T13:23:36.222926"
     },
     {
       "problem_id": "poster-phase3-w12-设计思维-002",
@@ -223,7 +257,7 @@
       "knowledge_points": [
         "设计思维"
       ],
-      "created_at": "2026-06-25T11:40:56.049255"
+      "created_at": "2026-06-25T13:23:36.222929"
     },
     {
       "problem_id": "poster-phase3-w12-设计思维-003",
@@ -240,7 +274,7 @@
       "knowledge_points": [
         "设计思维"
       ],
-      "created_at": "2026-06-25T11:40:56.049258"
+      "created_at": "2026-06-25T13:23:36.222932"
     },
     {
       "problem_id": "poster-phase3-w12-用户调研-001",
@@ -257,7 +291,7 @@
       "knowledge_points": [
         "用户调研"
       ],
-      "created_at": "2026-06-25T11:40:56.049265"
+      "created_at": "2026-06-25T13:23:36.222939"
     },
     {
       "problem_id": "poster-phase3-w12-用户调研-002",
@@ -274,7 +308,7 @@
       "knowledge_points": [
         "用户调研"
       ],
-      "created_at": "2026-06-25T11:40:56.049268"
+      "created_at": "2026-06-25T13:23:36.222941"
     },
     {
       "problem_id": "poster-phase3-w12-用户调研-003",
@@ -291,7 +325,7 @@
       "knowledge_points": [
         "用户调研"
       ],
-      "created_at": "2026-06-25T11:40:56.049271"
+      "created_at": "2026-06-25T13:23:36.222945"
     },
     {
       "problem_id": "poster-phase3-w12-A/B测试-001",
@@ -308,7 +342,7 @@
       "knowledge_points": [
         "A/B测试"
       ],
-      "created_at": "2026-06-25T11:40:56.049277"
+      "created_at": "2026-06-25T13:23:36.222949"
     },
     {
       "problem_id": "poster-phase3-w12-A/B测试-002",
@@ -325,7 +359,7 @@
       "knowledge_points": [
         "A/B测试"
       ],
-      "created_at": "2026-06-25T11:40:56.049282"
+      "created_at": "2026-06-25T13:23:36.222955"
     },
     {
       "problem_id": "poster-phase3-w12-A/B测试-003",
@@ -342,7 +376,7 @@
       "knowledge_points": [
         "A/B测试"
       ],
-      "created_at": "2026-06-25T11:40:56.049287"
+      "created_at": "2026-06-25T13:23:36.222960"
     },
     {
       "problem_id": "poster-phase3-w12-迭代优化-001",
@@ -359,7 +393,7 @@
       "knowledge_points": [
         "迭代优化"
       ],
-      "created_at": "2026-06-25T11:40:56.049294"
+      "created_at": "2026-06-25T13:23:36.222964"
     },
     {
       "problem_id": "poster-phase3-w12-迭代优化-002",
@@ -376,7 +410,7 @@
       "knowledge_points": [
         "迭代优化"
       ],
-      "created_at": "2026-06-25T11:40:56.049298"
+      "created_at": "2026-06-25T13:23:36.222967"
     },
     {
       "problem_id": "poster-phase3-w12-迭代优化-003",
@@ -393,7 +427,7 @@
       "knowledge_points": [
         "迭代优化"
       ],
-      "created_at": "2026-06-25T11:40:56.049308"
+      "created_at": "2026-06-25T13:23:36.222970"
     },
     {
       "problem_id": "poster-phase3-w13-跨平台设计-001",
@@ -410,7 +444,7 @@
       "knowledge_points": [
         "跨平台设计"
       ],
-      "created_at": "2026-06-25T11:40:56.049315"
+      "created_at": "2026-06-25T13:23:36.222974"
     },
     {
       "problem_id": "poster-phase3-w13-跨平台设计-002",
@@ -427,7 +461,7 @@
       "knowledge_points": [
         "跨平台设计"
       ],
-      "created_at": "2026-06-25T11:40:56.049320"
+      "created_at": "2026-06-25T13:23:36.222977"
     },
     {
       "problem_id": "poster-phase3-w13-跨平台设计-003",
@@ -444,7 +478,7 @@
       "knowledge_points": [
         "跨平台设计"
       ],
-      "created_at": "2026-06-25T11:40:56.049330"
+      "created_at": "2026-06-25T13:23:36.222980"
     },
     {
       "problem_id": "poster-phase3-w13-Web+Mobile+Print-001",
@@ -461,7 +495,7 @@
       "knowledge_points": [
         "Web+Mobile+Print"
       ],
-      "created_at": "2026-06-25T11:40:56.049343"
+      "created_at": "2026-06-25T13:23:36.222988"
     },
     {
       "problem_id": "poster-phase3-w13-Web+Mobile+Print-002",
@@ -478,7 +512,7 @@
       "knowledge_points": [
         "Web+Mobile+Print"
       ],
-      "created_at": "2026-06-25T11:40:56.049348"
+      "created_at": "2026-06-25T13:23:36.222990"
     },
     {
       "problem_id": "poster-phase3-w13-Web+Mobile+Print-003",
@@ -495,7 +529,7 @@
       "knowledge_points": [
         "Web+Mobile+Print"
       ],
-      "created_at": "2026-06-25T11:40:56.049352"
+      "created_at": "2026-06-25T13:23:36.222993"
     },
     {
       "problem_id": "poster-phase3-w13-品牌延展-001",
@@ -512,7 +546,7 @@
       "knowledge_points": [
         "品牌延展"
       ],
-      "created_at": "2026-06-25T11:40:56.049357"
+      "created_at": "2026-06-25T13:23:36.222997"
     },
     {
       "problem_id": "poster-phase3-w13-品牌延展-002",
@@ -529,7 +563,7 @@
       "knowledge_points": [
         "品牌延展"
       ],
-      "created_at": "2026-06-25T11:40:56.049361"
+      "created_at": "2026-06-25T13:23:36.222999"
     },
     {
       "problem_id": "poster-phase3-w13-品牌延展-003",
@@ -546,7 +580,7 @@
       "knowledge_points": [
         "品牌延展"
       ],
-      "created_at": "2026-06-25T11:40:56.049366"
+      "created_at": "2026-06-25T13:23:36.223002"
     },
     {
       "problem_id": "poster-phase3-w13-设计系统-001",
@@ -563,7 +597,7 @@
       "knowledge_points": [
         "设计系统"
       ],
-      "created_at": "2026-06-25T11:40:56.049376"
+      "created_at": "2026-06-25T13:23:36.223006"
     },
     {
       "problem_id": "poster-phase3-w13-设计系统-002",
@@ -580,7 +614,7 @@
       "knowledge_points": [
         "设计系统"
       ],
-      "created_at": "2026-06-25T11:40:56.049381"
+      "created_at": "2026-06-25T13:23:36.223011"
     },
     {
       "problem_id": "poster-phase3-w13-设计系统-003",
@@ -597,7 +631,7 @@
       "knowledge_points": [
         "设计系统"
       ],
-      "created_at": "2026-06-25T11:40:56.049385"
+      "created_at": "2026-06-25T13:23:36.223016"
     },
     {
       "problem_id": "poster-phase3-w14-高效工作流-001",
@@ -614,7 +648,7 @@
       "knowledge_points": [
         "高效工作流"
       ],
-      "created_at": "2026-06-25T11:40:56.049394"
+      "created_at": "2026-06-25T13:23:36.223021"
     },
     {
       "problem_id": "poster-phase3-w14-高效工作流-002",
@@ -631,7 +665,7 @@
       "knowledge_points": [
         "高效工作流"
       ],
-      "created_at": "2026-06-25T11:40:56.049399"
+      "created_at": "2026-06-25T13:23:36.223023"
     },
     {
       "problem_id": "poster-phase3-w14-高效工作流-003",
@@ -648,7 +682,7 @@
       "knowledge_points": [
         "高效工作流"
       ],
-      "created_at": "2026-06-25T11:40:56.049404"
+      "created_at": "2026-06-25T13:23:36.223026"
     },
     {
       "problem_id": "poster-phase3-w14-模板化生产-001",
@@ -665,7 +699,7 @@
       "knowledge_points": [
         "模板化生产"
       ],
-      "created_at": "2026-06-25T11:40:56.049410"
+      "created_at": "2026-06-25T13:23:36.223032"
     },
     {
       "problem_id": "poster-phase3-w14-模板化生产-002",
@@ -682,7 +716,7 @@
       "knowledge_points": [
         "模板化生产"
       ],
-      "created_at": "2026-06-25T11:40:56.049418"
+      "created_at": "2026-06-25T13:23:36.223035"
     },
     {
       "problem_id": "poster-phase3-w14-模板化生产-003",
@@ -699,7 +733,7 @@
       "knowledge_points": [
         "模板化生产"
       ],
-      "created_at": "2026-06-25T11:40:56.049425"
+      "created_at": "2026-06-25T13:23:36.223038"
     },
     {
       "problem_id": "poster-phase3-w14-批量生成-001",
@@ -716,7 +750,7 @@
       "knowledge_points": [
         "批量生成"
       ],
-      "created_at": "2026-06-25T11:40:56.049433"
+      "created_at": "2026-06-25T13:23:36.223042"
     },
     {
       "problem_id": "poster-phase3-w14-批量生成-002",
@@ -733,7 +767,7 @@
       "knowledge_points": [
         "批量生成"
       ],
-      "created_at": "2026-06-25T11:40:56.049438"
+      "created_at": "2026-06-25T13:23:36.223045"
     },
     {
       "problem_id": "poster-phase3-w14-批量生成-003",
@@ -750,7 +784,7 @@
       "knowledge_points": [
         "批量生成"
       ],
-      "created_at": "2026-06-25T11:40:56.049442"
+      "created_at": "2026-06-25T13:23:36.223047"
     },
     {
       "problem_id": "poster-phase3-w14-自动化脚本-001",
@@ -767,7 +801,7 @@
       "knowledge_points": [
         "自动化脚本"
       ],
-      "created_at": "2026-06-25T11:40:56.049455"
+      "created_at": "2026-06-25T13:23:36.223059"
     },
     {
       "problem_id": "poster-phase3-w14-自动化脚本-002",
@@ -784,7 +818,7 @@
       "knowledge_points": [
         "自动化脚本"
       ],
-      "created_at": "2026-06-25T11:40:56.049465"
+      "created_at": "2026-06-25T13:23:36.223061"
     },
     {
       "problem_id": "poster-phase3-w14-自动化脚本-003",
@@ -801,7 +835,7 @@
       "knowledge_points": [
         "自动化脚本"
       ],
-      "created_at": "2026-06-25T11:40:56.049486"
+      "created_at": "2026-06-25T13:23:36.223064"
     },
     {
       "problem_id": "poster-phase3-w15-设计评审-001",
@@ -818,7 +852,7 @@
       "knowledge_points": [
         "设计评审"
       ],
-      "created_at": "2026-06-25T11:40:56.049494"
+      "created_at": "2026-06-25T13:23:36.223071"
     },
     {
       "problem_id": "poster-phase3-w15-设计评审-002",
@@ -835,7 +869,7 @@
       "knowledge_points": [
         "设计评审"
       ],
-      "created_at": "2026-06-25T11:40:56.049497"
+      "created_at": "2026-06-25T13:23:36.223074"
     },
     {
       "problem_id": "poster-phase3-w15-设计评审-003",
@@ -852,7 +886,7 @@
       "knowledge_points": [
         "设计评审"
       ],
-      "created_at": "2026-06-25T11:40:56.049500"
+      "created_at": "2026-06-25T13:23:36.223077"
     },
     {
       "problem_id": "poster-phase3-w15-同行反馈-001",
@@ -869,7 +903,7 @@
       "knowledge_points": [
         "同行反馈"
       ],
-      "created_at": "2026-06-25T11:40:56.049504"
+      "created_at": "2026-06-25T13:23:36.223083"
     },
     {
       "problem_id": "poster-phase3-w15-同行反馈-002",
@@ -886,7 +920,7 @@
       "knowledge_points": [
         "同行反馈"
       ],
-      "created_at": "2026-06-25T11:40:56.049506"
+      "created_at": "2026-06-25T13:23:36.223085"
     },
     {
       "problem_id": "poster-phase3-w15-同行反馈-003",
@@ -903,7 +937,7 @@
       "knowledge_points": [
         "同行反馈"
       ],
-      "created_at": "2026-06-25T11:40:56.049512"
+      "created_at": "2026-06-25T13:23:36.223088"
     },
     {
       "problem_id": "poster-phase3-w15-客户沟通-001",
@@ -920,7 +954,7 @@
       "knowledge_points": [
         "客户沟通"
       ],
-      "created_at": "2026-06-25T11:40:56.049518"
+      "created_at": "2026-06-25T13:23:36.223094"
     },
     {
       "problem_id": "poster-phase3-w15-客户沟通-002",
@@ -937,7 +971,7 @@
       "knowledge_points": [
         "客户沟通"
       ],
-      "created_at": "2026-06-25T11:40:56.049521"
+      "created_at": "2026-06-25T13:23:36.223100"
     },
     {
       "problem_id": "poster-phase3-w15-客户沟通-003",
@@ -954,7 +988,7 @@
       "knowledge_points": [
         "客户沟通"
       ],
-      "created_at": "2026-06-25T11:40:56.049524"
+      "created_at": "2026-06-25T13:23:36.223120"
     },
     {
       "problem_id": "poster-phase3-w15-作品展示-001",
@@ -971,7 +1005,7 @@
       "knowledge_points": [
         "作品展示"
       ],
-      "created_at": "2026-06-25T11:40:56.049530"
+      "created_at": "2026-06-25T13:23:36.223236"
     },
     {
       "problem_id": "poster-phase3-w15-作品展示-002",
@@ -988,7 +1022,7 @@
       "knowledge_points": [
         "作品展示"
       ],
-      "created_at": "2026-06-25T11:40:56.049533"
+      "created_at": "2026-06-25T13:23:36.223243"
     },
     {
       "problem_id": "poster-phase3-w15-作品展示-003",
@@ -1005,7 +1039,7 @@
       "knowledge_points": [
         "作品展示"
       ],
-      "created_at": "2026-06-25T11:40:56.049536"
+      "created_at": "2026-06-25T13:23:36.223246"
     },
     {
       "problem_id": "poster-phase3-w16-第三阶段综合考核-001",
@@ -1022,7 +1056,7 @@
       "knowledge_points": [
         "第三阶段综合考核"
       ],
-      "created_at": "2026-06-25T11:40:56.049543"
+      "created_at": "2026-06-25T13:23:36.223252"
     },
     {
       "problem_id": "poster-phase3-w16-第三阶段综合考核-002",
@@ -1039,7 +1073,7 @@
       "knowledge_points": [
         "第三阶段综合考核"
       ],
-      "created_at": "2026-06-25T11:40:56.049546"
+      "created_at": "2026-06-25T13:23:36.223255"
     },
     {
       "problem_id": "poster-phase3-w16-第三阶段综合考核-003",
@@ -1056,7 +1090,7 @@
       "knowledge_points": [
         "第三阶段综合考核"
       ],
-      "created_at": "2026-06-25T11:40:56.049549"
+      "created_at": "2026-06-25T13:23:36.223272"
     }
   ]
 }
