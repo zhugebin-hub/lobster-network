@@ -13,11 +13,17 @@ PROGRESS_FILE = os.path.join(
     os.path.dirname(__file__), "state", "network_learning_progress.json"
 )
 
-# === 学习计划 ===
+# === 学习计划（硬件感知优化版） ===
 LEARNING_PLAN = {
     "students": ["小陈", "诸葛虾", "诸葛马"],
     "course": "高级网络通信原理",
     "start_date": "2026-06-25",
+    "hardware_constraints": {
+        "memory_mb": 1800,
+        "max_concurrent_learners": 2,  # 限制并发学习人数防OOM
+        "heartbeat_interval": 60,      # 降低心跳频率省CPU
+        "message_batch_size": 5,       # 批量处理消息减开销
+    },
     "chapters": {
         "ch1": {
             "title": "第一章 绪论 - 网络技术演进",

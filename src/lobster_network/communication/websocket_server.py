@@ -130,14 +130,25 @@ class WebSocketServer:
             "total_latency_ms": 0.0,
         }
         
-        # 配置
-        self.heartbeat_interval = 30  # 心跳间隔（秒）
-        self.heartbeat_timeout = 90  # 心跳超时（秒）
-        self.max_message_size = 1024 * 1024  # 最大消息大小（1MB）
+        # 配置（针对1.8GB内存优化）
+        self.heartbeat_interval = 60  # 心跳间隔（秒）→ 降低CPU/网络开销
+        self.heartbeat_timeout = 180  # 心跳超时（秒）→ 容忍弱网
+        self.max_message_size = 256 * 1024  # 最大消息大小（256KB）→ 省内存
+        self.max_connections = 50  # 最大并发连接 → 防OOM
+        self.backlog = 128  # 连接队列 → 适配低配服务器
+        self.memory_limit_mb = 512  # 内存上限（MB）→ 防OOM
         
     async def start(self):
-        """启动WebSocket服务器"""
+        """启动WebSocket服务器（低内存优化版）"""
         logger.info(f"🦞 小龙虾网络 v3.0 WebSocket服务器启动: {self.host}:{self.port}")
+        logger.info(f"📊 内存限制: {self.memory_limit_mb}MB | 最大连接: {self.max_connections}")
+        
+        # 检查文件描述符限制
+        import resource
+        soft, hard = resource.getrlimit(resource.RLIMIT_NOFILE)
+        logger.info(f"📁 文件描述符限制: soft={soft}, hard={hard}")
+        if soft < 4096:
+            logger.warning("⚠️ 文件描述符限制过低，WebSocket性能将受限")
         
         async with websockets.serve(
             self.handle_client,
@@ -146,14 +157,16 @@ class WebSocketServer:
             max_size=self.max_message_size,
             ping_interval=self.heartbeat_interval,
             ping_timeout=self.heartbeat_timeout,
+            backlog=self.backlog,
         ):
             logger.info(f"✅ 服务器已启动，等待节点连接...")
             
-            # 启动后台任务
+            # 启动后台任务（含内存监控）
             await asyncio.gather(
                 self.message_processor(),
                 self.heartbeat_monitor(),
                 self.stats_reporter(),
+                self.memory_monitor(),
             )
     
     async def handle_client(self, websocket, path):
@@ -326,6 +339,23 @@ class WebSocketServer:
                 "avg_latency_ms": 0.0,
                 "total_latency_ms": 0.0,
             }
+    
+    async def memory_monitor(self):
+        """内存监控器 - 防OOM"""
+        import resource
+        while True:
+            await asyncio.sleep(30)
+            
+            # 获取当前进程内存使用（MB）
+            usage = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
+            if usage > self.memory_limit_mb:
+                logger.warning(f"⚠️ 内存使用超限: {usage:.1f}MB > {self.memory_limit_mb}MB")
+                # 清理待确认消息释放内存
+                if len(self.pending_messages) > 100:
+                    logger.info(f"🧹 清理过期待确认消息: {len(self.pending_messages)}")
+                    self.pending_messages.clear()
+            else:
+                logger.debug(f"📊 内存使用: {usage:.1f}MB / {self.memory_limit_mb}MB")
 
 
 async def main():
