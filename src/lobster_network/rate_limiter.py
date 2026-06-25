@@ -93,7 +93,7 @@ class RateLimiter:
             "backoff": {"base_ms": 30000, "max_ms": 3600000, "jitter_pct": 0.3},
         }
         
-        self._lock = threading.Lock()
+        self._lock = threading.RLock()
         self._load_state()
     
     def _load_state(self):

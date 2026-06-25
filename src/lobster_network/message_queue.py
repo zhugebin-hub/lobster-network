@@ -115,7 +115,7 @@ class MessageQueue:
             "nfs_dir": "/shared/messages",
         }
         
-        self._lock = threading.Lock()
+        self._lock = threading.RLock()
         self._load_state()
     
     def _load_state(self):
@@ -362,7 +362,9 @@ class MessageQueue:
             # 紧急消息优先用钉钉
             if channels.get("dingtalk", {}).get("enabled", True) and not self.cooldown_until:
                 return "dingtalk"
-            return "nfs"
+            if channels.get("nfs", {}).get("enabled", True):
+                return "nfs"
+            return "local"
         
         # 常规/低优消息用 NFS
         if channels.get("nfs", {}).get("enabled", True):

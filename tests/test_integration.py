@@ -20,14 +20,11 @@ class TestIntegration(unittest.TestCase):
     
     def setUp(self):
         """测试准备"""
+        import shutil
         self.test_dir = "/tmp/lobster-integration-test"
+        if os.path.exists(self.test_dir):
+            shutil.rmtree(self.test_dir)
         os.makedirs(self.test_dir, exist_ok=True)
-        
-        # 清理旧状态
-        for f in ['rate-limit-state.json', 'global-schedule.json', 'node-budgets.json']:
-            path = os.path.join(self.test_dir, f)
-            if os.path.exists(path):
-                os.remove(path)
         
         self.limiter = RateLimiter(node_id="lobster-001", state_dir=self.test_dir)
         self.scheduler = GlobalScheduler(node_id="lobster-001", state_dir=self.test_dir)
@@ -87,15 +84,15 @@ class TestIntegration(unittest.TestCase):
         high_node = "lobster-001"
         low_node = "qoder"
         
-        # 借用预算
-        success = self.scheduler.borrow_budget(low_node, high_node, 50000)
+        # 借用预算（使用 lobster-001 的剩余预算，200000 - 15000 = 185000）
+        success = self.scheduler.borrow_budget(high_node, low_node, 10000)
         self.assertTrue(success, "预算借用应该成功")
         
         # 检查借用后
         budgets = self.scheduler.get_budget_status()
         print(f"\n  借用后预算:")
-        print(f"    {high_node}: {budgets[high_node]['daily_tokens']} tokens (原 {200000 + 50000})")
-        print(f"    {low_node}: {budgets[low_node]['daily_tokens']} tokens (原 {40000 - 50000})")
+        print(f"    {high_node}: {budgets[high_node]['daily_tokens']} tokens (借出 10000)")
+        print(f"    {low_node}: {budgets[low_node]['daily_tokens']} tokens (借入 10000)")
         
         print("\n=== 测试通过 ===")
     

@@ -155,7 +155,7 @@ class GlobalScheduler:
         
         self.config = config or {}
         
-        self._lock = threading.Lock()
+        self._lock = threading.RLock()
         self._load_state()
     
     def _load_state(self):
