@@ -15,7 +15,7 @@ PROGRESS_FILE = os.path.join(
 
 # === 学习计划 ===
 LEARNING_PLAN = {
-    "students": ["小陈", "诸葛虾"],
+    "students": ["小陈", "诸葛虾", "诸葛马"],
     "course": "高级网络通信原理",
     "start_date": "2026-06-25",
     "chapters": {

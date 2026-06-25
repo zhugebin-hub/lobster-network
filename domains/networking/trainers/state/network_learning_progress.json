@@ -39,6 +39,25 @@
           "accuracy": "100.0%"
         }
       ]
+    },
+    "诸葛马": {
+      "type": "教练型",
+      "completed_chapters": [
+        "ch1"
+      ],
+      "current_chapter": null,
+      "problems_solved": 5,
+      "problems_correct": 5,
+      "wrong_book": [],
+      "learning_log": [
+        {
+          "chapter": "ch1",
+          "date": "2026-06-25T19:08:29.700373",
+          "solved": 5,
+          "correct": 5,
+          "accuracy": "100.0%"
+        }
+      ]
     }
   }
 }
