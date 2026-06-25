@@ -1,0 +1,30 @@
+{
+  "node_id": "lobster-museum-001",
+  "name": "院史馆小龙虾",
+  "node_type": "agent",
+  "registered_at": "2026-06-24T23:12:00Z",
+  "last_heartbeat": "2026-06-24T23:12:00Z",
+  "status": "active",
+  "capabilities": ["院史馆展示", "历史数据管理", "互动导览"],
+  "transports": [
+    {
+      "transport_type": "nfs",
+      "endpoint": "/shared/messages/from-museum",
+      "enabled": true,
+      "priority": 1
+    },
+    {
+      "transport_type": "file",
+      "endpoint": "~/.lobster-network/museum/pending",
+      "enabled": true,
+      "priority": 99
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "region": "cn-east",
+    "project_type": "院史馆数字化",
+    "owner": "孙豪"
+  },
+  "ttl_seconds": 300
+}

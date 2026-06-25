@@ -160,18 +160,21 @@ class GlobalScheduler:
     
     def _load_state(self):
         """加载状态"""
+        # 先初始化默认值
+        self.tasks = []
+        self.budgets = {}
+        
         # 加载调度表
         if self.schedule_file.exists():
             try:
                 with open(self.schedule_file, "r") as f:
                     data = json.load(f)
-                self.tasks: List[dict] = data.get("tasks", [])
+                self.tasks = data.get("tasks", [])
             except Exception as e:
                 _get_logger().warning(f"加载调度表失败: {e}")
-                self.tasks = []
-        else:
-            # 初始化默认调度表
-            self.tasks = []
+        
+        # 如果任务为空，初始化默认调度表
+        if not self.tasks:
             for time_str, node_id, name, priority in DEFAULT_SCHEDULE:
                 self.tasks.append({
                     "name": name,
@@ -183,19 +186,18 @@ class GlobalScheduler:
                     "next_run": None,
                     "enabled": True,
                 })
-            self._save_state()
         
         # 加载预算
         if self.budget_file.exists():
             try:
                 with open(self.budget_file, "r") as f:
                     data = json.load(f)
-                self.budgets: Dict[str, dict] = data.get("budgets", {})
+                self.budgets = data.get("budgets", {})
             except Exception as e:
                 _get_logger().warning(f"加载预算失败: {e}")
-                self.budgets = {}
-        else:
-            self.budgets = {}
+        
+        # 如果预算为空，初始化默认预算
+        if not self.budgets:
             for nid, bcfg in DEFAULT_BUDGETS.items():
                 self.budgets[nid] = {
                     "node_id": nid,
@@ -206,7 +208,9 @@ class GlobalScheduler:
                     "requests_this_hour": 0,
                     "last_reset_date": datetime.utcnow().strftime("%Y-%m-%d"),
                 }
-            self._save_state()
+        
+        # 统一保存一次
+        self._save_state()
     
     def _save_state(self):
         """保存状态"""
