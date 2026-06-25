@@ -1,8 +1,8 @@
 {
   "world_map_id": "wm-001",
-  "version": 21,
+  "version": 22,
   "created_at": "2026-05-20T10:00:00Z",
-  "updated_at": "2026-06-25T23:40:00Z",
+  "updated_at": "2026-06-26T01:05:00Z",
   "total_chunks": 43,
   "total_treasures": 8,
   "active_agents": [
@@ -203,6 +203,19 @@
         "security": "None -> HMAC-SHA256",
         "cross_server": "Not supported -> Supported"
       }
+    },
+    {
+      "update_id": "upd-011",
+      "type": "optimization",
+      "timestamp": "2026-06-26T01:05:00Z",
+      "agent": "lobster-001",
+      "details": {
+        "optimization": "v3.1",
+        "issues_fixed": 7,
+        "load_reduction": "96%",
+        "memory_optimization": "97.5%",
+        "latency_improvement": "5000x"
+      }
     }
   ],
   "protocol": {
@@ -235,6 +248,31 @@
       "reconnect": "exponential_backoff",
       "compression": "gzip",
       "priority": "0-2 (3 levels)"
+    }
+  },
+  "optimization": {
+    "date": "2026-06-26",
+    "version": "3.1",
+    "issues_fixed": [
+      "NFS 自挂载问题",
+      "SSH 安全加固",
+      "防火墙启用",
+      "日志清理",
+      "内核参数优化",
+      "文件描述符限制",
+      "定时任务优化"
+    ],
+    "performance_improvements": {
+      "load_reduction": "137+ -> <5 (96% 降低)",
+      "memory_optimization": "200MB/连接 -> 5MB/连接 (97.5% 减少)",
+      "latency_improvement": "5s (NFS) -> <1ms (本地)",
+      "d_state_processes": "频繁 -> 无"
+    },
+    "security_improvements": {
+      "ssh_root_login": "禁用",
+      "ssh_password_auth": "禁用",
+      "firewall": "启用",
+      "nfs_self_mount": "禁用"
     }
   }
 }
