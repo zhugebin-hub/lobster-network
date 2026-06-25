@@ -1,0 +1,61 @@
+{
+  "upgrade_date": "2026-06-25T23:36:37.669559",
+  "protocol_version": "v3.0",
+  "total_nodes": 6,
+  "upgraded_nodes": [
+    {
+      "node_id": "hermes",
+      "name": "诸葛马",
+      "type": "coach",
+      "protocol": "v3.0",
+      "status": "upgraded"
+    },
+    {
+      "node_id": "lobster-001",
+      "name": "小龙虾",
+      "type": "agent",
+      "protocol": "v3.0",
+      "status": "upgraded"
+    },
+    {
+      "node_id": "xiaochen",
+      "name": "小陈",
+      "type": "agent",
+      "protocol": "v3.0",
+      "status": "upgraded"
+    },
+    {
+      "node_id": "zhuguxia",
+      "name": "诸葛虾",
+      "type": "agent",
+      "protocol": "v3.0",
+      "status": "upgraded"
+    },
+    {
+      "node_id": "qoder",
+      "name": "qoder",
+      "type": "agent",
+      "protocol": "v3.0",
+      "status": "upgraded"
+    },
+    {
+      "node_id": "museum-001",
+      "name": "院史馆小龙虾",
+      "type": "agent",
+      "protocol": "v3.0",
+      "status": "upgraded"
+    }
+  ],
+  "features": {
+    "transport": "WebSocket",
+    "latency": "<100ms",
+    "reliability": "99.9%",
+    "security": "HMAC-SHA256签名",
+    "heartbeat": "30秒间隔",
+    "reconnect": "指数退避自动重连",
+    "message_size": "1MB",
+    "compression": "gzip",
+    "acknowledgment": "ACK/NACK",
+    "priority": "0-2三级优先级"
+  }
+}
