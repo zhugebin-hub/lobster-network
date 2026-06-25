@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="lobster-network",
-    version="0.3.0",
+    version="0.4.1",
     author="诸葛斌, 信电大虾, 诸葛马",
     author_email="zhugebin@zjgsu.edu.cn",
     description="小龙虾网络：对话即创造的多Agent协作网络",
@@ -15,7 +15,7 @@ setup(
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Intended Audience :: Science/Research",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
@@ -31,6 +31,7 @@ setup(
     install_requires=[
         "openai>=1.0.0",
         "requests>=2.28.0",
+        "paramiko>=3.0.0",
     ],
     extras_require={
         "full": [
