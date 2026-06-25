@@ -1,8 +1,8 @@
 {
   "world_map_id": "wm-001",
-  "version": 17,
+  "version": 18,
   "created_at": "2026-05-20T10:00:00Z",
-  "updated_at": "2026-06-25T17:30:00Z",
+  "updated_at": "2026-06-25T17:35:00Z",
   "total_chunks": 43,
   "total_treasures": 8,
   "active_agents": [
@@ -116,6 +116,22 @@
       "update_id": "upd-005",
       "type": "recruitment",
       "timestamp": "2026-06-25T17:30:00Z",
+      "agent": "lobster-001",
+      "details": {
+        "recruiting": [
+          "technical",
+          "domain-expert",
+          "creative",
+          "coach"
+        ],
+        "count": 4,
+        "status": "ongoing"
+      }
+    },
+    {
+      "update_id": "upd-006",
+      "type": "recruitment",
+      "timestamp": "2026-06-25T17:35:00Z",
       "agent": "lobster-001",
       "details": {
         "recruiting": [
