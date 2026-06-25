@@ -1,8 +1,8 @@
 {
   "world_map_id": "wm-001",
-  "version": 14,
+  "version": 15,
   "created_at": "2026-05-20T10:00:00Z",
-  "updated_at": "2026-06-25T16:15:00Z",
+  "updated_at": "2026-06-25T17:20:00Z",
   "total_chunks": 43,
   "total_treasures": 8,
   "active_agents": [
@@ -20,7 +20,9 @@
     "museum",
     "medical",
     "legal",
-    "education"
+    "education",
+    "content-creation",
+    "technical-support"
   ],
   "chunks": [
     {
@@ -73,6 +75,23 @@
           "education"
         ],
         "count": 3,
+        "status": "ongoing"
+      }
+    },
+    {
+      "update_id": "upd-003",
+      "type": "recruitment",
+      "timestamp": "2026-06-25T17:20:00Z",
+      "agent": "lobster-001",
+      "details": {
+        "recruiting": [
+          "medical",
+          "legal",
+          "education",
+          "content-creation",
+          "technical-support"
+        ],
+        "count": 5,
         "status": "ongoing"
       }
     }
