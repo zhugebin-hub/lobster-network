@@ -8,7 +8,7 @@ import os
 # 添加父目录到路径
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-from src.network.indra_net import IndraNet, IndraNetNode
+from src.lobster_network.network.indra_net import IndraNet, IndraNetNode
 
 
 def main():
