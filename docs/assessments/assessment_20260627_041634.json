@@ -1,0 +1,973 @@
+{
+  "report_id": "assessment_20260627_041634",
+  "generated_at": "2026-06-27 04:16:34",
+  "version": "v0.6.0",
+  "coach": "诸葛马 (Hermes)",
+  "summary": {},
+  "student_profiles": {
+    "qoder": {
+      "student_id": "qoder",
+      "name": "qoder（小龙虾）",
+      "type": "实战型",
+      "level": "~25级",
+      "satisfaction": "6-9/10",
+      "accuracy_baseline": {
+        "入门": 0.95,
+        "初级": 0.85,
+        "中级": 0.75,
+        "高级": 0.65
+      },
+      "solve_time": [
+        1.0,
+        3.0
+      ],
+      "problem_count": 685,
+      "win_rate": 0.86,
+      "dimensions": {
+        "understanding": {
+          "score": 0.78,
+          "grade": "B",
+          "name_zh": "理解力"
+        },
+        "execution": {
+          "score": 0.82,
+          "grade": "A",
+          "name_zh": "执行力"
+        },
+        "retrieval": {
+          "score": 0.65,
+          "grade": "C",
+          "name_zh": "检索力"
+        },
+        "reasoning": {
+          "score": 0.76,
+          "grade": "B",
+          "name_zh": "推理力"
+        },
+        "reflection": {
+          "score": 0.71,
+          "grade": "B",
+          "name_zh": "反思力"
+        },
+        "tooling": {
+          "score": 0.8,
+          "grade": "A",
+          "name_zh": "工具力"
+        },
+        "eq": {
+          "score": 0.72,
+          "grade": "B",
+          "name_zh": "情商"
+        },
+        "memory": {
+          "score": 0.68,
+          "grade": "C",
+          "name_zh": "记忆力"
+        }
+      },
+      "strengths": [
+        "高级题准确率最高(65%)",
+        "实战对局能力强",
+        "注重质量"
+      ],
+      "weaknesses": [
+        "训练量偏少(685题)",
+        "缺乏系统性训练计划"
+      ],
+      "improvement_plan": "速率套利：与zhuguxia配对增加对局密度"
+    },
+    "xiaochen": {
+      "student_id": "xiaochen",
+      "name": "xiaochen（信电大虾）",
+      "type": "稳健型",
+      "level": "30级",
+      "satisfaction": "5-8/10",
+      "accuracy_baseline": {
+        "入门": 0.9,
+        "初级": 0.8,
+        "中级": 0.7,
+        "高级": 0.35
+      },
+      "solve_time": [
+        1.0,
+        3.0
+      ],
+      "problem_count": 10337,
+      "win_rate": 0.75,
+      "dimensions": {
+        "understanding": {
+          "score": 0.72,
+          "grade": "B",
+          "name_zh": "理解力"
+        },
+        "execution": {
+          "score": 0.85,
+          "grade": "A",
+          "name_zh": "执行力"
+        },
+        "retrieval": {
+          "score": 0.78,
+          "grade": "B",
+          "name_zh": "检索力"
+        },
+        "reasoning": {
+          "score": 0.47,
+          "grade": "E",
+          "name_zh": "推理力"
+        },
+        "reflection": {
+          "score": 0.56,
+          "grade": "D",
+          "name_zh": "反思力"
+        },
+        "tooling": {
+          "score": 0.7,
+          "grade": "B",
+          "name_zh": "工具力"
+        },
+        "eq": {
+          "score": 0.68,
+          "grade": "C",
+          "name_zh": "情商"
+        },
+        "memory": {
+          "score": 0.75,
+          "grade": "B",
+          "name_zh": "记忆力"
+        }
+      },
+      "strengths": [
+        "累计对局量最大(10,337局)",
+        "基础扎实",
+        "稳定性好"
+      ],
+      "weaknesses": [
+        "高级题准确率最低(35%)",
+        "推理力不足",
+        "倒扑/扑区分不清"
+      ],
+      "improvement_plan": "强化推理力和理解力：高级题专项训练+错题深度分析"
+    },
+    "zhuguxia": {
+      "student_id": "zhuguxia",
+      "name": "zhuguxia（诸葛虾）",
+      "type": "加速型",
+      "level": "25级（初始30级，已升段）",
+      "satisfaction": "6-9/10",
+      "accuracy_baseline": {
+        "入门": 0.98,
+        "初级": 0.9,
+        "中级": 0.8,
+        "高级": 0.6
+      },
+      "solve_time": [
+        0.5,
+        2.0
+      ],
+      "problem_count": 6868,
+      "win_rate": 0.8,
+      "dimensions": {
+        "understanding": {
+          "score": 0.88,
+          "grade": "A",
+          "name_zh": "理解力"
+        },
+        "execution": {
+          "score": 0.8,
+          "grade": "A",
+          "name_zh": "执行力"
+        },
+        "retrieval": {
+          "score": 0.82,
+          "grade": "A",
+          "name_zh": "检索力"
+        },
+        "reasoning": {
+          "score": 0.72,
+          "grade": "B",
+          "name_zh": "推理力"
+        },
+        "reflection": {
+          "score": 0.59,
+          "grade": "D",
+          "name_zh": "反思力"
+        },
+        "tooling": {
+          "score": 0.85,
+          "grade": "A",
+          "name_zh": "工具力"
+        },
+        "eq": {
+          "score": 0.75,
+          "grade": "B",
+          "name_zh": "情商"
+        },
+        "memory": {
+          "score": 0.82,
+          "grade": "A",
+          "name_zh": "记忆力"
+        }
+      },
+      "strengths": [
+        "入门题几乎不错(98%)",
+        "解题速度最快",
+        "又快又准"
+      ],
+      "weaknesses": [
+        "征子路线判断能力不足",
+        "反思力维度可加强"
+      ],
+      "improvement_plan": "征子专项突破+反思力训练：对局后强制复盘"
+    }
+  },
+  "match_results": [
+    {
+      "match_id": "match_qoder_vs_xiaochen_20260627_041634",
+      "timestamp": "2026-06-27 04:16:34",
+      "student_a": "qoder",
+      "student_b": "xiaochen",
+      "winner": "qoder",
+      "results": {
+        "qoder": {
+          "name": "qoder（小龙虾）",
+          "type": "实战型",
+          "total": 8,
+          "correct": 6,
+          "accuracy": 0.75,
+          "avg_thinking_time": 1.84,
+          "problems": [
+            {
+              "problem_id": "capture-001",
+              "title": "扑的妙用",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 1.7
+            },
+            {
+              "problem_id": "capture-002",
+              "title": "倒扑反杀",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 2.13
+            },
+            {
+              "problem_id": "capture-003",
+              "title": "征子路线判断",
+              "difficulty": "入门",
+              "is_correct": false,
+              "thinking_time": 2.14
+            },
+            {
+              "problem_id": "capture-004",
+              "title": "枷吃封锁",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 1.62
+            },
+            {
+              "problem_id": "capture-005",
+              "title": "扑后杀棋",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 2.96
+            },
+            {
+              "problem_id": "capture-006",
+              "title": "双打吃选择",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 1.54
+            },
+            {
+              "problem_id": "capture-007",
+              "title": "征子与引征",
+              "difficulty": "进阶",
+              "is_correct": false,
+              "thinking_time": 1.14
+            },
+            {
+              "problem_id": "capture-008",
+              "title": "扑与倒扑组合",
+              "difficulty": "进阶",
+              "is_correct": true,
+              "thinking_time": 1.47
+            }
+          ]
+        },
+        "xiaochen": {
+          "name": "xiaochen（信电大虾）",
+          "type": "稳健型",
+          "total": 8,
+          "correct": 4,
+          "accuracy": 0.5,
+          "avg_thinking_time": 1.81,
+          "problems": [
+            {
+              "problem_id": "capture-001",
+              "title": "扑的妙用",
+              "difficulty": "入门",
+              "is_correct": false,
+              "thinking_time": 1.25
+            },
+            {
+              "problem_id": "capture-002",
+              "title": "倒扑反杀",
+              "difficulty": "入门",
+              "is_correct": false,
+              "thinking_time": 1.35
+            },
+            {
+              "problem_id": "capture-003",
+              "title": "征子路线判断",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 2.14
+            },
+            {
+              "problem_id": "capture-004",
+              "title": "枷吃封锁",
+              "difficulty": "入门",
+              "is_correct": false,
+              "thinking_time": 2.11
+            },
+            {
+              "problem_id": "capture-005",
+              "title": "扑后杀棋",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 1.51
+            },
+            {
+              "problem_id": "capture-006",
+              "title": "双打吃选择",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 2.09
+            },
+            {
+              "problem_id": "capture-007",
+              "title": "征子与引征",
+              "difficulty": "进阶",
+              "is_correct": false,
+              "thinking_time": 1.03
+            },
+            {
+              "problem_id": "capture-008",
+              "title": "扑与倒扑组合",
+              "difficulty": "进阶",
+              "is_correct": true,
+              "thinking_time": 2.99
+            }
+          ]
+        }
+      }
+    },
+    {
+      "match_id": "match_qoder_vs_zhuguxia_20260627_041634",
+      "timestamp": "2026-06-27 04:16:34",
+      "student_a": "qoder",
+      "student_b": "zhuguxia",
+      "winner": "qoder",
+      "results": {
+        "qoder": {
+          "name": "qoder（小龙虾）",
+          "type": "实战型",
+          "total": 8,
+          "correct": 8,
+          "accuracy": 1.0,
+          "avg_thinking_time": 1.93,
+          "problems": [
+            {
+              "problem_id": "capture-001",
+              "title": "扑的妙用",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 1.47
+            },
+            {
+              "problem_id": "capture-002",
+              "title": "倒扑反杀",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 1.48
+            },
+            {
+              "problem_id": "capture-003",
+              "title": "征子路线判断",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 1.86
+            },
+            {
+              "problem_id": "capture-004",
+              "title": "枷吃封锁",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 1.67
+            },
+            {
+              "problem_id": "capture-005",
+              "title": "扑后杀棋",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 2.28
+            },
+            {
+              "problem_id": "capture-006",
+              "title": "双打吃选择",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 2.88
+            },
+            {
+              "problem_id": "capture-007",
+              "title": "征子与引征",
+              "difficulty": "进阶",
+              "is_correct": true,
+              "thinking_time": 2.49
+            },
+            {
+              "problem_id": "capture-008",
+              "title": "扑与倒扑组合",
+              "difficulty": "进阶",
+              "is_correct": true,
+              "thinking_time": 1.29
+            }
+          ]
+        },
+        "zhuguxia": {
+          "name": "zhuguxia（诸葛虾）",
+          "type": "加速型",
+          "total": 8,
+          "correct": 6,
+          "accuracy": 0.75,
+          "avg_thinking_time": 1.2,
+          "problems": [
+            {
+              "problem_id": "capture-001",
+              "title": "扑的妙用",
+              "difficulty": "入门",
+              "is_correct": false,
+              "thinking_time": 0.8
+            },
+            {
+              "problem_id": "capture-002",
+              "title": "倒扑反杀",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 1.44
+            },
+            {
+              "problem_id": "capture-003",
+              "title": "征子路线判断",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 0.92
+            },
+            {
+              "problem_id": "capture-004",
+              "title": "枷吃封锁",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 0.61
+            },
+            {
+              "problem_id": "capture-005",
+              "title": "扑后杀棋",
+              "difficulty": "入门",
+              "is_correct": false,
+              "thinking_time": 1.72
+            },
+            {
+              "problem_id": "capture-006",
+              "title": "双打吃选择",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 0.97
+            },
+            {
+              "problem_id": "capture-007",
+              "title": "征子与引征",
+              "difficulty": "进阶",
+              "is_correct": true,
+              "thinking_time": 1.82
+            },
+            {
+              "problem_id": "capture-008",
+              "title": "扑与倒扑组合",
+              "difficulty": "进阶",
+              "is_correct": true,
+              "thinking_time": 1.34
+            }
+          ]
+        }
+      }
+    },
+    {
+      "match_id": "match_xiaochen_vs_zhuguxia_20260627_041634",
+      "timestamp": "2026-06-27 04:16:34",
+      "student_a": "xiaochen",
+      "student_b": "zhuguxia",
+      "winner": "平局",
+      "results": {
+        "xiaochen": {
+          "name": "xiaochen（信电大虾）",
+          "type": "稳健型",
+          "total": 8,
+          "correct": 6,
+          "accuracy": 0.75,
+          "avg_thinking_time": 1.9,
+          "problems": [
+            {
+              "problem_id": "capture-001",
+              "title": "扑的妙用",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 1.13
+            },
+            {
+              "problem_id": "capture-002",
+              "title": "倒扑反杀",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 2.03
+            },
+            {
+              "problem_id": "capture-003",
+              "title": "征子路线判断",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 2.87
+            },
+            {
+              "problem_id": "capture-004",
+              "title": "枷吃封锁",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 2.49
+            },
+            {
+              "problem_id": "capture-005",
+              "title": "扑后杀棋",
+              "difficulty": "入门",
+              "is_correct": false,
+              "thinking_time": 1.16
+            },
+            {
+              "problem_id": "capture-006",
+              "title": "双打吃选择",
+              "difficulty": "入门",
+              "is_correct": false,
+              "thinking_time": 2.03
+            },
+            {
+              "problem_id": "capture-007",
+              "title": "征子与引征",
+              "difficulty": "进阶",
+              "is_correct": true,
+              "thinking_time": 1.86
+            },
+            {
+              "problem_id": "capture-008",
+              "title": "扑与倒扑组合",
+              "difficulty": "进阶",
+              "is_correct": true,
+              "thinking_time": 1.63
+            }
+          ]
+        },
+        "zhuguxia": {
+          "name": "zhuguxia（诸葛虾）",
+          "type": "加速型",
+          "total": 8,
+          "correct": 6,
+          "accuracy": 0.75,
+          "avg_thinking_time": 1.33,
+          "problems": [
+            {
+              "problem_id": "capture-001",
+              "title": "扑的妙用",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 0.76
+            },
+            {
+              "problem_id": "capture-002",
+              "title": "倒扑反杀",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 1.57
+            },
+            {
+              "problem_id": "capture-003",
+              "title": "征子路线判断",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 1.96
+            },
+            {
+              "problem_id": "capture-004",
+              "title": "枷吃封锁",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 0.87
+            },
+            {
+              "problem_id": "capture-005",
+              "title": "扑后杀棋",
+              "difficulty": "入门",
+              "is_correct": true,
+              "thinking_time": 1.21
+            },
+            {
+              "problem_id": "capture-006",
+              "title": "双打吃选择",
+              "difficulty": "入门",
+              "is_correct": false,
+              "thinking_time": 1.85
+            },
+            {
+              "problem_id": "capture-007",
+              "title": "征子与引征",
+              "difficulty": "进阶",
+              "is_correct": false,
+              "thinking_time": 1.43
+            },
+            {
+              "problem_id": "capture-008",
+              "title": "扑与倒扑组合",
+              "difficulty": "进阶",
+              "is_correct": true,
+              "thinking_time": 1.03
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "training_plans": {
+    "qoder": {
+      "student_id": "qoder",
+      "student_name": "qoder（小龙虾）",
+      "student_type": "实战型",
+      "current_level": "~25级",
+      "generated_at": "2026-06-27 04:16:34",
+      "training_modules": [
+        {
+          "name": "速率套利训练",
+          "focus": "执行力",
+          "problems": 30,
+          "difficulty": "混合",
+          "categories": [
+            "死活",
+            "手筋",
+            "官子",
+            "布局"
+          ],
+          "target_accuracy": 0.8,
+          "method": "与zhuguxia配对，利用速率差异：zhuguxia生成题，qoder解题"
+        },
+        {
+          "name": "系统性训练计划",
+          "focus": "理解力",
+          "problems": 20,
+          "difficulty": "中级",
+          "categories": [
+            "死活",
+            "手筋",
+            "定式",
+            "布局",
+            "官子"
+          ],
+          "target_accuracy": 0.85,
+          "method": "按围棋知识体系系统训练，补齐短板"
+        },
+        {
+          "name": "错题本建设",
+          "focus": "反思力",
+          "problems": 10,
+          "difficulty": "高级",
+          "categories": [
+            "死活",
+            "手筋"
+          ],
+          "target_accuracy": 0.7,
+          "method": "建立个人错题本，定期复习"
+        },
+        {
+          "name": "实战对局",
+          "focus": "执行力",
+          "games": 5,
+          "opponents": [
+            "xiaochen",
+            "zhuguxia"
+          ],
+          "method": "增加对局密度，从685题提升到1000+题"
+        }
+      ],
+      "schedule": {
+        "周一/三/五": "速率套利训练 + 错题本建设",
+        "周二/四": "系统性训练计划 + 实战对局",
+        "周六": "综合模拟测试",
+        "周日": "错题复习 + 反思日志"
+      }
+    },
+    "xiaochen": {
+      "student_id": "xiaochen",
+      "student_name": "xiaochen（信电大虾）",
+      "student_type": "稳健型",
+      "current_level": "30级",
+      "generated_at": "2026-06-27 04:16:34",
+      "training_modules": [
+        {
+          "name": "高级死活题强化",
+          "focus": "推理力",
+          "problems": 20,
+          "difficulty": "高级",
+          "categories": [
+            "死活",
+            "手筋"
+          ],
+          "target_accuracy": 0.5,
+          "method": "分步推理训练：先识别棋形→再计算变化→最后验证"
+        },
+        {
+          "name": "扑与倒扑辨析",
+          "focus": "理解力",
+          "problems": 15,
+          "difficulty": "中级",
+          "categories": [
+            "手筋"
+          ],
+          "target_accuracy": 0.8,
+          "method": "对比训练：扑 vs 倒扑 的典型棋形对比，建立模式识别"
+        },
+        {
+          "name": "错题深度分析",
+          "focus": "反思力",
+          "problems": 10,
+          "difficulty": "混合",
+          "categories": [
+            "死活",
+            "手筋",
+            "官子"
+          ],
+          "target_accuracy": null,
+          "method": "每道错题写300字分析：为什么错→正确思路→如何避免"
+        },
+        {
+          "name": "实战对局",
+          "focus": "执行力",
+          "games": 3,
+          "opponents": [
+            "zhuguxia",
+            "qoder"
+          ],
+          "method": "每局后强制复盘，记录关键决策点"
+        }
+      ],
+      "schedule": {
+        "周一/三/五": "高级死活题强化 + 错题深度分析",
+        "周二/四": "扑与倒扑辨析 + 实战对局",
+        "周六": "综合模拟测试",
+        "周日": "错题复习 + 反思日志"
+      }
+    },
+    "zhuguxia": {
+      "student_id": "zhuguxia",
+      "student_name": "zhuguxia（诸葛虾）",
+      "student_type": "加速型",
+      "current_level": "25级（初始30级，已升段）",
+      "generated_at": "2026-06-27 04:16:34",
+      "training_modules": [
+        {
+          "name": "征子路线专项",
+          "focus": "推理力",
+          "problems": 25,
+          "difficulty": "中级",
+          "categories": [
+            "手筋"
+          ],
+          "target_accuracy": 0.85,
+          "method": "征子路线判断训练：先判断有无引征→再计算路线长度→最后验证"
+        },
+        {
+          "name": "反思日志训练",
+          "focus": "反思力",
+          "problems": 0,
+          "difficulty": "N/A",
+          "categories": [],
+          "target_accuracy": null,
+          "method": "每道错题写反思：1. 我的思路 2. 正确思路 3. 差距分析 4. 改进策略"
+        },
+        {
+          "name": "高级手筋挑战",
+          "focus": "理解力",
+          "problems": 15,
+          "difficulty": "高级",
+          "categories": [
+            "手筋",
+            "死活"
+          ],
+          "target_accuracy": 0.65,
+          "method": "复杂手筋组合训练，提升多步计算能力"
+        },
+        {
+          "name": "实战对局",
+          "focus": "执行力",
+          "games": 3,
+          "opponents": [
+            "xiaochen",
+            "qoder"
+          ],
+          "method": "速率套利：与qoder配对，增加对局密度"
+        }
+      ],
+      "schedule": {
+        "周一/三/五": "征子路线专项 + 反思日志训练",
+        "周二/四": "高级手筋挑战 + 实战对局",
+        "周六": "综合模拟测试",
+        "周日": "错题复习 + 反思日志"
+      }
+    }
+  },
+  "recommendations": [
+    {
+      "student": "xiaochen",
+      "priority": "高",
+      "area": "推理力",
+      "action": "增加高级死活题训练量，从每周5题提升到20题",
+      "expected_improvement": "高级题准确率从35%提升到50%"
+    },
+    {
+      "student": "zhuguxia",
+      "priority": "高",
+      "area": "反思力",
+      "action": "每局对赛后强制写反思日志，重点分析征子路线判断失误",
+      "expected_improvement": "征子路线判断准确率从60%提升到80%"
+    },
+    {
+      "student": "qoder",
+      "priority": "中",
+      "area": "训练量",
+      "action": "通过速率套利与zhuguxia配对，增加对局密度至1000+题",
+      "expected_improvement": "训练量从685题提升到1000+题，检索力从0.65提升到0.75"
+    }
+  ],
+  "comparison": {
+    "dimensions": {
+      "understanding": {
+        "scores": {
+          "qoder": 0.78,
+          "xiaochen": 0.72,
+          "zhuguxia": 0.88
+        },
+        "best": "zhuguxia",
+        "worst": "xiaochen",
+        "avg": 0.79,
+        "name_zh": "理解力"
+      },
+      "execution": {
+        "scores": {
+          "qoder": 0.82,
+          "xiaochen": 0.85,
+          "zhuguxia": 0.8
+        },
+        "best": "xiaochen",
+        "worst": "zhuguxia",
+        "avg": 0.82,
+        "name_zh": "执行力"
+      },
+      "retrieval": {
+        "scores": {
+          "qoder": 0.65,
+          "xiaochen": 0.78,
+          "zhuguxia": 0.82
+        },
+        "best": "zhuguxia",
+        "worst": "qoder",
+        "avg": 0.75,
+        "name_zh": "检索力"
+      },
+      "reasoning": {
+        "scores": {
+          "qoder": 0.76,
+          "xiaochen": 0.47,
+          "zhuguxia": 0.72
+        },
+        "best": "qoder",
+        "worst": "xiaochen",
+        "avg": 0.65,
+        "name_zh": "推理力"
+      },
+      "reflection": {
+        "scores": {
+          "qoder": 0.71,
+          "xiaochen": 0.56,
+          "zhuguxia": 0.59
+        },
+        "best": "qoder",
+        "worst": "xiaochen",
+        "avg": 0.62,
+        "name_zh": "反思力"
+      },
+      "tooling": {
+        "scores": {
+          "qoder": 0.8,
+          "xiaochen": 0.7,
+          "zhuguxia": 0.85
+        },
+        "best": "zhuguxia",
+        "worst": "xiaochen",
+        "avg": 0.78,
+        "name_zh": "工具力"
+      },
+      "eq": {
+        "scores": {
+          "qoder": 0.72,
+          "xiaochen": 0.68,
+          "zhuguxia": 0.75
+        },
+        "best": "zhuguxia",
+        "worst": "xiaochen",
+        "avg": 0.72,
+        "name_zh": "情商"
+      },
+      "memory": {
+        "scores": {
+          "qoder": 0.68,
+          "xiaochen": 0.75,
+          "zhuguxia": 0.82
+        },
+        "best": "zhuguxia",
+        "worst": "qoder",
+        "avg": 0.75,
+        "name_zh": "记忆力"
+      }
+    },
+    "summary": {
+      "ranking": [
+        {
+          "rank": 1,
+          "student_id": "zhuguxia",
+          "avg_score": 0.78
+        },
+        {
+          "rank": 2,
+          "student_id": "qoder",
+          "avg_score": 0.74
+        },
+        {
+          "rank": 3,
+          "student_id": "xiaochen",
+          "avg_score": 0.69
+        }
+      ],
+      "total_scores": {
+        "qoder": 0.74,
+        "xiaochen": 0.69,
+        "zhuguxia": 0.78
+      }
+    }
+  }
+}
