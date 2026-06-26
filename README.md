@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Version](https://img.shields.io/badge/version-0.4.1-green.svg)](https://github.com/zhugebin-hub/lobster-network/releases/tag/v0.4.1)
+[![Version](https://img.shields.io/badge/version-0.6.0-green.svg)](https://github.com/zhugebin-hub/lobster-network/releases/tag/v0.6.0)
 [![Tests](https://img.shields.io/badge/tests-62%2F62%20passed-brightgreen.svg)](https://github.com/zhugebin-hub/lobster-network/actions)
 
 ---
@@ -21,7 +21,7 @@
 
 **世界是编程的**：如同游戏中的程序化生成，世界按需渲染；宝藏不是预设的，是状态满足时的涌现输出。
 
-### 架构分层（v0.4.1 五层架构）
+### 架构分层（v0.6.0 六层架构）
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -620,10 +620,10 @@ PPT 制作能力验证了小龙虾网络的**通用性**：
 | v0.1.0 | 核心引擎（节点、对话、涌现） | ✅ |
 | v0.2.0 | 统一框架 + 运营系统整合 | ✅ |
 | v0.3.0 | 时间套利模式（五维套利引擎） | ✅ |
-| v0.4.0 | SSH通信 + 消息协议增强 | ✅ |
-| v0.4.1 | 注册中心 + 可靠消息 + 部署脚本 | ✅ |
-| v0.4.2 | 安全增强 + 监控告警 + 性能优化 | 🔄 |
-| v0.5.0 | 分布式架构 + 跨域协作 | 📋 |
+| v0.4.0 | 节点注册中心 + 可靠消息 + 消息协议v2 | ✅ |
+| v0.4.1 | 部署脚本 + 安全增强 | ✅ |
+| v0.5.0 | 8维度能力评估引擎 + Clawvard桥接 | ✅ |
+| v0.6.0 | 语义涌现 + 学习协调器 + HTTP传输 | ✅ |
 | v1.0.0 | 正式发布 | 🎯 |
 
 ---

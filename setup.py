@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="lobster-network",
-    version="0.4.1",
+    version="0.6.0",
     author="诸葛斌, 信电大虾, 诸葛马",
     author_email="zhugebin@zjgsu.edu.cn",
     description="小龙虾网络：对话即创造的多Agent协作网络",

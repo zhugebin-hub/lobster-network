@@ -132,6 +132,48 @@
 
 ---
 
+## [0.6.0] - 2026-06-25
+
+### 新增
+- feat: Enhanced dialogue engine with semantic emergence computation (Jaccard similarity, n-gram analysis)
+- feat: Learning coordinator closing assessment-training feedback loop
+- feat: HTTP transport for real inter-node network communication
+- feat: Adaptive training plans based on 8-dimension assessment results
+- feat: Collaboration suggestions between complementary nodes
+
+### 修复
+- fix: Version alignment across setup.py, __init__.py, README
+
+### 重构
+- refactor: Cleaned up domains/assessment duplicate code
+
+---
+
+## [0.5.0] - 2026-06-24
+
+### 新增
+- feat: 8-dimension capability assessment engine (EightDimEngine)
+- feat: Clawvard School API bridge (practice + exam modes)
+- feat: Dimension profiles with per-domain weight mapping
+- feat: Improvement advisor with targeted suggestions
+
+### 修复
+- fix: Python 3.9 staticmethod callable bug in scorer map
+
+---
+
+## [0.4.0] - 2026-06-23
+
+### 新增
+- feat: Production-grade node registry with TTL heartbeats and health checks
+- feat: Reliable message delivery with multi-transport failover (NFS/SSH/HTTP/File)
+- feat: Enhanced message protocol v2 (dedup, TTL, retry, persistence)
+- feat: SSH channel v2 with retry/timeout/statistics
+- feat: Integration layer combining registry + messenger + network
+>>>>>>> da05930 (feat: v0.6.0 — 语义涌现引擎 + 学习协调器 + HTTP传输层)
+
+---
+
 ## [0.3.0] - 2026-06-22
 
 ### 重大新增：时间套利模式 (Time Arbitrage Mode)
