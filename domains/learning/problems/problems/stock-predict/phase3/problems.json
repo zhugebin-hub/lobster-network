@@ -1,0 +1,312 @@
+{
+  "phase": 3,
+  "name": "实战预测",
+  "description": "涨跌预测、价格区间、振幅预测、选股决策、仓位管理",
+  "problems": [
+    {
+      "id": "sp3-001",
+      "type": "trend",
+      "difficulty": "中级",
+      "question": "贵州茅台(600519)：MA5=1680, MA20=1650, 近5日涨跌幅=+3.2%, 量比=1.8, MACD金叉, 行业=白酒。预测未来5日涨跌？",
+      "context": {
+        "stock_code": "600519", "stock_name": "贵州茅台",
+        "market_cap": 20000, "pe_ratio": 30, "pb_ratio": 10,
+        "ma5": 1680, "ma20": 1650,
+        "recent_change": 3.2, "volume_ratio": 1.8,
+        "macd_signal": "gold_cross", "industry": "白酒"
+      },
+      "options": ["涨", "平", "跌"],
+      "answer": "涨",
+      "confidence": 0.72,
+      "reasoning": "金叉+放量+白酒景气+小阳上涨动量健康，多因子共振看多"
+    },
+    {
+      "id": "sp3-002",
+      "type": "trend",
+      "difficulty": "中级",
+      "question": "宁德时代(300750)：MA5=210, MA20=220, 近5日涨跌幅=+12%, 量比=2.5, MACD死叉, 行业=新能源。预测未来5日涨跌？",
+      "context": {
+        "stock_code": "300750", "stock_name": "宁德时代",
+        "market_cap": 9000, "pe_ratio": 45, "pb_ratio": 5,
+        "ma5": 210, "ma20": 220,
+        "recent_change": 12, "volume_ratio": 2.5,
+        "macd_signal": "death_cross", "industry": "新能源"
+      },
+      "options": ["涨", "平", "跌"],
+      "answer": "跌",
+      "confidence": 0.65,
+      "reasoning": "短期涨幅过大（+12%）+死叉+MA5跌破MA20，获利盘出逃风险高"
+    },
+    {
+      "id": "sp3-003",
+      "type": "trend",
+      "difficulty": "中级",
+      "question": "中芯国际(688981)：MA5=58, MA20=60, 近5日涨跌幅=-2.1%, 量比=0.8, MACD=none, 行业=半导体。预测未来5日涨跌？",
+      "context": {
+        "stock_code": "688981", "stock_name": "中芯国际",
+        "market_cap": 4500, "pe_ratio": 80, "pb_ratio": 3,
+        "ma5": 58, "ma20": 60,
+        "recent_change": -2.1, "volume_ratio": 0.8,
+        "macd_signal": "none", "industry": "半导体"
+      },
+      "options": ["涨", "平", "跌"],
+      "answer": "涨",
+      "confidence": 0.58,
+      "reasoning": "小幅回调+半导体行业高景气+缩量调整，存在技术性反弹机会"
+    },
+    {
+      "id": "sp3-004",
+      "type": "price_range",
+      "difficulty": "中级",
+      "question": "贵州茅台当前价1680元，日波动率1.8%。预测未来5日95%置信区间？",
+      "context": {
+        "stock_code": "600519", "stock_name": "贵州茅台",
+        "current_price": 1680, "daily_volatility": 0.018, "days": 5
+      },
+      "options": ["1660-1700", "1610-1750", "1550-1810", "1680-1680"],
+      "answer": "1610-1750",
+      "confidence": 0.85,
+      "reasoning": "5日波动率 = 1.8% × √5 ≈ 4.0%；95%置信区间 ≈ 1680 × (1±4.0%×1.96) ≈ [1548, 1812]，与选项1610-1750最接近"
+    },
+    {
+      "id": "sp3-005",
+      "type": "price_range",
+      "difficulty": "中级",
+      "question": "某股票当前价50元，日波动率3%。预测未来5日95%置信区间？",
+      "context": {
+        "current_price": 50, "daily_volatility": 0.03, "days": 5
+      },
+      "options": ["48-52", "44-56", "37-63", "50-50"],
+      "answer": "44-56",
+      "confidence": 0.80,
+      "reasoning": "5日波动率 = 3% × √5 ≈ 6.7%；95%区间 ≈ 50 × (1±6.7%×1.96) ≈ [43.4, 56.6]，与44-56最接近"
+    },
+    {
+      "id": "sp3-006",
+      "type": "amplitude",
+      "difficulty": "中级",
+      "question": "某股票近5日振幅分别为[2.1, 3.5, 1.8, 2.9, 4.2]%，预测今日振幅区间？",
+      "context": {
+        "historical_amplitudes": [2.1, 3.5, 1.8, 2.9, 4.2]
+      },
+      "options": ["低振幅(<2%)", "中振幅(2-4%)", "高振幅(4-6%)", "极高振幅(>6%)"],
+      "answer": "中振幅(2-4%)",
+      "confidence": 0.70,
+      "reasoning": "平均振幅 = (2.1+3.5+1.8+2.9+4.2)/5 = 2.9%，落在2-4%中振幅区间"
+    },
+    {
+      "id": "sp3-007",
+      "type": "amplitude",
+      "difficulty": "中级",
+      "question": "某热门股近5日振幅[5.5, 6.8, 4.9, 7.2, 5.1]%，预测今日振幅区间？",
+      "context": {
+        "historical_amplitudes": [5.5, 6.8, 4.9, 7.2, 5.1]
+      },
+      "options": ["低振幅(<2%)", "中振幅(2-4%)", "高振幅(4-6%)", "极高振幅(>6%)"],
+      "answer": "极高振幅(>6%)",
+      "confidence": 0.65,
+      "reasoning": "平均振幅 = (5.5+6.8+4.9+7.2+5.1)/5 = 5.9%≈6%，接近极高振幅阈值"
+    },
+    {
+      "id": "sp3-008",
+      "type": "position_sizing",
+      "difficulty": "高级",
+      "question": "你预测某股上涨概率65%，预期收益+10%，下跌预期-8%，总资金10万。按半凯利公式建议仓位？",
+      "context": {
+        "win_prob": 0.65, "win_return": 0.10, "loss_return": -0.08,
+        "bankroll": 100000, "kelly_fraction": 0.5
+      },
+      "options": ["2万", "4万", "6万", "10万"],
+      "answer": "4万",
+      "confidence": 0.85,
+      "reasoning": "b=10/8=1.25, 凯利=(0.65×1.25-0.35)/1.25=0.47，半凯利=0.235，仓位≈2.35万；选项中最接近4万（保守档）"
+    },
+    {
+      "id": "sp3-009",
+      "type": "position_sizing",
+      "difficulty": "高级",
+      "question": "某股上涨概率50%，预期收益+8%，下跌预期-10%，按凯利公式应该？",
+      "context": {
+        "win_prob": 0.50, "win_return": 0.08, "loss_return": -0.10
+      },
+      "options": ["满仓买入", "半仓买入", "不买入", "做空"],
+      "answer": "不买入",
+      "confidence": 0.90,
+      "reasoning": "b=8/10=0.8, 凯利=(0.5×0.8-0.5)/0.8=-0.125<0，期望值为负，不应买入"
+    },
+    {
+      "id": "sp3-010",
+      "type": "portfolio",
+      "difficulty": "高级",
+      "question": "四只股票：茅台(PE30,白酒,+3.2%,金叉)、五粮液(PE22,白酒,+1.5%,金叉)、宁德时代(PE45,新能源,+5.8%,金叉)、中芯国际(PE80,半导体,-2.1%,none)。哪只综合评分最高？",
+      "context": {
+        "stocks": [
+          {"code": "600519", "name": "贵州茅台", "market_cap": 20000, "pe": 30, "recent_change": 3.2, "macd_signal": "gold_cross", "industry": "白酒"},
+          {"code": "000858", "name": "五粮液", "market_cap": 5000, "pe": 22, "recent_change": 1.5, "macd_signal": "gold_cross", "industry": "白酒"},
+          {"code": "300750", "name": "宁德时代", "market_cap": 9000, "pe": 45, "recent_change": 5.8, "macd_signal": "gold_cross", "industry": "新能源"},
+          {"code": "688981", "name": "中芯国际", "market_cap": 4500, "pe": 80, "recent_change": -2.1, "macd_signal": "none", "industry": "半导体"}
+        ]
+      },
+      "options": ["贵州茅台", "五粮液", "宁德时代", "中芯国际"],
+      "answer": "五粮液",
+      "confidence": 0.62,
+      "reasoning": "五粮液PE最低(22)估值安全+白酒景气+小幅上涨动量健康+金叉信号，综合评分最高"
+    },
+    {
+      "id": "sp3-011",
+      "type": "trend",
+      "difficulty": "高级",
+      "question": "工商银行(601398)：MA5=5.2, MA20=5.3, 近5日=-1.5%, 量比=0.6, MACD死叉, 行业=银行。预测未来5日涨跌？",
+      "context": {
+        "stock_code": "601398", "stock_name": "工商银行",
+        "market_cap": 15000, "pe_ratio": 6, "pb_ratio": 0.7,
+        "ma5": 5.2, "ma20": 5.3,
+        "recent_change": -1.5, "volume_ratio": 0.6,
+        "macd_signal": "death_cross", "industry": "银行"
+      },
+      "options": ["涨", "平", "跌"],
+      "answer": "跌",
+      "confidence": 0.60,
+      "reasoning": "银行行业不景气+死叉+缩量+MA5跌破MA20，技术面偏空，但低PE限制下跌空间"
+    },
+    {
+      "id": "sp3-012",
+      "type": "trend",
+      "difficulty": "高级",
+      "question": "科大讯飞(002230)：MA5=42, MA20=40, 近5日=+4.5%, 量比=2.0, MACD金叉, 行业=AI。预测未来5日涨跌？",
+      "context": {
+        "stock_code": "002230", "stock_name": "科大讯飞",
+        "market_cap": 800, "pe_ratio": 120, "pb_ratio": 6,
+        "ma5": 42, "ma20": 40,
+        "recent_change": 4.5, "volume_ratio": 2.0,
+        "macd_signal": "gold_cross", "industry": "AI"
+      },
+      "options": ["涨", "平", "跌"],
+      "answer": "涨",
+      "confidence": 0.75,
+      "reasoning": "AI行业高景气+金叉+放量+小阳上涨+多因子共振，强烈看多信号"
+    },
+    {
+      "id": "sp3-013",
+      "type": "trend",
+      "difficulty": "高级",
+      "question": "比亚迪(002594)：MA5=250, MA20=245, 近5日=+6.8%, 量比=1.5, MACD=none, 行业=新能源。预测未来5日？",
+      "context": {
+        "stock_code": "002594", "stock_name": "比亚迪",
+        "market_cap": 7000, "pe_ratio": 25, "pb_ratio": 4,
+        "ma5": 250, "ma20": 245,
+        "recent_change": 6.8, "volume_ratio": 1.5,
+        "macd_signal": "none", "industry": "新能源"
+      },
+      "options": ["涨", "平", "跌"],
+      "answer": "平",
+      "confidence": 0.55,
+      "reasoning": "涨幅较大有回调压力，但MA多头排列+新能源景气+放量，多空交织，预计震荡"
+    },
+    {
+      "id": "sp3-014",
+      "type": "position_sizing",
+      "difficulty": "高级",
+      "question": "你预测某股上涨概率70%，预期收益+12%，下跌预期-6%，总资金20万。按全凯利公式建议仓位比例？",
+      "context": {
+        "win_prob": 0.70, "win_return": 0.12, "loss_return": -0.06,
+        "bankroll": 200000, "kelly_fraction": 1.0
+      },
+      "options": ["50%", "65%", "80%", "100%"],
+      "answer": "80%",
+      "confidence": 0.85,
+      "reasoning": "b=12/6=2.0, 凯利=(0.7×2-0.3)/2=0.55，全凯利=55%，半凯利=27.5%；选项65%最接近全凯利偏保守档"
+    },
+    {
+      "id": "sp3-015",
+      "type": "price_range",
+      "difficulty": "高级",
+      "question": "某股当前价100元，日波动率2.5%。预测未来10日95%置信区间？",
+      "context": {
+        "current_price": 100, "daily_volatility": 0.025, "days": 10
+      },
+      "options": ["95-105", "85-115", "75-125", "100-100"],
+      "answer": "85-115",
+      "confidence": 0.85,
+      "reasoning": "10日波动率=2.5%×√10≈7.9%；95%区间=100×(1±7.9%×1.96)≈[84.5, 115.5]，与85-115最接近"
+    },
+    {
+      "id": "sp3-016",
+      "type": "amplitude",
+      "difficulty": "高级",
+      "question": "某ST股近5日振幅[3.2, 4.5, 2.8, 5.1, 3.9]%（ST股涨跌幅限制5%），预测今日振幅？",
+      "context": {
+        "historical_amplitudes": [3.2, 4.5, 2.8, 5.1, 3.9]
+      },
+      "options": ["低振幅(<2%)", "中振幅(2-4%)", "高振幅(4-6%)", "极高振幅(>6%)"],
+      "answer": "高振幅(4-6%)",
+      "confidence": 0.70,
+      "reasoning": "平均振幅=(3.2+4.5+2.8+5.1+3.9)/5=3.9%≈4%，接近高振幅下限；ST股活跃度通常较高"
+    },
+    {
+      "id": "sp3-017",
+      "type": "portfolio",
+      "difficulty": "高级",
+      "question": "三只股票：A(PE18,新能源,+2%,金叉)、B(PE35,AI,+8%,金叉)、C(PE12,银行,-1%,none)。哪只综合最优？",
+      "context": {
+        "stocks": [
+          {"code": "A", "name": "A", "market_cap": 2000, "pe": 18, "recent_change": 2, "macd_signal": "gold_cross", "industry": "新能源"},
+          {"code": "B", "name": "B", "market_cap": 1500, "pe": 35, "recent_change": 8, "macd_signal": "gold_cross", "industry": "AI"},
+          {"code": "C", "name": "C", "market_cap": 5000, "pe": 12, "recent_change": -1, "macd_signal": "none", "industry": "银行"}
+        ]
+      },
+      "options": ["A", "B", "C", "无法判断"],
+      "answer": "A",
+      "confidence": 0.65,
+      "reasoning": "A估值合理(PE18)+动量健康(+2%)+新能源景气+金叉，综合评分优于B(涨幅过大)和C(行业不景气)"
+    },
+    {
+      "id": "sp3-018",
+      "type": "trend",
+      "difficulty": "高级",
+      "question": "隆基绿能(601012)：MA5=22, MA20=23, 近5日=-5.5%, 量比=1.2, MACD=none, 行业=电力设备。预测？",
+      "context": {
+        "stock_code": "601012", "stock_name": "隆基绿能",
+        "market_cap": 1500, "pe_ratio": 15, "pb_ratio": 2,
+        "ma5": 22, "ma20": 23,
+        "recent_change": -5.5, "volume_ratio": 1.2,
+        "macd_signal": "none", "industry": "电力设备"
+      },
+      "options": ["涨", "平", "跌"],
+      "answer": "涨",
+      "confidence": 0.60,
+      "reasoning": "超跌反弹机会(近5日-5.5%)+电力设备景气+量比正常，存在技术性反弹可能"
+    },
+    {
+      "id": "sp3-019",
+      "type": "position_sizing",
+      "difficulty": "高级",
+      "question": "你预测某股上涨概率60%，预期收益+15%，下跌预期-5%。期望收益率是？",
+      "context": {
+        "win_prob": 0.60, "win_return": 0.15, "loss_return": -0.05
+      },
+      "options": ["+5%", "+7%", "+10%", "+12%"],
+      "answer": "+7%",
+      "confidence": 0.95,
+      "reasoning": "EV=0.6×15%+0.4×(-5%)=9%-2%=7%，正期望值，可考虑买入"
+    },
+    {
+      "id": "sp3-020",
+      "type": "portfolio",
+      "difficulty": "高级",
+      "question": "构建稳健组合：A(白酒,PE30,金叉)、B(医药,PE40,金叉)、C(半导体,PE80,金叉)、D(银行,PE6,死叉)。最稳健的组合是？",
+      "context": {
+        "stocks": [
+          {"code": "A", "name": "白酒股", "market_cap": 10000, "pe": 30, "recent_change": 2, "macd_signal": "gold_cross", "industry": "白酒"},
+          {"code": "B", "name": "医药股", "market_cap": 3000, "pe": 40, "recent_change": 1, "macd_signal": "gold_cross", "industry": "医药"},
+          {"code": "C", "name": "半导体股", "market_cap": 2000, "pe": 80, "recent_change": 5, "macd_signal": "gold_cross", "industry": "半导体"},
+          {"code": "D", "name": "银行股", "market_cap": 15000, "pe": 6, "recent_change": -1, "macd_signal": "death_cross", "industry": "银行"}
+        ]
+      },
+      "options": ["全仓A", "A+B+C均衡", "全仓D", "C+D对冲"],
+      "answer": "A+B+C均衡",
+      "confidence": 0.70,
+      "reasoning": "分散行业(白酒+医药+半导体)+均为金叉+景气行业，兼顾稳健与进攻；全仓单一股票风险大"
+    }
+  ]
+}

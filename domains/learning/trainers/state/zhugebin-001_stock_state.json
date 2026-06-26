@@ -1,0 +1,91 @@
+{
+  "student": "zhugebin-001",
+  "total_trainings": 1,
+  "total_problems": 17,
+  "total_correct": 10,
+  "by_phase": {
+    "phase1": {
+      "total": 3,
+      "correct": 2
+    },
+    "phase2": {
+      "total": 4,
+      "correct": 4
+    },
+    "phase3": {
+      "total": 10,
+      "correct": 4
+    }
+  },
+  "by_type": {
+    "concept_choice": {
+      "total": 1,
+      "correct": 1
+    },
+    "concept_judge": {
+      "total": 1,
+      "correct": 1
+    },
+    "basic_calc": {
+      "total": 1,
+      "correct": 0
+    },
+    "kline_pattern": {
+      "total": 2,
+      "correct": 2
+    },
+    "indicator_analysis": {
+      "total": 2,
+      "correct": 2
+    },
+    "trend": {
+      "total": 3,
+      "correct": 2
+    },
+    "price_range": {
+      "total": 2,
+      "correct": 1
+    },
+    "amplitude": {
+      "total": 1,
+      "correct": 0
+    },
+    "position_sizing": {
+      "total": 2,
+      "correct": 0
+    },
+    "portfolio": {
+      "total": 2,
+      "correct": 1
+    }
+  },
+  "by_difficulty": {
+    "入门": {
+      "total": 2,
+      "correct": 2
+    },
+    "初级": {
+      "total": 5,
+      "correct": 4
+    },
+    "中级": {
+      "total": 6,
+      "correct": 3
+    },
+    "高级": {
+      "total": 4,
+      "correct": 1
+    }
+  },
+  "streak": 1,
+  "last_training": "2026-06-26T08:38:56.918033",
+  "history": [
+    {
+      "date": "2026-06-26T08:38:56.917674",
+      "total": 17,
+      "correct": 10,
+      "accuracy": 0.5882352941176471
+    }
+  ],
+  "last_training_date": "2026-06-26"
+}
