@@ -1,0 +1,91 @@
+{
+  "phase": 2,
+  "name": "交易经济进阶",
+  "description": "任务优化/商品定价/积分管理/排行榜策略",
+  "problems": [
+    {
+      "id": "te2-001",
+      "type": "task_optimization",
+      "difficulty": "中级",
+      "question": "如何优化任务完成率？",
+      "context": {
+        "concept": "任务优化",
+        "scenario": "提高完成效率"
+      },
+      "options": ["合理定价+明确需求+及时反馈", "提高奖励金额", "降低任务难度", "无法判断"],
+      "answer": "合理定价+明确需求+及时反馈",
+      "confidence": 0.85,
+      "reasoning": "优化任务需要综合考虑定价、需求明确性和反馈及时性"
+    },
+    {
+      "id": "te2-002",
+      "type": "pricing_strategy",
+      "difficulty": "中级",
+      "question": "商品定价策略应该考虑哪些因素？",
+      "context": {
+        "concept": "定价策略",
+        "scenario": "商品价值/市场需求"
+      },
+      "options": ["商品价值+市场需求+竞争情况", "仅商品成本", "仅市场需求", "无法判断"],
+      "answer": "商品价值+市场需求+竞争情况",
+      "confidence": 0.85,
+      "reasoning": "合理定价需要综合考虑价值、需求和竞争"
+    },
+    {
+      "id": "te2-003",
+      "type": "points_management",
+      "difficulty": "中级",
+      "question": "如何高效管理积分？",
+      "context": {
+        "concept": "积分管理",
+        "scenario": "获取+消耗+保值"
+      },
+      "options": ["完成任务获取+合理消耗+投资保值", "仅获取不消耗", "仅消耗不获取", "无法判断"],
+      "answer": "完成任务获取+合理消耗+投资保值",
+      "confidence": 0.85,
+      "reasoning": "积分管理需要平衡获取、消耗和保值"
+    },
+    {
+      "id": "te2-004",
+      "type": "leaderboard_strategy",
+      "difficulty": "中级",
+      "question": "如何提升排行榜排名？",
+      "context": {
+        "concept": "排行榜",
+        "scenario": "积分积累+任务完成"
+      },
+      "options": ["多完成任务+高质量交付+持续活跃", "仅购买高价商品", "仅发布任务", "无法判断"],
+      "answer": "多完成任务+高质量交付+持续活跃",
+      "confidence": 0.85,
+      "reasoning": "排名提升需要持续完成任务并保持高质量"
+    },
+    {
+      "id": "te2-005",
+      "type": "market_analysis",
+      "difficulty": "中级",
+      "question": "如何分析市场供需关系？",
+      "context": {
+        "concept": "市场分析",
+        "scenario": "供给/需求/价格"
+      },
+      "options": ["分析任务数量/商品数量/价格趋势", "仅看任务数量", "仅看商品数量", "无法判断"],
+      "answer": "分析任务数量/商品数量/价格趋势",
+      "confidence": 0.85,
+      "reasoning": "市场分析需要综合考虑供给、需求和价格"
+    },
+    {
+      "id": "te2-006",
+      "type": "risk_management",
+      "difficulty": "中级",
+      "question": "交易经济系统中的风险有哪些？",
+      "context": {
+        "concept": "风险管理",
+        "scenario": "任务失败/商品质量/积分通胀"
+      },
+      "options": ["任务失败/商品质量/积分通胀", "仅任务失败", "仅商品质量", "无法判断"],
+      "answer": "任务失败/商品质量/积分通胀",
+      "confidence": 0.85,
+      "reasoning": "主要风险包括任务失败、商品质量问题和积分通胀"
+    }
+  ]
+}
