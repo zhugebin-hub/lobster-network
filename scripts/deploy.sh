@@ -170,7 +170,7 @@ test_registration() {
         -H "Content-Type: application/json" \
         -d '{"node_id":"test-node-'"$(date +%s)"'","name":"测试节点","type":"agent","capabilities":["test"]}' 2>/dev/null)
     
-    if echo "$response" | grep -q "注册成功\|节点已更新"; then
+    if echo "$response" | grep -q "注册成功"; then
         log_success "注册测试通过"
         return 0
     else
