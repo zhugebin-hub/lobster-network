@@ -1,0 +1,119 @@
+{
+  "phase": 1,
+  "name": "Signal Arena 炒股基础",
+  "description": "股票基础概念、技术指标、交易规则",
+  "problems": [
+    {
+      "id": "sa1-001",
+      "type": "basic_concept",
+      "difficulty": "入门",
+      "question": "什么是止盈和止损？",
+      "context": {
+        "concept": "止盈止损",
+        "scenario": "买入股票后如何设定卖出点"
+      },
+      "options": ["止盈=盈利卖出，止损=亏损卖出", "止盈=亏损卖出，止损=盈利卖出", "止盈和止损是同一个概念", "无法判断"],
+      "answer": "止盈=盈利卖出，止损=亏损卖出",
+      "confidence": 0.90,
+      "reasoning": "止盈是在盈利时锁定利润，止损是在亏损时控制风险"
+    },
+    {
+      "id": "sa1-002",
+      "type": "basic_concept",
+      "difficulty": "入门",
+      "question": "什么是现金储备比例？",
+      "context": {
+        "concept": "现金管理",
+        "scenario": "投资组合中现金占比"
+      },
+      "options": ["现金/总资产", "现金/持仓市值", "总资产/现金", "持仓市值/现金"],
+      "answer": "现金/总资产",
+      "confidence": 0.85,
+      "reasoning": "现金储备比例 = 可用现金 / 总资产，反映机动性"
+    },
+    {
+      "id": "sa1-003",
+      "type": "technical_indicator",
+      "difficulty": "入门",
+      "question": "SMA20 是什么指标？",
+      "context": {
+        "indicator": "SMA",
+        "period": 20
+      },
+      "options": ["20日简单移动平均线", "20日指数移动平均线", "20日成交量", "20日RSI"],
+      "answer": "20日简单移动平均线",
+      "confidence": 0.90,
+      "reasoning": "SMA = Simple Moving Average，20日SMA是过去20天收盘价的平均值"
+    },
+    {
+      "id": "sa1-004",
+      "type": "technical_indicator",
+      "difficulty": "入门",
+      "question": "RSI 相对强弱指标的取值范围是？",
+      "context": {
+        "indicator": "RSI",
+        "usage": "判断超买超卖"
+      },
+      "options": ["0-100", "0-1", "-100到100", "无限制"],
+      "answer": "0-100",
+      "confidence": 0.95,
+      "reasoning": "RSI取值0-100，>70超买，<30超卖"
+    },
+    {
+      "id": "sa1-005",
+      "type": "position_management",
+      "difficulty": "入门",
+      "question": "单只股票最大仓位应该控制在多少？",
+      "context": {
+        "rule": "仓位管理",
+        "scenario": "分散风险"
+      },
+      "options": ["不超过总资产的20%", "可以满仓单只", "不超过50%", "没有固定比例"],
+      "answer": "不超过总资产的20%",
+      "confidence": 0.85,
+      "reasoning": "单只股票不超过20%，避免过度集中风险"
+    },
+    {
+      "id": "sa1-006",
+      "type": "market_rule",
+      "difficulty": "入门",
+      "question": "A股的交易时间是？",
+      "context": {
+        "market": "A股",
+        "rule": "交易时间"
+      },
+      "options": ["9:30-15:00", "9:00-17:00", "24小时", "8:00-20:00"],
+      "answer": "9:30-15:00",
+      "confidence": 0.95,
+      "reasoning": "A股交易时间：周一至周五 9:30-11:30, 13:00-15:00"
+    },
+    {
+      "id": "sa1-007",
+      "type": "portfolio_theory",
+      "difficulty": "入门",
+      "question": "什么是投资组合分散？",
+      "context": {
+        "concept": "分散投资",
+        "scenario": "降低风险"
+      },
+      "options": ["跨市场/跨行业配置", "只买一只股票", "只买A股", "只买美股"],
+      "answer": "跨市场/跨行业配置",
+      "confidence": 0.90,
+      "reasoning": "分散投资通过跨市场、跨行业降低非系统性风险"
+    },
+    {
+      "id": "sa1-008",
+      "type": "risk_management",
+      "difficulty": "入门",
+      "question": "亏损多少应该果断止损？",
+      "context": {
+        "rule": "止损纪律",
+        "scenario": "控制亏损"
+      },
+      "options": ["亏损>8%止损", "亏损>50%止损", "永远不止损", "亏损>20%止损"],
+      "answer": "亏损>8%止损",
+      "confidence": 0.85,
+      "reasoning": "止损点一般设在8%，避免小亏变大亏"
+    }
+  ]
+}
