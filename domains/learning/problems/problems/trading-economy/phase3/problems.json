@@ -1,0 +1,90 @@
+{
+  "phase": 3,
+  "name": "交易经济高级",
+  "description": "经济模型/DAO治理/跨链交易/生态建设",
+  "problems": [
+    {
+      "id": "te3-001",
+      "type": "economic_model",
+      "difficulty": "高级",
+      "question": "如何设计可持续的经济模型？",
+      "context": {
+        "concept": "经济模型",
+        "scenario": "发行/流通/销毁"
+      },
+      "options": ["合理发行+促进流通+定期销毁", "仅发行不销毁", "仅流通不发行", "无法判断"],
+      "answer": "合理发行+促进流通+定期销毁",
+      "confidence": 0.85,
+      "reasoning": "可持续经济需要平衡发行、流通和销毁"
+    },
+    {
+      "id": "te3-002",
+      "type": "dao_governance",
+      "difficulty": "高级",
+      "question": "DAO治理的核心原则是？",
+      "context": {
+        "concept": "DAO治理",
+        "scenario": "去中心化/透明/共识"
+      },
+      "options": ["去中心化+透明+共识", "中心化决策", "透明但不去中心化", "无法判断"],
+      "answer": "去中心化+透明+共识",
+      "confidence": 0.90,
+      "reasoning": "DAO核心原则：去中心化、透明、共识"
+    },
+    {
+      "id": "te3-003",
+      "type": "cross_chain",
+      "difficulty": "高级",
+      "question": "跨链交易的价值是什么？",
+      "context": {
+        "concept": "跨链交易",
+        "scenario": "互操作性/流动性"
+      },
+      "options": "提升互操作性和流动性",
+      "confidence": 0.85,
+      "reasoning": "跨链交易提升不同区块链之间的互操作性和流动性"
+    },
+    {
+      "id": "te3-004",
+      "type": "ecosystem_building",
+      "difficulty": "高级",
+      "question": "如何建设健康的经济生态？",
+      "context": {
+        "concept": "生态建设",
+        "scenario": "用户增长/价值创造/治理完善"
+      },
+      "options": ["用户增长+价值创造+治理完善", "仅用户增长", "仅价值创造", "无法判断"],
+      "answer": "用户增长+价值创造+治理完善",
+      "confidence": 0.85,
+      "reasoning": "健康生态需要用户、价值和治理三者平衡"
+    },
+    {
+      "id": "te3-005",
+      "type": "tokenomics",
+      "difficulty": "高级",
+      "question": "Token经济学的核心要素是？",
+      "context": {
+        "concept": "Tokenomics",
+        "scenario": "发行/分配/效用/治理"
+      },
+      "options": ["发行+分配+效用+治理", "仅发行", "仅分配", "无法判断"],
+      "answer": "发行+分配+效用+治理",
+      "confidence": 0.85,
+      "reasoning": "Token经济学四要素：发行、分配、效用、治理"
+    },
+    {
+      "id": "te3-006",
+      "type": "incentive_design",
+      "difficulty": "高级",
+      "question": "如何设计有效的激励机制？",
+      "context": {
+        "concept": "激励机制",
+        "scenario": "奖励贡献/惩罚作弊"
+      },
+      "options": ["奖励贡献+惩罚作弊+透明规则", "仅奖励", "仅惩罚", "无法判断"],
+      "answer": "奖励贡献+惩罚作弊+透明规则",
+      "confidence": 0.85,
+      "reasoning": "有效激励需要奖励、惩罚和透明规则"
+    }
+  ]
+}
