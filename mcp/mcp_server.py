@@ -173,12 +173,16 @@ class MCPServer:
         week = params.get("week", 1)
         day = params.get("day", 1)
         
-        # 读取训练计划
-        plan_path = f"/shared/training/go/GO_TRAINING_PLAN_V6.json"
-        if os.path.exists(plan_path):
-            with open(plan_path) as f:
-                plan = json.load(f)
-            return {"status": "success", "plan": plan}
+        # 读取训练计划（优先 /shared，fallback 到本地）
+        plan_paths = [
+            "/shared/training/go/GO_TRAINING_PLAN_V6.json",
+            os.path.expanduser("~/.lobster-network/GO_TRAINING_PLAN_V6.json"),
+        ]
+        for plan_path in plan_paths:
+            if os.path.exists(plan_path):
+                with open(plan_path) as f:
+                    plan = json.load(f)
+                return {"status": "success", "plan": plan}
         return {"status": "error", "message": "训练计划文件不存在"}
     
     def _dispatch_task(self, params: Dict) -> Dict:
@@ -195,12 +199,25 @@ class MCPServer:
             "status": "dispatched"
         }
         
-        # 保存到inbox
-        inbox_path = f"/shared/messages/queue/{student_id}/inbox"
-        os.makedirs(inbox_path, exist_ok=True)
-        task_path = os.path.join(inbox_path, f"{task['id']}.json")
-        with open(task_path, "w") as f:
-            json.dump(task, f, ensure_ascii=False, indent=2)
+        # 保存到 inbox（优先 /shared，fallback 到本地）
+        inbox_paths = [
+            f"/shared/messages/queue/{student_id}/inbox",
+            os.path.expanduser(f"~/.lobster-network/messages/{student_id}/inbox"),
+        ]
+        saved = False
+        for inbox_path in inbox_paths:
+            try:
+                os.makedirs(inbox_path, exist_ok=True)
+                task_path = os.path.join(inbox_path, f"{task['id']}.json")
+                with open(task_path, "w") as f:
+                    json.dump(task, f, ensure_ascii=False, indent=2)
+                saved = True
+                break
+            except PermissionError:
+                continue
+        
+        if not saved:
+            return {"status": "error", "message": "无法保存任务：无可用存储路径"}
         
         return {"status": "success", "task_id": task["id"]}
     
@@ -225,12 +242,16 @@ class MCPServer:
         student_id = params.get("student_id", "xiaochen")
         eval_type = params.get("evaluation_type", "daily")
         
-        # 读取学员档案
-        profile_path = f"/shared/training/go/{student_id}/profile.json"
-        if os.path.exists(profile_path):
-            with open(profile_path) as f:
-                profile = json.load(f)
-            return {"status": "success", "evaluation": profile}
+        # 读取学员档案（优先 /shared，fallback 到本地）
+        profile_paths = [
+            f"/shared/training/go/{student_id}/profile.json",
+            os.path.expanduser(f"~/.lobster-network/profiles/{student_id}/profile.json"),
+        ]
+        for profile_path in profile_paths:
+            if os.path.exists(profile_path):
+                with open(profile_path) as f:
+                    profile = json.load(f)
+                return {"status": "success", "evaluation": profile}
         return {"status": "error", "message": "学员档案不存在"}
     
     def _search_memory(self, params: Dict) -> Dict:
@@ -263,12 +284,16 @@ class MCPServer:
         topic = params.get("topic", "")
         depth = params.get("depth", 2)
         
-        # 读取九段技能文档
-        skill_path = "/shared/training/go/GO_NINE_DAN_SKILL.md"
-        if os.path.exists(skill_path):
-            with open(skill_path, "r", encoding="utf-8") as f:
-                content = f.read()
-            return {"status": "success", "content": content[:2000]}
+        # 读取九段技能文档（优先 /shared，fallback 到本地）
+        skill_paths = [
+            "/shared/training/go/GO_NINE_DAN_SKILL.md",
+            os.path.expanduser("~/.lobster-network/GO_NINE_DAN_SKILL.md"),
+        ]
+        for skill_path in skill_paths:
+            if os.path.exists(skill_path):
+                with open(skill_path, "r", encoding="utf-8") as f:
+                    content = f.read()
+                return {"status": "success", "content": content[:2000]}
         return {"status": "error", "message": "技能文档不存在"}
     
     def list_resources(self) -> List[Dict]:
@@ -293,28 +318,41 @@ class MCPServer:
         """读取学员档案"""
         profiles = {}
         for student in ["xiaochen", "zhuguxia", "qoder"]:
-            profile_path = f"/shared/training/go/{student}/profile.json"
-            if os.path.exists(profile_path):
-                with open(profile_path) as f:
-                    profiles[student] = json.load(f)
+            profile_paths = [
+                f"/shared/training/go/{student}/profile.json",
+                os.path.expanduser(f"~/.lobster-network/profiles/{student}/profile.json"),
+            ]
+            for profile_path in profile_paths:
+                if os.path.exists(profile_path):
+                    with open(profile_path) as f:
+                        profiles[student] = json.load(f)
+                    break
         return {"status": "success", "profiles": profiles}
     
     def _read_training_data(self) -> Dict:
         """读取训练数据"""
-        status_path = "/shared/training/go/status.json"
-        if os.path.exists(status_path):
-            with open(status_path) as f:
-                status = json.load(f)
-            return {"status": "success", "status": status}
+        status_paths = [
+            "/shared/training/go/status.json",
+            os.path.expanduser("~/.lobster-network/status.json"),
+        ]
+        for status_path in status_paths:
+            if os.path.exists(status_path):
+                with open(status_path) as f:
+                    status = json.load(f)
+                return {"status": "success", "status": status}
         return {"status": "error", "message": "状态文件不存在"}
     
     def _read_communication_logs(self) -> Dict:
         """读取通信日志"""
-        log_path = "/shared/training/go/dispatcher_v6.log"
-        if os.path.exists(log_path):
-            with open(log_path, "r") as f:
-                logs = f.readlines()[-100:]  # 最近100行
-            return {"status": "success", "logs": logs}
+        log_paths = [
+            "/shared/training/go/dispatcher_v6.log",
+            os.path.expanduser("~/.lobster-network/communication.log"),
+        ]
+        for log_path in log_paths:
+            if os.path.exists(log_path):
+                with open(log_path, "r") as f:
+                    logs = f.readlines()[-100:]  # 最近100行
+                return {"status": "success", "logs": logs}
         return {"status": "error", "message": "日志文件不存在"}
     
     def start(self):

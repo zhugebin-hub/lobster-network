@@ -15,7 +15,15 @@ from typing import Dict, List, Optional, Tuple
 class VectorMemory:
     """向量记忆系统"""
     
-    def __init__(self, storage_path: str = "/shared/training/go/vector_memory"):
+    def __init__(self, storage_path: str = None):
+        if storage_path is None:
+            # 优先 /shared，fallback 到本地
+            shared_path = "/shared/training/go/vector_memory"
+            local_path = os.path.expanduser("~/.lobster-network/vector_memory")
+            if os.access("/shared/training/go", os.W_OK):
+                storage_path = shared_path
+            else:
+                storage_path = local_path
         self.storage_path = storage_path
         self.collections = {
             "episodic": [],      # 事件记忆

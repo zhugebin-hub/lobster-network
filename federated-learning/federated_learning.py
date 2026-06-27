@@ -71,7 +71,14 @@ class FederatedClient:
 class FederatedServer:
     """联邦学习服务器"""
     
-    def __init__(self, storage_path: str = "/shared/training/go/federated-learning"):
+    def __init__(self, storage_path: str = None):
+        if storage_path is None:
+            shared_path = "/shared/training/go/federated-learning"
+            local_path = os.path.expanduser("~/.lobster-network/federated-learning")
+            if os.access("/shared/training/go", os.W_OK):
+                storage_path = shared_path
+            else:
+                storage_path = local_path
         self.storage_path = storage_path
         self.clients = {}
         self.global_model = {}
