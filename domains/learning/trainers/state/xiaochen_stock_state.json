@@ -1,0 +1,47 @@
+{
+  "student": "xiaochen",
+  "total_trainings": 1,
+  "total_problems": 7,
+  "total_correct": 5,
+  "by_phase": {
+    "phase1": {
+      "total": 7,
+      "correct": 5
+    }
+  },
+  "by_type": {
+    "concept_choice": {
+      "total": 3,
+      "correct": 2
+    },
+    "concept_judge": {
+      "total": 2,
+      "correct": 1
+    },
+    "basic_calc": {
+      "total": 2,
+      "correct": 2
+    }
+  },
+  "by_difficulty": {
+    "入门": {
+      "total": 5,
+      "correct": 3
+    },
+    "初级": {
+      "total": 2,
+      "correct": 2
+    }
+  },
+  "streak": 1,
+  "last_training": "2026-06-26T08:39:21.920362",
+  "history": [
+    {
+      "date": "2026-06-26T08:39:21.920057",
+      "total": 7,
+      "correct": 5,
+      "accuracy": 0.7142857142857143
+    }
+  ],
+  "last_training_date": "2026-06-26"
+}

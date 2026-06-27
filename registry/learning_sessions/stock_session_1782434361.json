@@ -1,0 +1,118 @@
+{
+  "session_id": "stock_session_1782434361",
+  "domain": "stock-predict",
+  "student": "zhuguxia",
+  "student_name": "诸葛虾",
+  "created_at": "2026-06-26T08:39:21.970188",
+  "total_problems": 10,
+  "correct": 9,
+  "accuracy": 0.9,
+  "details": [
+    {
+      "id": "sp2-001",
+      "type": "kline_pattern",
+      "difficulty": "初级",
+      "phase": "phase2",
+      "answer": "开盘价=收盘价，有上下影线",
+      "correct": true
+    },
+    {
+      "id": "sp2-002",
+      "type": "kline_pattern",
+      "difficulty": "初级",
+      "phase": "phase2",
+      "answer": "底部预示见底",
+      "correct": true
+    },
+    {
+      "id": "sp2-003",
+      "type": "kline_pattern",
+      "difficulty": "初级",
+      "phase": "phase2",
+      "answer": "大阳线完全包裹前一根阴线",
+      "correct": true
+    },
+    {
+      "id": "sp2-005",
+      "type": "indicator_analysis",
+      "difficulty": "初级",
+      "phase": "phase2",
+      "answer": "5日均线",
+      "correct": true
+    },
+    {
+      "id": "sp2-006",
+      "type": "indicator_analysis",
+      "difficulty": "初级",
+      "phase": "phase2",
+      "answer": "短期均线上穿长期均线",
+      "correct": true
+    },
+    {
+      "id": "sp2-007",
+      "type": "indicator_analysis",
+      "difficulty": "初级",
+      "phase": "phase2",
+      "answer": "短期均线下穿长期均线",
+      "correct": true
+    },
+    {
+      "id": "sp3-001",
+      "type": "trend",
+      "difficulty": "中级",
+      "phase": "phase3",
+      "answer": "涨",
+      "correct": true
+    },
+    {
+      "id": "sp3-002",
+      "type": "trend",
+      "difficulty": "中级",
+      "phase": "phase3",
+      "answer": "跌",
+      "correct": true
+    },
+    {
+      "id": "sp3-004",
+      "type": "price_range",
+      "difficulty": "中级",
+      "phase": "phase3",
+      "answer": "1610-1750",
+      "correct": true
+    },
+    {
+      "id": "sp3-006",
+      "type": "amplitude",
+      "difficulty": "中级",
+      "phase": "phase3",
+      "answer": "中振幅(2-4%)",
+      "correct": false
+    }
+  ],
+  "by_type": {
+    "kline_pattern": {
+      "total": 3,
+      "correct": 3
+    },
+    "indicator_analysis": {
+      "total": 3,
+      "correct": 3
+    },
+    "trend": {
+      "total": 2,
+      "correct": 2
+    },
+    "price_range": {
+      "total": 1,
+      "correct": 1
+    },
+    "amplitude": {
+      "total": 1,
+      "correct": 0
+    }
+  },
+  "participants": [
+    "zhuguxia",
+    "hermes"
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "phase": 2,
+  "name": "技术分析方法",
+  "description": "K线形态、均线系统、MACD/KDJ/RSI/布林带、量价关系",
+  "problems": [
+    {
+      "id": "sp2-001",
+      "type": "kline_pattern",
+      "difficulty": "初级",
+      "question": "十字星K线的特征是？",
+      "context": {"pattern": "十字星"},
+      "options": ["开盘价=收盘价，有上下影线", "大阳线", "大阴线", "一字线"],
+      "answer": "开盘价=收盘价，有上下影线",
+      "confidence": 0.90,
+      "reasoning": "十字星：开盘价≈收盘价，多空力量均衡，常出现在趋势转折点"
+    },
+    {
+      "id": "sp2-002",
+      "type": "kline_pattern",
+      "difficulty": "初级",
+      "question": "锤头线（锤子线）通常出现在什么位置预示反转？",
+      "context": {"pattern": "锤头线"},
+      "options": ["顶部预示见顶", "底部预示见底", "中继形态", "无意义"],
+      "answer": "底部预示见底",
+      "confidence": 0.85,
+      "reasoning": "锤头线出现在下跌末期，下影线长、实体小、上影线极短，预示多头反攻"
+    },
+    {
+      "id": "sp2-003",
+      "type": "kline_pattern",
+      "difficulty": "初级",
+      "question": "看涨吞没形态的特征是？",
+      "context": {"pattern": "看涨吞没"},
+      "options": ["大阳线完全包裹前一根阴线", "大阴线完全包裹前一根阳线", "两根阳线并列", "十字星后接大阴线"],
+      "answer": "大阳线完全包裹前一根阴线",
+      "confidence": 0.85,
+      "reasoning": "看涨吞没（多头吞噬）：第二根阳线实体完全覆盖前一根阴线实体，是强烈的反转信号"
+    },
+    {
+      "id": "sp2-004",
+      "type": "kline_pattern",
+      "difficulty": "中级",
+      "question": "早晨之星是由几根K线组成的？",
+      "context": {"pattern": "早晨之星"},
+      "options": ["1根", "2根", "3根", "5根"],
+      "answer": "3根",
+      "confidence": 0.85,
+      "reasoning": "早晨之星：第一根大阴线+第二根小实体（十字星）+第三根大阳线，3根K线组合的底部反转形态"
+    },
+    {
+      "id": "sp2-005",
+      "type": "indicator_analysis",
+      "difficulty": "初级",
+      "question": "MA均线中，ma5表示什么？",
+      "context": {"indicator": "MA", "period": 5},
+      "options": ["5分钟均线", "5日均线", "5周均线", "5月均线"],
+      "answer": "5日均线",
+      "confidence": 0.95,
+      "reasoning": "MA5 = 5日移动平均线，反映近5个交易日平均成本，短期趋势参考"
+    },
+    {
+      "id": "sp2-006",
+      "type": "indicator_analysis",
+      "difficulty": "初级",
+      "question": "黄金交叉（金叉）是指？",
+      "context": {"signal": "金叉"},
+      "options": ["短期均线上穿长期均线", "短期均线下穿长期均线", "MACD柱缩短", "成交量放大"],
+      "answer": "短期均线上穿长期均线",
+      "confidence": 0.90,
+      "reasoning": "金叉：短期均线（如MA5）上穿长期均线（如MA20），是看多信号"
+    },
+    {
+      "id": "sp2-007",
+      "type": "indicator_analysis",
+      "difficulty": "初级",
+      "question": "死亡交叉（死叉）是指？",
+      "context": {"signal": "死叉"},
+      "options": ["短期均线上穿长期均线", "短期均线下穿长期均线", "MACD柱变长", "成交量缩小"],
+      "answer": "短期均线下穿长期均线",
+      "confidence": 0.90,
+      "reasoning": "死叉：短期均线（如MA5）下穿长期均线（如MA20），是看空信号"
+    },
+    {
+      "id": "sp2-008",
+      "type": "indicator_analysis",
+      "difficulty": "中级",
+      "question": "MACD指标由哪几部分组成？",
+      "context": {"indicator": "MACD"},
+      "options": ["DIF + DEA + 柱状线", "K + D + J", "RSI + MA", "BOLL上轨+下轨+中轨"],
+      "answer": "DIF + DEA + 柱状线",
+      "confidence": 0.90,
+      "reasoning": "MACD由DIF（快线）、DEA（慢线）、MACD柱状线（DIF-DEA的2倍）三部分组成"
+    },
+    {
+      "id": "sp2-009",
+      "type": "indicator_analysis",
+      "difficulty": "中级",
+      "question": "MACD金叉是指？",
+      "context": {"indicator": "MACD"},
+      "options": ["DIF上穿DEA", "DIF下穿DEA", "柱状线变红", "DIF突破0轴"],
+      "answer": "DIF上穿DEA",
+      "confidence": 0.90,
+      "reasoning": "MACD金叉：DIF线上穿DEA线，是买入信号；柱状线由绿转红也是金叉的体现"
+    },
+    {
+      "id": "sp2-010",
+      "type": "indicator_analysis",
+      "difficulty": "中级",
+      "question": "KDJ指标中，J值超过100意味着什么？",
+      "context": {"indicator": "KDJ"},
+      "options": ["超卖，可能反弹", "超买，可能回调", "趋势向上", "趋势向下"],
+      "answer": "超买，可能回调",
+      "confidence": 0.85,
+      "reasoning": "KDJ中J>100为超买区，股价可能见顶回调；J<0为超卖区，可能见底反弹"
+    },
+    {
+      "id": "sp2-011",
+      "type": "indicator_analysis",
+      "difficulty": "中级",
+      "question": "RSI指标超过70通常被解读为？",
+      "context": {"indicator": "RSI"},
+      "options": ["超买", "超卖", "中性", "无意义"],
+      "answer": "超买",
+      "confidence": 0.90,
+      "reasoning": "RSI>70为超买区，<30为超卖区；超买预示可能回调，超卖预示可能反弹"
+    },
+    {
+      "id": "sp2-012",
+      "type": "indicator_analysis",
+      "difficulty": "中级",
+      "question": "布林带由几条线组成？",
+      "context": {"indicator": "BOLL"},
+      "options": ["2条", "3条", "4条", "5条"],
+      "answer": "3条",
+      "confidence": 0.95,
+      "reasoning": "布林带由上轨、中轨（MA20）、下轨三条线组成，反映价格波动区间"
+    },
+    {
+      "id": "sp2-013",
+      "type": "indicator_analysis",
+      "difficulty": "中级",
+      "question": "股价突破布林带上轨通常意味着？",
+      "context": {"indicator": "BOLL"},
+      "options": ["超买，可能回调", "超卖，可能反弹", "趋势确立向上", "无明显信号"],
+      "answer": "超买，可能回调",
+      "confidence": 0.80,
+      "reasoning": "突破上轨可能进入超买区，但强势行情中也可能沿着上轨运行（开口扩大）"
+    },
+    {
+      "id": "sp2-014",
+      "type": "indicator_analysis",
+      "difficulty": "中级",
+      "question": "成交量突然放大的常见原因不包括？",
+      "context": {"volume": "放量"},
+      "options": ["重大利好/利空消息", "主力资金介入", "除权除息", "板块整体异动"],
+      "answer": "除权除息",
+      "confidence": 0.80,
+      "reasoning": "除权除息不会显著改变成交量；放量通常与消息、主力资金、板块联动有关"
+    },
+    {
+      "id": "sp2-015",
+      "type": "indicator_analysis",
+      "difficulty": "中级",
+      "question": "量价齐升意味着？",
+      "context": {"volume_price": "量价齐升"},
+      "options": ["健康上涨趋势", "见顶信号", "下跌中继", "无意义"],
+      "answer": "健康上涨趋势",
+      "confidence": 0.85,
+      "reasoning": "量价齐升：成交量和股价同步上涨，反映买盘积极，是健康上涨的特征"
+    },
+    {
+      "id": "sp2-016",
+      "type": "indicator_analysis",
+      "difficulty": "中级",
+      "question": "量价背离（价升量缩）通常预示？",
+      "context": {"volume_price": "量价背离"},
+      "options": ["上涨动能减弱", "即将大涨", "底部反转", "无意义"],
+      "answer": "上涨动能减弱",
+      "confidence": 0.80,
+      "reasoning": "价升量缩：股价上涨但成交量萎缩，反映跟风盘不足，上涨持续性存疑"
+    },
+    {
+      "id": "sp2-017",
+      "type": "kline_pattern",
+      "difficulty": "中级",
+      "question": "M头（双顶）形态通常预示？",
+      "context": {"pattern": "M头"},
+      "options": ["继续上涨", "见顶反转", "横盘整理", "加速上涨"],
+      "answer": "见顶反转",
+      "confidence": 0.85,
+      "reasoning": "M头（双顶）：股价两次冲高失败，颈线破位后通常开启下跌趋势"
+    },
+    {
+      "id": "sp2-018",
+      "type": "kline_pattern",
+      "difficulty": "中级",
+      "question": "W底（双底）形态通常预示？",
+      "context": {"pattern": "W底"},
+      "options": ["继续下跌", "见底反转", "横盘整理", "加速下跌"],
+      "answer": "见底反转",
+      "confidence": 0.85,
+      "reasoning": "W底（双底）：股价两次探底成功，颈线突破后通常开启上涨趋势"
+    },
+    {
+      "id": "sp2-019",
+      "type": "indicator_analysis",
+      "difficulty": "中级",
+      "question": "支撑位是指？",
+      "context": {"concept": "支撑位"},
+      "options": ["股价难以跌破的价位", "股价难以突破的价位", "成交量最大的价位", "均线所在的价位"],
+      "answer": "股价难以跌破的价位",
+      "confidence": 0.90,
+      "reasoning": "支撑位：股价下跌时买盘增加、难以继续下跌的价位；阻力位则相反"
+    },
+    {
+      "id": "sp2-020",
+      "type": "indicator_analysis",
+      "difficulty": "中级",
+      "question": "均线的多头排列是？",
+      "context": {"ma": "多头排列"},
+      "options": ["ma5>ma10>ma20>ma60", "ma5<ma10<ma20<ma60", "ma5=ma10=ma20", "ma5>ma20且ma10<ma60"],
+      "answer": "ma5>ma10>ma20>ma60",
+      "confidence": 0.90,
+      "reasoning": "多头排列：短期均线在上、长期均线在下，反映强势上升趋势；空头排列相反"
+    }
+  ]
+}
