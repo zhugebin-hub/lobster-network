@@ -14,7 +14,7 @@ from typing import Dict, List, Optional, Any
 import random
 
 class FederatedClient:
-    """联邦学习客户端"""
+    """联邦学习客户端（支持从围棋训练系统加载真实数据）"""
     
     def __init__(self, client_id: str, name: str):
         self.client_id = client_id
@@ -22,42 +22,88 @@ class FederatedClient:
         self.local_data = []
         self.local_model = {}
         self.training_history = []
+        self.training_results_dir = None  # 围棋训练结果目录
+    
+    def set_training_results_dir(self, dir_path: str):
+        """设置围棋训练结果目录"""
+        self.training_results_dir = dir_path
+    
+    def load_from_training_results(self) -> int:
+        """从围棋训练结果目录加载真实数据"""
+        if not self.training_results_dir or not os.path.exists(self.training_results_dir):
+            return 0
+        
+        imported = 0
+        for filename in os.listdir(self.training_results_dir):
+            if filename.endswith('.json'):
+                filepath = os.path.join(self.training_results_dir, filename)
+                try:
+                    with open(filepath, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                    
+                    # 解析训练结果
+                    if 'results' in data:
+                        for result in data['results']:
+                            topic = result.get('topic', 'unknown')
+                            accuracy = result.get('accuracy', 0)
+                            self.add_data({
+                                'topic': topic,
+                                'accuracy': accuracy,
+                                'source': filename,
+                                'timestamp': data.get('timestamp', '')
+                            })
+                            imported += 1
+                except Exception as e:
+                    print(f"⚠️ 加载 {filename} 失败: {e}")
+        
+        return imported
     
     def add_data(self, data: Dict):
         """添加本地数据"""
         self.local_data.append(data)
     
     def train_local(self, epochs: int = 1) -> Dict:
-        """本地训练"""
+        """本地训练（基于真实围棋训练数据）"""
         if not self.local_data:
             return {"status": "error", "message": "无训练数据"}
         
-        # 模拟训练过程
+        # 基于真实数据生成模型更新
         model_updates = {
             "client_id": self.client_id,
             "epochs": epochs,
             "data_size": len(self.local_data),
-            "updates": {}
+            "updates": {},
+            "weaknesses": [],  # 弱点分析
+            "strengths": []    # 强项分析
         }
         
-        # 根据数据生成模型更新
+        # 按主题聚合准确率
+        topic_accuracies = {}
         for data in self.local_data:
             topic = data.get("topic", "unknown")
             accuracy = data.get("accuracy", 0)
             
-            if topic not in model_updates["updates"]:
-                model_updates["updates"][topic] = []
-            model_updates["updates"][topic].append(accuracy)
+            if topic not in topic_accuracies:
+                topic_accuracies[topic] = []
+            topic_accuracies[topic].append(accuracy)
         
-        # 计算平均准确率
+        # 计算各主题平均准确率
+        for topic, accuracies in topic_accuracies.items():
+            avg_acc = sum(accuracies) / len(accuracies)
+            model_updates["updates"][topic] = avg_acc
+            
+            # 识别弱点和强项
+            if avg_acc < 0.6:
+                model_updates["weaknesses"].append(topic)
+            elif avg_acc >= 0.85:
+                model_updates["strengths"].append(topic)
+        
+        # 计算全局平均准确率
         all_accuracies = []
-        for accuracies in model_updates["updates"].values():
+        for accuracies in topic_accuracies.values():
             all_accuracies.extend(accuracies)
         
-        if all_accuracies:
-            model_updates["avg_accuracy"] = sum(all_accuracies) / len(all_accuracies)
-        else:
-            model_updates["avg_accuracy"] = 0
+        model_updates["avg_accuracy"] = sum(all_accuracies) / len(all_accuracies) if all_accuracies else 0
         
         self.training_history.append(model_updates)
         return model_updates
@@ -113,14 +159,19 @@ class FederatedServer:
             "timestamp": datetime.now().isoformat()
         }
         
-        # 聚合各主题的准确率
+        # 聚合各主题的准确率（支持 float 和 list 两种格式）
         topic_accuracies = {}
         for update in client_updates:
             if "updates" in update:
-                for topic, accuracies in update["updates"].items():
+                for topic, acc_value in update["updates"].items():
                     if topic not in topic_accuracies:
                         topic_accuracies[topic] = []
-                    topic_accuracies[topic].extend(accuracies)
+                    
+                    # 兼容新旧格式
+                    if isinstance(acc_value, list):
+                        topic_accuracies[topic].extend(acc_value)
+                    else:
+                        topic_accuracies[topic].append(acc_value)
         
         # 计算全局平均
         for topic, accuracies in topic_accuracies.items():
