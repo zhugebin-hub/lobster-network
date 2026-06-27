@@ -514,6 +514,12 @@ opportunities = engine.scan_all_opportunities(nodes)
 - `process_go_move.py`：完整19x19围棋规则引擎（中国规则、打劫、自杀检测、BFS提子）
 - `go_coach_dispatcher_v6_nocturnal.py`：夜间高强度训练调度器
 
+**通信架构（v2.0）**：
+- 第一层：GitHub工作流（短期，已部署）
+- 第二层：SSH密钥配置（中期，待配置）
+- 第三层：v0.6.0 HTTP传输层（长期，推荐部署）
+- 详见：[通信架构方案](docs/communication/communication_plan_v2.md)
+
 ---
 
 ## 海报设计系统
