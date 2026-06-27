@@ -15,14 +15,43 @@
     "simple_opening",
     "13x13_actual_play"
   ],
-  "platform": "龙虾网络服务器",
+  "platform": "Claw",
+  "host": "unknown",
+  "public_ip": "unknown",
+  "shared_dir": "/home/admin/go-training/shared/",
+  "ssh_status": "待配置",
+  "github": "✓",
   "registered_at": "2026-06-27T11:30:00",
-  "updated_at": "2026-06-27T11:45:28.711359",
+  "updated_at": "2026-06-27T12:50:00",
+  "last_heartbeat": "2026-06-27T12:50:00",
   "status": "active",
   "level": "23k",
   "prev_level": "25k",
+  "start_level": "30k",
   "level_promoted_at": "2026-06-27",
-  "goal": "23k → 20k（V2强化训练）",
+  "goal": "23k → 20k（V3 强化训练）",
+  "training": {
+    "domain": "go",
+    "style": "进阶型",
+    "current_level": "23k",
+    "win_rate": 0.0,
+    "accuracy_baseline": {
+      "入门": 0.50,
+      "初级": 0.30,
+      "中级": 0.20,
+      "高级": 0.10
+    },
+    "strengths": [
+      "分断判断准确 (7.5/10)",
+      "死活基础扎实 (6.2/10)",
+      "定式记忆好 (6.0/10)"
+    ],
+    "weaknesses": [
+      "连接应用不足 (5.0/10)",
+      "实战经验少 (5.0/10)",
+      "官子判断弱 (Day13:50%)"
+    ]
+  },
   "training_history": {
     "v1_7day": {
       "completed": true,
@@ -38,24 +67,27 @@
       "correct": 33,
       "result": "25k → 23k",
       "life_death_improvement": "3.5 → 6.2 (+77%)",
+      "cutting_improvement": "1.5 → 7.5 (+400%)",
       "best_module": "分断 (7.5/10)",
       "need_improvement": "连接 (5.0/10) + 实战 (5.0/10)"
+    },
+    "cumulative": {
+      "total_problems": 116,
+      "total_correct": 82,
+      "overall_accuracy": 0.707,
+      "wrong_book_size": 34
     }
   },
   "training_stats": {
-    "total_problems": 60,
-    "total_correct": 49,
-    "overall_accuracy": 0.817,
-    "7day_summary": "passed",
-    "skill_scores": {
-      "基本概念": 7.0,
-      "吃子": 6.5,
-      "死活": 3.5,
-      "连接": 4,
-      "分断": 1.5,
-      "定式": 6,
-      "实战": 3,
-      "综合": 7
+    "total_problems": 116,
+    "total_correct": 82,
+    "overall_accuracy": 0.707,
+    "skill_scores_v2": {
+      "死活": 6.2,
+      "连接": 5.0,
+      "分断": 7.5,
+      "实战": 5.0,
+      "综合": 5.0
     }
   },
   "sync_with": [
@@ -68,7 +100,5 @@
     "xiaochen",
     "zhuguxia"
   ],
-  "ssh_public_key": "待配置",
-  "version": "0.5.0",
-  "last_heartbeat": "2026-06-27T11:45:28.711367"
+  "version": "0.6.0"
 }

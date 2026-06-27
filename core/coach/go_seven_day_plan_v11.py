@@ -38,6 +38,20 @@ SSH_CONFIG = {
         "to_dir": "to-xiaochen",
         "from_dir": "from-xiaochen",
     },
+
+    "xiaowei": {
+        "name": "小薇",
+        "type": "基础型",
+        "current_level": "30k (零基础)",
+        "target_dan": "25k",
+        "accuracy_baseline": {"入门": 0.50, "初级": 0.30, "中级": 0.20, "高级": 0.10},
+        "problem_count": 0,
+        "win_rate": 0.0,
+        "strengths": ["零基础学习动力强", "无先入为主错误习惯"],
+        "weaknesses": ["完全零基础", "需要从头学习基本规则"],
+        "path": ["入门", "15级", "10级", "5级", "1级", "初段", "二段", "三段", "四段", "五段", "六段", "七段", "八段", "九段"],
+    },
+
     "zhuguxia": {
         "host": "172.24.56.3",
         "user": "admin",
@@ -46,6 +60,16 @@ SSH_CONFIG = {
         "to_dir": "to-zhuguxia",
         "from_dir": "from-zhuguxia",
     },
+
+    "xiaowei": {
+        "host": "unknown",
+        "user": "admin",
+        "key": "~/.ssh/id_rsa_hermes",
+        "shared_dir": "/home/admin/go-training/shared",
+        "to_dir": "to-xiaowei",
+        "from_dir": "from-xiaowei",
+    },
+
     "qoder": {
         "host": "172.24.56.3",  # qoder在诸葛虾服务器上
         "user": "admin",

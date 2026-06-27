@@ -497,6 +497,7 @@ opportunities = engine.scan_all_opportunities(nodes)
 |- qoder：685题，86%胜率，~25级
 |- xiaochen：10,337局，30级
 |- zhuguxia：6,868局，25级（初始30级已升段）
+|- xiaowei：0题，30k（零基础，新加入）
 
 **最新评估（2026-06-27）**：
 |- 综合排名：zhuguxia(0.78) > qoder(0.74) > xiaochen(0.69)
@@ -509,6 +510,7 @@ opportunities = engine.scan_all_opportunities(nodes)
 |- qoder（实战型）：高级题65%最强，但训练量偏少(685题)
 |- xiaochen（稳健型）：对局量最大(10,337局)，但推理力0.47(E级)为最大短板
 |- zhuguxia（加速型）：理解力0.88(A级)最强，反思力0.59需加强
+|- xiaowei（基础型）：零基础(30k)，7天目标25k
 
 **核心组件**：
 - `process_go_move.py`：完整19x19围棋规则引擎（中国规则、打劫、自杀检测、BFS提子）
