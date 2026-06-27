@@ -23,11 +23,28 @@ class Agent:
         self.tasks_failed = 0
         self.knowledge_contributions = 0
     
-    def complete_task(self, reward: float = 10.0):
-        """完成任务"""
+    def complete_task(self, reward: float = 10.0, accuracy: float = None):
+        """完成任务（信誉与训练准确率挂钩）"""
         self.balance += reward
         self.tasks_completed += 1
-        self.reputation = min(1.0, self.reputation + 0.01)
+        
+        # 根据准确率调整信誉
+        if accuracy is not None:
+            if accuracy >= 0.9:
+                # 优秀：+0.03
+                self.reputation = min(1.0, self.reputation + 0.03)
+            elif accuracy >= 0.75:
+                # 良好：+0.02
+                self.reputation = min(1.0, self.reputation + 0.02)
+            elif accuracy >= 0.6:
+                # 及格：+0.01
+                self.reputation = min(1.0, self.reputation + 0.01)
+            else:
+                # 不及格：不增加信誉
+                pass
+        else:
+            # 无准确率数据：默认 +0.01
+            self.reputation = min(1.0, self.reputation + 0.01)
     
     def fail_task(self, penalty: float = 5.0):
         """任务失败"""
@@ -131,14 +148,14 @@ class EconomySystem:
                 return True
         return False
     
-    def complete_task(self, task_id: str, success: bool = True) -> bool:
-        """完成任务"""
+    def complete_task(self, task_id: str, success: bool = True, accuracy: float = None) -> bool:
+        """完成任务（支持准确率参数，信誉与训练准确率挂钩）"""
         for task in self.tasks:
             if task.task_id == task_id:
                 if success:
                     task.complete()
                     if task.assigned_to in self.agents:
-                        self.agents[task.assigned_to].complete_task(task.reward)
+                        self.agents[task.assigned_to].complete_task(task.reward, accuracy)
                         
                         # 记录交易
                         self.transactions.append({
@@ -147,6 +164,7 @@ class EconomySystem:
                             "to": task.assigned_to,
                             "amount": task.reward,
                             "task_id": task_id,
+                            "accuracy": accuracy,
                             "timestamp": datetime.now().isoformat()
                         })
                 else:
