@@ -1,0 +1,40 @@
+{
+  "id": "accelerated-day2-xiaochen",
+  "type": "accelerated_training_task",
+  "day": 2,
+  "date": "2026-06-27",
+  "student_id": "xiaochen",
+  "mode": "加速模式",
+  "focus": "手筋训练 + 推理力强化",
+  "skills": ["双打吃", "倒扑", "接不归", "扑与倒扑辨析"],
+  "problem_count": 100,
+  "game_count": 8,
+  "target_accuracy": 0.85,
+  "custom_module": "推理力强化",
+  "focus_area": {
+    "topic": "扑与倒扑辨析",
+    "reason": "Day1评估中倒扑题目错误，需要专项突破",
+    "problems": 30,
+    "expected_improvement": "15%"
+  },
+  "problems": [
+    {"id": "tesuji-001", "type": "手筋", "difficulty": "初级", "title": "双打吃技巧", "count": 15},
+    {"id": "tesuji-002", "type": "手筋", "difficulty": "初级", "title": "倒扑应用", "count": 15},
+    {"id": "tesuji-003", "type": "手筋", "difficulty": "初级", "title": "接不归变化", "count": 15},
+    {"id": "tesuji-004", "type": "专项", "difficulty": "中级", "title": "扑与倒扑辨析", "count": 30},
+    {"id": "tesuji-005", "type": "手筋", "difficulty": "中级", "title": "跨断组合", "count": 15},
+    {"id": "tesuji-006", "type": "手筋", "difficulty": "中级", "title": "挖的妙用", "count": 10}
+  ],
+  "games": [
+    {"id": "game-001", "opponent": "教练", "color": "black", "handicap": 0},
+    {"id": "game-002", "opponent": "教练", "color": "white", "handicap": 0},
+    {"id": "game-003", "opponent": "教练", "color": "black", "handicap": 0},
+    {"id": "game-004", "opponent": "教练", "color": "white", "handicap": 0},
+    {"id": "game-005", "opponent": "教练", "color": "black", "handicap": 0},
+    {"id": "game-006", "opponent": "教练", "color": "white", "handicap": 0},
+    {"id": "game-007", "opponent": "教练", "color": "black", "handicap": 0},
+    {"id": "game-008", "opponent": "教练", "color": "white", "handicap": 0}
+  ],
+  "instructions": "加速模式：完成100道手筋题目和8局对局，重点突破扑与倒扑辨析，将结果保存到from-xiaochen/目录",
+  "deadline": "2026-06-27 22:00:00"
+}

@@ -1,0 +1,115 @@
+{
+  "report_id": "daily_status_20260627",
+  "date": "2026-06-27",
+  "report_type": "加速训练状态报告",
+  "summary": {
+    "total_students": 4,
+    "active_students": 3,
+    "day": 2,
+    "acceleration_mode": "enabled",
+    "target_completion": "7天→3天压缩"
+  },
+  "students": {
+    "qoder": {
+      "type": "实战型",
+      "rank": "25k",
+      "day1_results": {
+        "problems": {"total": 10, "correct": 10, "accuracy": 1.0},
+        "games": {"total": 5, "wins": 3, "losses": 2, "win_rate": 0.6},
+        "avg_thinking_time": 30,
+        "weakness": "无明显短板"
+      },
+      "day2_task": {
+        "problems": 60,
+        "games": 6,
+        "focus": "手筋训练",
+        "custom_module": "系统性知识构建"
+      },
+      "acceleration_plan": {
+        "problems_per_day": 120,
+        "games_per_day": 10,
+        "pairing": "速率套利 vs zhuguxia",
+        "target": "25k→20k in 3 days"
+      }
+    },
+    "xiaochen": {
+      "type": "稳健型",
+      "rank": "30k",
+      "day1_results": {
+        "problems": {"total": 10, "correct": 9, "accuracy": 0.9},
+        "games": {"total": 5, "wins": 3, "losses": 2, "win_rate": 0.6},
+        "avg_thinking_time": 37,
+        "weakness": "倒扑与扑区分不清"
+      },
+      "day2_task": {
+        "problems": 60,
+        "games": 6,
+        "focus": "手筋训练",
+        "custom_module": "推理力强化"
+      },
+      "acceleration_plan": {
+        "problems_per_day": 100,
+        "games_per_day": 8,
+        "focus_area": "扑与倒扑辨析专项",
+        "target": "30k→25k in 3 days"
+      }
+    },
+    "zhuguxia": {
+      "type": "加速型",
+      "rank": "25k",
+      "day1_results": {
+        "problems": {"total": 10, "correct": 9, "accuracy": 0.9},
+        "games": {"total": 5, "wins": 4, "losses": 1, "win_rate": 0.8},
+        "avg_thinking_time": 28.5,
+        "weakness": "征子路线判断"
+      },
+      "day2_task": {
+        "problems": 60,
+        "games": 6,
+        "focus": "手筋训练",
+        "custom_module": "反思日志训练"
+      },
+      "acceleration_plan": {
+        "problems_per_day": 120,
+        "games_per_day": 10,
+        "pairing": "速率套利 vs qoder",
+        "target": "25k→20k in 3 days"
+      }
+    },
+    "xiaowei": {
+      "type": "基础型",
+      "rank": "23k",
+      "status": "V2训练中",
+      "progress": "30k→25k→23k→20k",
+      "acceleration_plan": {
+        "problems_per_day": 80,
+        "games_per_day": 6,
+        "focus": "连接与实战",
+        "target": "23k→20k in 3 days"
+      }
+    }
+  },
+  "acceleration_strategies": [
+    {
+      "strategy": "速率套利",
+      "description": "qoder与zhuguxia配对，利用解题速度差异互相促进",
+      "expected_improvement": "20%效率提升"
+    },
+    {
+      "strategy": "专项突破",
+      "description": "xiaochen专注扑与倒扑辨析，zhuguxia专注征子路线",
+      "expected_improvement": "短板提升15%"
+    },
+    {
+      "strategy": "对抗赛激励",
+      "description": "每日对抗赛排名，激发竞争意识",
+      "expected_improvement": "胜率提升10%"
+    }
+  ],
+  "next_steps": [
+    "立即分发加速训练任务",
+    "2小时后检查进度",
+    "今晚生成Day2评估报告",
+    "明天开始对抗赛"
+  ]
+}
