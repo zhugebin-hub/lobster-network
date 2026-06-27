@@ -1,0 +1,172 @@
+{
+  "phase": 3,
+  "name": "Signal Arena 炒股高级（扩充版）",
+  "description": "量化策略、机器学习、组合优化（扩充至15题）",
+  "problems": [
+    {
+      "id": "sa3-001",
+      "type": "quantitative_strategy",
+      "difficulty": "高级",
+      "question": "设计一个趋势跟随策略",
+      "context": {"strategy": "趋势跟随", "indicators": ["SMA", "RSI", "MACD"], "markets": ["A股", "港股", "美股"]},
+      "options": ["SMA金叉买入+RSI过滤+止损止盈", "随机买入卖出", "只买不卖", "无法判断"],
+      "answer": "SMA金叉买入+RSI过滤+止损止盈",
+      "confidence": 0.80,
+      "reasoning": "趋势跟随策略：SMA金叉确认趋势，RSI过滤超买，止损止盈控制风险"
+    },
+    {
+      "id": "sa3-002",
+      "type": "portfolio_optimization",
+      "difficulty": "高级",
+      "question": "马科维茨有效前沿的核心思想是？",
+      "context": {"theory": "马科维茨现代投资组合理论", "goal": "最优配置"},
+      "options": ["给定风险下最大化收益", "只买低风险资产", "只买高收益资产", "无法判断"],
+      "answer": "给定风险下最大化收益",
+      "confidence": 0.85,
+      "reasoning": "有效前沿：在给定风险水平下选择预期收益最高的组合"
+    },
+    {
+      "id": "sa3-003",
+      "type": "ml_model",
+      "difficulty": "高级",
+      "question": "用LSTM预测股票价格的输入特征包括？",
+      "context": {"model": "LSTM", "task": "股价预测", "data": "历史数据"},
+      "options": ["收盘价、成交量、RSI、SMA", "只收盘价", "只成交量", "无法判断"],
+      "answer": "收盘价、成交量、RSI、SMA",
+      "confidence": 0.80,
+      "reasoning": "多特征输入提高预测准确性：价格+成交量+技术指标"
+    },
+    {
+      "id": "sa3-004",
+      "type": "risk_management",
+      "difficulty": "高级",
+      "question": "凯利公式在炒股中的应用是？",
+      "context": {"formula": "凯利公式", "scenario": "仓位优化"},
+      "options": ["计算最优仓位比例", "预测股价", "选择股票", "无法判断"],
+      "answer": "计算最优仓位比例",
+      "confidence": 0.85,
+      "reasoning": "凯利公式：f* = (bp - q) / b，计算最优投注比例"
+    },
+    {
+      "id": "sa3-005",
+      "type": "backtesting",
+      "difficulty": "高级",
+      "question": "回测策略时最常见的陷阱是？",
+      "context": {"method": "回测", "issue": "过拟合"},
+      "options": ["过拟合历史数据", "数据不足", "计算太慢", "无法判断"],
+      "answer": "过拟合历史数据",
+      "confidence": 0.90,
+      "reasoning": "过拟合是回测最大陷阱，历史表现好不代表未来表现好"
+    },
+    {
+      "id": "sa3-006",
+      "type": "cross_asset",
+      "difficulty": "高级",
+      "question": "A股、港股、美股的相关性如何？",
+      "context": {"markets": ["A股", "港股", "美股"], "metric": "相关性"},
+      "options": ["低相关性，适合分散配置", "高相关性", "无法判断"],
+      "answer": "低相关性，适合分散配置",
+      "confidence": 0.80,
+      "reasoning": "三市场受不同因素影响，相关性低，分散配置可降低风险"
+    },
+    {
+      "id": "sa3-007",
+      "type": "quantitative_strategy",
+      "difficulty": "高级",
+      "question": "什么是均值回归策略？",
+      "context": {"strategy": "均值回归", "scenario": "价格偏离均值后回归"},
+      "options": ["价格偏离均值时反向操作", "趋势跟随", "无法判断"],
+      "answer": "价格偏离均值时反向操作",
+      "confidence": 0.80,
+      "reasoning": "均值回归策略认为价格会回归均值，偏离时反向操作"
+    },
+    {
+      "id": "sa3-008",
+      "type": "quantitative_strategy",
+      "difficulty": "高级",
+      "question": "什么是动量策略？",
+      "context": {"strategy": "动量策略", "scenario": "趋势延续"},
+      "options": ["买入近期强势股，卖出近期弱势股", "买入弱势股", "无法判断"],
+      "answer": "买入近期强势股，卖出近期弱势股",
+      "confidence": 0.80,
+      "reasoning": "动量策略认为趋势会延续，买入强势股，卖出弱势股"
+    },
+    {
+      "id": "sa3-009",
+      "type": "ml_model",
+      "difficulty": "高级",
+      "question": "随机森林在股票预测中的优势是？",
+      "context": {"model": "随机森林", "task": "股票预测"},
+      "options": ["抗过拟合、可处理非线性关系", "仅能处理线性关系", "无法判断"],
+      "answer": "抗过拟合、可处理非线性关系",
+      "confidence": 0.85,
+      "reasoning": "随机森林通过多棵决策树集成，抗过拟合能力强，可处理非线性关系"
+    },
+    {
+      "id": "sa3-010",
+      "type": "ml_model",
+      "difficulty": "高级",
+      "question": "XGBoost在股票预测中的优势是？",
+      "context": {"model": "XGBoost", "task": "股票预测"},
+      "options": ["训练速度快、精度高、可处理大规模数据", "仅能处理小数据", "无法判断"],
+      "answer": "训练速度快、精度高、可处理大规模数据",
+      "confidence": 0.85,
+      "reasoning": "XGBoost是高效的梯度提升树算法，训练速度快、精度高"
+    },
+    {
+      "id": "sa3-011",
+      "type": "backtesting",
+      "difficulty": "高级",
+      "question": "什么是前视偏差（Look-ahead Bias）？",
+      "context": {"issue": "前视偏差", "scenario": "回测陷阱"},
+      "options": ["使用未来数据进行回测", "使用历史数据", "无法判断"],
+      "answer": "使用未来数据进行回测",
+      "confidence": 0.90,
+      "reasoning": "前视偏差是回测中使用未来数据导致的偏差，会使回测结果过于乐观"
+    },
+    {
+      "id": "sa3-012",
+      "type": "backtesting",
+      "difficulty": "高级",
+      "question": "什么是幸存者偏差（Survivorship Bias）？",
+      "context": {"issue": "幸存者偏差", "scenario": "回测陷阱"},
+      "options": ["仅使用现存股票数据，忽略已退市股票", "使用全部股票数据", "无法判断"],
+      "answer": "仅使用现存股票数据，忽略已退市股票",
+      "confidence": 0.90,
+      "reasoning": "幸存者偏差是仅使用现存股票数据，忽略已退市股票，导致回测结果过于乐观"
+    },
+    {
+      "id": "sa3-013",
+      "type": "portfolio_optimization",
+      "difficulty": "高级",
+      "question": "什么是风险平价策略？",
+      "context": {"strategy": "风险平价", "scenario": "风险均衡配置"},
+      "options": ["按风险贡献分配资金，而非按资金比例", "按资金比例分配", "无法判断"],
+      "answer": "按风险贡献分配资金，而非按资金比例",
+      "confidence": 0.85,
+      "reasoning": "风险平价策略按各资产的风险贡献分配资金，实现风险均衡"
+    },
+    {
+      "id": "sa3-014",
+      "type": "portfolio_optimization",
+      "difficulty": "高级",
+      "question": "什么是夏普比率？",
+      "context": {"metric": "夏普比率", "scenario": "风险调整后收益"},
+      "options": ["(收益率-无风险利率)/标准差", "收益率/标准差", "无法判断"],
+      "answer": "(收益率-无风险利率)/标准差",
+      "confidence": 0.85,
+      "reasoning": "夏普比率 = (收益率 - 无风险利率) / 标准差，衡量风险调整后收益"
+    },
+    {
+      "id": "sa3-015",
+      "type": "portfolio_optimization",
+      "difficulty": "高级",
+      "question": "什么是最大回撤？",
+      "context": {"metric": "最大回撤", "scenario": "风险控制"},
+      "options": ["资产净值从最高点到最低点的最大跌幅", "资产净值从最低点到最高点的最大涨幅", "无法判断"],
+      "answer": "资产净值从最高点到最低点的最大跌幅",
+      "confidence": 0.90,
+      "reasoning": "最大回撤是资产净值从最高点到最低点的最大跌幅，反映最大风险"
+    }
+  ]
+}

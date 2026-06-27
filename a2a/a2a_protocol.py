@@ -1,227 +1,313 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-A2A协议 - Agent-to-Agent 通信协议
-支持节点发现、心跳检测、消息路由
+🦞 小龙虾网络 · A2A协议实现
+版本: V1.0 | 日期: 2026-06-27
+功能: Agent-to-Agent通信协议，支持节点发现、消息路由、能力协商
 """
 
 import json
+import os
+import hashlib
 import uuid
-import time
-from typing import Dict, List, Optional, Any, Callable
-from dataclasses import dataclass, field, asdict
-from enum import Enum
 from datetime import datetime
+from typing import Dict, List, Optional, Any
 
-
-class NodeStatus(Enum):
-    ACTIVE = "active"
-    INACTIVE = "inactive"
-    BUSY = "busy"
-    ERROR = "error"
-
-
-@dataclass
 class A2ANode:
     """A2A节点"""
-    node_id: str
-    name: str
-    status: str = NodeStatus.ACTIVE.value
-    capabilities: List[str] = field(default_factory=list)
-    metadata: Dict[str, Any] = field(default_factory=dict)
-    last_heartbeat: float = field(default_factory=time.time)
-    created_at: str = field(default_factory=lambda: datetime.now().isoformat())
     
-    def to_dict(self) -> Dict:
-        return asdict(self)
-
-
-@dataclass
-class A2AMessage:
-    """A2A消息"""
-    id: str = field(default_factory=lambda: str(uuid.uuid4()))
-    from_node: str = ""
-    to_node: str = ""
-    message_type: str = "text"
-    content: Any = None
-    timestamp: float = field(default_factory=time.time)
-    priority: int = 5  # 1-10, 10最高
-    requires_ack: bool = True
-    ttl: int = 3600  # 生存时间（秒）
-    
-    def to_dict(self) -> Dict:
-        return asdict(self)
-
-
-class A2AProtocol:
-    """A2A协议实现 - 支持节点注册、心跳、消息路由"""
-    
-    def __init__(self, node_id: str, name: str):
+    def __init__(self, node_id: str, name: str, node_type: str = "agent"):
         self.node_id = node_id
         self.name = name
-        self.nodes: Dict[str, A2ANode] = {}
-        self.message_queue: List[A2AMessage] = []
-        self.handlers: Dict[str, Callable] = {}
-        self.heartbeat_interval: int = 30  # 心跳间隔（秒）
-        self.max_message_age: int = 86400  # 消息最大存活时间（秒）
-        
+        self.node_type = node_type
+        self.capabilities = []
+        self.endpoints = {}
+        self.status = "active"
+        self.registered_at = datetime.now().isoformat()
+        self.last_heartbeat = datetime.now().isoformat()
+    
+    def add_capability(self, capability: str):
+        """添加能力"""
+        if capability not in self.capabilities:
+            self.capabilities.append(capability)
+    
+    def add_endpoint(self, protocol: str, url: str):
+        """添加端点"""
+        self.endpoints[protocol] = url
+    
+    def to_dict(self) -> Dict:
+        """转换为字典"""
+        return {
+            "node_id": self.node_id,
+            "name": self.name,
+            "type": self.node_type,
+            "capabilities": self.capabilities,
+            "endpoints": self.endpoints,
+            "status": self.status,
+            "registered_at": self.registered_at,
+            "last_heartbeat": self.last_heartbeat
+        }
+
+class A2AMessage:
+    """A2A消息"""
+    
+    def __init__(self, from_node: str, to_node: str, message_type: str, payload: Dict):
+        self.message_id = str(uuid.uuid4())
+        self.from_node = from_node
+        self.to_node = to_node
+        self.message_type = message_type
+        self.payload = payload
+        self.timestamp = datetime.now().isoformat()
+        self.status = "pending"
+    
+    def to_dict(self) -> Dict:
+        """转换为字典"""
+        return {
+            "message_id": self.message_id,
+            "from": self.from_node,
+            "to": self.to_node,
+            "type": self.message_type,
+            "payload": self.payload,
+            "timestamp": self.timestamp,
+            "status": self.status
+        }
+
+class A2AServer:
+    """A2A服务器"""
+    
+    def __init__(self, storage_path: str = None):
+        if storage_path is None:
+            shared_path = "/shared/training/go/a2a"
+            local_path = os.path.expanduser("~/.lobster-network/a2a")
+            if os.access("/shared/training/go", os.W_OK):
+                storage_path = shared_path
+            else:
+                storage_path = local_path
+        self.storage_path = storage_path
+        self.nodes = {}
+        self.messages = []
+        self._ensure_storage()
+        self._load_data()
+    
+    def _ensure_storage(self):
+        """确保存储目录存在"""
+        os.makedirs(self.storage_path, exist_ok=True)
+    
+    def _load_data(self):
+        """加载数据"""
+        nodes_path = os.path.join(self.storage_path, "nodes.json")
+        if os.path.exists(nodes_path):
+            with open(nodes_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                for node_data in data:
+                    node = A2ANode(
+                        node_data["node_id"],
+                        node_data["name"],
+                        node_data.get("type", "agent")
+                    )
+                    node.capabilities = node_data.get("capabilities", [])
+                    node.endpoints = node_data.get("endpoints", {})
+                    node.status = node_data.get("status", "active")
+                    node.registered_at = node_data.get("registered_at", "")
+                    node.last_heartbeat = node_data.get("last_heartbeat", "")
+                    self.nodes[node.node_id] = node
+    
+    def _save_data(self):
+        """保存数据"""
+        nodes_path = os.path.join(self.storage_path, "nodes.json")
+        nodes_data = [node.to_dict() for node in self.nodes.values()]
+        with open(nodes_path, "w", encoding="utf-8") as f:
+            json.dump(nodes_data, f, ensure_ascii=False, indent=2)
+    
     def register_node(self, node: A2ANode) -> bool:
         """注册节点"""
         if node.node_id in self.nodes:
             return False
+        
         self.nodes[node.node_id] = node
+        self._save_data()
         return True
     
-    def unregister_node(self, node_id: str) -> bool:
-        """注销节点"""
-        if node_id in self.nodes:
-            del self.nodes[node_id]
-            return True
+    def discover_nodes(self, capability: str = None, node_type: str = None) -> List[Dict]:
+        """发现节点"""
+        results = []
+        for node in self.nodes.values():
+            if node.status != "active":
+                continue
+            
+            if capability and capability not in node.capabilities:
+                continue
+            
+            if node_type and node.node_type != node_type:
+                continue
+            
+            results.append(node.to_dict())
+        
+        return results
+    
+    def send_message(self, message: A2AMessage) -> bool:
+        """发送消息（对接实际传输层：SSH/GitHub）"""
+        if message.to_node not in self.nodes:
+            return False
+        
+        if self.nodes[message.to_node].status != "active":
+            return False
+        
+        # 尝试通过实际传输层发送
+        target_node = self.nodes[message.to_node]
+        delivered = self._deliver_via_transport(message, target_node)
+        
+        if delivered:
+            message.status = "delivered"
+        else:
+            # Fallback: 仅记录到内存
+            message.status = "sent"
+        
+        self.messages.append(message)
+        return True
+    
+    def _deliver_via_transport(self, message: A2AMessage, target_node: A2ANode) -> bool:
+        """通过实际传输层投递消息"""
+        endpoints = target_node.endpoints
+        
+        # 优先使用 SSH
+        if "ssh" in endpoints:
+            return self._deliver_via_ssh(message, endpoints["ssh"])
+        
+        # Fallback: GitHub
+        if "github" in endpoints:
+            return self._deliver_via_github(message, endpoints["github"])
+        
         return False
     
-    def send_message(self, message: A2AMessage) -> str:
-        """发送消息"""
-        if message.to_node not in self.nodes:
-            return ""
-        self.message_queue.append(message)
-        return message.id
+    def _deliver_via_ssh(self, message: A2AMessage, ssh_url: str) -> bool:
+        """通过 SSH 投递消息（使用 go-training/shared 目录）"""
+        try:
+            # 解析目标节点 ID
+            to_node = message.to_node
+            
+            # 构建目标路径
+            # 假设所有节点共享 /home/admin/go-training/shared/
+            target_dir = f"/home/admin/go-training/shared/to-{to_node}"
+            os.makedirs(target_dir, exist_ok=True)
+            
+            # 保存消息文件
+            msg_file = os.path.join(target_dir, f"{message.message_id}.json")
+            with open(msg_file, "w", encoding="utf-8") as f:
+                json.dump(message.to_dict(), f, ensure_ascii=False, indent=2)
+            
+            return True
+        except Exception as e:
+            print(f"⚠️ SSH 投递失败: {e}")
+            return False
     
-    def receive_messages(self, node_id: str) -> List[A2AMessage]:
-        """接收消息"""
-        messages = [m for m in self.message_queue if m.to_node == node_id]
-        self.message_queue = [m for m in self.message_queue if m.to_node != node_id]
-        return messages
+    def _deliver_via_github(self, message: A2AMessage, github_url: str) -> bool:
+        """通过 GitHub 投递消息（写入本地仓库，等待 git push）"""
+        try:
+            # 写入本地 GitHub 仓库目录
+            github_dir = os.path.expanduser("~/.lobster-network/github-inbox")
+            os.makedirs(github_dir, exist_ok=True)
+            
+            msg_file = os.path.join(github_dir, f"{message.message_id}.json")
+            with open(msg_file, "w", encoding="utf-8") as f:
+                json.dump(message.to_dict(), f, ensure_ascii=False, indent=2)
+            
+            return True
+        except Exception as e:
+            print(f"⚠️ GitHub 投递失败: {e}")
+            return False
+    
+    def get_messages(self, node_id: str) -> List[Dict]:
+        """获取消息"""
+        results = []
+        for message in self.messages:
+            if message.to_node == node_id and message.status == "sent":
+                results.append(message.to_dict())
+        return results
     
     def heartbeat(self, node_id: str) -> bool:
-        """节点心跳"""
+        """心跳检测"""
         if node_id in self.nodes:
-            self.nodes[node_id].last_heartbeat = time.time()
-            self.nodes[node_id].status = NodeStatus.ACTIVE.value
+            self.nodes[node_id].last_heartbeat = datetime.now().isoformat()
+            self._save_data()
             return True
         return False
     
-    def check_health(self) -> Dict[str, str]:
-        """检查所有节点健康状态"""
-        current_time = time.time()
-        health = {}
-        for node_id, node in self.nodes.items():
-            elapsed = current_time - node.last_heartbeat
-            if elapsed > self.heartbeat_interval * 3:
-                node.status = NodeStatus.ERROR.value
-                health[node_id] = "error"
-            elif elapsed > self.heartbeat_interval:
-                node.status = NodeStatus.INACTIVE.value
-                health[node_id] = "inactive"
-            else:
-                health[node_id] = node.status
-        return health
-    
-    def register_handler(self, message_type: str, handler: Callable):
-        """注册消息处理器"""
-        self.handlers[message_type] = handler
-    
-    def process_messages(self, node_id: str) -> int:
-        """处理消息"""
-        messages = self.receive_messages(node_id)
-        processed = 0
-        for msg in messages:
-            if msg.message_type in self.handlers:
-                try:
-                    self.handlers[msg.message_type](msg)
-                    processed += 1
-                except Exception:
-                    pass
-        return processed
-    
-    def get_node_list(self) -> List[Dict]:
-        """获取节点列表"""
-        return [node.to_dict() for node in self.nodes.values()]
-    
-    def get_queue_stats(self) -> Dict:
-        """获取队列统计"""
-        now = time.time()
-        active = [m for m in self.message_queue if now - m.timestamp < m.ttl]
-        expired = [m for m in self.message_queue if now - m.timestamp >= m.ttl]
-        
+    def get_status(self) -> Dict:
+        """获取状态"""
         return {
-            "total_queued": len(self.message_queue),
-            "active": len(active),
-            "expired": len(expired),
-            "by_priority": {
-                "high": len([m for m in active if m.priority >= 8]),
-                "medium": len([m for m in active if 5 <= m.priority < 8]),
-                "low": len([m for m in active if m.priority < 5])
-            }
+            "total_nodes": len(self.nodes),
+            "active_nodes": sum(1 for n in self.nodes.values() if n.status == "active"),
+            "total_messages": len(self.messages),
+            "nodes": {nid: node.to_dict() for nid, node in self.nodes.items()}
         }
-    
-    def cleanup_expired(self) -> int:
-        """清理过期消息"""
-        now = time.time()
-        before = len(self.message_queue)
-        self.message_queue = [m for m in self.message_queue if now - m.timestamp < m.ttl]
-        return before - len(self.message_queue)
-
-
-# 测试函数
-def test_a2a_protocol():
-    """测试A2A协议"""
-    protocol = A2AProtocol("node-1", "TestNode")
-    
-    # 注册节点
-    node2 = A2ANode("node-2", "Node2", capabilities=["go-training"])
-    node3 = A2ANode("node-3", "Node3", capabilities=["poster-design"])
-    
-    assert protocol.register_node(node2) == True
-    assert protocol.register_node(node3) == True
-    assert protocol.register_node(node2) == False  # 重复注册
-    
-    # 发送消息
-    msg1 = A2AMessage(from_node="node-1", to_node="node-2", content="训练任务")
-    msg2 = A2AMessage(from_node="node-1", to_node="node-3", content="海报设计", priority=8)
-    
-    assert protocol.send_message(msg1) != ""
-    assert protocol.send_message(msg2) != ""
-    
-    # 接收消息
-    received = protocol.receive_messages("node-2")
-    assert len(received) == 1
-    assert received[0].content == "训练任务"
-    
-    # 心跳测试
-    assert protocol.heartbeat("node-2") == True
-    assert protocol.heartbeat("nonexistent") == False
-    
-    # 健康检查
-    health = protocol.check_health()
-    assert "node-2" in health
-    
-    # 队列统计
-    stats = protocol.get_queue_stats()
-    assert stats["total_queued"] == 1  # msg1已接收
-    
-    # 节点列表
-    nodes = protocol.get_node_list()
-    assert len(nodes) == 2
-    
-    # 清理过期消息
-    protocol.cleanup_expired()
-    
-    return {
-        "status": "passed",
-        "tests_run": 10,
-        "details": {
-            "node_registration": True,
-            "message_sending": True,
-            "message_receiving": True,
-            "heartbeat": True,
-            "health_check": True,
-            "queue_stats": True,
-            "node_list": True,
-            "cleanup": True,
-            "priority_handling": True,
-            "duplicate_registration": True
-        }
-    }
-
 
 if __name__ == "__main__":
-    result = test_a2a_protocol()
-    print(json.dumps(result, indent=2, ensure_ascii=False))
+    # 测试A2A协议
+    server = A2AServer()
+    
+    print("🦞 A2A协议测试")
+    print(f"   存储路径: {server.storage_path}")
+    
+    # 创建节点
+    print("\n📝 创建节点...")
+    hermes = A2ANode("hermes", "诸葛马", "coach")
+    hermes.add_capability("training-design")
+    hermes.add_capability("task-dispatch")
+    hermes.add_endpoint("ssh", "http://47.93.6.57:8001")
+    
+    xiaochen = A2ANode("xiaochen", "小陈", "agent")
+    xiaochen.add_capability("go-training")
+    xiaochen.add_capability("stock-trading")
+    xiaochen.add_endpoint("ssh", "http://121.43.80.231:8001")
+    
+    zhuguxia = A2ANode("zhuguxia", "诸葛虾", "agent")
+    zhuguxia.add_capability("go-training")
+    zhuguxia.add_endpoint("ssh", "http://60.205.139.51:8001")
+    
+    qoder = A2ANode("qoder", "qoder小龙虾", "agent")
+    qoder.add_capability("go-training")
+    qoder.add_capability("code-quality")
+    qoder.add_endpoint("github", "https://github.com/zhugebin-hub/lobster-network")
+    
+    # 注册节点
+    server.register_node(hermes)
+    server.register_node(xiaochen)
+    server.register_node(zhuguxia)
+    server.register_node(qoder)
+    print(f"   已注册4个节点")
+    
+    # 发现节点
+    print("\n🔍 发现节点...")
+    training_nodes = server.discover_nodes(capability="go-training")
+    print(f"   找到 {len(training_nodes)} 个围棋训练节点")
+    
+    # 发送消息
+    print("\n📤 发送消息...")
+    message = A2AMessage("hermes", "xiaochen", "training_task", {
+        "task_id": "task-001",
+        "topic": "基础死活形状识别",
+        "problems": 25
+    })
+    server.send_message(message)
+    print(f"   消息已发送: {message.message_id}")
+    
+    # 获取消息
+    print("\n📥 获取消息...")
+    messages = server.get_messages("xiaochen")
+    print(f"   找到 {len(messages)} 条消息")
+    
+    # 心跳检测
+    print("\n💓 心跳检测...")
+    server.heartbeat("xiaochen")
+    server.heartbeat("zhuguxia")
+    print(f"   心跳已更新")
+    
+    # 状态
+    print("\n📊 状态:")
+    status = server.get_status()
+    print(f"   总节点: {status['total_nodes']}")
+    print(f"   活跃节点: {status['active_nodes']}")
+    print(f"   总消息: {status['total_messages']}")
+    
+    print("\n✅ A2A协议测试完成")

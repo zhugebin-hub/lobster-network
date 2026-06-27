@@ -1,0 +1,32 @@
+{
+  "date": "2026-06-25",
+  "topic": "小目定式·一间高挂",
+  "results": {
+    "xiaochen": {
+      "task_id": "go-train-20260625-xiaochen",
+      "status": "completed",
+      "problems_solved": 8,
+      "problems_correct": 7,
+      "accuracy": 0.875,
+      "wrong_answers": [
+        {
+          "problem_id": "capture-005",
+          "user_answer": "错误答案",
+          "correct_answer": "死",
+          "category": "死活",
+          "difficulty": "入门"
+        }
+      ],
+      "summary": "小陈 今日完成 小目定式·一间高挂，正确率 87.5%"
+    },
+    "zhuguxia": {
+      "task_id": "go-train-20260625-zhuguxia",
+      "status": "completed",
+      "problems_solved": 11,
+      "problems_correct": 11,
+      "accuracy": 1.0,
+      "wrong_answers": [],
+      "summary": "诸葛虾 今日完成 小目定式·一间高挂，正确率 100.0%"
+    }
+  }
+}

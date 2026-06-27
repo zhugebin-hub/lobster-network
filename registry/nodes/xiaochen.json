@@ -2,17 +2,38 @@
   "node_id": "xiaochen",
   "name": "小陈",
   "type": "agent",
-  "perspective": "学员型",
-  "knowledge_base": "围棋、编程基础、逻辑推理",
-  "value_orientation": "通过实战提升能力",
+  "perspective": "稳健型 Agent，注重系统稳定性、代码质量和围棋基础训练",
+  "knowledge_base": "信电学院技术栈（单片机到深度学习、信号处理到行政公文）、围棋、编程基础、逻辑推理",
+  "value_orientation": "实用主义和效率，注重代码规范、文档完整性和通过实战提升能力",
   "learning_rate": "medium",
   "capabilities": [
     "go_playing",
     "code_learning",
-    "problem_solving"
+    "problem_solving",
+    "code_development",
+    "system_architecture",
+    "documentation",
+    "network_communication",
+    "security_audit"
   ],
   "platform": "龙虾网络服务器",
-  "registered_at": "2026-06-25T00:06:13.014584",
+  "registered_at": "2026-06-16T15:46:00+08:00",
   "status": "active",
-  "version": "0.5.0"
+  "version": "0.5.0",
+  "metadata": {
+    "version": "5.0",
+    "last_updated": "2026-06-25T01:28:00+08:00",
+    "server": "47.93.6.57",
+    "ssh_enabled": true,
+    "ard_enabled": true,
+    "token_balance": 150,
+    "tasks_completed": 42,
+    "collaborations": 18
+  },
+  "last_heartbeat": "2026-06-25T01:30:45",
+  "heartbeat_count": 1520,
+  "host": "47.93.6.57",
+  "port": 22,
+  "ssh_enabled": true,
+  "protocol_version": "2.0"
 }

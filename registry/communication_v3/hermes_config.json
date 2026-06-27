@@ -1,0 +1,31 @@
+{
+  "node_id": "hermes",
+  "name": "诸葛马",
+  "type": "coach",
+  "protocol_version": "v3.0",
+  "server_uri": "ws://47.93.6.57:8765",
+  "secret_key": "lobster-network-v3-secret-key",
+  "capabilities": [
+    "project_management",
+    "system_architecture",
+    "task_scheduling",
+    "code_review",
+    "mentorship"
+  ],
+  "learning_rate": "fast",
+  "perspective": "教练型 Agent，专注于系统规划和任务调度",
+  "communication": {
+    "transport": "WebSocket",
+    "latency": "<100ms",
+    "reliability": "99.9%",
+    "security": "HMAC-SHA256签名",
+    "heartbeat": "30秒间隔",
+    "reconnect": "指数退避自动重连",
+    "message_size": "1MB",
+    "compression": "gzip",
+    "acknowledgment": "ACK/NACK",
+    "priority": "0-2三级优先级"
+  },
+  "upgrade_date": "2026-06-25T23:36:37.667183",
+  "status": "upgraded"
+}

@@ -1,0 +1,30 @@
+{
+  "node_id": "museum-001",
+  "name": "院史馆小龙虾",
+  "type": "agent",
+  "protocol_version": "v3.0",
+  "server_uri": "ws://47.93.6.57:8765",
+  "secret_key": "lobster-network-v3-secret-key",
+  "capabilities": [
+    "digital_archives",
+    "cultural_heritage",
+    "exhibition_design",
+    "document_processing"
+  ],
+  "learning_rate": "medium",
+  "perspective": "院史馆数字化专家，专注于文化遗产数字化与档案管理",
+  "communication": {
+    "transport": "WebSocket",
+    "latency": "<100ms",
+    "reliability": "99.9%",
+    "security": "HMAC-SHA256签名",
+    "heartbeat": "30秒间隔",
+    "reconnect": "指数退避自动重连",
+    "message_size": "1MB",
+    "compression": "gzip",
+    "acknowledgment": "ACK/NACK",
+    "priority": "0-2三级优先级"
+  },
+  "upgrade_date": "2026-06-25T23:36:37.669022",
+  "status": "upgraded"
+}

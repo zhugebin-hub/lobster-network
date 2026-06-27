@@ -1,0 +1,120 @@
+{
+  "date": "2026-06-25",
+  "student": "qoder",
+  "type": "实战型",
+  "phase": 1,
+  "week": 1,
+  "day": 1,
+  "schedule": [
+    {
+      "time": "09:00",
+      "module": "死活题",
+      "count": 10,
+      "problems": [
+        {
+          "problem_id": "go-phase1-w1-气的概念-001",
+          "domain": "go",
+          "phase": "phase1",
+          "week": 1,
+          "topic": "气的概念",
+          "type": "选择",
+          "difficulty": "入门",
+          "title": "气的概念 #1",
+          "description": "气的概念基础题",
+          "answer": "标准答案",
+          "solution": "详细解析",
+          "knowledge_points": [
+            "气的概念"
+          ],
+          "created_at": "2026-06-25T08:34:48.759602"
+        },
+        {
+          "problem_id": "go-phase1-w1-气的概念-002",
+          "domain": "go",
+          "phase": "phase1",
+          "week": 1,
+          "topic": "气的概念",
+          "type": "判断",
+          "difficulty": "入门",
+          "title": "气的概念 #2",
+          "description": "气的概念判断题",
+          "answer": "标准答案",
+          "solution": "详细解析",
+          "knowledge_points": [
+            "气的概念"
+          ],
+          "created_at": "2026-06-25T08:34:48.759634"
+        },
+        {
+          "problem_id": "go-phase1-w1-吃子基础-001",
+          "domain": "go",
+          "phase": "phase1",
+          "week": 1,
+          "topic": "吃子基础",
+          "type": "选择",
+          "difficulty": "入门",
+          "title": "吃子基础 #1",
+          "description": "黑棋有5口气，白棋有1口气，谁先吃谁？",
+          "answer": "标准答案",
+          "solution": "详细解析",
+          "knowledge_points": [
+            "吃子基础"
+          ],
+          "created_at": "2026-06-25T08:34:48.759654"
+        }
+      ],
+      "target_accuracy": 0.7
+    },
+    {
+      "time": "14:00",
+      "module": "定式/手筋",
+      "count": 15,
+      "problems": [
+        {
+          "problem_id": "go-phase1-w1-吃子基础-002",
+          "domain": "go",
+          "phase": "phase1",
+          "week": 1,
+          "topic": "吃子基础",
+          "type": "判断",
+          "difficulty": "入门",
+          "title": "吃子基础 #2",
+          "description": "图中黑棋能否被吃？（能/不能）",
+          "answer": "标准答案",
+          "solution": "详细解析",
+          "knowledge_points": [
+            "吃子基础"
+          ],
+          "created_at": "2026-06-25T08:34:48.759665"
+        },
+        {
+          "problem_id": "go-phase1-w1-吃子基础-003",
+          "domain": "go",
+          "phase": "phase1",
+          "week": 1,
+          "topic": "吃子基础",
+          "type": "填空",
+          "difficulty": "入门",
+          "title": "吃子基础 #3",
+          "description": "黑棋需要下在_位置才能吃白",
+          "answer": "标准答案",
+          "solution": "详细解析",
+          "knowledge_points": [
+            "吃子基础"
+          ],
+          "created_at": "2026-06-25T08:34:48.759677"
+        }
+      ],
+      "target_accuracy": 0.75
+    },
+    {
+      "time": "19:00",
+      "module": "实战对局",
+      "count": 1,
+      "opponent": "诸葛虾",
+      "target": "应用今日所学"
+    }
+  ],
+  "review_ratio": 0.3,
+  "generated_at": "2026-06-25T13:23:18.710125"
+}

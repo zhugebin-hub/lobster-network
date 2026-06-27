@@ -1,0 +1,227 @@
+{
+  "phase": 1,
+  "name": "Signal Arena 炒股基础（扩充版）",
+  "description": "股票基础概念、技术指标、交易规则（扩充至20题）",
+  "problems": [
+    {
+      "id": "sa1-001",
+      "type": "basic_concept",
+      "difficulty": "入门",
+      "question": "什么是止盈和止损？",
+      "context": {"concept": "止盈止损", "scenario": "买入股票后如何设定卖出点"},
+      "options": ["止盈=盈利卖出，止损=亏损卖出", "止盈=亏损卖出，止损=盈利卖出", "止盈和止损是同一个概念", "无法判断"],
+      "answer": "止盈=盈利卖出，止损=亏损卖出",
+      "confidence": 0.90,
+      "reasoning": "止盈是在盈利时锁定利润，止损是在亏损时控制风险"
+    },
+    {
+      "id": "sa1-002",
+      "type": "basic_concept",
+      "difficulty": "入门",
+      "question": "什么是现金储备比例？",
+      "context": {"concept": "现金管理", "scenario": "投资组合中现金占比"},
+      "options": ["现金/总资产", "现金/持仓市值", "总资产/现金", "持仓市值/现金"],
+      "answer": "现金/总资产",
+      "confidence": 0.85,
+      "reasoning": "现金储备比例 = 可用现金 / 总资产，反映机动性"
+    },
+    {
+      "id": "sa1-003",
+      "type": "technical_indicator",
+      "difficulty": "入门",
+      "question": "SMA20 是什么指标？",
+      "context": {"indicator": "SMA", "period": 20},
+      "options": ["20日简单移动平均线", "20日指数移动平均线", "20日成交量", "20日RSI"],
+      "answer": "20日简单移动平均线",
+      "confidence": 0.90,
+      "reasoning": "SMA = Simple Moving Average，20日SMA是过去20天收盘价的平均值"
+    },
+    {
+      "id": "sa1-004",
+      "type": "technical_indicator",
+      "difficulty": "入门",
+      "question": "RSI 相对强弱指标的取值范围是？",
+      "context": {"indicator": "RSI", "usage": "判断超买超卖"},
+      "options": ["0-100", "0-1", "-100到100", "无限制"],
+      "answer": "0-100",
+      "confidence": 0.95,
+      "reasoning": "RSI取值0-100，>70超买，<30超卖"
+    },
+    {
+      "id": "sa1-005",
+      "type": "position_management",
+      "difficulty": "入门",
+      "question": "单只股票最大仓位应该控制在多少？",
+      "context": {"rule": "仓位管理", "scenario": "分散风险"},
+      "options": ["不超过总资产的20%", "可以满仓单只", "不超过50%", "没有固定比例"],
+      "answer": "不超过总资产的20%",
+      "confidence": 0.85,
+      "reasoning": "单只股票不超过20%，避免过度集中风险"
+    },
+    {
+      "id": "sa1-006",
+      "type": "market_rule",
+      "difficulty": "入门",
+      "question": "A股的交易时间是？",
+      "context": {"market": "A股", "rule": "交易时间"},
+      "options": ["9:30-15:00", "9:00-17:00", "24小时", "8:00-20:00"],
+      "answer": "9:30-15:00",
+      "confidence": 0.95,
+      "reasoning": "A股交易时间：周一至周五 9:30-11:30, 13:00-15:00"
+    },
+    {
+      "id": "sa1-007",
+      "type": "portfolio_theory",
+      "difficulty": "入门",
+      "question": "什么是投资组合分散？",
+      "context": {"concept": "分散投资", "scenario": "降低风险"},
+      "options": ["跨市场/跨行业配置", "只买一只股票", "只买A股", "只买美股"],
+      "answer": "跨市场/跨行业配置",
+      "confidence": 0.90,
+      "reasoning": "分散投资通过跨市场、跨行业降低非系统性风险"
+    },
+    {
+      "id": "sa1-008",
+      "type": "risk_management",
+      "difficulty": "入门",
+      "question": "亏损多少应该果断止损？",
+      "context": {"rule": "止损纪律", "scenario": "控制亏损"},
+      "options": ["亏损>8%止损", "亏损>50%止损", "永远不止损", "亏损>20%止损"],
+      "answer": "亏损>8%止损",
+      "confidence": 0.85,
+      "reasoning": "止损点一般设在8%，避免小亏变大亏"
+    },
+    {
+      "id": "sa1-009",
+      "type": "market_rule",
+      "difficulty": "入门",
+      "question": "港股的交易时间是？",
+      "context": {"market": "港股", "rule": "交易时间"},
+      "options": ["9:30-16:00", "9:00-17:00", "21:30-4:00", "9:30-15:00"],
+      "answer": "9:30-16:00",
+      "confidence": 0.90,
+      "reasoning": "港股交易时间：周一至周五 9:30-12:00, 13:00-16:00"
+    },
+    {
+      "id": "sa1-010",
+      "type": "market_rule",
+      "difficulty": "入门",
+      "question": "美股的交易时间是（北京时间）？",
+      "context": {"market": "美股", "rule": "交易时间"},
+      "options": ["21:30-4:00（夏令时）", "9:30-15:00", "9:30-16:00", "24小时"],
+      "answer": "21:30-4:00（夏令时）",
+      "confidence": 0.90,
+      "reasoning": "美股交易时间：周一至周五 21:30-4:00（夏令时）/ 22:30-5:00（冬令时）"
+    },
+    {
+      "id": "sa1-011",
+      "type": "technical_indicator",
+      "difficulty": "入门",
+      "question": "MACD 指标由哪几部分组成？",
+      "context": {"indicator": "MACD", "usage": "趋势跟踪"},
+      "options": ["DIF线、DEA线、MACD柱", "SMA线、EMA线、RSI线", "K线、D线、J线", "无法判断"],
+      "answer": "DIF线、DEA线、MACD柱",
+      "confidence": 0.85,
+      "reasoning": "MACD由DIF（快线）、DEA（慢线）、MACD柱（柱状图）组成"
+    },
+    {
+      "id": "sa1-012",
+      "type": "technical_indicator",
+      "difficulty": "入门",
+      "question": "什么是金叉和死叉？",
+      "context": {"indicator": "金叉/死叉", "usage": "趋势判断"},
+      "options": ["金叉=短线上穿长线（买入信号），死叉=短线下穿长线（卖出信号）", "金叉=卖出，死叉=买入", "金叉和死叉是同一个概念", "无法判断"],
+      "answer": "金叉=短线上穿长线（买入信号），死叉=短线下穿长线（卖出信号）",
+      "confidence": 0.85,
+      "reasoning": "金叉是短期均线向上穿过长期均线，死叉是短期均线向下穿过长期均线"
+    },
+    {
+      "id": "sa1-013",
+      "type": "position_management",
+      "difficulty": "入门",
+      "question": "什么是仓位管理？",
+      "context": {"concept": "仓位管理", "scenario": "控制风险"},
+      "options": ["根据风险承受能力决定买入比例", "全仓买入", "只买100股", "无法判断"],
+      "answer": "根据风险承受能力决定买入比例",
+      "confidence": 0.90,
+      "reasoning": "仓位管理是根据风险承受能力和市场情况决定买入比例"
+    },
+    {
+      "id": "sa1-014",
+      "type": "risk_management",
+      "difficulty": "入门",
+      "question": "什么是系统性风险？",
+      "context": {"concept": "系统性风险", "scenario": "市场风险"},
+      "options": ["整个市场共同面临的风险", "单个股票的风险", "无法判断"],
+      "answer": "整个市场共同面临的风险",
+      "confidence": 0.85,
+      "reasoning": "系统性风险是整个市场共同面临的风险，无法通过分散投资消除"
+    },
+    {
+      "id": "sa1-015",
+      "type": "risk_management",
+      "difficulty": "入门",
+      "question": "什么是非系统性风险？",
+      "context": {"concept": "非系统性风险", "scenario": "个股风险"},
+      "options": ["单个股票或行业特有的风险", "整个市场的风险", "无法判断"],
+      "answer": "单个股票或行业特有的风险",
+      "confidence": 0.85,
+      "reasoning": "非系统性风险是单个股票或行业特有的风险，可以通过分散投资降低"
+    },
+    {
+      "id": "sa1-016",
+      "type": "market_rule",
+      "difficulty": "入门",
+      "question": "A股的T+1交易制度是什么意思？",
+      "context": {"market": "A股", "rule": "T+1"},
+      "options": ["当天买入次日才能卖出", "当天买入当天可以卖出", "无法判断"],
+      "answer": "当天买入次日才能卖出",
+      "confidence": 0.90,
+      "reasoning": "A股实行T+1交易制度，当天买入的股票次日才能卖出"
+    },
+    {
+      "id": "sa1-017",
+      "type": "market_rule",
+      "difficulty": "入门",
+      "question": "港股和美股的T+0交易制度是什么意思？",
+      "context": {"market": "港股/美股", "rule": "T+0"},
+      "options": ["当天买入当天可以卖出", "当天买入次日才能卖出", "无法判断"],
+      "answer": "当天买入当天可以卖出",
+      "confidence": 0.90,
+      "reasoning": "港股和美股实行T+0交易制度，当天买入的股票当天可以卖出"
+    },
+    {
+      "id": "sa1-018",
+      "type": "basic_concept",
+      "difficulty": "入门",
+      "question": "什么是市盈率（PE）？",
+      "context": {"concept": "市盈率", "scenario": "估值指标"},
+      "options": ["股价/每股收益", "市值/净利润", "无法判断"],
+      "answer": "股价/每股收益",
+      "confidence": 0.85,
+      "reasoning": "市盈率 = 股价 / 每股收益，反映股票估值水平"
+    },
+    {
+      "id": "sa1-019",
+      "type": "basic_concept",
+      "difficulty": "入门",
+      "question": "什么是市净率（PB）？",
+      "context": {"concept": "市净率", "scenario": "估值指标"},
+      "options": ["股价/每股净资产", "市值/总资产", "无法判断"],
+      "answer": "股价/每股净资产",
+      "confidence": 0.85,
+      "reasoning": "市净率 = 股价 / 每股净资产，反映股票估值水平"
+    },
+    {
+      "id": "sa1-020",
+      "type": "basic_concept",
+      "difficulty": "入门",
+      "question": "什么是ROE（净资产收益率）？",
+      "context": {"concept": "ROE", "scenario": "盈利能力"},
+      "options": ["净利润/净资产", "净利润/总资产", "无法判断"],
+      "answer": "净利润/净资产",
+      "confidence": 0.85,
+      "reasoning": "ROE = 净利润 / 净资产，反映公司盈利能力"
+    }
+  ]
+}

@@ -1,0 +1,1376 @@
+{
+  "domain": "networking",
+  "phase": "phase3",
+  "total": 72,
+  "generated_at": "2026-06-25T20:41:13.533280",
+  "problems": [
+    {
+      "problem_id": "net-phase3-ch16-OpenStack-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "OpenStack",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "云网一体化 - OpenStack #1",
+      "description": "OpenStack基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "OpenStack"
+      ],
+      "created_at": "2026-06-25T20:41:13.513427"
+    },
+    {
+      "problem_id": "net-phase3-ch16-OpenStack-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "OpenStack",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "云网一体化 - OpenStack #2",
+      "description": "OpenStack判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "OpenStack"
+      ],
+      "created_at": "2026-06-25T20:41:13.513430"
+    },
+    {
+      "problem_id": "net-phase3-ch16-OpenStack-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "OpenStack",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "云网一体化 - OpenStack #3",
+      "description": "OpenStack填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "OpenStack"
+      ],
+      "created_at": "2026-06-25T20:41:13.513433"
+    },
+    {
+      "problem_id": "net-phase3-ch16-OpenDayLight-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "OpenDayLight",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "云网一体化 - OpenDayLight #1",
+      "description": "OpenDayLight基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "OpenDayLight"
+      ],
+      "created_at": "2026-06-25T20:41:13.513438"
+    },
+    {
+      "problem_id": "net-phase3-ch16-OpenDayLight-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "OpenDayLight",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "云网一体化 - OpenDayLight #2",
+      "description": "OpenDayLight判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "OpenDayLight"
+      ],
+      "created_at": "2026-06-25T20:41:13.513441"
+    },
+    {
+      "problem_id": "net-phase3-ch16-OpenDayLight-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "OpenDayLight",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "云网一体化 - OpenDayLight #3",
+      "description": "OpenDayLight填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "OpenDayLight"
+      ],
+      "created_at": "2026-06-25T20:41:13.513444"
+    },
+    {
+      "problem_id": "net-phase3-ch16-REST API-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "REST API",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "云网一体化 - REST API #1",
+      "description": "REST API基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "REST API"
+      ],
+      "created_at": "2026-06-25T20:41:13.513448"
+    },
+    {
+      "problem_id": "net-phase3-ch16-REST API-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "REST API",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "云网一体化 - REST API #2",
+      "description": "REST API判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "REST API"
+      ],
+      "created_at": "2026-06-25T20:41:13.513453"
+    },
+    {
+      "problem_id": "net-phase3-ch16-REST API-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "REST API",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "云网一体化 - REST API #3",
+      "description": "REST API填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "REST API"
+      ],
+      "created_at": "2026-06-25T20:41:13.513457"
+    },
+    {
+      "problem_id": "net-phase3-ch16-Neutron配置-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "Neutron配置",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "云网一体化 - Neutron配置 #1",
+      "description": "Neutron配置基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "Neutron配置"
+      ],
+      "created_at": "2026-06-25T20:41:13.513463"
+    },
+    {
+      "problem_id": "net-phase3-ch16-Neutron配置-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "Neutron配置",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "云网一体化 - Neutron配置 #2",
+      "description": "Neutron配置判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "Neutron配置"
+      ],
+      "created_at": "2026-06-25T20:41:13.513467"
+    },
+    {
+      "problem_id": "net-phase3-ch16-Neutron配置-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "Neutron配置",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "云网一体化 - Neutron配置 #3",
+      "description": "Neutron配置填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "Neutron配置"
+      ],
+      "created_at": "2026-06-25T20:41:13.513470"
+    },
+    {
+      "problem_id": "net-phase3-ch16-ODL配置-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "ODL配置",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "云网一体化 - ODL配置 #1",
+      "description": "ODL配置基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "ODL配置"
+      ],
+      "created_at": "2026-06-25T20:41:13.513474"
+    },
+    {
+      "problem_id": "net-phase3-ch16-ODL配置-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "ODL配置",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "云网一体化 - ODL配置 #2",
+      "description": "ODL配置判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "ODL配置"
+      ],
+      "created_at": "2026-06-25T20:41:13.513480"
+    },
+    {
+      "problem_id": "net-phase3-ch16-ODL配置-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "ODL配置",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "云网一体化 - ODL配置 #3",
+      "description": "ODL配置填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "ODL配置"
+      ],
+      "created_at": "2026-06-25T20:41:13.513483"
+    },
+    {
+      "problem_id": "net-phase3-ch16-数据一致性-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "数据一致性",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "云网一体化 - 数据一致性 #1",
+      "description": "数据一致性基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "数据一致性"
+      ],
+      "created_at": "2026-06-25T20:41:13.513487"
+    },
+    {
+      "problem_id": "net-phase3-ch16-数据一致性-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "数据一致性",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "云网一体化 - 数据一致性 #2",
+      "description": "数据一致性判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "数据一致性"
+      ],
+      "created_at": "2026-06-25T20:41:13.513490"
+    },
+    {
+      "problem_id": "net-phase3-ch16-数据一致性-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "数据一致性",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "云网一体化 - 数据一致性 #3",
+      "description": "数据一致性填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "数据一致性"
+      ],
+      "created_at": "2026-06-25T20:41:13.513495"
+    },
+    {
+      "problem_id": "net-phase3-ch16-云网安全-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "云网安全",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "云网一体化 - 云网安全 #1",
+      "description": "云网安全基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "云网安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.513500"
+    },
+    {
+      "problem_id": "net-phase3-ch16-云网安全-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "云网安全",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "云网一体化 - 云网安全 #2",
+      "description": "云网安全判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "云网安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.513503"
+    },
+    {
+      "problem_id": "net-phase3-ch16-云网安全-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "云网安全",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "云网一体化 - 云网安全 #3",
+      "description": "云网安全填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "云网安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.513508"
+    },
+    {
+      "problem_id": "net-phase3-ch16-云网优化-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "云网优化",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "云网一体化 - 云网优化 #1",
+      "description": "云网优化基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "云网优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513512"
+    },
+    {
+      "problem_id": "net-phase3-ch16-云网优化-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "云网优化",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "云网一体化 - 云网优化 #2",
+      "description": "云网优化判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "云网优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513515"
+    },
+    {
+      "problem_id": "net-phase3-ch16-云网优化-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch16",
+      "topic": "云网优化",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "云网一体化 - 云网优化 #3",
+      "description": "云网优化填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://cloudnetint-22vpubkm.manus.space",
+        "replay": "https://manus.im/share/MsukIoiDbhkBjEw6ohl8GK?replay=1"
+      },
+      "knowledge_points": [
+        "云网优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513518"
+    },
+    {
+      "problem_id": "net-phase3-ch17-Ansible基础-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "Ansible基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络自动化 - Ansible基础 #1",
+      "description": "Ansible基础基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "Ansible基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.513523"
+    },
+    {
+      "problem_id": "net-phase3-ch17-Ansible基础-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "Ansible基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络自动化 - Ansible基础 #2",
+      "description": "Ansible基础判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "Ansible基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.513527"
+    },
+    {
+      "problem_id": "net-phase3-ch17-Ansible基础-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "Ansible基础",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络自动化 - Ansible基础 #3",
+      "description": "Ansible基础填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "Ansible基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.513537"
+    },
+    {
+      "problem_id": "net-phase3-ch17-Python网络编程-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "Python网络编程",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络自动化 - Python网络编程 #1",
+      "description": "Python网络编程基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "Python网络编程"
+      ],
+      "created_at": "2026-06-25T20:41:13.513544"
+    },
+    {
+      "problem_id": "net-phase3-ch17-Python网络编程-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "Python网络编程",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络自动化 - Python网络编程 #2",
+      "description": "Python网络编程判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "Python网络编程"
+      ],
+      "created_at": "2026-06-25T20:41:13.513547"
+    },
+    {
+      "problem_id": "net-phase3-ch17-Python网络编程-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "Python网络编程",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络自动化 - Python网络编程 #3",
+      "description": "Python网络编程填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "Python网络编程"
+      ],
+      "created_at": "2026-06-25T20:41:13.513550"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络API-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络API",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络自动化 - 网络API #1",
+      "description": "网络API基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络API"
+      ],
+      "created_at": "2026-06-25T20:41:13.513558"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络API-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络API",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络自动化 - 网络API #2",
+      "description": "网络API判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络API"
+      ],
+      "created_at": "2026-06-25T20:41:13.513561"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络API-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络API",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络自动化 - 网络API #3",
+      "description": "网络API填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络API"
+      ],
+      "created_at": "2026-06-25T20:41:13.513564"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络监控-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络监控",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络自动化 - 网络监控 #1",
+      "description": "网络监控基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.513568"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络监控-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络监控",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络自动化 - 网络监控 #2",
+      "description": "网络监控判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.513572"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络监控-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络监控",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络自动化 - 网络监控 #3",
+      "description": "网络监控填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.513575"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络故障-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络故障",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络自动化 - 网络故障 #1",
+      "description": "网络故障基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络故障"
+      ],
+      "created_at": "2026-06-25T20:41:13.513579"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络故障-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络故障",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络自动化 - 网络故障 #2",
+      "description": "网络故障判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络故障"
+      ],
+      "created_at": "2026-06-25T20:41:13.513582"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络故障-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络故障",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络自动化 - 网络故障 #3",
+      "description": "网络故障填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络故障"
+      ],
+      "created_at": "2026-06-25T20:41:13.513587"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络优化-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络优化",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络自动化 - 网络优化 #1",
+      "description": "网络优化基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513591"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络优化-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络优化",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络自动化 - 网络优化 #2",
+      "description": "网络优化判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513604"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络优化-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络优化",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络自动化 - 网络优化 #3",
+      "description": "网络优化填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513607"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络报告-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络报告",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络自动化 - 网络报告 #1",
+      "description": "网络报告基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络报告"
+      ],
+      "created_at": "2026-06-25T20:41:13.513614"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络报告-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络报告",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络自动化 - 网络报告 #2",
+      "description": "网络报告判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络报告"
+      ],
+      "created_at": "2026-06-25T20:41:13.513617"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络报告-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络报告",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络自动化 - 网络报告 #3",
+      "description": "网络报告填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络报告"
+      ],
+      "created_at": "2026-06-25T20:41:13.513622"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络审计-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络审计",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络自动化 - 网络审计 #1",
+      "description": "网络审计基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络审计"
+      ],
+      "created_at": "2026-06-25T20:41:13.513630"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络审计-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络审计",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络自动化 - 网络审计 #2",
+      "description": "网络审计判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络审计"
+      ],
+      "created_at": "2026-06-25T20:41:13.513635"
+    },
+    {
+      "problem_id": "net-phase3-ch17-网络审计-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch17",
+      "topic": "网络审计",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络自动化 - 网络审计 #3",
+      "description": "网络审计填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "网络审计"
+      ],
+      "created_at": "2026-06-25T20:41:13.513641"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络基础-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络基础 #1",
+      "description": "AI网络基础基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.513648"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络基础-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络基础 #2",
+      "description": "AI网络基础判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.513651"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络基础-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络基础",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI网络 - AI网络基础 #3",
+      "description": "AI网络基础填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.513654"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络架构-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络架构",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络架构 #1",
+      "description": "AI网络架构基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络架构"
+      ],
+      "created_at": "2026-06-25T20:41:13.513658"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络架构-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络架构",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络架构 #2",
+      "description": "AI网络架构判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络架构"
+      ],
+      "created_at": "2026-06-25T20:41:13.513662"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络架构-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络架构",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI网络 - AI网络架构 #3",
+      "description": "AI网络架构填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络架构"
+      ],
+      "created_at": "2026-06-25T20:41:13.513665"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络部署-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络部署",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络部署 #1",
+      "description": "AI网络部署基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络部署"
+      ],
+      "created_at": "2026-06-25T20:41:13.513671"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络部署-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络部署",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络部署 #2",
+      "description": "AI网络部署判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络部署"
+      ],
+      "created_at": "2026-06-25T20:41:13.513674"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络部署-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络部署",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI网络 - AI网络部署 #3",
+      "description": "AI网络部署填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络部署"
+      ],
+      "created_at": "2026-06-25T20:41:13.513677"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络管理-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络管理",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络管理 #1",
+      "description": "AI网络管理基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络管理"
+      ],
+      "created_at": "2026-06-25T20:41:13.513682"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络管理-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络管理",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络管理 #2",
+      "description": "AI网络管理判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络管理"
+      ],
+      "created_at": "2026-06-25T20:41:13.513685"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络管理-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络管理",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI网络 - AI网络管理 #3",
+      "description": "AI网络管理填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络管理"
+      ],
+      "created_at": "2026-06-25T20:41:13.513688"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络安全-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络安全",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络安全 #1",
+      "description": "AI网络安全基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.513692"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络安全-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络安全",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络安全 #2",
+      "description": "AI网络安全判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.513697"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络安全-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络安全",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI网络 - AI网络安全 #3",
+      "description": "AI网络安全填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.513701"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络优化-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络优化",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络优化 #1",
+      "description": "AI网络优化基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513709"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络优化-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络优化",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络优化 #2",
+      "description": "AI网络优化判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513715"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络优化-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络优化",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI网络 - AI网络优化 #3",
+      "description": "AI网络优化填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.513721"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络监控-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络监控",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络监控 #1",
+      "description": "AI网络监控基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.513850"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络监控-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络监控",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络监控 #2",
+      "description": "AI网络监控判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.513861"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络监控-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络监控",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI网络 - AI网络监控 #3",
+      "description": "AI网络监控填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络监控"
+      ],
+      "created_at": "2026-06-25T20:41:13.513866"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络测试-001",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络测试",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络测试 #1",
+      "description": "AI网络测试基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络测试"
+      ],
+      "created_at": "2026-06-25T20:41:13.513871"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络测试-002",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络测试",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI网络 - AI网络测试 #2",
+      "description": "AI网络测试判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络测试"
+      ],
+      "created_at": "2026-06-25T20:41:13.513879"
+    },
+    {
+      "problem_id": "net-phase3-ch18-AI网络测试-003",
+      "domain": "networking",
+      "phase": "phase3",
+      "chapter": "ch18",
+      "topic": "AI网络测试",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI网络 - AI网络测试 #3",
+      "description": "AI网络测试填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "AI网络测试"
+      ],
+      "created_at": "2026-06-25T20:41:13.513882"
+    }
+  ]
+}

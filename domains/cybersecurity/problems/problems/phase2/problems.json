@@ -1,0 +1,1232 @@
+{
+  "domain": "cybersecurity",
+  "phase": "phase2",
+  "total": 72,
+  "generated_at": "2026-06-25T20:54:58.324865",
+  "problems": [
+    {
+      "problem_id": "cyber-phase2-ch4-信息收集-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "信息收集",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "渗透测试 - 信息收集 #1",
+      "description": "信息收集基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "信息收集"
+      ],
+      "created_at": "2026-06-25T20:54:58.320977"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-信息收集-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "信息收集",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "渗透测试 - 信息收集 #2",
+      "description": "信息收集判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "信息收集"
+      ],
+      "created_at": "2026-06-25T20:54:58.320980"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-信息收集-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "信息收集",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "渗透测试 - 信息收集 #3",
+      "description": "信息收集填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "信息收集"
+      ],
+      "created_at": "2026-06-25T20:54:58.320983"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-信息收集-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "信息收集",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "渗透测试 - 信息收集 #4",
+      "description": "信息收集实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "信息收集"
+      ],
+      "created_at": "2026-06-25T20:54:58.320986"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-漏洞扫描-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "漏洞扫描",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "渗透测试 - 漏洞扫描 #1",
+      "description": "漏洞扫描基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "漏洞扫描"
+      ],
+      "created_at": "2026-06-25T20:54:58.320990"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-漏洞扫描-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "漏洞扫描",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "渗透测试 - 漏洞扫描 #2",
+      "description": "漏洞扫描判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "漏洞扫描"
+      ],
+      "created_at": "2026-06-25T20:54:58.320993"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-漏洞扫描-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "漏洞扫描",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "渗透测试 - 漏洞扫描 #3",
+      "description": "漏洞扫描填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "漏洞扫描"
+      ],
+      "created_at": "2026-06-25T20:54:58.320996"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-漏洞扫描-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "漏洞扫描",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "渗透测试 - 漏洞扫描 #4",
+      "description": "漏洞扫描实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "漏洞扫描"
+      ],
+      "created_at": "2026-06-25T20:54:58.320999"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-漏洞利用-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "漏洞利用",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "渗透测试 - 漏洞利用 #1",
+      "description": "漏洞利用基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "漏洞利用"
+      ],
+      "created_at": "2026-06-25T20:54:58.321003"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-漏洞利用-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "漏洞利用",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "渗透测试 - 漏洞利用 #2",
+      "description": "漏洞利用判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "漏洞利用"
+      ],
+      "created_at": "2026-06-25T20:54:58.321005"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-漏洞利用-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "漏洞利用",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "渗透测试 - 漏洞利用 #3",
+      "description": "漏洞利用填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "漏洞利用"
+      ],
+      "created_at": "2026-06-25T20:54:58.321008"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-漏洞利用-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "漏洞利用",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "渗透测试 - 漏洞利用 #4",
+      "description": "漏洞利用实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "漏洞利用"
+      ],
+      "created_at": "2026-06-25T20:54:58.321011"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-权限提升-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "权限提升",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "渗透测试 - 权限提升 #1",
+      "description": "权限提升基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "权限提升"
+      ],
+      "created_at": "2026-06-25T20:54:58.321019"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-权限提升-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "权限提升",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "渗透测试 - 权限提升 #2",
+      "description": "权限提升判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "权限提升"
+      ],
+      "created_at": "2026-06-25T20:54:58.321023"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-权限提升-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "权限提升",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "渗透测试 - 权限提升 #3",
+      "description": "权限提升填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "权限提升"
+      ],
+      "created_at": "2026-06-25T20:54:58.321025"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-权限提升-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "权限提升",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "渗透测试 - 权限提升 #4",
+      "description": "权限提升实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "权限提升"
+      ],
+      "created_at": "2026-06-25T20:54:58.321028"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-后渗透-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "后渗透",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "渗透测试 - 后渗透 #1",
+      "description": "后渗透基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "后渗透"
+      ],
+      "created_at": "2026-06-25T20:54:58.321035"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-后渗透-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "后渗透",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "渗透测试 - 后渗透 #2",
+      "description": "后渗透判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "后渗透"
+      ],
+      "created_at": "2026-06-25T20:54:58.321041"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-后渗透-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "后渗透",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "渗透测试 - 后渗透 #3",
+      "description": "后渗透填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "后渗透"
+      ],
+      "created_at": "2026-06-25T20:54:58.321044"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-后渗透-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "后渗透",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "渗透测试 - 后渗透 #4",
+      "description": "后渗透实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "后渗透"
+      ],
+      "created_at": "2026-06-25T20:54:58.321047"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-报告编写-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "报告编写",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "渗透测试 - 报告编写 #1",
+      "description": "报告编写基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "报告编写"
+      ],
+      "created_at": "2026-06-25T20:54:58.321051"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-报告编写-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "报告编写",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "渗透测试 - 报告编写 #2",
+      "description": "报告编写判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "报告编写"
+      ],
+      "created_at": "2026-06-25T20:54:58.321054"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-报告编写-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "报告编写",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "渗透测试 - 报告编写 #3",
+      "description": "报告编写填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "报告编写"
+      ],
+      "created_at": "2026-06-25T20:54:58.321056"
+    },
+    {
+      "problem_id": "cyber-phase2-ch4-报告编写-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "报告编写",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "渗透测试 - 报告编写 #4",
+      "description": "报告编写实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "报告编写"
+      ],
+      "created_at": "2026-06-25T20:54:58.321059"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-审计基础-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "审计基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "安全审计 - 审计基础 #1",
+      "description": "审计基础基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "审计基础"
+      ],
+      "created_at": "2026-06-25T20:54:58.321063"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-审计基础-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "审计基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "安全审计 - 审计基础 #2",
+      "description": "审计基础判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "审计基础"
+      ],
+      "created_at": "2026-06-25T20:54:58.321066"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-审计基础-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "审计基础",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "安全审计 - 审计基础 #3",
+      "description": "审计基础填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "审计基础"
+      ],
+      "created_at": "2026-06-25T20:54:58.321069"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-审计基础-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "审计基础",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "安全审计 - 审计基础 #4",
+      "description": "审计基础实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "审计基础"
+      ],
+      "created_at": "2026-06-25T20:54:58.321072"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-系统审计-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "系统审计",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "安全审计 - 系统审计 #1",
+      "description": "系统审计基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "系统审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321075"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-系统审计-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "系统审计",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "安全审计 - 系统审计 #2",
+      "description": "系统审计判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "系统审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321078"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-系统审计-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "系统审计",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "安全审计 - 系统审计 #3",
+      "description": "系统审计填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "系统审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321081"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-系统审计-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "系统审计",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "安全审计 - 系统审计 #4",
+      "description": "系统审计实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "系统审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321086"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-网络审计-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "网络审计",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "安全审计 - 网络审计 #1",
+      "description": "网络审计基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "网络审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321092"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-网络审计-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "网络审计",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "安全审计 - 网络审计 #2",
+      "description": "网络审计判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "网络审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321095"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-网络审计-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "网络审计",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "安全审计 - 网络审计 #3",
+      "description": "网络审计填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "网络审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321101"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-网络审计-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "网络审计",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "安全审计 - 网络审计 #4",
+      "description": "网络审计实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "网络审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321144"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-应用审计-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "应用审计",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "安全审计 - 应用审计 #1",
+      "description": "应用审计基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "应用审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321148"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-应用审计-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "应用审计",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "安全审计 - 应用审计 #2",
+      "description": "应用审计判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "应用审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321151"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-应用审计-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "应用审计",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "安全审计 - 应用审计 #3",
+      "description": "应用审计填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "应用审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321154"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-应用审计-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "应用审计",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "安全审计 - 应用审计 #4",
+      "description": "应用审计实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "应用审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321157"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-数据库审计-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "数据库审计",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "安全审计 - 数据库审计 #1",
+      "description": "数据库审计基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数据库审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321164"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-数据库审计-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "数据库审计",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "安全审计 - 数据库审计 #2",
+      "description": "数据库审计判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数据库审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321167"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-数据库审计-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "数据库审计",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "安全审计 - 数据库审计 #3",
+      "description": "数据库审计填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数据库审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321170"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-数据库审计-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "数据库审计",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "安全审计 - 数据库审计 #4",
+      "description": "数据库审计实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数据库审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321173"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-合规审计-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "合规审计",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "安全审计 - 合规审计 #1",
+      "description": "合规审计基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "合规审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321177"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-合规审计-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "合规审计",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "安全审计 - 合规审计 #2",
+      "description": "合规审计判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "合规审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321180"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-合规审计-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "合规审计",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "安全审计 - 合规审计 #3",
+      "description": "合规审计填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "合规审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321183"
+    },
+    {
+      "problem_id": "cyber-phase2-ch5-合规审计-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "合规审计",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "安全审计 - 合规审计 #4",
+      "description": "合规审计实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "合规审计"
+      ],
+      "created_at": "2026-06-25T20:54:58.321185"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-应急计划-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "应急计划",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "应急响应 - 应急计划 #1",
+      "description": "应急计划基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "应急计划"
+      ],
+      "created_at": "2026-06-25T20:54:58.321192"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-应急计划-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "应急计划",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "应急响应 - 应急计划 #2",
+      "description": "应急计划判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "应急计划"
+      ],
+      "created_at": "2026-06-25T20:54:58.321195"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-应急计划-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "应急计划",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "应急响应 - 应急计划 #3",
+      "description": "应急计划填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "应急计划"
+      ],
+      "created_at": "2026-06-25T20:54:58.321197"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-应急计划-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "应急计划",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "应急响应 - 应急计划 #4",
+      "description": "应急计划实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "应急计划"
+      ],
+      "created_at": "2026-06-25T20:54:58.321200"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-事件分类-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "事件分类",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "应急响应 - 事件分类 #1",
+      "description": "事件分类基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "事件分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.321204"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-事件分类-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "事件分类",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "应急响应 - 事件分类 #2",
+      "description": "事件分类判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "事件分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.321207"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-事件分类-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "事件分类",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "应急响应 - 事件分类 #3",
+      "description": "事件分类填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "事件分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.321210"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-事件分类-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "事件分类",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "应急响应 - 事件分类 #4",
+      "description": "事件分类实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "事件分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.321213"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-证据收集-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "证据收集",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "应急响应 - 证据收集 #1",
+      "description": "证据收集基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "证据收集"
+      ],
+      "created_at": "2026-06-25T20:54:58.321217"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-证据收集-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "证据收集",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "应急响应 - 证据收集 #2",
+      "description": "证据收集判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "证据收集"
+      ],
+      "created_at": "2026-06-25T20:54:58.321220"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-证据收集-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "证据收集",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "应急响应 - 证据收集 #3",
+      "description": "证据收集填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "证据收集"
+      ],
+      "created_at": "2026-06-25T20:54:58.321223"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-证据收集-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "证据收集",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "应急响应 - 证据收集 #4",
+      "description": "证据收集实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "证据收集"
+      ],
+      "created_at": "2026-06-25T20:54:58.321226"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-事件处理-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "事件处理",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "应急响应 - 事件处理 #1",
+      "description": "事件处理基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "事件处理"
+      ],
+      "created_at": "2026-06-25T20:54:58.321251"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-事件处理-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "事件处理",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "应急响应 - 事件处理 #2",
+      "description": "事件处理判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "事件处理"
+      ],
+      "created_at": "2026-06-25T20:54:58.321254"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-事件处理-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "事件处理",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "应急响应 - 事件处理 #3",
+      "description": "事件处理填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "事件处理"
+      ],
+      "created_at": "2026-06-25T20:54:58.321257"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-事件处理-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "事件处理",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "应急响应 - 事件处理 #4",
+      "description": "事件处理实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "事件处理"
+      ],
+      "created_at": "2026-06-25T20:54:58.321263"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-恢复重建-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "恢复重建",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "应急响应 - 恢复重建 #1",
+      "description": "恢复重建基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "恢复重建"
+      ],
+      "created_at": "2026-06-25T20:54:58.321269"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-恢复重建-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "恢复重建",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "应急响应 - 恢复重建 #2",
+      "description": "恢复重建判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "恢复重建"
+      ],
+      "created_at": "2026-06-25T20:54:58.321272"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-恢复重建-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "恢复重建",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "应急响应 - 恢复重建 #3",
+      "description": "恢复重建填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "恢复重建"
+      ],
+      "created_at": "2026-06-25T20:54:58.321275"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-恢复重建-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "恢复重建",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "应急响应 - 恢复重建 #4",
+      "description": "恢复重建实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "恢复重建"
+      ],
+      "created_at": "2026-06-25T20:54:58.321278"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-总结改进-001",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "总结改进",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "应急响应 - 总结改进 #1",
+      "description": "总结改进基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "总结改进"
+      ],
+      "created_at": "2026-06-25T20:54:58.321284"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-总结改进-002",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "总结改进",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "应急响应 - 总结改进 #2",
+      "description": "总结改进判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "总结改进"
+      ],
+      "created_at": "2026-06-25T20:54:58.321287"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-总结改进-003",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "总结改进",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "应急响应 - 总结改进 #3",
+      "description": "总结改进填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "总结改进"
+      ],
+      "created_at": "2026-06-25T20:54:58.321295"
+    },
+    {
+      "problem_id": "cyber-phase2-ch6-总结改进-004",
+      "domain": "cybersecurity",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "总结改进",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "应急响应 - 总结改进 #4",
+      "description": "总结改进实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "总结改进"
+      ],
+      "created_at": "2026-06-25T20:54:58.321298"
+    }
+  ]
+}

@@ -1,217 +1,420 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-向量记忆系统 - Vector Memory System
-支持文本嵌入、相似度搜索、记忆持久化
+🦞 小龙虾网络 · 向量记忆系统
+版本: V1.0 | 日期: 2026-06-27
+功能: 基于向量数据库的智能体记忆系统，支持语义搜索和长期记忆
 """
 
 import json
+import os
 import hashlib
-import math
-from typing import List, Dict, Tuple, Optional, Any
-from dataclasses import dataclass, field, asdict
+import numpy as np
 from datetime import datetime
-
-
-@dataclass
-class MemoryEntry:
-    """记忆条目"""
-    id: str
-    content: str
-    embedding: List[float]
-    metadata: Dict[str, Any] = field(default_factory=dict)
-    created_at: str = field(default_factory=lambda: datetime.now().isoformat())
-    access_count: int = 0
-    last_accessed: Optional[str] = None
-    importance: float = 1.0
-    
-    def to_dict(self) -> Dict:
-        return asdict(self)
-
+from typing import Dict, List, Optional, Tuple
 
 class VectorMemory:
-    """向量记忆系统 - 支持嵌入、搜索、持久化"""
+    """向量记忆系统"""
     
-    def __init__(self, dimension: int = 768, max_entries: int = 10000):
-        self.dimension = dimension
-        self.max_entries = max_entries
-        self.memories: Dict[str, MemoryEntry] = {}
-        self._index: List[str] = []
+    def __init__(self, storage_path: str = None, embedding_model: str = "paraphrase-multilingual-MiniLM-L12-v2"):
+        if storage_path is None:
+            # 优先 /shared，fallback 到本地
+            shared_path = "/shared/training/go/vector_memory"
+            local_path = os.path.expanduser("~/.lobster-network/vector_memory")
+            if os.access("/shared/training/go", os.W_OK):
+                storage_path = shared_path
+            else:
+                storage_path = local_path
+        self.storage_path = storage_path
+        self.collections = {
+            "episodic": [],      # 事件记忆
+            "semantic": [],      # 语义记忆
+            "procedural": []     # 程序记忆
+        }
+        self.metadata = {}
+        self._ensure_storage()
+        self._load_data()
+        
+        # 加载向量嵌入模型
+        self._embedding_model_name = embedding_model
+        self._embedding_model = None
     
-    def _generate_id(self, content: str) -> str:
-        """生成记忆ID"""
-        return hashlib.md5(content.encode()).hexdigest()[:12]
+    @property
+    def embedding_model(self):
+        """懒加载嵌入模型（仅在有缓存时加载，否则使用离线 n-gram）"""
+        if self._embedding_model is None:
+            # 检查是否有本地缓存
+            cache_path = os.path.expanduser(f"~/.cache/huggingface/hub/models--sentence-transformers--{self._embedding_model_name.replace('/', '--')}")
+            if os.path.exists(cache_path):
+                try:
+                    from sentence_transformers import SentenceTransformer
+                    self._embedding_model = SentenceTransformer(self._embedding_model_name)
+                    print(f"✅ 向量嵌入模型已加载: {self._embedding_model_name}")
+                except Exception as e:
+                    print(f"⚠️ 向量嵌入模型加载失败: {e}，将使用离线 n-gram 嵌入")
+                    self._embedding_model = False
+            else:
+                # 无缓存，直接使用离线 n-gram
+                self._embedding_model = False
+        return self._embedding_model if self._embedding_model else None
     
-    def _simple_embedding(self, text: str) -> List[float]:
-        """生成简单文本嵌入（基于字符哈希）"""
-        embedding = [0.0] * self.dimension
-        for i, char in enumerate(text):
-            idx = hash(char + str(i)) % self.dimension
-            embedding[idx] += ord(char) / 255.0
-        # 归一化
-        norm = math.sqrt(sum(x**2 for x in embedding))
+    def _generate_ngram_embedding(self, text: str, n: int = 3, dim: int = 256) -> List[float]:
+        """
+        使用字符 n-gram + hash trick 生成离线向量嵌入
+        不依赖网络，完全本地计算
+        """
+        import hashlib
+        
+        # 生成字符 n-gram
+        ngrams = []
+        for i in range(len(text) - n + 1):
+            ngrams.append(text[i:i+n])
+        
+        if not ngrams:
+            # 如果文本太短，用单个字符
+            ngrams = list(text)
+        
+        # 使用 hash trick 将 n-gram 映射到向量
+        embedding = [0.0] * dim
+        for ngram in ngrams:
+            hash_val = int(hashlib.md5(ngram.encode('utf-8')).hexdigest(), 16)
+            index = hash_val % dim
+            # 使用符号 hash 决定正负
+            sign = 1 if (hash_val >> 32) % 2 == 0 else -1
+            embedding[index] += sign
+        
+        # L2 归一化
+        norm = np.sqrt(sum(x*x for x in embedding))
         if norm > 0:
             embedding = [x / norm for x in embedding]
+        
         return embedding
     
-    def add_memory(self, content: str, metadata: Optional[Dict] = None, importance: float = 1.0) -> str:
+    def _ensure_storage(self):
+        """确保存储目录存在"""
+        os.makedirs(self.storage_path, exist_ok=True)
+        for collection in self.collections.keys():
+            os.makedirs(os.path.join(self.storage_path, collection), exist_ok=True)
+    
+    def _load_data(self):
+        """加载现有数据"""
+        for collection, items in self.collections.items():
+            collection_path = os.path.join(self.storage_path, f"{collection}.json")
+            if os.path.exists(collection_path):
+                with open(collection_path, "r", encoding="utf-8") as f:
+                    self.collections[collection] = json.load(f)
+    
+    def _save_data(self):
+        """保存数据"""
+        for collection, items in self.collections.items():
+            collection_path = os.path.join(self.storage_path, f"{collection}.json")
+            with open(collection_path, "w", encoding="utf-8") as f:
+                json.dump(items, f, ensure_ascii=False, indent=2)
+    
+    def add_memory(self, memory_type: str, content: str, metadata: Dict = None) -> str:
         """添加记忆"""
-        if len(self.memories) >= self.max_entries:
-            self._evict_low_importance()
+        if memory_type not in self.collections:
+            raise ValueError(f"未知记忆类型: {memory_type}")
         
-        memory_id = self._generate_id(content)
-        embedding = self._simple_embedding(content)
+        # 生成唯一ID
+        memory_id = hashlib.md5(f"{memory_type}:{content}:{datetime.now().isoformat()}".encode()).hexdigest()[:12]
         
-        entry = MemoryEntry(
-            id=memory_id,
-            content=content,
-            embedding=embedding,
-            metadata=metadata or {},
-            importance=importance
-        )
+        # 生成向量嵌入
+        embedding = self._generate_embedding(content)
         
-        self.memories[memory_id] = entry
-        self._index.append(memory_id)
+        memory = {
+            "id": memory_id,
+            "type": memory_type,
+            "content": content,
+            "metadata": metadata or {},
+            "created_at": datetime.now().isoformat(),
+            "updated_at": datetime.now().isoformat(),
+            "access_count": 0,
+            "importance": self._calculate_importance(content, metadata),
+            "embedding": embedding  # 新增：向量嵌入
+        }
+        
+        self.collections[memory_type].append(memory)
+        self._save_data()
+        
         return memory_id
     
-    def search(self, query: str, top_k: int = 5) -> List[Tuple[str, float]]:
-        """搜索相似记忆"""
-        query_embedding = self._simple_embedding(query)
-        scores = []
+    def _generate_embedding(self, content: str) -> Optional[List[float]]:
+        """生成文本的向量嵌入（优先使用 sentence-transformers，fallback 到离线 n-gram）"""
+        # 尝试使用 sentence-transformers
+        model = self.embedding_model
+        if model:
+            try:
+                embedding = model.encode(content)
+                return embedding.tolist()
+            except Exception as e:
+                pass  # 继续尝试离线 fallback
         
-        for memory_id in self._index:
-            if memory_id not in self.memories:
-                continue
-            entry = self.memories[memory_id]
-            similarity = self._cosine_similarity(query_embedding, entry.embedding)
-            # 考虑重要性和访问频率
-            weighted_score = similarity * entry.importance * (1 + 0.1 * math.log1p(entry.access_count))
-            scores.append((memory_id, weighted_score))
-        
-        scores.sort(key=lambda x: x[1], reverse=True)
-        
-        # 更新访问统计
-        for memory_id, _ in scores[:top_k]:
-            if memory_id in self.memories:
-                self.memories[memory_id].access_count += 1
-                self.memories[memory_id].last_accessed = datetime.now().isoformat()
-        
-        return scores[:top_k]
+        # Fallback: 使用离线 n-gram 嵌入
+        return self._generate_ngram_embedding(content)
     
-    def get_memory(self, memory_id: str) -> Optional[MemoryEntry]:
+    def _cosine_similarity(self, vec1: List[float], vec2: List[float]) -> float:
+        """计算余弦相似度"""
+        a = np.array(vec1)
+        b = np.array(vec2)
+        norm_a = np.linalg.norm(a)
+        norm_b = np.linalg.norm(b)
+        if norm_a == 0 or norm_b == 0:
+            return 0.0
+        return float(np.dot(a, b) / (norm_a * norm_b))
+    
+    def search(self, query: str, memory_type: str = None, top_k: int = 5) -> List[Dict]:
+        """搜索记忆（优先使用向量相似度，fallback 到关键词匹配）"""
+        results = []
+        
+        # 确定搜索范围
+        if memory_type:
+            collections = {memory_type: self.collections.get(memory_type, [])}
+        else:
+            collections = self.collections
+        
+        # 尝试使用向量嵌入搜索
+        query_embedding = self._generate_embedding(query)
+        use_vector = query_embedding is not None
+        
+        for coll_type, items in collections.items():
+            for item in items:
+                if use_vector and item.get("embedding"):
+                    # 向量相似度搜索
+                    score = self._cosine_similarity(query_embedding, item["embedding"])
+                    # 将余弦相似度 [-1,1] 映射到 [0,1]
+                    score = (score + 1) / 2
+                    # 重要性加权
+                    importance = item.get("importance", 0.5)
+                    score = score * 0.7 + importance * 0.3
+                    search_method = "vector"
+                else:
+                    # Fallback: 关键词匹配
+                    score = self._calculate_relevance(query, item)
+                    search_method = "keyword"
+                
+                if score > 0:
+                    item_copy = item.copy()
+                    item_copy["score"] = score
+                    item_copy["search_method"] = search_method
+                    item_copy["access_count"] = item.get("access_count", 0) + 1
+                    results.append(item_copy)
+        
+        # 按相关性排序
+        results.sort(key=lambda x: x["score"], reverse=True)
+        
+        return results[:top_k]
+    
+    def get_memory(self, memory_id: str) -> Optional[Dict]:
         """获取记忆"""
-        return self.memories.get(memory_id)
+        for collection in self.collections.values():
+            for item in collection:
+                if item["id"] == memory_id:
+                    item["access_count"] = item.get("access_count", 0) + 1
+                    self._save_data()
+                    return item
+        return None
+    
+    def update_memory(self, memory_id: str, updates: Dict) -> bool:
+        """更新记忆"""
+        for collection in self.collections.values():
+            for item in collection:
+                if item["id"] == memory_id:
+                    item.update(updates)
+                    item["updated_at"] = datetime.now().isoformat()
+                    self._save_data()
+                    return True
+        return False
     
     def delete_memory(self, memory_id: str) -> bool:
         """删除记忆"""
-        if memory_id in self.memories:
-            del self.memories[memory_id]
-            if memory_id in self._index:
-                self._index.remove(memory_id)
-            return True
+        for collection in self.collections.values():
+            for i, item in enumerate(collection):
+                if item["id"] == memory_id:
+                    collection.pop(i)
+                    self._save_data()
+                    return True
         return False
-    
-    def _cosine_similarity(self, a: List[float], b: List[float]) -> float:
-        """计算余弦相似度"""
-        dot_product = sum(x * y for x, y in zip(a, b))
-        norm_a = math.sqrt(sum(x**2 for x in a))
-        norm_b = math.sqrt(sum(x**2 for x in b))
-        if norm_a == 0 or norm_b == 0:
-            return 0.0
-        return dot_product / (norm_a * norm_b)
-    
-    def _evict_low_importance(self):
-        """驱逐低重要性记忆"""
-        if not self.memories:
-            return
-        lowest_id = min(self.memories.keys(), key=lambda k: self.memories[k].importance)
-        self.delete_memory(lowest_id)
     
     def get_stats(self) -> Dict:
         """获取统计信息"""
-        importances = [m.importance for m in self.memories.values()]
-        access_counts = [m.access_count for m in self.memories.values()]
-        
-        return {
-            "total_memories": len(self.memories),
-            "max_entries": self.max_entries,
-            "dimension": self.dimension,
-            "avg_importance": sum(importances) / len(importances) if importances else 0,
-            "total_accesses": sum(access_counts),
-            "avg_access_count": sum(access_counts) / len(access_counts) if access_counts else 0
+        total = sum(len(items) for items in self.collections.values())
+        with_embedding = sum(1 for items in self.collections.values() for item in items if item.get("embedding"))
+        stats = {
+            "total_memories": total,
+            "memories_with_embedding": with_embedding,
+            "by_type": {k: len(v) for k, v in self.collections.items()},
+            "storage_path": self.storage_path,
+            "embedding_model": self._embedding_model_name if self.embedding_model else "unavailable"
         }
+        return stats
     
-    def export_memories(self) -> List[Dict]:
-        """导出所有记忆"""
-        return [entry.to_dict() for entry in self.memories.values()]
-    
-    def import_memories(self, memories_data: List[Dict]) -> int:
-        """导入记忆"""
+    def batch_embed(self, memory_type: str = None) -> int:
+        """批量为没有嵌入的记忆生成向量"""
         count = 0
-        for data in memories_data:
-            entry = MemoryEntry(**{k: v for k, v in data.items() if k in MemoryEntry.__dataclass_fields__})
-            self.memories[entry.id] = entry
-            if entry.id not in self._index:
-                self._index.append(entry.id)
-            count += 1
+        collections_to_process = {}
+        if memory_type:
+            collections_to_process[memory_type] = self.collections.get(memory_type, [])
+        else:
+            collections_to_process = self.collections
+        
+        for coll_type, items in collections_to_process.items():
+            for item in items:
+                if not item.get("embedding") and item.get("content"):
+                    embedding = self._generate_embedding(item["content"])
+                    if embedding:
+                        item["embedding"] = embedding
+                        count += 1
+        
+        if count > 0:
+            self._save_data()
+        
         return count
-
-
-# 测试函数
-def test_vector_memory():
-    """测试向量记忆系统"""
-    memory = VectorMemory(dimension=128, max_entries=100)
     
-    # 添加记忆
-    id1 = memory.add_memory("围棋征子路线判断技巧", {"category": "go", "difficulty": "中级"})
-    id2 = memory.add_memory("倒扑与扑的区分方法", {"category": "go", "difficulty": "初级"})
-    id3 = memory.add_memory("机器学习模型训练最佳实践", {"category": "ml", "difficulty": "高级"})
-    id4 = memory.add_memory("围棋手筋训练方法", {"category": "go", "difficulty": "中级"})
+    def _calculate_importance(self, content: str, metadata: Dict = None) -> float:
+        """计算重要性分数"""
+        importance = 0.5  # 基础分数
+        
+        # 关键词权重
+        important_keywords = ["评估", "考核", "晋升", "突破", "关键", "重要"]
+        for keyword in important_keywords:
+            if keyword in content:
+                importance += 0.1
+        
+        # 元数据权重
+        if metadata:
+            if metadata.get("priority") == "high":
+                importance += 0.2
+            elif metadata.get("priority") == "medium":
+                importance += 0.1
+        
+        return min(importance, 1.0)
     
-    assert len(memory.memories) == 4
+    def _calculate_relevance(self, query: str, item: Dict) -> float:
+        """计算相关性分数"""
+        content = item.get("content", "").lower()
+        query_lower = query.lower()
+        
+        # 简单关键词匹配
+        query_words = query_lower.split()
+        match_count = sum(1 for word in query_words if word in content)
+        
+        if match_count == 0:
+            return 0.0
+        
+        # 基础分数
+        score = match_count / len(query_words)
+        
+        # 重要性加权
+        importance = item.get("importance", 0.5)
+        score *= (0.5 + importance * 0.5)
+        
+        # 时间衰减（较新的记忆权重更高）
+        created_at = item.get("created_at", "")
+        if created_at:
+            try:
+                created = datetime.fromisoformat(created_at)
+                days_old = (datetime.now() - created).days
+                time_factor = max(0.5, 1.0 - days_old * 0.01)
+                score *= time_factor
+            except:
+                pass
+        
+        return score
     
-    # 搜索测试
-    results = memory.search("围棋征子", top_k=2)
-    assert len(results) == 2
-    assert results[0][0] == id1  # 最相似
-    
-    # 获取记忆
-    entry = memory.get_memory(id1)
-    assert entry is not None
-    assert entry.content == "围棋征子路线判断技巧"
-    
-    # 删除记忆
-    memory.delete_memory(id3)
-    assert len(memory.memories) == 3
-    
-    # 统计信息
-    stats = memory.get_stats()
-    assert stats["total_memories"] == 3
-    assert stats["dimension"] == 128
-    
-    # 导出/导入
-    exported = memory.export_memories()
-    assert len(exported) == 3
-    
-    memory2 = VectorMemory(dimension=128)
-    count = memory2.import_memories(exported)
-    assert count == 3
-    assert len(memory2.memories) == 3
-    
-    return {
-        "status": "passed",
-        "tests_run": 8,
-        "details": {
-            "add_memory": True,
-            "search": True,
-            "get_memory": True,
-            "delete_memory": True,
-            "stats": True,
-            "export_import": True,
-            "similarity_ranking": True,
-            "max_entries_limit": True
-        }
-    }
-
+    def import_from_files(self, directory: str = "/home/admin/.openclaw/workspace/memory"):
+        """从文件导入记忆"""
+        if not os.path.exists(directory):
+            return
+        
+        imported = 0
+        for filename in os.listdir(directory):
+            if filename.endswith(".md"):
+                filepath = os.path.join(directory, filename)
+                with open(filepath, "r", encoding="utf-8") as f:
+                    content = f.read()
+                
+                # 解析日期
+                date_str = filename.replace(".md", "")
+                try:
+                    date = datetime.strptime(date_str, "%Y-%m-%d")
+                    metadata = {
+                        "source": "memory_file",
+                        "date": date_str,
+                        "original_file": filename
+                    }
+                    
+                    self.add_memory("episodic", content, metadata)
+                    imported += 1
+                except:
+                    pass
+        
+        self._save_data()
+        return imported
 
 if __name__ == "__main__":
-    result = test_vector_memory()
-    print(json.dumps(result, indent=2, ensure_ascii=False))
+    # 测试向量记忆系统 V2.0
+    vm = VectorMemory()
+    
+    print("🦞 向量记忆系统 V2.0 测试")
+    print(f"   存储路径: {vm.storage_path}")
+    
+    # 检查嵌入模型
+    model = vm.embedding_model
+    if model:
+        print(f"   嵌入模型: {vm._embedding_model_name} ✅")
+    else:
+        print(f"   嵌入模型: 不可用（将使用关键词匹配 fallback）⚠️")
+    
+    # 添加记忆
+    print("\n📝 添加记忆...")
+    id1 = vm.add_memory("episodic", "2026-06-27: 小陈完成V6 W1D1训练，25题，准确率83.3%", {"date": "2026-06-27", "student": "xiaochen"})
+    id2 = vm.add_memory("episodic", "2026-06-27: 诸葛虾完成V6 W1D1训练，33题，准确率76.7%", {"date": "2026-06-27", "student": "zhuguxia"})
+    id3 = vm.add_memory("semantic", "围棋九段训练方案V6: 26周训练周期，四阶段路径", {"topic": "training_plan", "version": "V6"})
+    id4 = vm.add_memory("procedural", "验证门控规则: 准确率>90%升档，<70%降档，连续3天<60%专项补强", {"topic": "validation"})
+    id5 = vm.add_memory("episodic", "小陈在死活题上表现优异，准确率达到87.5%，但官子部分只有50%正确率", {"date": "2026-06-27", "student": "xiaochen", "topic": "weakness"})
+    id6 = vm.add_memory("episodic", "诸葛虾征子路线判断能力不足，需要专项训练长征子题目", {"date": "2026-06-27", "student": "zhuguxia", "topic": "weakness"})
+    
+    print(f"   已添加6条记忆")
+    
+    # 向量搜索测试
+    print("\n🔍 向量语义搜索（语义相似度）...")
+    results = vm.search("学员训练表现评估", top_k=3)
+    print(f"   找到 {len(results)} 条结果")
+    for r in results:
+        print(f"   - [{r.get('search_method', '?')}] {r['content'][:60]}... (score: {r['score']:.3f})")
+    
+    # 关键词搜索测试
+    print("\n🔍 关键词搜索（fallback）...")
+    results = vm.search("小陈 训练", top_k=3)
+    print(f"   找到 {len(results)} 条结果")
+    for r in results:
+        print(f"   - [{r.get('search_method', '?')}] {r['content'][:60]}... (score: {r['score']:.3f})")
+    
+    # 语义搜索测试 - 相似语义不同词汇
+    print("\n🔍 语义搜索（相似语义不同词汇）...")
+    results = vm.search("学生成绩分析", top_k=3)
+    print(f"   找到 {len(results)} 条结果")
+    for r in results:
+        print(f"   - [{r.get('search_method', '?')}] {r['content'][:60]}... (score: {r['score']:.3f})")
+    
+    # 获取记忆
+    print("\n📖 获取记忆...")
+    memory = vm.get_memory(id1)
+    if memory:
+        print(f"   找到: {memory['content'][:50]}...")
+        emb = memory.get('embedding')
+        if emb:
+            print(f"   向量维度: {len(emb)}")
+        else:
+            print(f"   向量维度: 无（嵌入模型不可用）")
+    
+    # 统计信息
+    print("\n📊 统计信息:")
+    stats = vm.get_stats()
+    print(f"   总记忆数: {stats['total_memories']}")
+    print(f"   有嵌入的记忆: {stats['memories_with_embedding']}")
+    print(f"   按类型: {stats['by_type']}")
+    print(f"   嵌入模型: {stats['embedding_model']}")
+    
+    print("\n✅ 向量记忆系统 V2.0 测试完成")
