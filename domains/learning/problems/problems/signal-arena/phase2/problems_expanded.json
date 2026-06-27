@@ -1,0 +1,172 @@
+{
+  "phase": 2,
+  "name": "Signal Arena 炒股进阶（扩充版）",
+  "description": "多因素分析、技术指标组合、仓位优化（扩充至15题）",
+  "problems": [
+    {
+      "id": "sa2-001",
+      "type": "multi_factor",
+      "difficulty": "中级",
+      "question": "分析买入信号：SMA20上穿SMA50，RSI=65，成交量放大",
+      "context": {"indicators": {"sma20_cross": "金叉", "rsi": 65, "volume": "放量"}},
+      "options": ["强烈买入信号", "卖出信号", "观望", "无法判断"],
+      "answer": "强烈买入信号",
+      "confidence": 0.75,
+      "reasoning": "SMA20上穿SMA50是金叉，RSI=65未超买，成交量放大确认趋势"
+    },
+    {
+      "id": "sa2-002",
+      "type": "position_optimization",
+      "difficulty": "中级",
+      "question": "总资产100万，现金20万，应该买入多少？",
+      "context": {"total_value": 1000000, "cash": 200000, "target_cash_reserve": 0.25},
+      "options": ["最多买入5万", "可以全仓买入", "买入20万", "无法判断"],
+      "answer": "最多买入5万",
+      "confidence": 0.80,
+      "reasoning": "目标现金储备25%=25万，当前20万，最多再买入5万"
+    },
+    {
+      "id": "sa2-003",
+      "type": "technical_analysis",
+      "difficulty": "中级",
+      "question": "RSI>70 且股价创新高，下一步可能？",
+      "context": {"rsi": 75, "price": "新高", "volume": "缩量"},
+      "options": ["可能回调，考虑减仓", "继续买入", "持有不动", "无法判断"],
+      "answer": "可能回调，考虑减仓",
+      "confidence": 0.70,
+      "reasoning": "RSI>70超买，缩量上涨是背离信号，可能回调"
+    },
+    {
+      "id": "sa2-004",
+      "type": "cross_market",
+      "difficulty": "中级",
+      "question": "A股、港股、美股交易时间重叠时段是？",
+      "context": {"markets": ["A股", "港股", "美股"], "timezone": "北京时间"},
+      "options": ["无重叠时段", "9:30-12:00", "21:30-24:00", "全天候"],
+      "answer": "无重叠时段",
+      "confidence": 0.85,
+      "reasoning": "A股9:30-15:00，港股9:30-16:00，美股21:30-4:00(夏令时)，无完全重叠"
+    },
+    {
+      "id": "sa2-005",
+      "type": "risk_reward",
+      "difficulty": "中级",
+      "question": "盈亏比 3:1 是什么意思？",
+      "context": {"ratio": "3:1", "scenario": "风险收益比"},
+      "options": ["潜在盈利是风险的3倍", "风险是盈利的3倍", "盈利和风险的比是1:3", "无法判断"],
+      "answer": "潜在盈利是风险的3倍",
+      "confidence": 0.90,
+      "reasoning": "盈亏比3:1意味着每承担1元风险，预期获得3元收益"
+    },
+    {
+      "id": "sa2-006",
+      "type": "market_sentiment",
+      "difficulty": "中级",
+      "question": "Top 20 选手普遍回调，市场可能处于？",
+      "context": {"top20_change": "-3.7%到-8.6%", "timestamp": "2026-06-24"},
+      "options": ["调整期，现金为王", "牛市初期", "熊市末期", "无法判断"],
+      "answer": "调整期，现金为王",
+      "confidence": 0.75,
+      "reasoning": "Top选手普遍回调说明市场调整，应保持现金等待机会"
+    },
+    {
+      "id": "sa2-007",
+      "type": "technical_analysis",
+      "difficulty": "中级",
+      "question": "MACD金叉意味着什么？",
+      "context": {"indicator": "MACD", "signal": "金叉"},
+      "options": ["买入信号，趋势可能向上", "卖出信号", "无法判断"],
+      "answer": "买入信号，趋势可能向上",
+      "confidence": 0.80,
+      "reasoning": "MACD金叉是DIF线上穿DEA线，通常视为买入信号"
+    },
+    {
+      "id": "sa2-008",
+      "type": "technical_analysis",
+      "difficulty": "中级",
+      "question": "MACD死叉意味着什么？",
+      "context": {"indicator": "MACD", "signal": "死叉"},
+      "options": ["卖出信号，趋势可能向下", "买入信号", "无法判断"],
+      "answer": "卖出信号，趋势可能向下",
+      "confidence": 0.80,
+      "reasoning": "MACD死叉是DIF线下穿DEA线，通常视为卖出信号"
+    },
+    {
+      "id": "sa2-009",
+      "type": "position_optimization",
+      "difficulty": "中级",
+      "question": "什么是凯利公式？",
+      "context": {"formula": "凯利公式", "scenario": "仓位优化"},
+      "options": ["f* = (bp - q) / b，计算最优投注比例", "f* = bp + q", "无法判断"],
+      "answer": "f* = (bp - q) / b，计算最优投注比例",
+      "confidence": 0.85,
+      "reasoning": "凯利公式：f* = (bp - q) / b，其中b是赔率，p是胜率，q=1-p"
+    },
+    {
+      "id": "sa2-010",
+      "type": "risk_management",
+      "difficulty": "中级",
+      "question": "什么是止损单？",
+      "context": {"concept": "止损单", "scenario": "风险控制"},
+      "options": ["预先设定的卖出指令，当股价跌至某价位时自动卖出", "买入指令", "无法判断"],
+      "answer": "预先设定的卖出指令，当股价跌至某价位时自动卖出",
+      "confidence": 0.90,
+      "reasoning": "止损单是预先设定的卖出指令，用于控制亏损"
+    },
+    {
+      "id": "sa2-011",
+      "type": "risk_management",
+      "difficulty": "中级",
+      "question": "什么是止盈单？",
+      "context": {"concept": "止盈单", "scenario": "利润锁定"},
+      "options": ["预先设定的卖出指令，当股价涨至某价位时自动卖出", "买入指令", "无法判断"],
+      "answer": "预先设定的卖出指令，当股价涨至某价位时自动卖出",
+      "confidence": 0.90,
+      "reasoning": "止盈单是预先设定的卖出指令，用于锁定利润"
+    },
+    {
+      "id": "sa2-012",
+      "type": "technical_analysis",
+      "difficulty": "中级",
+      "question": "布林带（Bollinger Bands）由哪几部分组成？",
+      "context": {"indicator": "布林带", "usage": "波动率指标"},
+      "options": ["中轨（SMA）、上轨、下轨", "仅上轨和下轨", "无法判断"],
+      "answer": "中轨（SMA）、上轨、下轨",
+      "confidence": 0.85,
+      "reasoning": "布林带由中轨（通常为20日SMA）、上轨（中轨+2倍标准差）、下轨（中轨-2倍标准差）组成"
+    },
+    {
+      "id": "sa2-013",
+      "type": "technical_analysis",
+      "difficulty": "中级",
+      "question": "布林带收窄意味着什么？",
+      "context": {"indicator": "布林带", "signal": "收窄"},
+      "options": ["波动率降低，可能即将突破", "波动率增加", "无法判断"],
+      "answer": "波动率降低，可能即将突破",
+      "confidence": 0.80,
+      "reasoning": "布林带收窄表示波动率降低，通常预示着即将出现大幅波动"
+    },
+    {
+      "id": "sa2-014",
+      "type": "cross_market",
+      "difficulty": "中级",
+      "question": "汇率折算对港股/美股投资的影响？",
+      "context": {"market": "港股/美股", "factor": "汇率"},
+      "options": ["港股×0.92、美股×7.25折算为人民币", "无影响", "无法判断"],
+      "answer": "港股×0.92、美股×7.25折算为人民币",
+      "confidence": 0.85,
+      "reasoning": "港股和美股需要按汇率折算为人民币计算总资产"
+    },
+    {
+      "id": "sa2-015",
+      "type": "risk_management",
+      "difficulty": "中级",
+      "question": "什么是分散投资？",
+      "context": {"concept": "分散投资", "scenario": "降低风险"},
+      "options": ["跨市场/跨行业配置，降低非系统性风险", "全仓一只股票", "无法判断"],
+      "answer": "跨市场/跨行业配置，降低非系统性风险",
+      "confidence": 0.90,
+      "reasoning": "分散投资通过跨市场、跨行业配置降低非系统性风险"
+    }
+  ]
+}

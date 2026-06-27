@@ -1,0 +1,91 @@
+{
+  "phase": 3,
+  "name": "世界杯预测高级",
+  "description": "冠军预测、冠亚军组合、机器学习模型",
+  "problems": [
+    {
+      "id": "fp3-001",
+      "type": "champion_predict",
+      "difficulty": "高级",
+      "question": "预测本届世界杯冠军",
+      "context": {
+        "candidates": ["德国", "法国", "巴西", "阿根廷", "英格兰", "荷兰"],
+        "factors": ["阵容深度", "历史成绩", "教练经验", "近期状态", "签运"]
+      },
+      "answer": "德国（综合评分最高，阵容+状态+签运均衡）",
+      "confidence": 0.35,
+      "reasoning": "冠军预测难度大，德国阵容深度和近期状态最佳，但足球是圆的"
+    },
+    {
+      "id": "fp3-002",
+      "type": "champion_pair",
+      "difficulty": "高级",
+      "question": "预测冠亚军组合（×5倍率）",
+      "context": {
+        "top_teams": ["德国", "法国", "巴西", "阿根廷"],
+        "format": "冠亚军组合"
+      },
+      "answer": "德国-法国（德国冠军，法国亚军）",
+      "confidence": 0.25,
+      "reasoning": "德国和法国实力最强，可能决赛相遇，但冠亚军组合难度极高"
+    },
+    {
+      "id": "fp3-003",
+      "type": "ml_model",
+      "difficulty": "高级",
+      "question": "设计一个机器学习预测模型",
+      "context": {
+        "features": ["世界排名", "FIFA积分", "近期战绩", "主客场", "历史交锋", "球员身价", "教练评分"],
+        "target": "比赛结果（胜/平/负）"
+      },
+      "options": ["逻辑回归", "随机森林", "XGBoost", "神经网络"],
+      "answer": "XGBoost",
+      "confidence": 0.70,
+      "reasoning": "XGBoost在结构化数据预测中表现最佳，可解释性强，适合足球预测"
+    },
+    {
+      "id": "fp3-004",
+      "type": "portfolio_optimization",
+      "difficulty": "高级",
+      "question": "优化预测组合（凯利公式）",
+      "context": {
+        "bankroll": 1000,
+        "bets": [
+          {"odds": 1.85, "prob": 0.60},
+          {"odds": 3.40, "prob": 0.30},
+          {"odds": 4.20, "prob": 0.20}
+        ]
+      },
+      "answer": "只投注正EV的选项，按凯利公式分配资金",
+      "confidence": 0.75,
+      "reasoning": "凯利公式：f* = (bp - q) / b，只投注f* > 0的选项"
+    },
+    {
+      "id": "fp3-005",
+      "type": "upset_detection",
+      "difficulty": "高级",
+      "question": "识别冷门比赛信号",
+      "context": {
+        "signals": ["强队连败后", "弱队主场+密集防守", "强队轮换主力", "天气极端"]
+      },
+      "options": ["以上都是", "只有强队连败", "只有弱队主场", "无法识别"],
+      "answer": "以上都是",
+      "confidence": 0.80,
+      "reasoning": "冷门通常由多个因素叠加导致，需要综合判断"
+    },
+    {
+      "id": "fp3-006",
+      "type": "group_stage",
+      "difficulty": "高级",
+      "question": "预测小组赛出线球队",
+      "context": {
+        "group": "A组",
+        "teams": ["德国", "日本", "厄瓜多尔", "库拉索"],
+        "format": "前2名出线"
+      },
+      "answer": "德国、日本出线",
+      "confidence": 0.65,
+      "reasoning": "德国实力最强小组第一，日本第二，厄瓜多尔和库拉索出局"
+    }
+  ]
+}

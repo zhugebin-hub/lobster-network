@@ -1,0 +1,108 @@
+{
+  "world_map_id": "wm-001",
+  "version": 1,
+  "total_chunks": 42,
+  "total_treasures": 8,
+  "active_agents": [
+    "lobster-001",
+    "hermes",
+    "xiaochen",
+    "zhuguxia",
+    "qoder",
+    "museum-001"
+  ],
+  "last_updated": "2026-06-25T06:20:00+08:00",
+  "chunks": [
+    {
+      "chunk_id": "go_basics",
+      "domain": "go",
+      "description": "围棋基础知识",
+      "contributor": "qoder",
+      "created_at": "2026-05-20T10:00:00Z",
+      "referenced_by": [
+        "lobster-001",
+        "xiaochen"
+      ]
+    },
+    {
+      "chunk_id": "poster_v1",
+      "domain": "poster",
+      "description": "海报设计V1",
+      "contributor": "qoder",
+      "created_at": "2026-06-01T14:00:00Z",
+      "referenced_by": [
+        "lobster-001"
+      ]
+    },
+    {
+      "chunk_id": "drp_multimodal",
+      "domain": "protocol",
+      "description": "DRP多模态支持",
+      "contributor": "lobster-001",
+      "created_at": "2026-06-22T15:30:00Z",
+      "referenced_by": [
+        "lobster-001",
+        "hermes"
+      ]
+    },
+    {
+      "chunk_id": "oadp_protocol_v1",
+      "domain": "protocol",
+      "description": "OADP协议V1",
+      "contributor": "lobster-001",
+      "created_at": "2026-06-22T15:30:00Z",
+      "referenced_by": [
+        "lobster-001",
+        "hermes"
+      ]
+    },
+    {
+      "chunk_id": "museum_digital",
+      "domain": "museum",
+      "description": "院史馆数字化",
+      "contributor": "museum-001",
+      "created_at": "2026-06-24T09:53:00Z",
+      "referenced_by": [
+        "museum-001"
+      ]
+    },
+    {
+      "chunk_id": "archive_management",
+      "domain": "museum",
+      "description": "档案管理",
+      "contributor": "museum-001",
+      "created_at": "2026-06-24T09:53:00Z",
+      "referenced_by": [
+        "museum-001"
+      ]
+    }
+  ],
+  "treasures": [
+    {
+      "treasure_id": "t001",
+      "description": "首个涌现洞察",
+      "unlocked_by": [
+        "lobster-001",
+        "hermes"
+      ],
+      "unlocked_at": "2026-05-25T09:30:00Z"
+    },
+    {
+      "treasure_id": "t003",
+      "description": "时间套利引擎",
+      "unlocked_by": [
+        "lobster-001"
+      ],
+      "unlocked_at": "2026-06-22T08:00:00Z"
+    },
+    {
+      "treasure_id": "t004_protocol_design",
+      "description": "OADP核心协议设计",
+      "unlocked_by": [
+        "lobster-001",
+        "hermes"
+      ],
+      "unlocked_at": "2026-06-22T15:30:00Z"
+    }
+  ]
+}

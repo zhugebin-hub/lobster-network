@@ -1,214 +1,397 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-MCP Server - Model Context Protocol 实现
-支持工具注册、调用、流式响应
+🦞 小龙虾网络 · MCP服务器
+版本: V1.0 | 日期: 2026-06-27
+功能: 提供标准化智能体工具调用接口
 """
 
 import json
-import asyncio
-import uuid
-from typing import Dict, List, Any, Optional, Callable
-from dataclasses import dataclass, field, asdict
-from enum import Enum
+import os
+import sys
+from datetime import datetime
+from typing import Dict, List, Optional, Any
 
+# MCP工具定义
+MCP_TOOLS = {
+    "training_plan": {
+        "name": "training_plan",
+        "description": "获取或创建训练计划",
+        "parameters": {
+            "student_id": {"type": "string", "description": "学员ID"},
+            "phase": {"type": "string", "description": "训练阶段"},
+            "week": {"type": "integer", "description": "周次"},
+            "day": {"type": "integer", "description": "日次"}
+        },
+        "returns": "训练计划JSON"
+    },
+    "task_dispatch": {
+        "name": "task_dispatch",
+        "description": "向学员派发训练任务",
+        "parameters": {
+            "student_id": {"type": "string", "description": "学员ID"},
+            "task_type": {"type": "string", "description": "任务类型: training|evaluation|match"},
+            "problems": {"type": "array", "description": "题目列表"},
+            "time_limit": {"type": "integer", "description": "时间限制(分钟)"}
+        },
+        "returns": "任务ID"
+    },
+    "validation_gate": {
+        "name": "validation_gate",
+        "description": "验证训练结果，判断是否达标",
+        "parameters": {
+            "student_id": {"type": "string", "description": "学员ID"},
+            "task_id": {"type": "string", "description": "任务ID"},
+            "accuracy": {"type": "number", "description": "准确率"},
+            "threshold": {"type": "number", "description": "达标阈值"}
+        },
+        "returns": "验证结果: pass|fail"
+    },
+    "evaluation": {
+        "name": "evaluation",
+        "description": "生成学员评估报告",
+        "parameters": {
+            "student_id": {"type": "string", "description": "学员ID"},
+            "evaluation_type": {"type": "string", "description": "评估类型: daily|weekly|phase"}
+        },
+        "returns": "评估报告JSON"
+    },
+    "memory_search": {
+        "name": "memory_search",
+        "description": "语义搜索记忆库",
+        "parameters": {
+            "query": {"type": "string", "description": "搜索查询"},
+            "top_k": {"type": "integer", "description": "返回结果数量", "default": 5}
+        },
+        "returns": "记忆片段列表"
+    },
+    "knowledge_retrieval": {
+        "name": "knowledge_retrieval",
+        "description": "检索知识图谱中的知识",
+        "parameters": {
+            "topic": {"type": "string", "description": "知识主题"},
+            "depth": {"type": "integer", "description": "检索深度", "default": 2}
+        },
+        "returns": "知识条目列表"
+    }
+}
 
-class MCPSchemaVersion(Enum):
-    V1 = "1.0"
-    V2 = "2.0"
-
-
-@dataclass
-class MCPTool:
-    """MCP工具定义"""
-    name: str
-    description: str
-    parameters: Dict[str, Any]
-    handler: Optional[Callable] = None
-    version: str = "1.0"
-    
-    def to_dict(self) -> Dict:
-        return {
-            "name": self.name,
-            "description": self.description,
-            "parameters": self.parameters,
-            "version": self.version
-        }
-
-
-@dataclass
-class MCPRequest:
-    """MCP请求"""
-    id: str = field(default_factory=lambda: str(uuid.uuid4()))
-    method: str = ""
-    params: Dict[str, Any] = field(default_factory=dict)
-    jsonrpc: str = "2.0"
-    
-    def to_dict(self) -> Dict:
-        return asdict(self)
-
-
-@dataclass
-class MCPResponse:
-    """MCP响应"""
-    id: str = ""
-    result: Any = None
-    error: Optional[Dict] = None
-    jsonrpc: str = "2.0"
-    
-    def to_dict(self) -> Dict:
-        if self.error:
-            return {"id": self.id, "error": self.error, "jsonrpc": self.jsonrpc}
-        return {"id": self.id, "result": self.result, "jsonrpc": self.jsonrpc}
-
+# MCP资源定义
+MCP_RESOURCES = {
+    "lobster://students/profiles": {
+        "uri": "lobster://students/profiles",
+        "name": "学员档案",
+        "description": "所有学员的档案信息",
+        "mime_type": "application/json"
+    },
+    "lobster://training/data": {
+        "uri": "lobster://training/data",
+        "name": "训练数据",
+        "description": "训练进度和结果数据",
+        "mime_type": "application/json"
+    },
+    "lobster://communication/logs": {
+        "uri": "lobster://communication/logs",
+        "name": "通信日志",
+        "description": "节点间通信记录",
+        "mime_type": "application/json"
+    }
+}
 
 class MCPServer:
-    """MCP服务器 - 支持工具注册、调用、流式响应"""
+    """MCP服务器实现"""
     
-    def __init__(self, name: str = "LobsterNetwork-MCP", version: str = "3.0"):
-        self.name = name
-        self.version = version
-        self.tools: Dict[str, MCPTool] = {}
-        self.resources: Dict[str, Dict] = {}
-        self.prompts: Dict[str, Dict] = {}
-        self.schema_version = MCPSchemaVersion.V2
+    def __init__(self, config_path: str = None):
+        self.config = self._load_config(config_path)
+        self.tools = MCP_TOOLS
+        self.resources = MCP_RESOURCES
+        self.running = False
+    
+    def _load_config(self, config_path: str) -> dict:
+        """加载配置"""
+        default_config = {
+            "server": {
+                "host": "0.0.0.0",
+                "port": 8199,
+                "protocol": "stdio"
+            },
+            "tools": list(MCP_TOOLS.keys()),
+            "resources": list(MCP_RESOURCES.keys())
+        }
         
-    def register_tool(self, tool: MCPTool) -> bool:
-        """注册工具"""
-        if tool.name in self.tools:
-            return False
-        self.tools[tool.name] = tool
-        return True
-    
-    def unregister_tool(self, name: str) -> bool:
-        """注销工具"""
-        if name in self.tools:
-            del self.tools[name]
-            return True
-        return False
-    
-    async def call_tool(self, name: str, arguments: Dict[str, Any]) -> MCPResponse:
-        """调用工具"""
-        if name not in self.tools:
-            return MCPResponse(error={"code": -32601, "message": f"Tool '{name}' not found"})
-        
-        tool = self.tools[name]
-        try:
-            if tool.handler:
-                result = await tool.handler(**arguments) if asyncio.iscoroutinefunction(tool.handler) else tool.handler(**arguments)
-                return MCPResponse(result=result)
-            return MCPResponse(error={"code": -32603, "message": "Tool has no handler"})
-        except Exception as e:
-            return MCPResponse(error={"code": -32603, "message": str(e)})
+        if config_path and os.path.exists(config_path):
+            with open(config_path) as f:
+                return json.load(f)
+        return default_config
     
     def list_tools(self) -> List[Dict]:
-        """列出所有工具"""
-        return [tool.to_dict() for tool in self.tools.values()]
+        """列出可用工具"""
+        return list(self.tools.values())
     
-    def register_resource(self, uri: str, resource: Dict) -> bool:
-        """注册资源"""
-        if uri in self.resources:
-            return False
-        self.resources[uri] = resource
-        return True
+    def call_tool(self, tool_name: str, parameters: Dict) -> Any:
+        """调用工具"""
+        if tool_name not in self.tools:
+            raise ValueError(f"未知工具: {tool_name}")
+        
+        tool = self.tools[tool_name]
+        
+        # 验证参数
+        for param_name, param_def in tool["parameters"].items():
+            if param_name in parameters:
+                # 类型检查
+                expected_type = param_def["type"]
+                actual_value = parameters[param_name]
+                if expected_type == "string" and not isinstance(actual_value, str):
+                    raise TypeError(f"参数 {param_name} 类型错误")
+                elif expected_type == "integer" and not isinstance(actual_value, int):
+                    raise TypeError(f"参数 {param_name} 类型错误")
+                elif expected_type == "number" and not isinstance(actual_value, (int, float)):
+                    raise TypeError(f"参数 {param_name} 类型错误")
+        
+        # 执行工具
+        return self._execute_tool(tool_name, parameters)
+    
+    def _execute_tool(self, tool_name: str, parameters: Dict) -> Any:
+        """执行工具逻辑"""
+        if tool_name == "training_plan":
+            return self._get_training_plan(parameters)
+        elif tool_name == "task_dispatch":
+            return self._dispatch_task(parameters)
+        elif tool_name == "validation_gate":
+            return self._validate_result(parameters)
+        elif tool_name == "evaluation":
+            return self._generate_evaluation(parameters)
+        elif tool_name == "memory_search":
+            return self._search_memory(parameters)
+        elif tool_name == "knowledge_retrieval":
+            return self._retrieve_knowledge(parameters)
+    
+    def _get_training_plan(self, params: Dict) -> Dict:
+        """获取训练计划"""
+        student_id = params.get("student_id", "xiaochen")
+        phase = params.get("phase", 1)
+        week = params.get("week", 1)
+        day = params.get("day", 1)
+        
+        # 读取训练计划（优先 /shared，fallback 到本地）
+        plan_paths = [
+            "/shared/training/go/GO_TRAINING_PLAN_V6.json",
+            os.path.expanduser("~/.lobster-network/GO_TRAINING_PLAN_V6.json"),
+        ]
+        for plan_path in plan_paths:
+            if os.path.exists(plan_path):
+                with open(plan_path) as f:
+                    plan = json.load(f)
+                return {"status": "success", "plan": plan}
+        return {"status": "error", "message": "训练计划文件不存在"}
+    
+    def _dispatch_task(self, params: Dict) -> Dict:
+        """派发任务"""
+        student_id = params.get("student_id", "xiaochen")
+        task_type = params.get("task_type", "training")
+        
+        task = {
+            "id": f"task-{student_id}-{datetime.now().strftime('%Y%m%d%H%M%S')}",
+            "from": "hermes",
+            "to": student_id,
+            "timestamp": datetime.now().isoformat(),
+            "type": task_type,
+            "status": "dispatched"
+        }
+        
+        # 保存到 inbox（优先 /shared，fallback 到本地）
+        inbox_paths = [
+            f"/shared/messages/queue/{student_id}/inbox",
+            os.path.expanduser(f"~/.lobster-network/messages/{student_id}/inbox"),
+        ]
+        saved = False
+        for inbox_path in inbox_paths:
+            try:
+                os.makedirs(inbox_path, exist_ok=True)
+                task_path = os.path.join(inbox_path, f"{task['id']}.json")
+                with open(task_path, "w") as f:
+                    json.dump(task, f, ensure_ascii=False, indent=2)
+                saved = True
+                break
+            except PermissionError:
+                continue
+        
+        if not saved:
+            return {"status": "error", "message": "无法保存任务：无可用存储路径"}
+        
+        return {"status": "success", "task_id": task["id"]}
+    
+    def _validate_result(self, params: Dict) -> Dict:
+        """验证结果"""
+        student_id = params.get("student_id", "xiaochen")
+        accuracy = params.get("accuracy", 0)
+        threshold = params.get("threshold", 0.75)
+        
+        passed = accuracy >= threshold
+        return {
+            "status": "success",
+            "student_id": student_id,
+            "accuracy": accuracy,
+            "threshold": threshold,
+            "passed": passed,
+            "message": "达标" if passed else "未达标"
+        }
+    
+    def _generate_evaluation(self, params: Dict) -> Dict:
+        """生成评估"""
+        student_id = params.get("student_id", "xiaochen")
+        eval_type = params.get("evaluation_type", "daily")
+        
+        # 读取学员档案（优先 /shared，fallback 到本地）
+        profile_paths = [
+            f"/shared/training/go/{student_id}/profile.json",
+            os.path.expanduser(f"~/.lobster-network/profiles/{student_id}/profile.json"),
+        ]
+        for profile_path in profile_paths:
+            if os.path.exists(profile_path):
+                with open(profile_path) as f:
+                    profile = json.load(f)
+                return {"status": "success", "evaluation": profile}
+        return {"status": "error", "message": "学员档案不存在"}
+    
+    def _search_memory(self, params: Dict) -> Dict:
+        """搜索记忆"""
+        query = params.get("query", "")
+        top_k = params.get("top_k", 5)
+        
+        # 简单实现：搜索memory目录
+        memory_dir = "/home/admin/.openclaw/workspace/memory"
+        results = []
+        
+        if os.path.exists(memory_dir):
+            for filename in os.listdir(memory_dir):
+                if filename.endswith(".md"):
+                    filepath = os.path.join(memory_dir, filename)
+                    with open(filepath, "r", encoding="utf-8") as f:
+                        content = f.read()
+                        if query in content:
+                            results.append({
+                                "file": filename,
+                                "content": content[:500],
+                                "relevance": content.count(query)
+                            })
+        
+        results.sort(key=lambda x: x["relevance"], reverse=True)
+        return {"status": "success", "results": results[:top_k]}
+    
+    def _retrieve_knowledge(self, params: Dict) -> Dict:
+        """检索知识"""
+        topic = params.get("topic", "")
+        depth = params.get("depth", 2)
+        
+        # 读取九段技能文档（优先 /shared，fallback 到本地）
+        skill_paths = [
+            "/shared/training/go/GO_NINE_DAN_SKILL.md",
+            os.path.expanduser("~/.lobster-network/GO_NINE_DAN_SKILL.md"),
+        ]
+        for skill_path in skill_paths:
+            if os.path.exists(skill_path):
+                with open(skill_path, "r", encoding="utf-8") as f:
+                    content = f.read()
+                return {"status": "success", "content": content[:2000]}
+        return {"status": "error", "message": "技能文档不存在"}
     
     def list_resources(self) -> List[Dict]:
-        """列出所有资源"""
+        """列出可用资源"""
         return list(self.resources.values())
     
-    def register_prompt(self, name: str, prompt: Dict) -> bool:
-        """注册提示"""
-        if name in self.prompts:
-            return False
-        self.prompts[name] = prompt
-        return True
-    
-    def list_prompts(self) -> List[Dict]:
-        """列出所有提示"""
-        return list(self.prompts.values())
-    
-    async def handle_request(self, request_data: Dict) -> Dict:
-        """处理MCP请求"""
-        request = MCPRequest(**{k: v for k, v in request_data.items() if k in MCPRequest.__dataclass_fields__})
+    def read_resource(self, resource_uri: str) -> Any:
+        """读取资源"""
+        if resource_uri not in self.resources:
+            raise ValueError(f"未知资源: {resource_uri}")
         
-        if request.method == "tools/list":
-            return MCPResponse(id=request.id, result={"tools": self.list_tools()}).to_dict()
-        elif request.method == "tools/call":
-            tool_name = request.params.get("name", "")
-            arguments = request.params.get("arguments", {})
-            response = await self.call_tool(tool_name, arguments)
-            response.id = request.id
-            return response.to_dict()
-        elif request.method == "resources/list":
-            return MCPResponse(id=request.id, result={"resources": self.list_resources()}).to_dict()
-        elif request.method == "prompts/list":
-            return MCPResponse(id=request.id, result={"prompts": self.list_prompts()}).to_dict()
-        else:
-            return MCPResponse(id=request.id, error={"code": -32601, "message": f"Method '{request.method}' not found"}).to_dict()
+        resource = self.resources[resource_uri]
+        
+        if resource_uri == "lobster://students/profiles":
+            return self._read_student_profiles()
+        elif resource_uri == "lobster://training/data":
+            return self._read_training_data()
+        elif resource_uri == "lobster://communication/logs":
+            return self._read_communication_logs()
     
-    def get_server_info(self) -> Dict:
-        """获取服务器信息"""
-        return {
-            "name": self.name,
-            "version": self.version,
-            "schema_version": self.schema_version.value,
-            "tools_count": len(self.tools),
-            "resources_count": len(self.resources),
-            "prompts_count": len(self.prompts)
-        }
-
-
-# 测试函数
-async def test_mcp_server():
-    """测试MCP服务器"""
-    server = MCPServer("TestMCP", "3.0")
+    def _read_student_profiles(self) -> Dict:
+        """读取学员档案"""
+        profiles = {}
+        for student in ["xiaochen", "zhuguxia", "qoder"]:
+            profile_paths = [
+                f"/shared/training/go/{student}/profile.json",
+                os.path.expanduser(f"~/.lobster-network/profiles/{student}/profile.json"),
+            ]
+            for profile_path in profile_paths:
+                if os.path.exists(profile_path):
+                    with open(profile_path) as f:
+                        profiles[student] = json.load(f)
+                    break
+        return {"status": "success", "profiles": profiles}
     
-    # 注册工具
-    def add(a: int, b: int) -> int:
-        return a + b
+    def _read_training_data(self) -> Dict:
+        """读取训练数据"""
+        status_paths = [
+            "/shared/training/go/status.json",
+            os.path.expanduser("~/.lobster-network/status.json"),
+        ]
+        for status_path in status_paths:
+            if os.path.exists(status_path):
+                with open(status_path) as f:
+                    status = json.load(f)
+                return {"status": "success", "status": status}
+        return {"status": "error", "message": "状态文件不存在"}
     
-    server.register_tool(MCPTool(
-        name="add",
-        description="加法运算",
-        parameters={"type": "object", "properties": {"a": {"type": "integer"}, "b": {"type": "integer"}}},
-        handler=add
-    ))
+    def _read_communication_logs(self) -> Dict:
+        """读取通信日志"""
+        log_paths = [
+            "/shared/training/go/dispatcher_v6.log",
+            os.path.expanduser("~/.lobster-network/communication.log"),
+        ]
+        for log_path in log_paths:
+            if os.path.exists(log_path):
+                with open(log_path, "r") as f:
+                    logs = f.readlines()[-100:]  # 最近100行
+                return {"status": "success", "logs": logs}
+        return {"status": "error", "message": "日志文件不存在"}
     
-    # 测试工具列表
-    tools = server.list_tools()
-    assert len(tools) == 1
-    assert tools[0]["name"] == "add"
+    def start(self):
+        """启动服务器"""
+        self.running = True
+        print(f"🦞 MCP服务器启动中...")
+        print(f"   协议: {self.config['server']['protocol']}")
+        print(f"   工具: {len(self.tools)}")
+        print(f"   资源: {len(self.resources)}")
+        print(f"   状态: ✅ 运行中")
     
-    # 测试工具调用
-    response = await server.call_tool("add", {"a": 3, "b": 5})
-    assert response.result == 8
-    
-    # 测试不存在的工具
-    response = await server.call_tool("nonexistent", {})
-    assert response.error is not None
-    
-    # 测试请求处理
-    request = {"method": "tools/list", "params": {}, "id": "test-1"}
-    response = await server.handle_request(request)
-    assert response["result"]["tools"][0]["name"] == "add"
-    
-    # 测试服务器信息
-    info = server.get_server_info()
-    assert info["tools_count"] == 1
-    assert info["name"] == "TestMCP"
-    
-    return {
-        "status": "passed",
-        "tests_run": 6,
-        "details": {
-            "tool_registration": True,
-            "tool_calling": True,
-            "error_handling": True,
-            "request_handling": True,
-            "server_info": True
-        }
-    }
-
+    def stop(self):
+        """停止服务器"""
+        self.running = False
+        print("🦞 MCP服务器已停止")
 
 if __name__ == "__main__":
-    import asyncio
-    result = asyncio.run(test_mcp_server())
-    print(json.dumps(result, indent=2, ensure_ascii=False))
+    server = MCPServer()
+    server.start()
+    
+    # 测试工具
+    print("\n📋 可用工具:")
+    for tool in server.list_tools():
+        print(f"  - {tool['name']}: {tool['description']}")
+    
+    print("\n📁 可用资源:")
+    for resource in server.list_resources():
+        print(f"  - {resource['uri']}: {resource['name']}")
+    
+    # 测试调用
+    print("\n🧪 测试调用:")
+    result = server.call_tool("training_plan", {"student_id": "xiaochen"})
+    print(f"  training_plan: {result['status']}")
+    
+    result = server.call_tool("validation_gate", {
+        "student_id": "xiaochen",
+        "accuracy": 0.83,
+        "threshold": 0.75
+    })
+    print(f"  validation_gate: {result['message']}")
+    
+    server.stop()

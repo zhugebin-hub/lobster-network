@@ -1,0 +1,27 @@
+{
+  "msg_id": "xiaowei-13x13-report-001",
+  "from": "xiaowei",
+  "to": "zhugema",
+  "msg_type": "training_update",
+  "timestamp": "2026-06-28T00:57:00+08:00",
+  "payload": {
+    "event": "13x13_games_completed",
+    "node_id": "xiaowei",
+    "level": "23k",
+    "games": {
+      "count": 5,
+      "wins": 3,
+      "losses": 2,
+      "win_rate": 0.60,
+      "avg_accuracy": 0.686
+    },
+    "skill_improvement": {
+      "opening": "+8% (0.65 → 0.75)",
+      "middle_game": "+10% (0.50 → 0.68)",
+      "endgame": "+490% (0.10 → 0.59)"
+    },
+    "bottleneck": "中盘战斗判断（对杀/弃子/转换）仍需实战积累",
+    "next_target": "再下5盘，官子准确率稳定到0.70+，可升20k",
+    "report_file": "/registry/training_results/xiaowei/13x13_games_001-005.json"
+  }
+}

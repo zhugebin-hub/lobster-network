@@ -22,6 +22,8 @@ v0.5.0 变更:
 v0.4.0 变更:
 - 新增: 节点注册中心 (NodeRegistry)、可靠消息 (Messenger)、集成层 (LobsterNetworkWithRegistry)
 - 新增: SSH通道v2 (SSHChannelV2)、消息协议v2 (MessageProtocolV2)
+- 新增: 交易系统 (TradingSystem)、代币经济 (TokenEconomy)、智能合约 (SmartContract)
+- 新增: 跨链系统 (CrossChainSystem)、多币种系统 (MultiCurrencySystem)
 """
 
 __version__ = "0.6.0"
@@ -32,6 +34,14 @@ from .dialogue import DialogueEngine, DialogueResult
 from .emergence import EmergenceDetector, EmergenceEvent
 from .world_state import WorldState, WorldStateManager
 from .lobster_network import LobsterNetwork
+from .node_registry import NodeRegistry, NodeRegistration
+
+# 经济与交易层 (Economy & Trading Layer)
+from .trading import TradingSystem, Task, Product, Order, UserProfile
+from .token_economy import TokenEconomy, Transaction, Block, Wallet
+from .smart_contract import SmartContractSystem, SmartContract, ContractCondition
+from .cross_chain import CrossChainSystem, LiquidityPool, CrossChainTransaction, BridgeNode
+from .multi_currency import MultiCurrencySystem, MultiCurrencyWallet, ExchangeRecord
 
 # 网络层 (Network Layer)
 from .network.indra_net import IndraNet, IndraNetNode
@@ -52,6 +62,7 @@ from .utils.config import NetworkConfig, ConfigManager
 from .utils.logger import LobsterLogger, get_logger
 from .utils.message_protocol_v2 import Message as MessageV2, MessageProtocol as MessageProtocolV2
 from .utils.message_protocol import Message as LegacyMessage, MessageProtocol as LegacyMessageProtocol
+from .utils.message_protocol import MessageProtocol  # master 新增
 
 # 套利层 (Arbitrage Layer)
 from .time_arbitrage import (
@@ -85,6 +96,7 @@ try:
 except ImportError:
     pass  # http_transport 模块为可选增强
 
+
 __all__ = [
     # Version
     "__version__",
@@ -93,6 +105,12 @@ __all__ = [
     "EmergenceDetector", "EmergenceEvent",
     "WorldState", "WorldStateManager",
     "LobsterNetwork",
+    # Economy & Trading
+    "TradingSystem", "Task", "Product", "Order", "UserProfile",
+    "TokenEconomy", "Transaction", "Block", "Wallet",
+    "SmartContractSystem", "SmartContract", "ContractCondition",
+    "CrossChainSystem", "LiquidityPool", "CrossChainTransaction", "BridgeNode",
+    "MultiCurrencySystem", "MultiCurrencyWallet", "ExchangeRecord",
     # Network
     "IndraNet", "IndraNetNode",
     "SSHChannel", "SSHChannelV2", "SSHTransport",

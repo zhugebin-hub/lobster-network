@@ -1,0 +1,1232 @@
+{
+  "domain": "data_structure",
+  "phase": "phase1",
+  "total": 72,
+  "generated_at": "2026-06-25T20:54:58.431420",
+  "problems": [
+    {
+      "problem_id": "ds-phase1-ch1-数据结构概念-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "数据结构概念",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "数据结构概述 - 数据结构概念 #1",
+      "description": "数据结构概念基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数据结构概念"
+      ],
+      "created_at": "2026-06-25T20:54:58.430278"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-数据结构概念-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "数据结构概念",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "数据结构概述 - 数据结构概念 #2",
+      "description": "数据结构概念判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数据结构概念"
+      ],
+      "created_at": "2026-06-25T20:54:58.430297"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-数据结构概念-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "数据结构概念",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "数据结构概述 - 数据结构概念 #3",
+      "description": "数据结构概念填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数据结构概念"
+      ],
+      "created_at": "2026-06-25T20:54:58.430301"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-数据结构概念-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "数据结构概念",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "数据结构概述 - 数据结构概念 #4",
+      "description": "数据结构概念实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数据结构概念"
+      ],
+      "created_at": "2026-06-25T20:54:58.430304"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-算法复杂度-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "算法复杂度",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "数据结构概述 - 算法复杂度 #1",
+      "description": "算法复杂度基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "算法复杂度"
+      ],
+      "created_at": "2026-06-25T20:54:58.430317"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-算法复杂度-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "算法复杂度",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "数据结构概述 - 算法复杂度 #2",
+      "description": "算法复杂度判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "算法复杂度"
+      ],
+      "created_at": "2026-06-25T20:54:58.430320"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-算法复杂度-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "算法复杂度",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "数据结构概述 - 算法复杂度 #3",
+      "description": "算法复杂度填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "算法复杂度"
+      ],
+      "created_at": "2026-06-25T20:54:58.430323"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-算法复杂度-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "算法复杂度",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "数据结构概述 - 算法复杂度 #4",
+      "description": "算法复杂度实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "算法复杂度"
+      ],
+      "created_at": "2026-06-25T20:54:58.430326"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-时间复杂度-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "时间复杂度",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "数据结构概述 - 时间复杂度 #1",
+      "description": "时间复杂度基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "时间复杂度"
+      ],
+      "created_at": "2026-06-25T20:54:58.430331"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-时间复杂度-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "时间复杂度",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "数据结构概述 - 时间复杂度 #2",
+      "description": "时间复杂度判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "时间复杂度"
+      ],
+      "created_at": "2026-06-25T20:54:58.430335"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-时间复杂度-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "时间复杂度",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "数据结构概述 - 时间复杂度 #3",
+      "description": "时间复杂度填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "时间复杂度"
+      ],
+      "created_at": "2026-06-25T20:54:58.430338"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-时间复杂度-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "时间复杂度",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "数据结构概述 - 时间复杂度 #4",
+      "description": "时间复杂度实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "时间复杂度"
+      ],
+      "created_at": "2026-06-25T20:54:58.430341"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-空间复杂度-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "空间复杂度",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "数据结构概述 - 空间复杂度 #1",
+      "description": "空间复杂度基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "空间复杂度"
+      ],
+      "created_at": "2026-06-25T20:54:58.430345"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-空间复杂度-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "空间复杂度",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "数据结构概述 - 空间复杂度 #2",
+      "description": "空间复杂度判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "空间复杂度"
+      ],
+      "created_at": "2026-06-25T20:54:58.430348"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-空间复杂度-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "空间复杂度",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "数据结构概述 - 空间复杂度 #3",
+      "description": "空间复杂度填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "空间复杂度"
+      ],
+      "created_at": "2026-06-25T20:54:58.430351"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-空间复杂度-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "空间复杂度",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "数据结构概述 - 空间复杂度 #4",
+      "description": "空间复杂度实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "空间复杂度"
+      ],
+      "created_at": "2026-06-25T20:54:58.430354"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-数据结构分类-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "数据结构分类",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "数据结构概述 - 数据结构分类 #1",
+      "description": "数据结构分类基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数据结构分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.430358"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-数据结构分类-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "数据结构分类",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "数据结构概述 - 数据结构分类 #2",
+      "description": "数据结构分类判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数据结构分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.430361"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-数据结构分类-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "数据结构分类",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "数据结构概述 - 数据结构分类 #3",
+      "description": "数据结构分类填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数据结构分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.430364"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-数据结构分类-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "数据结构分类",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "数据结构概述 - 数据结构分类 #4",
+      "description": "数据结构分类实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数据结构分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.430367"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-算法设计-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "算法设计",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "数据结构概述 - 算法设计 #1",
+      "description": "算法设计基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "算法设计"
+      ],
+      "created_at": "2026-06-25T20:54:58.430371"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-算法设计-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "算法设计",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "数据结构概述 - 算法设计 #2",
+      "description": "算法设计判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "算法设计"
+      ],
+      "created_at": "2026-06-25T20:54:58.430374"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-算法设计-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "算法设计",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "数据结构概述 - 算法设计 #3",
+      "description": "算法设计填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "算法设计"
+      ],
+      "created_at": "2026-06-25T20:54:58.430377"
+    },
+    {
+      "problem_id": "ds-phase1-ch1-算法设计-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "算法设计",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "数据结构概述 - 算法设计 #4",
+      "description": "算法设计实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "算法设计"
+      ],
+      "created_at": "2026-06-25T20:54:58.430380"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-数组-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "数组",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "线性结构 - 数组 #1",
+      "description": "数组基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数组"
+      ],
+      "created_at": "2026-06-25T20:54:58.430385"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-数组-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "数组",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "线性结构 - 数组 #2",
+      "description": "数组判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数组"
+      ],
+      "created_at": "2026-06-25T20:54:58.430388"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-数组-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "数组",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "线性结构 - 数组 #3",
+      "description": "数组填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数组"
+      ],
+      "created_at": "2026-06-25T20:54:58.430392"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-数组-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "数组",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "线性结构 - 数组 #4",
+      "description": "数组实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "数组"
+      ],
+      "created_at": "2026-06-25T20:54:58.430394"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-链表-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "链表",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "线性结构 - 链表 #1",
+      "description": "链表基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "链表"
+      ],
+      "created_at": "2026-06-25T20:54:58.430401"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-链表-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "链表",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "线性结构 - 链表 #2",
+      "description": "链表判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "链表"
+      ],
+      "created_at": "2026-06-25T20:54:58.430405"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-链表-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "链表",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "线性结构 - 链表 #3",
+      "description": "链表填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "链表"
+      ],
+      "created_at": "2026-06-25T20:54:58.430408"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-链表-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "链表",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "线性结构 - 链表 #4",
+      "description": "链表实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "链表"
+      ],
+      "created_at": "2026-06-25T20:54:58.430410"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-栈-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "栈",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "线性结构 - 栈 #1",
+      "description": "栈基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "栈"
+      ],
+      "created_at": "2026-06-25T20:54:58.430415"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-栈-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "栈",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "线性结构 - 栈 #2",
+      "description": "栈判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "栈"
+      ],
+      "created_at": "2026-06-25T20:54:58.430418"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-栈-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "栈",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "线性结构 - 栈 #3",
+      "description": "栈填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "栈"
+      ],
+      "created_at": "2026-06-25T20:54:58.430421"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-栈-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "栈",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "线性结构 - 栈 #4",
+      "description": "栈实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "栈"
+      ],
+      "created_at": "2026-06-25T20:54:58.430423"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-队列-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "队列",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "线性结构 - 队列 #1",
+      "description": "队列基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "队列"
+      ],
+      "created_at": "2026-06-25T20:54:58.430428"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-队列-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "队列",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "线性结构 - 队列 #2",
+      "description": "队列判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "队列"
+      ],
+      "created_at": "2026-06-25T20:54:58.430431"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-队列-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "队列",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "线性结构 - 队列 #3",
+      "description": "队列填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "队列"
+      ],
+      "created_at": "2026-06-25T20:54:58.430434"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-队列-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "队列",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "线性结构 - 队列 #4",
+      "description": "队列实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "队列"
+      ],
+      "created_at": "2026-06-25T20:54:58.430437"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-哈希表-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "哈希表",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "线性结构 - 哈希表 #1",
+      "description": "哈希表基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "哈希表"
+      ],
+      "created_at": "2026-06-25T20:54:58.430443"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-哈希表-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "哈希表",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "线性结构 - 哈希表 #2",
+      "description": "哈希表判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "哈希表"
+      ],
+      "created_at": "2026-06-25T20:54:58.430446"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-哈希表-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "哈希表",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "线性结构 - 哈希表 #3",
+      "description": "哈希表填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "哈希表"
+      ],
+      "created_at": "2026-06-25T20:54:58.430449"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-哈希表-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "哈希表",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "线性结构 - 哈希表 #4",
+      "description": "哈希表实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "哈希表"
+      ],
+      "created_at": "2026-06-25T20:54:58.430455"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-字符串-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "字符串",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "线性结构 - 字符串 #1",
+      "description": "字符串基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "字符串"
+      ],
+      "created_at": "2026-06-25T20:54:58.430462"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-字符串-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "字符串",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "线性结构 - 字符串 #2",
+      "description": "字符串判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "字符串"
+      ],
+      "created_at": "2026-06-25T20:54:58.430465"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-字符串-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "字符串",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "线性结构 - 字符串 #3",
+      "description": "字符串填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "字符串"
+      ],
+      "created_at": "2026-06-25T20:54:58.430468"
+    },
+    {
+      "problem_id": "ds-phase1-ch2-字符串-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "字符串",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "线性结构 - 字符串 #4",
+      "description": "字符串实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "字符串"
+      ],
+      "created_at": "2026-06-25T20:54:58.430470"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-二叉树-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "二叉树",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "树结构 - 二叉树 #1",
+      "description": "二叉树基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "二叉树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430475"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-二叉树-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "二叉树",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "树结构 - 二叉树 #2",
+      "description": "二叉树判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "二叉树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430478"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-二叉树-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "二叉树",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "树结构 - 二叉树 #3",
+      "description": "二叉树填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "二叉树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430481"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-二叉树-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "二叉树",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "树结构 - 二叉树 #4",
+      "description": "二叉树实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "二叉树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430484"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-二叉搜索树-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "二叉搜索树",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "树结构 - 二叉搜索树 #1",
+      "description": "二叉搜索树基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "二叉搜索树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430488"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-二叉搜索树-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "二叉搜索树",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "树结构 - 二叉搜索树 #2",
+      "description": "二叉搜索树判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "二叉搜索树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430490"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-二叉搜索树-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "二叉搜索树",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "树结构 - 二叉搜索树 #3",
+      "description": "二叉搜索树填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "二叉搜索树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430493"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-二叉搜索树-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "二叉搜索树",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "树结构 - 二叉搜索树 #4",
+      "description": "二叉搜索树实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "二叉搜索树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430496"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-平衡树-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "平衡树",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "树结构 - 平衡树 #1",
+      "description": "平衡树基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "平衡树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430502"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-平衡树-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "平衡树",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "树结构 - 平衡树 #2",
+      "description": "平衡树判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "平衡树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430505"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-平衡树-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "平衡树",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "树结构 - 平衡树 #3",
+      "description": "平衡树填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "平衡树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430508"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-平衡树-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "平衡树",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "树结构 - 平衡树 #4",
+      "description": "平衡树实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "平衡树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430511"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-堆-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "堆",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "树结构 - 堆 #1",
+      "description": "堆基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "堆"
+      ],
+      "created_at": "2026-06-25T20:54:58.430519"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-堆-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "堆",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "树结构 - 堆 #2",
+      "description": "堆判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "堆"
+      ],
+      "created_at": "2026-06-25T20:54:58.430522"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-堆-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "堆",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "树结构 - 堆 #3",
+      "description": "堆填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "堆"
+      ],
+      "created_at": "2026-06-25T20:54:58.430531"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-堆-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "堆",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "树结构 - 堆 #4",
+      "description": "堆实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "堆"
+      ],
+      "created_at": "2026-06-25T20:54:58.430534"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-哈弗曼树-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "哈弗曼树",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "树结构 - 哈弗曼树 #1",
+      "description": "哈弗曼树基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "哈弗曼树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430538"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-哈弗曼树-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "哈弗曼树",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "树结构 - 哈弗曼树 #2",
+      "description": "哈弗曼树判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "哈弗曼树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430541"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-哈弗曼树-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "哈弗曼树",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "树结构 - 哈弗曼树 #3",
+      "description": "哈弗曼树填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "哈弗曼树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430544"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-哈弗曼树-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "哈弗曼树",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "树结构 - 哈弗曼树 #4",
+      "description": "哈弗曼树实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "哈弗曼树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430547"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-B树-001",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "B树",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "树结构 - B树 #1",
+      "description": "B树基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "B树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430553"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-B树-002",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "B树",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "树结构 - B树 #2",
+      "description": "B树判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "B树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430557"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-B树-003",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "B树",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "树结构 - B树 #3",
+      "description": "B树填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "B树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430560"
+    },
+    {
+      "problem_id": "ds-phase1-ch3-B树-004",
+      "domain": "data_structure",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "B树",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "树结构 - B树 #4",
+      "description": "B树实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "B树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430563"
+    }
+  ]
+}

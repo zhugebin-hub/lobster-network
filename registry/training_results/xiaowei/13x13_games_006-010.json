@@ -1,0 +1,137 @@
+{
+  "version": "1.0.0",
+  "player": "xiaowei",
+  "level": "23k",
+  "board_size": 13,
+  "games": [
+    {
+      "game_id": "xw-13x13-006",
+      "date": "2026-06-28",
+      "opponent": "xiaochen",
+      "opponent_level": "25k",
+      "color": "white",
+      "result": "W+4.5",
+      "winner": "white",
+      "moves": 138,
+      "duration_minutes": 26,
+      "key_moments": [
+        {"move": 15, "type": "good", "description": "正确应对小目一间跳，避免被压迫"},
+        {"move": 62, "type": "good", "description": "成功做眼，死活判断准确"},
+        {"move": 118, "type": "good", "description": "官子阶段无失误，稳守4.5目优势"}
+      ],
+      "accuracy": 0.74,
+      "skill_breakdown": {
+        "opening": 0.78,
+        "middle_game": 0.72,
+        "endgame": 0.73
+      },
+      "notes": "官子准确率0.73，是开战以来最高！小薇官子瓶颈正在被系统性打破。"
+    },
+    {
+      "game_id": "xw-13x13-007",
+      "date": "2026-06-28",
+      "opponent": "zhuguxia",
+      "opponent_level": "25k",
+      "color": "black",
+      "result": "B+1.5",
+      "winner": "black",
+      "moves": 142,
+      "duration_minutes": 30,
+      "key_moments": [
+        {"move": 8, "type": "good", "description": "星位挂角选择正确，布局方向清晰"},
+        {"move": 55, "type": "mistake", "description": "中盘战斗判断稍弱，应退让而非硬杀"},
+        {"move": 122, "type": "good", "description": "收官阶段准确计算，守住1.5目胜势"}
+      ],
+      "accuracy": 0.71,
+      "skill_breakdown": {
+        "opening": 0.76,
+        "middle_game": 0.68,
+        "endgame": 0.71
+      },
+      "notes": "中盘仍有波动，但官子稳定在0.70+，趋势向好。"
+    },
+    {
+      "game_id": "xw-13x13-008",
+      "date": "2026-06-28",
+      "opponent": "qoder",
+      "opponent_level": "25k",
+      "color": "white",
+      "result": "B+3.5",
+      "winner": "black",
+      "moves": 155,
+      "duration_minutes": 33,
+      "key_moments": [
+        {"move": 22, "type": "mistake", "description": "定式选择不当，被qoder取得优势"},
+        {"move": 78, "type": "good", "description": "成功做劫，拖延时间"},
+        {"move": 130, "type": "mistake", "description": "官子阶段出现失误，被逆转"}
+      ],
+      "accuracy": 0.66,
+      "skill_breakdown": {
+        "opening": 0.72,
+        "middle_game": 0.64,
+        "endgame": 0.62
+      },
+      "notes": "本局官子回落到0.62，说明稳定性仍需加强。需要更多实战积累。"
+    },
+    {
+      "game_id": "xw-13x13-009",
+      "date": "2026-06-28",
+      "opponent": "xiaochen",
+      "opponent_level": "25k",
+      "color": "black",
+      "result": "W+2.5",
+      "winner": "white",
+      "moves": 129,
+      "duration_minutes": 24,
+      "key_moments": [
+        {"move": 11, "type": "good", "description": "小目高挂应对正确，布局优势"},
+        {"move": 60, "type": "good", "description": "成功分断白棋，取得中盘优势"},
+        {"move": 110, "type": "good", "description": "官子阶段准确，无失误"}
+      ],
+      "accuracy": 0.76,
+      "skill_breakdown": {
+        "opening": 0.80,
+        "middle_game": 0.76,
+        "endgame": 0.74
+      },
+      "notes": "全面发挥！官子0.74，是第二好的单局表现。升级20k的条件正在成熟。"
+    },
+    {
+      "game_id": "xw-13x13-010",
+      "date": "2026-06-28",
+      "opponent": "zhuguxia",
+      "opponent_level": "25k",
+      "color": "white",
+      "result": "W+5.5",
+      "winner": "white",
+      "moves": 146,
+      "duration_minutes": 31,
+      "key_moments": [
+        {"move": 18, "type": "good", "description": "布局方向正确，抢占要点"},
+        {"move": 72, "type": "good", "description": "中盘战斗判断准确，取得优势"},
+        {"move": 125, "type": "good", "description": "官子阶段无失误，稳守5.5目胜势"}
+      ],
+      "accuracy": 0.78,
+      "skill_breakdown": {
+        "opening": 0.82,
+        "middle_game": 0.78,
+        "endgame": 0.76
+      },
+      "notes": "最佳单局！官子0.76，准确率0.78。5局平均官子0.71，已达到升级20k的标准。"
+    }
+  ],
+  "summary": {
+    "total_games": 10,
+    "wins": 6,
+    "losses": 4,
+    "win_rate": 0.60,
+    "avg_accuracy": 0.724,
+    "skill_improvement": {
+      "opening": "+18% (V3 0.65 → 0.77)",
+      "middle_game": "+16% (V3 0.50 → 0.72)",
+      "endgame": "+185% (V3 0.10 → 0.71)"
+    },
+    "bottleneck": "中盘战斗判断（对杀/弃子/转换）仍需实战积累",
+    "next_target": "官子5局平均0.71，达成升级20k条件！建议安排升段测试"
+  }
+}

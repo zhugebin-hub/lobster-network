@@ -1,0 +1,1810 @@
+{
+  "domain": "poster",
+  "phase": "phase1",
+  "total": 106,
+  "generated_at": "2026-06-25T20:42:04.686033",
+  "problems": [
+    {
+      "problem_id": "poster-phase1-w1-色彩理论-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "色彩理论",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "色彩理论 #1",
+      "description": "互补色搭配中，红色的互补色是{绿色}",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "色彩理论"
+      ],
+      "created_at": "2026-06-25T20:42:04.683190"
+    },
+    {
+      "problem_id": "poster-phase1-w1-色彩理论-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "色彩理论",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "色彩理论 #2",
+      "description": "暖色调适合表现活力和热情（对/错）",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "色彩理论"
+      ],
+      "created_at": "2026-06-25T20:42:04.683209"
+    },
+    {
+      "problem_id": "poster-phase1-w1-排版原则-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "排版原则",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "排版原则 #1",
+      "description": "海报标题字体大小通常是正文的{2-3}倍",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "排版原则"
+      ],
+      "created_at": "2026-06-25T20:42:04.683215"
+    },
+    {
+      "problem_id": "poster-phase1-w1-排版原则-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "排版原则",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "排版原则 #2",
+      "description": "设计的四大原则是对比、重复、_、亲密性",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "排版原则"
+      ],
+      "created_at": "2026-06-25T20:42:04.683219"
+    },
+    {
+      "problem_id": "poster-phase1-w1-字体选择-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "字体选择",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "字体选择 #1",
+      "description": "字体选择基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "字体选择"
+      ],
+      "created_at": "2026-06-25T20:42:04.683223"
+    },
+    {
+      "problem_id": "poster-phase1-w1-字体选择-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "字体选择",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "字体选择 #2",
+      "description": "字体选择判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "字体选择"
+      ],
+      "created_at": "2026-06-25T20:42:04.683227"
+    },
+    {
+      "problem_id": "poster-phase1-w1-字体选择-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "字体选择",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "字体选择 #3",
+      "description": "字体选择填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "字体选择"
+      ],
+      "created_at": "2026-06-25T20:42:04.683230"
+    },
+    {
+      "problem_id": "poster-phase1-w1-视觉层次-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "视觉层次",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "视觉层次 #1",
+      "description": "视觉层次基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "视觉层次"
+      ],
+      "created_at": "2026-06-25T20:42:04.683234"
+    },
+    {
+      "problem_id": "poster-phase1-w1-视觉层次-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "视觉层次",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "视觉层次 #2",
+      "description": "视觉层次判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "视觉层次"
+      ],
+      "created_at": "2026-06-25T20:42:04.683237"
+    },
+    {
+      "problem_id": "poster-phase1-w1-视觉层次-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "视觉层次",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "视觉层次 #3",
+      "description": "视觉层次填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "视觉层次"
+      ],
+      "created_at": "2026-06-25T20:42:04.683247"
+    },
+    {
+      "problem_id": "poster-phase1-w1-色彩搭配-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "色彩搭配",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "色彩搭配 #1",
+      "description": "色彩搭配基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "色彩搭配"
+      ],
+      "created_at": "2026-06-25T20:42:04.683251"
+    },
+    {
+      "problem_id": "poster-phase1-w1-色彩搭配-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "色彩搭配",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "色彩搭配 #2",
+      "description": "色彩搭配判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "色彩搭配"
+      ],
+      "created_at": "2026-06-25T20:42:04.683255"
+    },
+    {
+      "problem_id": "poster-phase1-w1-色彩搭配-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "色彩搭配",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "色彩搭配 #3",
+      "description": "色彩搭配填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "色彩搭配"
+      ],
+      "created_at": "2026-06-25T20:42:04.683258"
+    },
+    {
+      "problem_id": "poster-phase1-w1-字体排版-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "字体排版",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "字体排版 #1",
+      "description": "字体排版基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "字体排版"
+      ],
+      "created_at": "2026-06-25T20:42:04.683261"
+    },
+    {
+      "problem_id": "poster-phase1-w1-字体排版-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "字体排版",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "字体排版 #2",
+      "description": "字体排版判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "字体排版"
+      ],
+      "created_at": "2026-06-25T20:42:04.683264"
+    },
+    {
+      "problem_id": "poster-phase1-w1-字体排版-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 1,
+      "topic": "字体排版",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "字体排版 #3",
+      "description": "字体排版填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "字体排版"
+      ],
+      "created_at": "2026-06-25T20:42:04.683267"
+    },
+    {
+      "problem_id": "poster-phase1-w2-构图基础-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "构图基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "构图基础 #1",
+      "description": "构图基础基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "构图基础"
+      ],
+      "created_at": "2026-06-25T20:42:04.683282"
+    },
+    {
+      "problem_id": "poster-phase1-w2-构图基础-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "构图基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "构图基础 #2",
+      "description": "构图基础判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "构图基础"
+      ],
+      "created_at": "2026-06-25T20:42:04.683285"
+    },
+    {
+      "problem_id": "poster-phase1-w2-构图基础-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "构图基础",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "构图基础 #3",
+      "description": "构图基础填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "构图基础"
+      ],
+      "created_at": "2026-06-25T20:42:04.683291"
+    },
+    {
+      "problem_id": "poster-phase1-w2-黄金比例-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "黄金比例",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "黄金比例 #1",
+      "description": "黄金比例基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "黄金比例"
+      ],
+      "created_at": "2026-06-25T20:42:04.683295"
+    },
+    {
+      "problem_id": "poster-phase1-w2-黄金比例-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "黄金比例",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "黄金比例 #2",
+      "description": "黄金比例判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "黄金比例"
+      ],
+      "created_at": "2026-06-25T20:42:04.683298"
+    },
+    {
+      "problem_id": "poster-phase1-w2-黄金比例-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "黄金比例",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "黄金比例 #3",
+      "description": "黄金比例填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "黄金比例"
+      ],
+      "created_at": "2026-06-25T20:42:04.683301"
+    },
+    {
+      "problem_id": "poster-phase1-w2-对称与平衡-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "对称与平衡",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "对称与平衡 #1",
+      "description": "对称与平衡基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "对称与平衡"
+      ],
+      "created_at": "2026-06-25T20:42:04.683305"
+    },
+    {
+      "problem_id": "poster-phase1-w2-对称与平衡-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "对称与平衡",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "对称与平衡 #2",
+      "description": "对称与平衡判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "对称与平衡"
+      ],
+      "created_at": "2026-06-25T20:42:04.683308"
+    },
+    {
+      "problem_id": "poster-phase1-w2-对称与平衡-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "对称与平衡",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "对称与平衡 #3",
+      "description": "对称与平衡填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "对称与平衡"
+      ],
+      "created_at": "2026-06-25T20:42:04.683311"
+    },
+    {
+      "problem_id": "poster-phase1-w2-留白艺术-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "留白艺术",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "留白艺术 #1",
+      "description": "留白艺术基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "留白艺术"
+      ],
+      "created_at": "2026-06-25T20:42:04.683315"
+    },
+    {
+      "problem_id": "poster-phase1-w2-留白艺术-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "留白艺术",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "留白艺术 #2",
+      "description": "留白艺术判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "留白艺术"
+      ],
+      "created_at": "2026-06-25T20:42:04.683318"
+    },
+    {
+      "problem_id": "poster-phase1-w2-留白艺术-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "留白艺术",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "留白艺术 #3",
+      "description": "留白艺术填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "留白艺术"
+      ],
+      "created_at": "2026-06-25T20:42:04.683321"
+    },
+    {
+      "problem_id": "poster-phase1-w2-对比原则-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "对比原则",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "对比原则 #1",
+      "description": "对比原则基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "对比原则"
+      ],
+      "created_at": "2026-06-25T20:42:04.683324"
+    },
+    {
+      "problem_id": "poster-phase1-w2-对比原则-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "对比原则",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "对比原则 #2",
+      "description": "对比原则判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "对比原则"
+      ],
+      "created_at": "2026-06-25T20:42:04.683327"
+    },
+    {
+      "problem_id": "poster-phase1-w2-对比原则-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "对比原则",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "对比原则 #3",
+      "description": "对比原则填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "对比原则"
+      ],
+      "created_at": "2026-06-25T20:42:04.683330"
+    },
+    {
+      "problem_id": "poster-phase1-w2-重复原则-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "重复原则",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "重复原则 #1",
+      "description": "重复原则基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "重复原则"
+      ],
+      "created_at": "2026-06-25T20:42:04.683334"
+    },
+    {
+      "problem_id": "poster-phase1-w2-重复原则-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "重复原则",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "重复原则 #2",
+      "description": "重复原则判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "重复原则"
+      ],
+      "created_at": "2026-06-25T20:42:04.683337"
+    },
+    {
+      "problem_id": "poster-phase1-w2-重复原则-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 2,
+      "topic": "重复原则",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "重复原则 #3",
+      "description": "重复原则填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "重复原则"
+      ],
+      "created_at": "2026-06-25T20:42:04.683341"
+    },
+    {
+      "problem_id": "poster-phase1-w3-图片处理-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "图片处理",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "图片处理 #1",
+      "description": "图片处理基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图片处理"
+      ],
+      "created_at": "2026-06-25T20:42:04.683348"
+    },
+    {
+      "problem_id": "poster-phase1-w3-图片处理-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "图片处理",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "图片处理 #2",
+      "description": "图片处理判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图片处理"
+      ],
+      "created_at": "2026-06-25T20:42:04.683351"
+    },
+    {
+      "problem_id": "poster-phase1-w3-图片处理-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "图片处理",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "图片处理 #3",
+      "description": "图片处理填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图片处理"
+      ],
+      "created_at": "2026-06-25T20:42:04.683354"
+    },
+    {
+      "problem_id": "poster-phase1-w3-滤镜应用-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "滤镜应用",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "滤镜应用 #1",
+      "description": "滤镜应用基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "滤镜应用"
+      ],
+      "created_at": "2026-06-25T20:42:04.683358"
+    },
+    {
+      "problem_id": "poster-phase1-w3-滤镜应用-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "滤镜应用",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "滤镜应用 #2",
+      "description": "滤镜应用判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "滤镜应用"
+      ],
+      "created_at": "2026-06-25T20:42:04.683361"
+    },
+    {
+      "problem_id": "poster-phase1-w3-滤镜应用-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "滤镜应用",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "滤镜应用 #3",
+      "description": "滤镜应用填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "滤镜应用"
+      ],
+      "created_at": "2026-06-25T20:42:04.683364"
+    },
+    {
+      "problem_id": "poster-phase1-w3-图层混合-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "图层混合",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "图层混合 #1",
+      "description": "图层混合基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图层混合"
+      ],
+      "created_at": "2026-06-25T20:42:04.683367"
+    },
+    {
+      "problem_id": "poster-phase1-w3-图层混合-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "图层混合",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "图层混合 #2",
+      "description": "图层混合判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图层混合"
+      ],
+      "created_at": "2026-06-25T20:42:04.683370"
+    },
+    {
+      "problem_id": "poster-phase1-w3-图层混合-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "图层混合",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "图层混合 #3",
+      "description": "图层混合填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图层混合"
+      ],
+      "created_at": "2026-06-25T20:42:04.683373"
+    },
+    {
+      "problem_id": "poster-phase1-w3-蒙版技巧-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "蒙版技巧",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "蒙版技巧 #1",
+      "description": "蒙版技巧基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "蒙版技巧"
+      ],
+      "created_at": "2026-06-25T20:42:04.683377"
+    },
+    {
+      "problem_id": "poster-phase1-w3-蒙版技巧-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "蒙版技巧",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "蒙版技巧 #2",
+      "description": "蒙版技巧判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "蒙版技巧"
+      ],
+      "created_at": "2026-06-25T20:42:04.683380"
+    },
+    {
+      "problem_id": "poster-phase1-w3-蒙版技巧-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "蒙版技巧",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "蒙版技巧 #3",
+      "description": "蒙版技巧填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "蒙版技巧"
+      ],
+      "created_at": "2026-06-25T20:42:04.683404"
+    },
+    {
+      "problem_id": "poster-phase1-w3-通道应用-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "通道应用",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "通道应用 #1",
+      "description": "通道应用基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "通道应用"
+      ],
+      "created_at": "2026-06-25T20:42:04.683408"
+    },
+    {
+      "problem_id": "poster-phase1-w3-通道应用-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "通道应用",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "通道应用 #2",
+      "description": "通道应用判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "通道应用"
+      ],
+      "created_at": "2026-06-25T20:42:04.683411"
+    },
+    {
+      "problem_id": "poster-phase1-w3-通道应用-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "通道应用",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "通道应用 #3",
+      "description": "通道应用填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "通道应用"
+      ],
+      "created_at": "2026-06-25T20:42:04.683414"
+    },
+    {
+      "problem_id": "poster-phase1-w3-路径工具-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "路径工具",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "路径工具 #1",
+      "description": "路径工具基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "路径工具"
+      ],
+      "created_at": "2026-06-25T20:42:04.683420"
+    },
+    {
+      "problem_id": "poster-phase1-w3-路径工具-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "路径工具",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "路径工具 #2",
+      "description": "路径工具判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "路径工具"
+      ],
+      "created_at": "2026-06-25T20:42:04.683423"
+    },
+    {
+      "problem_id": "poster-phase1-w3-路径工具-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 3,
+      "topic": "路径工具",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "路径工具 #3",
+      "description": "路径工具填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "路径工具"
+      ],
+      "created_at": "2026-06-25T20:42:04.683426"
+    },
+    {
+      "problem_id": "poster-phase1-w4-品牌一致性-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "品牌一致性",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "品牌一致性 #1",
+      "description": "品牌一致性基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "品牌一致性"
+      ],
+      "created_at": "2026-06-25T20:42:04.683431"
+    },
+    {
+      "problem_id": "poster-phase1-w4-品牌一致性-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "品牌一致性",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "品牌一致性 #2",
+      "description": "品牌一致性判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "品牌一致性"
+      ],
+      "created_at": "2026-06-25T20:42:04.683434"
+    },
+    {
+      "problem_id": "poster-phase1-w4-品牌一致性-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "品牌一致性",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "品牌一致性 #3",
+      "description": "品牌一致性填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "品牌一致性"
+      ],
+      "created_at": "2026-06-25T20:42:04.683437"
+    },
+    {
+      "problem_id": "poster-phase1-w4-Logo设计-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "Logo设计",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "Logo设计 #1",
+      "description": "Logo设计基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Logo设计"
+      ],
+      "created_at": "2026-06-25T20:42:04.683441"
+    },
+    {
+      "problem_id": "poster-phase1-w4-Logo设计-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "Logo设计",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "Logo设计 #2",
+      "description": "Logo设计判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Logo设计"
+      ],
+      "created_at": "2026-06-25T20:42:04.683446"
+    },
+    {
+      "problem_id": "poster-phase1-w4-Logo设计-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "Logo设计",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "Logo设计 #3",
+      "description": "Logo设计填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Logo设计"
+      ],
+      "created_at": "2026-06-25T20:42:04.683449"
+    },
+    {
+      "problem_id": "poster-phase1-w4-VI系统-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "VI系统",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "VI系统 #1",
+      "description": "VI系统基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "VI系统"
+      ],
+      "created_at": "2026-06-25T20:42:04.683453"
+    },
+    {
+      "problem_id": "poster-phase1-w4-VI系统-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "VI系统",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "VI系统 #2",
+      "description": "VI系统判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "VI系统"
+      ],
+      "created_at": "2026-06-25T20:42:04.683456"
+    },
+    {
+      "problem_id": "poster-phase1-w4-VI系统-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "VI系统",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "VI系统 #3",
+      "description": "VI系统填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "VI系统"
+      ],
+      "created_at": "2026-06-25T20:42:04.683466"
+    },
+    {
+      "problem_id": "poster-phase1-w4-第一阶段考核-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "第一阶段考核",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "第一阶段考核 #1",
+      "description": "第一阶段考核基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "第一阶段考核"
+      ],
+      "created_at": "2026-06-25T20:42:04.683470"
+    },
+    {
+      "problem_id": "poster-phase1-w4-第一阶段考核-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "第一阶段考核",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "第一阶段考核 #2",
+      "description": "第一阶段考核判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "第一阶段考核"
+      ],
+      "created_at": "2026-06-25T20:42:04.683473"
+    },
+    {
+      "problem_id": "poster-phase1-w4-第一阶段考核-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "第一阶段考核",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "第一阶段考核 #3",
+      "description": "第一阶段考核填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "第一阶段考核"
+      ],
+      "created_at": "2026-06-25T20:42:04.683475"
+    },
+    {
+      "problem_id": "poster-phase1-w4-品牌策略-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "品牌策略",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "品牌策略 #1",
+      "description": "品牌策略基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "品牌策略"
+      ],
+      "created_at": "2026-06-25T20:42:04.683479"
+    },
+    {
+      "problem_id": "poster-phase1-w4-品牌策略-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "品牌策略",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "品牌策略 #2",
+      "description": "品牌策略判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "品牌策略"
+      ],
+      "created_at": "2026-06-25T20:42:04.683482"
+    },
+    {
+      "problem_id": "poster-phase1-w4-品牌策略-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "品牌策略",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "品牌策略 #3",
+      "description": "品牌策略填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "品牌策略"
+      ],
+      "created_at": "2026-06-25T20:42:04.683485"
+    },
+    {
+      "problem_id": "poster-phase1-w4-品牌视觉-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "品牌视觉",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "品牌视觉 #1",
+      "description": "品牌视觉基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "品牌视觉"
+      ],
+      "created_at": "2026-06-25T20:42:04.683492"
+    },
+    {
+      "problem_id": "poster-phase1-w4-品牌视觉-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "品牌视觉",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "品牌视觉 #2",
+      "description": "品牌视觉判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "品牌视觉"
+      ],
+      "created_at": "2026-06-25T20:42:04.683496"
+    },
+    {
+      "problem_id": "poster-phase1-w4-品牌视觉-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 4,
+      "topic": "品牌视觉",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "品牌视觉 #3",
+      "description": "品牌视觉填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "品牌视觉"
+      ],
+      "created_at": "2026-06-25T20:42:04.683498"
+    },
+    {
+      "problem_id": "poster-phase1-w5-设计软件基础-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "设计软件基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计软件基础 #1",
+      "description": "设计软件基础基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计软件基础"
+      ],
+      "created_at": "2026-06-25T20:42:04.683503"
+    },
+    {
+      "problem_id": "poster-phase1-w5-设计软件基础-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "设计软件基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计软件基础 #2",
+      "description": "设计软件基础判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计软件基础"
+      ],
+      "created_at": "2026-06-25T20:42:04.683507"
+    },
+    {
+      "problem_id": "poster-phase1-w5-设计软件基础-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "设计软件基础",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计软件基础 #3",
+      "description": "设计软件基础填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计软件基础"
+      ],
+      "created_at": "2026-06-25T20:42:04.683510"
+    },
+    {
+      "problem_id": "poster-phase1-w5-Photoshop入门-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "Photoshop入门",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "Photoshop入门 #1",
+      "description": "Photoshop入门基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Photoshop入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683517"
+    },
+    {
+      "problem_id": "poster-phase1-w5-Photoshop入门-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "Photoshop入门",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "Photoshop入门 #2",
+      "description": "Photoshop入门判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Photoshop入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683546"
+    },
+    {
+      "problem_id": "poster-phase1-w5-Photoshop入门-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "Photoshop入门",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "Photoshop入门 #3",
+      "description": "Photoshop入门填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Photoshop入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683550"
+    },
+    {
+      "problem_id": "poster-phase1-w5-Illustrator入门-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "Illustrator入门",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "Illustrator入门 #1",
+      "description": "Illustrator入门基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Illustrator入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683554"
+    },
+    {
+      "problem_id": "poster-phase1-w5-Illustrator入门-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "Illustrator入门",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "Illustrator入门 #2",
+      "description": "Illustrator入门判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Illustrator入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683557"
+    },
+    {
+      "problem_id": "poster-phase1-w5-Illustrator入门-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "Illustrator入门",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "Illustrator入门 #3",
+      "description": "Illustrator入门填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Illustrator入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683560"
+    },
+    {
+      "problem_id": "poster-phase1-w5-InDesign入门-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "InDesign入门",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "InDesign入门 #1",
+      "description": "InDesign入门基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "InDesign入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683564"
+    },
+    {
+      "problem_id": "poster-phase1-w5-InDesign入门-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "InDesign入门",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "InDesign入门 #2",
+      "description": "InDesign入门判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "InDesign入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683570"
+    },
+    {
+      "problem_id": "poster-phase1-w5-InDesign入门-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "InDesign入门",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "InDesign入门 #3",
+      "description": "InDesign入门填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "InDesign入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683573"
+    },
+    {
+      "problem_id": "poster-phase1-w5-Figma入门-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "Figma入门",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "Figma入门 #1",
+      "description": "Figma入门基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Figma入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683577"
+    },
+    {
+      "problem_id": "poster-phase1-w5-Figma入门-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "Figma入门",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "Figma入门 #2",
+      "description": "Figma入门判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Figma入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683580"
+    },
+    {
+      "problem_id": "poster-phase1-w5-Figma入门-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "Figma入门",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "Figma入门 #3",
+      "description": "Figma入门填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Figma入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683583"
+    },
+    {
+      "problem_id": "poster-phase1-w5-Canva入门-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "Canva入门",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "Canva入门 #1",
+      "description": "Canva入门基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Canva入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683590"
+    },
+    {
+      "problem_id": "poster-phase1-w5-Canva入门-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "Canva入门",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "Canva入门 #2",
+      "description": "Canva入门判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Canva入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683593"
+    },
+    {
+      "problem_id": "poster-phase1-w5-Canva入门-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 5,
+      "topic": "Canva入门",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "Canva入门 #3",
+      "description": "Canva入门填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Canva入门"
+      ],
+      "created_at": "2026-06-25T20:42:04.683596"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计理论-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计理论",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计理论 #1",
+      "description": "设计理论基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计理论"
+      ],
+      "created_at": "2026-06-25T20:42:04.683601"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计理论-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计理论",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计理论 #2",
+      "description": "设计理论判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计理论"
+      ],
+      "created_at": "2026-06-25T20:42:04.683604"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计理论-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计理论",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计理论 #3",
+      "description": "设计理论填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计理论"
+      ],
+      "created_at": "2026-06-25T20:42:04.683607"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计史-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计史",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计史 #1",
+      "description": "设计史基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计史"
+      ],
+      "created_at": "2026-06-25T20:42:04.683611"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计史-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计史",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计史 #2",
+      "description": "设计史判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计史"
+      ],
+      "created_at": "2026-06-25T20:42:04.683614"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计史-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计史",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计史 #3",
+      "description": "设计史填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计史"
+      ],
+      "created_at": "2026-06-25T20:42:04.683617"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计流派-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计流派",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计流派 #1",
+      "description": "设计流派基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计流派"
+      ],
+      "created_at": "2026-06-25T20:42:04.683622"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计流派-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计流派",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计流派 #2",
+      "description": "设计流派判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计流派"
+      ],
+      "created_at": "2026-06-25T20:42:04.683627"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计流派-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计流派",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计流派 #3",
+      "description": "设计流派填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计流派"
+      ],
+      "created_at": "2026-06-25T20:42:04.683630"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计风格-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计风格",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计风格 #1",
+      "description": "设计风格基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计风格"
+      ],
+      "created_at": "2026-06-25T20:42:04.683634"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计风格-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计风格",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计风格 #2",
+      "description": "设计风格判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计风格"
+      ],
+      "created_at": "2026-06-25T20:42:04.683637"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计风格-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计风格",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计风格 #3",
+      "description": "设计风格填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计风格"
+      ],
+      "created_at": "2026-06-25T20:42:04.683641"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计趋势-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计趋势",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "设计趋势 #1",
+      "description": "设计趋势基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计趋势"
+      ],
+      "created_at": "2026-06-25T20:42:04.683645"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计趋势-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计趋势",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "设计趋势 #2",
+      "description": "设计趋势判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计趋势"
+      ],
+      "created_at": "2026-06-25T20:42:04.683648"
+    },
+    {
+      "problem_id": "poster-phase1-w6-设计趋势-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "设计趋势",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "设计趋势 #3",
+      "description": "设计趋势填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "设计趋势"
+      ],
+      "created_at": "2026-06-25T20:42:04.683651"
+    },
+    {
+      "problem_id": "poster-phase1-w6-阶段考核-001",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "阶段考核",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "阶段考核 #1",
+      "description": "阶段考核基础题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "阶段考核"
+      ],
+      "created_at": "2026-06-25T20:42:04.683654"
+    },
+    {
+      "problem_id": "poster-phase1-w6-阶段考核-002",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "阶段考核",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "阶段考核 #2",
+      "description": "阶段考核判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "阶段考核"
+      ],
+      "created_at": "2026-06-25T20:42:04.683657"
+    },
+    {
+      "problem_id": "poster-phase1-w6-阶段考核-003",
+      "domain": "poster",
+      "phase": "phase1",
+      "week": 6,
+      "topic": "阶段考核",
+      "type": "填空",
+      "difficulty": "入门",
+      "title": "阶段考核 #3",
+      "description": "阶段考核填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "阶段考核"
+      ],
+      "created_at": "2026-06-25T20:42:04.683660"
+    }
+  ]
+}

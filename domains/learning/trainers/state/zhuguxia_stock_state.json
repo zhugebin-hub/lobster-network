@@ -1,0 +1,59 @@
+{
+  "student": "zhuguxia",
+  "total_trainings": 1,
+  "total_problems": 10,
+  "total_correct": 9,
+  "by_phase": {
+    "phase2": {
+      "total": 6,
+      "correct": 6
+    },
+    "phase3": {
+      "total": 4,
+      "correct": 3
+    }
+  },
+  "by_type": {
+    "kline_pattern": {
+      "total": 3,
+      "correct": 3
+    },
+    "indicator_analysis": {
+      "total": 3,
+      "correct": 3
+    },
+    "trend": {
+      "total": 2,
+      "correct": 2
+    },
+    "price_range": {
+      "total": 1,
+      "correct": 1
+    },
+    "amplitude": {
+      "total": 1,
+      "correct": 0
+    }
+  },
+  "by_difficulty": {
+    "初级": {
+      "total": 6,
+      "correct": 6
+    },
+    "中级": {
+      "total": 4,
+      "correct": 3
+    }
+  },
+  "streak": 1,
+  "last_training": "2026-06-26T08:39:21.969908",
+  "history": [
+    {
+      "date": "2026-06-26T08:39:21.969527",
+      "total": 10,
+      "correct": 9,
+      "accuracy": 0.9
+    }
+  ],
+  "last_training_date": "2026-06-26"
+}

@@ -1,0 +1,398 @@
+{
+  "phase1": {
+    "title": "网络基础与OSI七层模型",
+    "description": "掌握网络基本概念、OSI七层模型各层功能与协议、数据链路层与物理层基础",
+    "questions": [
+      {
+        "id": "np1-001",
+        "question": "OSI参考模型共有几层？",
+        "type": "multiple_choice",
+        "options": [
+          "5层",
+          "7层",
+          "4层",
+          "9层"
+        ],
+        "correct": 1,
+        "explanation": "OSI（Open Systems Interconnection）参考模型共有7层：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。"
+      },
+      {
+        "id": "np1-002",
+        "question": "下列协议中，工作在应用层的是？",
+        "type": "multiple_choice",
+        "options": [
+          "TCP",
+          "IP",
+          "HTTP",
+          "Ethernet"
+        ],
+        "correct": 2,
+        "explanation": "HTTP（超文本传输协议）工作在OSI模型的应用层（第7层）。TCP是传输层，IP是网络层，Ethernet是数据链路层。"
+      },
+      {
+        "id": "np1-003",
+        "question": "MAC地址的长度是多少位（bit）？",
+        "type": "multiple_choice",
+        "options": [
+          "32位",
+          "48位",
+          "64位",
+          "128位"
+        ],
+        "correct": 1,
+        "explanation": "MAC地址（媒体访问控制地址）长度为48位（6字节），通常用12个十六进制数表示，如 00:1A:2B:3C:4D:5E。"
+      },
+      {
+        "id": "np1-004",
+        "question": "OSI模型中，负责路由选择和IP寻址的是哪一层？",
+        "type": "multiple_choice",
+        "options": [
+          "数据链路层",
+          "网络层",
+          "传输层",
+          "会话层"
+        ],
+        "correct": 1,
+        "explanation": "网络层（第3层）负责路由选择、IP寻址、数据包转发。核心协议包括IP、ICMP、OSPF、BGP等。"
+      },
+      {
+        "id": "np1-005",
+        "question": "下列哪种拓扑结构中，所有设备共享同一通信介质，存在冲突域问题？",
+        "type": "multiple_choice",
+        "options": [
+          "星型拓扑",
+          "总线型拓扑",
+          "环型拓扑",
+          "树型拓扑"
+        ],
+        "correct": 1,
+        "explanation": "总线型拓扑中所有设备共享同一条通信总线，使用CSMA/CD机制处理冲突。星型拓扑通过中心交换机隔离冲突域。"
+      },
+      {
+        "id": "np1-006",
+        "question": "TCP/IP模型共有几层？",
+        "type": "multiple_choice",
+        "options": [
+          "7层",
+          "5层",
+          "4层",
+          "3层"
+        ],
+        "correct": 2,
+        "explanation": "TCP/IP模型共有4层：网络接口层（对应OSI物理层+数据链路层）、网际层（网络层）、传输层、应用层（会话层+表示层+应用层）。"
+      },
+      {
+        "id": "np1-007",
+        "question": "以太网（Ethernet）标准IEEE 802.3定义在OSI的哪一层？",
+        "type": "multiple_choice",
+        "options": [
+          "物理层",
+          "数据链路层",
+          "网络层",
+          "物理层和数据链路层"
+        ],
+        "correct": 3,
+        "explanation": "IEEE 802.3（以太网）标准同时涉及OSI的物理层（信号编码、传输介质）和数据链路层（MAC帧格式、介质访问控制）。"
+      },
+      {
+        "id": "np1-008",
+        "question": "交换机（Switch）主要工作在OSI的哪一层？",
+        "type": "multiple_choice",
+        "options": [
+          "物理层",
+          "数据链路层",
+          "网络层",
+          "传输层"
+        ],
+        "correct": 1,
+        "explanation": "交换机基于MAC地址进行帧转发，主要工作在数据链路层（第2层）。部分三层交换机也支持网络层功能。"
+      },
+      {
+        "id": "np1-009",
+        "question": "路由器（Router）主要工作在OSI的哪一层？",
+        "type": "multiple_choice",
+        "options": [
+          "数据链路层",
+          "网络层",
+          "传输层",
+          "应用层"
+        ],
+        "correct": 1,
+        "explanation": "路由器基于IP地址进行数据包转发和路由选择，工作在OSI网络层（第3层）。"
+      },
+      {
+        "id": "np1-010",
+        "question": "OSI模型中，数据的传输单元（PDU）在各层有不同的名称。数据链路层的PDU叫什么？",
+        "type": "multiple_choice",
+        "options": [
+          "比特（Bit）",
+          "帧（Frame）",
+          "数据包（Packet）",
+          "段（Segment）"
+        ],
+        "correct": 1,
+        "explanation": "OSI各层PDU名称：物理层=比特（Bit），数据链路层=帧（Frame），网络层=数据包（Packet），传输层=段（Segment/TCP）或数据报（UDP）。"
+      },
+      {
+        "id": "np1-011",
+        "question": "下列线缆中，哪种主要用于以太网千兆/万兆传输，抗干扰能力最强？",
+        "type": "multiple_choice",
+        "options": [
+          "同轴电缆",
+          "双绞线（UTP）",
+          "光纤",
+          "串行线缆"
+        ],
+        "correct": 2,
+        "explanation": "光纤利用光信号传输，带宽高、抗电磁干扰能力最强，传输距离最远，是千兆/万兆以太网的主流传输介质。"
+      },
+      {
+        "id": "np1-012",
+        "question": "IP地址 192.168.1.1 属于哪类IP地址？",
+        "type": "multiple_choice",
+        "options": [
+          "A类",
+          "B类",
+          "C类",
+          "D类"
+        ],
+        "correct": 2,
+        "explanation": "192.168.1.1 首字节192属于192-223范围，是C类IP地址。C类默认子网掩码为255.255.255.0，适用于小型局域网。"
+      },
+      {
+        "id": "np1-013",
+        "question": "子网掩码 255.255.255.0 用CIDR表示法怎么写？",
+        "type": "multiple_choice",
+        "options": [
+          "/24",
+          "/16",
+          "/8",
+          "/32"
+        ],
+        "correct": 0,
+        "explanation": "255.255.255.0 二进制有24个连续的1，因此CIDR表示法为 /24。同理 /16=255.255.0.0，/8=255.0.0.0。"
+      },
+      {
+        "id": "np1-014",
+        "question": "下列IP地址中，哪个是私有地址（RFC 1918）？",
+        "type": "multiple_choice",
+        "options": [
+          "8.8.8.8",
+          "114.114.114.114",
+          "10.0.0.1",
+          "1.1.1.1"
+        ],
+        "correct": 2,
+        "explanation": "RFC 1918定义的私有IP地址范围：10.0.0.0/8、172.16.0.0/12、192.168.0.0/16。这些地址不能在公网上路由，需通过NAT转换。"
+      },
+      {
+        "id": "np1-015",
+        "question": "ARP协议的作用是？",
+        "type": "multiple_choice",
+        "options": [
+          "将域名解析为IP地址",
+          "将IP地址解析为MAC地址",
+          "将MAC地址解析为IP地址",
+          "将IP地址解析为域名"
+        ],
+        "correct": 1,
+        "explanation": "ARP（Address Resolution Protocol）用于将IP地址解析为MAC地址，工作在数据链路层与网络层之间。RARP是反向解析（MAC→IP）。"
+      },
+      {
+        "id": "np1-016",
+        "question": "OSI模型中，负责数据加密、压缩和编码的是哪一层？",
+        "type": "multiple_choice",
+        "options": [
+          "会话层",
+          "表示层",
+          "应用层",
+          "传输层"
+        ],
+        "correct": 1,
+        "explanation": "表示层（第6层）负责数据格式转换、加密/解密、压缩/解压缩，确保发送端和接收端的数据表示一致。"
+      },
+      {
+        "id": "np1-017",
+        "question": "集线器（Hub）工作在OSI的哪一层？",
+        "type": "multiple_choice",
+        "options": [
+          "物理层",
+          "数据链路层",
+          "网络层",
+          "传输层"
+        ],
+        "correct": 0,
+        "explanation": "集线器是物理层设备，仅对电信号进行放大和广播转发，不识别MAC地址或IP地址，所有端口在同一冲突域内。"
+      },
+      {
+        "id": "np1-018",
+        "question": "以下TCP/IP协议中，用于文件传输的是？",
+        "type": "multiple_choice",
+        "options": [
+          "SMTP",
+          "FTP",
+          "SNMP",
+          "DHCP"
+        ],
+        "correct": 1,
+        "explanation": "FTP（File Transfer Protocol）用于文件传输，工作在应用层。SMTP用于邮件发送，SNMP用于网络管理，DHCP用于动态主机配置。"
+      },
+      {
+        "id": "np1-019",
+        "question": "OSI模型中，层与层之间通过什么进行通信？",
+        "type": "multiple_choice",
+        "options": [
+          "接口（Interface）",
+          "协议（Protocol）",
+          "端口（Port）",
+          "Socket"
+        ],
+        "correct": 0,
+        "explanation": "OSI模型中，同一主机的相邻层之间通过服务访问点（SAP/接口）通信；不同主机的同一层之间通过协议（Protocol）通信。"
+      },
+      {
+        "id": "np1-020",
+        "question": " ping 命令使用的是哪个网络协议？",
+        "type": "multiple_choice",
+        "options": [
+          "TCP",
+          "UDP",
+          "ICMP",
+          "ARP"
+        ],
+        "correct": 2,
+        "explanation": "ping 命令使用ICMP（Internet Control Message Protocol）协议，发送Echo Request并等待Echo Reply，用于测试网络连通性。"
+      },
+      {
+        "id": "np1-021",
+        "question": "下列哪种网络拓扑的可靠性最高？",
+        "type": "multiple_choice",
+        "options": [
+          "总线型",
+          "星型",
+          "环型",
+          "网状型"
+        ],
+        "correct": 3,
+        "explanation": "网状型拓扑每个节点都有多条路径可达其他节点，单条链路故障不影响整体连通，可靠性最高。"
+      },
+      {
+        "id": "np1-022",
+        "question": "双绞线（Twisted Pair）最常见的接口类型是？",
+        "type": "multiple_choice",
+        "options": [
+          "BNC",
+          "RJ45",
+          "SC",
+          "RS232"
+        ],
+        "correct": 1,
+        "explanation": "RJ45是双绞线以太网最常用的接口类型，有8P8C（8针8触点）结构。"
+      },
+      {
+        "id": "np1-023",
+        "question": "单模光纤（Single-mode）的工作波长主要是？",
+        "type": "multiple_choice",
+        "options": [
+          "850nm",
+          "1300nm",
+          "1310nm和1550nm",
+          "650nm"
+        ],
+        "correct": 2,
+        "explanation": "单模光纤主要工作于1310nm和1550nm波长，传输距离远、带宽大，用于长距离通信。"
+      },
+      {
+        "id": "np1-024",
+        "question": "CRC（循环冗余校验）用于OSI哪一层？",
+        "type": "multiple_choice",
+        "options": [
+          "物理层",
+          "数据链路层",
+          "网络层",
+          "传输层"
+        ],
+        "correct": 1,
+        "explanation": "CRC校验由数据链路层（如Ethernet的FCS字段）提供，用于检测帧传输中的错误。"
+      },
+      {
+        "id": "np1-025",
+        "question": "子网掩码255.255.255.0对应CIDR前缀长度是？",
+        "type": "multiple_choice",
+        "options": [
+          "/24",
+          "/25",
+          "/23",
+          "/22"
+        ],
+        "correct": 0,
+        "explanation": "/24对应255.255.255.0，表示前24位为网络位，后8位为主机位。"
+      },
+      {
+        "id": "np1-026",
+        "question": "私有IP地址段不包括下列哪个？",
+        "type": "multiple_choice",
+        "options": [
+          "10.0.0.0/8",
+          "172.16.0.0/12",
+          "192.168.0.0/16",
+          "202.96.128.0/24"
+        ],
+        "correct": 3,
+        "explanation": "RFC1918定义的私有IP段为10.0.0.0/8、172.16.0.0/12、192.168.0.0/16。202.96.128.0/24是公网地址。"
+      },
+      {
+        "id": "np1-027",
+        "question": "集线器（Hub）工作在OSI哪一层？",
+        "type": "multiple_choice",
+        "options": [
+          "物理层",
+          "数据链路层",
+          "网络层",
+          "传输层"
+        ],
+        "correct": 0,
+        "explanation": "Hub是物理层设备，仅对信号进行放大和广播转发，不识别MAC地址。"
+      },
+      {
+        "id": "np1-028",
+        "question": "下列关于交换机的说法，正确的是？",
+        "type": "multiple_choice",
+        "options": [
+          "交换机基于IP地址转发",
+          "交换机基于MAC地址转发",
+          "交换机不能隔离冲突域",
+          "交换机分割广播域"
+        ],
+        "correct": 1,
+        "explanation": "交换机基于MAC地址表进行转发，每个端口是一个独立冲突域，但默认不分割广播域（需VLAN）。"
+      },
+      {
+        "id": "np1-029",
+        "question": "OSI模型中，数据链路层的数据单位称为？",
+        "type": "multiple_choice",
+        "options": [
+          "Bit",
+          "报文",
+          "帧",
+          "数据包"
+        ],
+        "correct": 2,
+        "explanation": "数据链路层的PDU是帧（Frame），物理层是比特（Bit），网络层是数据包（Packet），应用层是报文（Message）。"
+      },
+      {
+        "id": "np1-030",
+        "question": "在Ethernet II帧中，类型字段（EtherType）值为0x0800表示上层协议是？",
+        "type": "multiple_choice",
+        "options": [
+          "ARP",
+          "IPv4",
+          "IPv6",
+          "LLC"
+        ],
+        "correct": 1,
+        "explanation": "EtherType=0x0800表示承载IPv4数据包；0x0806=ARP；0x86DD=IPv6。"
+      }
+    ]
+  }
+}

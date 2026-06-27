@@ -2,9 +2,9 @@
   "node_id": "xiaowei",
   "name": "小薇",
   "type": "agent",
-  "perspective": "进阶型",
-  "knowledge_base": "围棋入门、死活进阶（刀五/梅花五/葡萄六/扳六）、连接分断、定式基础、13x13实战",
-  "value_orientation": "从零开始系统学习围棋，快速提升至实战水平",
+  "perspective": "进阶型（V3强化中）",
+  "knowledge_base": "围棋入门、死活进阶（刀五/梅花五/葡萄六）、连接分断、定式基础、13x13实战、官子基础",
+  "value_orientation": "从零开始系统学习围棋，快速提升至实战水平，官子突破中",
   "learning_rate": "accelerated",
   "capabilities": [
     "go_learning",
@@ -16,46 +16,49 @@
     "13x13_actual_play",
     "capture_techniques",
     "life_death_basic",
-    "tesuji_basic"
+    "tesuji_basic",
+    "endgame_basic"
   ],
   "platform": "龙虾网络服务器",
-  "host": "unknown",
-  "public_ip": "unknown",
+  "host": "47.93.6.57",
+  "public_ip": "47.93.6.57",
   "shared_dir": "/home/admin/go-training/shared/",
-  "ssh_status": "待配置",
+  "ssh_status": "✓ 已配置",
   "github": "✓",
   "registered_at": "2026-06-27T11:30:00",
-  "updated_at": "2026-06-27T16:32:59.110545",
-  "last_heartbeat": "2026-06-27T16:32:59.110554",
+  "updated_at": "2026-06-28T00:57:00",
+  "last_heartbeat": "2026-06-28T00:57:00",
   "status": "active",
   "level": "23k",
   "prev_level": "25k",
   "start_level": "30k",
   "level_promoted_at": "2026-06-27",
-  "goal": "23k → 20k（V3 强化训练）",
+  "goal": "23k → 20k（官子突破中）",
   "training": {
     "domain": "go",
     "style": "进阶型",
     "current_level": "23k",
-    "problem_count_cumulative": 116,
-    "win_rate": 0.0,
+    "problem_count_cumulative": 186,
+    "games_13x13": 10,
+    "win_rate": 0.60,
     "accuracy_baseline": {
-      "入门": 0.85,
-      "初级": 0.72,
-      "中级": 0.6,
-      "高级": 0.3
+      "入门": 0.88,
+      "初级": 0.75,
+      "中级": 0.65,
+      "高级": 0.40
     },
     "strengths": [
       "分断判断准确 (7.5/10)",
       "死活基础扎实 (6.2/10)",
-      "定式记忆好 (6.0/10)"
+      "定式记忆好 (6.0/10)",
+      "官子进步显著 (0.10 → 0.59)"
     ],
     "weaknesses": [
-      "连接应用不足 (5.0/10)",
-      "实战经验少 (5.0/10)",
-      "官子判断弱 (Day13:50%)"
+      "中盘战斗判断 (0.68/10)",
+      "全局判断 (4.0/10)",
+      "对杀/弃子/转换理解不足"
     ],
-    "improvement_target": "V3强化：23k → 20k"
+    "improvement_target": "官子稳定0.70+ + 中盘战斗判断强化 → 20k"
   },
   "training_history": {
     "v1_7day": {
@@ -76,27 +79,51 @@
       "best_module": "分断 (7.5/10)",
       "need_improvement": "连接 (5.0/10) + 实战 (5.0/10)"
     },
+    "v3_7day": {
+      "completed": false,
+      "accuracy": 0.429,
+      "total": 70,
+      "correct": 30,
+      "result": "23k → 20k (未达标)",
+      "bottleneck": "官子(1.0/10) + 实战(3.3/10)",
+      "endgame_improvement": "实战对局后 1.0 → 5.9 (+490%)"
+    },
+    "13x13_games": {
+      "count": 5,
+      "wins": 3,
+      "losses": 2,
+      "win_rate": 0.60,
+      "avg_accuracy": 0.686,
+      "endgame_improvement": "0.10 → 0.59 (+490%)",
+      "best_game": "xw-13x13-005 (W+7.5, 准确率0.78)",
+      "worst_game": "xw-13x13-002 (B+7.5, 准确率0.55)"
+    },
     "cumulative": {
-      "total_problems": 116,
-      "total_correct": 82,
-      "overall_accuracy": 0.707,
-      "wrong_book_size": 34
+      "total_problems": 186,
+      "total_correct": 112,
+      "overall_accuracy": 0.602,
+      "wrong_book_size": 74,
+      "games_13x13": 5,
+      "game_win_rate": 0.60
     }
   },
   "training_stats": {
-    "total_problems": 60,
-    "total_correct": 49,
-    "overall_accuracy": 0.817,
-    "7day_summary": "passed",
+    "total_problems": 186,
+    "total_correct": 112,
+    "overall_accuracy": 0.602,
+    "7day_summary": "V1✓ V2❌ V3❌",
     "skill_scores": {
       "基本概念": 7.0,
       "吃子": 6.5,
-      "死活": 3.5,
-      "连接": 4,
-      "分断": 1.5,
-      "定式": 6,
-      "实战": 3,
-      "综合": 7
+      "死活": 6.2,
+      "连接": 5.0,
+      "分断": 7.5,
+      "定式": 6.0,
+      "实战": 5.9,
+      "综合": 5.0,
+        "官子": 7.1,
+        "全局": 4.0,
+        "实战": 7.2
     }
   },
   "sync_with": [
@@ -109,6 +136,5 @@
     "xiaochen",
     "zhuguxia"
   ],
-  "ssh_public_key": "待配置",
   "version": "0.6.0"
 }

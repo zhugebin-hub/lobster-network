@@ -1,0 +1,141 @@
+{
+  "phase": 1,
+  "name": "世界杯预测基础",
+  "description": "胜平负预测、比分预测、总进球数预测",
+  "problems": [
+    {
+      "id": "fp1-001",
+      "type": "match_result",
+      "difficulty": "入门",
+      "question": "德国 vs 日本，预测胜平负",
+      "context": {
+        "home_team": "德国",
+        "away_team": "日本",
+        "home_rank": 16,
+        "away_rank": 20,
+        "home_form": "W-W-D-L-W",
+        "away_form": "W-L-W-W-D"
+      },
+      "options": ["主胜", "平局", "主负"],
+      "answer": "主胜",
+      "confidence": 0.65,
+      "reasoning": "德国主场优势明显，世界排名更高，近期状态稳定"
+    },
+    {
+      "id": "fp1-002",
+      "type": "score",
+      "difficulty": "初级",
+      "question": "预测德国 vs 日本的比分",
+      "context": {
+        "home_team": "德国",
+        "away_team": "日本",
+        "home_avg_goals": 2.1,
+        "away_avg_goals": 1.4,
+        "home_concede": 0.8,
+        "away_concede": 1.1
+      },
+      "options": ["1-0", "2-0", "2-1", "3-1", "1-1"],
+      "answer": "2-1",
+      "confidence": 0.45,
+      "reasoning": "德国进攻火力强但日本防守有韧性，预计2-1小胜"
+    },
+    {
+      "id": "fp1-003",
+      "type": "total_goals",
+      "difficulty": "入门",
+      "question": "预测比赛总进球数（0-7+）",
+      "context": {
+        "home_team": "厄瓜多尔",
+        "away_team": "德国",
+        "home_avg_goals": 1.2,
+        "away_avg_goals": 2.3,
+        "league_avg": 2.8
+      },
+      "options": ["0-1", "2-3", "4-5", "6+"],
+      "answer": "2-3",
+      "confidence": 0.60,
+      "reasoning": "德国进攻强，厄瓜多尔防守一般，预计2-3球"
+    },
+    {
+      "id": "fp1-004",
+      "type": "match_result",
+      "difficulty": "入门",
+      "question": "突尼斯 vs 荷兰，预测胜平负",
+      "context": {
+        "home_team": "突尼斯",
+        "away_team": "荷兰",
+        "home_rank": 30,
+        "away_rank": 7,
+        "home_form": "D-L-W-D-L",
+        "away_form": "W-W-W-D-W"
+      },
+      "options": ["主胜", "平局", "主负"],
+      "answer": "主负",
+      "confidence": 0.72,
+      "reasoning": "荷兰实力明显占优，近期状态火热，突尼斯防守薄弱"
+    },
+    {
+      "id": "fp1-005",
+      "type": "match_result",
+      "difficulty": "入门",
+      "question": "库拉索 vs 科特迪瓦，预测胜平负",
+      "context": {
+        "home_team": "库拉索",
+        "away_team": "科特迪瓦",
+        "home_rank": 85,
+        "away_rank": 45,
+        "home_form": "L-L-D-L-W",
+        "away_form": "W-D-W-L-W"
+      },
+      "options": ["主胜", "平局", "主负"],
+      "answer": "主负",
+      "confidence": 0.70,
+      "reasoning": "科特迪瓦排名远高于库拉索，实力差距明显"
+    },
+    {
+      "id": "fp1-006",
+      "type": "score",
+      "difficulty": "初级",
+      "question": "预测突尼斯 vs 荷兰的比分",
+      "context": {
+        "home_team": "突尼斯",
+        "away_team": "荷兰",
+        "home_avg_goals": 0.9,
+        "away_avg_goals": 1.8,
+        "home_concede": 1.4,
+        "away_concede": 0.7
+      },
+      "options": ["0-1", "0-2", "1-2", "1-1", "0-0"],
+      "answer": "1-2",
+      "confidence": 0.40,
+      "reasoning": "荷兰进攻有优势，但突尼斯主场可能进1球，预计1-2"
+    },
+    {
+      "id": "fp1-007",
+      "type": "match_result",
+      "difficulty": "入门",
+      "question": "分析影响胜平负预测的关键因素",
+      "context": {
+        "factors": ["世界排名", "近期状态", "主客场", "历史交锋", "伤病情况"]
+      },
+      "options": ["世界排名最重要", "近期状态最重要", "综合因素", "主客场最重要"],
+      "answer": "综合因素",
+      "confidence": 0.80,
+      "reasoning": "预测需要综合考虑多项因素，不能只看单一指标"
+    },
+    {
+      "id": "fp1-008",
+      "type": "total_goals",
+      "difficulty": "入门",
+      "question": "世界杯小组赛平均每场进球数约多少？",
+      "context": {
+        "tournament": "世界杯",
+        "stage": "小组赛"
+      },
+      "options": ["1-2球", "2-3球", "3-4球", "4+球"],
+      "answer": "2-3球",
+      "confidence": 0.75,
+      "reasoning": "历史数据显示世界杯小组赛平均每场2.6-2.8球"
+    }
+  ]
+}
