@@ -147,7 +147,7 @@ class NodeRegistry:
     def __init__(
         self,
         storage_path: Optional[str] = None,
-        storage_dir: Optional[str] = None,  # 诸葛马版兼容
+        storage_dir: Optional[str] = None,  # 诸葛马版兼容，如果是目录则自动追加文件名
         heartbeat_timeout: int = 300,
         cleanup_interval: int = 60,
     ):
@@ -155,14 +155,23 @@ class NodeRegistry:
         初始化注册中心
         
         Args:
-            storage_path: 持久化存储路径（虾尔版），None 则仅内存模式
-            storage_dir: 持久化目录（诸葛马版兼容）
+            storage_path: 持久化存储路径（文件），None 则仅内存模式
+            storage_dir: 持久化目录（诸葛马版），自动追加 registry.json
             heartbeat_timeout: 心跳超时时间（秒）（诸葛马版）
             cleanup_interval: 清理间隔（秒）（诸葛马版）
         """
+        # 初始化节点字典
         self.nodes: Dict[str, RegistrationInfo] = {}
-        # 兼容两种参数名
-        self.storage_path = storage_path or (str(storage_dir) if storage_dir else None)
+        
+        # 兼容两种参数名，如果是目录则自动追加文件名
+        if storage_dir:
+            if os.path.isdir(storage_dir):
+                self.storage_path = os.path.join(storage_dir, "registry.json")
+            else:
+                self.storage_path = storage_dir  # 当作文件路径处理
+        else:
+            self.storage_path = storage_path
+        
         self.heartbeat_timeout = heartbeat_timeout
         self.cleanup_interval = cleanup_interval
         self._lock = threading.RLock()
@@ -176,10 +185,10 @@ class NodeRegistry:
         self._cleanup_thread: Optional[threading.Thread] = None
         
         # 从持久化存储加载
-        if storage_path and os.path.exists(storage_path):
+        if self.storage_path and os.path.exists(self.storage_path):
             self._load()
         
-        logger.info(f"NodeRegistry initialized (storage={storage_path or 'memory-only'}, timeout={heartbeat_timeout}s)")
+        logger.info(f"NodeRegistry initialized (storage={self.storage_path or 'memory-only'}, timeout={heartbeat_timeout}s)")
     
     # ==================== 注册与注销 ====================
     
@@ -193,7 +202,7 @@ class NodeRegistry:
         capabilities: Optional[List[str]] = None,
         transports: Optional[List[TransportConfig]] = None,
         metadata: Optional[Dict] = None,
-        ttl_seconds: int = 300,
+        ttl_seconds: Optional[int] = None,  # 改为 Optional，None 时使用 self.heartbeat_timeout
     ) -> RegistrationInfo:
         """
         注册节点
@@ -207,13 +216,17 @@ class NodeRegistry:
             capabilities: 能力列表
             transports: 传输通道配置（虾尔版）
             metadata: 元数据
-            ttl_seconds: 心跳超时时间（秒）
+            ttl_seconds: 心跳超时时间（秒），None 时使用 self.heartbeat_timeout
         
         Returns:
             RegistrationInfo: 注册信息
         """
         with self._lock:
             now = datetime.now().isoformat()
+            
+            # 如果 ttl_seconds 未提供，使用注册中心的默认超时
+            if ttl_seconds is None:
+                ttl_seconds = self.heartbeat_timeout
             
             was_existing = node_id in self.nodes
             node = self.nodes.get(node_id)
@@ -276,6 +289,9 @@ class NodeRegistry:
                 return True
             return False
     
+    # 向后兼容别名
+    deregister = unregister
+    
     # ==================== 心跳 ====================
     
     def heartbeat(self, node_id: str, status: Optional[str] = None, metadata: Optional[Dict] = None) -> bool:
@@ -312,9 +328,9 @@ class NodeRegistry:
             # 触发心跳回调
             self._trigger_callback("heartbeat", node)
             
-            # 状态变化回调
+            # 状态变化回调（传递 node_id, old_status, new_status）
             if node.status != old_status:
-                self._trigger_callback("status_change", node)
+                self._trigger_callback("status_change", node.node_id, old_status, node.status)
             
             return True
     
@@ -337,11 +353,11 @@ class NodeRegistry:
         """注册心跳回调（虾尔版兼容）"""
         self.on("heartbeat", callback)
     
-    def _trigger_callback(self, event: str, node: RegistrationInfo) -> None:
-        """触发回调"""
+    def _trigger_callback(self, event: str, *args) -> None:
+        """触发回调（支持可变参数）"""
         for callback in self._callbacks.get(event, []):
             try:
-                callback(node)
+                callback(*args)
             except Exception as e:
                 logger.error(f"回调执行失败 ({event}): {e}")
     

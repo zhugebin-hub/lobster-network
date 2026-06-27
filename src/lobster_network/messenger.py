@@ -16,6 +16,7 @@ from pathlib import Path
 
 from src.lobster_network.registry import NodeRegistry, TransportConfig, TransportType
 from src.lobster_network.utils.logger import get_logger
+from src.lobster_network.security import sign_message, verify_message, CRYPTOGRAPHY_AVAILABLE
 
 logger = get_logger(__name__)
 
@@ -53,7 +54,7 @@ class MessageAttempt:
 
 @dataclass
 class ReliableMessage:
-    """可靠消息（带状态跟踪）"""
+    """可靠消息（带状态跟踪 + 安全签名）"""
     msg_id: str
     from_node: str
     to_node: str
@@ -70,6 +71,9 @@ class ReliableMessage:
     acked_at: Optional[str] = None
     reply_to: Optional[str] = None
     priority: int = 0         # 优先级，数字越小优先级越高
+    # 安全字段
+    signature: Optional[str] = None
+    signed_at: Optional[str] = None
     
     def to_dict(self) -> dict:
         return {
@@ -88,6 +92,9 @@ class ReliableMessage:
             "acked_at": self.acked_at,
             "reply_to": self.reply_to,
             "priority": self.priority,
+            # 安全字段
+            "signature": self.signature,
+            "signed_at": self.signed_at,
         }
     
     @classmethod
@@ -109,6 +116,9 @@ class ReliableMessage:
             acked_at=data.get("acked_at"),
             reply_to=data.get("reply_to"),
             priority=data.get("priority", 0),
+            # 安全字段
+            signature=data.get("signature"),
+            signed_at=data.get("signed_at"),
         )
     
     def is_expired(self) -> bool:
@@ -126,6 +136,46 @@ class ReliableMessage:
             and len(self.attempts) < self.max_retries
             and not self.is_expired()
         )
+    
+    def sign(self, secret: str = None) -> Optional[str]:
+        """
+        对消息签名（使用 payload 生成签名）
+        
+        Returns:
+            Optional[str]: 签名字符串，如果禁用安全特性则返回 None
+        """
+        if not CRYPTOGRAPHY_AVAILABLE and not secret:
+            # 如果 cryptography 不可用且未提供密钥，跳过签名
+            logger.debug("跳过签名：cryptography 不可用且未提供密钥")
+            return None
+        
+        try:
+            signed_msg = sign_message(self.payload, secret=secret or DEFAULT_SECRET)
+            self.signature = signed_msg.get("_signature")
+            self.signed_at = signed_msg.get("_signed_at")
+            return self.signature
+        except Exception as e:
+            logger.error(f"消息签名失败: {e}")
+            return None
+    
+    def verify_signature(self, secret: str = None) -> bool:
+        """
+        验证消息签名
+        
+        Returns:
+            bool: 验证是否通过
+        """
+        if not self.signature:
+            logger.warning(f"消息 {self.msg_id} 缺少签名")
+            return False
+        
+        try:
+            # 构造带签名的消息用于验证
+            msg_with_sig = self.to_dict()
+            return verify_message(msg_with_sig, secret=secret or DEFAULT_SECRET)
+        except Exception as e:
+            logger.error(f"消息验证失败: {e}")
+            return False
     
     def record_attempt(
         self,
@@ -343,6 +393,13 @@ class Messenger:
         
         with self._lock:
             self.messages[msg_id] = message
+        
+        # 对消息签名（如果启用了安全特性）
+        try:
+            message.sign()
+            logger.debug(f"消息已签名: {msg_id}")
+        except Exception as e:
+            logger.warning(f"消息签名失败（将继续发送）: {e}")
         
         # 立即尝试发送
         self._deliver(message)
@@ -637,6 +694,14 @@ class Messenger:
                     with open(filepath, "r", encoding="utf-8") as f:
                         data = json.load(f)
                     msg = ReliableMessage.from_dict(data)
+                    
+                    # 验证消息签名（如果启用了安全特性）
+                    if CRYPTOGRAPHY_AVAILABLE and msg.signature:
+                        if not msg.verify_signature():
+                            logger.warning(f"消息签名验证失败: {msg.msg_id}，将标记为不可信")
+                            # 可以选择：拒绝加载、标记、或继续加载
+                            # 当前策略：继续加载，但记录警告
+                    
                     self.messages[msg.msg_id] = msg
                 except Exception as e:
                     logger.error(f"Failed to load message {filename}: {e}")

@@ -13,17 +13,20 @@
     "life_and_death_intermediate",
     "connection_and_cutting",
     "simple_opening",
-    "13x13_actual_play"
+    "13x13_actual_play",
+    "capture_techniques",
+    "life_death_basic",
+    "tesuji_basic"
   ],
-  "platform": "Claw",
+  "platform": "龙虾网络服务器",
   "host": "unknown",
   "public_ip": "unknown",
   "shared_dir": "/home/admin/go-training/shared/",
   "ssh_status": "待配置",
   "github": "✓",
   "registered_at": "2026-06-27T11:30:00",
-  "updated_at": "2026-06-27T12:50:00",
-  "last_heartbeat": "2026-06-27T12:50:00",
+  "updated_at": "2026-06-27T16:32:59.110545",
+  "last_heartbeat": "2026-06-27T16:32:59.110554",
   "status": "active",
   "level": "23k",
   "prev_level": "25k",
@@ -34,12 +37,13 @@
     "domain": "go",
     "style": "进阶型",
     "current_level": "23k",
+    "problem_count_cumulative": 116,
     "win_rate": 0.0,
     "accuracy_baseline": {
-      "入门": 0.50,
-      "初级": 0.30,
-      "中级": 0.20,
-      "高级": 0.10
+      "入门": 0.85,
+      "初级": 0.72,
+      "中级": 0.6,
+      "高级": 0.3
     },
     "strengths": [
       "分断判断准确 (7.5/10)",
@@ -50,7 +54,8 @@
       "连接应用不足 (5.0/10)",
       "实战经验少 (5.0/10)",
       "官子判断弱 (Day13:50%)"
-    ]
+    ],
+    "improvement_target": "V3强化：23k → 20k"
   },
   "training_history": {
     "v1_7day": {
@@ -79,15 +84,19 @@
     }
   },
   "training_stats": {
-    "total_problems": 116,
-    "total_correct": 82,
-    "overall_accuracy": 0.707,
-    "skill_scores_v2": {
-      "死活": 6.2,
-      "连接": 5.0,
-      "分断": 7.5,
-      "实战": 5.0,
-      "综合": 5.0
+    "total_problems": 60,
+    "total_correct": 49,
+    "overall_accuracy": 0.817,
+    "7day_summary": "passed",
+    "skill_scores": {
+      "基本概念": 7.0,
+      "吃子": 6.5,
+      "死活": 3.5,
+      "连接": 4,
+      "分断": 1.5,
+      "定式": 6,
+      "实战": 3,
+      "综合": 7
     }
   },
   "sync_with": [
@@ -100,5 +109,6 @@
     "xiaochen",
     "zhuguxia"
   ],
+  "ssh_public_key": "待配置",
   "version": "0.6.0"
 }
