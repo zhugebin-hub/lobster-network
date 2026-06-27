@@ -78,19 +78,19 @@ MCP_TOOLS = {
 
 # MCP资源定义
 MCP_RESOURCES = {
-    "student_profiles": {
+    "lobster://students/profiles": {
         "uri": "lobster://students/profiles",
         "name": "学员档案",
         "description": "所有学员的档案信息",
         "mime_type": "application/json"
     },
-    "training_data": {
+    "lobster://training/data": {
         "uri": "lobster://training/data",
         "name": "训练数据",
         "description": "训练进度和结果数据",
         "mime_type": "application/json"
     },
-    "communication_logs": {
+    "lobster://communication/logs": {
         "uri": "lobster://communication/logs",
         "name": "通信日志",
         "description": "节点间通信记录",
