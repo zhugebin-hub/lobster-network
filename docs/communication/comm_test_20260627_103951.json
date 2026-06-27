@@ -1,0 +1,39 @@
+{
+  "test_id": "comm_test_20260627_103951",
+  "timestamp": "2026-06-27 10:39:51",
+  "test_type": "四向通信确认",
+  "results": {
+    "诸葛马": {
+      "host": "172.24.57.34",
+      "status": "✓ 在线",
+      "shared_dir": "/home/admin/go-training/shared/"
+    },
+    "诸葛虾": {
+      "host": "172.24.56.3",
+      "status": "✓ 在线",
+      "shared_dir": "/home/admin/go-training/shared/",
+      "ping_response": "诸葛虾在线"
+    },
+    "小陈": {
+      "host": "121.43.80.231",
+      "status": "✓ 在线",
+      "shared_dir": "/home/admin/go-training/shared/",
+      "ping_response": "小陈在线"
+    },
+    "qoder": {
+      "host": "172.24.56.3 (共享)",
+      "status": "✓ 在线",
+      "shared_dir": "/home/admin/go-training/shared/",
+      "ping_response": "qoder在线"
+    }
+  },
+  "communication_matrix": {
+    "诸葛马→诸葛虾": "✓ SCP/SSH",
+    "诸葛马→小陈": "✓ SCP/SSH",
+    "诸葛马→qoder": "✓ SCP/SSH",
+    "诸葛虾→诸葛马": "✓ 消息文件",
+    "小陈→诸葛马": "✓ 消息文件",
+    "qoder→诸葛马": "✓ 消息文件"
+  },
+  "summary": "四向通信全部正常"
+}
