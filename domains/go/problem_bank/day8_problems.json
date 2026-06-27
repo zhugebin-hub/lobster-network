@@ -1,0 +1,98 @@
+[
+  {
+    "problem_id": "life-adv-001",
+    "type": "死活",
+    "difficulty": "初级",
+    "title": "刀五的死活判断",
+    "description": "黑棋在角上形成刀五形状。不考虑外气，请问黑棋是死是活（先手）？",
+    "options": ["净活", "净死", "劫活", "双活"],
+    "answer": "净死",
+    "solution": "刀五（丁四的变体，5子排成L形）在角上没有外气时是净死。白棋点入要点即可杀死。",
+    "board_situation": "角部刀五",
+    "estimated_time": 120
+  },
+  {
+    "problem_id": "life-adv-002",
+    "type": "死活",
+    "difficulty": "初级",
+    "title": "梅花五的死活",
+    "description": "中央黑棋形成梅花五（5子十字形排列），有1口外气。请问状态如何？",
+    "options": ["净活", "净死", "劫活", "需要看外气数"],
+    "answer": "劫活",
+    "solution": "梅花五中央有1口外气时是劫活。白棋点入中心，黑棋收气后形成打劫。多1口外气则净活。",
+    "board_situation": "中央梅花五",
+    "estimated_time": 150
+  },
+  {
+    "problem_id": "life-adv-003",
+    "type": "死活",
+    "difficulty": "初级",
+    "title": "葡萄六的判断",
+    "description": "黑棋在边上形成葡萄六（6子葡萄串状），有0口外气。请问黑棋死活？",
+    "options": ["净活", "净死", "劫活", "双活"],
+    "answer": "净死",
+    "solution": "葡萄六（6子簇状）无外气时净死。白棋连续点入2手即可杀。围棋格言：葡萄六死。",
+    "board_situation": "边上葡萄六",
+    "estimated_time": 120
+  },
+  {
+    "problem_id": "life-adv-004",
+    "type": "死活",
+    "difficulty": "初级",
+    "title": "扳六的死活",
+    "description": "角上黑棋形成扳六（6子曲折形），有1口外气。请问状态？",
+    "options": ["净活", "净死", "劫活", "需要看具体位置"],
+    "answer": "劫活",
+    "solution": "角上扳六有1口外气时是劫活。白棋先手点入，黑棋做劫。中央扳六多1口气则净活。",
+    "board_situation": "角部扳六",
+    "estimated_time": 150
+  },
+  {
+    "problem_id": "life-adv-005",
+    "type": "死活",
+    "difficulty": "初级",
+    "title": "直四与方四的区别",
+    "description": "以下死形中，哪个是完全净死的形状？",
+    "options": ["直四", "曲四", "方四", "丁四"],
+    "answer": "方四",
+    "solution": "方四（4子正方形排列）是死形，无论谁先手都是净死。直四和曲四是活形，丁四需要看外气。",
+    "board_situation": "经典死形判断",
+    "estimated_time": 90
+  },
+  {
+    "problem_id": "life-adv-006",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "角部大猪嘴",
+    "description": "角上黑棋形成「大猪嘴」形状。白棋先。请问最佳结果？",
+    "options": ["白棋净杀黑棋", "黑棋净活", "打劫", "双活"],
+    "answer": "白棋净杀黑棋",
+    "solution": "大猪嘴是经典死形。白棋扳后点入，黑棋无论如何应对都是净死。格言：大猪嘴，扳点死。",
+    "board_situation": "角部大猪嘴",
+    "estimated_time": 180
+  },
+  {
+    "problem_id": "life-adv-007",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "小猪嘴的劫活",
+    "description": "角上黑棋形成「小猪嘴」形状。白先。请问结果？",
+    "options": ["白棋净杀", "黑棋净活", "打劫", "双活"],
+    "answer": "打劫",
+    "solution": "小猪嘴是经典劫活形状。白棋扑后黑棋做劫，双方争夺。格言：小猪嘴，打劫活。",
+    "board_situation": "角部小猪嘴",
+    "estimated_time": 150
+  },
+  {
+    "problem_id": "life-adv-008",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "盘角曲四",
+    "description": "棋盘角落里黑棋形成了「盘角曲四」的经典形状。请问最终结果？",
+    "options": ["净活", "净死（终局判定死）", "打劫", "双活"],
+    "answer": "净死（终局判定死）",
+    "solution": "盘角曲四在现行规则下，终局时直接判定为死棋（白棋可以补净所有劫材后动手）。这是围棋规则中少有的「无需下完」的棋形。",
+    "board_situation": "角部盘角曲四",
+    "estimated_time": 180
+  }
+]

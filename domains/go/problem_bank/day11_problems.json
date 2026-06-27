@@ -1,0 +1,98 @@
+[
+  {
+    "problem_id": "conn-adv-001",
+    "type": "连接",
+    "difficulty": "初级",
+    "title": "尖的连接",
+    "description": "在围棋中，「尖」（小尖）走法在两颗棋子之间形成什么关系？",
+    "options": ["直接连接", "间接连接（对方无法切断）", "断点", "没有连接关系"],
+    "answer": "间接连接（对方无法切断）",
+    "solution": "尖是一种间接但坚固的连接方式。两颗棋子形成对角关系，对方直接冲断时会因气不够而被吃。这就是「尖无断点」的含义。",
+    "board_situation": "尖的连接",
+    "estimated_time": 90
+  },
+  {
+    "problem_id": "conn-adv-002",
+    "type": "连接",
+    "difficulty": "初级",
+    "title": "飞的连接性",
+    "description": "小飞在什么情况下可以被对方切断？",
+    "options": ["对方跨断", "对方直接冲", "永远不能被切断", "对方扳"],
+    "answer": "对方跨断",
+    "solution": "小飞（日字形移动）的连接不够紧密。对方可以通过「跨」（在飞的两子之间落子）来尝试切断。需要周围有足够的接应才能保证连接。",
+    "board_situation": "飞的连接性",
+    "estimated_time": 120
+  },
+  {
+    "problem_id": "conn-adv-003",
+    "type": "连接",
+    "difficulty": "初级",
+    "title": "虎口的保护",
+    "description": "「虎口」是围棋中常见的连接方式。虎口的作用是什么？",
+    "options": ["威胁吃子+保护断点", "只是形状好看", "增加目数", "没有实际作用"],
+    "answer": "威胁吃子+保护断点",
+    "solution": "虎口是一举两得的好棋：一方面保护了断点（对方断则被吃），另一方面形成了对周围的威胁。虎是补断的首选手段。",
+    "board_situation": "虎口的作用",
+    "estimated_time": 90
+  },
+  {
+    "problem_id": "conn-adv-004",
+    "type": "连接",
+    "difficulty": "中级",
+    "title": "双板凳连接",
+    "description": "「双」（或称双板凳）是最坚固的连接。它的特征是什么？",
+    "options": ["两个虎口互相照应", "两颗子紧挨着", "跳一步", "飞一步"],
+    "answer": "两个虎口互相照应",
+    "solution": "双（双板凳）由两个虎口互相照应组成。无论对方断哪边，都可以用另一边吃子。这是最坚固的连接方式之一。",
+    "board_situation": "双板凳连接",
+    "estimated_time": 90
+  },
+  {
+    "problem_id": "conn-adv-005",
+    "type": "连接",
+    "difficulty": "中级",
+    "title": "补断的选择",
+    "description": "当你的棋形有断点时，以下哪种补法最稳健？",
+    "options": ["直接接（粘）", "虎补", "飞补", "跳补"],
+    "answer": "直接接（粘）",
+    "solution": "直接粘是最稳健的补断方法，100%保证连接。但有时过于保守会损失效率。虎补在稳健和效率之间取得平衡。",
+    "board_situation": "补断方式选择",
+    "estimated_time": 120
+  },
+  {
+    "problem_id": "conn-adv-006",
+    "type": "连接",
+    "difficulty": "中级",
+    "title": "联络与出头",
+    "description": "中盘战斗中，孤棋最重要的生存策略是什么？",
+    "options": ["联络自己的活棋", "强行杀棋", "放弃逃跑", "做劫"],
+    "answer": "联络自己的活棋",
+    "solution": "中盘战斗中，孤棋的首要任务是联络到自己的活棋。有了根据地才有安全感。「孤棋需连根」是围棋的黄金法则。",
+    "board_situation": "中盘联络",
+    "estimated_time": 120
+  },
+  {
+    "problem_id": "conn-adv-007",
+    "type": "连接",
+    "difficulty": "中级",
+    "title": "渡过的条件",
+    "description": "「渡过」通常发生在什么位置？",
+    "options": ["一线或二线", "三线", "四线", "中央"],
+    "answer": "一线或二线",
+    "solution": "渡过通常发生在一线（底线）和二线。利用边线的特性，棋子可以沿着边线安全地连接到另一块棋。三线以上很难渡过了。",
+    "board_situation": "边线渡过",
+    "estimated_time": 120
+  },
+  {
+    "problem_id": "conn-adv-008",
+    "type": "连接",
+    "difficulty": "中级",
+    "title": "实战连接判断",
+    "description": "棋盘上你的两块棋距离3格，中间有对方一子。最佳的连接方式是？",
+    "options": ["飞过去（利用周围势力）", "直接冲过去", "放弃连接", "打劫"],
+    "answer": "飞过去（利用周围势力）",
+    "solution": "距离3格时，可以利用小飞或大飞尝试连接。关键看周围己方子力分布。有足够接应时，飞是安全的选择。",
+    "board_situation": "实战连接",
+    "estimated_time": 150
+  }
+]

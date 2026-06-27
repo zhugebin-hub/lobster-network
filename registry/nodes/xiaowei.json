@@ -1,0 +1,74 @@
+{
+  "node_id": "xiaowei",
+  "name": "小薇",
+  "type": "agent",
+  "perspective": "进阶型",
+  "knowledge_base": "围棋入门、死活进阶（刀五/梅花五/葡萄六/扳六）、连接分断、定式基础、13x13实战",
+  "value_orientation": "从零开始系统学习围棋，快速提升至实战水平",
+  "learning_rate": "accelerated",
+  "capabilities": [
+    "go_learning",
+    "fundamental_exercises",
+    "step_by_step_analysis",
+    "life_and_death_intermediate",
+    "connection_and_cutting",
+    "simple_opening",
+    "13x13_actual_play"
+  ],
+  "platform": "龙虾网络服务器",
+  "registered_at": "2026-06-27T11:30:00",
+  "updated_at": "2026-06-27T11:45:28.711359",
+  "status": "active",
+  "level": "23k",
+  "prev_level": "25k",
+  "level_promoted_at": "2026-06-27",
+  "goal": "23k → 20k（V2强化训练）",
+  "training_history": {
+    "v1_7day": {
+      "completed": true,
+      "accuracy": 0.817,
+      "total": 60,
+      "correct": 49,
+      "result": "30k → 25k"
+    },
+    "v2_7day": {
+      "completed": true,
+      "accuracy": 0.589,
+      "total": 56,
+      "correct": 33,
+      "result": "25k → 23k",
+      "life_death_improvement": "3.5 → 6.2 (+77%)",
+      "best_module": "分断 (7.5/10)",
+      "need_improvement": "连接 (5.0/10) + 实战 (5.0/10)"
+    }
+  },
+  "training_stats": {
+    "total_problems": 60,
+    "total_correct": 49,
+    "overall_accuracy": 0.817,
+    "7day_summary": "passed",
+    "skill_scores": {
+      "基本概念": 7.0,
+      "吃子": 6.5,
+      "死活": 3.5,
+      "连接": 4,
+      "分断": 1.5,
+      "定式": 6,
+      "实战": 3,
+      "综合": 7
+    }
+  },
+  "sync_with": [
+    "zhugema",
+    "hermes"
+  ],
+  "coach": "zhugema",
+  "peers": [
+    "qoder",
+    "xiaochen",
+    "zhuguxia"
+  ],
+  "ssh_public_key": "待配置",
+  "version": "0.5.0",
+  "last_heartbeat": "2026-06-27T11:45:28.711367"
+}

@@ -1,0 +1,107 @@
+{
+  "day": 4,
+  "topic": "死活基础",
+  "description": "直三、曲三、丁四、刀五、梅花五等基本死活形状",
+  "target_level": "30k→25k",
+  "student": "xiaowei",
+  "problems": [
+    {
+      "problem_id": "life-death-001",
+      "type": "死活",
+      "title": "直三的死活",
+      "description": "一块黑棋围成直三（一字排开3个交叉点），是死是活？",
+      "answer": "死",
+      "options": ["活", "死", "取决于先后手"],
+      "solution": "直三是死形。无论谁先走，对方点在中间即可杀棋（点后只剩两只假眼的分叉）。但先走一方可以做活。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "life-death-002",
+      "type": "死活",
+      "title": "曲三的死活",
+      "description": "一块黑棋围成曲三（L形3个交叉点），是死是活？",
+      "answer": "死",
+      "options": ["活", "死", "活一半"],
+      "solution": "曲三和直三一样是死形。对方点在拐角处即可杀棋。先走一方可以做活。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "life-death-003",
+      "type": "死活",
+      "title": "丁四的死活",
+      "description": "一块黑棋围成丁四（T形4个交叉点），是死是活？",
+      "answer": "死",
+      "options": ["活", "死", "劫活"],
+      "solution": "丁四是死形。对方点在T形的交叉中心即可杀棋。先走一方做活需要连走两手。",
+      "difficulty": "初级"
+    },
+    {
+      "problem_id": "life-death-004",
+      "type": "死活",
+      "title": "直四的死活",
+      "description": "一块黑棋围成直四（一字排开4个交叉点），是死是活？",
+      "answer": "活",
+      "options": ["活", "死", "劫活"],
+      "solution": "直四是活形。对方无论点在哪里，黑棋都可以在另一处做出两只眼。",
+      "difficulty": "初级"
+    },
+    {
+      "problem_id": "life-death-005",
+      "type": "死活",
+      "title": "刀五的死活",
+      "description": "一块黑棋围成刀五（刀把形5个交叉点），死活如何？",
+      "answer": "死",
+      "options": ["活", "死", "劫活"],
+      "solution": "刀五是死形。对方点在刀把与刀身的连接点即可杀棋。但白棋需要连续走两步才能彻底杀死。",
+      "difficulty": "初级"
+    },
+    {
+      "problem_id": "life-death-006",
+      "type": "死活",
+      "title": "方块四的死活",
+      "description": "田字形4个交叉点围成方块四，是死是活？",
+      "answer": "死",
+      "options": ["活", "死", "劫活"],
+      "solution": "方块四是典型的死形。对方只需在中心做一子，黑棋内部空间被压缩，无法做出两眼。",
+      "difficulty": "初级"
+    },
+    {
+      "problem_id": "life-death-007",
+      "type": "死活",
+      "title": "破眼杀棋",
+      "description": "一块白棋围得很大但只有一只真眼，黑先如何杀棋？",
+      "answer": "点入破眼",
+      "solution": "黑1点在白棋眼位要点，破坏白棋做出第二只眼的可能。具体着法取决于白棋形状。",
+      "difficulty": "初级"
+    },
+    {
+      "problem_id": "life-death-008",
+      "type": "死活",
+      "title": "做活要点",
+      "description": "黑棋被白棋包围，内部空间较大，黑先如何做出两眼？",
+      "answer": "扩大眼位",
+      "solution": "黑1在眼位中心或要点落子，确保有足够空间做出两只真眼。基本原则：扩大内部空间优先。",
+      "difficulty": "初级"
+    },
+    {
+      "problem_id": "life-death-009",
+      "type": "死活",
+      "title": "梅花五",
+      "description": "十字形5个交叉点（梅花五），是死是活？",
+      "answer": "死",
+      "options": ["活", "死", "劫活"],
+      "solution": "梅花五（十字形）也是死形。对方点在中心即可杀棋。基本规律：3/4/5/6个交叉点的特定形状才可能活。",
+      "difficulty": "初级"
+    },
+    {
+      "problem_id": "life-death-010",
+      "type": "死活",
+      "title": "扳六的死活",
+      "description": "黑棋围出扳六（长方形，3×2共6个交叉点），死活如何？",
+      "answer": "活",
+      "options": ["活", "死", "劫活"],
+      "solution": "扳六（3×2长方形）是活形。内部空间足够大，无论对方怎么进攻，黑棋都能做出两只眼。",
+      "difficulty": "初级"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "problem_id": "life-prac-001",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "角上二线爬活",
+    "description": "角上黑棋二线有3子，被白棋包围，黑先能活吗？",
+    "options": ["能做活", "不能活", "需要看外气", "打劫活"],
+    "answer": "能做活",
+    "solution": "角上二线3子在大多数情况下可以做出两眼。黑棋利用二线弹性，走到关键要点即可。",
+    "board_situation": "角部常见死活",
+    "estimated_time": 120
+  },
+  {
+    "problem_id": "life-prac-002",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "边上三线爬活",
+    "description": "边上黑棋三线有4子被包围，黑先能做活吗？",
+    "options": ["能", "不能，空间不够", "打劫活", "取决于外气"],
+    "answer": "不能，空间不够",
+    "solution": "边上三线4子空间太小，无法做出两眼。围棋格言：边上三线需5子才可能活。",
+    "board_situation": "边上常见死活",
+    "estimated_time": 90
+  },
+  {
+    "problem_id": "life-prac-003",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "中央做活要点",
+    "description": "中央黑棋5子被围，需要做活。最基本的做活方法是什么？",
+    "options": ["扩张眼位", "做两只真眼", "往外跑", "等待对方失误"],
+    "answer": "做两只真眼",
+    "solution": "中央做活的核心是做出两只真眼。需要先判断空间是否足够，再找眼位要点。中央做活比边上和角上更难。",
+    "board_situation": "中央做活",
+    "estimated_time": 120
+  },
+  {
+    "problem_id": "life-prac-004",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "金鸡独立杀法",
+    "description": "角上黑棋利用「金鸡独立」的手段杀死白棋。金鸡独立的核心原理是？",
+    "options": ["两边不入气", "打劫", "征子", "双活"],
+    "answer": "两边不入气",
+    "solution": "金鸡独立是指一方走在一线和二线的交汇处，使对方两边都无法紧气，从而达到杀棋目的。",
+    "board_situation": "金鸡独立杀法",
+    "estimated_time": 150
+  },
+  {
+    "problem_id": "life-prac-005",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "倒脱靴",
+    "description": "「倒脱靴」是一种特殊的死活手段。它的核心机制是什么？",
+    "options": ["先死子再反吃", "直接点入杀棋", "征子变体", "双活技巧"],
+    "answer": "先死子再反吃",
+    "solution": "倒脱靴是先送死几个子被对方吃掉，然后利用吃掉后形成的特殊形状反吃更多子的高级手段。常用于角上死活。",
+    "board_situation": "倒脱靴原理",
+    "estimated_time": 150
+  },
+  {
+    "problem_id": "life-prac-006",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "角上二一路要点",
+    "description": "围棋中常说的「二一路」在死活题中有什么特殊意义？",
+    "options": ["死活要点经常在此", "是收官要点", "是布局要点", "没有特殊意义"],
+    "answer": "死活要点经常在此",
+    "solution": "角上「二一路」（即靠近角顶的位置）常常是死活题的要点。因为这个位置容易制造真眼或破坏对方的眼位。",
+    "board_situation": "二一路死活要点",
+    "estimated_time": 120
+  },
+  {
+    "problem_id": "life-prac-007",
+    "type": "死活",
+    "difficulty": "高级",
+    "title": "角部万年劫",
+    "description": "角上出现「万年劫」形状，最终结果通常是？",
+    "options": ["白棋胜", "黑棋胜", "双活或一方主动放弃", "必须打劫"],
+    "answer": "双活或一方主动放弃",
+    "solution": "万年劫是一种特殊的劫争，双方都不愿意先开劫。往往拖到终局变成双活，或者一方在有利时机主动解决。",
+    "board_situation": "万年劫",
+    "estimated_time": 180
+  },
+  {
+    "problem_id": "life-prac-008",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "对杀中的气数计算",
+    "description": "对杀时，黑棋3口气 vs 白棋4口气，且双方都没有外气。黑先，结果如何？",
+    "options": ["黑棋被杀", "白棋被杀", "双活", "黑棋可以长气"],
+    "answer": "黑棋被杀",
+    "solution": "在没有特殊手段（扑、点、扳等）的情况下，气少的一方对杀会输。3气对4气，黑棋少1气。",
+    "board_situation": "对杀气数",
+    "estimated_time": 90
+  }
+]
