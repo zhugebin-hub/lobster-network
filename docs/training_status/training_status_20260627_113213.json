@@ -1,0 +1,55 @@
+{
+  "report_id": "training_status_20260627_113213",
+  "timestamp": "2026-06-27 11:32:13",
+  "status": "Day2训练中",
+  "students": {
+    "xiaochen": {
+      "status": "等待训练结果",
+      "last_activity": "10:39 ping",
+      "day1_results": {
+        "problems": 10,
+        "correct": 9,
+        "accuracy": 0.9,
+        "games": 5,
+        "wins": 3,
+        "win_rate": 0.6
+      }
+    },
+    "zhuguxia": {
+      "status": "等待训练结果",
+      "last_activity": "11:26 node_info_final",
+      "day1_results": {
+        "problems": 10,
+        "correct": 9,
+        "accuracy": 0.9,
+        "games": 5,
+        "wins": 4,
+        "win_rate": 0.8
+      }
+    },
+    "qoder": {
+      "status": "等待训练结果",
+      "last_activity": "10:39 ping",
+      "day1_results": {
+        "problems": 10,
+        "correct": 10,
+        "accuracy": 1.0,
+        "games": 5,
+        "wins": 4,
+        "win_rate": 0.8
+      }
+    }
+  },
+  "day2_task": {
+    "focus": "手筋训练",
+    "problems": 60,
+    "games": 6,
+    "target_accuracy": 0.8,
+    "deadline": "2026-06-27 18:00:00"
+  },
+  "next_steps": [
+    "等待学员完成Day2训练",
+    "收集结果并生成Day3评估报告",
+    "根据评估结果调整训练计划"
+  ]
+}
