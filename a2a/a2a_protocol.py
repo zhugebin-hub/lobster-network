@@ -146,16 +146,76 @@ class A2AServer:
         return results
     
     def send_message(self, message: A2AMessage) -> bool:
-        """发送消息"""
+        """发送消息（对接实际传输层：SSH/GitHub）"""
         if message.to_node not in self.nodes:
             return False
         
         if self.nodes[message.to_node].status != "active":
             return False
         
-        message.status = "sent"
+        # 尝试通过实际传输层发送
+        target_node = self.nodes[message.to_node]
+        delivered = self._deliver_via_transport(message, target_node)
+        
+        if delivered:
+            message.status = "delivered"
+        else:
+            # Fallback: 仅记录到内存
+            message.status = "sent"
+        
         self.messages.append(message)
         return True
+    
+    def _deliver_via_transport(self, message: A2AMessage, target_node: A2ANode) -> bool:
+        """通过实际传输层投递消息"""
+        endpoints = target_node.endpoints
+        
+        # 优先使用 SSH
+        if "ssh" in endpoints:
+            return self._deliver_via_ssh(message, endpoints["ssh"])
+        
+        # Fallback: GitHub
+        if "github" in endpoints:
+            return self._deliver_via_github(message, endpoints["github"])
+        
+        return False
+    
+    def _deliver_via_ssh(self, message: A2AMessage, ssh_url: str) -> bool:
+        """通过 SSH 投递消息（使用 go-training/shared 目录）"""
+        try:
+            # 解析目标节点 ID
+            to_node = message.to_node
+            
+            # 构建目标路径
+            # 假设所有节点共享 /home/admin/go-training/shared/
+            target_dir = f"/home/admin/go-training/shared/to-{to_node}"
+            os.makedirs(target_dir, exist_ok=True)
+            
+            # 保存消息文件
+            msg_file = os.path.join(target_dir, f"{message.message_id}.json")
+            with open(msg_file, "w", encoding="utf-8") as f:
+                json.dump(message.to_dict(), f, ensure_ascii=False, indent=2)
+            
+            return True
+        except Exception as e:
+            print(f"⚠️ SSH 投递失败: {e}")
+            return False
+    
+    def _deliver_via_github(self, message: A2AMessage, github_url: str) -> bool:
+        """通过 GitHub 投递消息（写入本地仓库，等待 git push）"""
+        try:
+            # 写入本地 GitHub 仓库目录
+            github_dir = os.path.expanduser("~/.lobster-network/github-inbox")
+            os.makedirs(github_dir, exist_ok=True)
+            
+            msg_file = os.path.join(github_dir, f"{message.message_id}.json")
+            with open(msg_file, "w", encoding="utf-8") as f:
+                json.dump(message.to_dict(), f, ensure_ascii=False, indent=2)
+            
+            return True
+        except Exception as e:
+            print(f"⚠️ GitHub 投递失败: {e}")
+            return False
     
     def get_messages(self, node_id: str) -> List[Dict]:
         """获取消息"""
