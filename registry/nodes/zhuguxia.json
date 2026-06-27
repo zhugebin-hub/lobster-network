@@ -23,7 +23,7 @@
   "shared_dir": "/home/admin/go-training/shared/",
   "ssh_status": "✓ 已配置",
   "ssh_key": "~/.ssh/id_rsa",
-  "last_updated": "2026-06-27T11:26:39",
+  "last_updated": "2026-06-27T11:27:57",
   "training": {
     "domain": "go",
     "current_level": "25级（初始30级，已升段）",
