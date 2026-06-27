@@ -39,7 +39,7 @@
     "style": "进阶型",
     "current_level": "23k",
     "problem_count_cumulative": 186,
-    "games_13x13": 5,
+    "games_13x13": 10,
     "win_rate": 0.60,
     "accuracy_baseline": {
       "入门": 0.88,
@@ -121,8 +121,9 @@
       "定式": 6.0,
       "实战": 5.9,
       "综合": 5.0,
-      "官子": 5.9,
-      "全局": 4.0
+        "官子": 7.1,
+        "全局": 4.0,
+        "实战": 7.2
     }
   },
   "sync_with": [

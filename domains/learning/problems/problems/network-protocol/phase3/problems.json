@@ -7,7 +7,12 @@
         "id": "np3-001",
         "question": "IPv6地址的长度是多少位？",
         "type": "multiple_choice",
-        "options": ["32位", "64位", "128位", "256位"],
+        "options": [
+          "32位",
+          "64位",
+          "128位",
+          "256位"
+        ],
         "correct": 2,
         "explanation": "IPv6地址长度为128位（16字节），用冒号分隔的十六进制表示，如 2001:0db8:85a3::8a2e:0370:7334。地址空间达2^128。"
       },
@@ -15,7 +20,12 @@
         "id": "np3-002",
         "question": "IPv6地址 ::1 表示什么？",
         "type": "multiple_choice",
-        "options": ["广播地址", "环回地址（相当于IPv4的127.0.0.1）", "链路本地地址", "组播地址"],
+        "options": [
+          "广播地址",
+          "环回地址（相当于IPv4的127.0.0.1）",
+          "链路本地地址",
+          "组播地址"
+        ],
         "correct": 1,
         "explanation": "IPv6的 ::1 是环回地址（Loopback），相当于IPv4的127.0.0.1。IPv6没有广播地址，用组播替代广播功能。"
       },
@@ -36,7 +46,12 @@
         "id": "np3-004",
         "question": "SDN架构中，控制器与交换机之间最常用的南向接口协议是？",
         "type": "multiple_choice",
-        "options": ["HTTP", "OpenFlow", "BGP", "OSPF"],
+        "options": [
+          "HTTP",
+          "OpenFlow",
+          "BGP",
+          "OSPF"
+        ],
         "correct": 1,
         "explanation": "OpenFlow是SDN最常用的南向接口协议（控制器↔交换机），定义了流表下发、数据包处理规则。北向接口通常是REST API（控制器↔应用）。"
       },
@@ -57,7 +72,12 @@
         "id": "np3-006",
         "question": "下列VPN技术中，工作在OSI第二层（数据链路层）的是？",
         "type": "multiple_choice",
-        "options": ["IPSec VPN", "SSL VPN", "PPTP VPN", "L2TP VPN"],
+        "options": [
+          "IPSec VPN",
+          "SSL VPN",
+          "PPTP VPN",
+          "L2TP VPN"
+        ],
         "correct": 3,
         "explanation": "L2TP（Layer 2 Tunneling Protocol）工作在数据链路层（第2层）。IPSec和SSL VPN工作在网络层/应用层。PPTP也是二层VPN但安全性较差。"
       },
@@ -78,7 +98,12 @@
         "id": "np3-008",
         "question": "IPv6地址 fe80::/10 是什么类型的地址？",
         "type": "multiple_choice",
-        "options": ["全球单播地址", "链路本地地址", "唯一本地地址", "组播地址"],
+        "options": [
+          "全球单播地址",
+          "链路本地地址",
+          "唯一本地地址",
+          "组播地址"
+        ],
         "correct": 1,
         "explanation": "fe80::/10 是IPv6链路本地地址（Link-Local），仅在同一条链路（局域网）内有效，用于邻居发现（NDP）和路由协议通信。不路由到全球网络。"
       },
@@ -138,7 +163,12 @@
         "id": "np3-013",
         "question": "Wireshark 中过滤 HTTP 流量的显示过滤器语法是？",
         "type": "multiple_choice",
-        "options": ["tcp.port == 80", "http", "port 80", "tcp.port eq 80"],
+        "options": [
+          "tcp.port == 80",
+          "http",
+          "port 80",
+          "tcp.port eq 80"
+        ],
         "correct": 1,
         "explanation": "Wireshark显示过滤器（Display Filter）用 http 过滤HTTP流量。tcp.port == 80 是捕获过滤器（Capture Filter）语法，在Wireshark显示过滤器中也能用但效率较低。"
       },
@@ -172,7 +202,12 @@
         "id": "np3-016",
         "question": "IPv6中没有哪个协议的功能被ICMPv6取代了？",
         "type": "multiple_choice",
-        "options": ["ARP", "BGP", "OSPF", "DHCPv6"],
+        "options": [
+          "ARP",
+          "BGP",
+          "OSPF",
+          "DHCPv6"
+        ],
         "correct": 0,
         "explanation": "IPv6中ARP功能被ICMPv6的邻居发现协议（NDP）取代。NDP通过NS（邻居请求）和NA（邻居通告）实现IP→MAC映射，比ARP更安全（含IPSec支持）。"
       },
@@ -180,7 +215,12 @@
         "id": "np3-017",
         "question": "下列加密方式中，用于保护无线WiFi通信的是？",
         "type": "multiple_choice",
-        "options": ["WEP", "WPA3", "两者都是", "两者都不是"],
+        "options": [
+          "WEP",
+          "WPA3",
+          "两者都是",
+          "两者都不是"
+        ],
         "correct": 2,
         "explanation": "WEP（已不安全）和WPA3（当前标准）都是WiFi加密协议。WPA3使用SAE（Simultaneous Authentication of Equals）替代WPA2的PSK，防暴力破解能力更强。"
       },
@@ -188,7 +228,12 @@
         "id": "np3-018",
         "question": "在SDN中，_flow table_（流表）的匹配字段不包括下列哪项？",
         "type": "multiple_choice",
-        "options": ["源IP地址", "目标MAC地址", "HTTP URL路径", "TCP源端口"],
+        "options": [
+          "源IP地址",
+          "目标MAC地址",
+          "HTTP URL路径",
+          "TCP源端口"
+        ],
         "correct": 2,
         "explanation": "OpenFlow流表匹配字段在二层至四层（MAC/IP/端口），不涉及应用层内容（如HTTP URL）。应用层解析由上层应用或NFV实现，不在流表匹配范围内。"
       },
@@ -196,7 +241,12 @@
         "id": "np3-019",
         "question": "以下哪种攻击方式可以通过TCP SYN Flood实现？",
         "type": "multiple_choice",
-        "options": ["DNS劫持", "DoS拒绝服务攻击", "中间人攻击", "ARP欺骗"],
+        "options": [
+          "DNS劫持",
+          "DoS拒绝服务攻击",
+          "中间人攻击",
+          "ARP欺骗"
+        ],
         "correct": 1,
         "explanation": "SYN Flood是DoS（拒绝服务）攻击：攻击者发送大量SYN请求但不完成三次握手，耗尽服务器半连接队列资源，使合法用户无法连接。防御方法：SYN Cookie、限制半连接数。"
       },
@@ -212,6 +262,136 @@
         ],
         "correct": 1,
         "explanation": "IPv6支持无状态地址自动配置（SLAAC），主机可自动生成IPv6地址（基于路由器公告RA），无需DHCPv6。DHCPv6仅用于分配附加信息（DNS服务器等）或有状态地址分配。"
+      },
+      {
+        "id": "np3-021",
+        "question": "VXLAN协议使用的UDP端口号是？",
+        "type": "multiple_choice",
+        "options": [
+          "4789",
+          "443",
+          "80",
+          "53"
+        ],
+        "correct": 0,
+        "explanation": "VXLAN使用UDP端口4789（IANA分配）封装二层帧，实现跨三层网络的二层延伸。"
+      },
+      {
+        "id": "np3-022",
+        "question": "EVPN主要用于解决下列哪个问题？",
+        "type": "multiple_choice",
+        "options": [
+          "IP地址冲突",
+          "数据中心二层互联的控制平面学习",
+          "路由震荡",
+          "DNS劫持"
+        ],
+        "correct": 1,
+        "explanation": "EVPN（以太网VPN）为VXLAN等Overlay技术提供控制平面，通过BGP分发MAC/IP可达性信息，替代泛洪学习。"
+      },
+      {
+        "id": "np3-023",
+        "question": "Netconf协议使用的传输层协议和默认端口是？",
+        "type": "multiple_choice",
+        "options": [
+          "TCP/22",
+          "TCP/830",
+          "UDP/161",
+          "TCP/443"
+        ],
+        "correct": 1,
+        "explanation": "Netconf基于SSH传输，默认使用TCP端口830，用于网络设备配置管理。"
+      },
+      {
+        "id": "np3-024",
+        "question": "YANG模型的主要作用是？",
+        "type": "multiple_choice",
+        "options": [
+          "路由计算",
+          "描述网络配置和状态的数据模型",
+          "加密数据传输",
+          "分配IP地址"
+        ],
+        "correct": 1,
+        "explanation": "YANG是一种数据建模语言，用于定义网络设备的配置和状态数据格式，配合Netconf使用。"
+      },
+      {
+        "id": "np3-025",
+        "question": "Zero Trust（零信任）网络的核心原则是？",
+        "type": "multiple_choice",
+        "options": [
+          "内网默认可信",
+          "永远验证，永不信任",
+          "仅边界防御",
+          "使用MAC地址认证"
+        ],
+        "correct": 1,
+        "explanation": "零信任模型假设网络内部也不可信，要求对所有访问请求进行持续验证，遵循「永不信任，始终验证」原则。"
+      },
+      {
+        "id": "np3-026",
+        "question": "INT（In-band Network Telemetry）技术的主要用途是？",
+        "type": "multiple_choice",
+        "options": [
+          "加密数据传输",
+          "实时收集网络内部排队和延迟信息",
+          "路由计算",
+          "地址分配"
+        ],
+        "correct": 1,
+        "explanation": "INT允许数据包在转发路径上收集交换机的队列深度、延迟等遥测数据，实现精细化的网络性能监控。"
+      },
+      {
+        "id": "np3-027",
+        "question": "Ipv6的地址长度是多少位？",
+        "type": "multiple_choice",
+        "options": [
+          "32位",
+          "64位",
+          "128位",
+          "256位"
+        ],
+        "correct": 2,
+        "explanation": "Ipv6地址长度为128位，是Ipv4（32位）的4倍，可提供约3.4×10³⁸个地址。"
+      },
+      {
+        "id": "np3-028",
+        "question": "SDN架构中，数据平面与控制平面的接口协议通常是？",
+        "type": "multiple_choice",
+        "options": [
+          "OSPF",
+          "OpenFlow",
+          "BGP",
+          "ARP"
+        ],
+        "correct": 1,
+        "explanation": "OpenFlow是SDN中最经典的控制平面—数据平面接口协议，控制器通过OpenFlow下发流表到交换机。"
+      },
+      {
+        "id": "np3-029",
+        "question": "在Ipv6中，无状态地址自动配置（SLAAC）依赖下列哪个协议？",
+        "type": "multiple_choice",
+        "options": [
+          "ARP",
+          "DHCPv6",
+          "ICMPv6",
+          "BGP"
+        ],
+        "correct": 2,
+        "explanation": "SLAAC基于ICMPv6的路由器通告（RA）消息，主机无需DHCPv6即可自动生成全球单播地址。"
+      },
+      {
+        "id": "np3-030",
+        "question": "VXLAN的网络标识符（VNI）占多少比特？",
+        "type": "multiple_choice",
+        "options": [
+          "12位",
+          "16位",
+          "24位",
+          "32位"
+        ],
+        "correct": 2,
+        "explanation": "VNI（VXLAN Network Identifier）占24位，理论上可支持约1600万个虚拟二层网络。"
       }
     ]
   }

@@ -7,7 +7,12 @@
         "id": "np2-001",
         "question": "TCP三次握手中，第二次握手（SYN-ACK）发送的标记位是？",
         "type": "multiple_choice",
-        "options": ["SYN", "ACK", "SYN+ACK", "FIN+ACK"],
+        "options": [
+          "SYN",
+          "ACK",
+          "SYN+ACK",
+          "FIN+ACK"
+        ],
         "correct": 2,
         "explanation": "TCP三次握手：①客户端发SYN；②服务器回SYN+ACK；③客户端发ACK。第二次握手同时确认客户端请求（ACK）并发送服务器端的SYN。"
       },
@@ -41,7 +46,12 @@
         "id": "np2-004",
         "question": "TCP滑动窗口（Sliding Window）的作用是？",
         "type": "multiple_choice",
-        "options": ["拥塞控制", "流量控制", "路由选择", "错误检测"],
+        "options": [
+          "拥塞控制",
+          "流量控制",
+          "路由选择",
+          "错误检测"
+        ],
         "correct": 1,
         "explanation": "TCP滑动窗口用于流量控制，接收方通过窗口大小告知发送方可接收的字节数，防止发送速率超过接收方处理能力。拥塞控制则由拥塞窗口（cwnd）实现。"
       },
@@ -49,7 +59,12 @@
         "id": "np2-005",
         "question": "HTTP协议默认使用哪个端口？",
         "type": "multiple_choice",
-        "options": ["21", "23", "80", "443"],
+        "options": [
+          "21",
+          "23",
+          "80",
+          "443"
+        ],
         "correct": 2,
         "explanation": "HTTP默认端口80，HTTPS默认端口443。FTP默认端口21，Telnet默认端口23，SSH默认端口22。"
       },
@@ -57,7 +72,12 @@
         "id": "np2-006",
         "question": "DNS协议默认使用哪个传输层协议和端口？",
         "type": "multiple_choice",
-        "options": ["TCP/53", "UDP/53", "TCP/80", "UDP/161"],
+        "options": [
+          "TCP/53",
+          "UDP/53",
+          "TCP/80",
+          "UDP/161"
+        ],
         "correct": 1,
         "explanation": "DNS默认使用UDP/53进行查询（效率高），当响应数据超过512字节或用于区域传输（Zone Transfer）时，则使用TCP/53。"
       },
@@ -65,7 +85,12 @@
         "id": "np2-007",
         "question": "OSPF协议属于哪种路由协议类型？",
         "type": "multiple_choice",
-        "options": ["距离矢量协议", "链路状态协议", "路径矢量协议", "混合协议"],
+        "options": [
+          "距离矢量协议",
+          "链路状态协议",
+          "路径矢量协议",
+          "混合协议"
+        ],
         "correct": 1,
         "explanation": "OSPF（Open Shortest Path First）是链路状态路由协议，每台路由器独立计算最短路径树（Dijkstra算法），收敛速度快，无路由环路。"
       },
@@ -73,7 +98,12 @@
         "id": "np2-008",
         "question": "BGP协议运行在TCP的哪个端口？",
         "type": "multiple_choice",
-        "options": ["179", "80", "443", "25"],
+        "options": [
+          "179",
+          "80",
+          "443",
+          "25"
+        ],
         "correct": 0,
         "explanation": "BGP（Border Gateway Protocol）运行在TCP端口179上，用于在自治系统（AS）之间交换路由信息，是互联网的核心路由协议。"
       },
@@ -81,7 +111,12 @@
         "id": "np2-009",
         "question": "HTTPS = HTTP + 什么协议？",
         "type": "multiple_choice",
-        "options": ["SSH", "SSL/TLS", "IPSec", "SSH/TLS"],
+        "options": [
+          "SSH",
+          "SSL/TLS",
+          "IPSec",
+          "SSH/TLS"
+        ],
         "correct": 1,
         "explanation": "HTTPS = HTTP over SSL/TLS，默认端口443。SSL（Secure Sockets Layer）已被TLS（Transport Layer Security）取代，但习惯上仍称SSL/TLS。"
       },
@@ -115,7 +150,12 @@
         "id": "np2-012",
         "question": "下列状态码中，表示'永久重定向'的是？",
         "type": "multiple_choice",
-        "options": ["301", "302", "304", "404"],
+        "options": [
+          "301",
+          "302",
+          "304",
+          "404"
+        ],
         "correct": 0,
         "explanation": "HTTP状态码：301=永久重定向（Moved Permanently）；302=临时重定向；304=未修改（使用缓存）；404=未找到。30x均为重定向状态码。"
       },
@@ -123,7 +163,12 @@
         "id": "np2-013",
         "question": "BGP的AS_PATH属性用于防止什么？",
         "type": "multiple_choice",
-        "options": ["拥塞", "路由环路", "丢包", "DNS污染"],
+        "options": [
+          "拥塞",
+          "路由环路",
+          "丢包",
+          "DNS污染"
+        ],
         "correct": 1,
         "explanation": "BGP的AS_PATH属性记录了路由经过的AS号序列，当路由器发现自己的AS号已在AS_PATH中时，拒绝接受该路由，从而防止路由环路。"
       },
@@ -217,6 +262,136 @@
         ],
         "correct": 0,
         "explanation": "FIN（Finish）用于正常关闭TCP连接（四次挥手）。RST（Reset）用于异常终止连接，立即释放资源，不需要四次挥手，常用于拒绝连接或处理异常。"
+      },
+      {
+        "id": "np2-021",
+        "question": "HTTP/3协议基于下列哪个传输层协议？",
+        "type": "multiple_choice",
+        "options": [
+          "TCP",
+          "UDP",
+          "QUIC",
+          "SCTP"
+        ],
+        "correct": 2,
+        "explanation": "HTTP/3基于QUIC协议（运行在UDP上），解决了TCP队头阻塞问题，支持0-RTT建立连接。"
+      },
+      {
+        "id": "np2-022",
+        "question": "DNSSEC的主要功能是什么？",
+        "type": "multiple_choice",
+        "options": [
+          "加速DNS解析",
+          "对DNS响应进行数字签名验证",
+          "隐藏DNS查询内容",
+          "负载均衡"
+        ],
+        "correct": 1,
+        "explanation": "DNSSEC通过数字签名验证DNS响应的真实性，防止DNS劫持和缓存污染攻击。"
+      },
+      {
+        "id": "np2-023",
+        "question": "下列属于NAT穿透技术的是？",
+        "type": "multiple_choice",
+        "options": [
+          "OSPF",
+          "STUN/TURN",
+          "BGP",
+          "ARP"
+        ],
+        "correct": 1,
+        "explanation": "STUN和TURN是NAT穿透（NAT Traversal）的标准技术，用于P2P通信中穿越NAT网关。"
+      },
+      {
+        "id": "np2-024",
+        "question": "防火墙的三层过滤指的是哪三层？",
+        "type": "multiple_choice",
+        "options": [
+          "物理/链路/网络",
+          "网络/传输/应用",
+          "数据链路/网络/传输",
+          "会话/表示/应用"
+        ],
+        "correct": 1,
+        "explanation": "状态检测防火墙通常过滤网络层（IP）、传输层（TCP/UDP端口）、应用层（协议内容）信息。"
+      },
+      {
+        "id": "np2-025",
+        "question": "BGP-4使用下列哪个端口建立TCP连接？",
+        "type": "multiple_choice",
+        "options": [
+          "179",
+          "80",
+          "443",
+          "520"
+        ],
+        "correct": 0,
+        "explanation": "BGP使用TCP端口179建立邻居连接，相比OSPF的IP协议89，BGP依赖TCP的可靠性。"
+      },
+      {
+        "id": "np2-026",
+        "question": "关于OSPF区域（Area）的说法，正确的是？",
+        "type": "multiple_choice",
+        "options": [
+          "所有区域必须直接连接到Area 1",
+          "Area 0是骨干区域",
+          "一个路由器只能属于一个区域",
+          "NSSA区域不允许外部路由"
+        ],
+        "correct": 1,
+        "explanation": "OSPF骨干区域必须是Area 0，所有非骨干区域必须直接或间接连接到Area 0。"
+      },
+      {
+        "id": "np2-027",
+        "question": "TLS 1.3相比TLS 1.2，握手轮次减少到几次？",
+        "type": "multiple_choice",
+        "options": [
+          "4次",
+          "3次",
+          "2次",
+          "1次"
+        ],
+        "correct": 3,
+        "explanation": "TLS 1.3支持0-RTT（恢复连接）和1-RTT（新建连接），相比TLS 1.2的2-RTT大幅减少延迟。"
+      },
+      {
+        "id": "np2-028",
+        "question": "下列哪项是HTTPS的默认端口？",
+        "type": "multiple_choice",
+        "options": [
+          "80",
+          "443",
+          "8080",
+          "8443"
+        ],
+        "correct": 1,
+        "explanation": "HTTPS默认使用TCP端口443。端口80是HTTP，8080和8443常用于代理或开发环境。"
+      },
+      {
+        "id": "np2-029",
+        "question": "ARP协议的作用是什么？",
+        "type": "multiple_choice",
+        "options": [
+          "将IP地址解析为MAC地址",
+          "将域名解析为IP地址",
+          "自动分配IP地址",
+          "建立TCP连接"
+        ],
+        "correct": 0,
+        "explanation": "ARP（地址解析协议）用于在同一局域网内将IPv4地址解析为MAC地址。"
+      },
+      {
+        "id": "np2-030",
+        "question": "在多接入网络中，OSPF选举DR（指定路由器）的依据是？",
+        "type": "multiple_choice",
+        "options": [
+          "IP地址最小",
+          "Router ID最大",
+          "链路成本最小",
+          "区域号最小"
+        ],
+        "correct": 1,
+        "explanation": "OSPF的DR选举首先比较优先级（默认1），相同则选Router ID（通常取最大IP）最大的路由器。"
       }
     ]
   }
