@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Version](https://img.shields.io/badge/version-0.4.1-green.svg)](https://github.com/zhugebin-hub/lobster-network/releases/tag/v0.4.1)
+[![Version](https://img.shields.io/badge/version-0.6.0-green.svg)](https://github.com/zhugebin-hub/lobster-network/releases/tag/v0.6.0)
 [![Tests](https://img.shields.io/badge/tests-62%2F62%20passed-brightgreen.svg)](https://github.com/zhugebin-hub/lobster-network/actions)
 
 ---
@@ -21,15 +21,16 @@
 
 **世界是编程的**：如同游戏中的程序化生成，世界按需渲染；宝藏不是预设的，是状态满足时的涌现输出。
 
-### 架构分层（v0.4.1 五层架构）
+### 架构分层（v0.6.0 六层架构）
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                     应用层 (Domains)                         │
-│  ┌─────────────────┐    ┌─────────────────┐                │
-│  │   围棋训练系统   │    │   海报设计系统   │                │
-│  │  Go Training     │    │  Poster Design  │                │
-│  └────────┬────────┘    └────────┬────────┘                │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌──────────────┐│
+│  │   围棋训练系统   │  │   海报设计系统   │  │ A股预测系统  ││
+│  │  Go Training     │  │  Poster Design  │  │Stock Predict ││
+│  └────────┬────────┘  └────────┬────────┘  └───────┬──────┘│
+└───────────┼────────────────────┼────────────────────┼──────┘
 └───────────┼──────────────────────┼────────────────────────┘
             │                      │
 ┌───────────┼──────────────────────┼────────────────────────┐
@@ -492,14 +493,32 @@ opportunities = engine.scan_all_opportunities(nodes)
 - V6：夜间高强度模式（00:00-06:00，5个时间槽）
 
 **训练成果**：
-- 总对局数：17,205+
-- qoder：685题，86%胜率
-- xiaochen：10,337局
-- zhuguxia：6,868局
+|- 总对局数：17,205+
+|- qoder：685题，86%胜率，~25级
+|- xiaochen：10,337局，30级
+|- zhuguxia：6,868局，25级（初始30级已升段）
+
+**最新评估（2026-06-27）**：
+|- 综合排名：zhuguxia(0.78) > qoder(0.74) > xiaochen(0.69)
+|- 8维度基线：qoder(理解0.78/执行0.82/检索0.65/推理0.76/反思0.71/工具0.80/情商0.72/记忆0.68)
+|- xiaochen(理解0.72/执行0.85/检索0.78/推理0.47/反思0.56/工具0.70/情商0.68/记忆0.75)
+|- zhuguxia(理解0.88/执行0.80/检索0.82/推理0.72/反思0.59/工具0.85/情商0.75/记忆0.82)
+|- 对抗赛：qoder胜xiaochen(75%vs50%)、qoder胜zhuguxia(100%vs75%)、xiaochen平zhuguxia(75%vs75%)
+
+**学员画像**：
+|- qoder（实战型）：高级题65%最强，但训练量偏少(685题)
+|- xiaochen（稳健型）：对局量最大(10,337局)，但推理力0.47(E级)为最大短板
+|- zhuguxia（加速型）：理解力0.88(A级)最强，反思力0.59需加强
 
 **核心组件**：
 - `process_go_move.py`：完整19x19围棋规则引擎（中国规则、打劫、自杀检测、BFS提子）
 - `go_coach_dispatcher_v6_nocturnal.py`：夜间高强度训练调度器
+
+**通信架构（v2.0）**：
+- 第一层：GitHub工作流（短期，已部署）
+- 第二层：SSH密钥配置（中期，待配置）
+- 第三层：v0.6.0 HTTP传输层（长期，推荐部署）
+- 详见：[通信架构方案](docs/communication/communication_plan_v2.md)
 
 ---
 
@@ -619,10 +638,10 @@ PPT 制作能力验证了小龙虾网络的**通用性**：
 | v0.1.0 | 核心引擎（节点、对话、涌现） | ✅ |
 | v0.2.0 | 统一框架 + 运营系统整合 | ✅ |
 | v0.3.0 | 时间套利模式（五维套利引擎） | ✅ |
-| v0.4.0 | SSH通信 + 消息协议增强 | ✅ |
-| v0.4.1 | 注册中心 + 可靠消息 + 部署脚本 | ✅ |
-| v0.4.2 | 安全增强 + 监控告警 + 性能优化 | 🔄 |
-| v0.5.0 | 分布式架构 + 跨域协作 | 📋 |
+| v0.4.0 | 节点注册中心 + 可靠消息 + 消息协议v2 | ✅ |
+| v0.4.1 | 部署脚本 + 安全增强 | ✅ |
+| v0.5.0 | 8维度能力评估引擎 + Clawvard桥接 | ✅ |
+| v0.6.0 | 语义涌现 + 学习协调器 + HTTP传输 | ✅ |
 | v1.0.0 | 正式发布 | 🎯 |
 
 ---

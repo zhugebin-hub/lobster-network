@@ -7,8 +7,14 @@ from typing import Dict, List, Optional, Set
 from dataclasses import dataclass, field
 from datetime import datetime
 
-from src.lobster_network.lobster_network import LobsterNetwork
-from src.lobster_network.node import Node
+# 使用相对导入以支持从任意目录运行
+try:
+    from ..lobster_network import LobsterNetwork
+    from ..node import Node
+except ImportError:
+    # 如果相对导入失败，尝试绝对导入（用于某些特殊场景）
+    from lobster_network.lobster_network import LobsterNetwork
+    from lobster_network.node import Node
 
 
 @dataclass

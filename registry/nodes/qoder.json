@@ -3,7 +3,7 @@
   "name": "小龙虾 (QoderWork)",
   "type": "agent",
   "perspective": "实战型",
-  "knowledge_base": "全栈开发、文档生成、代码审查、数据分析、AI工程",
+  "knowledge_base": "全栈开发、文档生成、代码审查、数据分析、AI工程、围棋训练",
   "value_orientation": "工程实践与教育创新",
   "learning_rate": "medium",
   "capabilities": [
@@ -12,10 +12,43 @@
     "data_analysis",
     "code_review",
     "ppt_generation",
-    "dialogue"
+    "dialogue",
+    "go_playing",
+    "problem_solving"
   ],
   "platform": "QoderWork",
+  "host": "172.24.56.3 (共享)",
+  "shared_dir": "/home/admin/go-training/shared/",
   "registered_at": "2026-06-25T00:06:13.230858",
+  "last_sync": "2026-06-27T10:45:00",
   "status": "active",
-  "version": "0.5.0"
+  "version": "0.6.0",
+  "training": {
+    "domain": "go",
+    "current_level": "~25级",
+    "style": "实战型",
+    "day1_completed": true,
+    "day1_stats": {
+      "problems": "10/10 correct (100%)",
+      "games": "4W/1L (80%)",
+      "avg_thinking_time": "29秒/题"
+    },
+    "current_plan": "7天速成 (570题+63局)",
+    "accuracy_baseline": {
+      "入门": 0.95,
+      "初级": 0.85,
+      "中级": 0.75,
+      "高级": 0.65
+    },
+    "strengths": [
+      "高级题准确率最强(65%)",
+      "实战对局能力强",
+      "注重质量少而精"
+    ],
+    "weaknesses": [
+      "训练量偏少(685题)",
+      "缺乏系统性训练计划"
+    ],
+    "improvement_target": "速率套利：与诸葛虾配对增加对局密度"
+  }
 }

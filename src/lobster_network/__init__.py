@@ -3,9 +3,28 @@
 Lobster Network - Unified Entry Point
 
 对话即创造：一人一世界的世界观
+
+v0.6.0 变更:
+- 新增: 增强对话引擎，语义涌现计算 (Jaccard相似度, n-gram分析)
+- 新增: 学习协调器 (LearningCoordinator)，闭合评估-训练反馈环
+- 新增: HTTP传输通道 (HTTPTransport)，实现节点间真实网络通信
+- 新增: 基于8维度评估结果的自适应训练计划
+- 新增: 互补节点间的协作建议生成
+- 修复: setup.py / __init__.py / README 版本号对齐
+- 重构: 清理 domains/assessment 重复代码
+
+v0.5.0 变更:
+- 新增: 8维度能力评估引擎 (EightDimEngine)，参考 Clawvard School 评估体系
+- 新增: 维度画像 (DimensionProfile)、Clawvard桥接 (ClawvardBridge)
+- 新增: 评估维度定义、评分器、改进建议生成器
+- 注意: network/node_registry.py 已弃用，请使用 registry.py
+
+v0.4.0 变更:
+- 新增: 节点注册中心 (NodeRegistry)、可靠消息 (Messenger)、集成层 (LobsterNetworkWithRegistry)
+- 新增: SSH通道v2 (SSHChannelV2)、消息协议v2 (MessageProtocolV2)
 """
 
-__version__ = "0.4.1"
+__version__ = "0.6.0"
 
 # 框架层 (Framework Layer)
 from .node import Node
@@ -21,8 +40,11 @@ from .network.ssh_channel_v2 import SSHChannel as SSHChannelV2
 from .network.ssh_transport import SSHTransport
 
 # 可靠通信层 (Reliable Communication Layer) - v0.4.1 新增
-from .registry import NodeRegistry, RegistrationInfo, TransportConfig, NodeStatus
-from .messenger import Messenger, ReliableMessage, MessageStatus, MessageAttempt
+from .registry import NodeRegistry, RegistrationInfo, TransportConfig, TransportType, NodeStatus
+from .messenger import (
+    Messenger, ReliableMessage, MessageStatus, MessageAttempt,
+    NFSTransport, FileTransport,
+)
 from .integration import LobsterNetworkWithRegistry
 
 # 工具层 (Utility Layer)
@@ -41,6 +63,28 @@ from .time_arbitrage import (
 Message = MessageV2  # v2 作为默认
 MessageProtocol = MessageProtocolV2  # v2 作为默认
 
+# v0.5.0 8维度评估层 (Assessment Layer) — 可选导入
+try:
+    from .assessment import (
+        EightDimEngine, AssessmentResult,
+        DimensionProfile, Dimension,
+        ClawvardBridge, PracticeSession,
+        DIMENSION_REGISTRY, DIMENSION_DESCRIPTIONS, DIMENSION_WEIGHTS,
+    )
+except ImportError:
+    pass  # assessment 模块为可选增强
+
+# v0.6.0 学习协调器与HTTP传输 (Learning Coordinator & HTTP Transport) — 可选导入
+try:
+    from .learning import LearningCoordinator
+except ImportError:
+    pass  # learning 模块为可选增强
+
+try:
+    from .network.http_transport import HTTPTransport
+except ImportError:
+    pass  # http_transport 模块为可选增强
+
 __all__ = [
     # Version
     "__version__",
@@ -53,8 +97,9 @@ __all__ = [
     "IndraNet", "IndraNetNode",
     "SSHChannel", "SSHChannelV2", "SSHTransport",
     # Reliable Communication (v0.4.1)
-    "NodeRegistry", "RegistrationInfo", "TransportConfig", "NodeStatus",
+    "NodeRegistry", "RegistrationInfo", "TransportConfig", "TransportType", "NodeStatus",
     "Messenger", "ReliableMessage", "MessageStatus", "MessageAttempt",
+    "NFSTransport", "FileTransport",
     "LobsterNetworkWithRegistry",
     # Message Protocol (v2 默认)
     "Message", "MessageProtocol",  # v2 (推荐)
@@ -66,4 +111,11 @@ __all__ = [
     # Utils
     "NetworkConfig", "ConfigManager",
     "LobsterLogger", "get_logger",
+    # v0.5.0 Assessment Layer
+    "EightDimEngine", "AssessmentResult",
+    "DimensionProfile", "Dimension",
+    "ClawvardBridge", "PracticeSession",
+    "DIMENSION_REGISTRY", "DIMENSION_DESCRIPTIONS", "DIMENSION_WEIGHTS",
+    # v0.6.0 Learning Coordinator & HTTP Transport
+    "LearningCoordinator", "HTTPTransport",
 ]
