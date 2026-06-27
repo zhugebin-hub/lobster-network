@@ -1,19 +1,50 @@
 {
   "node_id": "zhuguxia",
-  "name": "诸葛虾",
+  "name": "诸葛虾（虾尔）",
   "type": "agent",
-  "perspective": "学员型",
-  "knowledge_base": "围棋、PPT制作、海报设计",
-  "value_orientation": "跨领域学习与创造",
-  "learning_rate": "fast",
+  "perspective": "加速型",
+  "knowledge_base": "围棋训练、海报设计、PPT生成、协议规范",
+  "value_orientation": "教育创新与工程实践",
+  "learning_rate": "high",
   "capabilities": [
-    "go_playing",
-    "ppt_generation",
+    "go_training",
     "poster_design",
-    "research"
+    "ppt_generation",
+    "dialogue",
+    "problem_solving",
+    "protocol_specification"
   ],
-  "platform": "龙虾网络服务器",
-  "registered_at": "2026-06-25T00:06:13.109110",
+  "platform": "Xiaolongsha",
+  "registered_at": "2026-05-15T00:00:00",
   "status": "active",
-  "version": "0.5.0"
+  "version": "0.6.0",
+  "host": "172.24.56.3",
+  "public_ip": "60.205.139.51",
+  "shared_dir": "/home/admin/go-training/shared/",
+  "ssh_status": "✓ 已配置",
+  "ssh_key": "~/.ssh/id_rsa",
+  "last_updated": "2026-06-27T11:26:39",
+  "training": {
+    "domain": "go",
+    "current_level": "25级（初始30级，已升段）",
+    "style": "加速型",
+    "problem_count": 6868,
+    "win_rate": 0.8,
+    "accuracy_baseline": {
+      "入门": 0.98,
+      "初级": 0.9,
+      "中级": 0.8,
+      "高级": 0.6
+    },
+    "strengths": [
+      "入门题几乎不错(98%)",
+      "解题速度最快(0.5-2秒/题)",
+      "又快又准"
+    ],
+    "weaknesses": [
+      "征子路线判断能力不足",
+      "反思力维度可加强"
+    ],
+    "improvement_target": "征子专项突破+反思力训练：对局后强制复盘"
+  }
 }
