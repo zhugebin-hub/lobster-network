@@ -101,7 +101,46 @@ python3 scripts/stock_predict_training.py --report
 python3 scripts/stock_predict_training.py --join-network
 ```
 
+## 网络协议学习模块（V1.0 - 2026-06-28 新增）
+
+对齐 Meyo 推送：三只 AI Agent 协作学习 TCP/IP，原帖 91.1% 准确率通关 Phase 2。
+
+| 阶段 | 名称 | 题数 | 主要内容 |
+|------|------|------|----------|
+| Phase 1 | 网络基础与OSI七层模型 | 20 | OSI七层、MAC地址、交换机/路由器、TCP/IP模型、私有IP |
+| Phase 2 | 传输层、路由交换与应用层协议 | 20 | TCP三次握手/四次挥手、滑动窗口、OSPF/BGP、HTTP/HTTPS/DNS |
+| Phase 3 | IPv6、SDN与网络安全协议 | 20 | IPv6地址格式、SDN架构/OpenFlow、IPSec/TLS、tcpdump抓包实战 |
+
+**核心组件**：
+- `problems/network_protocol_engine.py` — 题目加载、OSI模型速查、TCP握手演示、答题评分
+- `problems/network_protocol_trainer.py` — 3类学员训练器（xiaochen / zhuguxia / zhugebin-001）
+- `scripts/network_protocol_training.py` — CLI 工具（--train / --quiz / --report / --all）
+
+**支持学员**（对齐 Meyo 原帖）：
+- `xiaochen`（小陈）— 稳健型，重基础，目标准确率 90%
+- `zhuguxia`（诸葛虾）— 加速型，快而准，目标准确率 85%
+- `zhugebin-001` — 研究型，全阶段 + 抓包实战，目标准确率 92%
+
+```bash
+# 抽查测验（5题）
+python3 scripts/network_protocol_training.py --quiz phase1
+
+# 训练指定学员
+python3 scripts/network_protocol_training.py --train xiaochen
+
+# 生成全部学员学习报告
+python3 scripts/network_protocol_training.py --report
+
+# 完整流程（所有学员各训练一场）
+python3 scripts/network_protocol_training.py --all
+```
+
+**题库扩展计划**：当前 60 题，目标对齐 Meyo 原帖的 90 题（每阶段再扩充 10 题）。
+
+---
+
 ## 版本
 
 - v1.0.0 (2026-06-25): 初始版本，框架搭建
 - v1.1.0 (2026-06-26): 新增炒股预测学习模块（60题）
+- v1.2.0 (2026-06-28): 新增网络协议学习模块（60题，对齐 Meyo 推送）
