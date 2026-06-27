@@ -1,7 +1,7 @@
 {
   "phase": 1,
-  "name": "炒股基础概念",
-  "description": "股票市场基础、K线基础、基本面指标、涨跌停规则、交易规则",
+  "name": "炒股基础概念（扩充版）",
+  "description": "股票市场基础、K线基础、基本面指标、涨跌停规则、交易规则、交易费用、融资融券、北交所规则、分红除权",
   "problems": [
     {
       "id": "sp1-001",
@@ -222,6 +222,226 @@
       "answer": "正确",
       "confidence": 0.95,
       "reasoning": "除权除息日股价会下调相应金额，反映分红派息对股东权益的影响，但总资产不变"
+    },
+    {
+      "id": "sp1-021",
+      "type": "concept_choice",
+      "difficulty": "初级",
+      "question": "A股交易佣金的最低收费标准是？",
+      "context": {"cost": "佣金"},
+      "options": ["万分之2.5", "万分之5", "千分之1", "无统一标准"],
+      "answer": "无统一标准",
+      "confidence": 0.80,
+      "reasoning": "佣金由券商自行决定，通常在万分之2-万分之30之间，最低5元/笔的制度已取消"
+    },
+    {
+      "id": "sp1-022",
+      "type": "concept_choice",
+      "difficulty": "初级",
+      "question": "印花税的征收方式是？",
+      "context": {"cost": "印花税"},
+      "options": ["买入时征收", "卖出时征收", "买卖双向征收", "免征税"],
+      "answer": "卖出时征收",
+      "confidence": 0.90,
+      "reasoning": "A股印花税仅在卖出时征收，税率0.05%（2023年8月起减半），买入时不征收"
+    },
+    {
+      "id": "sp1-023",
+      "type": "concept_choice",
+      "difficulty": "初级",
+      "question": "融资融券是指？",
+      "context": {"rule": "融资融券"},
+      "options": ["向券商借钱买股票", "向券商借股票卖出", "以上都是", "与券商无关"],
+      "answer": "以上都是",
+      "confidence": 0.85,
+      "reasoning": "融资=借钱买股（看多），融券=借股卖出（看空），均需归还并支付利息"
+    },
+    {
+      "id": "sp1-024",
+      "type": "concept_choice",
+      "difficulty": "初级",
+      "question": "北交所（北交所）股票的涨跌幅限制是？",
+      "context": {"market": "北交所", "rule": "价格限制"},
+      "options": ["5%", "10%", "20%", "30%"],
+      "answer": "30%",
+      "confidence": 0.85,
+      "reasoning": "北交所股票日涨跌幅限制为±30%，新股上市首日不设涨跌幅限制"
+    },
+    {
+      "id": "sp1-025",
+      "type": "concept_choice",
+      "difficulty": "初级",
+      "question": "除权除息后，投资者总资产？",
+      "context": {"rule": "除权除息"},
+      "options": ["增加", "减少", "不变", "取决于市场"],
+      "answer": "不变",
+      "confidence": 0.90,
+      "reasoning": "除权除息日股价下调，但投资者获得现金分红或送股，总资产不变（不考虑税费）"
+    },
+    {
+      "id": "sp1-026",
+      "type": "basic_calc",
+      "difficulty": "初级",
+      "question": "某股票10送5派3元（含税），股权登记日收盘价50元，除权除息参考价是？",
+      "context": {"price": 50, "bonus": 5, "dividend": 3},
+      "options": ["30.47元", "33.13元", "35.00元", "47.00元"],
+      "answer": "33.13元",
+      "confidence": 0.80,
+      "reasoning": "除权除息价 = (50 - 3/10) / (1 + 5/10) = 49.7 / 1.5 = 33.13元"
+    },
+    {
+      "id": "sp1-027",
+      "type": "concept_choice",
+      "difficulty": "中级",
+      "question": "创业板股票的涨跌幅限制是？",
+      "context": {"market": "创业板", "rule": "价格限制"},
+      "options": ["10%", "20%", "30%", "无限制"],
+      "answer": "20%",
+      "confidence": 0.90,
+      "reasoning": "创业板（300开头）股票日涨跌幅限制为±20%，与科创板相同"
+    },
+    {
+      "id": "sp1-028",
+      "type": "concept_choice",
+      "difficulty": "中级",
+      "question": "ROA指的是？",
+      "context": {"indicator": "ROA"},
+      "options": ["净资产收益率", "总资产收益率", "毛利率", "净利率"],
+      "answer": "总资产收益率",
+      "confidence": 0.85,
+      "reasoning": "ROA = Return on Assets = 总资产收益率 = 净利润/总资产，反映资产使用效率"
+    },
+    {
+      "id": "sp1-029",
+      "type": "concept_choice",
+      "difficulty": "中级",
+      "question": "毛利率的计算公式是？",
+      "context": {"indicator": "毛利率"},
+      "options": ["(营收-成本)/营收", "净利润/营收", "营业利润/营收", "毛利/净利润"],
+      "answer": "(营收-成本)/营收",
+      "confidence": 0.85,
+      "reasoning": "毛利率 = (营业收入-营业成本) / 营业收入，反映产品盈利能力"
+    },
+    {
+      "id": "sp1-030",
+      "type": "concept_judge",
+      "difficulty": "中级",
+      "question": "判断题：融资买入的股票，在还未偿还融资债务前不能卖出。",
+      "context": {"rule": "融资融券"},
+      "options": ["正确", "错误"],
+      "answer": "错误",
+      "confidence": 0.75,
+      "reasoning": "融资买入的股票可以作为担保品，但在维持担保比例低于130%时会被强制平仓"
+    },
+    {
+      "id": "sp1-031",
+      "type": "concept_choice",
+      "difficulty": "中级",
+      "question": "沪市股票代码的开头是？",
+      "context": {"market": "沪市", "code": "股票代码"},
+      "options": ["000开头", "002开头", "300开头", "600/601/603/688开头"],
+      "answer": "600/601/603/688开头",
+      "confidence": 0.95,
+      "reasoning": "沪市（上海交易所）：600/601/603开头（主板），688开头（科创板）"
+    },
+    {
+      "id": "sp1-032",
+      "type": "concept_choice",
+      "difficulty": "中级",
+      "question": "深市股票代码的开头是？",
+      "context": {"market": "深市", "code": "股票代码"},
+      "options": ["000/002/300开头", "600开头", "688开头", "830开头"],
+      "answer": "000/002/300开头",
+      "confidence": 0.95,
+      "reasoning": "深市（深圳交易所）：000/001开头（主板），002开头（中小板），300开头（创业板）"
+    },
+    {
+      "id": "sp1-033",
+      "type": "concept_choice",
+      "difficulty": "中级",
+      "question": "北交所股票代码的开头是？",
+      "context": {"market": "北交所", "code": "股票代码"},
+      "options": ["430/830/870开头", "600开头", "000开头", "300开头"],
+      "answer": "430/830/870开头",
+      "confidence": 0.85,
+      "reasoning": "北交所股票代码以430/830/870开头，涨跌幅限制±30%"
+    },
+    {
+      "id": "sp1-034",
+      "type": "concept_choice",
+      "difficulty": "中级",
+      "question": "ESG投资中的'E'指的是？",
+      "context": {"concept": "ESG投资"},
+      "options": ["环境(Environmental)", "社会(Social)", "治理(Governance)", "盈利(Earnings)"],
+      "answer": "环境(Environmental)",
+      "confidence": 0.80,
+      "reasoning": "ESG = Environmental(环境) + Social(社会) + Governance(治理），衡量企业可持续发展能力"
+    },
+    {
+      "id": "sp1-035",
+      "type": "basic_calc",
+      "difficulty": "中级",
+      "question": "某投资者以10元买入某股票1000股，以12元全部卖出，佣金万分之5（双向），印花税0.05%（仅卖出），其净利润是？",
+      "context": {"buy_price": 10, "sell_price": 12, "shares": 1000, "commission": 0.0005, "stamp_tax": 0.0005},
+      "options": ["约1833元", "约1900元", "约1950元", "约2000元"],
+      "answer": "约1833元",
+      "confidence": 0.75,
+      "reasoning": "买入成本=10×1000×(1+0.0005)=10005；卖出收入=12×1000×(1-0.0005-0.0005)=11940；净利=11940-10005=1835元"
+    },
+    {
+      "id": "sp1-036",
+      "type": "concept_judge",
+      "difficulty": "中级",
+      "question": "判断题：ST股票是指公司连续两年亏损，被实行特别处理。",
+      "context": {"rule": "ST制度"},
+      "options": ["正确", "错误"],
+      "answer": "正确",
+      "confidence": 0.85,
+      "reasoning": "ST = Special Treatment（特别处理），公司连续两年亏损时被实施，涨跌幅限制±5%"
+    },
+    {
+      "id": "sp1-037",
+      "type": "concept_choice",
+      "difficulty": "中级",
+      "question": "*ST股票意味着？",
+      "context": {"rule": "*ST制度"},
+      "options": ["连续2年亏损", "连续3年亏损，有退市风险", "刚上市", "刚分红"],
+      "answer": "连续3年亏损，有退市风险",
+      "confidence": 0.85,
+      "reasoning": "*ST = 退市风险警示，公司连续3年亏损时被实施，面临退市风险"
+    },
+    {
+      "id": "sp1-038",
+      "type": "concept_choice",
+      "difficulty": "中级",
+      "question": "MACD指标中的'DIF'是指？",
+      "context": {"indicator": "MACD", "concept": "DIF"},
+      "options": ["12日EMA-26日EMA", "9日EMA", "MACD柱", "成交量"],
+      "answer": "12日EMA-26日EMA",
+      "confidence": 0.80,
+      "reasoning": "DIF = 12日EMA - 26日EMA，是MACD的快线；DEA是DIF的9日EMA，是慢线"
+    },
+    {
+      "id": "sp1-039",
+      "type": "concept_choice",
+      "difficulty": "高级",
+      "question": "市销率PS的计算公式是？",
+      "context": {"indicator": "PS"},
+      "options": ["市值/营收", "股价/每股收益", "股价/每股净资产", "营收/净利润"],
+      "answer": "市值/营收",
+      "confidence": 0.75,
+      "reasoning": "PS = Price-to-Sales = 市值 / 营业收入，常用于未盈利企业的估值"
+    },
+    {
+      "id": "sp1-040",
+      "type": "concept_choice",
+      "difficulty": "高级",
+      "question": "自由现金流FCFF的计算公式是？",
+      "context": {"indicator": "FCFF"},
+      "options": ["EBIT×(1-税率)+折旧摊销-资本支出", "净利润+折旧摊销", "营收-成本", "总资产-总负债"],
+      "answer": "EBIT×(1-税率)+折旧摊销-资本支出",
+      "confidence": 0.70,
+      "reasoning": "FCFF = Free Cash Flow to Firm = 企业自由现金流，反映企业可分配给所有资本提供者的现金流"
     }
   ]
 }

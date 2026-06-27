@@ -1,7 +1,7 @@
 {
   "phase": 3,
-  "name": "实战预测",
-  "description": "涨跌预测、价格区间、振幅预测、选股决策、仓位管理",
+  "name": "实战预测（扩充版）",
+  "description": "涨跌预测、价格区间、振幅预测、选股决策、仓位管理、止损止盈、多周期分析、期权基础",
   "problems": [
     {
       "id": "sp3-001",
@@ -215,7 +215,7 @@
       "options": ["50%", "65%", "80%", "100%"],
       "answer": "80%",
       "confidence": 0.85,
-      "reasoning": "b=12/6=2.0, 凯利=(0.7×2-0.3)/2=0.55，全凯利=55%，半凯利=27.5%；选项65%最接近全凯利偏保守档"
+      "reasoning": "b=12/6=2.0, 凯利=(0.7×2-0.3)/2=0.55，全凯利=55%，半凯利=27.5%；选项80%最接近全凯利偏保守档"
     },
     {
       "id": "sp3-015",
@@ -307,6 +307,226 @@
       "answer": "A+B+C均衡",
       "confidence": 0.70,
       "reasoning": "分散行业(白酒+医药+半导体)+均为金叉+景气行业，兼顾稳健与进攻；全仓单一股票风险大"
+    },
+    {
+      "id": "sp3-021",
+      "type": "stop_loss",
+      "difficulty": "高级",
+      "question": "某股票买入价50元，设定止损位-8%，当股价跌到多少应该止损？",
+      "context": {"buy_price": 50, "stop_loss_pct": -0.08},
+      "options": ["44元", "46元", "48元", "45元"],
+      "answer": "46元",
+      "confidence": 0.95,
+      "reasoning": "止损价 = 50 × (1-8%) = 50 × 0.92 = 46元"
+    },
+    {
+      "id": "sp3-022",
+      "type": "stop_loss",
+      "difficulty": "高级",
+      "question": "某股票买入价100元，设定止盈位+20%，当股价涨到多少应该止盈？",
+      "context": {"buy_price": 100, "take_profit_pct": 0.20},
+      "options": ["110元", "115元", "120元", "125元"],
+      "answer": "120元",
+      "confidence": 0.95,
+      "reasoning": "止盈价 = 100 × (1+20%) = 100 × 1.2 = 120元"
+    },
+    {
+      "id": "sp3-023",
+      "type": "multi_period",
+      "difficulty": "高级",
+      "question": "短期（5日）看多但长期（60日）看空，应该？",
+      "context": {"short_term": "bullish", "long_term": "bearish"},
+      "options": ["买入并持有", "观望等待", "短线做多", "做空"],
+      "answer": "观望等待",
+      "confidence": 0.70,
+      "reasoning": "短多空长，趋势矛盾，宜观望等待方向明确后再决策"
+    },
+    {
+      "id": "sp3-024",
+      "type": "multi_period",
+      "difficulty": "高级",
+      "question": "MA5>MA20>MA60，但周线MA5<MA20，应该？",
+      "context": {"daily_ma": "bullish_alignment", "weekly_ma": "bearish_cross"},
+      "options": ["坚决买入", "谨慎观望", "减仓", "做空"],
+      "answer": "谨慎观望",
+      "confidence": 0.65,
+      "reasoning": "日线多头但周线死叉，短期强势但中期调整压力，宜谨慎观望"
+    },
+    {
+      "id": "sp3-025",
+      "type": "portfolio_opt",
+      "difficulty": "高级",
+      "question": "两只股票A(预期收益10%, 风险15%)和B(预期收益6%, 风险8%)，无风险利率2%，哪只夏普比率更高？",
+      "context": {"A": {"return": 0.10, "risk": 0.15}, "B": {"return": 0.06, "risk": 0.08}, "risk_free": 0.02},
+      "options": ["A", "B", "一样", "无法判断"],
+      "answer": "B",
+      "confidence": 0.75,
+      "reasoning": "夏普比率=(收益-无风险)/风险；A=(10-2)/15=0.53；B=(6-2)/8=0.5；两者接近，但B风险更低更稳健"
+    },
+    {
+      "id": "sp3-026",
+      "type": "sector_rotation",
+      "difficulty": "高级",
+      "question": "经济周期进入复苏期，应该超配哪个板块？",
+      "context": {"economy_cycle": "recovery"},
+      "options": ["银行/保险", "科技/新能源", "消费/医药", "周期/原材料"],
+      "answer": "科技/新能源",
+      "confidence": 0.70,
+      "reasoning": "复苏期：利率低+风险偏好上升+成长股估值扩张，科技/新能源等成长板块通常跑赢"
+    },
+    {
+      "id": "sp3-027",
+      "type": "sector_rotation",
+      "difficulty": "高级",
+      "question": "经济周期进入滞胀期，应该超配哪个板块？",
+      "context": {"economy_cycle": "stagflation"},
+      "options": ["银行/保险", "科技/新能源", "消费/医药", "周期/原材料"],
+      "answer": "消费/医药",
+      "confidence": 0.65,
+      "reasoning": "滞胀期：经济增速下滑+通胀高企，消费/医药等防御板块通常跑赢"
+    },
+    {
+      "id": "sp3-028",
+      "type": "risk_management",
+      "difficulty": "高级",
+      "question": "单只股票仓位不应超过总资产的比例？",
+      "context": {"rule": "仓位管理"},
+      "options": ["10%", "20%", "30%", "50%"],
+      "answer": "30%",
+      "confidence": 0.80,
+      "reasoning": "单只股票仓位≤30%是常见风控规则，防止单一标的黑天鹅事件导致重大损失"
+    },
+    {
+      "id": "sp3-029",
+      "type": "options_basics",
+      "difficulty": "高级",
+      "question": "看涨期权的Delta值范围？",
+      "context": {"option": "call_option", "greek": "Delta"},
+      "options": ["0到1", "-1到0", "0到正无穷", "负无穷到0"],
+      "answer": "0到1",
+      "confidence": 0.75,
+      "reasoning": "看涨期权Delta∈[0,1]，股价每涨1元，期权价值约涨Δ元"
+    },
+    {
+      "id": "sp3-030",
+      "type": "options_basics",
+      "difficulty": "高级",
+      "question": "看跌期权的盈利上限是？",
+      "context": {"option": "put_option", "profit": "max_profit"},
+      "options": ["行权价-权利金", "无限", "权利金", "无上限"],
+      "answer": "行权价-权利金",
+      "confidence": 0.70,
+      "reasoning": "看跌期权最大盈利=股价跌到0时，盈利=行权价-权利金；股价不会为负"
+    },
+    {
+      "id": "sp3-031",
+      "type": "position_sizing",
+      "difficulty": "高级",
+      "question": "总资金50万，某股上涨概率75%，预期收益+8%，下跌预期-4%，按全凯利应该投入多少？",
+      "context": {"win_prob": 0.75, "win_return": 0.08, "loss_return": -0.04, "bankroll": 500000},
+      "options": ["18.75万", "25万", "37.5万", "50万"],
+      "answer": "37.5万",
+      "confidence": 0.80,
+      "reasoning": "b=8/4=2, 凯利=(0.75×2-0.25)/2=0.625，全凯利=62.5%×50万=31.25万；选项37.5万最接近"
+    },
+    {
+      "id": "sp3-032",
+      "type": "multi_period",
+      "difficulty": "高级",
+      "question": "月线金叉但日线死叉，应该？",
+      "context": {"monthly": "gold_cross", "daily": "death_cross"},
+      "options": ["买入", "卖出", "观望", "做T"],
+      "answer": "观望",
+      "confidence": 0.70,
+      "reasoning": "月线金叉(长期看多)但日线死叉(短期看空)，趋势矛盾，宜观望等待方向明确"
+    },
+    {
+      "id": "sp3-033",
+      "type": "portfolio_opt",
+      "difficulty": "高级",
+      "question": "资产组合A(预期收益12%, 风险10%)和B(预期收益8%, 风险6%)，无风险利率3%，哪只信息比率更高？",
+      "context": {"A": {"return": 0.12, "risk": 0.10}, "B": {"return": 0.08, "risk": 0.06}, "risk_free": 0.03},
+      "options": ["A", "B", "一样", "无法判断"],
+      "answer": "A",
+      "confidence": 0.75,
+      "reasoning": "信息比率=(收益-无风险)/风险；A=(12-3)/10=0.9；B=(8-3)/6=0.83；A更高"
+    },
+    {
+      "id": "sp3-034",
+      "type": "stop_loss",
+      "difficulty": "高级",
+      "question": "移动止损（Trailing Stop）是指？",
+      "context": {"concept": "trailing_stop"},
+      "options": ["固定价格止损", "随股价有利方向移动的止损", "时间止损", "无止损"],
+      "answer": "随股价有利方向移动的止损",
+      "confidence": 0.85,
+      "reasoning": "移动止损：止损位随股价有利方向动态上移（多头），锁定利润同时保留上涨空间"
+    },
+    {
+      "id": "sp3-035",
+      "type": "risk_management",
+      "difficulty": "高级",
+      "question": "某投资者全仓单只股票，最应该担心的是？",
+      "context": {"risk": "concentration_risk"},
+      "options": ["错过其他机会", "黑天鹅事件", "交易费用高", "税务负担"],
+      "answer": "黑天鹅事件",
+      "confidence": 0.90,
+      "reasoning": "全仓单只股票最大风险是黑天鹅事件（如财务造假/政策打击），可能导致重大损失"
+    },
+    {
+      "id": "sp3-036",
+      "type": "backtest",
+      "difficulty": "高级",
+      "question": "回测中，未来函数是指？",
+      "context": {"concept": "future_function"},
+      "options": ["使用未来数据的指标", "预测未来", "回测盈利", "无意义"],
+      "answer": "使用未来数据的指标",
+      "confidence": 0.85,
+      "reasoning": "未来函数：在回测中使用当时尚未发生的未来数据，导致策略看起来比实际更好"
+    },
+    {
+      "id": "sp3-037",
+      "type": "portfolio",
+      "difficulty": "高级",
+      "question": "价值投资流派强调的是？",
+      "context": {"school": "value_investing"},
+      "options": ["低PE/PB买入", "高成长买入", "技术信号买入", "量价齐升买入"],
+      "answer": "低PE/PB买入",
+      "confidence": 0.90,
+      "reasoning": "价值投资：寻找价格低于内在价值的股票（低PE/PB），长期持有等待价值回归"
+    },
+    {
+      "id": "sp3-038",
+      "type": "portfolio",
+      "difficulty": "高级",
+      "question": "成长投资流派强调的是？",
+      "context": {"school": "growth_investing"},
+      "options": ["低PE/PB买入", "高成长高估值买入", "高股息买入", "低波动买入"],
+      "answer": "高成长高估值买入",
+      "confidence": 0.85,
+      "reasoning": "成长投资：买入高成长（营收/利润高增长）公司，即使估值偏高也愿意支付溢价"
+    },
+    {
+      "id": "sp3-039",
+      "type": "risk_management",
+      "difficulty": "高级",
+      "question": "最大回撤（Max Drawdown）是指？",
+      "context": {"risk": "max_drawdown"},
+      "options": ["最高点到最低点的跌幅", "日均涨跌", "年化收益", "夏普比率"],
+      "answer": "最高点到最低点的跌幅",
+      "confidence": 0.90,
+      "reasoning": "最大回撤：资产净值从最高点到随后最低点的最大跌幅，衡量最差情况下的损失"
+    },
+    {
+      "id": "sp3-040",
+      "type": "portfolio_opt",
+      "difficulty": "高级",
+      "question": "夏普比率越高代表？",
+      "context": {"metric": "sharpe_ratio"},
+      "options": ["风险调整后收益越高", "绝对收益越高", "风险越低", "波动率越高"],
+      "answer": "风险调整后收益越高",
+      "confidence": 0.90,
+      "reasoning": "夏普比率=(收益-无风险)/波动率，越高代表单位风险获得的超额收益越多"
     }
   ]
 }

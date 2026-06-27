@@ -1,7 +1,7 @@
 {
   "phase": 2,
-  "name": "技术分析方法",
-  "description": "K线形态、均线系统、MACD/KDJ/RSI/布林带、量价关系",
+  "name": "技术分析方法（扩充版）",
+  "description": "K线形态、均线系统、MACD/KDJ/RSI/布林带、量价关系、缺口理论、进阶形态",
   "problems": [
     {
       "id": "sp2-001",
@@ -51,7 +51,7 @@
       "id": "sp2-005",
       "type": "indicator_analysis",
       "difficulty": "初级",
-      "question": "MA均线中，ma5表示什么？",
+      "question": "MA均线中，MA5表示什么？",
       "context": {"indicator": "MA", "period": 5},
       "options": ["5分钟均线", "5日均线", "5周均线", "5月均线"],
       "answer": "5日均线",
@@ -218,10 +218,230 @@
       "difficulty": "中级",
       "question": "均线的多头排列是？",
       "context": {"ma": "多头排列"},
-      "options": ["ma5>ma10>ma20>ma60", "ma5<ma10<ma20<ma60", "ma5=ma10=ma20", "ma5>ma20且ma10<ma60"],
-      "answer": "ma5>ma10>ma20>ma60",
+      "options": ["MA5>MA10>MA20>MA60", "MA5<MA10<MA20<MA60", "MA5=MA10=MA20", "MA5>MA20且MA10<MA60"],
+      "answer": "MA5>MA10>MA20>MA60",
       "confidence": 0.90,
       "reasoning": "多头排列：短期均线在上、长期均线在下，反映强势上升趋势；空头排列相反"
+    },
+    {
+      "id": "sp2-021",
+      "type": "kline_pattern",
+      "difficulty": "中级",
+      "question": "头肩顶形态通常由几个部分组成？",
+      "context": {"pattern": "头肩顶"},
+      "options": ["2个", "3个", "4个", "5个"],
+      "answer": "3个",
+      "confidence": 0.85,
+      "reasoning": "头肩顶：左肩 + 头部 + 右肩，颈线破位后强烈看空信号"
+    },
+    {
+      "id": "sp2-022",
+      "type": "kline_pattern",
+      "difficulty": "中级",
+      "question": "头肩底与头肩顶相反，通常预示？",
+      "context": {"pattern": "头肩底"},
+      "options": ["继续下跌", "见底反转", "横盘整理", "无意义"],
+      "answer": "见底反转",
+      "confidence": 0.85,
+      "reasoning": "头肩底：左肩 + 头部 + 右肩，颈线突破后强烈看多信号"
+    },
+    {
+      "id": "sp2-023",
+      "type": "kline_pattern",
+      "difficulty": "中级",
+      "question": "三只乌鸦形态是指？",
+      "context": {"pattern": "三只乌鸦"},
+      "options": ["三根连续大阳线", "三根连续大阴线", "十字星组合", "锤头线组合"],
+      "answer": "三根连续大阴线",
+      "confidence": 0.80,
+      "reasoning": "三只乌鸦：三根连续大阴线，逐步走低，是强烈的见顶反转信号"
+    },
+    {
+      "id": "sp2-024",
+      "type": "kline_pattern",
+      "difficulty": "中级",
+      "question": "红三兵（三白兵）形态是指？",
+      "context": {"pattern": "红三兵"},
+      "options": ["三根连续大阳线逐步走高", "三根连续大阴线", "十字星组合", "锤头线组合"],
+      "answer": "三根连续大阳线逐步走高",
+      "confidence": 0.80,
+      "reasoning": "红三兵：三根连续大阳线逐步走高，是强烈的见底反转信号"
+    },
+    {
+      "id": "sp2-025",
+      "type": "gap_theory",
+      "difficulty": "中级",
+      "question": "向上突破缺口通常表示？",
+      "context": {"gap": "向上突破缺口"},
+      "options": ["趋势反转", "强势上涨开始", "横盘整理", "无意义"],
+      "answer": "强势上涨开始",
+      "confidence": 0.85,
+      "reasoning": "向上突破缺口：股价跳空高开，不回补缺口，通常表示强势上涨开始"
+    },
+    {
+      "id": "sp2-026",
+      "type": "gap_theory",
+      "difficulty": "中级",
+      "question": "向下突破缺口通常表示？",
+      "context": {"gap": "向下突破缺口"},
+      "options": ["趋势反转向上", "强势下跌开始", "横盘整理", "无意义"],
+      "answer": "强势下跌开始",
+      "confidence": 0.85,
+      "reasoning": "向下突破缺口：股价跳空低开，不回补缺口，通常表示强势下跌开始"
+    },
+    {
+      "id": "sp2-027",
+      "type": "gap_theory",
+      "difficulty": "中级",
+      "question": "缺口理论中，普通缺口通常在几天内？",
+      "context": {"gap": "普通缺口"},
+      "options": ["不回补", "回补", "扩大", "无意义"],
+      "answer": "回补",
+      "confidence": 0.80,
+      "reasoning": "普通缺口：通常由短期情绪波动引起，几天内会回补（价格回到缺口区间内）"
+    },
+    {
+      "id": "sp2-028",
+      "type": "volume_analysis",
+      "difficulty": "中级",
+      "question": "量增价平通常表示？",
+      "context": {"volume_price": "量增价平"},
+      "options": ["趋势反转", "多空分歧加大", "横盘整理", "无意义"],
+      "answer": "多空分歧加大",
+      "confidence": 0.75,
+      "reasoning": "量增价平：成交量放大但股价持平，反映多空分歧加大，即将选择方向"
+    },
+    {
+      "id": "sp2-029",
+      "type": "volume_analysis",
+      "difficulty": "中级",
+      "question": "量缩价跌通常表示？",
+      "context": {"volume_price": "量缩价跌"},
+      "options": ["恐慌性抛售", "惜售心理，可能见底", "无意义", "横盘整理"],
+      "answer": "惜售心理，可能见底",
+      "confidence": 0.75,
+      "reasoning": "量缩价跌：成交量萎缩+股价小跌，反映惜售心理，可能接近底部"
+    },
+    {
+      "id": "sp2-030",
+      "type": "volume_analysis",
+      "difficulty": "中级",
+      "question": "量缩价平通常表示？",
+      "context": {"volume_price": "量缩价平"},
+      "options": ["趋势即将启动", "多空平衡", "无意义", "恐慌性抛售"],
+      "answer": "多空平衡",
+      "confidence": 0.75,
+      "reasoning": "量缩价平：成交量极低+股价持平，反映多空平衡，即将选择方向"
+    },
+    {
+      "id": "sp2-031",
+      "type": "indicator_analysis",
+      "difficulty": "高级",
+      "question": "MACD柱状线由绿转红通常表示？",
+      "context": {"indicator": "MACD"},
+      "options": ["持续下跌", "下跌转上涨（金叉信号）", "横盘整理", "无意义"],
+      "answer": "下跌转上涨（金叉信号）",
+      "confidence": 0.85,
+      "reasoning": "MACD柱状线由绿转红 = DIF上穿DEA，是强烈的金叉买入信号"
+    },
+    {
+      "id": "sp2-032",
+      "type": "indicator_analysis",
+      "difficulty": "高级",
+      "question": "KDJ指标的D值通常在什么区间？",
+      "context": {"indicator": "KDJ"},
+      "options": ["0-100", "0-200", "负数到正数", "无固定区间"],
+      "answer": "0-100",
+      "confidence": 0.90,
+      "reasoning": "KDJ的K/D/J值均在0-100区间内，>80超买，<20超卖"
+    },
+    {
+      "id": "sp2-033",
+      "type": "indicator_analysis",
+      "difficulty": "高级",
+      "question": "布林带收口（开口缩小）通常表示？",
+      "context": {"indicator": "BOLL"},
+      "options": ["趋势延续", "即将变盘（大涨或大跌）", "横盘整理", "无意义"],
+      "answer": "即将变盘（大涨或大跌）",
+      "confidence": 0.80,
+      "reasoning": "布林带收口：波动率降到极低，通常预示即将发生大涨或大跌（变盘）"
+    },
+    {
+      "id": "sp2-034",
+      "type": "indicator_analysis",
+      "difficulty": "高级",
+      "question": "RSI指标的背离是指？",
+      "context": {"indicator": "RSI", "concept": "背离"},
+      "options": ["RSI与股价同向", "RSI与股价反向", "RSI突破80", "RSI跌破20"],
+      "answer": "RSI与股价反向",
+      "confidence": 0.80,
+      "reasoning": "RSI背离：股价创新高但RSI不创新高（顶背离）= 见顶信号；反之底背离 = 见底信号"
+    },
+    {
+      "id": "sp2-035",
+      "type": "kline_pattern",
+      "difficulty": "高级",
+      "question": "启明星形态与下列哪一个形态相似？",
+      "context": {"pattern": "启明星"},
+      "options": ["早晨之星", "黄昏之星", "锤头线", "上吊线"],
+      "answer": "早晨之星",
+      "confidence": 0.85,
+      "reasoning": "启明星 = 早晨之星，均为底部反转形态（大阴+十字星+大阳）"
+    },
+    {
+      "id": "sp2-036",
+      "type": "kline_pattern",
+      "difficulty": "高级",
+      "question": "上吊线（上吊线）通常出现在什么位置预示反转？",
+      "context": {"pattern": "上吊线"},
+      "options": ["顶部预示见顶", "底部预示见底", "中继形态", "无意义"],
+      "answer": "顶部预示见顶",
+      "confidence": 0.80,
+      "reasoning": "上吊线：出现在上涨末期，上影线极长、实体小，预示见顶反转"
+    },
+    {
+      "id": "sp2-037",
+      "type": "advanced_pattern",
+      "difficulty": "高级",
+      "question": "岛形反转是指？",
+      "context": {"pattern": "岛形反转"},
+      "options": ["一个缺口", "两个方向相反的缺口形成'岛'", "三个缺口", "无缺口"],
+      "answer": "两个方向相反的缺口形成'岛'",
+      "confidence": 0.75,
+      "reasoning": "岛形反转：左侧向下缺口 + 右侧向上缺口（或相反），中间K线形成'岛'，是强烈反转信号"
+    },
+    {
+      "id": "sp2-038",
+      "type": "advanced_pattern",
+      "difficulty": "高级",
+      "question": "三角形整理形态通常持续多久后变盘？",
+      "context": {"pattern": "三角形整理"},
+      "options": ["3-5根K线", "10-30根K线", "100根K线以上", "无固定时间"],
+      "answer": "10-30根K线",
+      "confidence": 0.70,
+      "reasoning": "三角形整理：对称/上升/下降三角形，通常10-30根K线后发生变盘（突破方向取决于形态）"
+    },
+    {
+      "id": "sp2-039",
+      "type": "indicator_analysis",
+      "difficulty": "高级",
+      "question": "OBV（能量潮）指标的原理是？",
+      "context": {"indicator": "OBV"},
+      "options": ["收盘价", "成交量累计", "PE比率", "RSI变形"],
+      "answer": "成交量累计",
+      "confidence": 0.75,
+      "reasoning": "OBV = On Balance Volume，根据收盘价涨跌决定加减成交量，反映主力资金流向"
+    },
+    {
+      "id": "sp2-040",
+      "type": "indicator_analysis",
+      "difficulty": "高级",
+      "question": "WR指标（威廉指标）超过-20意味着？",
+      "context": {"indicator": "WR"},
+      "options": ["超卖", "超买", "中性", "无意义"],
+      "answer": "超买",
+      "confidence": 0.75,
+      "reasoning": "WR在0至-100之间，>-20为超买区，<-80为超卖区；与KDJ类似但计算方式不同"
     }
   ]
 }
