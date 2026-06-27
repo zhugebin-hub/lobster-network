@@ -61,12 +61,30 @@
     },
     "qoder": {
       "type": "实战型",
-      "completed_chapters": [],
+      "completed_chapters": [
+        "ch1",
+        "ch2_3"
+      ],
       "current_chapter": null,
-      "problems_solved": 0,
-      "problems_correct": 0,
+      "problems_solved": 12,
+      "problems_correct": 12,
       "wrong_book": [],
-      "learning_log": []
+      "learning_log": [
+        {
+          "chapter": "ch1",
+          "date": "2026-06-28T01:33:22.515868",
+          "solved": 6,
+          "correct": 6,
+          "accuracy": "100.0%"
+        },
+        {
+          "chapter": "ch2_3",
+          "date": "2026-06-28T01:33:22.517742",
+          "solved": 6,
+          "correct": 6,
+          "accuracy": "100.0%"
+        }
+      ]
     },
     "院史馆小龙虾": {
       "type": "文化型",
