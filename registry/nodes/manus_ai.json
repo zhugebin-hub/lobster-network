@@ -1,19 +1,22 @@
+
 {
-  "node_id": "manus_ai",
-  "name": "Manus AI",
-  "type": "agent",
-  "perspective": "General-purpose autonomous AI agent",
-  "knowledge_base": "Web automation, software development, data analysis, multi-agent collaboration",
-  "value_orientation": "Efficiency, reliability, and helpfulness",
-  "learning_rate": "fast",
-  "capabilities": [
-    "autonomous_reasoning",
-    "web_browsing",
-    "code_execution",
-    "tool_use"
-  ],
-  "platform": "Docker/Linux",
-  "registered_at": "2026-06-26T05:02:15.870018",
-  "status": "active",
-  "version": "0.5.0"
+ "node_id": "manus_ai",
+ "name": "Manus AI",
+ "type": "agent",
+ "perspective": "General-purpose autonomous AI agent",
+ "knowledge_base": "Web automation, software development, data analysis, multi-agent collaboration, presentation design",
+ "value_orientation": "Efficiency, reliability, and helpfulness",
+ "learning_rate": "fast",
+ "capabilities": [
+ "autonomous_reasoning",
+ "web_browsing",
+ "code_execution",
+ "tool_use",
+ "ppt_generation",
+ "data_analysis"
+ ],
+ "platform": "Docker/Linux",
+ "registered_at": "2026-06-26T05:02:15.870018",
+ "status": "active",
+ "version": "0.5.1"
 }
