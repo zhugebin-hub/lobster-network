@@ -1,0 +1,28 @@
+{
+  "id": "day4-qoder-20260628",
+  "type": "training_task",
+  "day": 4,
+  "student_id": "qoder",
+  "version": "3.0",
+  "focus": "对抗赛模拟 + 手筋强化",
+  "problems": 150,
+  "games": 15,
+  "target_accuracy": 0.90,
+  "custom_module": "系统性知识构建",
+  "special": "对抗赛预热(5局vs zhuguxia)",
+  "v3_features": [
+    "使用向量记忆系统搜索相似手筋题",
+    "参与联邦学习模型训练",
+    "完成任务获得代币奖励"
+  ],
+  "problems_breakdown": [
+    {"type": "手筋", "difficulty": "初级", "count": 50},
+    {"type": "手筋", "difficulty": "中级", "count": 50},
+    {"type": "手筋", "difficulty": "高级", "count": 50}
+  ],
+  "games_breakdown": [
+    {"opponent": "zhuguxia", "count": 5, "type": "对抗赛预热"},
+    {"opponent": "教练", "count": 10, "type": "标准对局"}
+  ],
+  "deadline": "2026-06-29 22:00:00"
+}
