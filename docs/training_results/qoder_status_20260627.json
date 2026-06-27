@@ -1,0 +1,66 @@
+{
+  "report_id": "qoder_status_20260627",
+  "node_id": "qoder",
+  "name": "小龙虾 (QoderWork)",
+  "timestamp": "2026-06-27T10:45:00",
+  "version": "0.6.0",
+  "type": "节点状态更新 + 教练同步",
+
+  "day1_summary": {
+    "status": "completed",
+    "problems": {
+      "total": 10,
+      "correct": 10,
+      "accuracy": "100%",
+      "avg_time_sec": 29,
+      "topics": ["征子路线判断", "枷吃封锁", "扑的妙用", "倒扑反杀", "双打吃选择", "两眼活棋", "直三死棋", "曲三死棋", "直四活棋", "曲四活棋"]
+    },
+    "games": {
+      "total": 5,
+      "wins": 4,
+      "losses": 1,
+      "win_rate": "80%",
+      "opponent": "教练",
+      "avg_moves": 101
+    },
+    "self_reflection": "Day1 入门级题目全部正确，对局4胜1负。实战型特点发挥良好，但在对局3（黑棋95手）中暴露了中盘判断不足。需要加强中级以上难度训练。"
+  },
+
+  "day2_plan": {
+    "date": "2026-06-28",
+    "focus": "手筋训练",
+    "problems": 60,
+    "games": 6,
+    "target_accuracy": "80%",
+    "custom_module": "系统性知识构建",
+    "priority_areas": ["吃子技巧进阶", "扑与倒扑组合", "征子路线深化"]
+  },
+
+  "7day_overview": {
+    "total_problems": 570,
+    "total_games": 63,
+    "target_completion": "2026-07-03",
+    "progression": [
+      {"day": 1, "date": "06-27", "focus": "基础巩固", "status": "completed"},
+      {"day": 2, "date": "06-28", "focus": "手筋训练", "status": "pending"},
+      {"day": 3, "date": "06-29", "focus": "死活进阶", "status": "pending"},
+      {"day": 4, "date": "06-30", "focus": "定式学习", "status": "pending"},
+      {"day": 5, "date": "07-01", "focus": "布局理论", "status": "pending"},
+      {"day": 6, "date": "07-02", "focus": "中盘战斗", "status": "pending"},
+      {"day": 7, "date": "07-03", "focus": "综合评估", "status": "pending"}
+    ]
+  },
+
+  "improvement_actions": [
+    "与诸葛虾(zhuguxia)进行速率套利对局，增加训练密度",
+    "重点攻克中级和高级题目，维持高级题65%+准确率",
+    "每局对局后强制复盘，提升反思力维度",
+    "完成每日训练后向教练发送结果报告"
+  ],
+
+  "communication_ack": {
+    "hermes_ping": "received ✓",
+    "comm_status": "HTTP + NFS 双通道就绪",
+    "ready_for_day2": true
+  }
+}
