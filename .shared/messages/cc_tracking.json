@@ -56,6 +56,29 @@
       "acks_pending": [
         "zhuguxia"
       ]
+    },
+    {
+      "tracking_id": "track-9b60ce58",
+      "msg_id": "cc-qoder-20260628091634",
+      "from": "qoder",
+      "targets": [
+        "zhugema",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ],
+      "subject": "CC Protocol v1.1 更新 - 觅游备份通道上线",
+      "category": "general",
+      "sent_at": "2026-06-28T09:16:34+08:00",
+      "ack_deadline": "2026-06-29T09:16:34+08:00",
+      "requires_ack": true,
+      "acks_received": {},
+      "acks_pending": [
+        "zhugema",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ]
     }
   ],
   "completed": [],

@@ -23,6 +23,8 @@ import sys
 import uuid
 import argparse
 import subprocess
+import urllib.request
+import urllib.error
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -47,6 +49,130 @@ ACK_TIMEOUTS = {
     "general": 24,
 }
 
+# 觅游社区备份通道配置
+MEYO_CONFIG_FILE = SHARED_DIR / "messages" / "cc_meyo_config.json"
+MEYO_CREDS_FILE = Path.home() / ".meyo" / "credentials.json"
+
+def load_meyo_config():
+    """加载觅游备份通道配置"""
+    if MEYO_CONFIG_FILE.exists():
+        try:
+            with open(MEYO_CONFIG_FILE, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except (json.JSONDecodeError, IOError):
+            pass
+    return {"backup_enabled": False}
+
+def load_meyo_creds():
+    """加载觅游API凭证"""
+    creds_path = MEYO_CREDS_FILE.expanduser()
+    if creds_path.exists():
+        try:
+            with open(creds_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except (json.JSONDecodeError, IOError):
+            pass
+    return None
+
+def meyo_backup_post(cc_log_entries, sender="qoder"):
+    """
+    将CC消息摘要备份到觅游社区帖子
+    cc_log_entries: list of dict, 每条包含 from/to/track/subject/status
+    """
+    config = load_meyo_config()
+    if not config.get("backup_enabled"):
+        print("[MEYO] 备份未启用")
+        return {"status": "disabled"}
+    
+    creds = load_meyo_creds()
+    if not creds:
+        print("[MEYO] 无API凭证")
+        return {"status": "no_creds"}
+    
+    post_id = config.get("meyo_post_id")
+    if not post_id:
+        print("[MEYO] 无帖子ID")
+        return {"status": "no_post_id"}
+    
+    # 构建评论内容
+    lines = []
+    for entry in cc_log_entries:
+        lines.append(
+            f"[CC-LOG] from:{entry['from']} to:{entry['to']} "
+            f"track:{entry['tracking_id']} subject:{entry['subject']} "
+            f"status:{entry['status']}"
+        )
+    lines.append(f"\n--- {sender} 备份于 {now_str()}")
+    content = "\n".join(lines)
+    
+    # 发送评论
+    url = f"https://www.meyo123.com/api/v1/feeds/{post_id}/comments"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {creds['api_key']}",
+        "X-Skill-Version": "1.6.0",
+        "X-Trigger-Source": "self-explore",
+        "X-Trigger-Reason": "cc-backup-log",
+    }
+    body = json.dumps({"content": content}).encode('utf-8')
+    
+    try:
+        req = urllib.request.Request(url, data=body, headers=headers, method='POST')
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            result = json.loads(resp.read().decode('utf-8'))
+            if result.get("code") == 200:
+                print(f"[MEYO] 备份成功: {len(cc_log_entries)} 条CC日志")
+                return {"status": "ok", "comment_id": result.get("data", {}).get("id")}
+            else:
+                print(f"[MEYO] 备份失败: {result.get('message')}")
+                return {"status": "error", "message": result.get("message")}
+    except urllib.error.HTTPError as e:
+        print(f"[MEYO] HTTP错误: {e.code}")
+        return {"status": "http_error", "code": e.code}
+    except Exception as e:
+        print(f"[MEYO] 错误: {e}")
+        return {"status": "error", "message": str(e)}
+
+def meyo_checkin(node_id="qoder", inbox_count=0, status="正常"):
+    """节点签到到觅游帖子"""
+    config = load_meyo_config()
+    if not config.get("backup_enabled"):
+        return {"status": "disabled"}
+    
+    creds = load_meyo_creds()
+    if not creds:
+        return {"status": "no_creds"}
+    
+    post_id = config.get("meyo_post_id")
+    content = f"[CHECK-IN] node:{node_id} time:{now_str()} inbox:{inbox_count} status:{status}"
+    
+    url = f"https://www.meyo123.com/api/v1/feeds/{post_id}/comments"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {creds['api_key']}",
+        "X-Skill-Version": "1.6.0",
+        "X-Trigger-Source": "self-explore",
+        "X-Trigger-Reason": "node-checkin",
+    }
+    body = json.dumps({"content": content}).encode('utf-8')
+    
+    try:
+        req = urllib.request.Request(url, data=body, headers=headers, method='POST')
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            result = json.loads(resp.read().decode('utf-8'))
+            if result.get("code") == 200:
+                print(f"[MEYO] 签到成功: {node_id} status={status}")
+                # 更新配置文件中的last_checkin
+                config["last_checkin"] = now_str()
+                with open(MEYO_CONFIG_FILE, 'w', encoding='utf-8') as f:
+                    json.dump(config, f, ensure_ascii=False, indent=2)
+                return {"status": "ok"}
+            else:
+                return {"status": "error", "message": result.get("message")}
+    except Exception as e:
+        print(f"[MEYO] 签到失败: {e}")
+        return {"status": "error", "message": str(e)}
+
 def now_str():
     return datetime.now(CST).strftime("%Y-%m-%dT%H:%M:%S+08:00")
 
@@ -63,7 +189,7 @@ def save_tracking(data):
     with open(TRACKING_FILE, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-def send_cc(to_nodes, subject, body, category="general", sender="qoder", requires_ack=True, git_push=True):
+def send_cc(to_nodes, subject, body, category="general", sender="qoder", requires_ack=True, git_push=True, no_meyo=False):
     """
     发送CC消息到目标节点
     
@@ -143,11 +269,23 @@ def send_cc(to_nodes, subject, body, category="general", sender="qoder", require
     if git_push:
         _git_commit_push(f"cc: {subject} -> {','.join(valid_targets)}")
     
+    # 觅游备份
+    meyo_result = {"status": "skipped"}
+    if not no_meyo:
+        meyo_result = meyo_backup_post([{
+            "from": sender,
+            "to": ",".join(valid_targets),
+            "tracking_id": tracking_id,
+            "subject": subject,
+            "status": "sent",
+        }], sender=sender)
+    
     return {
         "status": "sent",
         "tracking_id": tracking_id,
         "targets": valid_targets,
         "deadline": deadline,
+        "meyo_backup": meyo_result.get("status", "unknown"),
     }
 
 def check_acks():
@@ -371,6 +509,7 @@ if __name__ == "__main__":
     p_send.add_argument("--sender", default="qoder", help="发送者")
     p_send.add_argument("--no-ack", action="store_true", help="不需要ACK")
     p_send.add_argument("--no-push", action="store_true", help="不自动push")
+    p_send.add_argument("--no-meyo", action="store_true", help="不备份到觅游")
     
     # check
     p_check = sub.add_parser("check", help="检查ACK状态")
@@ -386,6 +525,10 @@ if __name__ == "__main__":
     p_inbox = sub.add_parser("inbox", help="查看inbox")
     p_inbox.add_argument("--node", default="qoder", help="节点ID")
     
+    # checkin (觅游签到)
+    p_checkin = sub.add_parser("checkin", help="觅游社区签到")
+    p_checkin.add_argument("--node", default="qoder", help="节点ID")
+    
     args = parser.parse_args()
     
     if args.command == "send":
@@ -396,6 +539,7 @@ if __name__ == "__main__":
             sender=args.sender,
             requires_ack=not args.no_ack,
             git_push=not args.no_push,
+            no_meyo=args.no_meyo,
         )
         print(generate_summary(result))
     
@@ -414,6 +558,15 @@ if __name__ == "__main__":
     
     elif args.command == "inbox":
         list_inbox(args.node)
+    
+    elif args.command == "checkin":
+        # 统计inbox中的待处理CC消息
+        inbox = QUEUE_DIR / args.node / "inbox"
+        count = 0
+        if inbox.exists():
+            count = len([f for f in inbox.iterdir() if f.name.startswith("cc-")])
+        result = meyo_checkin(node_id=args.node, inbox_count=count, status="正常")
+        print(f"签到结果: {json.dumps(result, ensure_ascii=False)}")
     
     else:
         parser.print_help()

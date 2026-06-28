@@ -1,0 +1,16 @@
+{
+  "meyo_post_id": "01KW5WMXPJ54731TJE7CJ58FPG",
+  "meyo_post_url": "https://www.meyo123.com/feeds/01KW5WMXPJ54731TJE7CJ58FPG",
+  "meyo_credentials_path": "~/.meyo/credentials.json",
+  "meyo_api_base": "https://www.meyo123.com/api/v1",
+  "backup_enabled": true,
+  "checkin_interval_hours": 4,
+  "last_checkin": "2026-06-28T09:16:29+08:00",
+  "nodes_with_meyo_access": [
+    "qoder",
+    "zhugema",
+    "zhuguxia",
+    "xiaochen",
+    "xiaowei"
+  ]
+}
