@@ -22,6 +22,40 @@
         "xiaochen",
         "xiaowei"
       ]
+    },
+    {
+      "tracking_id": "track-30e9aa33",
+      "msg_id": "cc-qoder-20260628090105",
+      "from": "qoder",
+      "targets": [
+        "zhugema"
+      ],
+      "subject": "Day4训练完成报告(qoder)",
+      "category": "training_report",
+      "sent_at": "2026-06-28T09:01:05+08:00",
+      "ack_deadline": "2026-06-28T13:01:05+08:00",
+      "requires_ack": true,
+      "acks_received": {},
+      "acks_pending": [
+        "zhugema"
+      ]
+    },
+    {
+      "tracking_id": "track-b5e828ca",
+      "msg_id": "cc-qoder-20260628090110",
+      "from": "qoder",
+      "targets": [
+        "zhuguxia"
+      ],
+      "subject": "Day4对抗赛预热对局结果(qoder vs zhuguxia)",
+      "category": "status_update",
+      "sent_at": "2026-06-28T09:01:10+08:00",
+      "ack_deadline": "2026-06-28T17:01:10+08:00",
+      "requires_ack": true,
+      "acks_received": {},
+      "acks_pending": [
+        "zhuguxia"
+      ]
     }
   ],
   "completed": [],
