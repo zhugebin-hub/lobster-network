@@ -6,5 +6,14 @@
     "local_commit": "e0542c7",
     "report_file": "docs/training_results/training_status_20260629_030000.md",
     "action_required": "Manual push needed when network restored"
+  },
+  {
+    "timestamp": "2026-06-29 03:35:28",
+    "report": "assessment_20260629_033330.md",
+    "commit": "4395707",
+    "github": "FAILED - Connection timeout",
+    "gitee": "FAILED - SSH key permission denied",
+    "status": "commit_local_only",
+    "note": "GitHub连接超时，Gitee SSH密钥权限问题。报告已本地保存。"
   }
 ]
