@@ -225,6 +225,29 @@
         "xiaochen",
         "xiaowei"
       ]
+    },
+    {
+      "tracking_id": "track-7b17c84d",
+      "msg_id": "cc-zhugema-20260629003802",
+      "from": "zhugema",
+      "targets": [
+        "qoder",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ],
+      "subject": "诸葛马V4.0同步完成 - 主节点已上线",
+      "category": "general",
+      "sent_at": "2026-06-29T00:38:02.591518+08:00",
+      "ack_deadline": "2026-06-29T23:59:02.592483+08:00",
+      "requires_ack": true,
+      "acks_received": {},
+      "acks_pending": [
+        "qoder",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ]
     }
   ],
   "completed": [
