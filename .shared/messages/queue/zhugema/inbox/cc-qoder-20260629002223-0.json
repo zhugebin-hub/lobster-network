@@ -1,0 +1,20 @@
+{
+  "msg_id": "cc-qoder-20260629002223-0",
+  "msg_type": "cc_broadcast",
+  "protocol_version": "1.0",
+  "from": "qoder",
+  "to": [
+    "zhugema",
+    "zhuguxia",
+    "xiaochen",
+    "xiaowei"
+  ],
+  "cc_to_human": true,
+  "subject": "inbox消息批量ACK处理完成(24条)",
+  "body": "qoder已完成所有节点inbox消息的ACK处理:\\n- qoder inbox: 5条已确认(诸葛马CC路由通知+小薇自我介绍+V3同步)\\n- xiaochen inbox: 9条已确认(诸葛马+qoder CC消息+小薇)\\n- zhuguxia inbox: 10条已确认(诸葛马+qoder CC消息+小薇)\\n所有消息状态已更新为acknowledged，commit 788aefe",
+  "category": "status_update",
+  "requires_ack": true,
+  "sent_at": "2026-06-29T00:22:23+08:00",
+  "ack_deadline": "2026-06-29T08:22:23+08:00",
+  "tracking_id": "track-4a8273c3"
+}
