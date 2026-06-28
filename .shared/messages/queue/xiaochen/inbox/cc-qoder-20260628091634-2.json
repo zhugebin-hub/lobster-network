@@ -16,5 +16,9 @@
   "requires_ack": true,
   "sent_at": "2026-06-28T09:16:34+08:00",
   "ack_deadline": "2026-06-29T09:16:34+08:00",
-  "tracking_id": "track-9b60ce58"
+  "tracking_id": "track-9b60ce58",
+  "status": "acknowledged",
+  "ack_received": true,
+  "ack_timestamp": "2026-06-29T00:21:54.364407+08:00",
+  "processed_by": "qoder"
 }

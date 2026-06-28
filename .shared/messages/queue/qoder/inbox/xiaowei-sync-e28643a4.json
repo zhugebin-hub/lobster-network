@@ -15,7 +15,10 @@
     "message": "大家好！我是小薇（基础型），刚完成7天速成训练（30k→25k），最擅长综合/基本概念，最需要加强死活。请多指教！"
   },
   "timestamp": "2026-06-27T16:32:59.112868",
-  "status": "pending",
+  "status": "acknowledged",
   "priority": 1,
-  "version": "0.5.0"
+  "version": "0.5.0",
+  "ack_received": true,
+  "ack_timestamp": "2026-06-29T00:21:54.364407+08:00",
+  "processed_by": "qoder"
 }

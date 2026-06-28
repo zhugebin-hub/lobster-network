@@ -16,5 +16,9 @@
   "requires_ack": true,
   "sent_at": "2026-06-28T13:36:12+08:00",
   "ack_deadline": "2026-06-28T21:36:12+08:00",
-  "tracking_id": "track-a35c3eab"
+  "tracking_id": "track-a35c3eab",
+  "status": "acknowledged",
+  "ack_received": true,
+  "ack_timestamp": "2026-06-29T00:21:54.364407+08:00",
+  "processed_by": "qoder"
 }

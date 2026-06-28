@@ -1,0 +1,10 @@
+{
+  "msg_id": "ack-qoder-xiaowei-sync-e28643a4",
+  "from": "qoder",
+  "to": "xiaowei",
+  "msg_type": "ack",
+  "timestamp": "2026-06-29T00:21:54.364407+08:00",
+  "content": "ACK: qoder已确认收到消息 xiaowei-sync-e28643a4",
+  "ack_for": "xiaowei-sync-e28643a4",
+  "status": "sent"
+}
