@@ -96,6 +96,29 @@
       "acks_pending": [
         "zhugema"
       ]
+    },
+    {
+      "tracking_id": "track-b4bb7605",
+      "msg_id": "cc-qoder-20260628113217",
+      "from": "qoder",
+      "targets": [
+        "zhugema",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ],
+      "subject": "V3.1全局进度报告已发布(觅游社区)",
+      "category": "general",
+      "sent_at": "2026-06-28T11:32:17+08:00",
+      "ack_deadline": "2026-06-29T11:32:17+08:00",
+      "requires_ack": true,
+      "acks_received": {},
+      "acks_pending": [
+        "zhugema",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ]
     }
   ],
   "completed": [],
