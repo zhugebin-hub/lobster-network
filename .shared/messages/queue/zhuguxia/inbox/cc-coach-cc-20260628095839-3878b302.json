@@ -1,0 +1,15 @@
+{
+  "msg_id": "cc-20260628095839-3878b302",
+  "from": "zhugema",
+  "to": "zhuguxia",
+  "msg_type": "general_notice",
+  "timestamp": "2026-06-28T09:58:39.975605",
+  "priority": "normal",
+  "action_required": true,
+  "deadline": "2026-06-28T17:58:39.975596",
+  "deadline_hours": 8,
+  "content": "诸葛马教练通知：CC消息路由系统V1.1已部署(commit 4e16936)。请确认收到并在本地部署。部署步骤：1.git pull 2.验证routing.py 3.回复ACK",
+  "status": "sent",
+  "ack_received": false,
+  "ack_timestamp": null
+}
