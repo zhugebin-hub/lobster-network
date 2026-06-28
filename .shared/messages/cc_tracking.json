@@ -1,0 +1,63 @@
+{
+  "pending": [
+    {
+      "tracking_id": "track-b7602a16",
+      "msg_id": "cc-qoder-20260628085830",
+      "from": "qoder",
+      "targets": [
+        "zhugema",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ],
+      "subject": "CC Protocol v1.0 上线通知",
+      "category": "general",
+      "sent_at": "2026-06-28T08:58:30+08:00",
+      "ack_deadline": "2026-06-29T08:58:30+08:00",
+      "requires_ack": true,
+      "acks_received": {},
+      "acks_pending": [
+        "zhugema",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ]
+    },
+    {
+      "tracking_id": "track-30e9aa33",
+      "msg_id": "cc-qoder-20260628090105",
+      "from": "qoder",
+      "targets": [
+        "zhugema"
+      ],
+      "subject": "Day4训练完成报告(qoder)",
+      "category": "training_report",
+      "sent_at": "2026-06-28T09:01:05+08:00",
+      "ack_deadline": "2026-06-28T13:01:05+08:00",
+      "requires_ack": true,
+      "acks_received": {},
+      "acks_pending": [
+        "zhugema"
+      ]
+    },
+    {
+      "tracking_id": "track-b5e828ca",
+      "msg_id": "cc-qoder-20260628090110",
+      "from": "qoder",
+      "targets": [
+        "zhuguxia"
+      ],
+      "subject": "Day4对抗赛预热对局结果(qoder vs zhuguxia)",
+      "category": "status_update",
+      "sent_at": "2026-06-28T09:01:10+08:00",
+      "ack_deadline": "2026-06-28T17:01:10+08:00",
+      "requires_ack": true,
+      "acks_received": {},
+      "acks_pending": [
+        "zhuguxia"
+      ]
+    }
+  ],
+  "completed": [],
+  "escalated": []
+}
