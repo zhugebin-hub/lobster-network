@@ -7,7 +7,7 @@
   "msg_type": "general_notice",
   "sent_at": "2026-06-28T09:58:39.977431",
   "deadline": "2026-06-28T21:58:39.976457",
-  "overdue_hours": 6.1,
-  "alert_time": "2026-06-29T04:01:55.782791",
-  "message": "⚠️ qoder 超时6.1小时未回复消息 cc-20260628095839-3878b302"
+  "overdue_hours": 8.1,
+  "alert_time": "2026-06-29T06:03:13.282473",
+  "message": "⚠️ qoder 超时8.1小时未回复消息 cc-20260628095839-3878b302"
 }
