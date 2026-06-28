@@ -1,0 +1,24 @@
+{
+  "id": "auto-sync-notify-xiaochen-001",
+  "type": "system_notice",
+  "from": "hermes",
+  "to": "xiaochen",
+  "cc": [
+    "zhugebin-001"
+  ],
+  "timestamp": "2026-06-28T08:53:49.720371+08:00",
+  "subject": "🔄 自动同步机制生效通知 + 小薇已激活",
+  "content": {
+    "notice": "自动同步抄送机制正式生效！今后助理回复诸葛斌时，会自动同步给你，无需人工转发。",
+    "day4_task": {
+      "problems": 120,
+      "games": 12,
+      "focus": "推理力强化 + 官子专项",
+      "special": "扑倒扑辨析进阶(30题)",
+      "deadline": "2026-06-29T22:00:00+08:00"
+    },
+    "action_required": "Day3 围棋训练待补交（截止 06-29 12:00），请尽快完成并提交至 .shared/training/go/from-xiaochen/",
+    "auto_sync_enabled": true
+  },
+  "requires_reply": false
+}

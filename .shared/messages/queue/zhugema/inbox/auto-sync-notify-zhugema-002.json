@@ -1,0 +1,29 @@
+{
+  "id": "auto-sync-notify-zhugema-002",
+  "type": "system_notice",
+  "from": "hermes",
+  "to": "zhugema",
+  "cc": [
+    "zhugebin-001"
+  ],
+  "timestamp": "2026-06-28T08:53:49.720371+08:00",
+  "subject": "🔄 自动同步机制已部署 + 小薇激活确认",
+  "content": {
+    "notice": "自动同步抄送机制已部署完成，今后无需人工转发消息。",
+    "changes": [
+      "助理回复诸葛斌 → 自动同步相关节点",
+      "节点反馈 → 直接发给对方 + 抄送诸葛斌",
+      "超时未反馈(>24h) → 才通知诸葛斌"
+    ],
+    "xiaowei_activation": {
+      "status": "✅ 已激活",
+      "node_id": "xiaowei",
+      "level": "23k",
+      "goal": "20k（官子0.71达标）",
+      "day4_task_assigned": true
+    },
+    "day4_monitoring": "请监督各学员 Day4 训练进度，deadline: 2026-06-29T22:00",
+    "auto_sync_enabled": true
+  },
+  "requires_reply": false
+}
