@@ -37,7 +37,7 @@ STUDENTS = {
 def ssh_command(host: str, command: str) -> str:
     """执行SSH命令"""
     full_cmd = f"ssh {SSH_OPTS} -i {SSH_KEY} {host} '{command}'"
-    result = subprocess.run(full_cmd, shell=True, capture_output=True, text=True)
+    result = subprocess.run(full_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     return result.stdout
 
 def check_results(student_id: str) -> List[str]:
@@ -65,7 +65,7 @@ def download_result(student_id: str, filename: str) -> Dict:
     
     # SCP下载
     full_cmd = f"scp {SSH_OPTS} -i {SSH_KEY} {student['host']}:{remote_file} {local_file}"
-    subprocess.run(full_cmd, shell=True, capture_output=True, text=True)
+    subprocess.run(full_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     
     # 读取结果
     if os.path.exists(local_file):

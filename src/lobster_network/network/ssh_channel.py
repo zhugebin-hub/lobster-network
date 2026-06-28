@@ -95,7 +95,7 @@ class SSHChannelV2:
             f"{self.remote_user}@{self.remote_host}",
             f"mkdir -p {self.shared_dir}/to_lobster {self.shared_dir}/from_lobster",
         ]
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=15)
+        result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=15)
         return result.returncode == 0
 
     def _test_connection(self) -> bool:
@@ -108,7 +108,7 @@ class SSHChannelV2:
                 f"{self.remote_user}@{self.remote_host}",
                 "echo ok",
             ]
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
+            result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=10)
             return result.returncode == 0
         except Exception:
             return False
@@ -149,7 +149,7 @@ class SSHChannelV2:
                     local_path,
                     f"{self.remote_user}@{self.remote_host}:{remote_path}",
                 ]
-                result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+                result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
 
                 if result.returncode == 0:
                     self._sent_ids.add(msg_id)
@@ -180,7 +180,7 @@ class SSHChannelV2:
                 f"{self.remote_user}@{self.remote_host}:{self.shared_dir}/from_lobster/*.json",
                 self.from_dir,
             ]
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+            result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
 
             if result.returncode != 0:
                 return None
