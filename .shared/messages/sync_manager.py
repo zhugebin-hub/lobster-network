@@ -92,7 +92,7 @@ class SyncManager:
             try:
                 with open(SYNC_STATUS_FILE) as f:
                     return json.load(f)
-            except:
+            except (json.JSONDecodeError, IOError, OSError):
                 pass
         return {
             'version': '4.0',
@@ -134,23 +134,31 @@ class SyncManager:
         return len(missing) == 0
     
     def validate_message_format(self, filepath):
-        """验证消息JSON格式"""
+        """验证消息JSON格式（兼容CC Protocol和传统消息格式）"""
         try:
             with open(filepath) as f:
                 data = json.load(f)
             
-            # 检查必需字段
-            required = ['id', 'from', 'to', 'timestamp', 'message']
-            missing = [f for f in required if f not in data]
+            # 必需字段检查（宽松模式：from 是唯一必须字段）
+            if 'from' not in data:
+                return False, "缺少必需字段: from"
             
-            if missing:
-                return False, f"缺少字段: {', '.join(missing)}"
+            # 检查消息标识符：msg_id 或 id 至少有一个
+            if 'msg_id' not in data and 'id' not in data:
+                return False, "缺少消息标识符: msg_id 或 id"
             
-            # 验证时间戳格式
-            try:
-                datetime.fromisoformat(data['timestamp'].replace('Z', '+00:00'))
-            except:
-                return False, "时间戳格式无效"
+            # 时间戳验证（兼容多种字段名）
+            ts_value = None
+            for ts_field in ['sent_at', 'timestamp', 'created_at', 'time']:
+                if ts_field in data:
+                    ts_value = data[ts_field]
+                    break
+            
+            if ts_value:
+                try:
+                    datetime.fromisoformat(str(ts_value).replace('Z', '+00:00'))
+                except (ValueError, AttributeError):
+                    return False, f"时间戳格式无效: {ts_value}"
             
             return True, "格式正确"
         except json.JSONDecodeError as e:
@@ -159,7 +167,7 @@ class SyncManager:
             return False, f"验证失败: {e}"
     
     def scan_messages(self):
-        """扫描所有消息文件"""
+        """扫描所有消息文件（兼容传统目录和CC队列inbox）"""
         stats = {
             'total': 0,
             'valid': 0,
@@ -167,7 +175,9 @@ class SyncManager:
             'errors': []
         }
         
-        for dir_name in ['from-hermes', 'from-xiaochen', 'from-zhuguxia', 'from-qoder']:
+        # 扫描传统 from-* 目录
+        for dir_name in ['from-hermes', 'from-xiaochen', 'from-zhuguxia', 'from-qoder',
+                         'from-zhugema', 'from-xiaowei']:
             dir_path = STANDARD_DIRS.get(dir_name)
             if not dir_path or not os.path.exists(dir_path):
                 continue
@@ -185,6 +195,25 @@ class SyncManager:
                 else:
                     stats['invalid'] += 1
                     stats['errors'].append(f"{dir_name}/{fname}: {msg}")
+        
+        # 扫描 CC 队列 inbox
+        queue_dir = STANDARD_DIRS.get('queue')
+        if queue_dir and os.path.exists(queue_dir):
+            for node_name in os.listdir(queue_dir):
+                inbox_path = os.path.join(queue_dir, node_name, 'inbox')
+                if not os.path.isdir(inbox_path):
+                    continue
+                for fname in os.listdir(inbox_path):
+                    if not fname.endswith('.json'):
+                        continue
+                    filepath = os.path.join(inbox_path, fname)
+                    stats['total'] += 1
+                    valid, msg = self.validate_message_format(filepath)
+                    if valid:
+                        stats['valid'] += 1
+                    else:
+                        stats['invalid'] += 1
+                        stats['errors'].append(f"queue/{node_name}/inbox/{fname}: {msg}")
         
         print(f"\n📊 消息扫描结果:")
         print(f"  总计: {stats['total']}")
@@ -240,7 +269,7 @@ class SyncManager:
                         os.path.getmtime(filepath)
                     ).isoformat()
                 })
-            except:
+            except (json.JSONDecodeError, IOError, KeyError, OSError):
                 pass
         
         print(f"\n📊 训练文件扫描结果:")

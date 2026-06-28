@@ -24,40 +24,6 @@
       ]
     },
     {
-      "tracking_id": "track-30e9aa33",
-      "msg_id": "cc-qoder-20260628090105",
-      "from": "qoder",
-      "targets": [
-        "zhugema"
-      ],
-      "subject": "Day4训练完成报告(qoder)",
-      "category": "training_report",
-      "sent_at": "2026-06-28T09:01:05+08:00",
-      "ack_deadline": "2026-06-28T13:01:05+08:00",
-      "requires_ack": true,
-      "acks_received": {},
-      "acks_pending": [
-        "zhugema"
-      ]
-    },
-    {
-      "tracking_id": "track-b5e828ca",
-      "msg_id": "cc-qoder-20260628090110",
-      "from": "qoder",
-      "targets": [
-        "zhuguxia"
-      ],
-      "subject": "Day4对抗赛预热对局结果(qoder vs zhuguxia)",
-      "category": "status_update",
-      "sent_at": "2026-06-28T09:01:10+08:00",
-      "ack_deadline": "2026-06-28T17:01:10+08:00",
-      "requires_ack": true,
-      "acks_received": {},
-      "acks_pending": [
-        "zhuguxia"
-      ]
-    },
-    {
       "tracking_id": "track-9b60ce58",
       "msg_id": "cc-qoder-20260628091634",
       "from": "qoder",
@@ -132,43 +98,6 @@
       ]
     },
     {
-      "tracking_id": "track-a35c3eab",
-      "msg_id": "cc-qoder-20260628133612",
-      "from": "qoder",
-      "targets": [
-        "zhugema",
-        "zhuguxia",
-        "xiaochen",
-        "xiaowei"
-      ],
-      "subject": "V3.1代码优化模块已推送(commit e8f531a)",
-      "category": "status_update",
-      "sent_at": "2026-06-28T13:36:12+08:00",
-      "ack_deadline": "2026-06-28T21:36:12+08:00",
-      "requires_ack": true,
-      "acks_received": {
-        "qoder": {
-          "timestamp": "2026-06-29T00:25:14.831292",
-          "status": "acknowledged"
-        },
-        "xiaochen": {
-          "timestamp": "2026-06-29T00:21:54.364407+08:00",
-          "status": "acknowledged"
-        },
-        "zhuguxia": {
-          "timestamp": "2026-06-29T00:21:54.364407+08:00",
-          "status": "acknowledged"
-        },
-        "zhugema": {
-          "timestamp": "2026-06-29T00:35:51.205616+08:00",
-          "status": "acknowledged"
-        }
-      },
-      "acks_pending": [
-        "xiaowei"
-      ]
-    },
-    {
       "tracking_id": "track-4a8273c3",
       "msg_id": "cc-qoder-20260629002223",
       "from": "qoder",
@@ -188,33 +117,6 @@
           "timestamp": "2026-06-29T00:25:14.831628",
           "status": "acknowledged"
         },
-        "zhugema": {
-          "timestamp": "2026-06-29T00:35:51.205616+08:00",
-          "status": "acknowledged"
-        }
-      },
-      "acks_pending": [
-        "zhuguxia",
-        "xiaochen",
-        "xiaowei"
-      ]
-    },
-    {
-      "tracking_id": "track-b6aa7a42",
-      "msg_id": "cc-qoder-20260628092949-0",
-      "from": "qoder",
-      "targets": [
-        "zhugema",
-        "zhuguxia",
-        "xiaochen",
-        "xiaowei"
-      ],
-      "subject": "qoder全局进度同步(2026-06-28)",
-      "category": "status_update",
-      "sent_at": "2026-06-28T09:29:49+08:00",
-      "ack_deadline": "2026-06-28T17:29:49+08:00",
-      "requires_ack": true,
-      "acks_received": {
         "zhugema": {
           "timestamp": "2026-06-29T00:35:51.205616+08:00",
           "status": "acknowledged"
@@ -276,5 +178,112 @@
       "acks_pending": []
     }
   ],
-  "escalated": []
+  "escalated": [
+    {
+      "tracking_id": "track-30e9aa33",
+      "msg_id": "cc-qoder-20260628090105",
+      "from": "qoder",
+      "targets": [
+        "zhugema"
+      ],
+      "subject": "Day4训练完成报告(qoder)",
+      "category": "training_report",
+      "sent_at": "2026-06-28T09:01:05+08:00",
+      "ack_deadline": "2026-06-28T13:01:05+08:00",
+      "requires_ack": true,
+      "acks_received": {},
+      "acks_pending": [
+        "zhugema"
+      ],
+      "escalated_at": "2026-06-29T00:50:22.692390",
+      "escalation_reason": "ACK超时: 1 个节点未确认"
+    },
+    {
+      "tracking_id": "track-b5e828ca",
+      "msg_id": "cc-qoder-20260628090110",
+      "from": "qoder",
+      "targets": [
+        "zhuguxia"
+      ],
+      "subject": "Day4对抗赛预热对局结果(qoder vs zhuguxia)",
+      "category": "status_update",
+      "sent_at": "2026-06-28T09:01:10+08:00",
+      "ack_deadline": "2026-06-28T17:01:10+08:00",
+      "requires_ack": true,
+      "acks_received": {},
+      "acks_pending": [
+        "zhuguxia"
+      ],
+      "escalated_at": "2026-06-29T00:50:22.692390",
+      "escalation_reason": "ACK超时: 1 个节点未确认"
+    },
+    {
+      "tracking_id": "track-a35c3eab",
+      "msg_id": "cc-qoder-20260628133612",
+      "from": "qoder",
+      "targets": [
+        "zhugema",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ],
+      "subject": "V3.1代码优化模块已推送(commit e8f531a)",
+      "category": "status_update",
+      "sent_at": "2026-06-28T13:36:12+08:00",
+      "ack_deadline": "2026-06-28T21:36:12+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "qoder": {
+          "timestamp": "2026-06-29T00:25:14.831292",
+          "status": "acknowledged"
+        },
+        "xiaochen": {
+          "timestamp": "2026-06-29T00:21:54.364407+08:00",
+          "status": "acknowledged"
+        },
+        "zhuguxia": {
+          "timestamp": "2026-06-29T00:21:54.364407+08:00",
+          "status": "acknowledged"
+        },
+        "zhugema": {
+          "timestamp": "2026-06-29T00:35:51.205616+08:00",
+          "status": "acknowledged"
+        }
+      },
+      "acks_pending": [
+        "xiaowei"
+      ],
+      "escalated_at": "2026-06-29T00:50:22.692390",
+      "escalation_reason": "ACK超时: 1 个节点未确认"
+    },
+    {
+      "tracking_id": "track-b6aa7a42",
+      "msg_id": "cc-qoder-20260628092949-0",
+      "from": "qoder",
+      "targets": [
+        "zhugema",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ],
+      "subject": "qoder全局进度同步(2026-06-28)",
+      "category": "status_update",
+      "sent_at": "2026-06-28T09:29:49+08:00",
+      "ack_deadline": "2026-06-28T17:29:49+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "zhugema": {
+          "timestamp": "2026-06-29T00:35:51.205616+08:00",
+          "status": "acknowledged"
+        }
+      },
+      "acks_pending": [
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ],
+      "escalated_at": "2026-06-29T00:50:22.692390",
+      "escalation_reason": "ACK超时: 3 个节点未确认"
+    }
+  ]
 }

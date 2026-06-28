@@ -112,7 +112,7 @@ class SSHChannel:
                 "ssh", "-i", self.ssh_key,
                 "-p", str(self.remote_port),
                 "-o", "ConnectTimeout=10",
-                "-o", "StrictHostKeyChecking=no",
+                "-o", "StrictHostKeyChecking=accept-new",
                 f"{self.remote_user}@{self.remote_host}",
                 f"mkdir -p {self.shared_dir}/to_lobster {self.shared_dir}/from_lobster"
             ]
@@ -248,7 +248,7 @@ class SSHChannel:
                 "ssh", "-i", self.ssh_key,
                 "-p", str(self.remote_port),
                 "-o", "ConnectTimeout=10",
-                "-o", "StrictHostKeyChecking=no",
+                "-o", "StrictHostKeyChecking=accept-new",
                 f"{self.remote_user}@{self.remote_host}",
                 "echo 'Connection successful'"
             ]

@@ -49,7 +49,9 @@ class SSHTransport(Transport):
             return self._client
         
         client = paramiko.SSHClient()
-        client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        # 安全策略：拒绝未知主机密钥，防止中间人攻击
+        # 使用 RejectPolicy 替代 AutoAddPolicy，已知主机需预先配置在 known_hosts
+        client.set_missing_host_key_policy(paramiko.RejectPolicy())
         
         connect_kwargs = {
             "hostname": self.ssh_config.hostname,

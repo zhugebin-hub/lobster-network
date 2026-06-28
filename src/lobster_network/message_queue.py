@@ -22,7 +22,7 @@ import time
 import uuid
 import threading
 from typing import Dict, List, Optional, Tuple
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
 from enum import Enum
@@ -146,21 +146,25 @@ class MessageQueue:
                 self.bucket = TokenBucketState()
         else:
             self.bucket = TokenBucketState()
-            self.bucket.last_refill = datetime.utcnow().isoformat() + "Z"
+            self.bucket.last_refill = datetime.now().isoformat()
     
     def _save_state(self):
-        """保存状态"""
-        # 保存消息队列
-        with open(self.queue_file, "w") as f:
+        """保存状态（原子写入，防止写入中断导致数据损坏）"""
+        # 保存消息队列（原子写入）
+        tmp_queue = str(self.queue_file) + ".tmp"
+        with open(tmp_queue, "w") as f:
             json.dump({
                 "messages": self.messages,
                 "cooldown_until": self.cooldown_until,
-                "updated_at": datetime.utcnow().isoformat() + "Z",
+                "updated_at": datetime.now().isoformat(),
             }, f, ensure_ascii=False, indent=2)
+        os.replace(tmp_queue, str(self.queue_file))
         
-        # 保存令牌桶
-        with open(self.bucket_file, "w") as f:
+        # 保存令牌桶（原子写入）
+        tmp_bucket = str(self.bucket_file) + ".tmp"
+        with open(tmp_bucket, "w") as f:
             json.dump(asdict(self.bucket), f, ensure_ascii=False, indent=2)
+        os.replace(tmp_bucket, str(self.bucket_file))
     
     # ========== 公开 API ==========
     
@@ -184,7 +188,7 @@ class MessageQueue:
             msg_id
         """
         with self._lock:
-            now = datetime.utcnow()
+            now = datetime.now()
             msg_id = f"msg-{self.node_id}-{int(now.timestamp()*1000)}-{uuid.uuid4().hex[:8]}"
             
             msg = QueuedMessage(
@@ -237,9 +241,31 @@ class MessageQueue:
         
         # 从 NFS 通道读取（其他龙虾发来的）
         nfs_dir = self.config.get("nfs_dir", "/shared/messages")
-        from_dir = Path(nfs_dir) / f"from-{from_node}" if from_node else None
+        if from_node:
+            from_dir = Path(nfs_dir) / f"from-{from_node}"
+        else:
+            # 读取所有 from-* 目录
+            from_dir = Path(nfs_dir)
         
-        # TODO: 实现 NFS 消息读取
+        if from_dir.exists() and from_dir.is_dir():
+            target_files = []
+            if from_node:
+                target_files = [(from_dir / f) for f in os.listdir(from_dir) if f.endswith('.json')]
+            else:
+                for entry in os.listdir(from_dir):
+                    entry_path = from_dir / entry
+                    if entry_path.is_dir() and entry.startswith("from-"):
+                        target_files.extend(
+                            entry_path / f for f in os.listdir(entry_path) if f.endswith('.json')
+                        )
+            
+            for file_path in sorted(target_files):
+                try:
+                    with open(file_path, "r", encoding="utf-8") as f:
+                        msg_data = json.load(f)
+                    messages.append(QueuedMessage.from_dict(msg_data))
+                except (json.JSONDecodeError, IOError, TypeError, KeyError) as e:
+                    logger.warning(f"读取NFS消息失败 {file_path}: {e}")
         
         return messages
     
@@ -318,7 +344,7 @@ class MessageQueue:
             minutes: 冷却时长，默认使用配置值
         """
         cooldown_minutes = minutes or self.config["dingtalk"]["cooldown_minutes_on_limit"]
-        cooldown_until = datetime.utcnow() + timedelta(minutes=cooldown_minutes)
+        cooldown_until = datetime.now() + timedelta(minutes=cooldown_minutes)
         self.cooldown_until = cooldown_until.isoformat() + "Z"
         logger.warning(f"🔶 钉钉通道进入冷却期 {cooldown_minutes} 分钟，至 {self.cooldown_until}")
         self._save_state()
@@ -326,7 +352,7 @@ class MessageQueue:
     def cleanup(self, max_age_hours: int = 24):
         """清理过期消息"""
         with self._lock:
-            cutoff = (datetime.utcnow() - timedelta(hours=max_age_hours)).isoformat() + "Z"
+            cutoff = (datetime.now() - timedelta(hours=max_age_hours)).isoformat() + "Z"
             original_count = len(self.messages)
             self.messages = [
                 m for m in self.messages
@@ -351,7 +377,7 @@ class MessageQueue:
         # 检查钉钉是否在冷却期
         if self.cooldown_until:
             cooldown_until = self._parse_time(self.cooldown_until)
-            if datetime.utcnow() < cooldown_until:
+            if datetime.now() < cooldown_until:
                 # 钉钉冷却中，跳过
                 pass
             else:
@@ -422,9 +448,53 @@ class MessageQueue:
             return False
     
     def _send_via_ssh(self, msg: QueuedMessage) -> bool:
-        """通过 SSH 发送（待实现）"""
-        logger.debug(f"SSH 消息发送（待实现）: {msg.msg_id}")
-        return False
+        """通过 SSH 发送（使用 subprocess scp）"""
+        try:
+            import subprocess
+            nfs_dir = self.config.get("nfs_dir", "/shared/messages")
+            to_dir = Path(nfs_dir) / f"from-{self.node_id}"
+            
+            # 先写入本地临时文件
+            tmp_dir = self.state_dir / "ssh_pending"
+            tmp_dir.mkdir(parents=True, exist_ok=True)
+            tmp_file = tmp_dir / f"{msg.msg_id}.json"
+            
+            with open(tmp_file, "w", encoding="utf-8") as f:
+                json.dump(msg.to_dict(), f, ensure_ascii=False, indent=2)
+            
+            # 如果没有配置 SSH 目标，降级到 NFS
+            ssh_config = self.config.get("channels", {}).get("ssh", {})
+            remote_host = ssh_config.get("host")
+            remote_user = ssh_config.get("user", "admin")
+            
+            if not remote_host:
+                # 没有配置远程主机，降级到 NFS 写入
+                to_dir.mkdir(parents=True, exist_ok=True)
+                target_file = to_dir / f"{msg.msg_id}.json"
+                with open(target_file, "w", encoding="utf-8") as f:
+                    json.dump(msg.to_dict(), f, ensure_ascii=False, indent=2)
+                logger.debug(f"SSH降级到本地写入: {target_file}")
+                return True
+            
+            # SCP 发送
+            remote_path = f"{remote_user}@{remote_host}:{nfs_dir}/from-{self.node_id}/{msg.msg_id}.json"
+            cmd = [
+                "scp", "-o", "ConnectTimeout=10",
+                "-o", "StrictHostKeyChecking=accept-new",
+                str(tmp_file), remote_path,
+            ]
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+            
+            if result.returncode == 0:
+                logger.debug(f"SSH消息已发送: {msg.msg_id} -> {remote_host}")
+                return True
+            else:
+                logger.error(f"SSH发送失败: {result.stderr.strip()}")
+                return False
+                
+        except Exception as e:
+            logger.error(f"SSH消息发送异常: {e}")
+            return False
     
     def _send_via_local(self, msg: QueuedMessage) -> bool:
         """本地存储（兜底）"""
@@ -441,11 +511,11 @@ class MessageQueue:
     def _refill_tokens(self):
         """补充令牌"""
         if not self.bucket.last_refill:
-            self.bucket.last_refill = datetime.utcnow().isoformat() + "Z"
+            self.bucket.last_refill = datetime.now().isoformat()
             return
         
         last = self._parse_time(self.bucket.last_refill)
-        now = datetime.utcnow()
+        now = datetime.now()
         elapsed_minutes = (now - last).total_seconds() / 60
         
         if elapsed_minutes > 0:
@@ -469,7 +539,7 @@ class MessageQueue:
     
     @staticmethod
     def _parse_time(s: str) -> datetime:
-        """解析 ISO 时间字符串"""
-        s = s.replace("Z", "").split("+")[0]
-        fmt = "%Y-%m-%dT%H:%M:%S.%f" if "." in s else "%Y-%m-%dT%H:%M:%S"
-        return datetime.strptime(s, fmt)
+        """解析 ISO 时间字符串（兼容带时区和不带时区）"""
+        s_clean = s.replace("Z", "").split("+")[0]
+        fmt = "%Y-%m-%dT%H:%M:%S.%f" if "." in s_clean else "%Y-%m-%dT%H:%M:%S"
+        return datetime.strptime(s_clean, fmt)

@@ -187,8 +187,10 @@ def encrypt_message(payload: str, secret: str = DEFAULT_SECRET) -> str:
         str: Base64编码的密文
     """
     if not CRYPTOGRAPHY_AVAILABLE:
-        logger.error("AES加密需要 cryptography 库，请运行: pip install cryptography")
-        return payload  # 降级：返回明文
+        raise RuntimeError(
+            "AES加密需要 cryptography 库，拒绝以明文返回（安全策略）。\n"
+            "请运行: pip install cryptography"
+        )
 
     key = derive_key(secret)
     iv = os.urandom(12)  # GCM推荐12字节IV
@@ -217,8 +219,10 @@ def decrypt_message(encrypted_payload: str, secret: str = DEFAULT_SECRET) -> str
         str: 解密后的明文
     """
     if not CRYPTOGRAPHY_AVAILABLE:
-        logger.error("AES解密需要 cryptography 库")
-        return encrypted_payload  # 降级：返回原文（假设是明文）
+        raise RuntimeError(
+            "AES解密需要 cryptography 库，拒绝返回可能不安全的原文。\n"
+            "请运行: pip install cryptography"
+        )
 
     key = derive_key(secret)
     encrypted = base64.b64decode(encrypted_payload)
@@ -360,9 +364,9 @@ if __name__ == "__main__":
     # 测试签名
     msg = {"msg_id": "test-001", "from": "n1", "to": "n2", "payload": {"task": "test"}}
     signed = sign_message(msg)
-    print(f"签名后: {signed_msg}")
+    print(f"签名后: {signed}")
 
-    verified = verify_message(signed_msg)
+    verified = verify_message(signed)
     print(f"验证结果: {verified}")
 
     # 测试加密

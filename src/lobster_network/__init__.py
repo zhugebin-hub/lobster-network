@@ -45,8 +45,8 @@ from .multi_currency import MultiCurrencySystem, MultiCurrencyWallet, ExchangeRe
 
 # 网络层 (Network Layer)
 from .network.indra_net import IndraNet, IndraNetNode
-from .network.ssh_channel import SSHChannel
-from .network.ssh_channel_v2 import SSHChannel as SSHChannelV2
+from .network.ssh_channel_v2 import SSHChannel
+SSHChannelV2 = SSHChannel  # 向后兼容别名
 from .network.ssh_transport import SSHTransport
 
 # 可靠通信层 (Reliable Communication Layer) - v0.4.1 新增
