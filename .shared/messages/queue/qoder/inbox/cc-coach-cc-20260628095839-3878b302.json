@@ -9,7 +9,7 @@
   "deadline": "2026-06-28T21:58:39.976457",
   "deadline_hours": 12,
   "content": "诸葛马教练通知：CC消息路由系统V1.1已部署。请确认收到并通过GitHub同步部署。部署步骤：1.git pull 2.验证routing.py 3.回复ACK",
-  "status": "sent",
-  "ack_received": false,
+  "status": "acknowledged",
+  "ack_received": true,
   "ack_timestamp": null
 }
