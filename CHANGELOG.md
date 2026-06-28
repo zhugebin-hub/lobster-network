@@ -1,5 +1,23 @@
 # 更新日志
 
+## [0.7.0] - 2026-06-29 🦞 V3.1 优化层
+
+### 新增 - V3.1 核心组件（7个）
+- **circuit_breaker.py** — 熔断器：CLOSED→OPEN→HALF_OPEN 状态机，API 连续失败 5 次自动熔断，60 秒后半开试探
+- **health_check.py** — 健康检查：CPU/内存/磁盘监控 + Signal Arena/MeYo 连通性检测，支持降级方案（无 psutil 时读 /proc）
+- **cache_manager.py** — 缓存管理器：MD5 键值 + TTL 本地 JSON 缓存，LRU 淘汰，命中率统计
+- **vector_memory_expander.py** — 向量记忆扩展器：SimHash 向量存储，错题语义检索，记忆强度衰减
+- **mcp_validator.py** — MCP 验证器：训练时实时 validation_gate，事中纠正，格式/分数/完整性规则
+- **model_router.py** — 模型路由器：难度感知路由，入门/初级→turbo（成本 2.5%），中级→plus，高级→max，预估成本降低 50%
+- **lobster_coin.py** — 龙虾币经济系统：训练奖励 +50LC，API 调用 -5LC，成就系统，排行榜
+
+### 架构升级
+- 版本号升至 v0.7.0
+- 所有组件集成到 `src/lobster_network/` 包
+- 预定义实例：signal_arena_breaker, meyo_breaker, bailian_breaker, default_router, main_economy 等
+
+---
+
 ## [1.0.0-rc1] - 2026-06-26
 
 ### 重大新增：P0-P2 任务完成

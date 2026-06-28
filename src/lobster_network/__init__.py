@@ -4,6 +4,15 @@ Lobster Network - Unified Entry Point
 
 对话即创造：一人一世界的世界观
 
+v0.7.0 变更 (V3.1 优化层):
+- 新增: 熔断器 (CircuitBreaker)，API 调用保护，CLOSED→OPEN→HALF_OPEN 状态机
+- 新增: 健康检查 (HealthCheck)，CPU/内存/磁盘监控 + 服务连通性检测
+- 新增: 缓存管理器 (CacheManager)，MD5 键值 + TTL 本地 JSON 缓存
+- 新增: 向量记忆扩展器 (VectorMemoryExpander)，错题语义检索
+- 新增: MCP 验证器 (MCPValidator)，训练时实时验证
+- 新增: 模型路由器 (ModelRouter)，难度感知路由，成本降低 50%
+- 新增: 龙虾币 (LobsterCoin)，训练经济闭环系统
+
 v0.6.0 变更:
 - 新增: 增强对话引擎，语义涌现计算 (Jaccard相似度, n-gram分析)
 - 新增: 学习协调器 (LearningCoordinator)，闭合评估-训练反馈环
@@ -26,7 +35,7 @@ v0.4.0 变更:
 - 新增: 跨链系统 (CrossChainSystem)、多币种系统 (MultiCurrencySystem)
 """
 
-__version__ = "0.6.0"
+__version__ = "0.7.0"
 
 # 框架层 (Framework Layer)
 from .node import Node
