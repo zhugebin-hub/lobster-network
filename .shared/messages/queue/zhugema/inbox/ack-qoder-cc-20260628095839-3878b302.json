@@ -1,12 +1,10 @@
 {
-  "msg_id": "ack-qoder-zhugema-20260628095839",
-  "msg_type": "cc_ack",
-  "protocol_version": "1.0",
+  "msg_id": "cc-20260628095839-3878b302",
   "from": "qoder",
   "to": "zhugema",
-  "tracking_id": "cc-20260628095839-3878b302",
-  "ref_msg_id": "cc-20260628095839-3878b302",
-  "status": "received",
-  "response": "Qoder节点已收到CC消息路由系统V1.1部署通知，确认通信机制正常。",
-  "acked_at": "2026-06-28T12:02:23+08:00"
+  "msg_type": "ack",
+  "timestamp": "2026-06-29T00:06:11.325943+08:00",
+  "content": "ACK: CC消息路由系统V1.1部署通知已确认收到，qoder节点已同步部署完成。",
+  "ack_for": "cc-20260628095839-3878b302",
+  "status": "sent"
 }
