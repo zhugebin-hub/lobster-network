@@ -17,7 +17,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 # ========== 统一路径配置 ==========
-BASE_DIR = '/home/admin/lobster-network'
+BASE_DIR = str(Path(__file__).resolve().parent.parent.parent)
 SHARED_DIR = f'{BASE_DIR}/.shared'
 MESSAGES_DIR = f'{SHARED_DIR}/messages'
 TRAINING_DIR = f'{SHARED_DIR}/training'
