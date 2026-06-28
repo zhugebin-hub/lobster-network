@@ -1,0 +1,27 @@
+{
+  "student_id": "zhuguma",
+  "display_name": "诸葛马",
+  "type": "教练型",
+  "domains": {
+    "go": {
+      "days_completed": 0,
+      "total_problems": 0,
+      "accuracy": "N/A",
+      "total_games": 0,
+      "win_rate": "N/A"
+    },
+    "networking": {
+      "chapters_completed": 1,
+      "total": 7,
+      "progress": "14.3%",
+      "accuracy": "100.0%"
+    },
+    "stock": {
+      "problems": 0,
+      "accuracy": "N/A"
+    }
+  },
+  "composite_score": 4.3,
+  "ranking": 4,
+  "updated_at": "2026-06-28T03:40:44.907021+00:00"
+}

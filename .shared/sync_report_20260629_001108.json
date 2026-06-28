@@ -1,0 +1,50 @@
+{
+  "timestamp": "2026-06-29T00:11:08.966350",
+  "version": "4.0",
+  "paths_verified": false,
+  "messages": {
+    "total": 0,
+    "valid": 0,
+    "invalid": 0,
+    "errors": []
+  },
+  "training": {
+    "days": {},
+    "students": {},
+    "files": []
+  },
+  "nodes": {
+    "xiaochen": {
+      "name": "小陈",
+      "server": "121.43.80.231",
+      "inbox_exists": true,
+      "inbox_files": 9,
+      "last_message": "xiaowei-sync-cfac9358.json"
+    },
+    "zhuguxia": {
+      "name": "诸葛虾",
+      "server": "60.205.139.51",
+      "inbox_exists": true,
+      "inbox_files": 10,
+      "last_message": "xiaowei-sync-77330744.json"
+    },
+    "qoder": {
+      "name": "qoder",
+      "server": "192.168.1.161",
+      "inbox_exists": true,
+      "inbox_files": 5,
+      "last_message": "xiaowei-sync-e28643a4.json"
+    }
+  },
+  "errors": [],
+  "fixes": [
+    "创建目录: /home/admin/lobster-network/.shared/messages/from-hermes",
+    "创建目录: /home/admin/lobster-network/.shared/messages/from-xiaochen",
+    "创建目录: /home/admin/lobster-network/.shared/messages/from-zhuguxia",
+    "创建目录: /home/admin/lobster-network/.shared/messages/from-qoder",
+    "创建目录: /home/admin/lobster-network/.shared/messages/to-xiaochen",
+    "创建目录: /home/admin/lobster-network/.shared/messages/to-zhuguxia",
+    "创建目录: /home/admin/lobster-network/.shared/messages/to-qoder",
+    "创建目录: /home/admin/lobster-network/.shared/training/results"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "student_id": "xiaochen",
+  "display_name": "小陈",
+  "type": "稳健型",
+  "domains": {
+    "go": {
+      "days_completed": 3,
+      "total_problems": 23,
+      "accuracy": "82.6%",
+      "total_games": 15,
+      "win_rate": "66.7%"
+    },
+    "networking": {
+      "chapters_completed": 1,
+      "total": 7,
+      "progress": "14.3%",
+      "accuracy": "80.0%"
+    },
+    "stock": {
+      "problems": 0,
+      "accuracy": "N/A"
+    }
+  },
+  "composite_score": 37.3,
+  "ranking": 3,
+  "updated_at": "2026-06-28T03:40:44.906625+00:00"
+}

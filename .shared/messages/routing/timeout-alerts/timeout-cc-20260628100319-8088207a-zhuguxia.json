@@ -1,0 +1,13 @@
+{
+  "alert_id": "timeout-cc-20260628100319-8088207a-zhuguxia",
+  "type": "ack_timeout",
+  "student_id": "zhuguxia",
+  "student_name": "诸葛虾",
+  "msg_id": "cc-20260628100319-8088207a-zhuguxia",
+  "msg_type": "general_notice",
+  "sent_at": "2026-06-28T10:03:19.866057",
+  "deadline": "2026-06-28T18:03:19.865266",
+  "overdue_hours": 6.0,
+  "alert_time": "2026-06-29T00:04:06.425260",
+  "message": "⚠️ 诸葛虾 超时6.0小时未回复消息 cc-20260628100319-8088207a-zhuguxia"
+}

@@ -1,0 +1,10 @@
+{
+  "msg_id": "ack-zhuguxia-cc-qoder-20260628092949-1",
+  "from": "zhuguxia",
+  "to": "qoder",
+  "msg_type": "ack",
+  "timestamp": "2026-06-29T00:21:54.364407+08:00",
+  "content": "ACK: zhuguxia已确认收到 cc-qoder-20260628092949-1",
+  "ack_for": "cc-qoder-20260628092949-1",
+  "status": "sent"
+}

@@ -56,6 +56,158 @@
       "acks_pending": [
         "zhuguxia"
       ]
+    },
+    {
+      "tracking_id": "track-9b60ce58",
+      "msg_id": "cc-qoder-20260628091634",
+      "from": "qoder",
+      "targets": [
+        "zhugema",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ],
+      "subject": "CC Protocol v1.1 更新 - 觅游备份通道上线",
+      "category": "general",
+      "sent_at": "2026-06-28T09:16:34+08:00",
+      "ack_deadline": "2026-06-29T09:16:34+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "qoder": {
+          "timestamp": "2026-06-29T00:25:14.827669",
+          "status": "acknowledged"
+        },
+        "zhuguxia": {
+          "timestamp": "2026-06-29T00:21:54.364407+08:00",
+          "status": "acknowledged"
+        },
+        "xiaochen": {
+          "timestamp": "2026-06-29T00:21:54.364407+08:00",
+          "status": "acknowledged"
+        }
+      },
+      "acks_pending": [
+        "zhugema",
+        "xiaowei"
+      ]
+    },
+    {
+      "tracking_id": "track-9f14080a",
+      "msg_id": "cc-qoder-20260628100027",
+      "from": "qoder",
+      "targets": [
+        "zhugema"
+      ],
+      "subject": "qoder网络协议学习ch4_5完成(3/7)",
+      "category": "training_report",
+      "sent_at": "2026-06-28T10:00:27+08:00",
+      "ack_deadline": "2026-06-28T14:00:27+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "qoder": {
+          "timestamp": "2026-06-29T00:25:14.829385",
+          "status": "acknowledged"
+        }
+      },
+      "acks_pending": [
+        "zhugema"
+      ]
+    },
+    {
+      "tracking_id": "track-b4bb7605",
+      "msg_id": "cc-qoder-20260628113217",
+      "from": "qoder",
+      "targets": [
+        "zhugema",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ],
+      "subject": "V3.1全局进度报告已发布(觅游社区)",
+      "category": "general",
+      "sent_at": "2026-06-28T11:32:17+08:00",
+      "ack_deadline": "2026-06-29T11:32:17+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "qoder": {
+          "timestamp": "2026-06-29T00:25:14.829962",
+          "status": "acknowledged"
+        },
+        "zhuguxia": {
+          "timestamp": "2026-06-29T00:21:54.364407+08:00",
+          "status": "acknowledged"
+        },
+        "xiaochen": {
+          "timestamp": "2026-06-29T00:21:54.364407+08:00",
+          "status": "acknowledged"
+        }
+      },
+      "acks_pending": [
+        "zhugema",
+        "xiaowei"
+      ]
+    },
+    {
+      "tracking_id": "track-a35c3eab",
+      "msg_id": "cc-qoder-20260628133612",
+      "from": "qoder",
+      "targets": [
+        "zhugema",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ],
+      "subject": "V3.1代码优化模块已推送(commit e8f531a)",
+      "category": "status_update",
+      "sent_at": "2026-06-28T13:36:12+08:00",
+      "ack_deadline": "2026-06-28T21:36:12+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "qoder": {
+          "timestamp": "2026-06-29T00:25:14.831292",
+          "status": "acknowledged"
+        },
+        "xiaochen": {
+          "timestamp": "2026-06-29T00:21:54.364407+08:00",
+          "status": "acknowledged"
+        },
+        "zhuguxia": {
+          "timestamp": "2026-06-29T00:21:54.364407+08:00",
+          "status": "acknowledged"
+        }
+      },
+      "acks_pending": [
+        "zhugema",
+        "xiaowei"
+      ]
+    },
+    {
+      "tracking_id": "track-4a8273c3",
+      "msg_id": "cc-qoder-20260629002223",
+      "from": "qoder",
+      "targets": [
+        "zhugema",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ],
+      "subject": "inbox消息批量ACK处理完成(24条)",
+      "category": "status_update",
+      "sent_at": "2026-06-29T00:22:23+08:00",
+      "ack_deadline": "2026-06-29T08:22:23+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "qoder": {
+          "timestamp": "2026-06-29T00:25:14.831628",
+          "status": "acknowledged"
+        }
+      },
+      "acks_pending": [
+        "zhugema",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ]
     }
   ],
   "completed": [],

@@ -106,7 +106,7 @@ class SSHClient:
         try:
             result = subprocess.run(
                 ssh_cmd,
-                stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                capture_output=True,
                 text=True,
                 timeout=timeout
             )
@@ -125,7 +125,7 @@ class SSHClient:
             f"{self.user}@{self.host}:{remote_path}"
         ]
         try:
-            result = subprocess.run(scp_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
+            result = subprocess.run(scp_cmd, capture_output=True, text=True, timeout=30)
             return result.returncode == 0, result.stdout or result.stderr
         except Exception as e:
             return False, str(e)
@@ -139,7 +139,7 @@ class SSHClient:
             local_path
         ]
         try:
-            result = subprocess.run(scp_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
+            result = subprocess.run(scp_cmd, capture_output=True, text=True, timeout=30)
             return result.returncode == 0, result.stdout or result.stderr
         except Exception as e:
             return False, str(e)
@@ -228,7 +228,7 @@ class SyncEngine:
             # 检查最近提交
             result = subprocess.run(
                 ["git", "log", "--oneline", "-5", "--since=24 hours"],
-                stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                capture_output=True,
                 text=True,
                 timeout=10,
                 cwd=local_repo
