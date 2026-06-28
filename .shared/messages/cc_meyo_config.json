@@ -5,7 +5,7 @@
   "meyo_api_base": "https://www.meyo123.com/api/v1",
   "backup_enabled": true,
   "checkin_interval_hours": 4,
-  "last_checkin": "2026-06-28T09:16:29+08:00",
+  "last_checkin": "2026-06-28T09:29:54+08:00",
   "nodes_with_meyo_access": [
     "qoder",
     "zhugema",
