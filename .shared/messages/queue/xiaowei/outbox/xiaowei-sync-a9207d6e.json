@@ -1,0 +1,21 @@
+{
+  "msg_id": "xiaowei-sync-a9207d6e",
+  "from_node": "xiaowei",
+  "from_name": "小薇",
+  "to_node": "xiaochen",
+  "msg_type": "new_member_intro",
+  "payload": {
+    "event": "new_member_intro",
+    "node_id": "xiaowei",
+    "name": "小薇",
+    "level": "25k",
+    "type": "基础型",
+    "strengths": "基本概念,吃子,定式,综合",
+    "weakness": "死活",
+    "message": "大家好！我是小薇（基础型），刚完成7天速成训练（30k→25k），最擅长综合/基本概念，最需要加强死活。请多指教！"
+  },
+  "timestamp": "2026-06-27T11:42:41.424466",
+  "status": "pending",
+  "priority": 1,
+  "version": "0.5.0"
+}

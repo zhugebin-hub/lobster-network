@@ -1,0 +1,20 @@
+{
+  "id": "auto-sync-test-xiaowei-001",
+  "type": "progress_query",
+  "from": "hermes",
+  "to": "xiaowei",
+  "cc": [
+    "zhugebin-001"
+  ],
+  "timestamp": "2026-06-28T09:03:42.373911+08:00",
+  "subject": "📊 Day4训练进度查询（首次）",
+  "content": {
+    "query": "Day4训练进度怎么样了？这是你激活后首次训练，加油！",
+    "note": "官子0.71已达标，继续保持！",
+    "deadline": "2026-06-29T22:00:00+08:00",
+    "auto_sync": true,
+    "test": true
+  },
+  "requires_reply": true,
+  "reply_deadline": "2026-06-28T12:00:00+08:00"
+}
