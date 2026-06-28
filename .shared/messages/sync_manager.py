@@ -35,6 +35,10 @@ STANDARD_DIRS = {
     'to_xiaochen': f'{MESSAGES_DIR}/to-xiaochen',
     'to_zhuguxia': f'{MESSAGES_DIR}/to-zhuguxia',
     'to_qoder': f'{MESSAGES_DIR}/to-qoder',
+    'from_zhugema': f'{MESSAGES_DIR}/from-zhugema',
+    'from_xiaowei': f'{MESSAGES_DIR}/from-xiaowei',
+    'to_zhugema': f'{MESSAGES_DIR}/to-zhugema',
+    'to_xiaowei': f'{MESSAGES_DIR}/to-xiaowei',
     'results': f'{TRAINING_DIR}/results',
     'queue': f'{MESSAGES_DIR}/queue',
 }
@@ -55,6 +59,18 @@ STUDENTS = {
         'name': 'qoder',
         'server': '192.168.1.161',
         'inbox': f'{MESSAGES_DIR}/queue/qoder/inbox/',
+    },
+    'zhugema': {
+        'name': '诸葛马',
+        'server': '47.93.6.57',
+        'inbox': f'{MESSAGES_DIR}/queue/zhugema/inbox/',
+        'role': 'AI教练(主节点)',
+    },
+    'xiaowei': {
+        'name': '小薇',
+        'server': 'local',
+        'inbox': f'{MESSAGES_DIR}/queue/xiaowei/inbox/',
+        'role': '围棋训练节点',
     },
 }
 

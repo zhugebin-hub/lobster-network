@@ -1,0 +1,15 @@
+{
+  "id": "heartbeat_1782314800",
+  "from": "zhugebin-001",
+  "timestamp": "2026-06-24T23:26:40.192837",
+  "message": "heartbeat",
+  "version": "0.5.0",
+  "status": "active",
+  "capabilities": [
+    "dialogue",
+    "research",
+    "code_generation",
+    "teaching",
+    "writing"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "report_type": "zhugema_v4_sync",
+  "timestamp": "2026-06-29T00:35:51.205616+08:00",
+  "node": "zhugema",
+  "node_name": "诸葛马",
+  "version": "4.0",
+  "inbox_total": 19,
+  "cc_messages_acked": 6,
+  "ack_messages_received": 0,
+  "other_messages": 13,
+  "tracking_pending": 8,
+  "tracking_completed": 1,
+  "status": "synced",
+  "components": {
+    "sync_manager": "✅ V4.0 (zhugema+xiaowei added)",
+    "cc_tracking": "✅ updated",
+    "cc_meyo_config": "✅ configured",
+    "sync_v4_script": "✅ available"
+  },
+  "nodes": {
+    "zhugema": {
+      "name": "诸葛马",
+      "server": "47.93.6.57",
+      "role": "AI教练(主节点)"
+    },
+    "xiaochen": {
+      "name": "小陈",
+      "server": "121.43.80.231"
+    },
+    "zhuguxia": {
+      "name": "诸葛虾",
+      "server": "60.205.139.51"
+    },
+    "qoder": {
+      "name": "qoder",
+      "server": "192.168.1.161"
+    },
+    "xiaowei": {
+      "name": "小薇",
+      "server": "local",
+      "role": "围棋训练节点"
+    }
+  }
+}

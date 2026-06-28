@@ -84,33 +84,14 @@
         "xiaochen": {
           "timestamp": "2026-06-29T00:21:54.364407+08:00",
           "status": "acknowledged"
-        }
-      },
-      "acks_pending": [
-        "zhugema",
-        "xiaowei"
-      ]
-    },
-    {
-      "tracking_id": "track-9f14080a",
-      "msg_id": "cc-qoder-20260628100027",
-      "from": "qoder",
-      "targets": [
-        "zhugema"
-      ],
-      "subject": "qoder网络协议学习ch4_5完成(3/7)",
-      "category": "training_report",
-      "sent_at": "2026-06-28T10:00:27+08:00",
-      "ack_deadline": "2026-06-28T14:00:27+08:00",
-      "requires_ack": true,
-      "acks_received": {
-        "qoder": {
-          "timestamp": "2026-06-29T00:25:14.829385",
+        },
+        "zhugema": {
+          "timestamp": "2026-06-29T00:35:51.205616+08:00",
           "status": "acknowledged"
         }
       },
       "acks_pending": [
-        "zhugema"
+        "xiaowei"
       ]
     },
     {
@@ -140,10 +121,13 @@
         "xiaochen": {
           "timestamp": "2026-06-29T00:21:54.364407+08:00",
           "status": "acknowledged"
+        },
+        "zhugema": {
+          "timestamp": "2026-06-29T00:35:51.205616+08:00",
+          "status": "acknowledged"
         }
       },
       "acks_pending": [
-        "zhugema",
         "xiaowei"
       ]
     },
@@ -174,10 +158,13 @@
         "zhuguxia": {
           "timestamp": "2026-06-29T00:21:54.364407+08:00",
           "status": "acknowledged"
+        },
+        "zhugema": {
+          "timestamp": "2026-06-29T00:35:51.205616+08:00",
+          "status": "acknowledged"
         }
       },
       "acks_pending": [
-        "zhugema",
         "xiaowei"
       ]
     },
@@ -200,16 +187,71 @@
         "qoder": {
           "timestamp": "2026-06-29T00:25:14.831628",
           "status": "acknowledged"
+        },
+        "zhugema": {
+          "timestamp": "2026-06-29T00:35:51.205616+08:00",
+          "status": "acknowledged"
         }
       },
       "acks_pending": [
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ]
+    },
+    {
+      "tracking_id": "track-b6aa7a42",
+      "msg_id": "cc-qoder-20260628092949-0",
+      "from": "qoder",
+      "targets": [
         "zhugema",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ],
+      "subject": "qoder全局进度同步(2026-06-28)",
+      "category": "status_update",
+      "sent_at": "2026-06-28T09:29:49+08:00",
+      "ack_deadline": "2026-06-28T17:29:49+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "zhugema": {
+          "timestamp": "2026-06-29T00:35:51.205616+08:00",
+          "status": "acknowledged"
+        }
+      },
+      "acks_pending": [
         "zhuguxia",
         "xiaochen",
         "xiaowei"
       ]
     }
   ],
-  "completed": [],
+  "completed": [
+    {
+      "tracking_id": "track-9f14080a",
+      "msg_id": "cc-qoder-20260628100027",
+      "from": "qoder",
+      "targets": [
+        "zhugema"
+      ],
+      "subject": "qoder网络协议学习ch4_5完成(3/7)",
+      "category": "training_report",
+      "sent_at": "2026-06-28T10:00:27+08:00",
+      "ack_deadline": "2026-06-28T14:00:27+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "qoder": {
+          "timestamp": "2026-06-29T00:25:14.829385",
+          "status": "acknowledged"
+        },
+        "zhugema": {
+          "timestamp": "2026-06-29T00:35:51.205616+08:00",
+          "status": "acknowledged"
+        }
+      },
+      "acks_pending": []
+    }
+  ],
   "escalated": []
 }

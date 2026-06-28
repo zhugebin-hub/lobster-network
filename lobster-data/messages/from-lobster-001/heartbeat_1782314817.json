@@ -1,0 +1,14 @@
+{
+  "id": "heartbeat_1782314817",
+  "from": "lobster-001",
+  "timestamp": "2026-06-24T23:26:57.973648",
+  "message": "heartbeat",
+  "version": "0.5.0",
+  "status": "active",
+  "capabilities": [
+    "dialogue",
+    "research",
+    "data_analysis",
+    "document_creation"
+  ]
+}
