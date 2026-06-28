@@ -1,0 +1,13 @@
+{
+  "alert_id": "timeout-cc-20260628095839-3878b302",
+  "type": "ack_timeout",
+  "student_id": "qoder",
+  "student_name": "qoder",
+  "msg_id": "cc-20260628095839-3878b302",
+  "msg_type": "general_notice",
+  "sent_at": "2026-06-28T09:58:39.977431",
+  "deadline": "2026-06-28T21:58:39.976457",
+  "overdue_hours": 0.1,
+  "alert_time": "2026-06-28T22:05:02.915842",
+  "message": "⚠️ qoder 超时0.1小时未回复消息 cc-20260628095839-3878b302"
+}
