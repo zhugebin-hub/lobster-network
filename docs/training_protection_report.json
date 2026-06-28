@@ -1,0 +1,51 @@
+{
+  "timestamp": "2026-06-29T07:37:03.890792",
+  "current_status": "正常",
+  "priority": "无",
+  "schedule": {
+    "daily": {
+      "morning": {
+        "time": "09:00-11:00",
+        "tasks": [
+          "go_training",
+          "assessment"
+        ]
+      },
+      "afternoon": {
+        "time": "14:00-16:00",
+        "tasks": [
+          "network_protocol",
+          "stock_prediction"
+        ]
+      },
+      "evening": {
+        "time": "19:00-21:00",
+        "tasks": [
+          "go_training",
+          "review"
+        ]
+      }
+    },
+    "weekly": {
+      "monday_friday": [
+        "go_training",
+        "network_protocol"
+      ],
+      "saturday": [
+        "assessment",
+        "review"
+      ],
+      "sunday": [
+        "free_training",
+        "exploration"
+      ]
+    }
+  },
+  "suspended_tasks": [],
+  "protected_tasks": [
+    "go_training",
+    "network_protocol",
+    "stock_prediction",
+    "assessment"
+  ]
+}
