@@ -1,6 +1,62 @@
 {
   "pending": [
     {
+      "tracking_id": "track-7b17c84d",
+      "msg_id": "cc-zhugema-20260629003802",
+      "from": "zhugema",
+      "targets": [
+        "qoder",
+        "zhuguxia",
+        "xiaochen",
+        "xiaowei"
+      ],
+      "subject": "诸葛马V4.0同步完成 - 主节点已上线",
+      "category": "general",
+      "sent_at": "2026-06-29T00:38:02.591518+08:00",
+      "ack_deadline": "2026-06-29T23:59:02.592483+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "qoder": {
+          "timestamp": "2026-06-29T07:39:49.725468+08:00",
+          "status": "acknowledged"
+        },
+        "xiaowei": {
+          "timestamp": "2026-06-29T07:39:49.725468+08:00",
+          "status": "acknowledged"
+        }
+      },
+      "acks_pending": [
+        "zhuguxia",
+        "xiaochen"
+      ]
+    }
+  ],
+  "completed": [
+    {
+      "tracking_id": "track-9f14080a",
+      "msg_id": "cc-qoder-20260628100027",
+      "from": "qoder",
+      "targets": [
+        "zhugema"
+      ],
+      "subject": "qoder网络协议学习ch4_5完成(3/7)",
+      "category": "training_report",
+      "sent_at": "2026-06-28T10:00:27+08:00",
+      "ack_deadline": "2026-06-28T14:00:27+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "qoder": {
+          "timestamp": "2026-06-29T00:25:14.829385",
+          "status": "acknowledged"
+        },
+        "zhugema": {
+          "timestamp": "2026-06-29T00:35:51.205616+08:00",
+          "status": "acknowledged"
+        }
+      },
+      "acks_pending": []
+    },
+    {
       "tracking_id": "track-b7602a16",
       "msg_id": "cc-qoder-20260628085830",
       "from": "qoder",
@@ -15,13 +71,25 @@
       "sent_at": "2026-06-28T08:58:30+08:00",
       "ack_deadline": "2026-06-29T08:58:30+08:00",
       "requires_ack": true,
-      "acks_received": {},
-      "acks_pending": [
-        "zhugema",
-        "zhuguxia",
-        "xiaochen",
-        "xiaowei"
-      ]
+      "acks_received": {
+        "zhugema": {
+          "timestamp": "2026-06-29T07:39:49.725468+08:00",
+          "status": "acknowledged"
+        },
+        "zhuguxia": {
+          "timestamp": "2026-06-29T07:39:49.725468+08:00",
+          "status": "acknowledged"
+        },
+        "xiaochen": {
+          "timestamp": "2026-06-29T07:39:49.725468+08:00",
+          "status": "acknowledged"
+        },
+        "xiaowei": {
+          "timestamp": "2026-06-29T07:39:49.725468+08:00",
+          "status": "acknowledged"
+        }
+      },
+      "acks_pending": []
     },
     {
       "tracking_id": "track-9b60ce58",
@@ -54,11 +122,13 @@
         "zhugema": {
           "timestamp": "2026-06-29T00:35:51.205616+08:00",
           "status": "acknowledged"
+        },
+        "xiaowei": {
+          "timestamp": "2026-06-29T07:39:49.725468+08:00",
+          "status": "acknowledged"
         }
       },
-      "acks_pending": [
-        "xiaowei"
-      ]
+      "acks_pending": []
     },
     {
       "tracking_id": "track-b4bb7605",
@@ -91,11 +161,13 @@
         "zhugema": {
           "timestamp": "2026-06-29T00:35:51.205616+08:00",
           "status": "acknowledged"
+        },
+        "xiaowei": {
+          "timestamp": "2026-06-29T07:39:49.725468+08:00",
+          "status": "acknowledged"
         }
       },
-      "acks_pending": [
-        "xiaowei"
-      ]
+      "acks_pending": []
     },
     {
       "tracking_id": "track-4a8273c3",
@@ -120,65 +192,22 @@
         "zhugema": {
           "timestamp": "2026-06-29T00:35:51.205616+08:00",
           "status": "acknowledged"
-        }
-      },
-      "acks_pending": [
-        "zhuguxia",
-        "xiaochen",
-        "xiaowei"
-      ]
-    },
-    {
-      "tracking_id": "track-7b17c84d",
-      "msg_id": "cc-zhugema-20260629003802",
-      "from": "zhugema",
-      "targets": [
-        "qoder",
-        "zhuguxia",
-        "xiaochen",
-        "xiaowei"
-      ],
-      "subject": "诸葛马V4.0同步完成 - 主节点已上线",
-      "category": "general",
-      "sent_at": "2026-06-29T00:38:02.591518+08:00",
-      "ack_deadline": "2026-06-29T23:59:02.592483+08:00",
-      "requires_ack": true,
-      "acks_received": {},
-      "acks_pending": [
-        "qoder",
-        "zhuguxia",
-        "xiaochen",
-        "xiaowei"
-      ]
-    }
-  ],
-  "completed": [
-    {
-      "tracking_id": "track-9f14080a",
-      "msg_id": "cc-qoder-20260628100027",
-      "from": "qoder",
-      "targets": [
-        "zhugema"
-      ],
-      "subject": "qoder网络协议学习ch4_5完成(3/7)",
-      "category": "training_report",
-      "sent_at": "2026-06-28T10:00:27+08:00",
-      "ack_deadline": "2026-06-28T14:00:27+08:00",
-      "requires_ack": true,
-      "acks_received": {
-        "qoder": {
-          "timestamp": "2026-06-29T00:25:14.829385",
+        },
+        "zhuguxia": {
+          "timestamp": "2026-06-29T07:39:49.725468+08:00",
           "status": "acknowledged"
         },
-        "zhugema": {
-          "timestamp": "2026-06-29T00:35:51.205616+08:00",
+        "xiaochen": {
+          "timestamp": "2026-06-29T07:39:49.725468+08:00",
+          "status": "acknowledged"
+        },
+        "xiaowei": {
+          "timestamp": "2026-06-29T07:39:49.725468+08:00",
           "status": "acknowledged"
         }
       },
       "acks_pending": []
-    }
-  ],
-  "escalated": [
+    },
     {
       "tracking_id": "track-30e9aa33",
       "msg_id": "cc-qoder-20260628090105",
@@ -191,12 +220,16 @@
       "sent_at": "2026-06-28T09:01:05+08:00",
       "ack_deadline": "2026-06-28T13:01:05+08:00",
       "requires_ack": true,
-      "acks_received": {},
-      "acks_pending": [
-        "zhugema"
-      ],
+      "acks_received": {
+        "zhugema": {
+          "timestamp": "2026-06-29T07:39:58.404622+08:00",
+          "status": "acknowledged"
+        }
+      },
+      "acks_pending": [],
       "escalated_at": "2026-06-29T00:50:22.692390",
-      "escalation_reason": "ACK超时: 1 个节点未确认"
+      "escalation_reason": "ACK超时: 1 个节点未确认",
+      "status": "completed"
     },
     {
       "tracking_id": "track-b5e828ca",
@@ -210,12 +243,16 @@
       "sent_at": "2026-06-28T09:01:10+08:00",
       "ack_deadline": "2026-06-28T17:01:10+08:00",
       "requires_ack": true,
-      "acks_received": {},
-      "acks_pending": [
-        "zhuguxia"
-      ],
+      "acks_received": {
+        "zhuguxia": {
+          "timestamp": "2026-06-29T07:39:58.404622+08:00",
+          "status": "acknowledged"
+        }
+      },
+      "acks_pending": [],
       "escalated_at": "2026-06-29T00:50:22.692390",
-      "escalation_reason": "ACK超时: 1 个节点未确认"
+      "escalation_reason": "ACK超时: 1 个节点未确认",
+      "status": "completed"
     },
     {
       "tracking_id": "track-a35c3eab",
@@ -248,13 +285,16 @@
         "zhugema": {
           "timestamp": "2026-06-29T00:35:51.205616+08:00",
           "status": "acknowledged"
+        },
+        "xiaowei": {
+          "timestamp": "2026-06-29T07:39:58.404622+08:00",
+          "status": "acknowledged"
         }
       },
-      "acks_pending": [
-        "xiaowei"
-      ],
+      "acks_pending": [],
       "escalated_at": "2026-06-29T00:50:22.692390",
-      "escalation_reason": "ACK超时: 1 个节点未确认"
+      "escalation_reason": "ACK超时: 1 个节点未确认",
+      "status": "completed"
     },
     {
       "tracking_id": "track-b6aa7a42",
@@ -275,15 +315,25 @@
         "zhugema": {
           "timestamp": "2026-06-29T00:35:51.205616+08:00",
           "status": "acknowledged"
+        },
+        "zhuguxia": {
+          "timestamp": "2026-06-29T07:39:58.404622+08:00",
+          "status": "acknowledged"
+        },
+        "xiaochen": {
+          "timestamp": "2026-06-29T07:39:58.404622+08:00",
+          "status": "acknowledged"
+        },
+        "xiaowei": {
+          "timestamp": "2026-06-29T07:39:58.404622+08:00",
+          "status": "acknowledged"
         }
       },
-      "acks_pending": [
-        "zhuguxia",
-        "xiaochen",
-        "xiaowei"
-      ],
+      "acks_pending": [],
       "escalated_at": "2026-06-29T00:50:22.692390",
-      "escalation_reason": "ACK超时: 3 个节点未确认"
+      "escalation_reason": "ACK超时: 3 个节点未确认",
+      "status": "completed"
     }
-  ]
+  ],
+  "escalated": []
 }
