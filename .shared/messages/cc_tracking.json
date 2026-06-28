@@ -79,6 +79,23 @@
         "xiaochen",
         "xiaowei"
       ]
+    },
+    {
+      "tracking_id": "track-9f14080a",
+      "msg_id": "cc-qoder-20260628100027",
+      "from": "qoder",
+      "targets": [
+        "zhugema"
+      ],
+      "subject": "qoder网络协议学习ch4_5完成(3/7)",
+      "category": "training_report",
+      "sent_at": "2026-06-28T10:00:27+08:00",
+      "ack_deadline": "2026-06-28T14:00:27+08:00",
+      "requires_ack": true,
+      "acks_received": {},
+      "acks_pending": [
+        "zhugema"
+      ]
     }
   ],
   "completed": [],
