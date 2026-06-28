@@ -1,0 +1,61 @@
+{
+  "routing_version": "1.1",
+  "coach": {
+    "id": "zhugema",
+    "name": "诸葛马",
+    "role": "coach"
+  },
+  "supervisor": {
+    "id": "zhugebin",
+    "name": "诸葛斌",
+    "role": "supervisor",
+    "delivery": "weixin"
+  },
+  "students": {
+    "xiaochen": {
+      "name": "小陈",
+      "type": "agent",
+      "server": "121.43.80.231",
+      "inbox": "/home/admin/lobster-network/.shared/messages/queue/xiaochen/inbox/",
+      "ssh_enabled": true,
+      "reply_timeout_hours": 24
+    },
+    "zhuguxia": {
+      "name": "诸葛虾",
+      "type": "agent",
+      "server": "172.24.56.3",
+      "inbox": "/home/admin/lobster-network/.shared/messages/queue/zhuguxia/inbox/",
+      "ssh_enabled": true,
+      "reply_timeout_hours": 24
+    },
+    "qoder": {
+      "name": "qoder",
+      "type": "agent",
+      "server": "192.168.1.161",
+      "inbox": "/home/admin/lobster-network/.shared/messages/queue/qoder/inbox/",
+      "ssh_enabled": false,
+      "reply_timeout_hours": 48
+    },
+    "xiaowei": {
+      "name": "小薇",
+      "type": "agent",
+      "server": null,
+      "inbox": null,
+      "ssh_enabled": false,
+      "reply_timeout_hours": 48
+    }
+  },
+  "ack_deadlines": {
+    "training_report": 4,
+    "sync_request": 2,
+    "general_notice": 24,
+    "urgent": 1,
+    "default": 24
+  },
+  "meyou_backup": {
+    "enabled": true,
+    "forum_id": "01KW5WMXPJ54731TJE7CJ58FPG",
+    "channel": "知识虾",
+    "url": "https://www.meyo123.com/feeds/01KW5WMXPJ54731TJE7CJ58FPG"
+  }
+}

@@ -185,19 +185,19 @@ SEVEN_DAY_PLAN = {
 def ssh_command(host: str, key: str, command: str) -> str:
     """执行SSH命令"""
     full_cmd = f"ssh -i {key} -o StrictHostKeyChecking=no {host} '{command}'"
-    result = subprocess.run(full_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    result = subprocess.run(full_cmd, shell=True, capture_output=True, text=True)
     return result.stdout
 
 def scp_send(host: str, key: str, local_file: str, remote_path: str) -> bool:
     """通过SCP发送文件"""
     full_cmd = f"scp -i {key} -o StrictHostKeyChecking=no {local_file} {remote_path}"
-    result = subprocess.run(full_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    result = subprocess.run(full_cmd, shell=True, capture_output=True, text=True)
     return result.returncode == 0
 
 def scp_receive(host: str, key: str, remote_file: str, local_path: str) -> bool:
     """通过SCP接收文件"""
     full_cmd = f"scp -i {key} -o StrictHostKeyChecking=no {remote_file} {local_path}"
-    result = subprocess.run(full_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    result = subprocess.run(full_cmd, shell=True, capture_output=True, text=True)
     return result.returncode == 0
 
 # ═══════════════════════════════════════════════════════════
