@@ -1,0 +1,108 @@
+{
+  "domain": "networking",
+  "chapter": "ch14",
+  "total": 6,
+  "generated_at": "2026-06-28T13:35:20.760915",
+  "problems": [
+    {
+      "problem_id": "net-ch14-VXLAN优势-001",
+      "domain": "networking",
+      "chapter": "ch14",
+      "topic": "VXLAN优势",
+      "type": "选择",
+      "difficulty": "初级",
+      "title": "第十四章 VXLAN网络虚拟化 - VXLAN优势",
+      "description": "VXLAN相比传统VLAN的最大优势之一是突破了VLAN ID的数量限制。传统VLAN最多支持多少个VLAN ID？",
+      "answer": "B. 4094",
+      "options": [
+        "A. 256",
+        "B. 4094",
+        "C. 65535",
+        "D. 16777216"
+      ],
+      "knowledge": "传统VLAN使用802.1Q标签中的12位VLAN ID字段，有效范围为1~4094（0和4095保留）",
+      "solution": "IEEE 802.1Q标准中，VLAN Tag包含一个12位的VLAN ID（VID）字段，理论上可以表示2^12=4096个值。但VID=0用于优先级标记，VID=4095（0xFFF）保留不用，因此实际可用的VLAN ID范围为1~4094，最多支持4094个VLAN。在大型数据中心和云计算环境中，租户数量可能远超4094，这就成为传统VLAN的严重瓶颈。VXLAN使用24位的VNI（VXLAN Network Identifier），支持2^24=16777216个虚拟网络，彻底解决了这个问题。",
+      "created_at": "2026-06-28T13:35:20.760305"
+    },
+    {
+      "problem_id": "net-ch14-封装解封装-002",
+      "domain": "networking",
+      "chapter": "ch14",
+      "topic": "封装解封装",
+      "type": "选择",
+      "difficulty": "中级",
+      "title": "第十四章 VXLAN网络虚拟化 - 封装解封装",
+      "description": "VXLAN封装中，原始以太网帧被封装在哪种协议报文中进行隧道传输？",
+      "answer": "C. UDP",
+      "options": [
+        "A. TCP",
+        "B. GRE",
+        "C. UDP",
+        "D. SCTP"
+      ],
+      "knowledge": "VXLAN使用UDP作为传输层协议封装原始以太网帧，默认目的端口号为4789",
+      "solution": "VXLAN（Virtual eXtensible LAN）的封装结构为：原始以太网帧 → VXLAN头部（8字节，含24位VNI） → UDP头部 → 外层IP头部 → 外层以太网头部。选择UDP而非TCP的原因是：(1) UDP无需建立连接，封装开销小、延迟低；(2) UDP可以利用底层网络的ECMP（等价多路径）进行负载均衡，因为UDP源端口号可以基于内层流的哈希值变化；(3) 大多数网络硬件对UDP有良好的转发支持。IANA分配的VXLAN标准UDP目的端口号为4789。GRE（选项B）是另一种隧道协议，被NVGRE使用而非VXLAN。",
+      "created_at": "2026-06-28T13:35:20.760307"
+    },
+    {
+      "problem_id": "net-ch14-VTEP-003",
+      "domain": "networking",
+      "chapter": "ch14",
+      "topic": "VTEP",
+      "type": "判断",
+      "difficulty": "初级",
+      "title": "第十四章 VXLAN网络虚拟化 - VTEP",
+      "description": "VTEP（VXLAN Tunnel End Point）是VXLAN隧道的端点设备，负责VXLAN报文的封装和解封装",
+      "answer": "对",
+      "options": [],
+      "knowledge": "VTEP是VXLAN网络的关键组件，负责在VXLAN隧道两端进行封装和解封装操作",
+      "solution": "VTEP（VXLAN Tunnel End Point）是VXLAN架构中的核心组件。它位于VXLAN网络的边缘，连接VXLAN覆盖网络（Overlay）和底层IP网络（Underlay）。当VM发出原始以太网帧到达VTEP时，VTEP会执行封装操作：添加VXLAN头部、UDP头部和外层IP/以太网头部，然后通过IP网络发送到远端VTEP。远端VTEP收到后执行解封装，还原出原始以太网帧并转发给目标VM。VTEP可以是物理交换机、虚拟交换机（如OVS）或专用网关设备。",
+      "created_at": "2026-06-28T13:35:20.760309"
+    },
+    {
+      "problem_id": "net-ch14-MAC学习-004",
+      "domain": "networking",
+      "chapter": "ch14",
+      "topic": "MAC学习",
+      "type": "判断",
+      "difficulty": "中级",
+      "title": "第十四章 VXLAN网络虚拟化 - MAC学习",
+      "description": "VXLAN中的MAC地址学习只能通过数据平面洪泛学习，不支持控制平面学习",
+      "answer": "错",
+      "options": [],
+      "knowledge": "VXLAN支持数据平面洪泛学习和控制平面学习两种MAC学习方式",
+      "solution": "VXLAN支持两种MAC学习方式：(1) 数据平面学习（洪泛-学习模式）：类似于传统交换机，VTEP通过洪泛BUM（Broadcast, Unknown-unicast, Multicast）流量来学习远端VM的MAC地址和对应的VTEP IP地址。这种方式简单但会产生大量洪泛流量。(2) 控制平面学习：通过EVPN（Ethernet VPN，基于BGP扩展）等控制平面协议，在VTEP之间交换MAC地址可达性信息。控制平面方式可以显著减少洪泛流量，提高大规模VXLAN网络的可扩展性。在现代数据中心中，VXLAN + EVPN是主流的部署方案。",
+      "created_at": "2026-06-28T13:35:20.760311"
+    },
+    {
+      "problem_id": "net-ch14-隧道传输-005",
+      "domain": "networking",
+      "chapter": "ch14",
+      "topic": "隧道传输",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "第十四章 VXLAN网络虚拟化 - 隧道传输",
+      "description": "VXLAN使用____位的VNI（VXLAN Network Identifier）来标识不同的虚拟网络",
+      "answer": "24",
+      "options": [],
+      "knowledge": "VXLAN头部中的VNI字段为24位，支持最多16M（2^24）个虚拟网络",
+      "solution": "VXLAN头部总长度为8字节，其中包含一个24位的VNI（VXLAN Network Identifier）字段。24位意味着可以标识2^24 = 16,777,216个独立的虚拟网络，相比传统VLAN的4094个VLAN ID有了质的飞跃。VNI的作用类似于VLAN ID，用于在二层隔离不同的租户流量。VXLAN头部的其余位包括：Flags字段（8位，其中I标志位表示有效VNI）、保留字段（24位+8位）。这种设计使VXLAN非常适合多租户云数据中心场景。",
+      "created_at": "2026-06-28T13:35:20.760312"
+    },
+    {
+      "problem_id": "net-ch14-VLAN局限-006",
+      "domain": "networking",
+      "chapter": "ch14",
+      "topic": "VLAN局限",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "第十四章 VXLAN网络虚拟化 - VLAN局限",
+      "description": "VXLAN通过在原始以太网帧外封装____层头部来实现跨三层网络的二层互通",
+      "answer": "IP",
+      "options": [],
+      "knowledge": "VXLAN利用IP网络作为Underlay传输封装后的报文，实现跨越三层边界的二层虚拟网络",
+      "solution": "VXLAN的核心设计理念是'MAC over IP/UDP'——将原始二层以太网帧封装在IP/UDP报文中进行传输。由于外层使用的是IP路由转发，VXLAN隧道可以跨越三层网络边界，不受物理网络拓扑的限制。这使得同一VNI下的虚拟机可以分布在不同的物理机房或不同IP子网中，实现了真正的网络虚拟化。底层IP网络（Underlay）只需要提供基本的IP可达性，无需感知上层的VXLAN虚拟网络结构。",
+      "created_at": "2026-06-28T13:35:20.760314"
+    }
+  ]
+}

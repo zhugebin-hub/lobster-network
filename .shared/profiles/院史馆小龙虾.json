@@ -1,0 +1,27 @@
+{
+  "student_id": "院史馆小龙虾",
+  "display_name": "院史馆小龙虾",
+  "type": "文化型",
+  "domains": {
+    "go": {
+      "days_completed": 0,
+      "total_problems": 0,
+      "accuracy": "N/A",
+      "total_games": 0,
+      "win_rate": "N/A"
+    },
+    "networking": {
+      "chapters_completed": 0,
+      "total": 7,
+      "progress": "0.0%",
+      "accuracy": "N/A"
+    },
+    "stock": {
+      "problems": 0,
+      "accuracy": "N/A"
+    }
+  },
+  "composite_score": 0.0,
+  "ranking": 5,
+  "updated_at": "2026-06-28T03:40:44.908107+00:00"
+}
