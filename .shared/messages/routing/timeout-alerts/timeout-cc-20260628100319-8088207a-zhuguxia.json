@@ -7,7 +7,7 @@
   "msg_type": "general_notice",
   "sent_at": "2026-06-28T10:03:19.866057",
   "deadline": "2026-06-28T18:03:19.865266",
-  "overdue_hours": 8.0,
-  "alert_time": "2026-06-29T02:04:13.030102",
-  "message": "⚠️ 诸葛虾 超时8.0小时未回复消息 cc-20260628100319-8088207a-zhuguxia"
+  "overdue_hours": 10.0,
+  "alert_time": "2026-06-29T04:01:55.783724",
+  "message": "⚠️ 诸葛虾 超时10.0小时未回复消息 cc-20260628100319-8088207a-zhuguxia"
 }
