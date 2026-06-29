@@ -1,9 +1,9 @@
 {
   "msg_id": "cc-20260628095839-3878b302",
-  "from": "zhugema",
-  "to": "qoder",
-  "track": "general_notice",
-  "subject": "诸葛马教练通知：CC消息路由系统V1.1已部署。请确认收到并通过GitHub同步部署。部署步骤：1.git pull 2.验证routing.py 3.回复ACK",
-  "status": "sent",
-  "timestamp": "2026-06-28T09:58:39.978326"
+  "student_id": "qoder",
+  "sent_at": "2026-06-28T09:58:39.977431",
+  "deadline": "2026-06-28T21:58:39.976457",
+  "status": "timeout_no_ack",
+  "msg_type": "general_notice",
+  "noted_at": "2026-06-29T14:23:54.202588"
 }

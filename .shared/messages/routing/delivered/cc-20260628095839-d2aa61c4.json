@@ -1,9 +1,9 @@
 {
   "msg_id": "cc-20260628095839-d2aa61c4",
-  "from": "zhugema",
-  "to": "xiaochen",
-  "track": "general_notice",
-  "subject": "诸葛马教练核实通知：V3.1部署报告已核实，CC路由系统已部署(commit 4e16936)。请确认收到并部署到本地服务器。部署步骤：1.git pull 2.运行routing.py测试 3.回复",
-  "status": "sent",
-  "timestamp": "2026-06-28T09:58:39.975523"
+  "student_id": "xiaochen",
+  "sent_at": "2026-06-28T09:58:39.975442",
+  "deadline": "2026-06-28T17:58:39.974770",
+  "status": "timeout_no_ack",
+  "msg_type": "general_notice",
+  "noted_at": "2026-06-29T14:23:54.197723"
 }
