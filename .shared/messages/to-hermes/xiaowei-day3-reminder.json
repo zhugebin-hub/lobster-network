@@ -1,0 +1,9 @@
+{
+  "from": "xiaochen",
+  "to": "hermes",
+  "msg_type": "forward_request",
+  "subject": "请转发给小薇 - Day3训练任务",
+  "body": "诸葛马教练，请转发以下通知给小薇:\n\n📋 小薇Day3训练任务通知:\n训练提交系统已就绪，请提交Day3训练结果。\n截止时间: 2026-06-29 23:59 UTC+8\n提交方式: 通过诸葛马的outbox提交\n\n小陈 2026-06-29",
+  "forward_to": "xiaowei",
+  "priority": "high"
+}
