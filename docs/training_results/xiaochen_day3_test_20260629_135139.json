@@ -1,0 +1,13 @@
+{
+  "student_id": "xiaochen",
+  "day": 3,
+  "submitted_at": "2026-06-29T13:51:39.522001",
+  "status": "test_submission",
+  "problems": 120,
+  "correct": 102,
+  "accuracy": 0.85,
+  "games": 10,
+  "wins": 7,
+  "win_rate": 0.7,
+  "notes": "测试提交 - 训练系统恢复"
+}

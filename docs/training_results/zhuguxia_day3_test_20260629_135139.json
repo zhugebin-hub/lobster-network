@@ -1,0 +1,13 @@
+{
+  "student_id": "zhuguxia",
+  "day": 3,
+  "submitted_at": "2026-06-29T13:51:39.522054",
+  "status": "test_submission",
+  "problems": 150,
+  "correct": 134,
+  "accuracy": 0.893,
+  "games": 12,
+  "wins": 8,
+  "win_rate": 0.667,
+  "notes": "测试提交 - 训练系统恢复"
+}
