@@ -7,3 +7,10 @@ __pycache__/
 dist/
 build/
 .env
+
+# 轮询器状态文件
+.poller_state_*.json
+poller_*.log
+
+# 临时结果
+results/*/match_*.json

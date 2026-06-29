@@ -1,0 +1,37 @@
+{
+  "id": "day3-zhuguxia-20260627",
+  "type": "training_task",
+  "day": 3,
+  "student_id": "zhuguxia",
+  "version": "3.0",
+  "focus": "征子路线 + 反思日志训练",
+  "problems": 150,
+  "games": 12,
+  "target_accuracy": 0.92,
+  "custom_module": "反思日志训练",
+  "focus_area": {
+    "topic": "征子路线判断",
+    "problems": 40,
+    "expected_improvement": "25%"
+  },
+  "pairing": {
+    "partner": "qoder",
+    "type": "速率套利",
+    "games_vs_partner": 6
+  },
+  "v3_features": [
+    "使用向量记忆系统搜索相似征子题",
+    "参与联邦学习模型训练",
+    "完成任务获得代币奖励"
+  ],
+  "problems_breakdown": [
+    {"type": "征子路线", "difficulty": "中级", "count": 40},
+    {"type": "手筋", "difficulty": "初级", "count": 55},
+    {"type": "手筋", "difficulty": "中级", "count": 55}
+  ],
+  "games_breakdown": [
+    {"opponent": "qoder", "count": 6, "type": "速率套利"},
+    {"opponent": "教练", "count": 6, "type": "标准对局"}
+  ],
+  "deadline": "2026-06-27 22:00:00"
+}

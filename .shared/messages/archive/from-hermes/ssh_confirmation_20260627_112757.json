@@ -1,0 +1,17 @@
+{
+  "id": "ssh_confirmation_20260627_112757",
+  "type": "ssh_confirmation",
+  "from": "诸葛马",
+  "to": "诸葛虾",
+  "timestamp": "2026-06-27 11:27:57",
+  "message": "SSH双向通信已配置完成",
+  "verification": {
+    "诸葛马→诸葛虾": "✓ 成功",
+    "诸葛虾→诸葛马": "✓ 成功"
+  },
+  "next_steps": [
+    "继续7天速成训练",
+    "收集Day2训练结果",
+    "生成评估报告"
+  ]
+}
