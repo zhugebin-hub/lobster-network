@@ -1,0 +1,139 @@
+{
+  "report_type": "message_channel_verification",
+  "generated_at": "2026-06-29T15:00:44+08:00",
+  "match": {
+    "match_id": "go-match-20260629_144249",
+    "player1": "xiaochen",
+    "player2": "zhuguxia",
+    "board_size": 9,
+    "time": "每方10分钟，30秒3次读秒",
+    "deadline": "2026-06-29T18:42:00+08:00",
+    "status": "pending",
+    "time_left_minutes": 221.3,
+    "results_submitted": false
+  },
+  "delivery_stats": {
+    "total_deliveries": 40,
+    "total_acked": 39,
+    "total_pending_ack": 1,
+    "delivery_rate_pct": 97.5
+  },
+  "go_match_cc_messages": [
+    {
+      "tracking_id": "track-625c07ad",
+      "msg_id": "cc-qoder-20260629144039",
+      "from": "qoder",
+      "subject": "🎯 围棋对局验证赛 - 消息通道测试",
+      "targets": [
+        "xiaochen",
+        "zhuguxia",
+        "xiaowei"
+      ],
+      "ack_deadline": "2026-06-29T18:40:39+08:00",
+      "acks_received": [
+        "zhugebin-001"
+      ],
+      "acks_pending": [
+        "xiaochen",
+        "zhuguxia",
+        "xiaowei"
+      ]
+    },
+    {
+      "tracking_id": "track-030dea86",
+      "msg_id": "cc-zhugema-20260629144249",
+      "from": "zhugema",
+      "subject": "🎯 围棋对局验证赛 - 消息通道测试",
+      "targets": [
+        "xiaochen",
+        "zhuguxia",
+        "qoder",
+        "xiaowei"
+      ],
+      "ack_deadline": "2026-06-29T18:42:49.765012+08:00",
+      "acks_received": [
+        "zhugebin-001"
+      ],
+      "acks_pending": [
+        "xiaochen",
+        "zhuguxia",
+        "qoder",
+        "xiaowei"
+      ]
+    }
+  ],
+  "node_status": {
+    "xiaochen": {
+      "exists": true,
+      "message_count": 14,
+      "cc_messages": 3,
+      "ack_sent": 11,
+      "latest_file": "cc-zhugema-20260629144249-0.json"
+    },
+    "zhuguxia": {
+      "exists": true,
+      "message_count": 15,
+      "cc_messages": 3,
+      "ack_sent": 12,
+      "latest_file": "cc-zhugema-20260629144249-1.json"
+    },
+    "qoder": {
+      "exists": true,
+      "message_count": 23,
+      "cc_messages": 1,
+      "ack_sent": 22,
+      "latest_file": "cc-zhugema-20260629144249-2.json"
+    },
+    "xiaowei": {
+      "exists": true,
+      "message_count": 12,
+      "cc_messages": 2,
+      "ack_sent": 10,
+      "latest_file": "cc-zhugema-20260629144249-3.json"
+    },
+    "zhugema": {
+      "exists": true,
+      "message_count": 22,
+      "cc_messages": 0,
+      "ack_sent": 22,
+      "latest_file": "ack-zhugebin-track-7b17c84d.json"
+    },
+    "zhugebin-001": {
+      "exists": true,
+      "message_count": 0,
+      "cc_messages": 0,
+      "ack_sent": 0,
+      "latest_file": null
+    }
+  },
+  "checks": [
+    {
+      "name": "消息投递率",
+      "status": "✅",
+      "detail": "97.5%"
+    },
+    {
+      "name": "围棋对局CC ACK",
+      "status": "⏳",
+      "detail": "7条待确认"
+    },
+    {
+      "name": "对局结果提交",
+      "status": "⏳",
+      "detail": "等待中 (截止2026-06-29T18:42:00+08:00)"
+    },
+    {
+      "name": "消息通道验证",
+      "status": "✅",
+      "detail": "端到端消息投递已确认"
+    },
+    {
+      "name": "GitHub/Gitee双平台",
+      "status": "✅",
+      "detail": "同步正常"
+    }
+  ],
+  "issues": [
+    "围棋对局消息仍有7条ACK待确认"
+  ]
+}
