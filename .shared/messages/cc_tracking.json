@@ -107,12 +107,12 @@
         "zhugebin-001": {
           "timestamp": "2026-06-29T14:55:00.054643+08:00",
           "status": "acknowledged"
-        }
+        },
+        "qoder": "2026-06-29T16:35:00+08:00"
       },
       "acks_pending": [
         "xiaochen",
         "zhuguxia",
-        "qoder",
         "xiaowei"
       ]
     }
