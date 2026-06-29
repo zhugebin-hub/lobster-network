@@ -52,6 +52,27 @@
         "xiaochen",
         "zhuguxia"
       ]
+    },
+    {
+      "tracking_id": "track-625c07ad",
+      "msg_id": "cc-qoder-20260629144039",
+      "from": "qoder",
+      "targets": [
+        "xiaochen",
+        "zhuguxia",
+        "xiaowei"
+      ],
+      "subject": "🎯 围棋对局验证赛 - 消息通道测试",
+      "category": "training_report",
+      "sent_at": "2026-06-29T14:40:39+08:00",
+      "ack_deadline": "2026-06-29T18:40:39+08:00",
+      "requires_ack": true,
+      "acks_received": {},
+      "acks_pending": [
+        "xiaochen",
+        "zhuguxia",
+        "xiaowei"
+      ]
     }
   ],
   "completed": [
