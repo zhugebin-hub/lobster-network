@@ -21,9 +21,9 @@ ls -la /home/admin/lobster-network/scripts/student_poller.py
 crontab -e
 ```
 
-添加以下行（每5分钟执行一次）：
+添加以下行（每10分钟执行一次）：
 ```
-*/5 * * * * cd /home/admin/lobster-network && /usr/bin/python3 scripts/student_poller.py <node_id> >> /home/admin/lobster-network/poller_<node_id>.log 2>&1
+*/10 * * * * cd /home/admin/lobster-network && /usr/bin/python3 scripts/student_poller.py <node_id> >> /home/admin/lobster-network/poller_<node_id>.log 2>&1
 ```
 
 替换 `<node_id>` 为：

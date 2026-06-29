@@ -12,7 +12,7 @@
 
 部署方式:
   crontab -e
-  */5 * * * * /usr/bin/python3 /home/admin/lobster-network/scripts/student_poller.py <node_id>
+  */10 * * * * /usr/bin/python3 /home/admin/lobster-network/scripts/student_poller.py <node_id>
   
 示例:
   python3 student_poller.py xiaochen
