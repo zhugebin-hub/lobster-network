@@ -27,7 +27,7 @@ Usage:
     transport.stop_server()
 """
 
-from __future__ import annotations
+# from __future__ import annotations  # Python 3.6 不支持
 
 import json
 import threading
