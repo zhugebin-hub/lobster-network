@@ -27,6 +27,10 @@
         "zhugema": {
           "timestamp": "2026-06-29T07:35:48.736985",
           "status": "acknowledged"
+        },
+        "zhugebin-001": {
+          "timestamp": "2026-06-29T14:55:00.050837+08:00",
+          "status": "acknowledged"
         }
       },
       "acks_pending": [
@@ -47,7 +51,12 @@
       "sent_at": "2026-06-29T14:04:39+08:00",
       "ack_deadline": "2026-06-29T18:04:39+08:00",
       "requires_ack": true,
-      "acks_received": {},
+      "acks_received": {
+        "zhugebin-001": {
+          "timestamp": "2026-06-29T14:55:00.051986+08:00",
+          "status": "acknowledged"
+        }
+      },
       "acks_pending": [
         "xiaochen",
         "zhuguxia"
@@ -67,7 +76,12 @@
       "sent_at": "2026-06-29T14:40:39+08:00",
       "ack_deadline": "2026-06-29T18:40:39+08:00",
       "requires_ack": true,
-      "acks_received": {},
+      "acks_received": {
+        "zhugebin-001": {
+          "timestamp": "2026-06-29T14:55:00.053204+08:00",
+          "status": "acknowledged"
+        }
+      },
       "acks_pending": [
         "xiaochen",
         "zhuguxia",
@@ -89,7 +103,12 @@
       "sent_at": "2026-06-29T14:42:49.764991+08:00",
       "ack_deadline": "2026-06-29T18:42:49.765012+08:00",
       "requires_ack": true,
-      "acks_received": {},
+      "acks_received": {
+        "zhugebin-001": {
+          "timestamp": "2026-06-29T14:55:00.054643+08:00",
+          "status": "acknowledged"
+        }
+      },
       "acks_pending": [
         "xiaochen",
         "zhuguxia",

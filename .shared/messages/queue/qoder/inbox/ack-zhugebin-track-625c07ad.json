@@ -1,0 +1,11 @@
+{
+  "type": "cc_ack",
+  "ack_id": "ack-zhugebin-track-625c07ad",
+  "tracking_id": "track-625c07ad",
+  "original_msg_id": "cc-qoder-20260629144039",
+  "from": "zhugebin-001",
+  "to": "qoder",
+  "status": "acknowledged",
+  "message": "诸葛斌已收到并确认消息: cc-qoder-20260629144039",
+  "timestamp": "2026-06-29T14:55:00.052537+08:00"
+}
