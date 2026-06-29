@@ -1,5 +1,5 @@
-[
-  {
+{
+  "2026-06-29T03:06:35.047898": {
     "timestamp": "2026-06-29T03:06:35.047898",
     "event": "git_push_failed",
     "reason": "GitHub network unreachable (connection timeout)",
@@ -7,7 +7,7 @@
     "report_file": "docs/training_results/training_status_20260629_030000.md",
     "action_required": "Manual push needed when network restored"
   },
-  {
+  "2026-06-29 03:35:28": {
     "timestamp": "2026-06-29 03:35:28",
     "report": "assessment_20260629_033330.md",
     "commit": "4395707",
@@ -17,5 +17,11 @@
     "note": "GitHub连接超时，Gitee SSH密钥权限问题。报告已本地保存。",
     "github_retry": "FAILED - Connection timeout (retry)",
     "final_status": "commit_local_only"
+  },
+  "2026-06-29_1030": {
+    "status": "timeout",
+    "error": "Connection timed out after 60s",
+    "commit": "e8f9ea5",
+    "note": "Commit saved locally, will retry next cron"
   }
-]
+}
