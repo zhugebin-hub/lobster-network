@@ -1,0 +1,45 @@
+{
+  "domain_pair": "go_protocol",
+  "name": "围棋→协议",
+  "source": "围棋",
+  "target": "网络协议",
+  "total_mappings": 4,
+  "difficulty_distribution": {
+    "低": 1,
+    "中": 2,
+    "高": 1
+  },
+  "average_difficulty": 2.0,
+  "feasibility": "中",
+  "mappings": [
+    {
+      "go_concept": "规则理解",
+      "protocol_concept": "协议规范",
+      "transfer_skill": "规则学习能力",
+      "difficulty": "低",
+      "description": "围棋规则学习培养的规则理解能力适用于协议规范学习"
+    },
+    {
+      "go_concept": "定式记忆",
+      "protocol_concept": "标准流程",
+      "transfer_skill": "流程记忆能力",
+      "difficulty": "中",
+      "description": "定式记忆训练的流程记忆能力适用于协议标准流程"
+    },
+    {
+      "go_concept": "变化图推演",
+      "protocol_concept": "异常处理",
+      "transfer_skill": "分支推理能力",
+      "difficulty": "高",
+      "description": "变化图推演培养的分支推理能力适用于协议异常处理"
+    },
+    {
+      "go_concept": "对局复盘",
+      "protocol_concept": "日志分析",
+      "transfer_skill": "复盘分析能力",
+      "difficulty": "中",
+      "description": "对局复盘培养的反思能力适用于协议日志分析"
+    }
+  ],
+  "analyzed_at": "2026-06-30T00:26:16.213252"
+}

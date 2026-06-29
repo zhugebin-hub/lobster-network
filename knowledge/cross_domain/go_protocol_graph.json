@@ -1,0 +1,172 @@
+{
+  "domain_pair": "go_protocol",
+  "nodes": [
+    {
+      "id": "围棋_domain",
+      "label": "围棋",
+      "type": "domain",
+      "color": "#4CAF50"
+    },
+    {
+      "id": "网络协议_domain",
+      "label": "网络协议",
+      "type": "domain",
+      "color": "#2196F3"
+    },
+    {
+      "id": "围棋_规则理解",
+      "label": "规则理解",
+      "type": "concept",
+      "domain": "围棋"
+    },
+    {
+      "id": "网络协议_协议规范",
+      "label": "协议规范",
+      "type": "concept",
+      "domain": "网络协议"
+    },
+    {
+      "id": "skill_规则学习能力",
+      "label": "规则学习能力",
+      "type": "skill",
+      "color": "#FF9800"
+    },
+    {
+      "id": "围棋_定式记忆",
+      "label": "定式记忆",
+      "type": "concept",
+      "domain": "围棋"
+    },
+    {
+      "id": "网络协议_标准流程",
+      "label": "标准流程",
+      "type": "concept",
+      "domain": "网络协议"
+    },
+    {
+      "id": "skill_流程记忆能力",
+      "label": "流程记忆能力",
+      "type": "skill",
+      "color": "#FF9800"
+    },
+    {
+      "id": "围棋_变化图推演",
+      "label": "变化图推演",
+      "type": "concept",
+      "domain": "围棋"
+    },
+    {
+      "id": "网络协议_异常处理",
+      "label": "异常处理",
+      "type": "concept",
+      "domain": "网络协议"
+    },
+    {
+      "id": "skill_分支推理能力",
+      "label": "分支推理能力",
+      "type": "skill",
+      "color": "#FF9800"
+    },
+    {
+      "id": "围棋_对局复盘",
+      "label": "对局复盘",
+      "type": "concept",
+      "domain": "围棋"
+    },
+    {
+      "id": "网络协议_日志分析",
+      "label": "日志分析",
+      "type": "concept",
+      "domain": "网络协议"
+    },
+    {
+      "id": "skill_复盘分析能力",
+      "label": "复盘分析能力",
+      "type": "skill",
+      "color": "#FF9800"
+    }
+  ],
+  "edges": [
+    {
+      "source": "围棋_规则理解",
+      "target": "skill_规则学习能力",
+      "label": "培养"
+    },
+    {
+      "source": "skill_规则学习能力",
+      "target": "网络协议_协议规范",
+      "label": "迁移"
+    },
+    {
+      "source": "围棋_domain",
+      "target": "围棋_规则理解",
+      "label": "包含"
+    },
+    {
+      "source": "网络协议_domain",
+      "target": "网络协议_协议规范",
+      "label": "包含"
+    },
+    {
+      "source": "围棋_定式记忆",
+      "target": "skill_流程记忆能力",
+      "label": "培养"
+    },
+    {
+      "source": "skill_流程记忆能力",
+      "target": "网络协议_标准流程",
+      "label": "迁移"
+    },
+    {
+      "source": "围棋_domain",
+      "target": "围棋_定式记忆",
+      "label": "包含"
+    },
+    {
+      "source": "网络协议_domain",
+      "target": "网络协议_标准流程",
+      "label": "包含"
+    },
+    {
+      "source": "围棋_变化图推演",
+      "target": "skill_分支推理能力",
+      "label": "培养"
+    },
+    {
+      "source": "skill_分支推理能力",
+      "target": "网络协议_异常处理",
+      "label": "迁移"
+    },
+    {
+      "source": "围棋_domain",
+      "target": "围棋_变化图推演",
+      "label": "包含"
+    },
+    {
+      "source": "网络协议_domain",
+      "target": "网络协议_异常处理",
+      "label": "包含"
+    },
+    {
+      "source": "围棋_对局复盘",
+      "target": "skill_复盘分析能力",
+      "label": "培养"
+    },
+    {
+      "source": "skill_复盘分析能力",
+      "target": "网络协议_日志分析",
+      "label": "迁移"
+    },
+    {
+      "source": "围棋_domain",
+      "target": "围棋_对局复盘",
+      "label": "包含"
+    },
+    {
+      "source": "网络协议_domain",
+      "target": "网络协议_日志分析",
+      "label": "包含"
+    }
+  ],
+  "generated_at": "2026-06-30T00:26:16.213720"
+}

@@ -1,0 +1,37 @@
+{
+  "pushes": [
+    {
+      "tracking_id": "push-zhuguxia-execution-20260630002615",
+      "dimension": "execution",
+      "severity": "critical",
+      "date": "2026-06-30",
+      "timestamp": "2026-06-30T00:26:15.552510",
+      "file": "/home/admin/lobster-network/.shared/messages/from-hermes/push-zhuguxia-execution-20260630002615.json"
+    },
+    {
+      "tracking_id": "push-zhuguxia-tooling-20260630002615",
+      "dimension": "tooling",
+      "severity": "warning",
+      "date": "2026-06-30",
+      "timestamp": "2026-06-30T00:26:15.553844",
+      "file": "/home/admin/lobster-network/.shared/messages/from-hermes/push-zhuguxia-tooling-20260630002615.json"
+    },
+    {
+      "tracking_id": "push-zhuguxia-retrieval-20260630002615",
+      "dimension": "retrieval",
+      "severity": "warning",
+      "date": "2026-06-30",
+      "timestamp": "2026-06-30T00:26:15.556007",
+      "file": "/home/admin/lobster-network/.shared/messages/from-hermes/push-zhuguxia-retrieval-20260630002615.json"
+    },
+    {
+      "tracking_id": "push-zhuguxia-eq-20260630002615",
+      "dimension": "eq",
+      "severity": "warning",
+      "date": "2026-06-30",
+      "timestamp": "2026-06-30T00:26:15.558084",
+      "file": "/home/admin/lobster-network/.shared/messages/from-hermes/push-zhuguxia-eq-20260630002615.json"
+    }
+  ],
+  "total": 4
+}

@@ -1,0 +1,98 @@
+{
+  "report_id": "nwda-zhuguxia-20260630002615",
+  "node_id": "zhuguxia",
+  "generated_at": "2026-06-30T00:26:15.241110",
+  "experience": {
+    "score": 58.5,
+    "tier": "poor",
+    "label": "待改进",
+    "color": "🟠"
+  },
+  "dimensions": {
+    "understanding": {
+      "name": "理解力",
+      "score": 98.0,
+      "weight": 0.15,
+      "weighted_score": 14.7
+    },
+    "execution": {
+      "name": "执行力",
+      "score": 20,
+      "weight": 0.15,
+      "weighted_score": 3.0
+    },
+    "retrieval": {
+      "name": "检索力",
+      "score": 50,
+      "weight": 0.1,
+      "weighted_score": 5.0
+    },
+    "reasoning": {
+      "name": "推理力",
+      "score": 60.0,
+      "weight": 0.15,
+      "weighted_score": 9.0
+    },
+    "reflection": {
+      "name": "反思力",
+      "score": 65,
+      "weight": 0.15,
+      "weighted_score": 9.8
+    },
+    "tooling": {
+      "name": "工具力",
+      "score": 40,
+      "weight": 0.1,
+      "weighted_score": 4.0
+    },
+    "eq": {
+      "name": "情商",
+      "score": 50,
+      "weight": 0.1,
+      "weighted_score": 5.0
+    },
+    "aq": {
+      "name": "逆商",
+      "score": 80.0,
+      "weight": 0.1,
+      "weighted_score": 8.0
+    }
+  },
+  "bottlenecks": [
+    {
+      "dimension": "execution",
+      "name": "执行力",
+      "score": 20,
+      "severity": "critical",
+      "recommendation": "设置每日训练目标，建立提交习惯"
+    },
+    {
+      "dimension": "tooling",
+      "name": "工具力",
+      "score": 40,
+      "severity": "warning",
+      "recommendation": "学习使用自动化脚本，减少手动操作"
+    },
+    {
+      "dimension": "retrieval",
+      "name": "检索力",
+      "score": 50,
+      "severity": "warning",
+      "recommendation": "学习使用搜索工具，提高信息获取效率"
+    },
+    {
+      "dimension": "eq",
+      "name": "情商",
+      "score": 50,
+      "severity": "warning",
+      "recommendation": "加强团队协作，及时响应CC消息"
+    }
+  ],
+  "training_summary": {
+    "files_analyzed": 0,
+    "total_submissions": 0,
+    "baseline_type": "加速型",
+    "baseline_level": "25级"
+  },
+  "twin_health": "unknown"
+}
