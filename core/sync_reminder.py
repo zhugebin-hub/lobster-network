@@ -20,7 +20,7 @@ from typing import Dict, List, Optional, Tuple
 ACTIVE_NODES = ["xiaochen", "zhuguxia", "qoder", "xiaowei"]
 
 # 训练目录配置
-TRAINING_DIR = "/home/admin/go-training/shared/"
+TRAINING_DIR = "/shared/training/go/"
 
 # from-目录前缀
 FROM_PREFIX = "from-"
@@ -44,7 +44,7 @@ class Config:
             "type": "稳健型",
             "outbox_dir": "/shared/messages/queue/xiaochen/outbox/",
             "from_dir": "/shared/training/go/from-xiaochen/",
-            "training_dir": "/home/admin/go-training/shared/",
+            "training_dir": "/shared/training/go/",
             "wechat_id": "xiaochen_wechat"
         },
         "zhuguxia": {
@@ -53,7 +53,7 @@ class Config:
             "type": "加速型",
             "outbox_dir": "/shared/messages/queue/zhuguxia/outbox/",
             "from_dir": "/shared/training/go/from-zhuguxia/",
-            "training_dir": "/home/admin/go-training/shared/",
+            "training_dir": "/shared/training/go/",
             "wechat_id": "zhuguxia_wechat"
         },
         "qoder": {
@@ -82,12 +82,12 @@ class Config:
     ]
     
     # 共享目录
-    SHARED_DIR = "/home/admin/go-training/shared/"
+    SHARED_DIR = "/shared/training/go/"
     FROM_HERMES_DIR = f"{SHARED_DIR}from-hermes/"
     RESULTS_DIR = f"{SHARED_DIR}results/"
     
     # 日志
-    LOG_FILE = "/home/admin/go-training/shared/sync_reminder.log"
+    LOG_FILE = "/shared/training/go/sync_reminder.log"
 
 
 # ============================================================
