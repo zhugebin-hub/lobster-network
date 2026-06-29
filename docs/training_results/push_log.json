@@ -19,9 +19,10 @@
     "final_status": "commit_local_only"
   },
   "2026-06-29_1030": {
-    "status": "timeout",
-    "error": "Connection timed out after 60s",
-    "commit": "e8f9ea5",
-    "note": "Commit saved locally, will retry next cron"
+    "status": "failed",
+    "github_error": "Connection timed out (port 443)",
+    "gitee_error": "Could not read username (auth issue)",
+    "commit": "cf23c20",
+    "note": "Both pushes failed. Commit saved locally, will retry next cron."
   }
 }
