@@ -37,6 +37,25 @@
         "zhuguxia",
         "xiaochen"
       ]
+    },
+    {
+      "tracking_id": "track-b859d15e",
+      "msg_id": "cc-qoder-20260629223426",
+      "from": "qoder",
+      "targets": [
+        "xiaochen",
+        "zhuguxia"
+      ],
+      "subject": "Day4训练结果提交通知",
+      "category": "training_report",
+      "sent_at": "2026-06-29T22:34:26+08:00",
+      "ack_deadline": "2026-06-30T02:34:26+08:00",
+      "requires_ack": true,
+      "acks_received": {},
+      "acks_pending": [
+        "xiaochen",
+        "zhuguxia"
+      ]
     }
   ],
   "completed": [
