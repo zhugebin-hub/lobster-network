@@ -164,7 +164,7 @@ class NodeDigitalTwin:
                 self.run_once()
             except Exception as e:
                 print(f"循环异常: {e}")
-            time.sleep(300)  # 5分钟
+            time.sleep(1200)  # 20分钟
 
 if __name__ == "__main__":
     node_id = os.environ.get("STUDENT_ID", "zhuguxia")
