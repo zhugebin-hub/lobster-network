@@ -240,8 +240,9 @@ class StudentPoller:
             if training_script.exists():
                 result = subprocess.run(
                     ["python3", str(training_script), f"day{day}"],
-                    capture_output=True,
-                    text=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    universal_newlines=True,
                     timeout=300
                 )
                 if result.returncode == 0:
