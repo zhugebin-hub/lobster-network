@@ -115,7 +115,7 @@ class SSHClient:
             result = subprocess.run(
                 ssh_cmd,
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                text=True,
+                universal_newlines=True,
                 timeout=timeout
             )
             return result.returncode == 0, result.stdout or result.stderr
@@ -237,7 +237,7 @@ class SyncEngine:
             result = subprocess.run(
                 ["git", "log", "--oneline", "-5", "--since=24 hours"],
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                text=True,
+                universal_newlines=True,
                 timeout=10,
                 cwd=local_repo
             )
