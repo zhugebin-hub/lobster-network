@@ -73,6 +73,29 @@
         "zhuguxia",
         "xiaowei"
       ]
+    },
+    {
+      "tracking_id": "track-030dea86",
+      "msg_id": "cc-zhugema-20260629144249",
+      "from": "zhugema",
+      "targets": [
+        "xiaochen",
+        "zhuguxia",
+        "qoder",
+        "xiaowei"
+      ],
+      "subject": "🎯 围棋对局验证赛 - 消息通道测试",
+      "category": "training_report",
+      "sent_at": "2026-06-29T14:42:49.764991+08:00",
+      "ack_deadline": "2026-06-29T18:42:49.765012+08:00",
+      "requires_ack": true,
+      "acks_received": {},
+      "acks_pending": [
+        "xiaochen",
+        "zhuguxia",
+        "qoder",
+        "xiaowei"
+      ]
     }
   ],
   "completed": [
