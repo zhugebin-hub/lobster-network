@@ -37,84 +37,6 @@
         "zhuguxia",
         "xiaochen"
       ]
-    },
-    {
-      "tracking_id": "track-6bb4c21c",
-      "msg_id": "cc-qoder-20260629140439",
-      "from": "qoder",
-      "targets": [
-        "xiaochen",
-        "zhuguxia"
-      ],
-      "subject": "Day3/Day4训练结果提交通知",
-      "category": "training_report",
-      "sent_at": "2026-06-29T14:04:39+08:00",
-      "ack_deadline": "2026-06-29T18:04:39+08:00",
-      "requires_ack": true,
-      "acks_received": {
-        "zhugebin-001": {
-          "timestamp": "2026-06-29T14:55:00.051986+08:00",
-          "status": "acknowledged"
-        }
-      },
-      "acks_pending": [
-        "xiaochen",
-        "zhuguxia"
-      ]
-    },
-    {
-      "tracking_id": "track-625c07ad",
-      "msg_id": "cc-qoder-20260629144039",
-      "from": "qoder",
-      "targets": [
-        "xiaochen",
-        "zhuguxia",
-        "xiaowei"
-      ],
-      "subject": "🎯 围棋对局验证赛 - 消息通道测试",
-      "category": "training_report",
-      "sent_at": "2026-06-29T14:40:39+08:00",
-      "ack_deadline": "2026-06-29T18:40:39+08:00",
-      "requires_ack": true,
-      "acks_received": {
-        "zhugebin-001": {
-          "timestamp": "2026-06-29T14:55:00.053204+08:00",
-          "status": "acknowledged"
-        }
-      },
-      "acks_pending": [
-        "xiaochen",
-        "zhuguxia",
-        "xiaowei"
-      ]
-    },
-    {
-      "tracking_id": "track-030dea86",
-      "msg_id": "cc-zhugema-20260629144249",
-      "from": "zhugema",
-      "targets": [
-        "xiaochen",
-        "zhuguxia",
-        "qoder",
-        "xiaowei"
-      ],
-      "subject": "🎯 围棋对局验证赛 - 消息通道测试",
-      "category": "training_report",
-      "sent_at": "2026-06-29T14:42:49.764991+08:00",
-      "ack_deadline": "2026-06-29T18:42:49.765012+08:00",
-      "requires_ack": true,
-      "acks_received": {
-        "zhugebin-001": {
-          "timestamp": "2026-06-29T14:55:00.054643+08:00",
-          "status": "acknowledged"
-        },
-        "qoder": "2026-06-29T16:35:00+08:00"
-      },
-      "acks_pending": [
-        "xiaochen",
-        "zhuguxia",
-        "xiaowei"
-      ]
     }
   ],
   "completed": [
@@ -418,6 +340,84 @@
       "acks_pending": [],
       "escalated_at": "2026-06-29T00:50:22.692390",
       "escalation_reason": "ACK超时: 3 个节点未确认",
+      "status": "completed"
+    },
+    {
+      "tracking_id": "track-6bb4c21c",
+      "msg_id": "cc-qoder-20260629140439",
+      "from": "qoder",
+      "targets": [
+        "xiaochen",
+        "zhuguxia"
+      ],
+      "subject": "Day3/Day4训练结果提交通知",
+      "category": "training_report",
+      "sent_at": "2026-06-29T14:04:39+08:00",
+      "ack_deadline": "2026-06-29T18:04:39+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "zhugebin-001": {
+          "timestamp": "2026-06-29T14:55:00.051986+08:00",
+          "status": "acknowledged"
+        },
+        "xiaochen": "2026-06-29T16:39:23+08:00",
+        "zhuguxia": "2026-06-29T16:39:23+08:00"
+      },
+      "acks_pending": [],
+      "status": "completed"
+    },
+    {
+      "tracking_id": "track-625c07ad",
+      "msg_id": "cc-qoder-20260629144039",
+      "from": "qoder",
+      "targets": [
+        "xiaochen",
+        "zhuguxia",
+        "xiaowei"
+      ],
+      "subject": "🎯 围棋对局验证赛 - 消息通道测试",
+      "category": "training_report",
+      "sent_at": "2026-06-29T14:40:39+08:00",
+      "ack_deadline": "2026-06-29T18:40:39+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "zhugebin-001": {
+          "timestamp": "2026-06-29T14:55:00.053204+08:00",
+          "status": "acknowledged"
+        },
+        "zhuguxia": "2026-06-29T16:39:23+08:00",
+        "xiaochen": "2026-06-29T16:39:23+08:00",
+        "xiaowei": "2026-06-29T16:39:23+08:00"
+      },
+      "acks_pending": [],
+      "status": "completed"
+    },
+    {
+      "tracking_id": "track-030dea86",
+      "msg_id": "cc-zhugema-20260629144249",
+      "from": "zhugema",
+      "targets": [
+        "xiaochen",
+        "zhuguxia",
+        "qoder",
+        "xiaowei"
+      ],
+      "subject": "🎯 围棋对局验证赛 - 消息通道测试",
+      "category": "training_report",
+      "sent_at": "2026-06-29T14:42:49.764991+08:00",
+      "ack_deadline": "2026-06-29T18:42:49.765012+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "zhugebin-001": {
+          "timestamp": "2026-06-29T14:55:00.054643+08:00",
+          "status": "acknowledged"
+        },
+        "qoder": "2026-06-29T16:35:00+08:00",
+        "zhuguxia": "2026-06-29T16:39:23+08:00",
+        "xiaochen": "2026-06-29T16:39:23+08:00",
+        "xiaowei": "2026-06-29T16:39:23+08:00"
+      },
+      "acks_pending": [],
       "status": "completed"
     }
   ],
