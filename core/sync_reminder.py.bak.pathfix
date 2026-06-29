@@ -43,7 +43,7 @@ class Config:
             "host": "121.43.80.231",
             "type": "稳健型",
             "outbox_dir": "/shared/messages/queue/xiaochen/outbox/",
-            "from_dir": "/shared/training/go/from-xiaochen/",
+            "from_dir": "/home/admin/go-training/shared/from-xiaochen/",
             "training_dir": "/home/admin/go-training/shared/",
             "wechat_id": "xiaochen_wechat"
         },
@@ -52,7 +52,7 @@ class Config:
             "host": "60.205.139.51",
             "type": "加速型",
             "outbox_dir": "/shared/messages/queue/zhuguxia/outbox/",
-            "from_dir": "/shared/training/go/from-zhuguxia/",
+            "from_dir": "/home/admin/go-training/shared/from-zhuguxia/",
             "training_dir": "/home/admin/go-training/shared/",
             "wechat_id": "zhuguxia_wechat"
         },
