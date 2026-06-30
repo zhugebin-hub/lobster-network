@@ -1,0 +1,60 @@
+[
+  {
+    "step": 1,
+    "source_skill": "官子计算",
+    "target_skill": "止盈止损",
+    "transfer_skill": "精确计算能力",
+    "difficulty": "低",
+    "estimated_hours": 2,
+    "description": "官子的精确计算直接应用于止盈止损点位确定",
+    "prerequisites": []
+  },
+  {
+    "step": 2,
+    "source_skill": "棋型识别",
+    "target_skill": "K线模式识别",
+    "transfer_skill": "模式匹配能力",
+    "difficulty": "中",
+    "estimated_hours": 4,
+    "description": "围棋棋型识别训练的模式匹配能力可直接迁移到K线形态识别",
+    "prerequisites": [
+      1
+    ]
+  },
+  {
+    "step": 3,
+    "source_skill": "中盘战斗",
+    "target_skill": "短线交易",
+    "transfer_skill": "快速决策能力",
+    "difficulty": "中",
+    "estimated_hours": 4,
+    "description": "中盘战斗的即时判断能力适用于短线交易",
+    "prerequisites": [
+      1
+    ]
+  },
+  {
+    "step": 4,
+    "source_skill": "布局战略",
+    "target_skill": "仓位管理",
+    "transfer_skill": "全局规划能力",
+    "difficulty": "高",
+    "estimated_hours": 8,
+    "description": "布局的全局观帮助理解仓位的整体配置",
+    "prerequisites": [
+      1
+    ]
+  },
+  {
+    "step": 5,
+    "source_skill": "厚薄判断",
+    "target_skill": "风险评估",
+    "transfer_skill": "形势判断能力",
+    "difficulty": "高",
+    "estimated_hours": 8,
+    "description": "厚薄判断培养的形势感知能力适用于风险评估",
+    "prerequisites": [
+      1
+    ]
+  }
+]

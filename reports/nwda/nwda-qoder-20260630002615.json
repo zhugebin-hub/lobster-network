@@ -1,0 +1,84 @@
+{
+  "report_id": "nwda-qoder-20260630002615",
+  "node_id": "qoder",
+  "generated_at": "2026-06-30T00:26:15.347186",
+  "experience": {
+    "score": 65.3,
+    "tier": "fair",
+    "label": "一般",
+    "color": "🟡"
+  },
+  "dimensions": {
+    "understanding": {
+      "name": "理解力",
+      "score": 95.0,
+      "weight": 0.15,
+      "weighted_score": 14.2
+    },
+    "execution": {
+      "name": "执行力",
+      "score": 20,
+      "weight": 0.15,
+      "weighted_score": 3.0
+    },
+    "retrieval": {
+      "name": "检索力",
+      "score": 70,
+      "weight": 0.1,
+      "weighted_score": 7.0
+    },
+    "reasoning": {
+      "name": "推理力",
+      "score": 65.0,
+      "weight": 0.15,
+      "weighted_score": 9.8
+    },
+    "reflection": {
+      "name": "反思力",
+      "score": 65,
+      "weight": 0.15,
+      "weighted_score": 9.8
+    },
+    "tooling": {
+      "name": "工具力",
+      "score": 80,
+      "weight": 0.1,
+      "weighted_score": 8.0
+    },
+    "eq": {
+      "name": "情商",
+      "score": 50,
+      "weight": 0.1,
+      "weighted_score": 5.0
+    },
+    "aq": {
+      "name": "逆商",
+      "score": 86.0,
+      "weight": 0.1,
+      "weighted_score": 8.6
+    }
+  },
+  "bottlenecks": [
+    {
+      "dimension": "execution",
+      "name": "执行力",
+      "score": 20,
+      "severity": "critical",
+      "recommendation": "设置每日训练目标，建立提交习惯"
+    },
+    {
+      "dimension": "eq",
+      "name": "情商",
+      "score": 50,
+      "severity": "warning",
+      "recommendation": "加强团队协作，及时响应CC消息"
+    }
+  ],
+  "training_summary": {
+    "files_analyzed": 0,
+    "total_submissions": 0,
+    "baseline_type": "实战型",
+    "baseline_level": "~25级"
+  },
+  "twin_health": "unknown"
+}

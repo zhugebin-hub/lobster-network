@@ -26,7 +26,7 @@ def submit_result(student_id, day, result_file=None):
         cmd = ["scp", str(result_path), f"{hermes_user}@{hermes_host}:{results_dir}/{dest_name}"]
         
         print(f"📤 提交文件: {result_path.name} → {dest_name}")
-        result = subprocess.run(cmd, capture_output=True, text=True)
+        result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
         
         if result.returncode == 0:
             print(f"✅ 提交成功！")
@@ -57,7 +57,7 @@ def submit_result(student_id, day, result_file=None):
         cmd = ["scp", str(result_file), f"{hermes_user}@{hermes_host}:{results_dir}/{dest_name}"]
         
         print(f"📤 提交默认结果: {dest_name}")
-        result = subprocess.run(cmd, capture_output=True, text=True)
+        result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
         
         if result.returncode == 0:
             print(f"✅ 提交成功！")

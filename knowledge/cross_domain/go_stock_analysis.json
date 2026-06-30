@@ -1,0 +1,52 @@
+{
+  "domain_pair": "go_stock",
+  "name": "围棋→金融",
+  "source": "围棋",
+  "target": "金融预测",
+  "total_mappings": 5,
+  "difficulty_distribution": {
+    "低": 1,
+    "中": 2,
+    "高": 2
+  },
+  "average_difficulty": 2.2,
+  "feasibility": "中",
+  "mappings": [
+    {
+      "go_concept": "棋型识别",
+      "stock_concept": "K线模式识别",
+      "transfer_skill": "模式匹配能力",
+      "difficulty": "中",
+      "description": "围棋棋型识别训练的模式匹配能力可直接迁移到K线形态识别"
+    },
+    {
+      "go_concept": "布局战略",
+      "stock_concept": "仓位管理",
+      "transfer_skill": "全局规划能力",
+      "difficulty": "高",
+      "description": "布局的全局观帮助理解仓位的整体配置"
+    },
+    {
+      "go_concept": "中盘战斗",
+      "stock_concept": "短线交易",
+      "transfer_skill": "快速决策能力",
+      "difficulty": "中",
+      "description": "中盘战斗的即时判断能力适用于短线交易"
+    },
+    {
+      "go_concept": "官子计算",
+      "stock_concept": "止盈止损",
+      "transfer_skill": "精确计算能力",
+      "difficulty": "低",
+      "description": "官子的精确计算直接应用于止盈止损点位确定"
+    },
+    {
+      "go_concept": "厚薄判断",
+      "stock_concept": "风险评估",
+      "transfer_skill": "形势判断能力",
+      "difficulty": "高",
+      "description": "厚薄判断培养的形势感知能力适用于风险评估"
+    }
+  ],
+  "analyzed_at": "2026-06-30T00:26:16.098855"
+}

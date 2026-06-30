@@ -1,0 +1,210 @@
+{
+  "domain_pair": "go_stock",
+  "nodes": [
+    {
+      "id": "围棋_domain",
+      "label": "围棋",
+      "type": "domain",
+      "color": "#4CAF50"
+    },
+    {
+      "id": "金融预测_domain",
+      "label": "金融预测",
+      "type": "domain",
+      "color": "#2196F3"
+    },
+    {
+      "id": "围棋_棋型识别",
+      "label": "棋型识别",
+      "type": "concept",
+      "domain": "围棋"
+    },
+    {
+      "id": "金融预测_K线模式识别",
+      "label": "K线模式识别",
+      "type": "concept",
+      "domain": "金融预测"
+    },
+    {
+      "id": "skill_模式匹配能力",
+      "label": "模式匹配能力",
+      "type": "skill",
+      "color": "#FF9800"
+    },
+    {
+      "id": "围棋_布局战略",
+      "label": "布局战略",
+      "type": "concept",
+      "domain": "围棋"
+    },
+    {
+      "id": "金融预测_仓位管理",
+      "label": "仓位管理",
+      "type": "concept",
+      "domain": "金融预测"
+    },
+    {
+      "id": "skill_全局规划能力",
+      "label": "全局规划能力",
+      "type": "skill",
+      "color": "#FF9800"
+    },
+    {
+      "id": "围棋_中盘战斗",
+      "label": "中盘战斗",
+      "type": "concept",
+      "domain": "围棋"
+    },
+    {
+      "id": "金融预测_短线交易",
+      "label": "短线交易",
+      "type": "concept",
+      "domain": "金融预测"
+    },
+    {
+      "id": "skill_快速决策能力",
+      "label": "快速决策能力",
+      "type": "skill",
+      "color": "#FF9800"
+    },
+    {
+      "id": "围棋_官子计算",
+      "label": "官子计算",
+      "type": "concept",
+      "domain": "围棋"
+    },
+    {
+      "id": "金融预测_止盈止损",
+      "label": "止盈止损",
+      "type": "concept",
+      "domain": "金融预测"
+    },
+    {
+      "id": "skill_精确计算能力",
+      "label": "精确计算能力",
+      "type": "skill",
+      "color": "#FF9800"
+    },
+    {
+      "id": "围棋_厚薄判断",
+      "label": "厚薄判断",
+      "type": "concept",
+      "domain": "围棋"
+    },
+    {
+      "id": "金融预测_风险评估",
+      "label": "风险评估",
+      "type": "concept",
+      "domain": "金融预测"
+    },
+    {
+      "id": "skill_形势判断能力",
+      "label": "形势判断能力",
+      "type": "skill",
+      "color": "#FF9800"
+    }
+  ],
+  "edges": [
+    {
+      "source": "围棋_棋型识别",
+      "target": "skill_模式匹配能力",
+      "label": "培养"
+    },
+    {
+      "source": "skill_模式匹配能力",
+      "target": "金融预测_K线模式识别",
+      "label": "迁移"
+    },
+    {
+      "source": "围棋_domain",
+      "target": "围棋_棋型识别",
+      "label": "包含"
+    },
+    {
+      "source": "金融预测_domain",
+      "target": "金融预测_K线模式识别",
+      "label": "包含"
+    },
+    {
+      "source": "围棋_布局战略",
+      "target": "skill_全局规划能力",
+      "label": "培养"
+    },
+    {
+      "source": "skill_全局规划能力",
+      "target": "金融预测_仓位管理",
+      "label": "迁移"
+    },
+    {
+      "source": "围棋_domain",
+      "target": "围棋_布局战略",
+      "label": "包含"
+    },
+    {
+      "source": "金融预测_domain",
+      "target": "金融预测_仓位管理",
+      "label": "包含"
+    },
+    {
+      "source": "围棋_中盘战斗",
+      "target": "skill_快速决策能力",
+      "label": "培养"
+    },
+    {
+      "source": "skill_快速决策能力",
+      "target": "金融预测_短线交易",
+      "label": "迁移"
+    },
+    {
+      "source": "围棋_domain",
+      "target": "围棋_中盘战斗",
+      "label": "包含"
+    },
+    {
+      "source": "金融预测_domain",
+      "target": "金融预测_短线交易",
+      "label": "包含"
+    },
+    {
+      "source": "围棋_官子计算",
+      "target": "skill_精确计算能力",
+      "label": "培养"
+    },
+    {
+      "source": "skill_精确计算能力",
+      "target": "金融预测_止盈止损",
+      "label": "迁移"
+    },
+    {
+      "source": "围棋_domain",
+      "target": "围棋_官子计算",
+      "label": "包含"
+    },
+    {
+      "source": "金融预测_domain",
+      "target": "金融预测_止盈止损",
+      "label": "包含"
+    },
+    {
+      "source": "围棋_厚薄判断",
+      "target": "skill_形势判断能力",
+      "label": "培养"
+    },
+    {
+      "source": "skill_形势判断能力",
+      "target": "金融预测_风险评估",
+      "label": "迁移"
+    },
+    {
+      "source": "围棋_domain",
+      "target": "围棋_厚薄判断",
+      "label": "包含"
+    },
+    {
+      "source": "金融预测_domain",
+      "target": "金融预测_风险评估",
+      "label": "包含"
+    }
+  ],
+  "generated_at": "2026-06-30T00:26:16.099142"
+}

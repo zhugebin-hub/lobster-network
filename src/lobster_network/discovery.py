@@ -10,7 +10,7 @@
 4. 协同学习 - 多个节点联合完成学习任务
 """
 
-from __future__ import annotations
+# from __future__ import annotations  # Python 3.6 不支持
 
 import json
 import time

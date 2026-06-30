@@ -9,7 +9,7 @@ Clawvard School 学习集成模块
 5. 实现持续学习循环
 """
 
-from __future__ import annotations
+# from __future__ import annotations  # Python 3.6 不支持
 
 import json
 import time

@@ -1,0 +1,48 @@
+[
+  {
+    "step": 1,
+    "source_skill": "规则理解",
+    "target_skill": "协议规范",
+    "transfer_skill": "规则学习能力",
+    "difficulty": "低",
+    "estimated_hours": 2,
+    "description": "围棋规则学习培养的规则理解能力适用于协议规范学习",
+    "prerequisites": []
+  },
+  {
+    "step": 2,
+    "source_skill": "定式记忆",
+    "target_skill": "标准流程",
+    "transfer_skill": "流程记忆能力",
+    "difficulty": "中",
+    "estimated_hours": 4,
+    "description": "定式记忆训练的流程记忆能力适用于协议标准流程",
+    "prerequisites": [
+      1
+    ]
+  },
+  {
+    "step": 3,
+    "source_skill": "对局复盘",
+    "target_skill": "日志分析",
+    "transfer_skill": "复盘分析能力",
+    "difficulty": "中",
+    "estimated_hours": 4,
+    "description": "对局复盘培养的反思能力适用于协议日志分析",
+    "prerequisites": [
+      1
+    ]
+  },
+  {
+    "step": 4,
+    "source_skill": "变化图推演",
+    "target_skill": "异常处理",
+    "transfer_skill": "分支推理能力",
+    "difficulty": "高",
+    "estimated_hours": 8,
+    "description": "变化图推演培养的分支推理能力适用于协议异常处理",
+    "prerequisites": [
+      1
+    ]
+  }
+]

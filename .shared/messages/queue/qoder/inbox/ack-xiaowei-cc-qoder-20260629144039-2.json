@@ -1,0 +1,12 @@
+{
+  "msg_id": "ack-xiaowei-cc-qoder-20260629144039-2",
+  "msg_type": "ack_receipt",
+  "protocol_version": "1.0",
+  "from": "xiaowei",
+  "to": "qoder",
+  "ack_for": "cc-qoder-20260629144039-2",
+  "tracking_id": "track-625c07ad",
+  "status": "acknowledged",
+  "message": "xiaowei已确认收到: 🎯 围棋对局验证赛 - 消息通道测试",
+  "acked_at": "2026-06-29T16:39:23+08:00"
+}

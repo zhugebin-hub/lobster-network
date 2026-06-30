@@ -1,0 +1,12 @@
+{
+  "msg_id": "ack-zhuguxia-cc-zhugema-20260629144249-1",
+  "msg_type": "ack_receipt",
+  "protocol_version": "1.0",
+  "from": "zhuguxia",
+  "to": "zhugema",
+  "ack_for": "cc-zhugema-20260629144249-1",
+  "tracking_id": "track-030dea86",
+  "status": "acknowledged",
+  "message": "zhuguxia已确认收到: 🎯 围棋对局验证赛 - 消息通道测试",
+  "acked_at": "2026-06-29T16:39:23+08:00"
+}

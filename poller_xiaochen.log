@@ -1,0 +1,117 @@
+[2026-06-29T23:57:06.338169] [INFO] === 轮询开始 [xiaochen] ===
+[2026-06-29T23:57:06.338397] [INFO] 检查新消息: /home/admin/lobster-network/.shared/messages/from-hermes
+[2026-06-29T23:57:06.340555] [INFO] 发现 33 条新消息
+[2026-06-29T23:57:06.340967] [INFO] 处理消息: [cc_ack_reminder] ⏰ ACK提醒: 诸葛马V4.0同步通知待确认
+[2026-06-29T23:57:06.341075] [INFO] 通用消息已接收: ack_reminder_v4.0_xiaochen.json
+[2026-06-29T23:57:06.341733] [INFO] ACK已发送: track-7b17c84d -> ack_track-7b17c84d_xiaochen_20260629235706.json
+[2026-06-29T23:57:06.341877] [INFO] 处理消息: [cc_ack_reminder] ⏰ ACK提醒: 诸葛马V4.0同步通知待确认
+[2026-06-29T23:57:06.341904] [INFO] 通用消息已接收: ack_reminder_v4.0_zhuguxia.json
+[2026-06-29T23:57:06.342393] [INFO] ACK已发送: track-7b17c84d -> ack_track-7b17c84d_xiaochen_20260629235706.json
+[2026-06-29T23:57:06.342906] [INFO] 处理消息: [config_update] 无主题
+[2026-06-29T23:57:06.342969] [INFO] 通用消息已接收: cc-ack-deploy-xiaochen.json
+[2026-06-29T23:57:06.343317] [INFO] 处理消息: [config_update] 无主题
+[2026-06-29T23:57:06.343360] [INFO] 通用消息已接收: cc-ack-deploy-zhuguxia.json
+[2026-06-29T23:57:06.343449] [INFO] 处理消息: [status_report] 无主题
+[2026-06-29T23:57:06.343470] [INFO] 通用消息已接收: cc-ack-status-report.json
+[2026-06-29T23:57:06.343625] [INFO] 处理消息: [cc_ack_status] 无主题
+[2026-06-29T23:57:06.343775] [INFO] 通用消息已接收: cc_ack_status_20260629.json
+[2026-06-29T23:57:06.344305] [INFO] 处理消息: [coach_feedback] 无主题
+[2026-06-29T23:57:06.344359] [INFO] 通用消息已接收: coach_feedback_xiaochen_20260628.json
+[2026-06-29T23:57:06.344450] [INFO] 处理消息: [task_notification] 🦞 Day3训练任务 - 请立即提交
+[2026-06-29T23:57:06.344471] [INFO] 通用消息已接收: day3_notification_xiaochen.json
+[2026-06-29T23:57:06.344925] [INFO] 处理消息: [task_notification] 🦞 Day3训练任务 - 请立即提交
+[2026-06-29T23:57:06.345047] [INFO] 通用消息已接收: day3_notification_zhuguxia.json
+[2026-06-29T23:57:06.345591] [ERROR] 解析消息失败 day3_redistribute_qoder.json: Invalid \escape: line 20 column 105 (char 549)
+[2026-06-29T23:57:06.345766] [ERROR] 解析消息失败 day3_redistribute_xiaochen.json: Invalid \escape: line 20 column 108 (char 560)
+[2026-06-29T23:57:06.345856] [ERROR] 解析消息失败 day3_redistribute_zhuguxia.json: Invalid \escape: line 20 column 108 (char 568)
+[2026-06-29T23:57:06.346263] [INFO] 处理消息: [config_update] 无主题
+[2026-06-29T23:57:06.346401] [INFO] 通用消息已接收: dual-push-config-xiaochen.json
+[2026-06-29T23:57:06.346559] [INFO] 处理消息: [config_update] 无主题
+[2026-06-29T23:57:06.346585] [INFO] 通用消息已接收: dual-push-config-zhuguxia.json
+[2026-06-29T23:57:06.346707] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:57:06.346886] [INFO] 通用消息已接收: github_reminder_qoder_1782711001.json
+[2026-06-29T23:57:06.346960] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:57:06.346979] [INFO] 通用消息已接收: github_reminder_qoder_1782720004.json
+[2026-06-29T23:57:06.347027] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:57:06.347044] [INFO] 通用消息已接收: github_reminder_qoder_1782734406.json
+[2026-06-29T23:57:06.347112] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:57:06.347132] [INFO] 通用消息已接收: github_reminder_xiaowei_1782711001.json
+[2026-06-29T23:57:06.347183] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:57:06.347203] [INFO] 通用消息已接收: github_reminder_xiaowei_1782720004.json
+[2026-06-29T23:57:06.347300] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:57:06.347406] [INFO] 通用消息已接收: github_reminder_xiaowei_1782734406.json
+[2026-06-29T23:57:06.347483] [INFO] 处理消息: [go_match] 小龙虾网络围棋对局验证赛
+[2026-06-29T23:57:06.347507] [INFO] 收到对局通知: unknown vs unknown, 截止: 2026-06-29T18:39:24+08:00
+[2026-06-29T23:58:09.695793] [INFO] === 轮询开始 [xiaochen] ===
+[2026-06-29T23:58:09.695960] [INFO] 检查新消息: /home/admin/lobster-network/.shared/messages/from-hermes
+[2026-06-29T23:58:09.697626] [INFO] 发现 33 条新消息
+[2026-06-29T23:58:09.697917] [INFO] 处理消息: [cc_ack_reminder] ⏰ ACK提醒: 诸葛马V4.0同步通知待确认
+[2026-06-29T23:58:09.697957] [INFO] 通用消息已接收: ack_reminder_v4.0_xiaochen.json
+[2026-06-29T23:58:09.698209] [INFO] ACK已发送: track-7b17c84d -> ack_track-7b17c84d_xiaochen_20260629235809.json
+[2026-06-29T23:58:09.698323] [INFO] 处理消息: [cc_ack_reminder] ⏰ ACK提醒: 诸葛马V4.0同步通知待确认
+[2026-06-29T23:58:09.698347] [INFO] 通用消息已接收: ack_reminder_v4.0_zhuguxia.json
+[2026-06-29T23:58:09.698781] [INFO] ACK已发送: track-7b17c84d -> ack_track-7b17c84d_xiaochen_20260629235809.json
+[2026-06-29T23:58:09.699316] [ERROR] 解析消息失败 broken_day3_redistribute_qoder.json: Invalid \escape: line 20 column 105 (char 549)
+[2026-06-29T23:58:09.699468] [WARN] 已备份到: backup_broken_day3_redistribute_qoder.json
+[2026-06-29T23:58:09.699622] [ERROR] 解析消息失败 broken_day3_redistribute_xiaochen.json: Invalid \escape: line 20 column 108 (char 560)
+[2026-06-29T23:58:09.699823] [WARN] 已备份到: backup_broken_day3_redistribute_xiaochen.json
+[2026-06-29T23:58:09.699935] [ERROR] 解析消息失败 broken_day3_redistribute_zhuguxia.json: Invalid \escape: line 20 column 108 (char 568)
+[2026-06-29T23:58:09.700000] [WARN] 已备份到: backup_broken_day3_redistribute_zhuguxia.json
+[2026-06-29T23:58:09.700131] [INFO] 处理消息: [config_update] 无主题
+[2026-06-29T23:58:09.700182] [INFO] 通用消息已接收: cc-ack-deploy-xiaochen.json
+[2026-06-29T23:58:09.700356] [INFO] 处理消息: [config_update] 无主题
+[2026-06-29T23:58:09.700391] [INFO] 通用消息已接收: cc-ack-deploy-zhuguxia.json
+[2026-06-29T23:58:09.700469] [INFO] 处理消息: [status_report] 无主题
+[2026-06-29T23:58:09.700490] [INFO] 通用消息已接收: cc-ack-status-report.json
+[2026-06-29T23:58:09.700572] [INFO] 处理消息: [cc_ack_status] 无主题
+[2026-06-29T23:58:09.700593] [INFO] 通用消息已接收: cc_ack_status_20260629.json
+[2026-06-29T23:58:09.700719] [INFO] 处理消息: [coach_feedback] 无主题
+[2026-06-29T23:58:09.700751] [INFO] 通用消息已接收: coach_feedback_xiaochen_20260628.json
+[2026-06-29T23:58:09.700829] [INFO] 处理消息: [task_notification] 🦞 Day3训练任务 - 请立即提交
+[2026-06-29T23:58:09.700850] [INFO] 通用消息已接收: day3_notification_xiaochen.json
+[2026-06-29T23:58:09.700908] [INFO] 处理消息: [task_notification] 🦞 Day3训练任务 - 请立即提交
+[2026-06-29T23:58:09.700927] [INFO] 通用消息已接收: day3_notification_zhuguxia.json
+[2026-06-29T23:58:09.700985] [INFO] 处理消息: [config_update] 无主题
+[2026-06-29T23:58:09.701003] [INFO] 通用消息已接收: dual-push-config-xiaochen.json
+[2026-06-29T23:58:09.701057] [INFO] 处理消息: [config_update] 无主题
+[2026-06-29T23:58:09.701075] [INFO] 通用消息已接收: dual-push-config-zhuguxia.json
+[2026-06-29T23:58:09.701124] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:58:09.701142] [INFO] 通用消息已接收: github_reminder_qoder_1782711001.json
+[2026-06-29T23:58:09.701188] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:58:09.701205] [INFO] 通用消息已接收: github_reminder_qoder_1782720004.json
+[2026-06-29T23:58:09.701250] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:58:09.701266] [INFO] 通用消息已接收: github_reminder_qoder_1782734406.json
+[2026-06-29T23:58:09.701336] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:58:09.701353] [INFO] 通用消息已接收: github_reminder_xiaowei_1782711001.json
+[2026-06-29T23:58:09.701398] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:58:09.701415] [INFO] 通用消息已接收: github_reminder_xiaowei_1782720004.json
+[2026-06-29T23:58:09.701458] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:58:09.701475] [INFO] 通用消息已接收: github_reminder_xiaowei_1782734406.json
+[2026-06-29T23:58:09.701583] [INFO] 处理消息: [go_match] 小龙虾网络围棋对局验证赛
+[2026-06-29T23:58:09.701608] [INFO] 收到对局通知: unknown vs unknown, 截止: 2026-06-29T18:39:24+08:00
+[2026-06-29T23:58:09.702122] [INFO] 处理消息: [go_match] 小龙虾网络围棋对局验证赛
+[2026-06-29T23:58:09.702172] [INFO] 收到对局通知: unknown vs unknown, 截止: 2026-06-29T18:42:49+08:00
+[2026-06-29T23:58:09.703255] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:58:09.703335] [INFO] 通用消息已接收: reminder_xiaochen_1782711001.json
+[2026-06-29T23:58:09.703474] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:58:09.703499] [INFO] 通用消息已接收: reminder_xiaochen_1782720004.json
+[2026-06-29T23:58:09.703576] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:58:09.703595] [INFO] 通用消息已接收: reminder_xiaochen_1782734406.json
+[2026-06-29T23:58:09.703642] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:58:09.703723] [INFO] 通用消息已接收: reminder_zhuguxia_1782711001.json
+[2026-06-29T23:58:09.703834] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:58:09.703868] [INFO] 通用消息已接收: reminder_zhuguxia_1782720004.json
+[2026-06-29T23:58:09.703934] [INFO] 处理消息: [reminder] 无主题
+[2026-06-29T23:58:09.703961] [INFO] 通用消息已接收: reminder_zhuguxia_1782734406.json
+[2026-06-29T23:58:09.704022] [INFO] 处理消息: [config_update] 无主题
+[2026-06-29T23:58:09.704041] [INFO] 通用消息已接收: ssh-auth-config-xiaochen.json
+[2026-06-29T23:58:09.704095] [INFO] 处理消息: [config_update] 无主题
+[2026-06-29T23:58:09.704121] [INFO] 通用消息已接收: ssh-auth-config-zhuguxia.json
+[2026-06-29T23:58:09.704215] [INFO] 处理消息: [deploy_report] 无主题
+[2026-06-29T23:58:09.704246] [INFO] 通用消息已接收: sync-v4-deploy-report.json
+[2026-06-29T23:58:09.704305] [INFO] 处理消息: [deploy_complete] 无主题
+[2026-06-29T23:58:09.704323] [INFO] 通用消息已接收: v4-deploy-complete.json
+[2026-06-29T23:58:09.704374] [INFO] 处理消息: [proxy_config] 无主题
+[2026-06-29T23:58:09.704392] [INFO] 通用消息已接收: xiaowei_proxy_config.json
+[2026-06-29T23:58:09.705323] [INFO] 清理了 5 个旧消息文件
+[2026-06-29T23:58:09.705719] [INFO] === 轮询完成: 检查=33 新=33 处理=30 ACK=2 错误=3 ===

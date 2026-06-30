@@ -1,0 +1,31 @@
+{
+  "domain_pair": "stock_protocol",
+  "name": "金融→协议",
+  "source": "金融预测",
+  "target": "网络协议",
+  "total_mappings": 2,
+  "difficulty_distribution": {
+    "低": 0,
+    "中": 1,
+    "高": 1
+  },
+  "average_difficulty": 2.5,
+  "feasibility": "中",
+  "mappings": [
+    {
+      "stock_concept": "数据清洗",
+      "protocol_concept": "报文解析",
+      "transfer_skill": "数据处理能力",
+      "difficulty": "中",
+      "description": "金融数据清洗培养的规范化处理能力适用于报文解析"
+    },
+    {
+      "stock_concept": "趋势预测",
+      "protocol_concept": "流量预测",
+      "transfer_skill": "时间序列分析",
+      "difficulty": "高",
+      "description": "金融趋势预测的时间序列分析方法可迁移到网络流量预测"
+    }
+  ],
+  "analyzed_at": "2026-06-30T00:26:16.308242"
+}
