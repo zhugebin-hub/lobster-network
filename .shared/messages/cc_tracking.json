@@ -1,25 +1,5 @@
 {
-  "pending": [
-    {
-      "tracking_id": "track-b859d15e",
-      "msg_id": "cc-qoder-20260629223426",
-      "from": "qoder",
-      "targets": [
-        "xiaochen",
-        "zhuguxia"
-      ],
-      "subject": "Day4训练结果提交通知",
-      "category": "training_report",
-      "sent_at": "2026-06-29T22:34:26+08:00",
-      "ack_deadline": "2026-06-30T02:34:26+08:00",
-      "requires_ack": true,
-      "acks_received": {},
-      "acks_pending": [
-        "xiaochen",
-        "zhuguxia"
-      ]
-    }
-  ],
+  "pending": [],
   "completed": [
     {
       "tracking_id": "track-9f14080a",
@@ -397,6 +377,26 @@
         "zhuguxia": "2026-06-29T16:39:23+08:00",
         "xiaochen": "2026-06-29T16:39:23+08:00",
         "xiaowei": "2026-06-29T16:39:23+08:00"
+      },
+      "acks_pending": [],
+      "status": "completed"
+    },
+    {
+      "tracking_id": "track-b859d15e",
+      "msg_id": "cc-qoder-20260629223426",
+      "from": "qoder",
+      "targets": [
+        "xiaochen",
+        "zhuguxia"
+      ],
+      "subject": "Day4训练结果提交通知",
+      "category": "training_report",
+      "sent_at": "2026-06-29T22:34:26+08:00",
+      "ack_deadline": "2026-06-30T02:34:26+08:00",
+      "requires_ack": true,
+      "acks_received": {
+        "xiaochen": "2026-06-30T10:02:48+08:00",
+        "zhuguxia": "2026-06-30T10:02:48+08:00"
       },
       "acks_pending": [],
       "status": "completed"
