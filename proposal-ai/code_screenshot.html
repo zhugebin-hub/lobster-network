@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1e1e1e;
+    font-family: 'Noto Sans Mono CJK SC', 'Noto Sans Mono', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    width: 720px;
+    padding: 20px 24px;
+    color: #d4d4d4;
+  }
+  .header {
+    background: #2d2d2d;
+    color: #9cdcfe;
+    padding: 6px 12px;
+    border-radius: 6px 6px 0 0;
+    font-size: 12px;
+    border-bottom: 1px solid #444;
+    margin-bottom: 0;
+  }
+  pre {
+    background: #1e1e1e;
+    padding: 16px;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+    counter-reset: line;
+  }
+  .line {
+    display: flex;
+    min-height: 1.6em;
+  }
+  .ln {
+    color: #858585;
+    min-width: 32px;
+    text-align: right;
+    margin-right: 16px;
+    user-select: none;
+    flex-shrink: 0;
+  }
+  .code { flex: 1; white-space: pre; }
+  /* 语法高亮 */
+  .kw { color: #569cd6; } /* keyword: import/export/function/const/return/new/async/await/as */
+  .fn { color: #dcdcaa; } /* function name */
+  .ty { color: #4ec9b0; } /* type */
+  .st { color: #ce9178; } /* string */
+  .nu { color: #b5cea8; } /* number */
+  .cm { color: #6a9955; } /* comment */
+  .op { color: #d4d4d4; } /* operator */
+  .pr { color: #9cdcfe; } /* property/param */
+  .bo { color: #569cd6; } /* boolean true/false */
+</style>
+</head>
+<body>
+<div class="header">server/docxGenerator.ts — 核心导出函数</div>
+<pre id="code"></pre>
+<script>
+const lines = [
+  ['<span class="kw">import</span> {'],
+  ['  Document, Packer, Paragraph, TextRun,'],
+  ['  AlignmentType, Table, TableRow, TableCell,'],
+  ['  WidthType, BorderStyle, ShadingType,'],
+  ['  VerticalMergeType, PageBreak,'],
+  ['} <span class="kw">from</span> <span class="st">"docx"</span>;'],
+  [''],
+  ['<span class="cm">// ===== 主导出函数 =====</span>'],
+  ['<span class="kw">export async function</span> <span class="fn">generateDocxBuffer</span>('],
+  ['  proposal: <span class="ty">ProposalInfo</span>,'],
+  ['  sections: <span class="ty">SectionData</span>[]'],
+  ['): <span class="ty">Promise</span>&lt;<span class="ty">Buffer</span>&gt; {'],
+  ['  <span class="kw">const</span> doc = <span class="kw">new</span> <span class="fn">Document</span>({'],
+  ['    sections: [{'],
+  ['      properties: {'],
+  ['        page: { margin: { top: <span class="nu">1440</span>, right: <span class="nu">1080</span>,'],
+  ['                          bottom: <span class="nu">1440</span>, left: <span class="nu">1440</span> } },'],
+  ['      },'],
+  ['      children: ['],
+  ['        <span class="cm">// 第1页：封面</span>'],
+  ['        ...<span class="fn">buildCoverPage</span>(proposal, piName),'],
+  ['        <span class="cm">// 第2页：填报说明</span>'],
+  ['        ...<span class="fn">buildFillingInstructions</span>(),'],
+  ['        <span class="cm">// 第3页：项目基本信息表（含合并单元格）</span>'],
+  ['        ...<span class="fn">buildBasicInfoTable</span>(proposal, piName, piEmail, piPhone),'],
+  ['        <span class="cm">// 第4页：申报项目简介</span>'],
+  ['        ...<span class="fn">buildProjectSummary</span>(proposal),'],
+  ['        <span class="cm">// 正文各已确认章节</span>'],
+  ['        ...<span class="fn">buildBodySections</span>(sections),'],
+  ['      ],'],
+  ['    }],'],
+  ['  });'],
+  ['  <span class="kw">const</span> buffer = <span class="kw">await</span> Packer.<span class="fn">toBuffer</span>(doc);'],
+  ['  <span class="kw">return</span> buffer <span class="kw">as</span> <span class="ty">Buffer</span>;'],
+  ['}'],
+  [''],
+  ['<span class="cm">// ===== 封面页构造 =====</span>'],
+  ['<span class="kw">function</span> <span class="fn">buildCoverPage</span>('],
+  ['  proposal: <span class="ty">ProposalInfo</span>, piName: <span class="ty">string</span>'],
+  ['): <span class="ty">Paragraph</span>[] {'],
+  ['  <span class="kw">return</span> ['],
+  ['    <span class="fn">para</span>([<span class="fn">txt</span>(<span class="st">"申报编号："</span>, { bold: <span class="bo">true</span>, size: <span class="nu">24</span> })]),'],
+  ['    <span class="cm">// 大标题（居中，黑体44号）</span>'],
+  ['    <span class="fn">para</span>([<span class="fn">txt</span>(<span class="st">"国家重点研发计划"</span>,'],
+  ['              { size: <span class="nu">44</span>, bold: <span class="bo">true</span>, font: <span class="st">"黑体"</span> })],'],
+  ['         { align: AlignmentType.CENTER }),'],
+  ['    <span class="fn">para</span>([<span class="fn">txt</span>(<span class="st">"项目申报书"</span>,'],
+  ['              { size: <span class="nu">44</span>, bold: <span class="bo">true</span>, font: <span class="st">"黑体"</span> })],'],
+  ['         { align: AlignmentType.CENTER, spaceAfter: <span class="nu">1200</span> }),'],
+  ['    <span class="cm">// 信息行（带下划线）</span>'],
+  ['    <span class="fn">underline</span>(<span class="st">"项目名称："</span>, proposal.title || <span class="st">""</span>),'],
+  ['    <span class="fn">underline</span>(<span class="st">"所属专项："</span>, proposal.researchField || <span class="st">""</span>),'],
+  ['    <span class="fn">underline</span>(<span class="st">"推荐单位："</span>, proposal.recommendingUnit || <span class="st">""</span>),'],
+  ['    <span class="fn">underline</span>(<span class="st">"申报单位："</span>, proposal.applicantUnit || <span class="st">""</span>),'],
+  ['    <span class="fn">underline</span>(<span class="st">"项目负责人："</span>, piName),'],
+  ['    <span class="cm">// 底部落款</span>'],
+  ['    <span class="fn">para</span>([<span class="fn">txt</span>(<span class="st">"中华人民共和国科学技术部制"</span>,'],
+  ['              { bold: <span class="bo">true</span>, size: <span class="nu">28</span>, font: <span class="st">"黑体"</span> })],'],
+  ['         { align: AlignmentType.CENTER }),'],
+  ['  ];'],
+  ['}'],
+];
+
+const pre = document.getElementById('code');
+lines.forEach((parts, i) => {
+  const div = document.createElement('div');
+  div.className = 'line';
+  div.innerHTML = `<span class="ln">${i+1}</span><span class="code">${parts[0]}</span>`;
+  pre.appendChild(div);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{
+  "query": "SELECT id, name, email, role, studentId FROM users WHERE role = 'student' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user Vt6fNuLh2Nf1rsM.root --database NSCy9ZH9o7BbXh5VMwmVsP --execute SELECT id, name, email, role, studentId FROM users WHERE role = 'student' LIMIT 5;",
+  "rows": [
+    {
+      "id": "41",
+      "name": "祝嘉琳",
+      "email": "2037010301",
+      "role": "student",
+      "studentId": "2037010301"
+    },
+    {
+      "id": "42",
+      "name": "游凯旋",
+      "email": "2037020229",
+      "role": "student",
+      "studentId": "2037020229"
+    },
+    {
+      "id": "43",
+      "name": "徐子恒",
+      "email": "2137010104",
+      "role": "student",
+      "studentId": "2137010104"
+    },
+    {
+      "id": "44",
+      "name": "徐邦",
+      "email": "2137010119",
+      "role": "student",
+      "studentId": "2137010119"
+    },
+    {
+      "id": "45",
+      "name": "梁孝笑",
+      "email": "2137010123",
+      "role": "student",
+      "studentId": "2137010123"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\temail\trole\tstudentId\n41\t祝嘉琳\t2037010301\tstudent\t2037010301\n42\t游凯旋\t2037020229\tstudent\t2037020229\n43\t徐子恒\t2137010104\tstudent\t2137010104\n44\t徐邦\t2137010119\tstudent\t2137010119\n45\t梁孝笑\t2137010123\tstudent\t2137010123\n",
+  "stderr": "",
+  "execution_time_ms": 1621
+}

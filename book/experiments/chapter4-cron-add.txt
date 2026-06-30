@@ -1,0 +1,33 @@
+│
+◇  Doctor warnings ───────────────────────────────────────────────────╮
+│                                                                     │
+│  - channels.dingtalk.allowFrom: set to ["*"] (required by           │
+│    dmPolicy="open")                                                 │
+│  - Run "openclaw doctor --fix" to add missing allowFrom wildcards.  │
+│                                                                     │
+├─────────────────────────────────────────────────────────────────────╯
+{
+  "id": "045e9ebe-de12-42da-933e-4fdc17ea6ccc",
+  "name": "每日邮件检查",
+  "enabled": true,
+  "createdAtMs": 1774247689911,
+  "updatedAtMs": 1774247689911,
+  "schedule": {
+    "kind": "every",
+    "everyMs": 1800000,
+    "anchorMs": 1774247689911
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "agentTurn",
+    "message": "提醒我检查邮件"
+  },
+  "delivery": {
+    "mode": "announce",
+    "channel": "last"
+  },
+  "state": {
+    "nextRunAtMs": 1774249489911
+  }
+}

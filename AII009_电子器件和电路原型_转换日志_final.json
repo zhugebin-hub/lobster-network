@@ -1,0 +1,42 @@
+{
+  "mode": "redraw_single_file_no_template",
+  "source_file": "AII009-电子器件和电路原型.xlsx",
+  "output": "AII009_电子器件和电路原型_英方课表_final.xls",
+  "courses": [
+    {
+      "file": "AII009-电子器件和电路原型.xlsx",
+      "course_code": "AII009",
+      "course_name": "电子器件和电路原型",
+      "event_count": 18,
+      "sheet": "H6099Z 电子器件和电路原型",
+      "token_estimate": {
+        "note": "估算值，不是精确 API 计费；脚本本身不调用大模型。用于判断上传一门中方课表给 Agent 转换时的大致 token 消耗。",
+        "method": "mixed_zh_en_chars_estimate_plus_skill_overhead",
+        "source_file_size_bytes": 5879,
+        "source_text_chars": 1857,
+        "generated_cell_text_chars": 1142,
+        "event_count": 18,
+        "warning_count": 0,
+        "estimated_input_tokens": 1692,
+        "estimated_output_tokens": 579,
+        "estimated_total_tokens": 2271,
+        "human_readable": "约 2,271 tokens / 门课"
+      },
+      "status": "redrawn_converted"
+    }
+  ],
+  "warnings": [],
+  "token_estimate": {
+    "note": "估算值，不是精确 API 计费；脚本本身不调用大模型。用于判断上传一门中方课表给 Agent 转换时的大致 token 消耗。",
+    "method": "mixed_zh_en_chars_estimate_plus_skill_overhead",
+    "source_file_size_bytes": 5879,
+    "source_text_chars": 1857,
+    "generated_cell_text_chars": 1142,
+    "event_count": 18,
+    "warning_count": 0,
+    "estimated_input_tokens": 1692,
+    "estimated_output_tokens": 579,
+    "estimated_total_tokens": 2271,
+    "human_readable": "约 2,271 tokens / 门课"
+  }
+}

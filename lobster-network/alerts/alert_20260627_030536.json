@@ -1,0 +1,6 @@
+{
+  "level": "P1",
+  "message": "测试告警：节点 lobster-001 心跳正常",
+  "timestamp": "2026-06-27T03:05:36.844757",
+  "source": "internal"
+}

@@ -1,0 +1,32 @@
+{
+  "course_sheet_map": {
+    "电子器件和电路原型": "H6099Z  电子器件和电路原型 ",
+    "机构与机器人力学": "H7120Z 机构与机器人力学",
+    "计算机网络": "H7127Z 计算机网络",
+    "嵌入式系统": "H7061Z 嵌入式系统",
+    "电磁学和电机导论": "H7130Z  电磁学和电机导论",
+    "电气传动系统": "H6097Z 电气传动系统 ",
+    "数字通信": "H6106Z 数字通信 ",
+    "无线电频率工程": "H6109Z无线电频率工程",
+    "机电一体化": "H7121Z 机电一体化 ",
+    "数字信号处理": "H7138Z 数字信号处理 ",
+    "机器人设计与实现": "H7123Z机器人设计与实现"
+  },
+  "course_title_map": {
+    "AII009": "H6099Z Electronic Devices & Circuit Prototyping",
+    "AII017": "H7120Z Mechanics of Mechanisms & Robots",
+    "AII022": "H7127Z Computer Network",
+    "AII026": "H7061Z Embedded Systems",
+    "AII003": "H7130Z Electromagnetism & Introduction to Electrical Machines",
+    "AII007": "H6097Z Electrical Drive Systems",
+    "AII028": "H6106Z Digital Communications",
+    "AII030": "H6109Z Radio to Optical Frequency Engineering",
+    "AII016": "H7121Z  Industrial Automation Systems",
+    "AII040": "H7138Z Digital Signal Processing",
+    "AII019": "H7123Z Robot Design & Implementation"
+  },
+  "type_overrides": {
+    "AII028": {"base": "Lecture/Workshop"},
+    "AII017": {"implicit_base": "Workshop", "explicit_base": "Lecture"}
+  }
+}

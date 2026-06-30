@@ -1,0 +1,78 @@
+<svg width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="1080" height="1920" fill="url(#bgGradient)"/>
+  
+  <!-- 清华大学出版社 Logo 占位 -->
+  <g transform="translate(340, 100)">
+    <rect x="0" y="0" width="400" height="120" rx="8" fill="#FFFFFF" opacity="0.1"/>
+    <text x="200" y="75" font-family="Source Han Sans CN, sans-serif" font-size="36" fill="#FFFFFF" text-anchor="middle">
+      清华大学出版社
+    </text>
+    <text x="200" y="100" font-family="Arial, sans-serif" font-size="18" fill="#888888" text-anchor="middle">
+      (TUP Logo 占位)
+    </text>
+  </g>
+  
+  <!-- 书籍封面占位 -->
+  <g transform="translate(290, 280)">
+    <rect x="0" y="0" width="500" height="750" rx="12" fill="#2a2a4e" filter="url(#shadow)" stroke="#0066FF" stroke-width="3"/>
+    <text x="250" y="350" font-family="sans-serif" font-size="28" fill="#888888" text-anchor="middle">
+      书籍封面
+    </text>
+    <text x="250" y="390" font-family="sans-serif" font-size="18" fill="#666666" text-anchor="middle">
+      (1000×1500px)
+    </text>
+  </g>
+  
+  <!-- 二维码占位 -->
+  <g transform="translate(390, 1120)">
+    <rect x="0" y="0" width="300" height="300" rx="12" fill="#FFFFFF" filter="url(#shadow)"/>
+    <rect x="30" y="30" width="240" height="240" fill="none" stroke="#000000" stroke-width="2" stroke-dasharray="10,5"/>
+    <text x="150" y="160" font-family="sans-serif" font-size="18" fill="#666666" text-anchor="middle">
+      二维码
+    </text>
+    <text x="150" y="185" font-family="sans-serif" font-size="14" fill="#888888" text-anchor="middle">
+      (300×300px)
+    </text>
+  </g>
+  
+  <!-- 扫码提示 -->
+  <text x="540" y="1480" font-family="Source Han Sans CN, sans-serif" 
+        font-size="32" fill="#FFFFFF" text-anchor="middle">
+    📱 扫码了解更多
+  </text>
+  
+  <!-- 出版信息 -->
+  <text x="540" y="1600" font-family="Source Han Sans CN, sans-serif" 
+        font-size="42" font-weight="bold" fill="#0099FF" text-anchor="middle">
+    📚 即将出版
+  </text>
+  <text x="540" y="1660" font-family="Source Han Sans CN, sans-serif" 
+        font-size="36" fill="#FFFFFF" text-anchor="middle">
+    敬请期待！
+  </text>
+  
+  <!-- 底部装饰线 -->
+  <line x1="140" y1="1750" x2="940" y2="1750" stroke="#0066FF" stroke-width="2" opacity="0.5"/>
+  
+  <!-- 编著信息 -->
+  <text x="540" y="1820" font-family="Source Han Sans CN, sans-serif" 
+        font-size="24" fill="#888888" text-anchor="middle">
+    洪金珠 诸葛斌 编著
+  </text>
+  
+  <!-- 时间标记 -->
+  <text x="50" y="1880" font-family="Arial, sans-serif" font-size="20" fill="#666666">
+    00:55 - 01:00
+  </text>
+</svg>

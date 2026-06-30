@@ -1,0 +1,328 @@
+{
+  "entities": [
+    {
+      "entity_id": "S001",
+      "name": "吴恩达",
+      "entity_type": "学者",
+      "properties": {
+        "国籍": "美国",
+        "职位": "教授"
+      }
+    },
+    {
+      "entity_id": "S002",
+      "name": "李飞飞",
+      "entity_type": "学者",
+      "properties": {
+        "国籍": "美国",
+        "职位": "教授"
+      }
+    },
+    {
+      "entity_id": "S003",
+      "name": "Yann LeCun",
+      "entity_type": "学者",
+      "properties": {
+        "国籍": "法国",
+        "职位": "首席 AI 科学家"
+      }
+    },
+    {
+      "entity_id": "S004",
+      "name": "Geoffrey Hinton",
+      "entity_type": "学者",
+      "properties": {
+        "国籍": "英国",
+        "职位": "教授"
+      }
+    },
+    {
+      "entity_id": "S005",
+      "name": "周志华",
+      "entity_type": "学者",
+      "properties": {
+        "国籍": "中国",
+        "职位": "教授"
+      }
+    },
+    {
+      "entity_id": "S006",
+      "name": "马毅",
+      "entity_type": "学者",
+      "properties": {
+        "国籍": "美国",
+        "职位": "教授"
+      }
+    },
+    {
+      "entity_id": "U001",
+      "name": "斯坦福大学",
+      "entity_type": "大学",
+      "properties": {
+        "国家": "美国",
+        "排名": "Top 5"
+      }
+    },
+    {
+      "entity_id": "U002",
+      "name": "加州大学伯克利分校",
+      "entity_type": "大学",
+      "properties": {
+        "国家": "美国",
+        "排名": "Top 10"
+      }
+    },
+    {
+      "entity_id": "U003",
+      "name": "纽约大学",
+      "entity_type": "大学",
+      "properties": {
+        "国家": "美国",
+        "排名": "Top 30"
+      }
+    },
+    {
+      "entity_id": "U004",
+      "name": "多伦多大学",
+      "entity_type": "大学",
+      "properties": {
+        "国家": "加拿大",
+        "排名": "Top 50"
+      }
+    },
+    {
+      "entity_id": "U005",
+      "name": "南京大学",
+      "entity_type": "大学",
+      "properties": {
+        "国家": "中国",
+        "排名": "Top 100"
+      }
+    },
+    {
+      "entity_id": "F001",
+      "name": "深度学习",
+      "entity_type": "研究领域",
+      "properties": {
+        "子领域": "神经网络"
+      }
+    },
+    {
+      "entity_id": "F002",
+      "name": "计算机视觉",
+      "entity_type": "研究领域",
+      "properties": {
+        "子领域": "图像识别"
+      }
+    },
+    {
+      "entity_id": "F003",
+      "name": "自然语言处理",
+      "entity_type": "研究领域",
+      "properties": {
+        "子领域": "语言理解"
+      }
+    },
+    {
+      "entity_id": "F004",
+      "name": "强化学习",
+      "entity_type": "研究领域",
+      "properties": {
+        "子领域": "决策优化"
+      }
+    },
+    {
+      "entity_id": "F005",
+      "name": "机器学习",
+      "entity_type": "研究领域",
+      "properties": {
+        "子领域": "模式识别"
+      }
+    },
+    {
+      "entity_id": "P001",
+      "name": "ImageNet Classification with Deep Convolutional Neural Networks",
+      "entity_type": "论文",
+      "properties": {
+        "年份": "2012",
+        "引用": "100000+"
+      }
+    },
+    {
+      "entity_id": "P002",
+      "name": "Deep Learning",
+      "entity_type": "论文",
+      "properties": {
+        "年份": "2015",
+        "引用": "80000+"
+      }
+    },
+    {
+      "entity_id": "P003",
+      "name": "Attention Is All You Need",
+      "entity_type": "论文",
+      "properties": {
+        "年份": "2017",
+        "引用": "100000+"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "head_entity": "S001",
+      "relation_type": "任职于",
+      "tail_entity": "U001",
+      "properties": {
+        "时间": "2002-至今"
+      }
+    },
+    {
+      "head_entity": "S002",
+      "relation_type": "任职于",
+      "tail_entity": "U001",
+      "properties": {
+        "时间": "2009-至今"
+      }
+    },
+    {
+      "head_entity": "S003",
+      "relation_type": "任职于",
+      "tail_entity": "U003",
+      "properties": {
+        "时间": "2003-至今"
+      }
+    },
+    {
+      "head_entity": "S004",
+      "relation_type": "任职于",
+      "tail_entity": "U004",
+      "properties": {
+        "时间": "1987-至今"
+      }
+    },
+    {
+      "head_entity": "S005",
+      "relation_type": "任职于",
+      "tail_entity": "U005",
+      "properties": {
+        "时间": "1996-至今"
+      }
+    },
+    {
+      "head_entity": "S006",
+      "relation_type": "任职于",
+      "tail_entity": "U002",
+      "properties": {
+        "时间": "2002-至今"
+      }
+    },
+    {
+      "head_entity": "S001",
+      "relation_type": "研究领域",
+      "tail_entity": "F001",
+      "properties": {}
+    },
+    {
+      "head_entity": "S001",
+      "relation_type": "研究领域",
+      "tail_entity": "F004",
+      "properties": {}
+    },
+    {
+      "head_entity": "S002",
+      "relation_type": "研究领域",
+      "tail_entity": "F002",
+      "properties": {}
+    },
+    {
+      "head_entity": "S002",
+      "relation_type": "研究领域",
+      "tail_entity": "F001",
+      "properties": {}
+    },
+    {
+      "head_entity": "S003",
+      "relation_type": "研究领域",
+      "tail_entity": "F001",
+      "properties": {}
+    },
+    {
+      "head_entity": "S003",
+      "relation_type": "研究领域",
+      "tail_entity": "F002",
+      "properties": {}
+    },
+    {
+      "head_entity": "S004",
+      "relation_type": "研究领域",
+      "tail_entity": "F001",
+      "properties": {}
+    },
+    {
+      "head_entity": "S004",
+      "relation_type": "研究领域",
+      "tail_entity": "F005",
+      "properties": {}
+    },
+    {
+      "head_entity": "S005",
+      "relation_type": "研究领域",
+      "tail_entity": "F005",
+      "properties": {}
+    },
+    {
+      "head_entity": "S005",
+      "relation_type": "研究领域",
+      "tail_entity": "F001",
+      "properties": {}
+    },
+    {
+      "head_entity": "S006",
+      "relation_type": "研究领域",
+      "tail_entity": "F002",
+      "properties": {}
+    },
+    {
+      "head_entity": "S002",
+      "relation_type": "发表论文",
+      "tail_entity": "P001",
+      "properties": {
+        "作者顺序": "通讯作者"
+      }
+    },
+    {
+      "head_entity": "S003",
+      "relation_type": "发表论文",
+      "tail_entity": "P002",
+      "properties": {
+        "作者顺序": "第一作者"
+      }
+    },
+    {
+      "head_entity": "S004",
+      "relation_type": "发表论文",
+      "tail_entity": "P002",
+      "properties": {
+        "作者顺序": "第一作者"
+      }
+    },
+    {
+      "head_entity": "F005",
+      "relation_type": "包含子领域",
+      "tail_entity": "F001",
+      "properties": {}
+    },
+    {
+      "head_entity": "F001",
+      "relation_type": "应用于",
+      "tail_entity": "F002",
+      "properties": {}
+    },
+    {
+      "head_entity": "F001",
+      "relation_type": "应用于",
+      "tail_entity": "F003",
+      "properties": {}
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "crons": [
+    {
+      "name": "signal-arena-am",
+      "schedule": "0 10 * * *",
+      "command": "cd ~/.openclaw/workspace/skills/signal-arena-agent && node scripts/status.js",
+      "description": "Signal Arena 早盘盯盘 (10:00)",
+      "timezone": "Asia/Shanghai",
+      "enabled": true
+    },
+    {
+      "name": "signal-arena-pm",
+      "schedule": "0 22 * * *",
+      "command": "cd ~/.openclaw/workspace/skills/signal-arena-agent && node -e \"require('./strategy').runStrategy()\"",
+      "description": "Signal Arena 晚盘盯盘 (22:00)",
+      "timezone": "Asia/Shanghai",
+      "enabled": true
+    }
+  ]
+}

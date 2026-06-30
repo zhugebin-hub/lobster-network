@@ -1,0 +1,43 @@
+【知识文档】Transformer架构详解
+类别：课件 | 可信度：高 | 来源：浙江工商大学AI学院课件
+日期：2024-04-01
+
+Transformer架构（2017年，Vaswani et al. "Attention Is All You Need"）
+
+一、核心组件
+
+1. 自注意力机制（Self-Attention）
+   - Query（查询）、Key（键）、Value（值）
+   - Attention(Q, K, V) = softmax(QK^T / √d_k) * V
+   - 缩放因子√d_k防止梯度消失
+
+2. 多头注意力（Multi-Head Attention）
+   - 将Q、K、V分成h个头分别计算注意力
+   - 拼接各头结果，再经线性变换
+   - 好处：捕获不同子空间的信息
+
+3. 位置编码（Positional Encoding）
+   - Transformer本身没有序列顺序概念
+   - 使用正弦/余弦函数或可学习的位置嵌入
+
+4. 前馈神经网络（FFN）
+   - 两个线性变换+ReLU激活
+   - FFN(x) = max(0, xW1 + b1)W2 + b2
+
+二、编码器-解码器结构
+
+编码器（Encoder）：
+- 由N层组成，每层包含：多头注意力 → Add & Norm → FFN → Add & Norm
+- 残差连接（Add）：缓解梯度消失
+- 层归一化（Norm）：稳定训练
+
+解码器（Decoder）：
+- 在编码器基础上增加：掩码多头注意力（防止看到未来信息）
+- 交叉注意力（Cross-Attention）：关注编码器输出
+
+三、应用变体
+
+- BERT：仅编码器，掩码语言模型预训练
+- GPT：仅解码器，自回归语言模型
+- T5：编码器-解码器，统一文本到文本框架
+- ViT：将图像分块作为Transformer输入

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈俊烨 (CJY) - 小龙虾风格简历</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --lobster-red: #DC2626;
+            --lobster-orange: #F97316;
+            --lobster-gold: #FBBF24;
+            --shell-dark: #991B1B;
+            --shell-light: #EF4444;
+            --ocean-blue: #0EA5E9;
+            --sand: #FEF3C7;
+            --text-dark: #1F2937;
+            --text-light: #F9FAFB;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rajdhani', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(180deg, #FEF3C7 0%, #FDE68A 50%, #FCD34D 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 8mm;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '🦞';
+            position: fixed;
+            font-size: 20px;
+            opacity: 0.1;
+            animation: float 20s infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--lobster-red) 0%, var(--lobster-orange) 50%, var(--lobster-gold) 100%);
+            padding: 35px 25px;
+            margin: -8mm -8mm 25px -8mm;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid var(--shell-dark);
+            border-radius: 0 0 30px 30px;
+        }
+        
+        .header::before {
+            content: '🦞 🦞 🦞 🦞 🦞 🦞 🦞 🦞';
+            position: absolute;
+            top: 5px;
+            left: 0;
+            right: 0;
+            font-size: 20px;
+            text-align: center;
+            opacity: 0.3;
+            letter-spacing: 10px;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 0 var(--shell-dark);
+        }
+        
+        .header .lobster-badge {
+            display: inline-block;
+            background: var(--shell-dark);
+            color: var(--lobster-gold);
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            border: 2px solid var(--lobster-gold);
+        }
+        
+        .header .title {
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .header .contact {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+        
+        .header .contact span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--lobster-red);
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 0 var(--lobster-gold);
+        }
+        
+        .section-title::before {
+            content: '🦞';
+            font-size: 24px;
+            animation: wiggle 2s infinite;
+        }
+        
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+        
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 3px;
+            background: linear-gradient(90deg, var(--lobster-red) 0%, var(--lobster-orange) 50%, var(--lobster-gold) 100%);
+            margin-left: 15px;
+            border-radius: 3px;
+        }
+        
+        .card {
+            background: white;
+            border: 3px solid var(--lobster-orange);
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 5px 5px 0 var(--shell-dark);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0 var(--shell-dark);
+        }
+        
+        .card::before {
+            content: '🦞';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            opacity: 0.2;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+        
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--shell-dark);
+        }
+        
+        .card-subtitle {
+            color: var(--lobster-orange);
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .card-date {
+            color: var(--lobster-red);
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            background: var(--sand);
+            padding: 3px 10px;
+            border-radius: 10px;
+            border: 2px solid var(--lobster-orange);
+        }
+        
+        .card-content {
+            color: var(--text-dark);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .card-content p {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .card-content p::before {
+            content: '🦞';
+            position: absolute;
+            left: 0;
+            font-size: 12px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .skill-card {
+            background: linear-gradient(135deg, var(--sand) 0%, #FDE68A 100%);
+            border: 3px solid var(--lobster-orange);
+            border-radius: 12px;
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 4px 4px 0 var(--shell-dark);
+        }
+        
+        .skill-card::after {
+            content: '🦞';
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            font-size: 40px;
+            opacity: 0.1;
+        }
+        
+        .skill-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--shell-dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .skill-desc {
+            font-size: 13px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        
+        .summary-box {
+            background: linear-gradient(135deg, var(--lobster-red) 0%, var(--lobster-orange) 100%);
+            border: 4px solid var(--shell-dark);
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 25px;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .summary-box::before {
+            content: '🦞 🦞 🦞';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            background: var(--sand);
+            padding: 5px 20px;
+            border-radius: 15px;
+            border: 3px solid var(--shell-dark);
+        }
+        
+        .summary-text {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.9;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .keyword-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .keyword-tag {
+            padding: 5px 12px;
+            background: var(--sand);
+            border: 2px solid var(--lobster-gold);
+            border-radius: 15px;
+            font-size: 12px;
+            color: var(--shell-dark);
+            font-weight: 700;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--lobster-red) 0%, var(--lobster-orange) 50%, var(--lobster-gold) 100%);
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 18px;
+            padding-left: 18px;
+        }
+        
+        .timeline-item::before {
+            content: '🦞';
+            position: absolute;
+            left: -28px;
+            font-size: 16px;
+            animation: wiggle 2s infinite;
+        }
+        
+        .award-badge {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 800;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--shell-dark);
+            box-shadow: 2px 2px 0 var(--shell-dark);
+        }
+        
+        .award-gold {
+            background: linear-gradient(135deg, #FFD700 0%, #FBBF24 100%);
+            color: var(--shell-dark);
+        }
+        
+        .award-silver {
+            background: linear-gradient(135deg, #E5E7EB 0%, #9CA3AF 100%);
+            color: var(--shell-dark);
+        }
+        
+        .award-bronze {
+            background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+            color: var(--shell-dark);
+        }
+        
+        .highlight-section {
+            background: linear-gradient(135deg, var(--sand) 0%, #FDE68A 100%);
+            border: 4px solid var(--lobster-orange);
+            border-radius: 20px;
+            padding: 22px;
+            margin-top: 22px;
+            box-shadow: 6px 6px 0 var(--shell-dark);
+            position: relative;
+        }
+        
+        .highlight-section::before {
+            content: '🦞🦞🦞';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            background: var(--lobster-red);
+            padding: 4px 18px;
+            border-radius: 15px;
+            border: 3px solid var(--shell-dark);
+        }
+        
+        .highlight-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--lobster-red);
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+        }
+        
+        .highlight-content {
+            color: var(--text-dark);
+            font-size: 14px;
+            line-height: 2;
+        }
+        
+        .highlight-content p {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            font-weight: 600;
+        }
+        
+        .highlight-content p::before {
+            content: '🦞';
+            position: absolute;
+            left: 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+            padding-top: 22px;
+            border-top: 4px dashed var(--lobster-orange);
+            color: var(--text-dark);
+            font-size: 12px;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '🦞 🦞 🦞 🦞 🦞';
+            display: block;
+            margin-bottom: 10px;
+            font-size: 20px;
+            opacity: 0.5;
+        }
+        
+        .zjgsu-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 12px;
+            padding: 8px 20px;
+            background: var(--lobster-red);
+            border: 3px solid var(--shell-dark);
+            border-radius: 20px;
+            box-shadow: 3px 3px 0 var(--shell-dark);
+        }
+        
+        .zjgsu-brand span {
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        .metric-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            background: var(--lobster-red);
+            border: 2px solid var(--shell-dark);
+            border-radius: 10px;
+            font-size: 11px;
+            color: white;
+            font-weight: 800;
+            margin-left: 8px;
+            box-shadow: 2px 2px 0 var(--shell-dark);
+        }
+        
+        .lobster-divider {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px 0;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>🦞 陈俊烨 (CJY) 🦞</h1>
+            <div class="lobster-badge">⭐ 创始龙虾 · 小龙虾记忆研究群 ⭐</div>
+            <div class="title">AI 教育数字化专家 | 智能体开发者 | 黑客松组织者</div>
+            <div class="contact">
+                <span>📧 邮箱：[待补充]</span>
+                <span>📱 手机：[待补充]</span>
+                <span>🌐 cjy-websites.zeabur.app</span>
+                <span>🎓 浙江工商大学人工智能学院</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="summary-box">
+            <div class="summary-text">
+                人工智能硕士研究生，专注于 AI 教育系统数字化与未来课堂创新。主导开发 3+ 校园服务智能体，服务师生日常需求。2 年内参与 15+ 场黑客松活动，从参赛者成长为主办方负责人，荣获 5 项技术奖项。具备全栈开发能力（Web 前后端/Java/大数据），致力于将 AI 智能体融入教育场景，打造有温度的智能助手。
+            </div>
+            <div class="keyword-tags">
+                <span class="keyword-tag">🦞 Agent 开发</span>
+                <span class="keyword-tag">🦞 多模态 AI</span>
+                <span class="keyword-tag">🦞 MCP 协议</span>
+                <span class="keyword-tag">🦞 教育数字化</span>
+                <span class="keyword-tag">🦞 全栈开发</span>
+                <span class="keyword-tag">🦞 活动策划</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="lobster-divider">🦞 🦞 🦞 🦞 🦞</div>
+
+    <div class="section">
+        <div class="section-title">🦞 Core Skills · 核心技能</div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-name">🦞 AI 应用开发</div>
+                <div class="skill-desc">Agent 开发 | 多模态 AI 应用 | MCP 协议 | 智能体架构设计</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-name">🦞 教育数字化</div>
+                <div class="skill-desc">智能教育系统 | 未来课堂解决方案 | 校园服务智能化</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-name">🦞 全栈开发</div>
+                <div class="skill-desc">Web 前后端 | Java | 大数据处理 | 数据库设计</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-name">🦞 活动策划</div>
+                <div class="skill-desc">黑客松组织管理 | 技术社区运营 | 15+ 场活动经验</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🦞 Education · 教育背景</div>
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">浙江工商大学 人工智能学院</span>
+                <span class="card-date">🦞 硕士</span>
+            </div>
+            <div class="card-subtitle">人工智能方向</div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">软件工程专业</span>
+                <span class="card-date">🦞 本科</span>
+            </div>
+            <div class="card-subtitle">基础编程与大数据 · Web 前后端 · Java 编程</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🦞 Key Experience · 核心经历</div>
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">信电学院"未来课堂"智能体开发者</span>
+                <span class="card-date">🦞 在校期间</span>
+            </div>
+            <div class="card-content">
+                <p>主导开发 3+ 校园服务智能体（会议室预约/智慧就业/图书管理），覆盖师生高频使用场景</p>
+                <p>与诸葛斌导师合作探索"小龙虾"课程项目，将 AI 智能体接入教育服务场景</p>
+                <p>担任小龙虾企业家培训助教，协助培训内容与技术支持工作</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🦞 Awards & Honors · 荣誉奖项</div>
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">GDPS Astron 产业智变黑客松</span>
+                <span class="card-date">🦞 2026.03.29</span>
+            </div>
+            <span class="award-badge award-gold">🏆 一等奖</span>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">商汤龙虾节 SenseAudio & AudioClaw 多场景 Skills 创新赛</span>
+                <span class="card-date">🦞 2026.03.29</span>
+            </div>
+            <span class="award-badge award-silver">🥈 二等奖</span>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">上海徐汇 Agent 进化酒馆黑客松</span>
+                <span class="card-date">🦞 2026.03.29</span>
+            </div>
+            <span class="award-badge award-bronze">🌟 最佳人气奖</span>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">百度千帆 Agent 训练营</span>
+                <span class="card-date">🦞 2026.01.22</span>
+            </div>
+            <span class="award-badge award-gold">🔧 最佳技术奖</span>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">浙江工商大学信电学院 AI 应用创新大赛</span>
+                <span class="card-date">🦞 2026.01.08</span>
+            </div>
+            <span class="award-badge award-gold">🏆 一等奖</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🦞 Hackathon Journey · 黑客松之旅</div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="card-date">🦞 2026.04.09</div>
+                <div class="card-title">小红书黑客松巅峰赛</div>
+                <div class="card-content">志愿者工作人员 + 参赛者</div>
+            </div>
+            <div class="timeline-item">
+                <div class="card-date">🦞 2026.03.28-03.29</div>
+                <div class="card-title">密集参赛周（3 场连战）</div>
+                <div class="card-content">GDPS 一等奖 | 商汤二等奖 | 徐汇最佳人气奖<span class="metric-badge">🦞 100% 获奖率</span></div>
+            </div>
+            <div class="timeline-item">
+                <div class="card-date">🦞 2026.03.14-03.15</div>
+                <div class="card-title">中国高校联盟 AI Hackathon Tour 西安交大站</div>
+                <div class="card-content">协办方（线下复赛组织执行）</div>
+            </div>
+            <div class="timeline-item">
+                <div class="card-date">🦞 2026.03.07-03.08</div>
+                <div class="card-title">中国高校联盟 AI Hackathon Tour</div>
+                <div class="card-content">协办方（浙大线下复赛 + 物资统筹）</div>
+            </div>
+            <div class="timeline-item">
+                <div class="card-date">🦞 2026.02.07-02.08</div>
+                <div class="card-title">全国 10 城联动汤泉黑客松 - 太原站</div>
+                <div class="card-content">主办方负责人<span class="metric-badge">🦞 角色转型</span></div>
+            </div>
+            <div class="timeline-item">
+                <div class="card-date">🦞 2026.01.16-02.02</div>
+                <div class="card-title">寒假黑客松密集期（3 场）</div>
+                <div class="card-content">环球杭州站 | 上海 Less is More | 南京模法学院</div>
+            </div>
+            <div class="timeline-item">
+                <div class="card-date">🦞 2025.11.22-11.30</div>
+                <div class="card-title">黑客松起步期（2 场）</div>
+                <div class="card-content">魔搭社区嘉年华（首赛）| Way to AGI 上海站（全球 30+ 城市联动）</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lobster-divider">🦞 🦞 🦞 🦞 🦞</div>
+
+    <div class="highlight-section">
+        <div class="highlight-title">⚡ 🦞 Key Highlights · 核心亮点 🦞</div>
+        <div class="highlight-content">
+            <p><strong>角色成长：</strong> 18 个月内从首次参赛黑客松新手成长为主办方负责人，展现快速学习与领导能力</p>
+            <p><strong>技术实力：</strong> 5 项技术奖项（3 个一等奖/最佳技术奖），覆盖 AI Agent、多模态、产业应用等方向</p>
+            <p><strong>社区贡献：</strong> 组织/协办 6+ 场大型黑客松活动，服务全国 10 城联动，连接高校与企业资源</p>
+            <p><strong>教育创新：</strong> 将 AI 智能体融入校园服务场景，探索未来课堂新形态，打造有温度的智能助手</p>
+        </div>
+    </div>
+
+    <div class="highlight-section">
+        <div class="highlight-title">🦞 Featured Project · 招牌项目</div>
+        <div class="highlight-content">
+            <p><strong>小龙虾智能体系列</strong> - 开发会议室预约、智慧就业、图书管理等多个校园服务智能体，将 AI 技术接入教育场景，服务师生日常生活与学习需求</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>🦞 更新时间：2026 年 4 月 | 小龙虾风格终极版 🦞</p>
+        <p>🦞 🦞 🦞</p>
+        <div class="zjgsu-brand">
+            <span>🦞</span>
+            <span>浙江工商大学 人工智能学院</span>
+            <span>🦞</span>
+        </div>
+    </div>
+</body>
+</html>

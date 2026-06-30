@@ -1,0 +1,18 @@
+{
+  "name": "edge-tts-scripts",
+  "version": "2.0.0",
+  "description": "Edge-TTS converter and configuration management scripts using node-edge-tts",
+  "type": "commonjs",
+  "scripts": {
+    "tts": "node tts-converter.js",
+    "config": "node config-manager.js",
+    "test": "npx node-edge-tts -t \"Hello, world! This is a test of the Edge TTS service.\" -f test-output.mp3 && echo \"Test completed successfully!\""
+  },
+  "dependencies": {
+    "commander": "^11.0.0",
+    "edge-tts": "^1.0.1",
+    "node-edge-tts": "^1.2.9"
+  },
+  "author": "Clawdbot",
+  "license": "MIT"
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦞 新生选寝系统 - 业务小龙虾版</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- 头部 -->
+        <header class="header">
+            <h1>🦞 新生选寝系统</h1>
+            <span class="subtitle">业务小龙虾版 v1.0</span>
+        </header>
+
+        <!-- 登录 -->
+        <section id="login-section" class="section">
+            <div class="card login-card">
+                <h2>管理员登录</h2>
+                <input type="text" id="api-token" placeholder="请输入 API Token" class="input">
+                <button onclick="saveToken()" class="btn btn-primary">确认</button>
+                <p class="hint">Token 存储在浏览器本地，仅用于 API 鉴权</p>
+            </div>
+        </section>
+
+        <!-- 导入 -->
+        <section id="import-section" class="section" style="display:none;">
+            <div class="card">
+                <h2>📂 数据导入</h2>
+                <div class="upload-row">
+                    <div class="upload-item">
+                        <label>官方新生名单</label>
+                        <input type="file" id="official-file" accept=".xlsx,.csv,.tsv" class="file-input">
+                    </div>
+                    <div class="upload-item">
+                        <label>问卷星意向表</label>
+                        <input type="file" id="survey-file" accept=".xlsx,.csv,.tsv" class="file-input">
+                    </div>
+                    <div class="upload-item">
+                        <label>每寝人数</label>
+                        <input type="number" id="room-size" value="4" min="2" max="8" class="input input-sm">
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button onclick="doMatch()" class="btn btn-primary" id="match-btn">🦞 导入并智能匹配</button>
+                    <button onclick="loadDemo()" class="btn btn-secondary" id="demo-btn">加载示例数据</button>
+                    <button onclick="downloadSample()" class="btn btn-text">下载示例模板</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 看板 -->
+        <section id="dashboard-section" class="section" style="display:none;">
+            <div class="card dashboard-card">
+                <h2>📊 分配看板</h2>
+                <div class="stats" id="stats"></div>
+                <div class="warnings" id="warnings"></div>
+                <div class="advice" id="advice"></div>
+                <div class="generated-at" id="generated-at"></div>
+            </div>
+        </section>
+
+        <!-- 筛选 -->
+        <section id="filter-section" class="section" style="display:none;">
+            <div class="card">
+                <div class="filter-bar">
+                    <div class="filter-tabs">
+                        <button class="tab active" data-filter="all" onclick="setFilter('all', this)">全部</button>
+                        <button class="tab" data-filter="男" onclick="setFilter('男', this)">男生</button>
+                        <button class="tab" data-filter="女" onclick="setFilter('女', this)">女生</button>
+                        <button class="tab" data-filter="risk" onclick="setFilter('risk', this)">只看风险</button>
+                    </div>
+                    <input type="text" id="search-input" placeholder="搜索姓名/学号/城市/学校..." class="input search-input" oninput="applySearch()">
+                </div>
+            </div>
+        </section>
+
+        <!-- 寝室列表 -->
+        <section id="rooms-section" class="section" style="display:none;">
+            <div class="rooms-grid" id="rooms-grid"></div>
+        </section>
+
+        <!-- 挂起池 -->
+        <section id="suspended-section" class="section" style="display:none;">
+            <div class="card">
+                <h2>⏸️ 混寝挂起池</h2>
+                <div id="suspended-list"></div>
+            </div>
+        </section>
+
+        <!-- 版本管理 -->
+        <section id="version-section" class="section" style="display:none;">
+            <div class="card">
+                <h2>💾 版本管理</h2>
+                <div class="btn-row">
+                    <input type="text" id="version-name" placeholder="版本名称" class="input">
+                    <button onclick="saveVersion()" class="btn btn-primary">保存当前方案</button>
+                </div>
+                <div id="version-list"></div>
+            </div>
+        </section>
+
+        <!-- 底部操作栏 -->
+        <section id="action-section" class="section" style="display:none;">
+            <div class="card action-card">
+                <button onclick="exportExcel()" class="btn btn-success">📥 导出 Excel</button>
+                <span class="hint">导出包含：寝室分配结果、混寝挂起池、学生画像 三张工作表</span>
+            </div>
+        </section>
+
+        <!-- 学生画像弹窗 -->
+        <div id="profile-modal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 id="profile-name"></h2>
+                <div id="profile-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

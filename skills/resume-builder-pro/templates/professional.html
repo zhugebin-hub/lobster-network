@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{NAME}} - 简历</title>
+    <style>
+        @page { size: A4; margin: 15mm; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        body { font-family: 'Microsoft YaHei', Arial, sans-serif; line-height: 1.6; color: #1a1a1a; background: #fff; width: 210mm; min-height: 297mm; padding: 15mm; }
+        .header { border-bottom: 2px solid #1a56db; padding-bottom: 16px; margin-bottom: 24px; }
+        .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+        .header .title { font-size: 14px; color: #1a56db; margin-bottom: 10px; }
+        .header .contact { display: flex; gap: 20px; flex-wrap: wrap; font-size: 13px; color: #555; }
+        .section { margin-bottom: 24px; }
+        .section-title { font-size: 16px; font-weight: 700; color: #1a56db; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #e5e7eb; text-transform: uppercase; }
+        .item { margin-bottom: 16px; }
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+        .item-title { font-size: 15px; font-weight: 600; color: #1a1a1a; }
+        .item-subtitle { font-size: 13px; color: #1a56db; font-weight: 500; }
+        .item-date { font-size: 12px; color: #6b7280; white-space: nowrap; }
+        .item-description { font-size: 13px; color: #374151; line-height: 1.7; }
+        .item-description ul { margin-left: 18px; margin-top: 4px; }
+        .item-description li { margin-bottom: 4px; }
+        .award { background: #fef3c7; border-left: 3px solid #d97706; padding: 8px 12px; margin: 8px 0; border-radius: 0 4px 4px 0; }
+        .award.silver { background: #e5e7eb; border-left-color: #6b7280; }
+        .award.blue { background: #dbeafe; border-left-color: #1a56db; }
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .skill-item { font-size: 13px; }
+        .skill-item strong { color: #1a56db; }
+        .footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid #e5e7eb; text-align: center; font-size: 11px; color: #9ca3af; }
+        @media print { body { padding: 0; width: 100%; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{NAME}}</h1>
+        <div class="title">{{TITLE}}</div>
+        <div class="contact">
+            <span>📧 {{EMAIL}}</span>
+            <span>📱 {{PHONE}}</span>
+            <span>📍 {{LOCATION}}</span>
+            <span>🌐 {{WEBSITE}}</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">教育背景</div>
+        {{#EDUCATION}}
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">{{SCHOOL}}</div>
+                    <div class="item-subtitle">{{DEGREE}}</div>
+                </div>
+                <div class="item-date">{{DATE}}</div>
+            </div>
+        </div>
+        {{/EDUCATION}}
+    </div>
+
+    <div class="section">
+        <div class="section-title">项目经历</div>
+        {{#PROJECTS}}
+        <div class="item">
+            <div class="item-header">
+                <div class="item-title">{{NAME}}</div>
+                <div class="item-date">{{ROLE}}</div>
+            </div>
+            <div class="item-description">
+                <ul>
+                    {{#BULLETS}}
+                    <li>{{.}}</li>
+                    {{/BULLETS}}
+                </ul>
+            </div>
+        </div>
+        {{/PROJECTS}}
+    </div>
+
+    <div class="section">
+        <div class="section-title">获奖记录</div>
+        {{#AWARDS}}
+        <div class="award {{CLASS}}">
+            <strong>{{NAME}}</strong> | {{DATE}}
+        </div>
+        {{/AWARDS}}
+    </div>
+
+    <div class="section">
+        <div class="section-title">技术技能</div>
+        <div class="skills-grid">
+            {{#SKILLS}}
+            <div class="skill-item">
+                <strong>{{CATEGORY}}：</strong>{{LIST}}
+            </div>
+            {{/SKILLS}}
+        </div>
+    </div>
+
+    <div class="footer">
+        最后更新：{{DATE}}
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{
+  "overall": {
+    "N": 120,
+    "TSR": 0.0,
+    "THR": 0.0,
+    "PFER": 0.4091,
+    "AIT": 2.75,
+    "RRR": 0.0,
+    "TCR": 1.0,
+    "MCSR": null,
+    "RecoverySR": 0.0,
+    "RetryTriggeredN": 120
+  },
+  "recovery": {
+    "N": 120,
+    "TSR": 0.0,
+    "THR": 0.0,
+    "PFER": 0.4091,
+    "AIT": 2.75,
+    "RRR": 0.0,
+    "TCR": 1.0,
+    "MCSR": null,
+    "RecoverySR": 0.0,
+    "RetryTriggeredN": 120
+  },
+  "by_fault_type": {
+    "wrong_type": {
+      "N": 45,
+      "TSR": 0.0,
+      "THR": 0.0,
+      "PFER": 0.375,
+      "AIT": 2.6667,
+      "RRR": 0.0,
+      "TCR": 1.0,
+      "MCSR": null,
+      "RecoverySR": 0.0,
+      "RetryTriggeredN": 45
+    },
+    "wrong_enum": {
+      "N": 45,
+      "TSR": 0.0,
+      "THR": 0.0,
+      "PFER": 0.3333,
+      "AIT": 3.0,
+      "RRR": 0.0,
+      "TCR": 1.0,
+      "MCSR": null,
+      "RecoverySR": 0.0,
+      "RetryTriggeredN": 45
+    },
+    "missing_required": {
+      "N": 30,
+      "TSR": 0.0,
+      "THR": 0.0,
+      "PFER": 0.6,
+      "AIT": 2.5,
+      "RRR": 0.0,
+      "TCR": 1.0,
+      "MCSR": null,
+      "RecoverySR": 0.0,
+      "RetryTriggeredN": 30
+    }
+  }
+}

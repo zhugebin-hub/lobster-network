@@ -1,0 +1,11 @@
+{
+  "last_report": "2026-06-24T08:35:00+08:00",
+  "last_heartbeat": "2026-06-24T08:35:00+08:00",
+  "exam_days_since": 58,
+  "weakest_dimensions": {
+    "understanding": 45,
+    "reasoning": 75
+  },
+  "suggested_action": "Retake exam with focus on understanding",
+  "report_status": "rate_limited"
+}

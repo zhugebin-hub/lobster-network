@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知识图谱可视化 - 医疗领域</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .stats-panel {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        .viz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #graph {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        .tooltip {
+            position: absolute;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .info-panel {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        th {
+            background: #667eea;
+            color: white;
+        }
+        tr:hover {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 医疗知识图谱可视化</h1>
+        
+        <div class="stats-panel">
+            <h2 style="margin-bottom: 15px; color: #333;">📊 图谱统计</h2>
+            <div class="stats-grid" id="statsGrid"></div>
+        </div>
+        
+        <div class="viz-container">
+            <h2 style="margin-bottom: 15px; color: #333;">🕸️ 知识图谱网络</h2>
+            <div id="graph"></div>
+            <div class="legend" id="legend"></div>
+        </div>
+        
+        <div class="info-panel">
+            <h2 style="margin-bottom: 15px; color: #333;">📋 实体列表</h2>
+            <table id="entityTable">
+                <thead>
+                    <tr>
+                        <th>实体名称</th>
+                        <th>类型</th>
+                        <th>描述</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="tooltip" id="tooltip"></div>
+    
+    <script>
+        // 加载可视化数据
+        fetch('visualization_data.json')
+            .then(res => res.json())
+            .then(data => {
+                renderGraph(data);
+                renderStats(data);
+                renderLegend();
+                renderEntityTable(data);
+            });
+        
+        // 加载统计数据
+        fetch('statistics.json')
+            .then(res => res.json())
+            .then(stats => {
+                renderStatsDetails(stats);
+            });
+        
+        function renderGraph(data) {
+            const width = document.getElementById('graph').clientWidth;
+            const height = 600;
+            
+            const svg = d3.select('#graph')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // 力导向布局
+            const simulation = d3.forceSimulation(data.nodes)
+                .force('link', d3.forceLink(data.links).id(d => d.id).distance(100))
+                .force('charge', d3.forceManyBody().strength(-300))
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force('collide', d3.forceCollide(30));
+            
+            // 绘制连线
+            const links = svg.append('g')
+                .selectAll('line')
+                .data(data.links)
+                .join('line')
+                .attr('stroke', '#999')
+                .attr('stroke-opacity', 0.6)
+                .attr('stroke-width', 1.5);
+            
+            // 绘制节点
+            const nodes = svg.append('g')
+                .selectAll('circle')
+                .data(data.nodes)
+                .join('circle')
+                .attr('r', 20)
+                .attr('fill', d => d.color)
+                .attr('stroke', '#fff')
+                .attr('stroke-width', 2)
+                .call(d3.drag()
+                    .on('start', dragstarted)
+                    .on('drag', dragged)
+                    .on('end', dragended));
+            
+            // 添加节点标签
+            const labels = svg.append('g')
+                .selectAll('text')
+                .data(data.nodes)
+                .join('text')
+                .text(d => d.name)
+                .attr('font-size', '12px')
+                .attr('fill', '#333')
+                .attr('text-anchor', 'middle')
+                .attr('dy', 35);
+            
+            // 更新位置
+            simulation.on('tick', () => {
+                links
+                    .attr('x1', d => d.source.x)
+                    .attr('y1', d => d.source.y)
+                    .attr('x2', d => d.target.x)
+                    .attr('y2', d => d.target.y);
+                
+                nodes
+                    .attr('cx', d => d.x)
+                    .attr('cy', d => d.y);
+                
+                labels
+                    .attr('x', d => d.x)
+                    .attr('y', d => d.y);
+            });
+            
+            // 工具提示
+            const tooltip = d3.select('#tooltip');
+            nodes.on('mouseover', (event, d) => {
+                tooltip.style('opacity', 1)
+                    .html(`<strong>${d.name}</strong><br/>类型：${d.type}<br/>${d.description}`);
+            })
+            .on('mousemove', (event) => {
+                tooltip.style('left', (event.pageX + 10) + 'px')
+                    .style('top', (event.pageY - 10) + 'px');
+            })
+            .on('mouseout', () => {
+                tooltip.style('opacity', 0);
+            });
+            
+            // 拖拽函数
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+            
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+            
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+        }
+        
+        function renderStats(data) {
+            const statsGrid = document.getElementById('statsGrid');
+            statsGrid.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value">${data.nodes.length}</div>
+                    <div class="stat-label">实体总数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${data.links.length}</div>
+                    <div class="stat-label">关系总数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${new Set(data.nodes.map(n => n.type)).size}</div>
+                    <div class="stat-label">实体类型</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${new Set(data.links.map(l => l.type)).size}</div>
+                    <div class="stat-label">关系类型</div>
+                </div>
+            `;
+        }
+        
+        function renderStatsDetails(stats) {
+            const statsGrid = document.getElementById('statsGrid');
+            const typeInfo = Object.entries(stats.entity_types)
+                .map(([type, count]) => `${type}:${count}`)
+                .join(' | ');
+            statsGrid.innerHTML += `
+                <div class="stat-item" style="grid-column: 1 / -1;">
+                    <div class="stat-label" style="text-align:left;">实体类型分布：${typeInfo}</div>
+                </div>
+            `;
+        }
+        
+        function renderLegend() {
+            const colors = {
+                '疾病': '#ff6b6b',
+                '症状': '#4ecdc4',
+                '药品': '#45b7d1',
+                '检查': '#96ceb4',
+                '科室': '#ffeaa7',
+                '医生': '#dfe6e9'
+            };
+            
+            const legend = document.getElementById('legend');
+            Object.entries(colors).forEach(([type, color]) => {
+                legend.innerHTML += `
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: ${color}"></div>
+                        <span>${type}</span>
+                    </div>
+                `;
+            });
+        }
+        
+        function renderEntityTable(data) {
+            const tbody = document.querySelector('#entityTable tbody');
+            data.nodes.forEach(node => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${node.name}</td>
+                        <td><span style="background:${node.color};padding:3px 8px;border-radius:3px;color:#333;">${node.type}</span></td>
+                        <td>${node.description}</td>
+                    </tr>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>

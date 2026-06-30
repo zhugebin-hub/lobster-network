@@ -1,0 +1,9 @@
+│
+◇  Doctor warnings ───────────────────────────────────────────────────╮
+│                                                                     │
+│  - channels.dingtalk.allowFrom: set to ["*"] (required by           │
+│    dmPolicy="open")                                                 │
+│  - Run "openclaw doctor --fix" to add missing allowFrom wildcards.  │
+│                                                                     │
+├─────────────────────────────────────────────────────────────────────╯
+No cron jobs.

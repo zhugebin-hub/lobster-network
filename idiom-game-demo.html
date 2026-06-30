@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>多智能体协作 · 成语接龙 Demo</title>
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --card: #141929;
+    --card-hover: #1e2540;
+    --border: #252d4a;
+    --primary: #6366f1;
+    --primary-glow: rgba(99,102,241,0.25);
+    --red: #ef4444;
+    --red-glow: rgba(239,68,68,0.25);
+    --blue: #3b82f6;
+    --blue-glow: rgba(59,130,246,0.25);
+    --green: #10b981;
+    --amber: #f59e0b;
+    --text: #e2e8f0;
+    --text-dim: #64748b;
+    --radius: 14px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    padding: 32px 20px 18px;
+    position: relative;
+  }
+  .header h1 {
+    font-size: 26px;
+    background: linear-gradient(135deg, var(--primary), var(--blue), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+  }
+  .header p { color: var(--text-dim); font-size: 13px; }
+
+  /* ── Container ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+    display: grid;
+    gap: 20px;
+  }
+
+  /* ── Status Bar ── */
+  .status-bar {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .status-chip {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .status-chip .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+  .status-chip .val { font-weight: 700; color: var(--text); }
+  .status-chip .lbl { color: var(--text-dim); }
+
+  /* ── Architecture ── */
+  .arch-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .arch-box::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--primary), var(--blue), var(--green));
+  }
+  .arch-title {
+    font-size: 15px; font-weight: 600; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .arch-nodes {
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; flex-wrap: wrap; padding: 10px 0;
+  }
+  .a-node {
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 18px;
+    text-align: center;
+    min-width: 120px;
+    transition: all .4s;
+    position: relative;
+  }
+  .a-node.coach { border-color: var(--primary); }
+  .a-node.coach.active { box-shadow: 0 0 24px var(--primary-glow); transform: scale(1.06); }
+  .a-node.player-a { border-color: var(--red); }
+  .a-node.player-a.active { box-shadow: 0 0 24px var(--red-glow); transform: scale(1.06); }
+  .a-node.player-b { border-color: var(--blue); }
+  .a-node.player-b.active { box-shadow: 0 0 24px var(--blue-glow); transform: scale(1.06); }
+  .a-node .emoji { font-size: 26px; display: block; margin-bottom: 4px; }
+  .a-node .label { font-size: 13px; font-weight: 600; }
+  .a-node .sub { font-size: 10px; color: var(--text-dim); margin-top: 2px; }
+  .a-arrow { font-size: 18px; color: var(--text-dim); transition: color .3s; }
+  .a-arrow.on { color: var(--green); }
+  .a-label { font-size: 9px; color: var(--text-dim); text-align: center; }
+
+  .flow-text {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text);
+    padding: 12px;
+    background: var(--bg);
+    border-radius: 8px;
+    margin-top: 10px;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nfs-bar {
+    height: 4px; background: var(--bg); border-radius: 2px;
+    margin: 6px auto; max-width: 280px; overflow: hidden; opacity: 0; transition: opacity .3s;
+  }
+  .nfs-bar.on { opacity: 1; }
+  .nfs-fill { height:100%; width:0; background: linear-gradient(90deg, var(--primary), var(--green)); border-radius: 2px; transition: width .3s; }
+
+  /* ── Main Grid ── */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 800px) { .main-grid { grid-template-columns: 1fr; } }
+
+  /* ── Game Board ── */
+  .game-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+  }
+  .panel-hd {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .game-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .game-body::-webkit-scrollbar { width: 4px; }
+  .game-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  .chain-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: slideIn .4s ease;
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .chain-num {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .chain-num.coach { background: var(--primary); color: #fff; }
+  .chain-num.a { background: var(--red); color: #fff; }
+  .chain-num.b { background: var(--blue); color: #fff; }
+
+  .chain-word {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 80px;
+    text-align: center;
+  }
+  .chain-word.coach { background: rgba(99,102,241,.15); border: 1px solid rgba(99,102,241,.3); }
+  .chain-word.a { background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.25); }
+  .chain-word.b { background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.25); }
+
+  .chain-pinyin {
+    font-size: 10px;
+    color: var(--text-dim);
+    font-weight: 400;
+  }
+  .chain-explain {
+    font-size: 10px;
+    color: var(--text-dim);
+    max-width: 140px;
+    line-height: 1.3;
+  }
+  .chain-connector {
+    font-size: 16px;
+    color: var(--green);
+    flex-shrink: 0;
+  }
+
+  .game-footer {
+    padding: 10px 14px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .btn:active { transform: scale(.96); }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: #4f46e5; }
+  .btn-primary:disabled { opacity:.45; cursor:not-allowed; transform:none; }
+  .btn-red { background: var(--red); color: #fff; }
+  .btn-red:hover { background: #dc2626; }
+  .btn-blue { background: var(--blue); color: #fff; }
+  .btn-blue:hover { background: #2563eb; }
+  .btn-green { background: var(--green); color: #fff; }
+  .btn-green:hover { background: #059669; }
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+  }
+  .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+  /* ── Log Panel ── */
+  .log-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+  }
+  .log-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    font-family: 'SF Mono','Fira Code','Consolas', monospace;
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  .log-body::-webkit-scrollbar { width: 4px; }
+  .log-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  .log-e { padding: 3px 8px; border-radius: 4px; animation: fadeIn .2s; }
+  .log-e.send { background: rgba(99,102,241,.1); color: #a5b4fc; }
+  .log-e.recv { background: rgba(16,185,129,.1); color: #6ee7b7; }
+  .log-e.info { background: rgba(100,116,139,.05); color: var(--text-dim); }
+  .log-e.warn { background: rgba(245,158,11,.1); color: #fbbf24; }
+  .log-e .t { color: var(--text-dim); margin-right: 6px; }
+
+  /* ── Rules Panel ── */
+  .rules-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .rules-box h3 { font-size: 15px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .rule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .rule-item {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .rule-item .ri-title { font-weight: 600; margin-bottom: 4px; color: var(--text); }
+  .rule-item .ri-body { color: var(--text-dim); }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 16px;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+  .footer a { color: var(--primary); text-decoration: none; }
+
+  /* ── Typing ── */
+  .typing {
+    display: flex; gap: 4px; padding: 4px 0;
+  }
+  .typing span {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--text-dim);
+    animation: tp 1.4s infinite;
+  }
+  .typing span:nth-child(2) { animation-delay:.2s; }
+  .typing span:nth-child(3) { animation-delay:.4s; }
+  @keyframes tp { 0%,60%,100%{transform:translateY(0);opacity:.3} 30%{transform:translateY(-5px);opacity:1} }
+
+  .sys-msg {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-dim);
+    padding: 8px;
+    background: rgba(100,116,139,.08);
+    border-radius: 16px;
+    align-self: center;
+    max-width: 80%;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🦞 多智能体协作 · 成语接龙 Demo</h1>
+  <p>交互逻辑：教练(Hermes) 调度 ↔ 玩家A(小陈) ↔ 玩家B(诸葛虾) — 三方协作 via NFS 消息队列</p>
+</div>
+
+<div class="container">
+
+  <!-- Status -->
+  <div class="status-bar">
+    <div class="status-chip"><div class="dot"></div><span class="val" id="s-round">0</span><span class="lbl"> 回合</span></div>
+    <div class="status-chip"><span class="val" id="s-score-a">0</span><span class="lbl"> 🔴 小陈</span></div>
+    <div class="status-chip"><span class="val" id="s-score-b">0</span><span class="lbl"> 🔵 诸葛虾</span></div>
+    <div class="status-chip"><span class="val" id="s-rate">100%</span><span class="lbl"> 成功率</span></div>
+    <div class="status-chip"><span class="val" id="s-time">0s</span><span class="lbl"> 总耗时</span></div>
+  </div>
+
+  <!-- Architecture -->
+  <div class="arch-box">
+    <div class="arch-title">🏗️ 三方协作架构（与课程象棋对弈同构）</div>
+    <div class="arch-nodes">
+      <div class="a-node coach" id="n-coach">
+        <span class="emoji">🐎</span>
+        <div class="label">Hermes 教练</div>
+        <div class="sub">裁判 + 调度 + 验证</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="a-arrow" id="ar1">⇄</div>
+        <div class="a-label">指令/验证</div>
+      </div>
+      <div class="a-node player-a" id="n-a">
+        <span class="emoji">👤</span>
+        <div class="label">小陈</div>
+        <div class="sub">玩家 A（红方）</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="a-arrow" id="ar2">⇄</div>
+        <div class="a-label">接龙传递</div>
+      </div>
+      <div class="a-node player-b" id="n-b">
+        <span class="emoji">🦞</span>
+        <div class="label">诸葛虾</div>
+        <div class="sub">玩家 B（黑方）</div>
+      </div>
+    </div>
+    <div class="nfs-bar" id="nfs-bar"><div class="nfs-fill" id="nfs-fill"></div></div>
+    <div class="flow-text" id="flow-text">⏳ 点击「开始游戏」启动三方协作</div>
+  </div>
+
+  <!-- Main -->
+  <div class="main-grid">
+
+    <!-- Game -->
+    <div class="game-panel">
+      <div class="panel-hd">🎮 成语接龙 · 游戏进程</div>
+      <div class="game-body" id="game-body">
+        <div class="sys-msg">🐎 教练已就绪，等待开局指令</div>
+      </div>
+      <div class="game-footer">
+        <button class="btn btn-primary" id="btn-start" onclick="startGame()">🚀 开始游戏</button>
+        <button class="btn btn-outline" id="btn-step" onclick="autoStep()" disabled>⏭ 自动接龙</button>
+        <button class="btn btn-outline" id="btn-reset" onclick="resetGame()">🔄 重置</button>
+      </div>
+    </div>
+
+    <!-- Log -->
+    <div class="log-panel">
+      <div class="panel-hd">📋 NFS 消息流转日志</div>
+      <div class="log-body" id="log-body">
+        <div class="log-e info"><span class="t">[系统]</span> 多智能体成语接龙 Demo 已加载</div>
+        <div class="log-e info"><span class="t">[系统]</span> 交互逻辑同构于课程「象棋对弈」三方协作</div>
+        <div class="log-e info"><span class="t">[系统]</span> 通信方式：NFS 共享目录消息队列（模拟）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rules -->
+  <div class="rules-box">
+    <h3>📖 交互逻辑说明（与课程作业对比）</h3>
+    <div class="rule-grid">
+      <div class="rule-item">
+        <div class="ri-title">🐎 教练角色（Hermes）</div>
+        <div class="ri-body">
+          <b>象棋：</b>广播开局 → 验证走法 → 播报结果<br>
+          <b>成语接龙：</b>给出首词 → 验证接龙 → 计分播报<br>
+          <b>共同点：</b>居中调度、规则验证、状态广播
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="ri-title">👤 玩家角色（小陈 / 诸葛虾）</div>
+        <div class="ri-body">
+          <b>象棋：</b>轮流行棋 → 写入 move.json<br>
+          <b>成语接龙：</b>轮流接词 → 写入 idiom.json<br>
+          <b>共同点：</b>接收指令 → 独立思考 → 提交结果
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="ri-title">📂 NFS 消息队列</div>
+        <div class="ri-body">
+          <b>象棋：</b>/shared/chess/move.json<br>
+          <b>成语接龙：</b>/shared/messages/from-*.json<br>
+          <b>共同点：</b>基于文件异步通信，轮询检测新消息
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="ri-title">📢 状态广播</div>
+        <div class="ri-body">
+          <b>象棋：</b>broadcasts/latest.json 每30秒广播<br>
+          <b>成语接龙：</b>实时显示接龙链和计分<br>
+          <b>共同点：</b>所有参与者实时同步游戏状态
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    作者：李皓然 | 指导教师：诸葛斌 | 日期：2026-06-11 |
+    交互逻辑来源：课程「多智能体协同对弈」NFS 三方协作架构 |
+    <a href="https://docs.openclaw.ai" target="_blank">OpenClaw 文档</a>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// 成语知识库
+// ═══════════════════════════════════════════════════════
+
+const IDIOMS = {
+  // 教练开局词
+  start: [
+    { word: '一马当先', pinyin: 'yī mǎ dāng xiān', explain: '比喻领先，带头' },
+    { word: '马到成功', pinyin: 'mǎ dào chéng gōng', explain: '形容事情顺利，迅速成功' },
+    { word: '龙马精神', pinyin: 'lóng mǎ jīng shén', explain: '比喻精神旺盛，充满活力' },
+  ],
+
+  // 小陈的接龙词库（按首字索引）
+  xiaochen: {
+    '先': [
+      { word: '先发制人', pinyin: 'xiān fā zhì rén', explain: '先动手以制伏对方' },
+      { word: '先见之明', pinyin: 'xiān jiàn zhī míng', explain: '事先看清问题的眼光' },
+      { word: '先入为主', pinyin: 'xiān rù wéi zhǔ', explain: '先听进去的话形成偏见' },
+    ],
+    '功': [
+      { word: '功成名就', pinyin: 'gōng chéng míng jiù', explain: '功业建立了，名声也有了' },
+      { word: '功亏一篑', pinyin: 'gōng kuī yī kuì', explain: '差最后一步而失败' },
+    ],
+    '神': [
+      { word: '神采奕奕', pinyin: 'shén cǎi yì yì', explain: '精神饱满，容光焕发' },
+      { word: '神通广大', pinyin: 'shén tōng guǎng dà', explain: '本领高超，无所不能' },
+    ],
+    '人': [
+      { word: '人定胜天', pinyin: 'rén dìng shèng tiān', explain: '人力能够战胜自然' },
+      { word: '人心向背', pinyin: 'rén xīn xiàng bèi', explain: '人民大众的拥护或反对' },
+    ],
+    '就': [
+      { word: '就事论事', pinyin: 'jiù shì lùn shì', explain: '按事物本身来讨论' },
+    ],
+    '明': [
+      { word: '明察秋毫', pinyin: 'míng chá qiū háo', explain: '目光敏锐，能看清极细微的事物' },
+      { word: '明明白白', pinyin: 'míng míng bái bái', explain: '清清楚楚，明确无误' },
+    ],
+    '主': [
+      { word: '主次分明', pinyin: 'zhǔ cì fēn míng', explain: '主要的和次要的分得很清楚' },
+    ],
+    '天': [
+      { word: '天下太平', pinyin: 'tiān xià tài píng', explain: '全国或世界局势安定' },
+      { word: '天衣无缝', pinyin: 'tiān yī wú fèng', explain: '比喻事物完美自然，没有破绽' },
+    ],
+    '背': [
+      { word: '背水一战', pinyin: 'bèi shuǐ yī zhàn', explain: '在没有退路的情况下决一死战' },
+    ],
+    '大': [
+      { word: '大公无私', pinyin: 'dà gōng wú sī', explain: '完全为公，没有私心' },
+      { word: '大展宏图', pinyin: 'dà zhǎn hóng tú', explain: '大规模地实施宏伟计划' },
+    ],
+    '毫': [
+      { word: '毫不犹豫', pinyin: 'háo bù yóu yù', explain: '一点也不迟疑' },
+    ],
+    '白': [
+      { word: '白手起家', pinyin: 'bái shǒu qǐ jiā', explain: '在没有基础的情况下创建事业' },
+    ],
+    '分': [
+      { word: '分秒必争', pinyin: 'fēn miǎo bì zhēng', explain: '一分一秒也一定要争取' },
+    ],
+    '战': [
+      { word: '战无不胜', pinyin: 'zhàn wú bù shèng', explain: '形容强大无比，每战必胜' },
+    ],
+    '私': [
+      { word: '私心杂念', pinyin: 'sī xīn zá niàn', explain: '为个人打算的各种想法' },
+    ],
+    '图': [
+      { word: '图谋不轨', pinyin: 'tú móu bù guǐ', explain: '谋划进行违法活动' },
+    ],
+    '豫': [
+      { word: '豫章行', pinyin: 'yù zhāng xíng', explain: '古乐府曲名' },
+    ],
+    '家': [
+      { word: '家喻户晓', pinyin: 'jiā yù hù xiǎo', explain: '每家每户都知道' },
+    ],
+    '争': [
+      { word: '争先恐后', pinyin: 'zhēng xiān kǒng hòu', explain: '争着向前，唯恐落后' },
+    ],
+    '胜': [
+      { word: '胜券在握', pinyin: 'shèng quàn zài wò', explain: '比喻很有把握取得成功' },
+    ],
+    '念': [
+      { word: '念念不忘', pinyin: 'niàn niàn bù wàng', explain: '牢记在心，时刻不忘' },
+    ],
+    '轨': [
+      { word: '轨物范世', pinyin: 'guǐ wù fàn shì', explain: '作为事物的规范、世人的榜样' },
+    ],
+    '晓': [
+      { word: '晓之以理', pinyin: 'xiǎo zhī yǐ lǐ', explain: '用道理使人明白' },
+    ],
+    '后': [
+      { word: '后来居上', pinyin: 'hòu lái jū shàng', explain: '后来的超过先前的' },
+    ],
+    '忘': [
+      { word: '忘乎所以', pinyin: 'wàng hū suǒ yǐ', explain: '因过度兴奋而忘记一切' },
+    ],
+    '握': [
+      { word: '握手言和', pinyin: 'wò shǒu yán hé', explain: '握手讲和，重归于好' },
+    ],
+    '理': [
+      { word: '理直气壮', pinyin: 'lǐ zhí qì zhuàng', explain: '理由充分，说话有气势' },
+    ],
+    '上': [
+      { word: '上下同心', pinyin: 'shàng xià tóng xīn', explain: '上下一心，团结一致' },
+    ],
+    '以': [
+      { word: '以德报怨', pinyin: 'yǐ dé bào yuàn', explain: '用恩惠回报别人的怨恨' },
+    ],
+    '和': [
+      { word: '和风细雨', pinyin: 'hé fēng xì yǔ', explain: '比喻方式和缓，不粗暴' },
+    ],
+    '心': [
+      { word: '心花怒放', pinyin: 'xīn huā nù fàng', explain: '形容非常高兴' },
+    ],
+    '怨': [
+      { word: '怨天尤人', pinyin: 'yuàn tiān yóu rén', explain: '遇到挫折一味抱怨' },
+    ],
+    '雨': [
+      { word: '雨过天晴', pinyin: 'yǔ guò tiān qíng', explain: '比喻情况由坏变好' },
+    ],
+    '放': [
+      { word: '放虎归山', pinyin: 'fàng hǔ guī shān', explain: '比喻放走敌人，留下祸根' },
+    ],
+    '人': [
+      { word: '人山人海', pinyin: 'rén shān rén hǎi', explain: '形容人非常多' },
+    ],
+    '晴': [
+      { word: '晴天霹雳', pinyin: 'qíng tiān pī lì', explain: '比喻突然发生的意外事件' },
+    ],
+    '山': [
+      { word: '山清水秀', pinyin: 'shān qīng shuǐ xiù', explain: '山水风景优美' },
+    ],
+    '雳': [
+      { word: '雳声震天', pinyin: 'lì shēng zhèn tiān', explain: '形容声音极大' },
+    ],
+    '海': [
+      { word: '海阔天空', pinyin: 'hǎi kuò tiān kōng', explain: '比喻想象或说话毫无拘束' },
+    ],
+    '秀': [
+      { word: '秀外慧中', pinyin: 'xiù wài huì zhōng', explain: '外表秀丽，内心聪明' },
+    ],
+    '天': [
+      { word: '天马行空', pinyin: 'tiān mǎ xíng kōng', explain: '比喻诗文气势豪放，不受拘束' },
+    ],
+    '空': [
+      { word: '空前绝后', pinyin: 'kōng qián jué hòu', explain: '以前没有，以后也不会有' },
+    ],
+  },
+
+  // 诸葛虾的接龙词库
+  zhugexia: {
+    '先': [
+      { word: '先人后己', pinyin: 'xiān rén hòu jǐ', explain: '先考虑别人，后考虑自己' },
+    ],
+    '功': [
+      { word: '功德无量', pinyin: 'gōng dé wú liàng', explain: '功德极大，无法计量' },
+    ],
+    '神': [
+      { word: '神机妙算', pinyin: 'shén jī miào suàn', explain: '惊人的机智，巧妙的谋划' },
+    ],
+    '人': [
+      { word: '人杰地灵', pinyin: 'rén jié dì líng', explain: '杰出的人物出生或到过的地方成为名胜' },
+    ],
+    '就': [
+      { word: '就地取材', pinyin: 'jiù dì qǔ cái', explain: '在当地选取材料' },
+    ],
+    '明': [
+      { word: '明知故犯', pinyin: 'míng zhī gù fàn', explain: '明明知道不对还去做' },
+    ],
+    '主': [
+      { word: '主客颠倒', pinyin: 'zhǔ kè diān dǎo', explain: '主要的和次要的弄反了' },
+    ],
+    '天': [
+      { word: '天伦之乐', pinyin: 'tiān lún zhī lè', explain: '家庭团聚的欢乐' },
+    ],
+    '背': [
+      { word: '背道而驰', pinyin: 'bèi dào ér chí', explain: '朝着相反的方向走，比喻方向相反' },
+    ],
+    '大': [
+      { word: '大智若愚', pinyin: 'dà zhì ruò yú', explain: '有智慧的人不露锋芒' },
+    ],
+    '毫': [
+      { word: '毫不费力', pinyin: 'háo bù fèi lì', explain: '一点都不费力气' },
+    ],
+    '白': [
+      { word: '百折不挠', pinyin: 'bǎi zhé bù náo', explain: '无论受多少挫折都不退缩' },
+    ],
+    '分': [
+      { word: '分庭抗礼', pinyin: 'fēn tíng kàng lǐ', explain: '双方平起平坐，实力相当' },
+    ],
+    '战': [
+      { word: '战战兢兢', pinyin: 'zhàn zhàn jīng jīng', explain: '形容小心谨慎的样子' },
+    ],
+    '私': [
+      { word: '私相授受', pinyin: 'sī xiāng shòu shòu', explain: '私下里互相给与和接受' },
+    ],
+    '图': [
+      { word: '图文并茂', pinyin: 'tú wén bìng mào', explain: '图画和文字都很丰富精美' },
+    ],
+    '己': [
+      { word: '己所不欲', pinyin: 'jǐ suǒ bù yù', explain: '自己不想要的，不要强加给别人' },
+    ],
+    '量': [
+      { word: '量力而行', pinyin: 'liàng lì ér xíng', explain: '按照自己能力的大小去做' },
+    ],
+    '算': [
+      { word: '算无遗策', pinyin: 'suàn wú yí cè', explain: '谋划精密，从不失误' },
+    ],
+    '灵': [
+      { word: '灵丹妙药', pinyin: 'líng dān miào yào', explain: '非常有效的灵验药物' },
+    ],
+    '材': [
+      { word: '材大难用', pinyin: 'cái dà nán yòng', explain: '才能很大却难以施展' },
+    ],
+    '犯': [
+      { word: '犯而不校', pinyin: 'fàn ér bù jiào', explain: '受到冒犯也不计较' },
+    ],
+    '倒': [
+      { word: '倒海翻江', pinyin: 'dǎo hǎi fān jiāng', explain: '形容力量或声势非常浩大' },
+    ],
+    '乐': [
+      { word: '乐不思蜀', pinyin: 'lè bù sī shǔ', explain: '快乐得不想回去' },
+    ],
+    '驰': [
+      { word: '驰名中外', pinyin: 'chí míng zhōng wài', explain: '名声传播到国内外' },
+    ],
+    '愚': [
+      { word: '愚公移山', pinyin: 'yú gōng yí shān', explain: '比喻做事有毅力，不怕困难' },
+    ],
+    '力': [
+      { word: '力挽狂澜', pinyin: 'lì wǎn kuáng lán', explain: '比喻尽力挽回危险的局势' },
+    ],
+    '挠': [
+      { word: '挠曲枉直', pinyin: 'náo qū wǎng zhí', explain: '指纠正偏差，使归于正道' },
+    ],
+    '礼': [
+      { word: '礼尚往来', pinyin: 'lǐ shàng wǎng lái', explain: '在礼节上注重有来有往' },
+    ],
+    '江': [
+      { word: '江山如画', pinyin: 'jiāng shān rú huà', explain: '形容自然风光美丽如画' },
+    ],
+    '欲': [
+      { word: '欲速不达', pinyin: 'yù sù bù dá', explain: '过于性急反而达不到目的' },
+    ],
+    '药': [
+      { word: '药到病除', pinyin: 'yào dào bìng chú', explain: '药一服下病就好了' },
+    ],
+    '蜀': [
+      { word: '蜀犬吠日', pinyin: 'shǔ quǎn fèi rì', explain: '比喻少见多怪' },
+    ],
+    '外': [
+      { word: '外强中干', pinyin: 'wài qiáng zhōng gān', explain: '外表强大，内里空虚' },
+    ],
+    '干': [
+      { word: '干云蔽日', pinyin: 'gān yún bì rì', explain: '冲上云霄，遮住太阳，形容树木高大' },
+    ],
+    '澜': [
+      { word: '澜倒波随', pinyin: 'lán dǎo bō suí', explain: '犹言随波逐流' },
+    ],
+    '直': [
+      { word: '直言不讳', pinyin: 'zhí yán bù huì', explain: '说话直率，毫不避讳' },
+    ],
+    '来': [
+      { word: '来日方长', pinyin: 'lái rì fāng cháng', explain: '未来的日子还很长' },
+    ],
+    '画': [
+      { word: '画龙点睛', pinyin: 'huà lóng diǎn jīng', explain: '比喻作文或说话时在关键处加上精辟的语句' },
+    ],
+    '讳': [
+      { word: '讳莫如深', pinyin: 'huì mò rú shēn', explain: '紧紧隐瞒，不让外人知道' },
+    ],
+    '长': [
+      { word: '长风破浪', pinyin: 'cháng fēng pò làng', explain: '比喻志向远大，不怕困难' },
+    ],
+    '睛': [
+      { word: '睛目千里', pinyin: 'jīng mù qiān lǐ', explain: '目光远大' },
+    ],
+    '深': [
+      { word: '深入浅出', pinyin: 'shēn rù qiǎn chū', explain: '内容深刻而表达浅显' },
+    ],
+    '浪': [
+      { word: '浪子回头', pinyin: 'làng zǐ huí tóu', explain: '不务正业的人改过自新' },
+    ],
+    '出': [
+      { word: '出类拔萃', pinyin: 'chū lèi bá cuì', explain: '超出同类之上' },
+    ],
+    '头': [
+      { word: '头头是道', pinyin: 'tóu tóu shì dào', explain: '说话做事很有条理' },
+    ],
+    '萃': [
+      { word: '萃取精华', pinyin: 'cuì qǔ jīng huá', explain: '提取最精粹的部分' },
+    ],
+    '道': [
+      { word: '道听途说', pinyin: 'dào tīng tú shuō', explain: '路上听来的话，没有根据' },
+    ],
+    '华': [
+      { word: '华而不实', pinyin: 'huá ér bù shí', explain: '只开花不结果，比喻外表好看内容空虚' },
+    ],
+    '说': [
+      { word: '说一不二', pinyin: 'shuō yī bù èr', explain: '说话算数，说到做到' },
+    ],
+    '实': [
+      { word: '实事求是', pinyin: 'shí shì qiú shì', explain: '从实际出发，探求事物的真相' },
+    ],
+    '是': [
+      { word: '是非曲直', pinyin: 'shì fēi qū zhí', explain: '正确与错误，有理与无理' },
+    ],
+  },
+};
+
+// ═══════════════════════════════════════════════════════
+// 状态管理
+// ═══════════════════════════════════════════════════════
+
+let game = {
+  running: false,
+  round: 0,
+  chain: [],         // { word, pinyin, explain, player, valid }
+  lastChar: '',      // 最后一个字
+  scoreA: 0,
+  scoreB: 0,
+  turn: 'coach',     // coach -> a -> b -> a -> b ...
+  used: new Set(),
+  startTime: 0,
+};
+
+let isAnimating = false;
+
+// ═══════════════════════════════════════════════════════
+// DOM
+// ═══════════════════════════════════════════════════════
+
+const gameBody = document.getElementById('game-body');
+const logBody = document.getElementById('log-body');
+const flowText = document.getElementById('flow-text');
+const btnStart = document.getElementById('btn-start');
+const btnStep = document.getElementById('btn-step');
+
+// ═══════════════════════════════════════════════════════
+// 核心逻辑
+// ═══════════════════════════════════════════════════════
+
+function startGame() {
+  if (game.running) return;
+  game.running = true;
+  game.startTime = Date.now();
+  btnStart.disabled = true;
+  btnStep.disabled = false;
+
+  addLog('info', '🎮 游戏启动！');
+  addLog('send', '🐎 教练 → NFS: 开局指令（选择起始成语）');
+
+  // Step 1: 教练给出首词
+  runCoachStart();
+}
+
+async function runCoachStart() {
+  setNode('n-coach', true);
+  setArrow('ar1', true);
+  setFlow('🐎 Hermes 教练：选择开局成语，向两位玩家广播');
+
+  await sleep(800);
+  const startIdiom = pickRandom(IDIOMS.start);
+  game.chain.push({ ...startIdiom, player: 'coach', valid: true });
+  game.lastChar = startIdiom.word[startIdiom.word.length - 1];
+  game.used.add(startIdiom.word);
+  game.round = 1;
+
+  addGameLink('coach', startIdiom, 0);
+  addLog('recv', `🐎 教练给出首词: ${startIdiom.word}（${startIdiom.pinyin}）`);
+  addLog('send', `📢 教练广播: 首词="${startIdiom.word}"，末字="${game.lastChar}"，轮到小陈`);
+
+  await sleep(600);
+  setNode('n-coach', false);
+  setArrow('ar1', false);
+
+  // Step 2: 小陈接龙
+  await runPlayerTurn('a');
+}
+
+async function runPlayerTurn(player) {
+  const nodeId = player === 'a' ? 'n-a' : 'n-b';
+  const playerName = player === 'a' ? '小陈' : '诸葛虾';
+  const nextChar = game.lastChar;
+  const dict = player === 'a' ? IDIOMS.xiaochen : IDIOMS.zhugexia;
+
+  setNode(nodeId, true);
+  setArrow('ar1', true);
+  setFlow(`📂 NFS → ${playerName}：收到接龙指令，末字="${nextChar}"`);
+  addLog('recv', `📥 ${playerName} 收到消息：末字="${nextChar}"，请接龙`);
+
+  await sleep(600);
+  addTyping(nodeId, playerName);
+
+  await sleep(1500);
+  removeTyping();
+
+  // 查找可接的成语
+  const candidates = dict[nextChar] || [];
+  let chosen = null;
+  for (const c of candidates) {
+    if (!game.used.has(c.word)) {
+      chosen = c;
+      break;
+    }
+  }
+
+  if (chosen) {
+    game.used.add(chosen.word);
+    game.chain.push({ ...chosen, player, valid: true });
+    game.lastChar = chosen.word[chosen.word.length - 1];
+    game.round++;
+
+    if (player === 'a') game.scoreA += 10;
+    else game.scoreB += 10;
+
+    addGameLink(player, chosen, game.chain.length - 1);
+    addLog('send', `📤 ${playerName} → NFS: 接 "${chosen.word}"（${chosen.pinyin}）— 末字="${game.lastChar}"`);
+    addLog('recv', `✅ 教练验证通过: "${chosen.word}" 接龙有效 (+10分)`);
+    setFlow(`✅ 教练验证: "${chosen.word}" 接龙有效！+10分`);
+  } else {
+    // 接不上
+    game.chain.push({ word: '❌ 接龙失败', pinyin: '', explain: `找不到以"${nextChar}"开头的成语`, player, valid: false });
+    addGameLink(player, { word: '接不上', pinyin: '', explain: `未找到以"${nextChar}"开头的成语` }, game.chain.length - 1, true);
+    addLog('warn', `⚠️ ${playerName} 无法接龙：未找到以"${nextChar}"开头的成语`);
+    setFlow(`⚠️ ${playerName} 接龙失败！未找到以"${nextChar}"开头的成语`);
+    updateStats();
+    endGame();
+    return;
+  }
+
+  updateStats();
+
+  await sleep(400);
+  setNode(nodeId, false);
+  setArrow('ar1', false);
+
+  // 切换到下一个玩家
+  if (player === 'a') {
+    await runPlayerTurn('b');
+  } else {
+    await runPlayerTurn('a');
+  }
+}
+
+function endGame() {
+  game.running = false;
+  btnStep.disabled = true;
+  const elapsed = ((Date.now() - game.startTime) / 1000).toFixed(1);
+  const winner = game.scoreA > game.scoreB ? '🔴 小陈 获胜！' :
+                 game.scoreB > game.scoreA ? '🔵 诸葛虾 获胜！' : '平局！';
+
+  addSysMsg(`🏁 游戏结束！共 ${game.round} 轮，耗时 ${elapsed}s。${winner}`);
+  addLog('info', `🏁 游戏结束 — 小陈 ${game.scoreA}分 vs 诸葛虾 ${game.scoreB}分`);
+  setFlow(`🏁 终局 — 小陈 ${game.scoreA}分 vs 诸葛虾 ${game.scoreB}分`);
+}
+
+function resetGame() {
+  game = {
+    running: false, round: 0, chain: [], lastChar: '',
+    scoreA: 0, scoreB: 0, turn: 'coach', used: new Set(), startTime: 0,
+  };
+  gameBody.innerHTML = '<div class="sys-msg">🐎 教练已就绪，等待开局指令</div>';
+  logBody.innerHTML = `
+    <div class="log-e info"><span class="t">[系统]</span> Demo 已重置</div>
+    <div class="log-e info"><span class="t">[系统]</span> 交互逻辑同构于课程「象棋对弈」三方协作</div>
+  `;
+  flowText.textContent = '⏳ 点击「开始游戏」启动三方协作';
+  btnStart.disabled = false;
+  btnStep.disabled = true;
+  updateStats();
+  clearNodes();
+}
+
+function autoStep() {
+  if (!game.running) startGame();
+}
+
+// ═══════════════════════════════════════════════════════
+// UI helpers
+// ═══════════════════════════════════════════════════════
+
+function addGameLink(player, idiom, idx, isFail) {
+  const div = document.createElement('div');
+  div.className = 'chain-link';
+  const cls = player === 'coach' ? 'coach' : player === 'a' ? 'a' : 'b';
+  const name = player === 'coach' ? '🐎 教练' : player === 'a' ? '🔴 小陈' : '🔵 诸葛虾';
+
+  let connector = '';
+  if (idx > 0 && !isFail) connector = `<span class="chain-connector">→</span>`;
+
+  div.innerHTML = `
+    <span class="chain-num ${cls}">${idx + 1}</span>
+    <span class="chain-word ${cls}" style="${isFail ? 'opacity:.5;' : ''}">${idiom.word}</span>
+    ${connector}
+    <span class="chain-pinyin">${idiom.pinyin}</span>
+    <span class="chain-explain">${idiom.explain}</span>
+  `;
+  gameBody.appendChild(div);
+  gameBody.scrollTop = gameBody.scrollHeight;
+}
+
+function addSysMsg(text) {
+  const div = document.createElement('div');
+  div.className = 'sys-msg';
+  div.textContent = text;
+  gameBody.appendChild(div);
+  gameBody.scrollTop = gameBody.scrollHeight;
+}
+
+function addLog(type, msg) {
+  const div = document.createElement('div');
+  div.className = `log-e ${type}`;
+  const now = new Date().toTimeString().slice(0, 8);
+  div.innerHTML = `<span class="t">[${now}]</span> ${msg}`;
+  logBody.appendChild(div);
+  logBody.scrollTop = logBody.scrollHeight;
+}
+
+function addTyping(nodeId, name) {
+  const div = document.createElement('div');
+  div.className = 'sys-msg';
+  div.id = 'typing-ind';
+  div.innerHTML = `<span class="typing"><span></span><span></span><span></span></span> ${name} 思考中...`;
+  gameBody.appendChild(div);
+  gameBody.scrollTop = gameBody.scrollHeight;
+}
+
+function removeTyping() {
+  const el = document.getElementById('typing-ind');
+  if (el) el.remove();
+}
+
+function setNode(id, on) {
+  const el = document.getElementById(id);
+  on ? el.classList.add('active') : el.classList.remove('active');
+}
+
+function setArrow(id, on) {
+  const el = document.getElementById(id);
+  on ? el.classList.add('on') : el.classList.remove('on');
+}
+
+function setFlow(text) {
+  flowText.textContent = text;
+}
+
+function updateStats() {
+  document.getElementById('s-round').textContent = game.round;
+  document.getElementById('s-score-a').textContent = game.scoreA;
+  document.getElementById('s-score-b').textContent = game.scoreB;
+  const elapsed = ((Date.now() - game.startTime) / 1000).toFixed(1);
+  document.getElementById('s-time').textContent = elapsed + 's';
+  const total = game.chain.filter(c => c.player !== 'coach').length;
+  const valid = game.chain.filter(c => c.valid && c.player !== 'coach').length;
+  document.getElementById('s-rate').textContent = total > 0 ? Math.round(valid / total * 100) + '%' : '100%';
+}
+
+function clearNodes() {
+  ['n-coach', 'n-a', 'n-b'].forEach(setNodeOff);
+  ['ar1', 'ar2'].forEach(setArrowOff);
+}
+function setNodeOff(id) { document.getElementById(id).classList.remove('active'); }
+function setArrowOff(id) { document.getElementById(id).classList.remove('on'); }
+
+function pickRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// Init
+window.addEventListener('load', () => {
+  addLog('info', '🎨 界面渲染完成，等待开局指令');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第一次世界大战爆发 - 在线演示</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif;
+      background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+      min-height: 100vh;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    
+    /* 头部 */
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(180deg, rgba(231, 76, 60, 0.2), transparent);
+    }
+    h1 {
+      font-size: 3em;
+      background: linear-gradient(90deg, #e74c3c, #f39c12, #e74c3c);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
+      text-shadow: 0 0 50px rgba(231, 76, 60, 0.5);
+    }
+    @keyframes shine { to { background-position: 200% center; } }
+    .subtitle { font-size: 1.3em; color: #aaa; margin-top: 10px; }
+    .year-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #e74c3c, #c0392b);
+      padding: 8px 25px;
+      border-radius: 25px;
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    
+    /* 导航 */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+    nav button {
+      padding: 12px 25px;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 25px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1em;
+    }
+    nav button:hover, nav button.active {
+      background: linear-gradient(90deg, #e74c3c, #f39c12);
+      border-color: transparent;
+      transform: scale(1.05);
+    }
+    
+    /* 主容器 */
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    
+    /* 章节 */
+    section {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* 阵营对峙 */
+    .alliances-showdown {
+      display: flex;
+      gap: 30px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+    .alliance-side {
+      flex: 1;
+      min-width: 300px;
+      padding: 30px;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .alliance-side::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+    @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .central-powers { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+    .allied-powers { background: linear-gradient(135deg, #3498db, #2980b9); }
+    .alliance-side h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .country-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+      margin: 10px 0;
+      background: rgba(255,255,255,0.15);
+      border-radius: 10px;
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .country-item:hover { transform: translateX(10px); background: rgba(255,255,255,0.25); }
+    .flag { font-size: 2.5em; }
+    .country-info h3 { font-size: 1.2em; margin-bottom: 5px; }
+    .country-info p { font-size: 0.9em; opacity: 0.8; }
+    
+    /* 时间线动画 */
+    .timeline-animated {
+      position: relative;
+      padding: 40px 0;
+    }
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, #e74c3c, #f39c12, #2ecc71);
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    .timeline-node {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 40px 0;
+    }
+    .timeline-node::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #f39c12;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      z-index: 2;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.7); } 50% { transform: scale(1.2); box-shadow: 0 0 0 15px rgba(243, 156, 18, 0); } }
+    .timeline-content {
+      background: rgba(255,255,255,0.08);
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 400px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    .timeline-content:hover { transform: scale(1.05); background: rgba(255,255,255,0.15); }
+    .timeline-node:nth-child(odd) .timeline-content { margin-right: auto; }
+    .timeline-node:nth-child(even) .timeline-content { margin-left: auto; }
+    .timeline-date {
+      background: linear-gradient(90deg, #e74c3c, #f39c12);
+      padding: 8px 20px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    /* MAIN 原因卡片 */
+    .causes-main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+    .cause-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 30px;
+      border: 2px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .cause-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #e74c3c, #f39c12);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    .cause-card:hover::after { transform: scaleX(1); }
+    .cause-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .cause-letter {
+      font-size: 4em;
+      font-weight: bold;
+      background: linear-gradient(135deg, #e74c3c, #f39c12);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .cause-card h3 { font-size: 1.5em; margin: 15px 0 10px; }
+    .cause-card p { color: #aaa; line-height: 1.8; }
+    .cause-card ul { margin: 15px 0 0 20px; color: #ccc; }
+    .cause-card li { margin: 8px 0; }
+    
+    /* 爆炸演示 */
+    .spark-demo {
+      text-align: center;
+      padding: 60px 20px;
+      background: rgba(231, 76, 60, 0.1);
+      border-radius: 20px;
+      margin: 40px 0;
+    }
+    .spark-circle {
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, #f39c12, #e74c3c);
+      border-radius: 50%;
+      margin: 0 auto 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3em;
+      cursor: pointer;
+      animation: sparkPulse 2s ease-in-out infinite;
+    }
+    @keyframes sparkPulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(231, 76, 60, 0.5); } 50% { transform: scale(1.1); box-shadow: 0 0 60px rgba(231, 76, 60, 0.8); } }
+    .spark-circle:hover { animation: none; transform: scale(1.2); }
+    .spark-title { font-size: 1.8em; margin-bottom: 15px; color: #f39c12; }
+    
+    /* 地图演示 */
+    .map-demo {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 40px 0;
+    }
+    .map-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .map-cell {
+      aspect-ratio: 1;
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    .map-cell:hover { transform: scale(1.1); z-index: 10; }
+    .map-cell.central { border-color: #e74c3c; background: rgba(231, 76, 60, 0.2); }
+    .map-cell.allied { border-color: #3498db; background: rgba(52, 152, 219, 0.2); }
+    .map-cell.neutral { border-color: #95a5a6; }
+    .map-cell .flag { font-size: 2em; }
+    .map-cell .name { font-size: 0.8em; margin-top: 5px; text-align: center; }
+    
+    /* 测验 */
+    .quiz-container {
+      background: rgba(46, 204, 113, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 40px 0;
+    }
+    .quiz-container h2 { color: #2ecc71; margin-bottom: 25px; text-align: center; }
+    .question-card {
+      background: rgba(255,255,255,0.08);
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+    .question-text { font-size: 1.2em; margin-bottom: 20px; }
+    .options { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+    .option {
+      padding: 15px 20px;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    .option:hover { background: rgba(255,255,255,0.2); }
+    .option.correct { border-color: #2ecc71; background: rgba(46, 204, 113, 0.3); }
+    .option.wrong { border-color: #e74c3c; background: rgba(231, 76, 60, 0.3); }
+    .feedback {
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 10px;
+      display: none;
+      text-align: center;
+      font-weight: bold;
+    }
+    .feedback.show { display: block; }
+    .feedback.correct { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
+    .feedback.wrong { background: rgba(231, 76, 60, 0.2); color: #e74c3c; }
+    
+    /* 统计 */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+    .stat-card {
+      background: linear-gradient(135deg, rgba(231, 76, 60, 0.2), rgba(243, 156, 18, 0.2));
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-number { font-size: 2.5em; font-weight: bold; color: #f39c12; }
+    .stat-label { color: #aaa; margin-top: 10px; }
+    
+    /* 页脚 */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #666;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 60px;
+    }
+    
+    /* 响应式 */
+    @media (max-width: 768px) {
+      h1 { font-size: 2em; }
+      .timeline-line { left: 20px; }
+      .timeline-node { flex-direction: column; }
+      .timeline-node:nth-child(odd) .timeline-content,
+      .timeline-node:nth-child(even) .timeline-content { margin: 0 0 0 50px; }
+      .map-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔫 第一次世界大战</h1>
+    <p class="subtitle">The Great War · 人类历史上第一次全球性战争</p>
+    <div class="year-badge">1914 - 1918</div>
+  </header>
+  
+  <nav>
+    <button class="active" onclick="showSection('overview')">📊 概览</button>
+    <button onclick="showSection('alliances')">⚔️ 阵营</button>
+    <button onclick="showSection('timeline')">📅 时间线</button>
+    <button onclick="showSection('causes')">🎯 原因</button>
+    <button onclick="showSection('map')">🗺️ 地图</button>
+    <button onclick="showSection('quiz')">📝 测验</button>
+  </nav>
+  
+  <div class="container">
+    <!-- 概览 -->
+    <section id="overview" class="active">
+      <div class="spark-demo">
+        <div class="spark-circle" onclick="triggerSpark()">💥</div>
+        <h2 class="spark-title">点击引爆萨拉热窝事件</h2>
+        <p style="color: #aaa; max-width: 600px; margin: 0 auto; line-height: 1.8;">
+          1914 年 6 月 28 日，奥匈帝国皇储斐迪南大公在萨拉热窝被塞尔维亚民族主义者刺杀，
+          这一事件如同点燃火药桶的火花，在 37 天内引发了席卷全球的战争。
+        </p>
+      </div>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">37</div>
+          <div class="stat-label">天从刺杀到全面战争</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">28+</div>
+          <div class="stat-label">参战国家</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">1700 万</div>
+          <div class="stat-label">死亡人数</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4 年</div>
+          <div class="stat-label">战争持续时间</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 阵营 -->
+    <section id="alliances">
+      <h2 style="text-align: center; font-size: 2em; margin-bottom: 30px;">⚔️ 两大军事集团对峙</h2>
+      <div class="alliances-showdown">
+        <div class="alliance-side central-powers">
+          <h2>🏰 同盟国</h2>
+          <p style="opacity: 0.8; margin-bottom: 20px;">Central Powers · 1882 年形成</p>
+          <div class="country-item">
+            <span class="flag">🇩🇪</span>
+            <div class="country-info">
+              <h3>德意志帝国</h3>
+              <p>核心国家 · 欧洲最强陆军</p>
+            </div>
+          </div>
+          <div class="country-item">
+            <span class="flag">🇦🇹</span>
+            <div class="country-info">
+              <h3>奥匈帝国</h3>
+              <p>多民族帝国 · 战争发起者</p>
+            </div>
+          </div>
+          <div class="country-item">
+            <span class="flag">🇮🇹</span>
+            <div class="country-info">
+              <h3>意大利王国</h3>
+              <p>1915 年退出 · 转投协约国</p>
+            </div>
+          </div>
+          <div class="country-item">
+            <span class="flag">🇹🇷</span>
+            <div class="country-info">
+              <h3>奥斯曼帝国</h3>
+              <p>1914 年加入 · 控制海峡</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="alliance-side allied-powers">
+          <h2>🤝 协约国</h2>
+          <p style="opacity: 0.8; margin-bottom: 20px;">Allied Powers · 1907 年形成</p>
+          <div class="country-item">
+            <span class="flag">🇫🇷</span>
+            <div class="country-info">
+              <h3>法兰西第三共和国</h3>
+              <p>寻求复仇 · 西线主力</p>
+            </div>
+          </div>
+          <div class="country-item">
+            <span class="flag">🇬🇧</span>
+            <div class="country-info">
+              <h3>大英帝国</h3>
+              <p>海上霸主 · 殖民地最广</p>
+            </div>
+          </div>
+          <div class="country-item">
+            <span class="flag">🇷🇺</span>
+            <div class="country-info">
+              <h3>俄罗斯帝国</h3>
+              <p>1917 年退出 · 斯拉夫领袖</p>
+            </div>
+          </div>
+          <div class="country-item">
+            <span class="flag">🇺🇸</span>
+            <div class="country-info">
+              <h3>美利坚合众国</h3>
+              <p>1917 年加入 · 决定胜负</p>
+            </div>
+          </div>
+          <div class="country-item">
+            <span class="flag">🇨🇳</span>
+            <div class="country-info">
+              <h3>中华民国</h3>
+              <p>1917 年加入 · 派遣劳工</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 时间线 -->
+    <section id="timeline">
+      <h2 style="text-align: center; font-size: 2em; margin-bottom: 30px;">📅 七月危机时间线</h2>
+      <div class="timeline-animated">
+        <div class="timeline-line"></div>
+        
+        <div class="timeline-node">
+          <div class="timeline-content" onclick="showDetail('spark')">
+            <div class="timeline-date">1914.6.28</div>
+            <h3>💥 萨拉热窝事件</h3>
+            <p style="color: #aaa; margin-top: 10px;">斐迪南大公遇刺，导火索点燃</p>
+          </div>
+        </div>
+        
+        <div class="timeline-node">
+          <div class="timeline-content" onclick="showDetail('austria')">
+            <div class="timeline-date">1914.7.28</div>
+            <h3>⚔️ 奥匈宣战</h3>
+            <p style="color: #aaa; margin-top: 10px;">奥匈帝国向塞尔维亚宣战</p>
+          </div>
+        </div>
+        
+        <div class="timeline-node">
+          <div class="timeline-content" onclick="showDetail('germany-russia')">
+            <div class="timeline-date">1914.8.1</div>
+            <h3>🇩🇪 德国→俄国</h3>
+            <p style="color: #aaa; margin-top: 10px;">德国向俄国宣战，东线开启</p>
+          </div>
+        </div>
+        
+        <div class="timeline-node">
+          <div class="timeline-content" onclick="showDetail('germany-france')">
+            <div class="timeline-date">1914.8.3</div>
+            <h3>🇩🇪 德国→法国</h3>
+            <p style="color: #aaa; margin-top: 10px;">德国向法国宣战，入侵比利时</p>
+          </div>
+        </div>
+        
+        <div class="timeline-node">
+          <div class="timeline-content" onclick="showDetail('britain')">
+            <div class="timeline-date">1914.8.4</div>
+            <h3>🇬🇧 英国参战</h3>
+            <p style="color: #aaa; margin-top: 10px;">英国向德国宣战，全面战争爆发</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 原因 -->
+    <section id="causes">
+      <h2 style="text-align: center; font-size: 2em; margin-bottom: 10px;">🎯 一战爆发的深层原因</h2>
+      <p style="text-align: center; color: #aaa; margin-bottom: 40px;">MAIN 四大因素 · 点击卡片查看详情</p>
+      
+      <div class="causes-main">
+        <div class="cause-card" onclick="showCause('M')">
+          <div class="cause-letter">M</div>
+          <h3>军国主义</h3>
+          <p>Militarism</p>
+          <ul>
+            <li>欧洲军费增长 300%</li>
+            <li>德国海军挑战英国</li>
+            <li>义务兵役制普及</li>
+          </ul>
+        </div>
+        
+        <div class="cause-card" onclick="showCause('A')">
+          <div class="cause-letter">A</div>
+          <h3>同盟体系</h3>
+          <p>Alliances</p>
+          <ul>
+            <li>三国同盟 vs 三国协约</li>
+            <li>连锁反应机制</li>
+            <li>局部冲突变全面战争</li>
+          </ul>
+        </div>
+        
+        <div class="cause-card" onclick="showCause('I')">
+          <div class="cause-letter">I</div>
+          <h3>帝国主义</h3>
+          <p>Imperialism</p>
+          <ul>
+            <li>殖民地争夺白热化</li>
+            <li>德国要求"阳光下的地盘"</li>
+            <li>经济实力与殖民地不匹配</li>
+          </ul>
+        </div>
+        
+        <div class="cause-card" onclick="showCause('N')">
+          <div class="cause-letter">N</div>
+          <h3>民族主义</h3>
+          <p>Nationalism</p>
+          <ul>
+            <li>巴尔干"欧洲火药桶"</li>
+            <li>泛斯拉夫主义兴起</li>
+            <li>奥匈帝国内部矛盾</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 地图 -->
+    <section id="map">
+      <h2 style="text-align: center; font-size: 2em; margin-bottom: 10px;">🗺️ 欧洲局势地图</h2>
+      <p style="text-align: center; color: #aaa; margin-bottom: 30px;">点击国家查看阵营归属</p>
+      
+      <div class="map-grid">
+        <div class="map-cell central" onclick="showCountry('germany')">
+          <span class="flag">🇩🇪</span>
+          <span class="name">德国</span>
+        </div>
+        <div class="map-cell central" onclick="showCountry('austria')">
+          <span class="flag">🇦🇹</span>
+          <span class="name">奥匈帝国</span>
+        </div>
+        <div class="map-cell allied" onclick="showCountry('france')">
+          <span class="flag">🇫🇷</span>
+          <span class="name">法国</span>
+        </div>
+        <div class="map-cell allied" onclick="showCountry('britain')">
+          <span class="flag">🇬🇧</span>
+          <span class="name">英国</span>
+        </div>
+        <div class="map-cell allied" onclick="showCountry('russia')">
+          <span class="flag">🇷🇺</span>
+          <span class="name">俄国</span>
+        </div>
+        <div class="map-cell neutral" onclick="showCountry('italy')">
+          <span class="flag">🇮🇹</span>
+          <span class="name">意大利</span>
+        </div>
+        <div class="map-cell central" onclick="showCountry('ottoman')">
+          <span class="flag">🇹🇷</span>
+          <span class="name">奥斯曼</span>
+        </div>
+        <div class="map-cell neutral" onclick="showCountry('serbia')">
+          <span class="flag">🇷🇸</span>
+          <span class="name">塞尔维亚</span>
+        </div>
+        <div class="map-cell neutral" onclick="showCountry('belgium')">
+          <span class="flag">🇧🇪</span>
+          <span class="name">比利时</span>
+        </div>
+        <div class="map-cell allied" onclick="showCountry('usa')">
+          <span class="flag">🇺🇸</span>
+          <span class="name">美国</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 测验 -->
+    <section id="quiz">
+      <div class="quiz-container">
+        <h2>📝 知识小测验</h2>
+        
+        <div class="question-card">
+          <p class="question-text"><strong>问题 1：</strong>第一次世界大战的导火索是什么事件？</p>
+          <div class="options">
+            <div class="option" onclick="checkAnswer(this, false, 'q1')">A. 柏林墙倒塌</div>
+            <div class="option" onclick="checkAnswer(this, true, 'q1')">B. 萨拉热窝事件</div>
+            <div class="option" onclick="checkAnswer(this, false, 'q1')">C. 诺曼底登陆</div>
+            <div class="option" onclick="checkAnswer(this, false, 'q1')">D. 珍珠港事件</div>
+          </div>
+          <div class="feedback" id="feedback-q1"></div>
+        </div>
+        
+        <div class="question-card">
+          <p class="question-text"><strong>问题 2：</strong>一战爆发的年份是？</p>
+          <div class="options">
+            <div class="option" onclick="checkAnswer(this, false, 'q2')">A. 1912 年</div>
+            <div class="option" onclick="checkAnswer(this, true, 'q2')">B. 1914 年</div>
+            <div class="option" onclick="checkAnswer(this, false, 'q2')">C. 1916 年</div>
+            <div class="option" onclick="checkAnswer(this, false, 'q2')">D. 1918 年</div>
+          </div>
+          <div class="feedback" id="feedback-q2"></div>
+        </div>
+        
+        <div class="question-card">
+          <p class="question-text"><strong>问题 3：</strong>MAIN 原因中的"A"代表什么？</p>
+          <div class="options">
+            <div class="option" onclick="checkAnswer(this, false, 'q3')">A. 农业主义</div>
+            <div class="option" onclick="checkAnswer(this, false, 'q3')">B. 艺术复兴</div>
+            <div class="option" onclick="checkAnswer(this, true, 'q3')">C. 同盟体系</div>
+            <div class="option" onclick="checkAnswer(this, false, 'q3')">D. 航空发展</div>
+          </div>
+          <div class="feedback" id="feedback-q3"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <footer>
+    <p>📚 第一次世界大战交互式演示 · 适合中小学历史教学</p>
+    <p style="margin-top: 10px; font-size: 0.9em;">Created with ❤️ for 嘉兴中小学小龙虾体验</p>
+  </footer>
+  
+  <script>
+    // 切换章节
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // 爆炸效果
+    function triggerSpark() {
+      const circle = document.querySelector('.spark-circle');
+      circle.style.animation = 'none';
+      circle.offsetHeight;
+      circle.style.transform = 'scale(1.5)';
+      circle.style.boxShadow = '0 0 100px rgba(231, 76, 60, 1)';
+      
+      setTimeout(() => {
+        alert('💥 萨拉热窝事件爆发！\n\n1914 年 6 月 28 日\n奥匈帝国皇储斐迪南大公遇刺\n\n37 天后，全面战争爆发！');
+        circle.style.animation = 'sparkPulse 2s ease-in-out infinite';
+        circle.style.transform = 'scale(1)';
+      }, 300);
+    }
+    
+    // 显示详情
+    function showDetail(type) {
+      const details = {
+        'spark': '🔥 萨拉热窝事件\n\n1914 年 6 月 28 日，奥匈帝国皇储斐迪南大公夫妇在波斯尼亚首府萨拉热窝被塞尔维亚民族主义者普林西普刺杀。\n\n💡 选择 6 月 28 日是因为这天是塞尔维亚国耻日（1389 年科索沃战役），具有强烈象征意义。',
+        'austria': '⚔️ 奥匈帝国宣战\n\n1914 年 7 月 28 日，在德国的支持下，奥匈帝国向塞尔维亚发出最后通牒，因塞尔维亚拒绝部分条款而宣战。\n\n💡 这标志着"七月危机"正式升级为军事冲突。',
+        'germany-russia': '🇩🇪 德国向俄国宣战\n\n1914 年 8 月 1 日，因俄国支持塞尔维亚并开始军事动员，德国向俄国宣战。\n\n💡 德国启动"施里芬计划"，准备先快速击败法国再对付俄国。',
+        'germany-france': '🇩🇪 德国向法国宣战\n\n1914 年 8 月 3 日，德国向法国宣战，并入侵中立国比利时，试图绕过法德边境防线。\n\n💡 这一行动违反了国际条约，给了英国参战的理由。',
+        'britain': '🇬🇧 英国参战\n\n1914 年 8 月 4 日，因德国入侵比利时，违反 1839 年伦敦条约，英国向德国宣战。\n\n⚠️ 至此，欧洲主要强国全部卷入，全面世界大战爆发！'
+      };
+      alert(details[type]);
+    }
+    
+    // 显示原因详情
+    function showCause(letter) {
+      const causes = {
+        'M': 'M - 军国主义 (Militarism)\n\n📊 数据：\n• 1870-1914 年，欧洲军费开支增长 300%\n• 德国陆军从 40 万扩充到 220 万\n• 各国实行义务兵役制\n\n💡 影响：军事将领在政治决策中话语权过大，战争被视为解决问题的合法手段。',
+        'A': 'A - 同盟体系 (Alliances)\n\n🤝 两大阵营：\n• 三国同盟：德国、奥匈、意大利 (1882)\n• 三国协约：英国、法国、俄国 (1907)\n\n💡 问题：同盟条约规定"一国受攻击，盟友必须支援"，导致局部冲突迅速升级为全面战争。就像多米诺骨牌！',
+        'I': 'I - 帝国主义 (Imperialism)\n\n🌍 殖民地对比：\n• 英国：3350 万平方公里\n• 法国：1060 万平方公里\n• 德国：仅 290 万平方公里\n\n💡 矛盾：后起的德国经济实力强大但殖民地少，要求"阳光下的地盘"，与英法矛盾激化。',
+        'N': 'N - 民族主义 (Nationalism)\n\n🔥 巴尔干问题：\n• 奥匈帝国统治多个斯拉夫民族\n• 塞尔维亚希望统一南斯拉夫\n• 俄国支持斯拉夫兄弟\n\n💡 结果：巴尔干被称为"欧洲火药桶"，萨拉热窝就在这里！'
+      };
+      alert(causes[letter]);
+    }
+    
+    // 显示国家信息
+    function showCountry(country) {
+      const countries = {
+        'germany': '🇩🇪 德意志帝国\n\n阵营：同盟国 (核心)\n特点：欧洲最强陆军，工业实力雄厚\n领导人：德皇威廉二世\n战略：施里芬计划',
+        'austria': '🇦🇹 奥匈帝国\n\n阵营：同盟国\n特点：多民族帝国，内部矛盾重重\n领导人：弗朗茨·约瑟夫一世\n角色：战争发起者',
+        'france': '🇫🇷 法兰西第三共和国\n\n阵营：协约国\n特点：寻求对德复仇，陆军强大\n动机：收复阿尔萨斯 - 洛林\n战场：西线主力',
+        'britain': '🇬🇧 大英帝国\n\n阵营：协约国\n特点：海上霸主，殖民地最广\n参战理由：保护比利时中立\n优势：海军封锁德国',
+        'russia': '🇷🇺 俄罗斯帝国\n\n阵营：协约国\n特点：陆军庞大，支援斯拉夫兄弟\n退出：1917 年十月革命后\n动机：泛斯拉夫主义',
+        'italy': '🇮🇹 意大利王国\n\n阵营：最初同盟国，1915 年转投协约国\n原因：英法许诺战后领土\n特点：摇摆不定',
+        'ottoman': '🇹🇷 奥斯曼帝国\n\n阵营：同盟国 (1914 加入)\n特点：控制黑海海峡\n战场：中东、高加索\n结局：战后解体',
+        'serbia': '🇷🇸 塞尔维亚王国\n\n阵营：中立 (被攻击方)\n角色：战争导火索\n支持者：俄国\n结局：战后成为南斯拉夫核心',
+        'belgium': '🇧🇪 比利时王国\n\n阵营：中立国\n遭遇：1914 年被德国入侵\n结果：英国参战理由\n大部分被占领 4 年',
+        'usa': '🇺🇸 美利坚合众国\n\n阵营：协约国 (1917 加入)\n参战理由：无限制潜艇战\n影响：决定战争胜负\n总统：威尔逊'
+      };
+      alert(countries[country]);
+    }
+    
+    // 检查答案
+    function checkAnswer(element, isCorrect, questionId) {
+      const parent = element.parentElement;
+      const feedback = document.getElementById('feedback-' + questionId);
+      
+      parent.querySelectorAll('.option').forEach(opt => {
+        opt.classList.remove('correct', 'wrong');
+      });
+      
+      if (isCorrect) {
+        element.classList.add('correct');
+        feedback.innerHTML = '✅ 正确！太棒了！';
+        feedback.className = 'feedback show correct';
+      } else {
+        element.classList.add('wrong');
+        feedback.innerHTML = '❌ 不对哦，再想想～';
+        feedback.className = 'feedback show wrong';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<svg width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1080" height="1920" fill="#FFFFFF"/>
+  
+  <!-- 标题 -->
+  <text x="540" y="80" font-family="Source Han Sans CN, sans-serif" 
+        font-size="42" font-weight="bold" fill="#333333" text-anchor="middle">
+    🎨 视频色彩规范
+  </text>
+  
+  <!-- 主背景色 -->
+  <g transform="translate(60, 140)">
+    <rect x="0" y="0" width="450" height="200" rx="12" fill="#000000"/>
+    <text x="225" y="90" font-family="sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle">
+      主背景
+    </text>
+    <text x="225" y="130" font-family="monospace" font-size="18" fill="#CCCCCC" text-anchor="middle">
+      #000000
+    </text>
+    <text x="225" y="160" font-family="sans-serif" font-size="16" fill="#888888" text-anchor="middle">
+      深空黑
+    </text>
+  </g>
+  
+  <g transform="translate(570, 140)">
+    <rect x="0" y="0" width="450" height="200" rx="12" fill="#1a1a2e"/>
+    <text x="225" y="90" font-family="sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle">
+      次背景
+    </text>
+    <text x="225" y="130" font-family="monospace" font-size="18" fill="#CCCCCC" text-anchor="middle">
+      #1a1a2e
+    </text>
+    <text x="225" y="160" font-family="sans-serif" font-size="16" fill="#888888" text-anchor="middle">
+      深蓝灰
+    </text>
+  </g>
+  
+  <!-- 主文字色 -->
+  <g transform="translate(60, 380)">
+    <rect x="0" y="0" width="450" height="200" rx="12" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="2"/>
+    <text x="225" y="90" font-family="sans-serif" font-size="24" fill="#333333" text-anchor="middle">
+      主文字
+    </text>
+    <text x="225" y="130" font-family="monospace" font-size="18" fill="#666666" text-anchor="middle">
+      #FFFFFF
+    </text>
+    <text x="225" y="160" font-family="sans-serif" font-size="16" fill="#888888" text-anchor="middle">
+      纯白
+    </text>
+  </g>
+  
+  <g transform="translate(570, 380)">
+    <rect x="0" y="0" width="450" height="200" rx="12" fill="#888888"/>
+    <text x="225" y="90" font-family="sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle">
+      辅助色
+    </text>
+    <text x="225" y="130" font-family="monospace" font-size="18" fill="#FFFFFF" text-anchor="middle">
+      #888888
+    </text>
+    <text x="225" y="160" font-family="sans-serif" font-size="16" fill="#CCCCCC" text-anchor="middle">
+      灰色
+    </text>
+  </g>
+  
+  <!-- 强调色 -->
+  <g transform="translate(60, 620)">
+    <rect x="0" y="0" width="450" height="200" rx="12" fill="#0066FF"/>
+    <text x="225" y="90" font-family="sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle">
+      强调色
+    </text>
+    <text x="225" y="130" font-family="monospace" font-size="18" fill="#FFFFFF" text-anchor="middle">
+      #0066FF
+    </text>
+    <text x="225" y="160" font-family="sans-serif" font-size="16" fill="#CCCCCC" text-anchor="middle">
+      科技蓝
+    </text>
+  </g>
+  
+  <g transform="translate(570, 620)">
+    <rect x="0" y="0" width="450" height="200" rx="12" fill="#0099FF"/>
+    <text x="225" y="90" font-family="sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle">
+      高亮色
+    </text>
+    <text x="225" y="130" font-family="monospace" font-size="18" fill="#FFFFFF" text-anchor="middle">
+      #0099FF
+    </text>
+    <text x="225" y="160" font-family="sans-serif" font-size="16" fill="#CCCCCC" text-anchor="middle">
+      亮蓝
+    </text>
+  </g>
+  
+  <!-- 使用示例 -->
+  <text x="540" y="900" font-family="Source Han Sans CN, sans-serif" 
+        font-size="36" font-weight="bold" fill="#333333" text-anchor="middle">
+    📋 使用场景
+  </text>
+  
+  <!-- 使用场景列表 -->
+  <g transform="translate(60, 960)">
+    <rect x="0" y="0" width="960" height="120" rx="12" fill="#000000"/>
+    <text x="60" y="70" font-family="Source Han Sans CN, sans-serif" font-size="28" fill="#FFFFFF">
+      背景：主背景 + 次背景渐变
+    </text>
+  </g>
+  
+  <g transform="translate(60, 1100)">
+    <rect x="0" y="0" width="960" height="120" rx="12" fill="#FFFFFF" stroke="#DDDDDD" stroke-width="2"/>
+    <text x="60" y="70" font-family="Source Han Sans CN, sans-serif" font-size="28" fill="#333333">
+      文字：主白色，重要信息用强调色
+    </text>
+  </g>
+  
+  <g transform="translate(60, 1240)">
+    <rect x="0" y="0" width="960" height="120" rx="12" fill="#0066FF"/>
+    <text x="60" y="70" font-family="Source Han Sans CN, sans-serif" font-size="28" fill="#FFFFFF">
+      按钮/标签：强调色背景 + 白色文字
+    </text>
+  </g>
+  
+  <g transform="translate(60, 1380)">
+    <rect x="0" y="0" width="960" height="120" rx="12" fill="#1a1a2e"/>
+    <text x="60" y="70" font-family="Source Han Sans CN, sans-serif" font-size="28" fill="#FFFFFF">
+      高亮：亮蓝色用于重点强调
+    </text>
+  </g>
+  
+  <!-- 底部提示 -->
+  <text x="540" y="1600" font-family="Source Han Sans CN, sans-serif" 
+        font-size="24" fill="#666666" text-anchor="middle">
+    保持色彩一致性，营造科技感
+  </text>
+  
+  <!-- 页脚 -->
+  <line x1="60" y1="1700" x2="1020" y2="1700" stroke="#DDDDDD" stroke-width="1"/>
+  <text x="540" y="1750" font-family="sans-serif" font-size="18" fill="#999999" text-anchor="middle">
+    Manus 宣传视频 · 色彩规范参考
+  </text>
+  <text x="540" y="1780" font-family="sans-serif" font-size="16" fill="#CCCCCC" text-anchor="middle">
+    2026 年 4 月
+  </text>
+</svg>

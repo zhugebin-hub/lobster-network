@@ -1,0 +1,15 @@
+{
+  "course_code": "AII016",
+  "course_name": "机电一体化",
+  "total_entries": 16,
+  "unparseable": [],
+  "conflicts": [
+    "Conflict at Thursday Class 6",
+    "Conflict at Thursday Class 7",
+    "Conflict at Thursday Class 8",
+    "Conflict at Thursday Class 9"
+  ],
+  "notes": [],
+  "converted_entries": 27,
+  "timestamp": "2026-05-25T04:17:44.531032"
+}

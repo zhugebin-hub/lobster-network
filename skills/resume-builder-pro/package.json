@@ -1,0 +1,16 @@
+{
+  "name": "resume-builder-pro",
+  "version": "1.0.0",
+  "description": "专业简历生成与优化技能",
+  "main": "index.js",
+  "scripts": {
+    "generate": "bash scripts/generate-resume.sh",
+    "export-pdf": "bash scripts/export-pdf.sh",
+    "ats-check": "bash scripts/ats-check.sh"
+  },
+  "dependencies": {
+    "puppeteer": "^24.0.0"
+  },
+  "author": "信电大虾",
+  "license": "MIT"
+}

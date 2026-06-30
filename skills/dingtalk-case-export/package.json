@@ -1,0 +1,26 @@
+{
+  "name": "dingtalk-case-export",
+  "version": "1.1.0",
+  "description": "钉钉聊天记录导出为教学案例技能。支持按主题模块整理对话、自动生成案例文档、打包附件，使用相对路径确保跨平台兼容。",
+  "author": "诸葛斌",
+  "license": "MIT",
+  "keywords": [
+    "dingtalk",
+    "teaching",
+    "case-export",
+    "education",
+    "documentation",
+    "openclaw-skill"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openclaw/workspace"
+  },
+  "clawhub": {
+    "slug": "dingtalk-case-export",
+    "name": "钉钉教学案例导出",
+    "category": "education",
+    "tags": ["钉钉", "教学案例", "文档生成", "教育工具"],
+    "changelog": "v1.1.0: 优化文件路径为相对路径，确保打包后链接有效，支持跨平台使用"
+  }
+}

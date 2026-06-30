@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2008 vs 2026 — 两个时代的奇点</title>
+  <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/tailwindcss/3.0.23/tailwind.min.js"></script>
+  <link href="https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" rel="stylesheet">
+  <link href="https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.loli.net/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans SC', 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+    }
+    .slides-container {
+      width: 100vw; height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: #0a0a0a;
+    }
+    .slide {
+      width: 100%; height: 100%;
+      max-width: 450px; max-height: 800px;
+      aspect-ratio: 9/16;
+      position: absolute;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+    }
+    .slide.active { opacity: 1; transform: translateX(0); }
+    .slide.prev { opacity: 0; transform: translateX(-100%); }
+
+    /* 动态光斑 */
+    .light-spot {
+      position: absolute; border-radius: 50%;
+      filter: blur(100px); opacity: 0.3; pointer-events: none;
+    }
+    .ls-blue   { background: #3b82f6; }
+    .ls-purple { background: #8b5cf6; }
+    .ls-cyan   { background: #06b6d4; }
+    .ls-orange { background: #f97316; }
+    .ls-red    { background: #ef4444; }
+    .ls-green  { background: #22c55e; }
+
+    .s1 { width: 300px; height: 300px; top: -100px; right: -100px; animation: f1 20s ease-in-out infinite; }
+    .s2 { width: 250px; height: 250px; bottom: -80px; left: -80px; animation: f2 25s ease-in-out infinite; }
+    .s3 { width: 200px; height: 200px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: f3 18s ease-in-out infinite; }
+    .s4 { width: 180px; height: 180px; bottom: 10%; right: -40px; animation: f4 22s ease-in-out infinite; }
+
+    @keyframes f1 { 0%,100%{transform:translate(0,0)} 25%{transform:translate(-50px,30px)} 50%{transform:translate(30px,50px)} 75%{transform:translate(50px,-20px)} }
+    @keyframes f2 { 0%,100%{transform:translate(0,0)} 33%{transform:translate(40px,-40px)} 66%{transform:translate(-30px,30px)} }
+    @keyframes f3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.2)} }
+    @keyframes f4 { 0%,100%{transform:translate(0,0)} 40%{transform:translate(-30px,-20px)} 70%{transform:translate(20px,30px)} }
+
+    .slide-content { position: relative; z-index: 10; text-align: center; width: 100%; }
+
+    /* 对比布局 */
+    .compare-box {
+      display: flex; flex-direction: column; gap: 1.5rem;
+      width: 100%; padding: 1.5rem;
+    }
+    .compare-item {
+      padding: 1rem; border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+    }
+    .compare-label {
+      font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 0.1em; margin-bottom: 0.5rem;
+    }
+    .compare-text { font-size: 1rem; font-weight: 300; line-height: 1.6; }
+
+    /* 进度条 */
+    .progress-bar {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px; z-index: 100;
+    }
+    .progress-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s;
+    }
+    .progress-dot.active { background: #fff; transform: scale(1.3); }
+    .progress-dot:hover { background: rgba(255,255,255,0.6); }
+
+    .page-number {
+      position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%);
+      font-size: 0.875rem; color: rgba(255,255,255,0.4); z-index: 100;
+    }
+
+    /* 分割线 */
+    .divider {
+      width: 60px; height: 3px; background: #3b82f6;
+      margin: 1rem auto; border-radius: 2px;
+    }
+
+    /* 小标签 */
+    .tag {
+      display: inline-block; padding: 0.25rem 0.75rem;
+      border-radius: 999px; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .tag-red { background: rgba(239,68,68,0.2); color: #fca5a5; }
+    .tag-green { background: rgba(34,197,94,0.2); color: #86efac; }
+    .tag-blue { background: rgba(59,130,246,0.2); color: #93c5fd; }
+
+    /* 年份对比 */
+    .year-big {
+      font-size: 5rem; font-weight: 900; line-height: 1;
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-container">
+
+    <!-- ===== Slide 1: 封面 ===== -->
+    <div class="slide active">
+      <div class="light-spot ls-blue s1"></div>
+      <div class="light-spot ls-purple s2"></div>
+      <div class="slide-content">
+        <p class="text-sm font-light text-gray-500 mb-8 tracking-widest uppercase">两个时代的对比</p>
+        <h1 class="text-5xl font-black mb-2 leading-tight">
+          <span class="text-blue-400">2008</span>
+          <span class="text-gray-600 mx-2">vs</span>
+          <span class="text-purple-400">2026</span>
+        </h1>
+        <div class="divider"></div>
+        <p class="text-xl font-light text-gray-400 mt-4">时代的奇点<br>打开机会的方式完全不同</p>
+      </div>
+    </div>
+
+    <!-- ===== Slide 2: 标题冲击 ===== -->
+    <div class="slide">
+      <div class="light-spot ls-cyan s3"></div>
+      <div class="light-spot ls-blue s1"></div>
+      <div class="slide-content">
+        <p class="text-sm text-gray-500 mb-6">有人说它们很像</p>
+        <h1 class="text-4xl font-black leading-tight mb-6">
+          两个<br>"奇点"
+        </h1>
+        <p class="text-lg font-light text-gray-400">
+          2008年金融危机 vs 2026年AI浪潮<br>
+          结构性相似，但本质差异更大
+        </p>
+      </div>
+    </div>
+
+    <!-- ===== Slide 3: 四个相同点（列表） ===== -->
+    <div class="slide">
+      <div class="light-spot ls-purple s2"></div>
+      <div class="light-spot ls-cyan s3"></div>
+      <div class="slide-content">
+        <h2 class="text-2xl font-bold text-white mb-2">相同点</h2>
+        <p class="text-sm text-gray-500 mb-10">为什么它们都像"奇点"</p>
+        <ul class="space-y-6 text-left px-4">
+          <li class="flex items-start gap-4">
+            <span class="text-blue-400 font-black text-xl">01</span>
+            <div>
+              <p class="text-lg font-bold text-white">旧秩序崩塌</p>
+              <p class="text-sm font-light text-gray-400">信仰在破灭</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="text-purple-400 font-black text-xl">02</span>
+            <div>
+              <p class="text-lg font-bold text-white">新秩序孕育</p>
+              <p class="text-sm font-light text-gray-400">重塑一切</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="text-cyan-400 font-black text-xl">03</span>
+            <div>
+              <p class="text-lg font-bold text-white">确定 → 不确定</p>
+              <p class="text-sm font-light text-gray-400">转折点</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="text-orange-400 font-black text-xl">04</span>
+            <div>
+              <p class="text-lg font-bold text-white">勇敢者的游戏</p>
+              <p class="text-sm font-light text-gray-400">敢于逆势的人吃红利</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== Slide 4: 旧秩序崩塌（对比） ===== -->
+    <div class="slide">
+      <div class="light-spot ls-red s4"></div>
+      <div class="light-spot ls-orange s1"></div>
+      <div class="slide-content">
+        <p class="text-sm text-gray-500 mb-2">相同点 ①</p>
+        <h2 class="text-3xl font-black mb-10">旧秩序在崩塌</h2>
+        <div class="compare-box">
+          <div class="compare-item">
+            <span class="tag tag-red">2008</span>
+            <p class="compare-text text-white mt-3">
+              "市场永远正确"的信仰崩溃<br>
+              雷曼兄弟倒了，没有人觉得不可能
+            </p>
+          </div>
+          <div class="compare-item">
+            <span class="tag tag-red">2026</span>
+            <p class="compare-text text-white mt-3">
+              "读书—好大学—好工作"路径<br>
+              可信度在下降，AI替代远超预期
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 5: 新秩序在孕育 ===== -->
+    <div class="slide">
+      <div class="light-spot ls-blue s3"></div>
+      <div class="light-spot ls-green s2"></div>
+      <div class="slide-content">
+        <p class="text-sm text-gray-500 mb-2">相同点 ②</p>
+        <h2 class="text-3xl font-black mb-8">新秩序在孕育</h2>
+        <div class="compare-box">
+          <div class="compare-item">
+            <span class="tag tag-green">2008 之后</span>
+            <p class="compare-text text-white mt-3">
+              智能手机、社交网络、电商、外卖、网约车<br>
+              <span class="text-blue-400">五年之内变成基础设施</span>
+            </p>
+          </div>
+          <div class="compare-item">
+            <span class="tag tag-green">2026 之后</span>
+            <p class="compare-text text-white mt-3">
+              AI 正在重塑一切<br>
+              <span class="text-purple-400">不是替代某个行业，而是改变所有行业的生产方式</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 6: 从确定到不确定（金句） ===== -->
+    <div class="slide">
+      <div class="light-spot ls-purple s1"></div>
+      <div class="light-spot ls-blue s3"></div>
+      <div class="slide-content">
+        <p class="text-sm text-gray-500 mb-6">相同点 ③</p>
+        <span class="text-6xl text-gray-600 block mb-2">"</span>
+        <p class="text-2xl font-bold mb-8 leading-relaxed px-4">
+          都是从"确定"<br>走向"不确定"<br>的转折点
+        </p>
+        <p class="text-sm font-light text-gray-500">
+          2008前：房价永远涨、全球化不可逆转<br>
+          2026前：AI只是工具、好工作不会被取代
+        </p>
+      </div>
+    </div>
+
+    <!-- ===== Slide 7: 标题冲击（转折） ===== -->
+    <div class="slide">
+      <div class="light-spot ls-orange s1"></div>
+      <div class="light-spot ls-red s2"></div>
+      <div class="slide-content">
+        <p class="text-sm text-gray-500 mb-6">但是</p>
+        <h1 class="text-4xl font-black leading-tight mb-6">
+          2026年<br>远比<br>2008年<br>复杂得多
+        </h1>
+        <p class="text-lg font-light text-gray-400">六大关键差异</p>
+      </div>
+    </div>
+
+    <!-- ===== Slide 8: 冲击速度 ===== -->
+    <div class="slide">
+      <div class="light-spot ls-red s3"></div>
+      <div class="light-spot ls-orange s4"></div>
+      <div class="slide-content">
+        <p class="text-sm text-gray-500 mb-2">差异 ① · 冲击速度</p>
+        <h2 class="text-3xl font-black mb-10">地震 vs 海平面上升</h2>
+        <div class="compare-box">
+          <div class="compare-item" style="border-left: 3px solid #ef4444;">
+            <span class="tag tag-red">2008</span>
+            <p class="compare-text text-white mt-3">
+              <strong>地震</strong><br>
+              剧烈、集中、然后重建<br>
+              <span class="text-gray-500 text-sm">"天塌了，但知道塌了"</span>
+            </p>
+          </div>
+          <div class="compare-item" style="border-left: 3px solid #f97316;">
+            <span class="tag" style="background:rgba(249,115,22,0.2);color:#fdba74;">2026</span>
+            <p class="compare-text text-white mt-3">
+              <strong>海平面上升</strong><br>
+              慢、持续、不知不觉中把你淹没<br>
+              <span class="text-gray-500 text-sm">温水煮青蛙</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 9: 红利性质 ===== -->
+    <div class="slide">
+      <div class="light-spot ls-blue s1"></div>
+      <div class="light-spot ls-purple s3"></div>
+      <div class="slide-content">
+        <p class="text-sm text-gray-500 mb-2">差异 ② · 红利性质</p>
+        <h2 class="text-3xl font-black mb-10">明牌 vs 暗牌</h2>
+        <div class="compare-box">
+          <div class="compare-item" style="border-left: 3px solid #3b82f6;">
+            <span class="tag tag-blue">2008</span>
+            <p class="compare-text text-white mt-3">
+              <strong>确定性红利</strong><br>
+              四万亿要来了、房价要涨了<br>
+              红利是<strong class="text-blue-400">"明牌"</strong>，关键是敢不敢下注
+            </p>
+          </div>
+          <div class="compare-item" style="border-left: 3px solid #8b5cf6;">
+            <span class="tag" style="background:rgba(139,92,246,0.2);color:#c4b5fd;">2026</span>
+            <p class="compare-text text-white mt-3">
+              <strong>非确定性红利</strong><br>
+              知道AI重要，但不知道哪个方向赢<br>
+              红利是<strong class="text-purple-400">"暗牌"</strong>，关键是敢不敢试错
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 10: 阶层流动 ===== -->
+    <div class="slide">
+      <div class="light-spot ls-green s2"></div>
+      <div class="light-spot ls-cyan s4"></div>
+      <div class="slide-content">
+        <p class="text-sm text-gray-500 mb-2">差异 ③ · 阶层流动</p>
+        <h2 class="text-3xl font-black mb-10">电梯 vs 攀岩</h2>
+        <div class="compare-box">
+          <div class="compare-item" style="border-left: 3px solid #22c55e;">
+            <span class="tag tag-green">2008</span>
+            <p class="compare-text text-white mt-3">
+              <strong>电梯式流动</strong><br>
+              进了电梯（买房/互联网/创业），电梯把你往上带<br>
+              <span class="text-gray-500 text-sm">趋势的力量 > 个人努力</span>
+            </p>
+          </div>
+          <div class="compare-item" style="border-left: 3px solid #06b6d4;">
+            <span class="tag" style="background:rgba(6,182,212,0.2);color:#67e8f9;">2026</span>
+            <p class="compare-text text-white mt-3">
+              <strong>攀岩式流动</strong><br>
+              没有电梯了，自己找路线、抓支点<br>
+              <span class="text-gray-500 text-sm">个人能力/判断力/学习速度 >> 趋势</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 11: 三个关键差异（列表） ===== -->
+    <div class="slide">
+      <div class="light-spot ls-purple s1"></div>
+      <div class="light-spot ls-blue s3"></div>
+      <div class="slide-content">
+        <h2 class="text-2xl font-bold text-white mb-2">还有三个差异</h2>
+        <div class="divider"></div>
+        <ul class="space-y-6 text-left px-4 mt-6">
+          <li class="flex items-start gap-4">
+            <span class="text-red-400 font-black text-xl">④</span>
+            <div>
+              <p class="text-lg font-bold text-white">信息优势变了</p>
+              <p class="text-sm font-light text-gray-400">2008靠信息不对称；2026信息完全对称，认知深度才是分水岭</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="text-orange-400 font-black text-xl">⑤</span>
+            <div>
+              <p class="text-lg font-bold text-white">容错率不同</p>
+              <p class="text-sm font-light text-gray-400">2008试错成本低；2026竞争更激烈，窗口期更短</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="text-cyan-400 font-black text-xl">⑥</span>
+            <div>
+              <p class="text-lg font-bold text-white">全球化方向变了</p>
+              <p class="text-sm font-light text-gray-400">2008更深全球化；2026是"区域化"——北美圈、中国+东盟圈、欧洲圈</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== Slide 12: 核心判断（标题冲击） ===== -->
+    <div class="slide">
+      <div class="light-spot ls-blue s1"></div>
+      <div class="light-spot ls-purple s2"></div>
+      <div class="light-spot ls-cyan s3"></div>
+      <div class="slide-content">
+        <p class="text-sm text-gray-500 mb-6">核心判断</p>
+        <h1 class="text-3xl font-black leading-tight mb-8">
+          2008 = <span class="text-blue-400">财富分配</span>的奇点
+        </h1>
+        <p class="text-2xl text-gray-600 mb-8">vs</p>
+        <h1 class="text-3xl font-black leading-tight">
+          2026 = <span class="text-purple-400">生产方式</span>的奇点
+        </h1>
+      </div>
+    </div>
+
+    <!-- ===== Slide 13: 金句 ===== -->
+    <div class="slide">
+      <div class="light-spot ls-purple s3"></div>
+      <div class="light-spot ls-cyan s2"></div>
+      <div class="slide-content">
+        <span class="text-6xl text-gray-600 block mb-2">"</span>
+        <p class="text-2xl font-bold mb-8 leading-relaxed px-4">
+          不是财富怎么分配的问题<br><br>
+          而是财富怎么被<span class="text-purple-400">创造</span><br>的问题
+        </p>
+        <p class="text-sm font-light text-gray-500 px-4">
+          就像2008年的人无法想象"直播带货"和"短视频变现"一样
+        </p>
+      </div>
+    </div>
+
+    <!-- ===== Slide 14: 两种策略（对比） ===== -->
+    <div class="slide">
+      <div class="light-spot ls-blue s1"></div>
+      <div class="light-spot ls-green s4"></div>
+      <div class="slide-content">
+        <h2 class="text-2xl font-bold text-white mb-10">对你的意义</h2>
+        <div class="compare-box">
+          <div class="compare-item" style="border-left: 3px solid #3b82f6;">
+            <span class="tag tag-blue">如果你在2008年毕业</span>
+            <p class="compare-text text-white mt-3">
+              <strong>选对趋势，然后上车</strong><br>
+              考验的是判断力——<br>能不能识别出正确的趋势
+            </p>
+          </div>
+          <div class="compare-item" style="border-left: 3px solid #22c55e;">
+            <span class="tag tag-green">如果你在2026年毕业</span>
+            <p class="compare-text text-white mt-3">
+              <strong>保持敏捷，持续试错</strong><br>
+              考验的是适应力——<br>能不能在趋势变化中活下来、找到位置
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 15: 结尾 ===== -->
+    <div class="slide">
+      <div class="light-spot ls-blue s1"></div>
+      <div class="light-spot ls-purple s2"></div>
+      <div class="light-spot ls-cyan s3"></div>
+      <div class="slide-content">
+        <p class="text-sm text-gray-500 mb-8">两个时代都充满机会</p>
+        <h1 class="text-4xl font-black leading-tight mb-8">
+          但打开机会的<br>方式<span class="text-purple-400">完全不同</span>
+        </h1>
+        <div class="divider"></div>
+        <p class="text-lg font-light text-gray-400 mt-6">
+          保持敏捷，持续试错<br>在混沌中找方向
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 进度条 -->
+  <div class="progress-bar" id="progressBar"></div>
+  <!-- 页码 -->
+  <div class="page-number" id="pageNumber">1 / 15</div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const progressBar = document.getElementById('progressBar');
+    const pageNumber = document.getElementById('pageNumber');
+    let currentSlide = 0;
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.className = 'progress-dot' + (index === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goToSlide(index));
+      progressBar.appendChild(dot);
+    });
+
+    function updateSlides() {
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active', 'prev');
+        if (index === currentSlide) slide.classList.add('active');
+        else if (index < currentSlide) slide.classList.add('prev');
+      });
+      document.querySelectorAll('.progress-dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+      pageNumber.textContent = (currentSlide + 1) + ' / ' + slides.length;
+    }
+
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) { currentSlide++; updateSlides(); }
+    }
+    function prevSlide() {
+      if (currentSlide > 0) { currentSlide--; updateSlides(); }
+    }
+    function goToSlide(index) {
+      currentSlide = index; updateSlides();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+    });
+
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+    document.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) { diff > 0 ? nextSlide() : prevSlide(); }
+    });
+  </script>
+</body>
+</html>

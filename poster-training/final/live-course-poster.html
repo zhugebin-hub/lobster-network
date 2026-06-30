@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1920px;
+  height: 1080px;
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: linear-gradient(135deg, #0c1a3a 0%, #1a2d6b 35%, #2d1b69 65%, #1a0a3e 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+/* 背景装饰 */
+.bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+}
+.glow-1 { width: 700px; height: 700px; background: rgba(74,144,219,0.25); top: -250px; right: -100px; }
+.glow-2 { width: 500px; height: 500px; background: rgba(123,104,238,0.2); bottom: -150px; left: -100px; }
+.glow-3 { width: 350px; height: 350px; background: rgba(0,212,255,0.15); top: 45%; left: 55%; }
+
+/* 顶部栏 */
+.top-bar {
+  position: absolute;
+  top: 55px;
+  left: 90px;
+  right: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.live-badge {
+  background: linear-gradient(135deg, #ff4757, #ff6b81);
+  padding: 14px 32px;
+  border-radius: 40px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  box-shadow: 0 6px 24px rgba(255,71,87,0.4);
+}
+.book-tag {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  padding: 14px 28px;
+  border-radius: 40px;
+  font-size: 18px;
+  color: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.15);
+  letter-spacing: 1px;
+}
+
+/* 主标题区 */
+.title-section {
+  position: absolute;
+  top: 180px;
+  left: 90px;
+  right: 450px;
+}
+.main-title {
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+  background: linear-gradient(90deg, #ffffff 0%, #a8d8ff 50%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.sub-title {
+  font-size: 38px;
+  font-weight: 500;
+  color: #7bcaff;
+  letter-spacing: 4px;
+  margin-bottom: 50px;
+}
+.divider {
+  width: 140px;
+  height: 4px;
+  background: linear-gradient(90deg, #4a90d9, #7b68ee, #00d4ff);
+  border-radius: 2px;
+  margin-bottom: 50px;
+}
+
+/* 时间信息 */
+.time-section {
+  position: absolute;
+  top: 560px;
+  left: 90px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.time-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #4a90d9, #7b68ee);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+.time-text {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+}
+.time-sub {
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 4px;
+}
+
+/* 右侧装饰 */
+.right-deco {
+  position: absolute;
+  right: 90px;
+  top: 200px;
+  width: 340px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.deco-circle {
+  width: 200px;
+  height: 200px;
+  border: 2px solid rgba(74,144,219,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.deco-inner {
+  width: 140px;
+  height: 140px;
+  border: 2px solid rgba(123,104,238,0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+/* 底部信息栏 */
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: stretch;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.speaker-section {
+  width: 550px;
+  padding: 36px 50px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+.speaker-label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.speaker-name {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+}
+.speaker-info {
+  font-size: 15px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+}
+.benefits-section {
+  flex: 1;
+  padding: 36px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.benefits-header {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffd700;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+.benefit-item {
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+}
+.benefit-num {
+  color: #7bcaff;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+/* 网格装饰 */
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="bg-glow glow-1"></div>
+<div class="bg-glow glow-2"></div>
+<div class="bg-glow glow-3"></div>
+<div class="grid-overlay"></div>
+
+<div class="top-bar">
+  <div class="live-badge">🔴 直播预告</div>
+  <div class="book-tag">📖 所用图书：《Manus智能体全攻略》（清华大学出版社）</div>
+</div>
+
+<div class="title-section">
+  <div class="main-title">智能体赋能高校教学新范式</div>
+  <div class="sub-title">小龙虾 + Manus 一站式解决方案</div>
+  <div class="divider"></div>
+</div>
+
+<div class="time-section">
+  <div class="time-icon">📅</div>
+  <div>
+    <div class="time-text">6月24日（下周三）下午 3:00-4:00</div>
+    <div class="time-sub">扫码加入读者服务群，获取入群福利</div>
+  </div>
+</div>
+
+<div class="right-deco">
+  <div class="deco-circle">
+    <div class="deco-inner">🤖</div>
+  </div>
+</div>
+
+<div class="bottom-bar">
+  <div class="speaker-section">
+    <div class="speaker-label">主讲嘉宾</div>
+    <div class="speaker-name">诸葛斌</div>
+    <div class="speaker-info">浙江工商大学信息与电子工程学院 / 萨塞克斯人工智能学院 教授<br>研究方向：互联网应用开发与AI教育，获浙江省技术发明一等奖</div>
+  </div>
+  <div class="benefits-section">
+    <div class="benefits-header">🎁 入群福利</div>
+    <div class="benefit-item"><span class="benefit-num">1.</span>小龙虾AI体验——群内部署OpenClaw智能体，实时体验课件生成、教案制作等AI能力</div>
+    <div class="benefit-item"><span class="benefit-num">2.</span>教学资料包——小龙虾三部曲课件、数据挖掘案例、16章教学动画、微信小程序案例等</div>
+    <div class="benefit-item"><span class="benefit-num">3.</span>直播间专享10本《Manus智能体全攻略》免费样书赠送（名额有限，抽奖获得）</div>
+    <div class="benefit-item"><span class="benefit-num">4.</span>"智能体"系列课程教学交流社区——高校教师AI教学实践交流、问题解答、经验分享</div>
+  </div>
+</div>
+</body>
+</html>

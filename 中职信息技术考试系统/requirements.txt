@@ -1,0 +1,12 @@
+# 中职信息技术考试系统 - 依赖文件
+# 基础运行无需额外依赖（Python 自带 Tkinter）
+# 以下依赖仅用于 Excel 导出功能
+
+# Excel 导出支持（可选）
+pandas>=1.5.0
+openpyxl>=3.0.0
+
+# 说明：
+# 1. 基础功能（考试、题库管理、CSV 导出）无需安装任何依赖
+# 2. 仅当需要 Excel 格式导出时才需要安装 pandas 和 openpyxl
+# 3. 安装命令：pip install -r requirements.txt

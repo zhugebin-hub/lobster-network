@@ -1,0 +1,30 @@
+{
+  "test_session_001": {
+    "timestamp": "2026-06-05T20:09:46.270001",
+    "summary": "用户提问：电路分析基础中的基尔霍夫定律是什么？\n回答类型：course_knowledge"
+  },
+  "test_conv": {
+    "timestamp": "2026-06-05T20:21:42.605467",
+    "summary": "用户提问：触发器有哪些类型？\n回答类型：course_knowledge"
+  },
+  "test_session_002": {
+    "timestamp": "2026-06-05T20:10:07.164221",
+    "summary": "用户提问：傅里叶变换的性质有哪些？\n回答类型：course_knowledge"
+  },
+  "test_session_003": {
+    "timestamp": "2026-06-05T20:10:07.165272",
+    "summary": "用户提问：你好\n回答类型：casual_chat"
+  },
+  "test_session_004": {
+    "timestamp": "2026-06-05T20:10:18.846329",
+    "summary": "用户提问：触发器有哪些类型？\n回答类型：course_knowledge"
+  },
+  "test_001": {
+    "timestamp": "2026-06-05T20:21:30.080197",
+    "summary": "用户提问：电路分析基础中的基尔霍夫定律是什么？\n回答类型：course_knowledge"
+  },
+  "test_conv_001": {
+    "timestamp": "2026-06-05T20:17:45.588621",
+    "summary": "用户提问：什么是触发器？\n回答类型：course_knowledge"
+  }
+}

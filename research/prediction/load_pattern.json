@@ -1,0 +1,10 @@
+{
+  "hourly_pattern": {
+    "8": 1500.0
+  },
+  "weekday_pattern": {
+    "5_8": 1500.0
+  },
+  "generated_at": "2026-03-28T08:57:33.889905",
+  "data_points": 1
+}

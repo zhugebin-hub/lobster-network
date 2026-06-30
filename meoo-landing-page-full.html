@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meoo - 重新定义开发效率</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366f1',
+            secondary: '#8b5cf6',
+            accent: '#06b6d4'
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    }
+    .glow-effect {
+      box-shadow: 0 0 60px rgba(99, 102, 241, 0.3);
+    }
+    .card-glow:hover {
+      box-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+    }
+    /* Modal Styles */
+    .modal-open {
+      overflow: hidden;
+    }
+    .modal-backdrop {
+      background: rgba(0, 0, 0, 0.75);
+    }
+  </style>
+</head>
+<body class="gradient-bg text-white min-h-screen" x-data="appData()">
+  
+  <!-- Modal Component -->
+  <div x-show="showModal" 
+       x-transition:enter="transition ease-out duration-300"
+       x-transition:enter-start="opacity-0"
+       x-transition:enter-end="opacity-100"
+       x-transition:leave="transition ease-in duration-200"
+       x-transition:leave-start="opacity-100"
+       x-transition:leave-end="opacity-0"
+       class="fixed inset-0 z-50 flex items-center justify-center modal-backdrop"
+       style="display: none;"
+       @click.self="closeModal()">
+    <div x-show="showModal"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 scale-95"
+         x-transition:enter-end="opacity-100 scale-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 scale-100"
+         x-transition:leave-end="opacity-0 scale-95"
+         class="bg-slate-800 rounded-2xl p-8 max-w-md w-full mx-4 border border-slate-700 glow-effect">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-2xl font-bold" x-text="modalTitle"></h3>
+        <button @click="closeModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+      </div>
+      
+      <!-- Modal Content -->
+      <div x-html="modalContent"></div>
+      
+      <!-- Modal Actions -->
+      <div class="mt-6 flex gap-3" x-show="modalActions">
+        <button @click="confirmAction()" 
+                class="flex-1 bg-gradient-to-r from-primary to-secondary px-6 py-3 rounded-full font-medium hover:opacity-90 transition">
+          <span x-text="confirmText"></span>
+        </button>
+        <button @click="closeModal()" 
+                class="flex-1 border border-slate-600 px-6 py-3 rounded-full font-medium hover:border-primary transition">
+          取消
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div x-show="showToast"
+       x-transition:enter="transition ease-out duration-300"
+       x-transition:enter-start="opacity-0 translate-y-4"
+       x-transition:enter-end="opacity-100 translate-y-0"
+       x-transition:leave="transition ease-in duration-200"
+       x-transition:leave-start="opacity-100 translate-y-0"
+       x-transition:leave-end="opacity-0 translate-y-4"
+       class="fixed bottom-4 right-4 z-50 bg-slate-800 border border-slate-700 rounded-lg px-6 py-4 glow-effect"
+       style="display: none;">
+    <div class="flex items-center gap-3">
+      <span x-text="toastIcon" class="text-2xl"></span>
+      <div>
+        <div class="font-medium" x-text="toastTitle"></div>
+        <div class="text-sm text-gray-400" x-text="toastMessage"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-40 bg-slate-900/80 backdrop-blur-md border-b border-slate-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent cursor-pointer" @click="scrollToSection('hero')">Meoo</span>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a href="#features" @click.prevent="scrollToSection('features')" class="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition">核心优势</a>
+            <a href="#process" @click.prevent="scrollToSection('process')" class="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition">工作流程</a>
+            <a href="#pricing" @click.prevent="scrollToSection('pricing')" class="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition">定价方案</a>
+            <button @click="openRegisterModal()" class="bg-gradient-to-r from-primary to-secondary px-6 py-2 rounded-full font-medium hover:opacity-90 transition">开始使用</button>
+          </div>
+        </div>
+        <div class="md:hidden">
+          <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-300 hover:text-white">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div x-show="mobileMenuOpen" class="md:hidden bg-slate-800">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="#features" @click.prevent="scrollToSection('features'); mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">核心优势</a>
+        <a href="#process" @click.prevent="scrollToSection('process'); mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">工作流程</a>
+        <a href="#pricing" @click.prevent="scrollToSection('pricing'); mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">定价方案</a>
+        <button @click="openRegisterModal(); mobileMenuOpen = false" class="w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">开始使用</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="pt-32 pb-20 px-4 relative overflow-hidden">
+    <!-- Background Glow -->
+    <div class="absolute top-20 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"></div>
+    <div class="absolute bottom-20 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1.5s;"></div>
+    
+    <div class="max-w-7xl mx-auto text-center relative z-10">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-float">
+        <span class="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+          Meoo
+        </span>
+      </h1>
+      <p class="text-3xl md:text-5xl font-bold mb-6">重新定义开发效率</p>
+      <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
+        思维未竟之处，秒悟已然成真<br>
+        <span class="text-lg text-gray-400">一句话生成完整应用 · 1 分钟极速交付 · 零配置部署</span>
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button @click="openRegisterModal()" class="bg-gradient-to-r from-primary to-secondary px-8 py-4 rounded-full text-lg font-bold hover:opacity-90 transition transform hover:scale-105 glow-effect">
+          🚀 免费开始（注册送 7000 积分）
+        </button>
+        <button @click="openDemoModal()" class="border-2 border-slate-600 px-8 py-4 rounded-full text-lg font-medium hover:border-primary transition">
+          📖 查看演示
+        </button>
+      </div>
+      
+      <!-- Stats -->
+      <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center cursor-pointer hover:scale-110 transition" @click="showToastMessage('⏱️', '极速生成', '简单应用 1 分钟即可完成生成和部署')">
+          <div class="text-4xl font-bold text-primary">1 分钟</div>
+          <div class="text-gray-400 mt-2">简单应用生成</div>
+        </div>
+        <div class="text-center cursor-pointer hover:scale-110 transition" @click="showToastMessage('💰', '成本节省', '相比传统外包开发节省 90% 以上成本')">
+          <div class="text-4xl font-bold text-secondary">90%</div>
+          <div class="text-gray-400 mt-2">成本节省</div>
+        </div>
+        <div class="text-center cursor-pointer hover:scale-110 transition" @click="showToastMessage('🤖', '多模型支持', '集成 Qwen/Kimi/GLM/MiniMax 四大模型')">
+          <div class="text-4xl font-bold text-accent">4 个</div>
+          <div class="text-gray-400 mt-2">大模型集成</div>
+        </div>
+        <div class="text-center cursor-pointer hover:scale-110 transition" @click="openRegisterModal()">
+          <div class="text-4xl font-bold text-primary">7000</div>
+          <div class="text-gray-400 mt-2">注册积分</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Features -->
+  <section id="features" class="py-20 px-4 bg-slate-900/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">核心优势</h2>
+        <p class="text-xl text-gray-400">为什么选择 Meoo？四大核心能力让你脱颖而出</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Feature 1 -->
+        <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 card-glow transition-all duration-300 hover:scale-105 hover:-translate-y-2 cursor-pointer" @click="showFeatureDetail('内置阿里生态', '☁️', '完整阿里云服务集成，包括：\n\n• 云数据库 RDS - 结构化数据存储\n• OSS 对象存储 - 图片/文件存储\n• FC 函数计算 - 后端逻辑运行\n• NAS 文件系统 - 共享存储\n• 百炼模型 API - AI 能力调用\n• 域名服务 - 自动分配\n• SSL 证书 - 自动配置\n\n所有服务零配置一键启用，无需单独开通！')">
+          <div class="text-5xl mb-4">☁️</div>
+          <h3 class="text-xl font-bold mb-3">内置阿里生态</h3>
+          <p class="text-gray-400">云数据库、OSS 存储、FC 沙盒、NAS 文件系统、百炼 API，零配置一键启用</p>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 card-glow transition-all duration-300 hover:scale-105 hover:-translate-y-2 cursor-pointer" @click="showFeatureDetail('蜂群 Agent', '🐝', '多智能体协作系统：\n\n• 任务分析 Agent - 理解用户需求\n• 代码生成 Agent - 编写前后端代码\n• 测试 Agent - 自动测试功能\n• 部署 Agent - 一键部署上线\n\n多个 Agent 并行工作，简单应用 1 分钟完成！')">
+          <div class="text-5xl mb-4">🐝</div>
+          <h3 class="text-xl font-bold mb-3">蜂群 Agent</h3>
+          <p class="text-gray-400">多 Agent 并行处理，自主规划任务拆解，复杂应用也能快速生成</p>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 card-glow transition-all duration-300 hover:scale-105 hover:-translate-y-2 cursor-pointer" @click="showFeatureDetail('极速交付', '⚡', '从想法到上线的完整流程：\n\n1. 输入需求（10 秒）\n2. AI 分析理解（20 秒）\n3. 代码自动生成（30 秒）\n4. 自动测试验证（30 秒）\n5. 一键部署上线（30 秒）\n\n总计约 2 分钟，传统开发需要数周！')">
+          <div class="text-5xl mb-4">⚡</div>
+          <h3 class="text-xl font-bold mb-3">极速交付</h3>
+          <p class="text-gray-400">简单应用 1 分钟生成，从想法到上线，前所未有的开发速度</p>
+        </div>
+        
+        <!-- Feature 4 -->
+        <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 card-glow transition-all duration-300 hover:scale-105 hover:-translate-y-2 cursor-pointer" @click="showFeatureDetail('主动修复', '🔧', '智能错误检测与修复系统：\n\n• 实时监控 - 7×24 小时运行监控\n• 错误检测 - 自动发现异常\n• 根因分析 - 定位问题源头\n• 自动修复 - 无需人工干预\n• 修复报告 - 详细记录变更\n\n系统稳定性提升至 99.9%！')">
+          <div class="text-5xl mb-4">🔧</div>
+          <h3 class="text-xl font-bold mb-3">主动修复</h3>
+          <p class="text-gray-400">系统自动检测 Bug，主动修复无需人工干预，持续稳定运行</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Multi-Model Support -->
+  <section class="py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">多模型智能路由</h2>
+        <p class="text-xl text-gray-400">集成 4 个顶级大模型，根据任务自动选择最优方案</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-gradient-to-br from-primary/20 to-slate-800 p-6 rounded-xl border border-primary/30 text-center cursor-pointer hover:scale-105 transition" @click="showModelDetail('Qwen3.6-Plus', '阿里通义千问最新模型，代码生成能力业界领先，擅长：\n\n• 全栈代码生成\n• API 接口设计\n• 数据库结构优化\n• 前端组件开发\n\n适合：复杂业务逻辑、企业级应用')">
+          <div class="text-3xl font-bold text-primary mb-2">Qwen3.6-Plus</div>
+          <div class="text-sm text-gray-400">阿里通义 · 代码生成强项</div>
+        </div>
+        <div class="bg-gradient-to-br from-secondary/20 to-slate-800 p-6 rounded-xl border border-secondary/30 text-center cursor-pointer hover:scale-105 transition" @click="showModelDetail('Kimi K2.5', '月之暗面长文本理解模型，擅长：\n\n• 长文档分析\n• 复杂需求理解\n• 多步骤任务规划\n• 上下文关联\n\n适合：需求文档解析、复杂业务流程')">
+          <div class="text-3xl font-bold text-secondary mb-2">Kimi K2.5</div>
+          <div class="text-sm text-gray-400">月之暗面 · 长上下文理解</div>
+        </div>
+        <div class="bg-gradient-to-br from-accent/20 to-slate-800 p-6 rounded-xl border border-accent/30 text-center cursor-pointer hover:scale-105 transition" @click="showModelDetail('GLM-5', '智谱 AI 多模态模型，擅长：\n\n• 图像识别理解\n• 图表数据分析\n• 多模态内容生成\n• 视觉界面设计\n\n适合：数据可视化、界面设计')">
+          <div class="text-3xl font-bold text-accent mb-2">GLM-5</div>
+          <div class="text-sm text-gray-400">智谱 AI · 多模态能力</div>
+        </div>
+        <div class="bg-gradient-to-br from-primary/20 to-slate-800 p-6 rounded-xl border border-primary/30 text-center cursor-pointer hover:scale-105 transition" @click="showModelDetail('MiniMax-M2.5', 'MiniMax 对话优化模型，擅长：\n\n• 自然语言理解\n• 对话交互优化\n• 用户体验设计\n• 文案生成润色\n\n适合：对话式应用、用户交互界面')">
+          <div class="text-3xl font-bold text-primary mb-2">MiniMax-M2.5</div>
+          <div class="text-sm text-gray-400">MiniMax · 对话优化</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Flow -->
+  <section id="process" class="py-20 px-4 bg-slate-900/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">工作流程</h2>
+        <p class="text-xl text-gray-400">从简单指令到部署上线，仅需 4 步</p>
+      </div>
+      
+      <div class="relative">
+        <!-- Connection Line -->
+        <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent transform -translate-y-1/2"></div>
+        
+        <div class="grid md:grid-cols-4 gap-8 relative">
+          <!-- Step 1 -->
+          <div class="text-center relative z-10 cursor-pointer hover:scale-105 transition" @click="showProcessStep(1)">
+            <div class="w-20 h-20 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-3xl font-bold mb-4 glow-effect">1</div>
+            <h3 class="text-xl font-bold mb-2">输入指令</h3>
+            <p class="text-gray-400">用自然语言描述你的需求<br>例如："做一个钱包应用"</p>
+          </div>
+          
+          <!-- Step 2 -->
+          <div class="text-center relative z-10 cursor-pointer hover:scale-105 transition" @click="showProcessStep(2)">
+            <div class="w-20 h-20 mx-auto bg-gradient-to-r from-secondary to-accent rounded-full flex items-center justify-center text-3xl font-bold mb-4 glow-effect">2</div>
+            <h3 class="text-xl font-bold mb-2">智能分析</h3>
+            <p class="text-gray-400">多模型理解需求<br>自动拆解任务</p>
+          </div>
+          
+          <!-- Step 3 -->
+          <div class="text-center relative z-10 cursor-pointer hover:scale-105 transition" @click="showProcessStep(3)">
+            <div class="w-20 h-20 mx-auto bg-gradient-to-r from-accent to-primary rounded-full flex items-center justify-center text-3xl font-bold mb-4 glow-effect">3</div>
+            <h3 class="text-xl font-bold mb-2">生成应用</h3>
+            <p class="text-gray-400">前端 + 后端 + 数据库<br>全栈代码自动生成</p>
+          </div>
+          
+          <!-- Step 4 -->
+          <div class="text-center relative z-10 cursor-pointer hover:scale-105 transition" @click="showProcessStep(4)">
+            <div class="w-20 h-20 mx-auto bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-3xl font-bold mb-4 glow-effect">4</div>
+            <h3 class="text-xl font-bold mb-2">部署上线</h3>
+            <p class="text-gray-400">一键部署到阿里云<br>自动配置域名 SSL</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">定价方案</h2>
+        <p class="text-xl text-gray-400">灵活选择，满足不同需求</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- FREE -->
+        <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 card-glow transition-all duration-300 hover:scale-105">
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold mb-2">FREE</h3>
+            <div class="text-4xl font-bold text-primary mb-2">¥0</div>
+            <div class="text-gray-400">注册即送 7000 积分</div>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center">
+              <span class="text-green-400 mr-2">✓</span>
+              <span>基础应用生成</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-green-400 mr-2">✓</span>
+              <span>标准云服务配额</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-green-400 mr-2">✓</span>
+              <span>社区支持</span>
+            </li>
+            <li class="flex items-center text-gray-500">
+              <span class="mr-2">✗</span>
+              <span>多人协作</span>
+            </li>
+          </ul>
+          <button @click="selectPlan('FREE')" class="w-full border-2 border-primary text-primary px-6 py-3 rounded-full font-medium hover:bg-primary hover:text-white transition">
+            免费注册
+          </button>
+        </div>
+        
+        <!-- PRO (Featured) -->
+        <div class="bg-gradient-to-br from-primary/30 to-slate-800 p-8 rounded-2xl border-2 border-primary card-glow transition-all duration-300 hover:scale-105 relative">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary to-secondary px-4 py-1 rounded-full text-sm font-bold">
+            🔥 最受欢迎
+          </div>
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold mb-2">PRO</h3>
+            <div class="text-4xl font-bold text-primary mb-2">¥99</div>
+            <div class="text-gray-400">每月</div>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center">
+              <span class="text-green-400 mr-2">✓</span>
+              <span>无限应用生成</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-green-400 mr-2">✓</span>
+              <span>高级云服务配额</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-green-400 mr-2">✓</span>
+              <span>优先支持</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-green-400 mr-2">✓</span>
+              <span>多人协作（5 人）</span>
+            </li>
+          </ul>
+          <button @click="selectPlan('PRO')" class="w-full bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition glow-effect">
+            立即订阅
+          </button>
+        </div>
+        
+        <!-- MAX -->
+        <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 card-glow transition-all duration-300 hover:scale-105">
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold mb-2">MAX</h3>
+            <div class="text-4xl font-bold text-secondary mb-2">¥299</div>
+            <div class="text-gray-400">每月</div>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center">
+              <span class="text-green-400 mr-2">✓</span>
+              <span>企业级应用生成</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-green-400 mr-2">✓</span>
+              <span>无限云服务配额</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-green-400 mr-2">✓</span>
+              <span>专属技术支持</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-green-400 mr-2">✓</span>
+              <span>无限协作成员</span>
+            </li>
+          </ul>
+          <button @click="selectPlan('MAX')" class="w-full border-2 border-secondary text-secondary px-6 py-3 rounded-full font-medium hover:bg-secondary hover:text-white transition">
+            联系销售
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 p-12 rounded-3xl border border-slate-700 glow-effect">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">准备好开始了吗？</h2>
+        <p class="text-xl text-gray-300 mb-8">
+          立即注册，领取 7000 积分<br>
+          体验 AI 驱动的全栈开发革命
+        </p>
+        <button @click="openRegisterModal()" class="bg-gradient-to-r from-primary to-secondary px-12 py-5 rounded-full text-xl font-bold hover:opacity-90 transition transform hover:scale-105 glow-effect">
+          🎯 免费开始
+        </button>
+        <p class="text-gray-400 mt-4">无需信用卡 · 1 分钟上手</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-4 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Meoo</span>
+          <p class="text-gray-400 mt-4">思维未竟之处，秒悟已然成真</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">产品</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" @click.prevent="showToastMessage('📋', '功能特性', '查看完整功能列表...')" class="hover:text-primary">功能特性</a></li>
+            <li><a href="#pricing" @click.prevent="scrollToSection('pricing')" class="hover:text-primary">定价方案</a></li>
+            <li><a href="#" @click.prevent="showToastMessage('📝', '更新日志', 'v2.4.0 - 新增蜂群 Agent 模式')" class="hover:text-primary">更新日志</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">资源</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" @click.prevent="openDemoModal()" class="hover:text-primary">文档中心</a></li>
+            <li><a href="#" @click.prevent="showToastMessage('🔌', 'API 参考', 'API 文档即将上线...')" class="hover:text-primary">API 参考</a></li>
+            <li><a href="#" @click.prevent="showToastMessage('💬', '社区论坛', '社区即将开放...')" class="hover:text-primary">社区论坛</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">公司</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" @click.prevent="showToastMessage('🏢', '关于我们', 'Meoo 是阿里云推出的 AI 驱动全栈开发平台')" class="hover:text-primary">关于我们</a></li>
+            <li><a href="#" @click.prevent="showToastMessage('📧', '联系方式', 'contact@meoo.com')" class="hover:text-primary">联系方式</a></li>
+            <li><a href="#" @click.prevent="showToastMessage('🔒', '隐私政策', '我们严格保护您的数据安全')" class="hover:text-primary">隐私政策</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center text-gray-500 pt-8 border-t border-slate-800">
+        <p>© 2026 Meoo. All rights reserved. 浙 ICP 备 2023034206 号</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script>
+    function appData() {
+      return {
+        mobileMenuOpen: false,
+        showModal: false,
+        modalTitle: '',
+        modalContent: '',
+        modalActions: false,
+        confirmText: '确认',
+        onConfirm: null,
+        showToast: false,
+        toastIcon: '',
+        toastTitle: '',
+        toastMessage: '',
+        
+        // Scroll to section
+        scrollToSection(sectionId) {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        },
+        
+        // Show toast notification
+        showToastMessage(icon, title, message) {
+          this.toastIcon = icon;
+          this.toastTitle = title;
+          this.toastMessage = message;
+          this.showToast = true;
+          setTimeout(() => {
+            this.showToast = false;
+          }, 3000);
+        },
+        
+        // Open modal
+        openModal(title, content, hasActions = false, confirmText = '确认', onConfirm = null) {
+          this.modalTitle = title;
+          this.modalContent = content;
+          this.modalActions = hasActions;
+          this.confirmText = confirmText;
+          this.onConfirm = onConfirm;
+          this.showModal = true;
+          document.body.classList.add('modal-open');
+        },
+        
+        // Close modal
+        closeModal() {
+          this.showModal = false;
+          document.body.classList.remove('modal-open');
+        },
+        
+        // Confirm action
+        confirmAction() {
+          if (this.onConfirm) {
+            this.onConfirm();
+          }
+          this.closeModal();
+        },
+        
+        // Show feature detail
+        showFeatureDetail(title, icon, content) {
+          const formattedContent = content.replace(/\n/g, '<br>');
+          this.openModal(`${icon} ${title}`, `<div class="text-gray-300 leading-relaxed">${formattedContent}</div>`);
+        },
+        
+        // Show model detail
+        showModelDetail(title, content) {
+          const formattedContent = content.replace(/\n/g, '<br>');
+          this.openModal(`🤖 ${title}`, `<div class="text-gray-300 leading-relaxed">${formattedContent}</div>`);
+        },
+        
+        // Show process step
+        showProcessStep(step) {
+          const steps = {
+            1: {
+              title: '步骤 1: 输入指令',
+              content: `
+                <div class="space-y-4">
+                  <p class="text-gray-300">在输入框中用自然语言描述你的应用需求：</p>
+                  <div class="bg-slate-900 p-4 rounded-lg border border-slate-700">
+                    <p class="text-primary font-mono">"我要做一个钱包应用，记录日常开销，有周报月报，还能分析消费习惯给出建议"</p>
+                  </div>
+                  <p class="text-gray-400 text-sm">💡 提示：描述越详细，生成的应用越符合预期</p>
+                </div>
+              `
+            },
+            2: {
+              title: '步骤 2: 智能分析',
+              content: `
+                <div class="space-y-4">
+                  <p class="text-gray-300">AI 多模型协同分析你的需求：</p>
+                  <ul class="space-y-2 text-gray-300">
+                    <li>• Kimi 分析需求文档结构</li>
+                    <li>• Qwen 拆解技术实现方案</li>
+                    <li>• GLM 设计数据可视化方案</li>
+                    <li>• MiniMax 优化用户交互流程</li>
+                  </ul>
+                  <p class="text-gray-400 text-sm">⏱️ 耗时：约 20 秒</p>
+                </div>
+              `
+            },
+            3: {
+              title: '步骤 3: 生成应用',
+              content: `
+                <div class="space-y-4">
+                  <p class="text-gray-300">蜂群 Agent 并行生成完整应用：</p>
+                  <ul class="space-y-2 text-gray-300">
+                    <li>• 前端 Agent - React/Vue 界面</li>
+                    <li>• 后端 Agent - Node.js/Python API</li>
+                    <li>• 数据库 Agent - PostgreSQL 结构</li>
+                    <li>• 测试 Agent - 自动化测试用例</li>
+                  </ul>
+                  <p class="text-gray-400 text-sm">⏱️ 耗时：约 30-60 秒</p>
+                </div>
+              `
+            },
+            4: {
+              title: '步骤 4: 部署上线',
+              content: `
+                <div class="space-y-4">
+                  <p class="text-gray-300">一键部署到阿里云基础设施：</p>
+                  <ul class="space-y-2 text-gray-300">
+                    <li>• 自动配置数据库 RDS</li>
+                    <li>• 部署到函数计算 FC</li>
+                    <li>• 分配域名和 SSL 证书</li>
+                    <li>• 启动监控和日志</li>
+                  </ul>
+                  <p class="text-gray-400 text-sm">⏱️ 耗时：约 30 秒</p>
+                </div>
+              `
+            }
+          };
+          const step = steps[step];
+          this.openModal(step.title, step.content);
+        },
+        
+        // Open register modal
+        openRegisterModal() {
+          const content = `
+            <form id="registerForm" class="space-y-4" onsubmit="event.preventDefault(); app.registerUser();">
+              <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2">邮箱</label>
+                <input type="email" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary" placeholder="your@email.com">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2">密码</label>
+                <input type="password" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary" placeholder="至少 8 位">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2">验证码</label>
+                <div class="flex gap-2">
+                  <input type="text" required class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary" placeholder="输入验证码">
+                  <button type="button" onclick="app.sendCode()" class="bg-slate-700 px-4 py-3 rounded-lg text-sm hover:bg-slate-600 transition">发送验证码</button>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <input type="checkbox" required class="rounded border-slate-700 bg-slate-900">
+                <span class="text-sm text-gray-400">我已阅读并同意 <a href="#" class="text-primary hover:underline">服务条款</a> 和 <a href="#" class="text-primary hover:underline">隐私政策</a></span>
+              </div>
+            </form>
+          `;
+          this.openModal('🚀 免费注册', content, true, '立即注册', () => this.registerUser());
+        },
+        
+        // Register user
+        registerUser() {
+          const form = document.getElementById('registerForm');
+          if (form && form.checkValidity()) {
+            this.closeModal();
+            this.showToastMessage('✅', '注册成功', '欢迎加入 Meoo！7000 积分已发放到您的账户');
+            setTimeout(() => {
+              this.openModal('🎉 欢迎加入 Meoo!', `
+                <div class="space-y-4 text-gray-300">
+                  <p>恭喜您完成注册！您的账户已激活：</p>
+                  <div class="bg-slate-900 p-4 rounded-lg">
+                    <div class="flex justify-between mb-2">
+                      <span>账户积分：</span>
+                      <span class="text-primary font-bold">7000 积分</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>账户等级：</span>
+                      <span class="text-secondary font-bold">FREE</span>
+                    </div>
+                  </div>
+                  <p>现在您可以：</p>
+                  <ul class="space-y-1">
+                    <li>• 创建基础应用</li>
+                    <li>• 使用标准云服务</li>
+                    <li>• 获得社区支持</li>
+                  </ul>
+                  <button onclick="app.closeModal(); app.showToastMessage(\'🎯\', \'开始创建\', \'点击首页按钮开始创建您的第一个应用\')" class="w-full bg-gradient-to-r from-primary to-secondary px-6 py-3 rounded-full font-medium mt-4">开始创建应用</button>
+                </div>
+              `, false);
+            }, 500);
+          } else if (form) {
+            form.reportValidity();
+          }
+        },
+        
+        // Send verification code
+        sendCode() {
+          this.showToastMessage('📱', '验证码已发送', '验证码已发送到您的邮箱，请注意查收（模拟）');
+        },
+        
+        // Open demo modal
+        openDemoModal() {
+          const content = `
+            <div class="space-y-4 text-gray-300">
+              <div class="aspect-video bg-slate-900 rounded-lg flex items-center justify-center border border-slate-700">
+                <div class="text-center">
+                  <div class="text-6xl mb-4">🎬</div>
+                  <p>演示视频即将上线</p>
+                  <p class="text-sm text-gray-400 mt-2">敬请期待...</p>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <h4 class="font-bold">快速入门指南：</h4>
+                <ol class="space-y-2 text-sm">
+                  <li>1. 注册账户获得 7000 积分</li>
+                  <li>2. 在首页输入应用需求</li>
+                  <li>3. AI 自动生成完整应用</li>
+                  <li>4. 一键部署上线</li>
+                </ol>
+              </div>
+            </div>
+          `;
+          this.openModal('📖 产品演示', content);
+        },
+        
+        // Select plan
+        selectPlan(plan) {
+          const plans = {
+            'FREE': { name: 'FREE', price: '¥0', features: ['基础应用生成', '标准云服务配额', '社区支持'] },
+            'PRO': { name: 'PRO', price: '¥99/月', features: ['无限应用生成', '高级云服务配额', '优先支持', '多人协作（5 人）'] },
+            'MAX': { name: 'MAX', price: '¥299/月', features: ['企业级应用生成', '无限云服务配额', '专属技术支持', '无限协作成员'] }
+          };
+          
+          const selectedPlan = plans[plan];
+          const content = `
+            <div class="space-y-4 text-gray-300">
+              <div class="text-center">
+                <h3 class="text-2xl font-bold">${selectedPlan.name}</h3>
+                <p class="text-primary text-xl">${selectedPlan.price}</p>
+              </div>
+              <ul class="space-y-2">
+                ${selectedPlan.features.map(f => `<li class="flex items-center"><span class="text-green-400 mr-2">✓</span>${f}</li>`).join('')}
+              </ul>
+              <p class="text-sm text-gray-400">选择此套餐后，您将立即获得相应权益</p>
+            </div>
+          `;
+          this.openModal(`确认选择 ${selectedPlan.name} 套餐`, content, true, '确认选择', () => {
+            this.showToastMessage('✅', '套餐选择成功', `您已选择 ${selectedPlan.name} 套餐，现在可以开始创建应用了！`);
+          });
+        }
+      }
+    }
+    
+    // Make app globally accessible
+    let app;
+    document.addEventListener('alpine:init', () => {
+      app = document.querySelector('[x-data]').__x.$data;
+    });
+  </script>
+
+</body>
+</html>

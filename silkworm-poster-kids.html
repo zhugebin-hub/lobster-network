@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蚕的一生 - 三年级科学海报</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    width: 1190px;
+    min-height: 1684px;
+    background: linear-gradient(135deg, #fff9e8 0%, #fff3d0 30%, #ffe8c8 70%, #fff0d5 100%);
+    font-family: 'Noto Sans SC', sans-serif;
+    position: relative;
+  }
+  
+  /* 可爱背景装饰 */
+  .bg-deco {
+    position: absolute;
+    opacity: 0.08;
+    z-index: 0;
+  }
+  .bg-deco.d1 { top: 30px; left: 40px; font-size: 80px; }
+  .bg-deco.d2 { top: 100px; right: 60px; font-size: 60px; }
+  .bg-deco.d3 { bottom: 200px; left: 50px; font-size: 70px; }
+  .bg-deco.d4 { bottom: 80px; right: 50px; font-size: 85px; }
+  .bg-deco.d5 { top: 40%; left: 20px; font-size: 50px; }
+  .bg-deco.d6 { top: 60%; right: 30px; font-size: 55px; }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+    padding: 35px 45px;
+  }
+  
+  /* 标题 - 更活泼 */
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0.4));
+    border-radius: 25px;
+    padding: 25px;
+    border: 3px dashed #ff9a5a;
+  }
+  
+  .main-title {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 70px;
+    color: #ff6b35;
+    letter-spacing: 12px;
+    text-shadow: 3px 3px 0 #ffd5a8;
+    margin-bottom: 8px;
+  }
+  
+  .title-emoji {
+    display: inline-block;
+    font-size: 55px;
+    margin: 0 10px;
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  
+  .sub-title {
+    font-size: 22px;
+    color: #ff8c42;
+    font-weight: 600;
+    letter-spacing: 4px;
+  }
+  
+  /* 阶段卡片 - 更大更可爱 */
+  .stage-section {
+    margin-bottom: 15px;
+  }
+  
+  .stage-card {
+    background: white;
+    border-radius: 25px;
+    padding: 22px;
+    border: 4px solid;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    position: relative;
+  }
+  
+  .stage-1 { border-color: #ffb347; background: linear-gradient(135deg, #fff9f0, #fff); }
+  .stage-2 { border-color: #8b7355; background: linear-gradient(135deg, #f9f6f3, #fff); }
+  .stage-3 { border-color: #7bc67e; background: linear-gradient(135deg, #f0fff0, #fff); }
+  .stage-4 { border-color: #dda0dd; background: linear-gradient(135deg, #fff0ff, #fff); }
+  
+  .stage-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .stage-badge {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 900;
+    color: white;
+    margin-right: 18px;
+    flex-shrink: 0;
+    border: 3px solid rgba(255,255,255,0.5);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  }
+  
+  .stage-1 .stage-badge { background: linear-gradient(135deg, #ffb347, #ffcc80); }
+  .stage-2 .stage-badge { background: linear-gradient(135deg, #8b7355, #a08870); }
+  .stage-3 .stage-badge { background: linear-gradient(135deg, #7bc67e, #95d698); }
+  .stage-4 .stage-badge { background: linear-gradient(135deg, #dda0dd, #e8b8e8); }
+  
+  .stage-name {
+    font-size: 32px;
+    font-weight: 700;
+    flex: 1;
+  }
+  
+  .stage-1 .stage-name { color: #ff9a35; }
+  .stage-2 .stage-name { color: #7a6250; }
+  .stage-3 .stage-name { color: #5cb85c; }
+  .stage-4 .stage-name { color: #c47bc4; }
+  
+  .stage-time {
+    background: #fff3cd;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 15px;
+    color: #856404;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 5px;
+  }
+  
+  .stage-content {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .stage-illustration {
+    width: 180px;
+    height: 160px;
+    border-radius: 18px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 85px;
+    border: 3px dashed;
+  }
+  
+  .stage-1 .stage-illustration { 
+    background: #fff5e0;
+    border-color: #ffb347;
+  }
+  .stage-2 .stage-illustration { 
+    background: #f5f0eb;
+    border-color: #8b7355;
+  }
+  .stage-3 .stage-illustration { 
+    background: #e8f8e8;
+    border-color: #7bc67e;
+  }
+  .stage-4 .stage-illustration { 
+    background: #f8e8f8;
+    border-color: #dda0dd;
+  }
+  
+  .stage-text {
+    flex: 1;
+  }
+  
+  .stage-desc {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 12px;
+  }
+  
+  .stage-desc b {
+    color: #ff6b35;
+    font-size: 18px;
+  }
+  
+  /* 观察日记框 - 更可爱 */
+  .diary-box {
+    background: linear-gradient(135deg, #fff9e6, #fff3d0);
+    border-radius: 15px;
+    padding: 14px 16px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #666;
+    border-left: 5px solid #ff9a35;
+    position: relative;
+  }
+  
+  .diary-box::before {
+    content: '✏️ 我的观察日记：';
+    display: block;
+    font-weight: 700;
+    color: #ff6b35;
+    margin-bottom: 6px;
+    font-size: 16px;
+  }
+  
+  /* 箭头 */
+  .arrow {
+    text-align: center;
+    font-size: 28px;
+    margin: 8px 0;
+  }
+  
+  /* 知识框 - 更有趣 */
+  .fun-facts {
+    background: linear-gradient(135deg, #e8f4ff, #f0f8ff);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 3px dashed #4a90d9;
+  }
+  
+  .fun-title {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 24px;
+    color: #4a90d9;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .fun-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  
+  .fun-item {
+    background: white;
+    padding: 12px 15px;
+    border-radius: 12px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+    border: 2px solid #e0e8ff;
+  }
+  
+  .fun-item .emoji {
+    font-size: 22px;
+    margin-right: 8px;
+  }
+  
+  /* 互动区 */
+  .interactive-zone {
+    background: linear-gradient(135deg, #fff8e8, #fff0d5);
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    border: 3px solid #ffb347;
+  }
+  
+  .interactive-title {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 20px;
+    color: #ff8c42;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .photo-zone {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .photo-frame {
+    width: 110px;
+    height: 110px;
+    border: 3px dashed #ffb347;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .photo-frame .icon {
+    font-size: 35px;
+    margin-bottom: 5px;
+  }
+  
+  .sign-zone {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  
+  .sign-line {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .sign-line .label {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+  }
+  
+  .sign-line .line {
+    border-bottom: 2px solid #ffb347;
+    height: 35px;
+    border-radius: 2px;
+  }
+  
+  /* 底部装饰 */
+  .footer-deco {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #aaa;
+  }
+  
+  /* 重点标注 */
+  .highlight {
+    background: #fff3cd;
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <div class="bg-deco d1">🍃</div>
+  <div class="bg-deco d2">✨</div>
+  <div class="bg-deco d3">🌿</div>
+  <div class="bg-deco d4">⭐</div>
+  <div class="bg-deco d5"></div>
+  <div class="bg-deco d6">🦋</div>
+  
+  <div class="container">
+    <!-- 标题 -->
+    <div class="header">
+      <div class="main-title">
+        <span class="title-emoji">🐛</span>蚕的一生<span class="title-emoji"></span>
+      </div>
+      <div class="sub-title">✨ 三年级科学观察记录 ✨</div>
+    </div>
+    
+    <!-- 阶段一 -->
+    <div class="stage-section">
+      <div class="stage-card stage-1">
+        <div class="stage-header">
+          <div class="stage-badge">1</div>
+          <div>
+            <div class="stage-name">蚕卵宝宝</div>
+            <div class="stage-time">📅 第 1-14 天</div>
+          </div>
+        </div>
+        <div class="stage-content">
+          <div class="stage-illustration"></div>
+          <div class="stage-text">
+            <div class="stage-desc">
+              蚕卵小小的、<b>椭圆形</b>，像<b>芝麻</b>一样大！刚生下来是<b>淡黄色</b>的，慢慢变成<b>紫灰色</b>，说明蚕宝宝要出来啦！
+            </div>
+            <div class="diary-box">
+              今天蚕卵变色了！从黄色变成了紫灰色，妈妈说蚕宝宝快要孵化了。我用放大镜看，卵的表面有一点点凹进去，还有细细的纹路呢！
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="arrow">⬇️ 过了大约 10 天 ⬇️</div>
+    
+    <!-- 阶段二 -->
+    <div class="stage-section">
+      <div class="stage-card stage-2">
+        <div class="stage-header">
+          <div class="stage-badge">2</div>
+          <div>
+            <div class="stage-name">蚁蚕出生</div>
+            <div class="stage-time">📅 第 15-18 天</div>
+          </div>
+        </div>
+        <div class="stage-content">
+          <div class="stage-illustration">🐜</div>
+          <div class="stage-text">
+            <div class="stage-desc">
+              蚕宝宝孵化了！因为又<b>黑</b>又<b>小</b>，像小蚂蚁，所以叫"<b>蚁蚕</b>"。它们只有<b>2-3 毫米</b>长，浑身长满细毛，最喜欢吃<b>嫩桑叶</b>！
+            </div>
+            <div class="diary-box">
+              哇！蚕宝宝终于出来了！它们黑黑小小的，真的好可爱！我用羽毛轻轻把它们扫到桑叶上，它们立刻开始吃，吃得可香了！
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="arrow">⬇️ 吃了睡，睡了吃 ⬇️</div>
+    
+    <!-- 阶段三 -->
+    <div class="stage-section">
+      <div class="stage-card stage-3">
+        <div class="stage-header">
+          <div class="stage-badge">3</div>
+          <div>
+            <div class="stage-name">蚕宝宝长大</div>
+            <div class="stage-time">📅 第 19-45 天</div>
+          </div>
+        </div>
+        <div class="stage-content">
+          <div class="stage-illustration">🐛</div>
+          <div class="stage-text">
+            <div class="stage-desc">
+              这是蚕宝宝长得<b>最快</b>的时候！它们会<b>蜕皮 4 次</b>（一龄→五龄），身体从黑色变成<b>白色</b>，长到<b>6-7 厘米</b>！每天都在<b>吃吃吃</b>
+            </div>
+            <div class="diary-box">
+              蚕宝宝已经长到我的手指那么长了！白白胖胖的，摸起来凉凉的、软软的。它们吃桑叶的声音"沙沙沙"，像下雨一样。今天有一条蚕在蜕皮，它抬着头一动不动，好像在睡觉！
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="arrow">⬇️ 准备结茧啦 ⬇️</div>
+    
+    <!-- 阶段四 -->
+    <div class="stage-section">
+      <div class="stage-card stage-4">
+        <div class="stage-header">
+          <div class="stage-badge">4</div>
+          <div>
+            <div class="stage-name">结茧变蛾</div>
+            <div class="stage-time">📅 第 46-60 天</div>
+          </div>
+        </div>
+        <div class="stage-content">
+          <div class="stage-illustration">🦋</div>
+          <div class="stage-text">
+            <div class="stage-desc">
+              蚕宝宝身体变得<b>透明发亮</b>，开始<b>吐丝结茧</b>！在茧里变成<b>蛹</b>，再过 10-15 天，<b>蚕蛾</b>破茧而出！蚕蛾有翅膀但不会飞，会产下新的卵 🔄
+            </div>
+            <div class="diary-box">
+              蚕宝宝开始吐丝了！它们吐出细细的丝，把自己裹起来，两天后就看到了一个完整的茧，摸上去软软的。两周后，蚕蛾出来了，白白的身子，小小的翅膀，好神奇！
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 趣味小知识 -->
+    <div class="fun-facts">
+      <div class="fun-title">🌟 趣味小知识 🌟</div>
+      <div class="fun-content">
+        <div class="fun-item">
+          <span class="emoji">🐛</span>
+          <b>蚕是什么？</b><br>
+          蚕是一种昆虫，和蝴蝶是亲戚哦！它们要经过卵→幼虫→蛹→成虫四个阶段
+        </div>
+        <div class="fun-item">
+          <span class="emoji">🍃</span>
+          <b>蚕吃什么？</b><br>
+          蚕只吃桑叶！每天要喂 3-4 次新鲜的桑叶，它们很挑食呢
+        </div>
+        <div class="fun-item">
+          <span class="emoji">🧵</span>
+          <b>蚕丝有多长？</b><br>
+          一根蚕丝最长可以有<b>1500 米</b>！比 10 个操场还要长！
+        </div>
+        <div class="fun-item">
+          <span class="emoji">⏱️</span>
+          <b>蚕活多久？</b><br>
+          蚕的一生大约<b>50-60 天</b>，一只蚕蛾妈妈可以生 400-500 个宝宝！
+        </div>
+      </div>
+    </div>
+    
+    <!-- 互动区 -->
+    <div class="interactive-zone">
+      <div class="interactive-title">📸 我的观察照片墙 📸</div>
+      <div class="photo-zone">
+        <div class="photo-frame">
+          <div class="icon">🥚</div>
+          <div>蚕卵照片</div>
+        </div>
+        <div class="photo-frame">
+          <div class="icon">🐛</div>
+          <div>蚕宝宝照片</div>
+        </div>
+        <div class="photo-frame">
+          <div class="icon">🧶</div>
+          <div>蚕茧照片</div>
+        </div>
+      </div>
+      <div class="sign-zone">
+        <div class="sign-line">
+          <div class="label">姓名</div>
+          <div class="line"></div>
+        </div>
+        <div class="sign-line">
+          <div class="label">班级</div>
+          <div class="line"></div>
+        </div>
+        <div class="sign-line">
+          <div class="label">日期</div>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-deco">
+      🌈 科学实践作业 · 蚕的一生观察记录 · 三年级 🌈
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-03-28T11:06:57.236417",
+  "duration_hours": 12,
+  "repetitions": 3,
+  "results": {
+    "Round-Robin": {
+      "total_tasks": 122.0,
+      "completed_tasks": 122.0,
+      "failed_tasks": 0.0,
+      "total_cost": 3.608187213701207,
+      "total_latency": 19010.376132,
+      "sla_violations": 43.666666666666664,
+      "migrations": 0.0
+    },
+    "Time-Arbitrage": {
+      "total_tasks": 122.0,
+      "completed_tasks": 78.33333333333333,
+      "failed_tasks": 0.0,
+      "total_cost": 0.16914570638527868,
+      "total_latency": 12592.145352000001,
+      "sla_violations": 43.666666666666664,
+      "migrations": 0.0
+    }
+  }
+}

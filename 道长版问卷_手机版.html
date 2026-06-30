@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>道教道长心理服务需求调查问卷</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .info-box {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .info-box p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .info-box .label {
+            font-weight: bold;
+            color: #667eea;
+        }
+        .section {
+            padding: 20px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        .question {
+            margin-bottom: 25px;
+        }
+        .question-title {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #333;
+        }
+        .question-title .required {
+            color: #e74c3c;
+            margin-left: 5px;
+        }
+        .question-title .multi {
+            color: #f39c12;
+            font-size: 12px;
+            font-weight: normal;
+            margin-left: 5px;
+        }
+        .options {
+            padding-left: 10px;
+        }
+        .option {
+            margin: 8px 0;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .option:hover {
+            background: #e8eaf6;
+        }
+        .option.selected {
+            background: #e8eaf6;
+            border-color: #667eea;
+        }
+        .option input[type="radio"],
+        .option input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .option label {
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .text-answer {
+            width: 100%;
+            min-height: 100px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        .text-answer:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .divider {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+        }
+        .footer {
+            padding: 30px 20px;
+            text-align: center;
+            background: #f8f9fa;
+        }
+        .footer p {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .contact-info {
+            background: #fff;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 8px;
+            border: 2px dashed #667eea;
+        }
+        .contact-info input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .submit-btn {
+            display: block;
+            width: 90%;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: #667eea;
+            transition: width 0.3s;
+            z-index: 100;
+        }
+        .toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: none;
+            z-index: 1000;
+        }
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 18px;
+            }
+            .section-title {
+                font-size: 16px;
+            }
+            .question-title {
+                font-size: 14px;
+            }
+            .option {
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="toast" id="toast"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>道教道长心理服务需求调查问卷</h1>
+            <div class="subtitle">道长版 V1.0</div>
+        </div>
+
+        <div class="info-box">
+            <p><span class="label">调查目的：</span>了解道长对心理疏导的认知、实践经验和培训需求</p>
+            <p><span class="label">适用对象：</span>道教教职人员（道长/道长/坤道）</p>
+            <p><span class="label">预计填写时间：</span>15-20分钟</p>
+            <p><span class="label">匿名填写，数据仅用于学术研究</span></p>
+        </div>
+
+        <div style="padding: 15px;">
+            <p>尊敬的道长：</p>
+            <p>您好！本问卷旨在了解道教教职人员对心理疏导服务的认知、实践经验和发展需求，为道教心理服务的理论研究和实践探索提供数据支持。</p>
+            <p style="margin-top: 10px;">• 本问卷采用匿名方式，所有数据仅用于学术研究</p>
+            <p>• 除标注"多选"的题目外，其余均为单选题</p>
+            <p>• 如有任何疑问，请联系研究者</p>
+            <p style="margin-top: 15px;">研究者：择白<br>浙江省双通班学员<br>调查时间：2026年</p>
+        </div>
+
+        <form id="questionnaire">
+            <!-- A部分：基本信息 -->
+            <div class="section">
+                <div class="section-title">A部分：基本信息</div>
+
+                <div class="question">
+                    <div class="question-title">A1. 您的道派：<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="A1" value="全真派"> 全真派</label></div>
+                        <div class="option"><label><input type="radio" name="A1" value="正一派"> 正一派</label></div>
+                        <div class="option"><label><input type="radio" name="A1" value="其他"> 其他：<input type="text" style="width: 100px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"></label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">A2. 您的出家/皈依年限：<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="A2" value="3年以下"> 3年以下</label></div>
+                        <div class="option"><label><input type="radio" name="A2" value="3-5年"> 3-5年</label></div>
+                        <div class="option"><label><input type="radio" name="A2" value="5-10年"> 5-10年</label></div>
+                        <div class="option"><label><input type="radio" name="A2" value="10-20年"> 10-20年</label></div>
+                        <div class="option"><label><input type="radio" name="A2" value="20年以上"> 20年以上</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">A3. 您在道观中的主要职务：<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="A3" value="住持/监院"> 住持/监院</label></div>
+                        <div class="option"><label><input type="radio" name="A3" value="知客"> 知客</label></div>
+                        <div class="option"><label><input type="radio" name="A3" value="经师"> 经师</label></div>
+                        <div class="option"><label><input type="radio" name="A3" value="执事"> 执事</label></div>
+                        <div class="option"><label><input type="radio" name="A3" value="普通道士"> 普通道士</label></div>
+                        <div class="option"><label><input type="radio" name="A3" value="其他"> 其他：<input type="text" style="width: 100px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"></label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">A4. 您所在的道观类型：<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="A4" value="大型道观"> 大型道观（常驻道士20人以上）</label></div>
+                        <div class="option"><label><input type="radio" name="A4" value="中型道观"> 中型道观（常驻道士10-20人）</label></div>
+                        <div class="option"><label><input type="radio" name="A4" value="小型道观"> 小型道观（常驻道士10人以下）</label></div>
+                        <div class="option"><label><input type="radio" name="A4" value="宫观/小庙"> 宫观/小庙</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">A5. 您所在的道观所在地区：<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="A5" value="城市中心"> 城市中心</label></div>
+                        <div class="option"><label><input type="radio" name="A5" value="城市郊区"> 城市郊区</label></div>
+                        <div class="option"><label><input type="radio" name="A5" value="县城"> 县城</label></div>
+                        <div class="option"><label><input type="radio" name="A5" value="乡镇/农村"> 乡镇/农村</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">A6. 您的性别：<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="A6" value="男"> 男</label></div>
+                        <div class="option"><label><input type="radio" name="A6" value="女"> 女</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">A7. 您的年龄段：<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="A7" value="25岁以下"> 25岁以下</label></div>
+                        <div class="option"><label><input type="radio" name="A7" value="25-35岁"> 25-35岁</label></div>
+                        <div class="option"><label><input type="radio" name="A7" value="36-45岁"> 36-45岁</label></div>
+                        <div class="option"><label><input type="radio" name="A7" value="46-55岁"> 46-55岁</label></div>
+                        <div class="option"><label><input type="radio" name="A7" value="56-65岁"> 56-65岁</label></div>
+                        <div class="option"><label><input type="radio" name="A7" value="65岁以上"> 65岁以上</label></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- B部分：心理疏导实践经验 -->
+            <div class="section">
+                <div class="section-title">B部分：心理疏导实践经验</div>
+
+                <div class="question">
+                    <div class="question-title">B1. 您是否曾为信众提供过心理疏导/心灵慰藉？<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="B1" value="经常提供"> 经常提供（每周多次）</label></div>
+                        <div class="option"><label><input type="radio" name="B1" value="偶尔提供"> 偶尔提供（每月几次）</label></div>
+                        <div class="option"><label><input type="radio" name="B1" value="很少提供"> 很少提供（每季度几次）</label></div>
+                        <div class="option"><label><input type="radio" name="B1" value="从未提供"> 从未提供</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">B2. 您通常为信众疏导哪些类型的困扰？<span class="multi">（最多选3项）</span><span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="checkbox" name="B2" value="家庭矛盾/婚姻问题"> 家庭矛盾/婚姻问题</label></div>
+                        <div class="option"><label><input type="checkbox" name="B2" value="子女教育/代际冲突"> 子女教育/代际冲突</label></div>
+                        <div class="option"><label><input type="checkbox" name="B2" value="事业/财运不顺"> 事业/财运不顺</label></div>
+                        <div class="option"><label><input type="checkbox" name="B2" value="健康问题/疾病焦虑"> 健康问题/疾病焦虑</label></div>
+                        <div class="option"><label><input type="checkbox" name="B2" value="人际关系困扰"> 人际关系困扰</label></div>
+                        <div class="option"><label><input type="checkbox" name="B2" value="情绪问题"> 情绪问题（焦虑、抑郁、愤怒）</label></div>
+                        <div class="option"><label><input type="checkbox" name="B2" value="人生意义/价值困惑"> 人生意义/价值困惑</label></div>
+                        <div class="option"><label><input type="checkbox" name="B2" value="信仰困惑/信仰危机"> 信仰困惑/信仰危机</label></div>
+                        <div class="option"><label><input type="checkbox" name="B2" value="死亡恐惧/临终关怀"> 死亡恐惧/临终关怀</label></div>
+                        <div class="option"><label><input type="checkbox" name="B2" value="其他"> 其他：<input type="text" style="width: 100px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"></label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">B3. 您通常采用哪些方式进行疏导？<span class="multi">（可多选）</span><span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="checkbox" name="B3" value="讲经解惑"> 讲经解惑——讲解道教经典，以经义开导</label></div>
+                        <div class="option"><label><input type="checkbox" name="B3" value="因果开示"> 因果开示——以因果报应、善恶有报的道理劝导</label></div>
+                        <div class="option"><label><input type="checkbox" name="B3" value="命理分析"> 命理分析——通过八字、风水等分析运势，缓解焦虑</label></div>
+                        <div class="option"><label><input type="checkbox" name="B3" value="冥想/静坐指导"> 冥想/静坐指导——教信众坐忘、心斋等修炼方法</label></div>
+                        <div class="option"><label><input type="checkbox" name="B3" value="科仪法事"> 科仪法事——通过祈福、消灾等仪式给予心理安慰</label></div>
+                        <div class="option"><label><input type="checkbox" name="B3" value="日常陪伴"> 日常陪伴——闲聊、喝茶、散步中的自然开导</label></div>
+                        <div class="option"><label><input type="checkbox" name="B3" value="推荐修行"> 推荐修行——建议信众诵经、拜忏、持咒等</label></div>
+                        <div class="option"><label><input type="checkbox" name="B3" value="转介建议"> 转介建议——建议信众寻求专业心理咨询</label></div>
+                        <div class="option"><label><input type="checkbox" name="B3" value="其他"> 其他：<input type="text" style="width: 100px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"></label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">B4. 您认为自己的心理疏导效果如何？<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="B4" value="效果非常好"> 效果非常好，信众反馈积极</label></div>
+                        <div class="option"><label><input type="radio" name="B4" value="效果比较好"> 效果比较好，大部分有帮助</label></div>
+                        <div class="option"><label><input type="radio" name="B4" value="效果一般"> 效果一般，视情况而定</label></div>
+                        <div class="option"><label><input type="radio" name="B4" value="效果不太好"> 效果不太好，经常感到力不从心</label></div>
+                        <div class="option"><label><input type="radio" name="B4" value="不确定"> 不确定效果如何</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">B5. 您平均每次与信众交流的时间大约是：<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="B5" value="15分钟以内"> 15分钟以内</label></div>
+                        <div class="option"><label><input type="radio" name="B5" value="15-30分钟"> 15-30分钟</label></div>
+                        <div class="option"><label><input type="radio" name="B5" value="30-60分钟"> 30-60分钟</label></div>
+                        <div class="option"><label><input type="radio" name="B5" value="60分钟以上"> 60分钟以上</label></div>
+                        <div class="option"><label><input type="radio" name="B5" value="不提供"> 不提供心理疏导</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">B6. 您每月大约为多少位信众提供心理疏导？<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="B6" value="0位"> 0位（不提供）</label></div>
+                        <div class="option"><label><input type="radio" name="B6" value="1-5位"> 1-5位</label></div>
+                        <div class="option"><label><input type="radio" name="B6" value="6-15位"> 6-15位</label></div>
+                        <div class="option"><label><input type="radio" name="B6" value="16-30位"> 16-30位</label></div>
+                        <div class="option"><label><input type="radio" name="B6" value="30位以上"> 30位以上</label></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- C部分：道教心理服务认知 -->
+            <div class="section">
+                <div class="section-title">C部分：道教心理服务认知</div>
+
+                <div class="question">
+                    <div class="question-title">C1. 您是否认为道观应该提供心理疏导服务？<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="C1" value="非常应该"> 非常应该，这是道观的重要功能</label></div>
+                        <div class="option"><label><input type="radio" name="C1" value="比较应该"> 比较应该，可以适当开展</label></div>
+                        <div class="option"><label><input type="radio" name="C1" value="一般"> 一般，看情况</label></div>
+                        <div class="option"><label><input type="radio" name="C1" value="不太应该"> 不太应该，道观主要功能是修行和祭祀</label></div>
+                        <div class="option"><label><input type="radio" name="C1" value="完全不应该"> 完全不应该，这不是道观的职责</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">C2. 您认为道教心理疏导与专业心理咨询相比，优势在于？<span class="multi">（可多选）</span><span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="checkbox" name="C2" value="信仰力量"> 信仰力量——信众对道长和道教有天然信任</label></div>
+                        <div class="option"><label><input type="checkbox" name="C2" value="文化根基"> 文化根基——道教智慧更契合中国人的文化心理</label></div>
+                        <div class="option"><label><input type="checkbox" name="C2" value="身心同调"> 身心同调——修炼方法（冥想、呼吸等）可直接调节身心</label></div>
+                        <div class="option"><label><input type="checkbox" name="C2" value="社群支持"> 社群支持——道观提供信仰社群，增强归属感</label></div>
+                        <div class="option"><label><input type="checkbox" name="C2" value="仪式力量"> 仪式力量——科仪法事有独特的心理疗愈功能</label></div>
+                        <div class="option"><label><input type="checkbox" name="C2" value="道德框架"> 道德框架——提供明确的价值导向和人生意义</label></div>
+                        <div class="option"><label><input type="checkbox" name="C2" value="可及性"> 可及性——道观分布广，信众容易接触</label></div>
+                        <div class="option"><label><input type="checkbox" name="C2" value="成本低"> 成本低——随缘乐助，经济门槛低</label></div>
+                        <div class="option"><label><input type="checkbox" name="C2" value="没有明显优势"> 没有明显优势</label></div>
+                        <div class="option"><label><input type="checkbox" name="C2" value="其他"> 其他：<input type="text" style="width: 100px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"></label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">C3. 您认为道教心理疏导的局限性在于？<span class="multi">（可多选）</span><span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="checkbox" name="C3" value="专业性不足"> 专业性不足——缺乏系统的心理学训练</label></div>
+                        <div class="option"><label><input type="checkbox" name="C3" value="边界不清"> 边界不清——宗教辅导与心理咨询的界限模糊</label></div>
+                        <div class="option"><label><input type="checkbox" name="C3" value="效果评估难"> 效果评估难——缺乏科学的疗效评估方法</label></div>
+                        <div class="option"><label><input type="checkbox" name="C3" value="个案复杂"> 个案复杂——严重心理问题超出道长能力范围</label></div>
+                        <div class="option"><label><input type="checkbox" name="C3" value="时间精力"> 时间精力——道长日常事务多，无暇深入疏导</label></div>
+                        <div class="option"><label><input type="checkbox" name="C3" value="缺乏场地"> 缺乏场地——道观没有专门的疏导空间</label></div>
+                        <div class="option"><label><input type="checkbox" name="C3" value="社会认知"> 社会认知——公众对道教心理服务缺乏了解</label></div>
+                        <div class="option"><label><input type="checkbox" name="C3" value="缺乏规范"> 缺乏规范——没有行业标准和服务规范</label></div>
+                        <div class="option"><label><input type="checkbox" name="C3" value="没有明显局限"> 没有明显局限</label></div>
+                        <div class="option"><label><input type="checkbox" name="C3" value="其他"> 其他：<input type="text" style="width: 100px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"></label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">C4. 您是否了解以下心理学流派/方法？<span class="multi">（多选）</span><span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="checkbox" name="C4" value="CBT"> 认知行为疗法（CBT）</label></div>
+                        <div class="option"><label><input type="checkbox" name="C4" value="精神分析"> 精神分析/心理动力学</label></div>
+                        <div class="option"><label><input type="checkbox" name="C4" value="人本主义"> 人本主义/来访者中心疗法</label></div>
+                        <div class="option"><label><input type="checkbox" name="C4" value="正念疗法"> 正念/冥想疗法（MBSR/MBCT）</label></div>
+                        <div class="option"><label><input type="checkbox" name="C4" value="ACT"> 接纳承诺疗法（ACT）</label></div>
+                        <div class="option"><label><input type="checkbox" name="C4" value="存在主义"> 存在主义心理治疗</label></div>
+                        <div class="option"><label><input type="checkbox" name="C4" value="荣格心理学"> 荣格分析心理学</label></div>
+                        <div class="option"><label><input type="checkbox" name="C4" value="SFBT"> 焦点解决短期治疗（SFBT）</label></div>
+                        <div class="option"><label><input type="checkbox" name="C4" value="危机干预"> 哀伤辅导/危机干预</label></div>
+                        <div class="option"><label><input type="checkbox" name="C4" value="都不了解"> 以上都不了解</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">C5. 您认为道教修炼方法与心理学方法有哪些相通之处？<span class="multi">（可多选）</span><span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="checkbox" name="C5" value="坐忘≈正念"> 坐忘/心斋 ≈ 正念冥想——都强调觉察当下、不评判</label></div>
+                        <div class="option"><label><input type="checkbox" name="C5" value="无为≈接纳"> 无为 ≈ 接纳——都强调放下执着、顺应自然</label></div>
+                        <div class="option"><label><input type="checkbox" name="C5" value="齐物≈认知解离"> 齐物 ≈ 认知解离——都强调超越二元对立</label></div>
+                        <div class="option"><label><input type="checkbox" name="C5" value="养生≈身心医学"> 养生 ≈ 身心医学——都关注身心互动</label></div>
+                        <div class="option"><label><input type="checkbox" name="C5" value="修道≈自我实现"> 修道 ≈ 自我实现——都追求人格完善</label></div>
+                        <div class="option"><label><input type="checkbox" name="C5" value="科仪≈仪式治疗"> 科仪 ≈ 仪式治疗——都通过仪式行为促进疗愈</label></div>
+                        <div class="option"><label><input type="checkbox" name="C5" value="师承≈治疗关系"> 师承 ≈ 治疗关系——都强调师徒/咨访关系的重要性</label></div>
+                        <div class="option"><label><input type="checkbox" name="C5" value="说不清"> 说不清相通之处</label></div>
+                        <div class="option"><label><input type="checkbox" name="C5" value="其他"> 其他：<input type="text" style="width: 100px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"></label></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- D部分：培训需求与发展意愿 -->
+            <div class="section">
+                <div class="section-title">D部分：培训需求与发展意愿</div>
+
+                <div class="question">
+                    <div class="question-title">D1. 您是否希望接受心理学相关培训？<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="D1" value="非常希望"> 非常希望</label></div>
+                        <div class="option"><label><input type="radio" name="D1" value="比较希望"> 比较希望</label></div>
+                        <div class="option"><label><input type="radio" name="D1" value="一般"> 一般</label></div>
+                        <div class="option"><label><input type="radio" name="D1" value="不太希望"> 不太希望</label></div>
+                        <div class="option"><label><input type="radio" name="D1" value="完全不需要"> 完全不需要</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">D2. 您最希望学习哪些内容？<span class="multi">（最多选3项）</span><span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="checkbox" name="D2" value="基础心理学"> 基础心理学知识——心理学流派、人的心理发展规律</label></div>
+                        <div class="option"><label><input type="checkbox" name="D2" value="咨询技巧"> 咨询技巧——倾听、共情、提问、反馈等基本技能</label></div>
+                        <div class="option"><label><input type="checkbox" name="D2" value="危机干预"> 危机干预——自杀预防、哀伤辅导、创伤处理</label></div>
+                        <div class="option"><label><input type="checkbox" name="D2" value="道教心理学"> 道教心理学——道教经典中的心理学思想</label></div>
+                        <div class="option"><label><input type="checkbox" name="D2" value="冥想/正念训练"> 冥想/正念训练——坐忘、心斋等方法的心理学解读</label></div>
+                        <div class="option"><label><input type="checkbox" name="D2" value="伦理与边界"> 伦理与边界——宗教辅导与心理咨询的伦理差异</label></div>
+                        <div class="option"><label><input type="checkbox" name="D2" value="案例督导"> 案例督导——实际案例讨论与专业督导</label></div>
+                        <div class="option"><label><input type="checkbox" name="D2" value="转介知识"> 转介知识——何时转介、如何转介给专业机构</label></div>
+                        <div class="option"><label><input type="checkbox" name="D2" value="其他"> 其他：<input type="text" style="width: 100px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"></label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">D3. 您希望的培训形式是？<span class="multi">（可多选）</span><span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="checkbox" name="D3" value="短期集中培训"> 短期集中培训——3-5天封闭式培训</label></div>
+                        <div class="option"><label><input type="checkbox" name="D3" value="系统课程"> 系统课程——8-12次系统学习（每周一次）</label></div>
+                        <div class="option"><label><input type="checkbox" name="D3" value="工作坊"> 工作坊——实操性强的体验式学习</label></div>
+                        <div class="option"><label><input type="checkbox" name="D3" value="线上学习"> 线上学习——录播课程+直播答疑</label></div>
+                        <div class="option"><label><input type="checkbox" name="D3" value="案例督导小组"> 案例督导小组——定期案例讨论</label></div>
+                        <div class="option"><label><input type="checkbox" name="D3" value="跟岗实习"> 跟岗实习——到心理咨询机构实习观摩</label></div>
+                        <div class="option"><label><input type="checkbox" name="D3" value="自学资料"> 自学资料——书籍、文章、视频资料</label></div>
+                        <div class="option"><label><input type="checkbox" name="D3" value="其他"> 其他：<input type="text" style="width: 100px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"></label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">D4. 您能接受的培训时长是？<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="D4" value="1-3天"> 1-3天（短期）</label></div>
+                        <div class="option"><label><input type="radio" name="D4" value="1-2周"> 1-2周（中期）</label></div>
+                        <div class="option"><label><input type="radio" name="D4" value="1-3个月"> 1-3个月（长期系统）</label></div>
+                        <div class="option"><label><input type="radio" name="D4" value="半年以上"> 半年以上（深度培训）</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">D5. 您能接受的培训费用是？<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="D5" value="免费"> 免费（道协/政府资助）</label></div>
+                        <div class="option"><label><input type="radio" name="D5" value="500元以内"> 500元以内</label></div>
+                        <div class="option"><label><input type="radio" name="D5" value="500-1000元"> 500-1000元</label></div>
+                        <div class="option"><label><input type="radio" name="D5" value="1000-3000元"> 1000-3000元</label></div>
+                        <div class="option"><label><input type="radio" name="D5" value="3000元以上"> 3000元以上（高质量培训值得投入）</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">D6. 如果道观开设心理疏导室，您是否愿意参与？<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="D6" value="非常愿意"> 非常愿意，这是我的兴趣所在</label></div>
+                        <div class="option"><label><input type="radio" name="D6" value="比较愿意"> 比较愿意，可以尝试</label></div>
+                        <div class="option"><label><input type="radio" name="D6" value="看情况"> 看情况，如果有培训和支持的话</label></div>
+                        <div class="option"><label><input type="radio" name="D6" value="不太愿意"> 不太愿意，我还有其他职责</label></div>
+                        <div class="option"><label><input type="radio" name="D6" value="不愿意"> 不愿意</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">D7. 您认为道长开展心理疏导服务需要哪些支持？<span class="multi">（可多选）</span><span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="checkbox" name="D7" value="专业培训"> 专业培训——系统的心理学和咨询技能培训</label></div>
+                        <div class="option"><label><input type="checkbox" name="D7" value="专业督导"> 专业督导——定期案例督导，防止反移情和职业倦怠</label></div>
+                        <div class="option"><label><input type="checkbox" name="D7" value="转介渠道"> 转介渠道——与心理咨询机构建立合作关系</label></div>
+                        <div class="option"><label><input type="checkbox" name="D7" value="场地支持"> 场地支持——道观内设置专用疏导室</label></div>
+                        <div class="option"><label><input type="checkbox" name="D7" value="政策支持"> 政策支持——道教协会的政策指导和规范</label></div>
+                        <div class="option"><label><input type="checkbox" name="D7" value="学术支持"> 学术支持——与高校/研究机构合作研究</label></div>
+                        <div class="option"><label><input type="checkbox" name="D7" value="资金支持"> 资金支持——培训经费、场地建设经费</label></div>
+                        <div class="option"><label><input type="checkbox" name="D7" value="社会认可"> 社会认可——提高公众对道教心理服务的认知</label></div>
+                        <div class="option"><label><input type="checkbox" name="D7" value="其他"> 其他：<input type="text" style="width: 100px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"></label></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E部分：道教心理服务发展 -->
+            <div class="section">
+                <div class="section-title">E部分：道教心理服务发展</div>
+
+                <div class="question">
+                    <div class="question-title">E1. 您是否认为需要建立"道教心理疏导"的专业规范？<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="E1" value="非常需要"> 非常需要，应该有行业标准和伦理规范</label></div>
+                        <div class="option"><label><input type="radio" name="E1" value="比较需要"> 比较需要，可以有指导性文件</label></div>
+                        <div class="option"><label><input type="radio" name="E1" value="一般"> 一般，看发展情况</label></div>
+                        <div class="option"><label><input type="radio" name="E1" value="不太需要"> 不太需要，保持灵活性更好</label></div>
+                        <div class="option"><label><input type="radio" name="E1" value="完全不需要"> 完全不需要，道教本就无法规范</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">E2. 您认为道教心理服务的理想模式是？<span class="multi">（可多选）</span><span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="checkbox" name="E2" value="道观内设疏导室"> 道观内设疏导室——道观内设立专用心理疏导空间</label></div>
+                        <div class="option"><label><input type="checkbox" name="E2" value="道长+心理咨询师合作"> 道长+心理咨询师合作——道长与专业咨询师共同服务</label></div>
+                        <div class="option"><label><input type="checkbox" name="E2" value="社区心理服务"> 社区心理服务——道观与社区合作，提供心理服务</label></div>
+                        <div class="option"><label><input type="checkbox" name="E2" value="线上心理服务"> 线上心理服务——通过网络提供远程疏导</label></div>
+                        <div class="option"><label><input type="checkbox" name="E2" value="修炼营/工作坊"> 修炼营/工作坊——定期举办道教修炼体验活动</label></div>
+                        <div class="option"><label><input type="checkbox" name="E2" value="讲经+疏导结合"> 讲经+疏导结合——讲经法会中融入心理疏导</label></div>
+                        <div class="option"><label><input type="checkbox" name="E2" value="道教心理医院"> 道教心理医院——建立专门的道教心理医疗机构</label></div>
+                        <div class="option"><label><input type="checkbox" name="E2" value="其他"> 其他：<input type="text" style="width: 100px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"></label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">E3. 您是否愿意将个人疏导经验整理为案例供研究使用？<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="E3" value="非常愿意"> 非常愿意，匿名处理即可</label></div>
+                        <div class="option"><label><input type="radio" name="E3" value="比较愿意"> 比较愿意，但需要审核</label></div>
+                        <div class="option"><label><input type="radio" name="E3" value="看情况"> 看情况</label></div>
+                        <div class="option"><label><input type="radio" name="E3" value="不太愿意"> 不太愿意，涉及信众隐私</label></div>
+                        <div class="option"><label><input type="radio" name="E3" value="完全不愿意"> 完全不愿意</label></div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">E4. 您认为道教心理服务面临的最大挑战是？<span class="required">*</span></div>
+                    <div class="options">
+                        <div class="option"><label><input type="radio" name="E4" value="道长专业能力不足"> 道长专业能力不足</label></div>
+                        <div class="option"><label><input type="radio" name="E4" value="缺乏社会认知和信任"> 缺乏社会认知和信任</label></div>
+                        <div class="option"><label><input type="radio" name="E4" value="缺乏政策和资金支持"> 缺乏政策和资金支持</label></div>
+                        <div class="option"><label><input type="radio" name="E4" value="边界问题"> 宗教辅导与心理咨询的边界问题</label></div>
+                        <div class="option"><label><input type="radio" name="E4" value="严重心理问题处理能力不足"> 严重心理问题的处理能力不足</label></div>
+                        <div class="option"><label><input type="radio" name="E4" value="道长时间和精力有限"> 道长时间和精力有限</label></div>
+                        <div class="option"><label><input type="radio" name="E4" value="缺乏效果评估方法"> 缺乏效果评估方法</label></div>
+                        <div class="option"><label><input type="radio" name="E4" value="其他"> 其他：<input type="text" style="width: 100px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"></label></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- F部分：开放性问题 -->
+            <div class="section">
+                <div class="section-title">F部分：开放性问题</div>
+
+                <div class="question">
+                    <div class="question-title">F1. 请分享一次您印象最深的心理疏导经历（成功或困难的都可以）：<span class="multi">（选答）</span></div>
+                    <textarea class="text-answer" name="F1" placeholder="请在此输入您的回答..."></textarea>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">F2. 您认为道教经典中哪些思想对心理疏导最有价值？<span class="multi">（选答）</span></div>
+                    <textarea class="text-answer" name="F2" placeholder="请在此输入您的回答..."></textarea>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">F3. 您对道教心理服务的未来发展有什么建议或期望？<span class="multi">（选答）</span></div>
+                    <textarea class="text-answer" name="F3" placeholder="请在此输入您的回答..."></textarea>
+                </div>
+            </div>
+
+            <!-- 联系方式 -->
+            <div class="contact-info">
+                <h3 style="margin-bottom: 15px; color: #667eea;">参与后续研究（选填）</h3>
+                <p style="font-size: 14px; margin-bottom: 10px;">如您愿意参与后续的深度访谈或案例研究，请留下联系方式：</p>
+                <input type="text" name="contact_name" placeholder="道号/姓名">
+                <input type="text" name="contact_temple" placeholder="所在道观">
+                <input type="text" name="contact_phone" placeholder="电话/微信">
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitForm()">提交问卷</button>
+        </form>
+
+        <div class="footer">
+            <p>感恩道长的耐心填写！</p>
+            <p>您的每一份回答都将为道教心理服务的理论研究和实践探索提供宝贵数据。</p>
+            <p style="margin-top: 15px; font-weight: bold;">再次感谢您的支持与参与！福生无量天尊！</p>
+        </div>
+    </div>
+
+    <script>
+        // 选项点击效果
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function(e) {
+                if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXT') {
+                    const input = this.querySelector('input');
+                    if (input) {
+                        input.checked = !input.checked;
+                    }
+                }
+                this.classList.toggle('selected', this.querySelector('input').checked);
+                updateProgress();
+            });
+        });
+
+        // 多选题限制
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const name = this.name;
+                const checked = document.querySelectorAll(`input[name="${name}"]:checked`);
+                
+                // B2, D2 最多选3项
+                if ((name === 'B2' || name === 'D2') && checked.length > 3) {
+                    this.checked = false;
+                    this.parentElement.parentElement.classList.remove('selected');
+                    showToast('最多选择3项');
+                    return;
+                }
+                
+                updateProgress();
+            });
+        });
+
+        // 进度条
+        function updateProgress() {
+            const total = 33; // 总题数
+            let answered = 0;
+            
+            // 单选题
+            const radioGroups = new Set();
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radioGroups.add(radio.name);
+            });
+            radioGroups.forEach(name => {
+                if (document.querySelector(`input[name="${name}"]:checked`)) {
+                    answered++;
+                }
+            });
+            
+            // 多选题
+            const checkboxGroups = new Set();
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                checkboxGroups.add(cb.name);
+            });
+            checkboxGroups.forEach(name => {
+                if (document.querySelector(`input[name="${name}"]:checked`)) {
+                    answered++;
+                }
+            });
+            
+            // 开放题
+            ['F1', 'F2', 'F3'].forEach(name => {
+                if (document.querySelector(`textarea[name="${name}"]`).value.trim()) {
+                    answered++;
+                }
+            });
+            
+            const progress = (answered / total) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // 提交表单
+        function submitForm() {
+            // 检查必答项
+            const required = ['A1','A2','A3','A4','A5','A6','A7','B1','B2','B3','B4','B5','B6','C1','C2','C3','C4','C5','D1','D2','D3','D4','D5','D6','D7','E1','E2','E3','E4'];
+            let missing = [];
+            
+            required.forEach(name => {
+                if (!document.querySelector(`input[name="${name}"]:checked`)) {
+                    missing.push(name);
+                }
+            });
+            
+            if (missing.length > 0) {
+                showToast(`还有 ${missing.length} 道必答项未完成`);
+                return;
+            }
+            
+            // 收集数据
+            const formData = new FormData(document.getElementById('questionnaire'));
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                if (data[key]) {
+                    if (!Array.isArray(data[key])) {
+                        data[key] = [data[key]];
+                    }
+                    data[key].push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // 显示成功消息
+            showToast('问卷提交成功！感恩道长！');
+            
+            // 这里可以添加发送到服务器的代码
+            console.log('问卷数据：', data);
+            
+            // 可选：跳转到感谢页面
+            // window.location.href = 'thank-you.html';
+        }
+
+        // Toast提示
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2000);
+        }
+
+        // 初始化
+        updateProgress();
+    </script>
+</body>
+</html>

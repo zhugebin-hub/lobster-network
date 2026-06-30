@@ -1,0 +1,14 @@
+{
+  "examId": "exam-91b5220e",
+  "hash": "ef0614bca77fb223fe6930ffc33fc23b346755cc48e83b73474c07d0203f24e3",
+  "answers": [
+    {
+      "questionId": "rea-38",
+      "answer": "D) Combine Options 1 and 2 — read replicas with materialized views for reads, original tables for writes, avoiding MongoDB entirely. This approach: (1) Uses read replicas to distribute read load across multiple nodes, (2) Materialized views eliminate expensive JOINs for most queries, (3) Keeps PostgreSQL for all operations, preserving ACID guarantees for the 10% of writes that need transactions, (4) Avoids the operational complexity of running two databases (Option B), (5) Provides headroom well beyond 10K req/s. Option A is too conservative; Option B adds unnecessary complexity; Option C sacrifices too much (no ACID for writes)."
+    },
+    {
+      "questionId": "rea-22",
+      "answer": "**Raft Explained via Board of Directors:**\n\n**1. Leader Election:** The board needs a CEO (leader). When there's no CEO, any board member can nominate themselves. Members vote for candidates who have the most up-to-date meeting notes (log entries). A candidate needs majority votes (>50%) to become CEO. Term limits exist - each election is for a specific term.\n\n**2. Log Replication:** The CEO makes decisions (proposes log entries) and sends them to all board members. Once majority acknowledges, the decision is official and applied. Everyone's meeting notes stay synchronized.\n\n**3. Leader Failure:** If the CEO stops responding (crashes), board members notice silence. After a timeout, they start a new election for a new CEO. The new CEO catches up on any missed decisions before resuming work.\n\n**4. Split-Brain Prevention:** Raft requires majority quorum (>50%). If the network splits, only the partition with majority can elect a leader and make decisions. The minority partition is read-only. This prevents two CEOs from making conflicting decisions.\n\n**5. Where Analogy Breaks Down:** (a) Board members are humans with judgment; Raft nodes are deterministic - they follow strict protocol, not discretion. (b) Board elections can be political; Raft election is purely based on log completeness and term numbers - no campaigning or persuasion."
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+│
+◇  Doctor warnings ───────────────────────────────────────────────────╮
+│                                                                     │
+│  - channels.dingtalk.allowFrom: set to ["*"] (required by           │
+│    dmPolicy="open")                                                 │
+│  - Run "openclaw doctor --fix" to add missing allowFrom wildcards.  │
+│                                                                     │
+├─────────────────────────────────────────────────────────────────────╯
+Skills (14/61 ready)
+┌───────────┬──────────────────┬─────────────────────────────────────────────────────────────────┬────────────────────┐
+│ Status    │ Skill            │ Description                                                     │ Source             │
+├───────────┼──────────────────┼─────────────────────────────────────────────────────────────────┼────────────────────┤
+│ ✓ ready   │ 📦 qqbot-cron     │ QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。               │ openclaw-extra     │
+│ ✓ ready   │ 📦 qqbot-media    │ QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。【重要】当用户要求发送图片时必须使用 <qqimg> 标签。     │ openclaw-extra     │
+│ ✗ missing │ 🔐 1password      │ Set up and use 1Password CLI (op). Use when installing the      │ openclaw-bundled   │
+│           │                  │ CLI, enabling desktop app integration, signing in (single or    │                    │
+│           │                  │ multi-account), or reading/injecting/running secrets via op.    │                    │
+│ ✗ missing │ 📝 apple-notes    │ Manage Apple Notes via the `memo` CLI on macOS (create, view,   │ openclaw-bundled   │
+│           │                  │ edit, delete, search, move, and export notes). Use when a user  │                    │
+│           │                  │ asks OpenClaw to add a note, list notes, search notes, or       │                    │
+│           │                  │ manage note folders.                                            │                    │
+│ ✗ missing │ ⏰ apple-         │ Manage Apple Reminders via remindctl CLI (list, add, edit,      │ openclaw-bundled   │
+│           │ reminders        │ complete, delete). Supports lists, date filters, and JSON/      │                    │
+│           │                  │ plain output.                                                   │                    │
+│ ✗ missing │ 🐻 bear-notes     │ Create, search, and manage Bear notes via grizzly CLI.          │ openclaw-bundled   │
+│ ✗ missing │ 📰 blogwatcher    │ Monitor blogs and RSS/Atom feeds for updates using the          │ openclaw-bundled   │
+│           │                  │ blogwatcher CLI.                                                │                    │
+│ ✗ missing │ 🫐 blucli         │ BluOS CLI (blu) for discovery, playback, grouping, and volume.  │ openclaw-bundled   │
+│ ✗ missing │ 🫧 bluebubbles    │ Use when you need to send or manage iMessages via BlueBubbles   │ openclaw-bundled   │
+│           │                  │ (recommended iMessage integration). Calls go through the        │                    │
+│           │                  │ generic message tool with channel="bluebubbles".                │                    │
+│ ✗ missing │ 📸 camsnap        │ Capture frames or clips from RTSP/ONVIF cameras.                │ openclaw-bundled   │
+│ ✓ ready   │ 📦 clawhub        │ Use the ClawHub CLI to search, install, update, and publish     │ openclaw-bundled   │
+│           │                  │ agent skills from clawhub.com. Use when you need to fetch new   │                    │
+│           │                  │ skills on the fly, sync installed skills to latest or a         │                    │
+│           │                  │ specific version, or publish new/updated skill folders with     │                    │
+│           │                  │ the npm-installed clawhub CLI.                                  │                    │
+│ ✗ missing │ 🧩 coding-agent   │ Delegate coding tasks to Codex, Claude Code, or Pi agents via   │ openclaw-bundled   │
+│           │                  │ background process. Use when: (1) building/creating new         │                    │
+│           │                  │ features or apps, (2) reviewing PRs (spawn in temp dir), (3)    │                    │
+│           │                  │ refactoring large codebases, (4) iterative coding that needs    │                    │
+│           │                  │ file exploration. NOT for: simple one-liner fixes (just edit),  │                    │
+│           │                  │ reading code (use read tool), thread-bound ACP harness          │                    │
+│           │                  │ requests in chat (for example spawn/run Codex or Claude Code    │                    │
+│           │                  │ in a Discord thread; use sessions_spawn with runtime:"acp"),    │                    │
+│           │                  │ or any work in ~/clawd workspace (never spawn agents here).     │                    │
+│           │                  │ Claude Code: use --print --permission-mode bypassPermissions    │                    │
+│           │                  │ (no PTY). Codex/Pi/OpenCode: pty:true required.                 │                    │
+│ ✗ missing │ 🎮 discord        │ Discord ops via the message tool (channel=discord).             │ openclaw-bundled   │
+│ ✗ missing │ 🎛️ eightctl      │ Control Eight Sleep pods (status, temperature, alarms,          │ openclaw-bundled   │
+│           │                  │ schedules).                                                     │                    │
+│ ✗ missing │ ♊️ gemini        │ Gemini CLI for one-shot Q&A, summaries, and generation.         │ openclaw-bundled   │
+│ ✗ missing │ 📦 gh-issues      │ Fetch GitHub issues, spawn sub-agents to implement fixes and    │ openclaw-bundled   │
+│           │                  │ open PRs, then monitor and address PR review comments. Usage: / │                    │
+│           │                  │ gh-issues [owner/repo] [--label bug] [--limit 5] [--milestone   │                    │
+│           │                  │ v1.0] [--assignee @me] [--fork user/repo] [--watch] [--         │                    │
+│           │                  │ interval 5] [--reviews-only] [--cron] [--dry-run] [--model glm- │                    │
+│           │                  │ 5] [--notify-channel -1002381931352]                            │                    │
+│ ✗ missing │ 🧲 gifgrep        │ Search GIF providers with CLI/TUI, download results, and        │ openclaw-bundled   │
+│           │                  │ extract stills/sheets.                                          │                    │
+│ ✗ missing │ 🐙 github         │ GitHub operations via `gh` CLI: issues, PRs, CI runs, code      │ openclaw-bundled   │
+│           │                  │ review, API queries. Use when: (1) checking PR status or CI,    │                    │
+│           │                  │ (2) creating/commenting on issues, (3) listing/filtering PRs    │                    │
+│           │                  │ or issues, (4) viewing run logs. NOT for: complex web UI        │                    │
+│           │                  │ interactions requiring manual browser flows (use browser        │                    │
+│           │                  │ tooling when available), bulk operations across many repos      │                    │
+│           │                  │ (script with gh api), or when gh auth is not configured.        │                    │
+│ ✗ missing │ 🎮 gog            │ Google Workspace CLI for Gmail, Calendar, Drive, Contacts,      │ openclaw-bundled   │
+│           │                  │ Sheets, and Docs.                                               │                    │
+│ ✗ missing │ 📍 goplaces       │ Query Google Places API (New) via the goplaces CLI for text     │ openclaw-bundled   │
+│           │                  │ search, place details, resolve, and reviews. Use for human-     │                    │
+│           │                  │ friendly place lookup or JSON output for scripts.               │                    │
+│ ✓ ready   │ 📦 healthcheck    │ Host security hardening and risk-tolerance configuration for    │ openclaw-bundled   │
+│           │                  │ OpenClaw deployments. Use when a user asks for security         │                    │
+│           │                  │ audits, firewall/SSH/update hardening, risk posture, exposure   │                    │
+│           │                  │ review, OpenClaw cron scheduling for periodic checks, or        │                    │
+│           │                  │ version status checks on a machine running OpenClaw (laptop,    │                    │
+│           │                  │ workstation, Pi, VPS).                                          │                    │
+│ ✗ missing │ 📧 himalaya       │ CLI to manage emails via IMAP/SMTP. Use `himalaya` to list,     │ openclaw-bundled   │
+│           │                  │ read, write, reply, forward, search, and organize emails from   │                    │

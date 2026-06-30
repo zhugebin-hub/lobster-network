@@ -1,0 +1,244 @@
+根据这个内容一起来完善优化我们的小龙虾网络，Agent Harness 工程实践 | 阿里云开发者
+Agent Harness 工程实践
+从范式理论到钉钉AI招聘的真实落地
+满剑 / 涅羽 | 阿里云开发者
+
+原文：https://mp.weixin.qq.com/s/0w_xMwto4sLx6J_85OhWQw
+
+阿里妹导读
+写在前面：这不是一篇“概念科普文”。它是写给所有正在被 Agent 折磨、又离不开 Agent 的开发者——那些一边惊叹于一晚上跑出一个像样的 PR、一边在凌晨三点回滚生产事故的人。
+关于引用的一句郑重交代：文中所有第三方数据，已尽量回溯到原始博客或官方文章；个别行业流传的数字，无法核实到一手来源时，已经主动软化或删除，并明确标注。文章的工程判断与实战经验，来自我们团队的真实落地，不依赖任何二手转述。
+（文章内容基于作者个人技术实践与独立思考，旨在分享经验，仅代表个人观点。）
+
+一、共鸣时刻：你是不是也经历过这些瞬间？
+
+凌晨两点，你盯着屏幕。Agent 又一次“自信地”宣布任务完成——测试全绿、CI 全过、PR 描述写得无懈可击。你点开 diff，发现它把一个核心服务“重构”了，顺手删掉了三个它“不理解”的兼容分支。
+或者，更扎心的场景：
+一个会话里它表现得像高级架构师，下一个会话像刚入职的实习生，因为它压根不记得上次干了什么。
+你给它配了 20 个 MCP 工具，它开始在工具列表里“逛超市”，逛着逛着就忘了正在干嘛。
+它陷入死循环，把同一个错误反复“修复”了十几次，每次都换一种“自信”的说法。
+你写了一份 800 行的 AGENTS.md 教它做事，它读完前 200 行就开始幻觉。
+如果你点头了——欢迎来到 Agent 的“实战时代”。这一年，AI 工程圈终于承认了一件事：
+瓶颈不在模型够不够聪明，而在我们有没有把它“装”好。
+这就是 Harness Engineering（驾驭工程）——Terraform / HashiCorp 联合创始人、Ghostty 终端作者 Mitchell Hashimoto 在他个人博客《My AI Adoption Journey》中系统阐述的工程范式。他给这件事的定义朴素到几乎是一句口号：
+"anytime you find an agent makes a mistake, you take the time to engineer a solution such that the agent will not make that mistake again in the future."
+——每当你发现 Agent 犯了一个错，就花时间工程化一个解，让它将来不再犯同样的错。
+这句话本身就是 Harness Engineering 的全部精神：Agent 的每一次失败，都不是模型的问题，而是环境设计的债。
+
+二、一个公式，看清楚 Agent 到底是什么
+
+如果你只能记住这篇文章的一句话，请记住这个：
+Agent = Model + Harness
+这个公式后来被 LangChain 官方在《Improving Deep Agents with Harness Engineering》一文中作为标题级别的论断：模型负责推理，Harness 负责“剩下的所有事情”——工具系统、上下文管理、权限控制、反馈回路、记忆与协作。
+这个公式的颠覆性在于它彻底改变了优化方向。最值得拿出来讲的一手案例，是 LangChain 自己做的实验：
+案例
+模型是否更换
+关键动作
+效果
+LangChain × Terminal Bench 2.0
+未更换
+优化 Harness：自我验证 + 追踪 + 文档
+排行榜 30→5；得分 52.8→66.5
+Anthropic / Claude Code
+未更换
+把 Harness 当产品而非附属
+已成为重要一级
+ 
+读到这里你应该意识到一件事：过去几年大量精力放在“换更强的模型”上，但真正的杠杆位置一直在模型之外。
+三、范式的三次跃迁：你站在第几代？
+
+代际
+范式
+核心问题
+形象对比
+第一代
+Prompt Engineering
+怎么把话说清楚
+对马喊话的技巧
+第二代
+Context Engineering
+怎么给 AI 喂对信息
+给马看的地图
+第三代
+Harness Engineering
+怎么让 Agent 可控地工作
+给马造高速公路，配护栏、限速牌、加油站
+ 
+业内一个常被引用的类比是：模型是 CPU，Harness 是操作系统——CPU 再快，OS 拉胯也白搭。
+
+四、核心精髓：四条“反直觉”的铁律
+
+铁律
+本能反应
+Harness 真相
+启示
+一
+信息越多决策越准
+上下文越少越好，稀缺资源要精挑
+像 Code Review 一样精挑细选上下文
+二
+一个超级 Agent 全包
+专才 Agent 永远赢过通才 Agent
+Agent 昂贵，Skill 廉价
+三
+让 Agent “记住”任务进展
+状态要写文件，不要塞上下文
+Workspace 是真相，Context 只是工位
+四
+把规则写进 AGENTS.md
+能写成 Linter 的约束，别停留在文档
+机器可执行的约束比文档可靠十倍
+ 
+铁律一：上下文越少越好（不是越多越好）
+工程师本能：信息越多决策越准。
+Harness 真相：上下文是稀缺资源，会被污染、会相互干扰、会让模型“逛超市”。
+业内多个团队的实测都指向同一个方向：长上下文窗口在实际使用比例超过一定阈值之后，模型的准确率会显著下降。
+启示：不要把“模型支持 200K”当成“可以塞 200K”。给 Agent 的上下文，必须像 Code Review 一样精挑细选。
+铁律二：专才 Agent 永远赢过通才 Agent
+工程师本能：“我做一个超级 Agent，什么都会，不就搞定了？”
+Harness 真相：通才 Agent 在工具列表里“逛超市”，永远跑不过一组职责清晰的专才。
+LangChain 在 Terminal Bench 实验里给了一条非常具体的经验：把任务拆给专门的 Sub-Agent，并为每个 Sub-Agent 只装载它真正需要的工具，是排名从第 30 冲进第 5 的关键改动之一。
+启示：Agent 是昂贵的，Skill 是廉价的——能用 Skill 解决的就别新增 Agent。
+铁律三：状态要写文件，不要塞上下文
+工程师本能：让 Agent “记住”任务进展。
+Harness 真相：上下文是易失存储，文件系统才是持久内存。
+成熟的 Agent 系统遵循一个简单原则：Workspace 是真相，Context Window 只是当前工位。任务中间结果、Agent 间协作、跨会话延续、审计回放，全部走文件系统。
+启示：把 Workspace 当成“Agent 的 Git 仓库”——每一步操作都可回放、可审计、可断点续传。
+铁律四：能写成 Linter 的约束，别写成文档
+工程师本能：把规则写进 AGENTS.md 让 Agent 自己读。
+Harness 真相：文档只是“建议”，Linter / CI 才是“强制”。
+Mitchell Hashimoto 在他自己的 Ghostty 项目里就给了一个非常硬核的实践：AGENTS.md 里每一条规则，背后都对应一个真实失败案例；而能写成静态检查 / CI 拦截的规则，绝不让它停留在自然语言里——因为自然语言可以被模型“创造性解读”，代码不能。
+启示：把规则编码为机器可执行的约束，比“再写一段更详细的 Prompt”更可靠十倍。
+
+五、Context Engineering 的“工程化”：从“喂信息”到“控信号”
+
+Harness Engineering 不是 Context Engineering 的对立面，而是它的工业化升级。同样是“给模型对的信息”，工程化版本要做四件事：
+工程化动作
+具体要求
+结构化
+让上下文有 schema（任务类型、阶段、当前焦点），而不是塞一大段自由文本
+分段化
+按“系统约束 / 任务定义 / 当前状态 / 工具签名 / 历史摘要”分槽位写
+可回放
+每一次上下文构造都可重放、可 diff —— 这是 Bug 复现的基础
+可审计
+保留“为什么这一条信息出现在 Agent 面前”的来源链，便于追责和调优
+ 
+一旦上下文变成可审计的“输入信号”，你就从“调 Prompt 的玄学”进入了“调系统的工程”。
+
+六、六大工程模式：Harness Engineering 的“设计模式手册”
+
+如果说前面的铁律是“心法”，下面六个就是“招式”。它们都已经被多家团队在生产环境验证过，可以直接抄。
+模式 1：双阶段架构（Initializer + Executor）
+Anthropic 在 Claude Code 的实践中给出了一个被广泛复用的模板：把任务拆成两段——
+Initializer Agent：理解任务 → 制定计划 → 写入 plan.md → 退出
+Executor Agent：读取 plan.md → 按步执行 → 跨 Context Window 接力
+两个 Agent 不共享 Context Window，只通过 Workspace 里的 plan.md 接力。任务可以跨多次会话延续，不依赖任何一个会话的记忆。
+模式 2：工具签名即文档
+Agent 选错工具的最大原因，不是工具太多，而是工具签名写得像一坞胶水。成熟团队的做法：工具名是动词短语，参数 schema 里每个字段都带 description，返回值结构稳定。
+模式 3：Sub-Agent 隔离
+复杂任务交给 Sub-Agent，关键不是“拆”，是“隔离”：每个 Sub-Agent 有独立 Context Window，只看自己需要的工具，主 Agent 只接收结构化输出。
+模式 4：上下游反压
+防止 Agent 陷入无限循环的工程范式：上游给确定性设置 + 一致上下文，Agent 执行，下游测试/类型检查/Lint/CI 拒绝无效工作，错误信号回传上游调整。
+关键细节：Linter 的错误信息本身就是上下文工程。它不只说“违反规则 X”，而是解释“为什么这个规则存在、正确做法是什么”。
+模式 5：智能体审智能体
+人类做不动 Code Review 的时候，让另一个 Agent 来做。但关键是换 Context：Reviewer Sub-Agent 只看 git diff + docs/rules/*.md，角色设定为“怀疑态度的 Senior Reviewer”。
+经验之谈：失效的从来不是“换一个模型再评估”，而是“用同样的 Context 再评估一次”——后者只会复现同一个偏见。
+模式 6：熵管理与文档园丁
+代码库的熵会随着时间增长——Agent 比人类增长得更快。解法：部署一个后台 Agent 做“文档园丁”，定期扫描过期文档、检测架构漂移、提交清理 PR。持续小额偿还技术债，不要攒到爆雷。
+
+七、实战案例：悟空 AI 招聘 Agent
+
+7.1 第一版：全能招聘 Agent（失败）
+立项第一周，团队的第一反应非常自然：“招聘流程不就那几步吗？投递、筛选、面试、Offer——我做一个超级招聘 Agent，全包了不就行了？”
+结果是一个 600+ 行 Prompt + 13 个工具的“全能 Agent”。跑了一周，问题全冒出来了：
+RPA 跑到一半 Agent “顺手”去回复候选人聊天，上下文炸了；10+ 个工具里挑错工具的概率显著偏高；Prompt 写到第 400 行模型已经忘了开头的规则；出错时根本不知道哪一环错了。
+这正是铁律二（专才 > 通才）和铁律一（上下文越少越好）的双重违反现场。
+7.2 第二版：2 Agent + N Skill 的专才架构
+把全能 Agent 推倒，按“Agent 是昂贵的、Skill 是廉价的”这条经验法则重新设计，结果是一个 2 个 Agent + 多个 Skill 的极简架构：
+悟空（DingTalk 企业级 Agent）作为 Orchestrator，负责拆任务、分发、维护 Workspace、跨会话记忆。
+人岗匹配 Agent（RPA 专才）：招聘工作台 RPA 操作、JD ↔ 简历语义匹配评分、批量打分/排序/标记。Prompt 80 行，Tools 4 个。
+招聘沟通 Agent（聊天专才）：监听候选人聊天、自动对话要简历、协商面试时间、触发约面/改期。Prompt 90 行，Tools 5 个。
+底层 N 个原子化 Skill：parse_resume / score_match / query_calendar / book_room 等，每个 Skill 等于一个函数 + 明确签名。
+Workspace（真相之源）：candidates/{id}/state.json、chat_history.log、jd.md、rpa_lock/ 等。
+7.3 三条血泪经验
+经验一：Agent 数量不要超过 3 个，Skill 可以无限加。
+曾经想拆出“日报 Agent”“简历库 Agent”“Offer Agent”“超时预警 Agent”——堆到第 6 个 Agent 时发现，编排层开始“选错 Agent”了，错误率明显回升。Agent 数量本身也是上下文成本。后来把后面几个全部下沉为 Skill，问题立刻消失。
+经验二：RPA + Agent 的接缝处最容易出事，要做“事务边界”。
+引入强制性的事务文件：RPA 开始写 lock 文件，每完成一条追加进度，结束标记 done。任何中断下次启动时读 lock 文件从断点续传。
+经验三：聊天 Agent 必须接“硬护栏”，因为它对外说话。
+三层硬护栏：第 1 层白名单工具（只能调发消息工具，禁用撤回/群发）；第 2 层 Linter 拦截（所有外发消息先过敏感词/合规规则）；第 3 层第二个 Agent 审稿（独立 Context 判断是否冒犯候选人/暴露薪资/暗示录用）。
+对外消息的事故率从“每周一两次”降到了“已经记不清上一次是什么时候了”。
+
+八、行业标杆地图
+
+团队/产品
+最有辨识度的 Harness 选择
+启示
+Anthropic / Claude Code
+Initializer + Executor 双阶段，Workspace 作为持久层
+跨会话延续 = 真生产力
+LangChain / Deep Agents
+自我验证 + 追踪 + 工具签名优化，不换模型冲进 Top 5
+Harness 回报曲线比换模型陈得多
+Mitchell Hashimoto / Ghostty
+AGENTS.md 作为“项目宪法”，每条规则对应一个真实失败
+能机器化就别留在自然语言
+Cursor / Cline
+内置反馈回路（Linter/Type Check/Test）自动闭环
+反馈回路本身就是上下文
+悟空 AI 招聘
+2 Agent + N Skill + Workspace 状态文件 + Linter 硬护栏
+对外说话和动用户数据必须有硬护栏
+ 
+
+九、未来：Agent 工程将走向哪里？
+
+趋势一：从“Prompt 工程师”到“Agent 工程师”
+Prompt 工程师卷的是话术，可被替代性强。Harness 工程师卷的是系统——上下文设计、工具签名、反馈回路、状态管理——这些就是软件工程的核心能力。
+趋势二：从“工具调用”到“Agent 协作协议”
+MCP 的崛起意味着 Agent 与外部世界的接口正在被标准化。下一步：Agent 之间的协作协议 A2A。一旦 A2A 标准化，“多 Agent 系统”就会像“微服务”一样工业化。
+趋势三：从“单 Agent 完成任务”到“Agent 操作系统”
+Agent 系统是一种新的计算操作系统。用户交互层是它的 Shell，编排层是它的 Scheduler，能力层是它的系统调用，Workspace 是它的文件系统，MCP 是它的设备驱动。未来三五年，竞争的焦点会从“我的 Agent 多智能”变成“我的 Agent OS 多稳”。
+趋势四：模型与 Harness 的“接口标准化”
+随着 Agent 工程进入工业化阶段，模型与 Harness 的接口会被标准化——比如“工具 Schema 标准”、“上下文交换格式”、“Sub-Agent 调用协议”。未来换模型可能像换数据库引擎一样简单——前提是你的 Harness 写得足够干净。
+
+十、心法收尾：六句话送给所有 Agent 工程师
+
+#
+心法
+一句话注解
+1
+你优化的不是 Agent，是 Agent 的工作环境
+把它当作员工，而不是工具
+2
+上下文是稀缺资源，不是无限仓库
+少即是多，干净比丰富更重要
+3
+状态写在文件里，不在脑子里
+Context 是工位，Workspace 才是档案
+4
+能写成 Linter 的约束，别写成文档
+机器能强制的，永远比人能记住的可靠
+5
+Agent 昂贵，Skill 廉价，护栏最便宜
+能用 Skill 解决别加 Agent，能用 Linter 拦下别靠 Prompt
+6
+对外说话和动用户数据要有硬护栏
+Prompt 可以漏，模型可以错，但合规底线不能破
+ 
+十一、写在最后
+
+这两年，AI 圈最大的认知转变是：我们终于承认，模型不是孙悟空，Agent 系统才是。
+孙悟空再厉害，没有金箍棒、没有筋斗云、没有紧箍咒、没有取经路线图，他就是一只猴子。
+模型再聪明，没有合适的 Harness——它就是一匹脱缰的野马，能跑也能毁。
+过去几年，行业花了大量精力训练“更聪明的模型”。现在，真正拉开差距的——是谁的缰绳更顺手、马鞍更舒服、护栏更结实。
+模型还在进步，但单靠等待更强的模型已经不够了。工程能力的差距，正在成为新的分水岭。真正的护城河，是你为这匹野马造的那条高速公路——它决定了你能跑多远、多稳、多快。
+Harness Engineering，是 AI 时代软件工程的重新发明。而每一个写过代码、调过 Bug、做过 Code Review 的工程师，都拥有这场革命中最稀缺的资产：对“系统应该如何运转”的直觉。
+别再羡慕那些“小团队产出大代码量”的故事了。他们做对的事，你也能做。区别只是——你今晚回去，会不会先写第一个 Linter。
+ 
+参考资料：
+[1] Mitchell Hashimoto 《My AI Adoption Journey》
+[2] LangChain 《Improving Deep Agents with Harness Engineering》
+[3] Hugo Zhu 《Enterprise Agent Runtime Five Layer Architecture》
+第 页

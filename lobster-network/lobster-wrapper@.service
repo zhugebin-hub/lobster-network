@@ -1,0 +1,19 @@
+[Unit]
+Description=Lobster Pool Wrapper - %i
+After=network.target
+
+[Service]
+Type=simple
+User=admin
+WorkingDirectory=/home/admin/lobster-network
+ExecStart=/usr/bin/python3 /home/admin/lobster-network/wrapper.py --lobster-id=%i --port=8001
+Restart=always
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+
+# 日志
+StandardOutput=append:/home/admin/lobster-tasks/logs/%i.log
+StandardError=append:/home/admin/lobster-tasks/logs/%i.error.log
+
+[Install]
+WantedBy=multi-user.target

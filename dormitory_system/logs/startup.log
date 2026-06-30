@@ -1,0 +1,56 @@
+[Tue Jun 23 07:18:08 PM CST 2026] 启动新生选寝系统...
+[Tue Jun 23 07:18:09 PM CST 2026] 安装 openpyxl...
+Collecting openpyxl
+  Using cached https://files.pythonhosted.org/packages/58/d9/796181a30827b12101786c21301f0f4536597a9249530916b1fdb5bbad91/openpyxl-3.1.3-py2.py3-none-any.whl
+Collecting et-xmlfile (from openpyxl)
+  Using cached https://files.pythonhosted.org/packages/96/c2/3dd434b0108730014f1b96fd286040dc3bcb70066346f7e01ec2ac95865f/et_xmlfile-1.1.0-py3-none-any.whl
+Installing collected packages: et-xmlfile, openpyxl
+Exception:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site-packages/pip/basecommand.py", line 215, in main
+    status = self.run(options, args)
+  File "/usr/lib/python3.6/site-packages/pip/commands/install.py", line 365, in run
+    strip_file_prefix=options.strip_file_prefix,
+  File "/usr/lib/python3.6/site-packages/pip/req/req_set.py", line 789, in install
+    **kwargs
+  File "/usr/lib/python3.6/site-packages/pip/req/req_install.py", line 854, in install
+    strip_file_prefix=strip_file_prefix
+  File "/usr/lib/python3.6/site-packages/pip/req/req_install.py", line 1069, in move_wheel_files
+    strip_file_prefix=strip_file_prefix,
+  File "/usr/lib/python3.6/site-packages/pip/wheel.py", line 345, in move_wheel_files
+    clobber(source, lib_dir, True)
+  File "/usr/lib/python3.6/site-packages/pip/wheel.py", line 316, in clobber
+    ensure_dir(destdir)
+  File "/usr/lib/python3.6/site-packages/pip/utils/__init__.py", line 83, in ensure_dir
+    os.makedirs(path)
+  File "/usr/lib64/python3.6/os.py", line 220, in makedirs
+    mkdir(name, mode)
+PermissionError: [Errno 13] Permission denied: '/usr/local/lib/python3.6/site-packages/et_xmlfile'
+[Fri Jun 26 06:52:25 PM CST 2026] 启动新生选寝系统...
+[Fri Jun 26 06:52:25 PM CST 2026] 安装 openpyxl...
+Collecting openpyxl
+  Using cached https://files.pythonhosted.org/packages/58/d9/796181a30827b12101786c21301f0f4536597a9249530916b1fdb5bbad91/openpyxl-3.1.3-py2.py3-none-any.whl
+Collecting et-xmlfile (from openpyxl)
+  Using cached https://files.pythonhosted.org/packages/96/c2/3dd434b0108730014f1b96fd286040dc3bcb70066346f7e01ec2ac95865f/et_xmlfile-1.1.0-py3-none-any.whl
+Installing collected packages: et-xmlfile, openpyxl
+Exception:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site-packages/pip/basecommand.py", line 215, in main
+    status = self.run(options, args)
+  File "/usr/lib/python3.6/site-packages/pip/commands/install.py", line 365, in run
+    strip_file_prefix=options.strip_file_prefix,
+  File "/usr/lib/python3.6/site-packages/pip/req/req_set.py", line 789, in install
+    **kwargs
+  File "/usr/lib/python3.6/site-packages/pip/req/req_install.py", line 854, in install
+    strip_file_prefix=strip_file_prefix
+  File "/usr/lib/python3.6/site-packages/pip/req/req_install.py", line 1069, in move_wheel_files
+    strip_file_prefix=strip_file_prefix,
+  File "/usr/lib/python3.6/site-packages/pip/wheel.py", line 345, in move_wheel_files
+    clobber(source, lib_dir, True)
+  File "/usr/lib/python3.6/site-packages/pip/wheel.py", line 316, in clobber
+    ensure_dir(destdir)
+  File "/usr/lib/python3.6/site-packages/pip/utils/__init__.py", line 83, in ensure_dir
+    os.makedirs(path)
+  File "/usr/lib64/python3.6/os.py", line 220, in makedirs
+    mkdir(name, mode)
+PermissionError: [Errno 13] Permission denied: '/usr/local/lib/python3.6/site-packages/et_xmlfile'

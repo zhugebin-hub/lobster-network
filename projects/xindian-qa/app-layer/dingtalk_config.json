@@ -1,0 +1,18 @@
+{
+  "dingtalk": {
+    "app_key": "dinguyiasfrbtjioamwc",
+    "app_secret": "0kzDQ9c_jbr4m8IWwzehK2UmvTbYaa-1xWCnVOUCgie9EgMP0e7ZYLtpfifrec6i",
+    "robot_code": "dinguyiasfrbtjioamwc"
+  },
+  "qa_system": {
+    "config_path": "~/.openclaw/config/bailian-kb.json",
+    "max_context_length": 3000,
+    "max_answer_length": 2000,
+    "default_top_k": 3
+  },
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8900,
+    "webhook_path": "/webhook/dingtalk"
+  }
+}

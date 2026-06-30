@@ -1,0 +1,27 @@
+{
+  "phase_history": [],
+  "weekly_reports": [],
+  "problem_stats": {
+    "life": {
+      "solved": 0,
+      "correct": 0
+    },
+    "tesuji": {
+      "solved": 0,
+      "correct": 0
+    },
+    "joseki": {
+      "solved": 0,
+      "correct": 0
+    },
+    "endgame": {
+      "solved": 0,
+      "correct": 0
+    },
+    "fuseki": {
+      "solved": 0,
+      "correct": 0
+    }
+  },
+  "game_records": []
+}

@@ -1,0 +1,32 @@
+{
+  "cost_comparison": {
+    "labels": [
+      "Round-Robin",
+      "Time-Arbitrage"
+    ],
+    "values": [
+      3.5914460228041842,
+      0.2573114841898995
+    ]
+  },
+  "completion_rate": {
+    "labels": [
+      "Round-Robin",
+      "Time-Arbitrage"
+    ],
+    "values": [
+      100.0,
+      100.0
+    ]
+  },
+  "sla_violations": {
+    "labels": [
+      "Round-Robin",
+      "Time-Arbitrage"
+    ],
+    "values": [
+      43.666666666666664,
+      43.666666666666664
+    ]
+  }
+}

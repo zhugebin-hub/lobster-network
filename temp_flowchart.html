@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { margin: 0; padding: 20px; background: #ffffff; }
+    </style>
+</head>
+<body>
+    <div class="mermaid">
+flowchart TD
+    subgraph 初始化 [系统初始化]
+        A[开始] --> B[串口初始化 115200]
+        B --> C[I2S 音频接口初始化]
+        C --> D[WiFi 连接 Luo_iPhone]
+        D --> E[启动 Web 服务器 80 端口]
+        E --> F[启动 WebSocket 81 端口]
+        F --> G[LED 引脚初始化]
+    end
+
+    subgraph 主循环 [主循环 loop]
+        G --> H[处理 WebSocket 连接]
+        H --> I[处理 HTTP 请求]
+        I --> J[I2S 读取音频数据 512 采样点]
+        J --> K[FFT 频谱分析]
+        K --> L[数据归一化 0-128]
+        L --> M[检查触发条件]
+        M --> N[发送频谱数据到 WebSocket]
+        N --> H
+    end
+
+    subgraph FFT 处理 [FFT 频谱分析]
+        K1[填充 vReal/vImag 数组] --> K2[汉明窗加权]
+        K2 --> K3[计算 FFT]
+        K3 --> K4[计算幅值]
+        K4 --> K5[分 8 个频段计算最大值]
+        K5 --> K6[输出 bands 数组]
+    end
+
+    subgraph 数据收集 [数据收集逻辑]
+        M1[计算总能量 bsum] --> M2{bsum >= Threshold_HIGH?}
+        M2 -->|是 | M3[data_count++]
+        M2 -->|否 | M4[继续监测]
+        M3 --> M5{data_count 判断}
+        M5 -->|==100| M6[红灯亮 完成]
+        M5 -->|>100| M7[蓝灯亮 超额]
+        M5 -->|0-100| M8[绿灯亮 收集中]
+        M8 --> M9[记录 30 次采样数据]
+        M9 --> M10[串口打印 CSV 数据]
+        M10 --> M4
+    end
+
+    subgraph 网页展示 [网页端]
+        W1[浏览器访问 ESP32 IP] --> W2[加载 Chart.js]
+        W2 --> W3[建立 WebSocket 连接]
+        W3 --> W4[接收 JSON 频谱数据]
+        W4 --> W5[更新堆叠柱状图]
+        W5 --> W4
+    end
+
+    K --> FFT 处理
+    M --> 数据收集
+    N --> 网页展示
+
+    style 初始化 fill:#e1f5fe
+    style 主循环 fill:#fff3e0
+    style FFT 处理 fill:#f3e5f5
+    style 数据收集 fill:#e8f5e9
+    style 网页展示 fill:#fce4ec
+
+    </div>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: { useMaxWidth: false, htmlLabels: true }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,2652 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物联网网络层技术 - 完整教程</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: auto;
+            overflow: auto;
+            background: #f5f5f5;
+        }
+        .reveal {
+            position: relative;
+            height: auto;
+            overflow: visible;
+        }
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 { 
+            color: #2c3e50; 
+            margin: 20px 0 15px 0;
+        }
+        .reveal .slides { 
+            text-align: left;
+            position: relative;
+            height: auto;
+            overflow: visible;
+            transform: none !important;
+            top: 0 !important;
+            left: 0 !important;
+        }
+        .reveal .slides section { 
+            text-align: left;
+            margin: 40px auto;
+            padding: 40px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            display: block !important;
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+        }
+        .reveal .slides section.title-slide { 
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+        }
+        .reveal .slides section.title-slide h1,
+        .reveal .slides section.title-slide h2,
+        .reveal .slides section.title-slide p {
+            color: white;
+        }
+        .reveal ul { 
+            margin: 15px 0; 
+            padding-left: 30px;
+        }
+        .reveal li { 
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        .chart-placeholder { 
+            background: #f8f9fa; 
+            border: 2px dashed #dee2e6; 
+            padding: 20px; 
+            margin: 20px 0; 
+            text-align: center;
+            font-family: monospace;
+            white-space: pre;
+            font-size: 0.8em;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+        .highlight { color: #e74c3c; font-weight: bold; }
+        .tech-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+        .comparison-table {
+            font-size: 0.75em;
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 8px 6px;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .comparison-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .key-point {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin: 15px 0;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+        .fragment {
+            visibility: visible;
+            opacity: 1;
+        }
+        /* 确保所有内容都能显示 */
+        .reveal .slides section > * {
+            max-height: none;
+            overflow: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- ==================== 第一部分：互联网发展历史与网络基础 (50 页) ==================== -->
+            
+            <!-- 封面 -->
+            <section class="title-slide">
+                <h1>🌐 物联网网络层技术</h1>
+                <h3>从互联网历史到 6G 前沿</h3>
+                <p>完整的网络层技术教程</p>
+                <p style="font-size: 0.6em; color: #666;">共 120+ 页 | 2026 年版</p>
+            </section>
+            
+            <!-- 目录 -->
+            <section>
+                <h2>📑 课程目录</h2>
+                <ul>
+                    <li class="fragment"><strong>第一部分</strong>：互联网发展历史与网络基础 (50 页)</li>
+                    <li class="fragment">- 互联网发展历程</li>
+                    <li class="fragment">- OSI 七层模型详解</li>
+                    <li class="fragment">- TCP/IP 协议栈</li>
+                    <li class="fragment">- 网络层核心概念</li>
+                    <li class="fragment"><strong>第二部分</strong>：无线局域网技术 (20 页)</li>
+                    <li class="fragment">- LoRa 技术</li>
+                    <li class="fragment">- WiFi 系列演进</li>
+                    <li class="fragment">- Zigbee 协议</li>
+                    <li class="fragment"><strong>第三部分</strong>：6G 网络前沿 (50 页)</li>
+                    <li class="fragment">- 6G 愿景与需求</li>
+                    <li class="fragment">- 关键使能技术</li>
+                    <li class="fragment">- 挑战与展望</li>
+                </ul>
+            </section>
+
+            <!-- ==================== 第一章：互联网发展历史 ==================== -->
+            
+            <section>
+                <h2>第一章：互联网发展历史</h2>
+                <p>从 ARPANET 到万物互联</p>
+            </section>
+            
+            <section>
+                <h3>1.1 互联网的起源 (1960s)</h3>
+                <ul>
+                    <li><strong>1961 年</strong>：Leonard Kleinrock 提出分组交换理论</li>
+                    <li class="fragment"><strong>1962 年</strong>：J.C.R. Licklider 提出"星际计算机网络"概念</li>
+                    <li class="fragment"><strong>1965 年</strong>：第一台计算机间广域连接 (TX-2 与 AN/FSQ-32)</li>
+                    <li class="fragment"><strong>1969 年</strong>：ARPANET 诞生，4 个节点互联</li>
+                </ul>
+                <div class="chart-placeholder">
+【图表位置：ARPANET 早期拓扑图】
+    UCLA ---- IMP ---- SRI
+      |                |
+     IMP              IMP
+      |                |
+   UCSB ---- IMP ---- UTah
+    
+    IMP = 接口消息处理器 (早期路由器)
+                </div>
+            </section>
+            
+            <section>
+                <h3>1.2 ARPANET 的关键里程碑</h3>
+                <ul>
+                    <li><strong>1969 年 10 月 29 日</strong>：第一条 ARPANET 消息发送</li>
+                    <li class="fragment">尝试发送 "LOGIN"，只传了 "LO" 系统就崩溃了</li>
+                    <li class="fragment"><strong>1971 年</strong>：15 个节点，23 台主机</li>
+                    <li class="fragment"><strong>1972 年</strong>：Ray Tomlinson 发明电子邮件 (@符号)</li>
+                    <li class="fragment"><strong>1973 年</strong>：首次国际连接 (英国、挪威)</li>
+                </ul>
+                <div class="key-point">
+                    💡 关键洞察：ARPANET 最初设计用于核战后的通信生存能力
+                </div>
+            </section>
+            
+            <section>
+                <h3>1.3 TCP/IP 协议的诞生 (1970s)</h3>
+                <ul>
+                    <li><strong>1974 年</strong>：Vint Cerf 和 Bob Kahn 发表 TCP 论文</li>
+                    <li class="fragment"><strong>1978 年</strong>：TCP 分裂为 TCP 和 IP</li>
+                    <li class="fragment"><strong>1983 年 1 月 1 日</strong>：ARPANET 正式切换到 TCP/IP</li>
+                    <li class="fragment">这一天被称为"Flag Day"，现代互联网诞生</li>
+                </ul>
+                <div class="chart-placeholder">
+【图表位置：TCP/IP 分层示意图】
+
+    +------------------+
+    |   Application    |  HTTP, FTP, SMTP
+    +------------------+
+    |      TCP         |  可靠传输
+    +------------------+
+    |       IP         |  路由寻址
+    +------------------+
+    |  Network Access  |  Ethernet, WiFi
+    +------------------+
+                </div>
+            </section>
+            
+            <section>
+                <h3>1.4 域名系统 DNS (1983)</h3>
+                <ul>
+                    <li><strong>问题</strong>：早期使用 HOSTS.TXT 文件映射名称和 IP</li>
+                    <li class="fragment"><strong>1983 年</strong>：Paul Mockapetris 发明 DNS</li>
+                    <li class="fragment"><strong>优势</strong>：分布式、可扩展、层次化</li>
+                    <li class="fragment"><strong>结构</strong>：根域名 → 顶级域名 → 二级域名</li>
+                </ul>
+                <div class="chart-placeholder">
+【图表位置：DNS 层次结构】
+
+        . (根)
+        |
+    +---+---+
+    |   |   |
+   com org net
+    |   |   |
+  google  microsoft
+                </div>
+            </section>
+            
+            <section>
+                <h3>1.5 万维网的诞生 (1989-1991)</h3>
+                <ul>
+                    <li><strong>1989 年</strong>：Tim Berners-Lee 提出 WWW 构想</li>
+                    <li class="fragment"><strong>1990 年</strong>：第一个网页浏览器 WorldWideWeb</li>
+                    <li class="fragment"><strong>1991 年</strong>：第一个网站 info.cern.ch 上线</li>
+                    <li class="fragment"><strong>关键技术</strong>：HTML、HTTP、URL</li>
+                </ul>
+                <div class="key-point">
+                    💡 Tim Berners-Lee 坚持 WWW 应该免费开放，没有申请专利
+                </div>
+            </section>
+            
+            <section>
+                <h3>1.6 互联网商业化 (1990s)</h3>
+                <ul>
+                    <li><strong>1991 年</strong>：NSFNET 解除商业使用限制</li>
+                    <li class="fragment"><strong>1993 年</strong>：Mosaic 浏览器发布 (图形界面)</li>
+                    <li class="fragment"><strong>1994 年</strong>：Netscape Navigator 发布</li>
+                    <li class="fragment"><strong>1995 年</strong>：Amazon、eBay 成立</li>
+                    <li class="fragment"><strong>1998 年</strong>：Google 成立</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>1.7 中国互联网发展</h3>
+                <ul>
+                    <li><strong>1987 年</strong>：第一封电子邮件"Across the Great Wall"</li>
+                    <li class="fragment"><strong>1994 年 4 月 20 日</strong>：中国正式接入国际互联网</li>
+                    <li class="fragment"><strong>1995 年</strong>：中国电信开通公用互联网</li>
+                    <li class="fragment"><strong>2000s</strong>：BAT 崛起 (百度、阿里、腾讯)</li>
+                    <li class="fragment"><strong>2020s</strong>：5G 领先，物联网爆发</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>1.8 互联网发展阶段总结</h3>
+                <div class="chart-placeholder">
+【图表位置：互联网发展时间轴】
+
+1969  ARPANET 诞生
+  |
+1983  TCP/IP 采用
+  |
+1989  WWW 提出
+  |
+1994  中国接入
+  |
+2007  iPhone 发布 (移动互联网)
+  |
+2010s IoT 兴起
+  |
+2020s 5G/6G 时代
+                </div>
+            </section>
+
+            <!-- ==================== 第二章：网络分层架构 ==================== -->
+            
+            <section>
+                <h2>第二章：网络分层架构</h2>
+                <p>OSI 模型与 TCP/IP 模型</p>
+            </section>
+            
+            <section>
+                <h3>2.1 为什么需要分层？</h3>
+                <ul>
+                    <li><strong>复杂性管理</strong>：将复杂系统分解为可管理的层次</li>
+                    <li class="fragment"><strong>模块化</strong>：各层独立开发和演进</li>
+                    <li class="fragment"><strong>标准化</strong>：层间接口标准化，促进互操作性</li>
+                    <li class="fragment"><strong>故障隔离</strong>：问题定位更容易</li>
+                    <li class="fragment"><strong>技术独立</strong>：某层技术变化不影响其他层</li>
+                </ul>
+                <div class="key-point">
+                    💡 分层是计算机网络设计的核心思想
+                </div>
+            </section>
+            
+            <section>
+                <h3>2.2 OSI 七层模型概述</h3>
+                <p>开放系统互连参考模型 (1984 年 ISO 标准化)</p>
+                <div class="chart-placeholder">
+【图表位置：OSI 七层模型】
+
+    7️⃣ 应用层 (Application)     - 用户接口
+    6️⃣ 表示层 (Presentation)    - 数据格式
+    5️⃣ 会话层 (Session)         - 对话控制
+    4️⃣ 传输层 (Transport)       - 端到端传输
+    3️⃣ 网络层 (Network)         - 路由选择 ⭐
+    2️⃣ 数据链路层 (Data Link)   - 帧传输
+    1️⃣ 物理层 (Physical)        - 比特传输
+                </div>
+            </section>
+            
+            <section>
+                <h3>2.3 物理层 (Layer 1)</h3>
+                <ul>
+                    <li><strong>功能</strong>：传输原始比特流</li>
+                    <li class="fragment"><strong>关注点</strong>：电压、光信号、频率、物理连接器</li>
+                    <li class="fragment"><strong>典型设备</strong>：集线器、中继器、网线、光纤</li>
+                    <li class="fragment"><strong>协议示例</strong>：
+                        <ul>
+                            <li>Ethernet (10/100/1000BASE-T)</li>
+                            <li>WiFi (802.11 物理层)</li>
+                            <li>USB、蓝牙物理层</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>2.4 数据链路层 (Layer 2)</h3>
+                <ul>
+                    <li><strong>功能</strong>：节点到节点的可靠传输</li>
+                    <li class="fragment"><strong>主要任务</strong>：
+                        <ul>
+                            <li>帧的封装和解封装</li>
+                            <li>物理地址 (MAC) 寻址</li>
+                            <li>差错检测 (CRC)</li>
+                            <li>流量控制</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>典型设备</strong>：交换机、网桥</li>
+                    <li class="fragment"><strong>协议示例</strong>：Ethernet、PPP、802.11 MAC</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>2.5 网络层 (Layer 3) ⭐</h3>
+                <ul>
+                    <li><strong>功能</strong>：源到目的的数据传输 (可能跨多个网络)</li>
+                    <li class="fragment"><strong>核心任务</strong>：
+                        <ul>
+                            <li>逻辑地址 (IP 地址) 分配</li>
+                            <li>路由选择 (最佳路径)</li>
+                            <li>分组转发</li>
+                            <li>拥塞控制</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>典型设备</strong>：路由器</li>
+                    <li class="fragment"><strong>协议示例</strong>：IP、ICMP、IGMP、OSPF、BGP</li>
+                </ul>
+                <div class="key-point">
+                    💡 网络层是物联网通信的核心，本课程重点
+                </div>
+            </section>
+            
+            <section>
+                <h3>2.6 传输层 (Layer 4)</h3>
+                <ul>
+                    <li><strong>功能</strong>：进程到进程的端到端传输</li>
+                    <li class="fragment"><strong>两个主要协议</strong>：
+                        <ul>
+                            <li><strong>TCP</strong>：可靠、面向连接、流量控制</li>
+                            <li><strong>UDP</strong>：不可靠、无连接、低延迟</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>端口号</strong>：标识应用程序 (0-65535)</li>
+                    <li class="fragment"><strong>常见端口</strong>：
+                        <ul>
+                            <li>80: HTTP, 443: HTTPS</li>
+                            <li>22: SSH, 21: FTP</li>
+                            <li>53: DNS, 25: SMTP</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>2.7 会话层 (Layer 5)</h3>
+                <ul>
+                    <li><strong>功能</strong>：建立、管理和终止会话</li>
+                    <li class="fragment"><strong>主要任务</strong>：
+                        <ul>
+                            <li>对话控制 (单工/半双工/全双工)</li>
+                            <li>同步点管理</li>
+                            <li>会话恢复</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>协议示例</strong>：NetBIOS、PPTP、SMB</li>
+                </ul>
+                <div class="chart-placeholder">
+【图表位置：会话层工作流程】
+
+客户端                    服务器
+  | ----- 建立会话 ----->  |
+  | <---- 确认会话 -----  |
+  | ===== 数据传输 =====>  |
+  | <==== 数据响应 =====  |
+  | ----- 终止会话 ----->  |
+                </div>
+            </section>
+            
+            <section>
+                <h3>2.8 表示层 (Layer 6)</h3>
+                <ul>
+                    <li><strong>功能</strong>：数据格式转换、加密解密、压缩解压</li>
+                    <li class="fragment"><strong>主要任务</strong>：
+                        <ul>
+                            <li>数据编码 (ASCII、Unicode、EBCDIC)</li>
+                            <li>加密/解密 (SSL/TLS 部分功能)</li>
+                            <li>压缩/解压 (GZIP)</li>
+                            <li>数据格式转换 (JPEG、MPEG)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>2.9 应用层 (Layer 7)</h3>
+                <ul>
+                    <li><strong>功能</strong>：为用户提供网络服务接口</li>
+                    <li class="fragment"><strong>常见协议</strong>：
+                        <ul>
+                            <li>HTTP/HTTPS：网页浏览</li>
+                            <li>FTP：文件传输</li>
+                            <li>SMTP/POP3/IMAP：电子邮件</li>
+                            <li>DNS：域名解析</li>
+                            <li>MQTT、CoAP：物联网协议</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>2.10 OSI 模型数据封装过程</h3>
+                <div class="chart-placeholder">
+【图表位置：数据封装过程】
+
+发送方 (封装)                    接收方 (解封装)
+    数据                              数据
+     ↓                                ↑
+    +---+                            +---+
+    |数据| 应用层                      |数据| 应用层
+    +---+                            +---+
+     ↓                                ↑
+    +---+                            +---+
+    |头 |数据| 表示层                  |头 |数据| 表示层
+    +---+                            +---+
+     ↓                                ↑
+    ...                              ...
+     ↓                                ↑
+    +------------------+            +------------------+
+    |头|数据|...|尾部 | 物理层        |头|数据|...|尾部 | 物理层
+    +------------------+            +------------------+
+         比特流传输 →→→→→→→→→→→→→→→→→
+                </div>
+            </section>
+
+            <!-- ==================== 第三章：TCP/IP 协议栈 ==================== -->
+            
+            <section>
+                <h2>第三章：TCP/IP 协议栈</h2>
+                <p>互联网的实际标准</p>
+            </section>
+            
+            <section>
+                <h3>3.1 TCP/IP 四层模型</h3>
+                <div class="chart-placeholder">
+【图表位置：TCP/IP vs OSI 对比】
+
+OSI 模型          TCP/IP 模型        典型协议
+─────────────────────────────────────────────
+7 应用层          ┐                HTTP, FTP, SMTP
+6 表示层          ├─ 应用层         DNS, DHCP
+5 会话层          ┘                MQTT, CoAP
+─────────────────────────────────────────────
+4 传输层              传输层         TCP, UDP
+─────────────────────────────────────────────
+3 网络层              网际层         IP, ICMP, ARP
+─────────────────────────────────────────────
+2 数据链路层      ┐                Ethernet
+1 物理层          ├─ 网络接口层     WiFi, PPP
+                  ┘                802.15.4
+                </div>
+            </section>
+            
+            <section>
+                <h3>3.2 IP 协议详解</h3>
+                <ul>
+                    <li><strong>功能</strong>：无连接的、不可靠的数据报传输</li>
+                    <li class="fragment"><strong>IPv4 头部结构</strong> (20-60 字节)：
+                        <ul>
+                            <li>版本 (4 位)：IPv4=0100</li>
+                            <li>头部长度 (4 位)</li>
+                            <li>服务类型 (8 位)</li>
+                            <li>总长度 (16 位)</li>
+                            <li>标识、标志、片偏移 (分片用)</li>
+                            <li>TTL (生存时间)</li>
+                            <li>协议 (TCP=6, UDP=17)</li>
+                            <li>源 IP 地址 (32 位)</li>
+                            <li>目的 IP 地址 (32 位)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>3.3 IPv4 地址分类</h3>
+                <div class="chart-placeholder">
+【图表位置：IPv4 地址分类】
+
+A 类：0.0.0.0    - 127.255.255.255  (大型网络)
+     0xxxxxxx.xxxxxxxx.xxxxxxxx.xxxxxxxx
+     网络位 (8)      主机位 (24)
+     
+B 类：128.0.0.0   - 191.255.255.255  (中型网络)
+     10xxxxxx.xxxxxxxx.xxxxxxxx.xxxxxxxx
+     网络位 (16)        主机位 (16)
+     
+C 类：192.0.0.0   - 223.255.255.255  (小型网络)
+     110xxxxx.xxxxxxxx.xxxxxxxx.xxxxxxxx
+     网络位 (24)           主机位 (8)
+
+D 类：224.0.0.0   - 239.255.255.255  (组播)
+E 类：240.0.0.0   - 255.255.255.255  (保留)
+                </div>
+            </section>
+            
+            <section>
+                <h3>3.4 子网掩码与 CIDR</h3>
+                <ul>
+                    <li><strong>子网掩码</strong>：区分网络位和主机位</li>
+                    <li class="fragment"><strong>示例</strong>：
+                        <ul>
+                            <li>255.0.0.0 = /8 (A 类默认)</li>
+                            <li>255.255.0.0 = /16 (B 类默认)</li>
+                            <li>255.255.255.0 = /24 (C 类默认)</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>CIDR (无类别域间路由)</strong>：
+                        <ul>
+                            <li>192.168.1.0/24 表示前 24 位是网络位</li>
+                            <li>更灵活的地址分配</li>
+                            <li>减少路由表大小</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>3.5 IPv6 简介</h3>
+                <ul>
+                    <li><strong>地址长度</strong>：128 位 (IPv4 是 32 位)</li>
+                    <li class="fragment"><strong>地址数量</strong>：2^128 ≈ 3.4×10^38 个</li>
+                    <li class="fragment"><strong>表示方法</strong>：8 组 16 进制数
+                        <ul>
+                            <li>2001:0db8:85a3:0000:0000:8a2e:0370:7334</li>
+                            <li>简化：2001:db8:85a3::8a2e:370:7334</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>优势</strong>：
+                        <ul>
+                            <li>地址空间巨大</li>
+                            <li>内置 IPsec 安全</li>
+                            <li>更好的 QoS 支持</li>
+                            <li>简化的头部结构</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>3.6 TCP 协议特性</h3>
+                <ul>
+                    <li><strong>面向连接</strong>：三次握手建立连接</li>
+                    <li class="fragment"><strong>可靠传输</strong>：确认、重传、序号</li>
+                    <li class="fragment"><strong>流量控制</strong>：滑动窗口机制</li>
+                    <li class="fragment"><strong>拥塞控制</strong>：慢启动、拥塞避免</li>
+                    <li class="fragment"><strong>全双工</strong>：双向同时传输</li>
+                </ul>
+                <div class="chart-placeholder">
+【图表位置：TCP 三次握手】
+
+客户端                    服务器
+  | ----- SYN (seq=x) --->  |
+  | <--- SYN+ACK (ack=x+1) |
+  |        (seq=y)         |
+  | ----- ACK (ack=y+1) --> |
+  | ===== 数据传输 ======>  |
+                </div>
+            </section>
+            
+            <section>
+                <h3>3.7 UDP 协议特性</h3>
+                <ul>
+                    <li><strong>无连接</strong>：不需要握手</li>
+                    <li class="fragment"><strong>不可靠</strong>：不保证送达、不重传</li>
+                    <li class="fragment"><strong>低开销</strong>：头部仅 8 字节</li>
+                    <li class="fragment"><strong>低延迟</strong>：适合实时应用</li>
+                    <li class="fragment"><strong>应用场景</strong>：
+                        <ul>
+                            <li>视频流、语音通话</li>
+                            <li>DNS 查询</li>
+                            <li>物联网传感器数据</li>
+                            <li>在线游戏</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>3.8 TCP vs UDP 对比</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>特性</th>
+                        <th>TCP</th>
+                        <th>UDP</th>
+                    </tr>
+                    <tr>
+                        <td>连接性</td>
+                        <td>面向连接</td>
+                        <td>无连接</td>
+                    </tr>
+                    <tr>
+                        <td>可靠性</td>
+                        <td>可靠 (确认 + 重传)</td>
+                        <td>不可靠</td>
+                    </tr>
+                    <tr>
+                        <td>速度</td>
+                        <td>较慢</td>
+                        <td>快</td>
+                    </tr>
+                    <tr>
+                        <td>头部开销</td>
+                        <td>20-60 字节</td>
+                        <td>8 字节</td>
+                    </tr>
+                    <tr>
+                        <td>流量控制</td>
+                        <td>有</td>
+                        <td>无</td>
+                    </tr>
+                    <tr>
+                        <td>适用场景</td>
+                        <td>Web、邮件、文件</td>
+                        <td>视频、语音、IoT</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- ==================== 第四章：网络层核心概念 ==================== -->
+            
+            <section>
+                <h2>第四章：网络层核心概念</h2>
+                <p>路由、寻址与转发</p>
+            </section>
+            
+            <section>
+                <h3>4.1 路由的基本概念</h3>
+                <ul>
+                    <li><strong>定义</strong>：选择从源到目的地的最佳路径</li>
+                    <li class="fragment"><strong>路由器的功能</strong>：
+                        <ul>
+                            <li>接收数据包</li>
+                            <li>查找路由表</li>
+                            <li>决定下一跳</li>
+                            <li>转发到相应接口</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>路由表内容</strong>：
+                        <ul>
+                            <li>目的网络地址</li>
+                            <li>子网掩码</li>
+                            <li>下一跳地址</li>
+                            <li>出接口</li>
+                            <li>度量值 (metric)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>4.2 路由算法分类</h3>
+                <div class="chart-placeholder">
+【图表位置：路由算法分类】
+
+路由算法
+    │
+    ├─ 静态路由
+    │   └─ 手动配置，适合小型网络
+    │
+    └─ 动态路由
+        ├─ 距离矢量 (Distance Vector)
+        │   └─ RIP, IGRP
+        │
+        ├─ 链路状态 (Link State)
+        │   └─ OSPF, IS-IS
+        │
+        └─ 路径矢量 (Path Vector)
+            └─ BGP
+                </div>
+            </section>
+            
+            <section>
+                <h3>4.3 距离矢量路由协议 (RIP)</h3>
+                <ul>
+                    <li><strong>原理</strong>：Bellman-Ford 算法</li>
+                    <li class="fragment"><strong>工作方式</strong>：
+                        <ul>
+                            <li>每个路由器维护到所有目的地的距离</li>
+                            <li>定期 (30 秒) 向邻居发送完整路由表</li>
+                            <li>基于跳数选择最佳路径</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>特点</strong>：
+                        <ul>
+                            <li>最大跳数 15 (16 表示不可达)</li>
+                            <li>收敛慢</li>
+                            <li>可能产生路由环路</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>4.4 链路状态路由协议 (OSPF)</h3>
+                <ul>
+                    <li><strong>原理</strong>：Dijkstra 最短路径算法</li>
+                    <li class="fragment"><strong>工作方式</strong>：
+                        <ul>
+                            <li>每个路由器发现邻居</li>
+                            <li>构建链路状态数据库 (LSDB)</li>
+                            <li>泛洪链路状态信息</li>
+                            <li>计算最短路径树</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>特点</strong>：
+                        <ul>
+                            <li>收敛快</li>
+                            <li>支持大型网络</li>
+                            <li>基于带宽等度量</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>4.5 边界网关协议 (BGP)</h3>
+                <ul>
+                    <li><strong>用途</strong>：互联网核心路由协议 (AS 之间)</li>
+                    <li class="fragment"><strong>特点</strong>：
+                        <ul>
+                            <li>路径矢量协议</li>
+                            <li>基于策略路由</li>
+                            <li>支持 CIDR</li>
+                            <li>使用 TCP 179 端口</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>AS (自治系统)</strong>：
+                        <ul>
+                            <li>统一管理的路由器集合</li>
+                            <li>AS 号：16 位或 32 位</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>4.6 NAT 网络地址转换</h3>
+                <ul>
+                    <li><strong>问题</strong>：IPv4 地址短缺</li>
+                    <li class="fragment"><strong>解决方案</strong>：私有地址 + NAT</li>
+                    <li class="fragment"><strong>私有地址范围</strong>：
+                        <ul>
+                            <li>10.0.0.0/8</li>
+                            <li>172.16.0.0/12</li>
+                            <li>192.168.0.0/16</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>NAT 类型</strong>：
+                        <ul>
+                            <li>静态 NAT：一对一</li>
+                            <li>动态 NAT：多对多</li>
+                            <li>PAT (NAPT)：多对一 (最常用)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>4.7 DHCP 动态主机配置</h3>
+                <ul>
+                    <li><strong>功能</strong>：自动分配 IP 地址和网络参数</li>
+                    <li class="fragment"><strong>DORA 过程</strong>：
+                        <ul>
+                            <li><strong>D</strong>iscover：客户端广播发现</li>
+                            <li><strong>O</strong>ffer：服务器提供 IP</li>
+                            <li><strong>R</strong>equest：客户端请求使用</li>
+                            <li><strong>A</strong>cknowledge：服务器确认</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>分配参数</strong>：IP 地址、子网掩码、网关、DNS</li>
+                </ul>
+                <div class="chart-placeholder">
+【图表位置：DHCP DORA 过程】
+
+客户端              DHCP 服务器
+  | --Discover(广播)-> |
+  | <-Offer(单播)----- |
+  | --Request(广播)-> |
+  | <-Ack(单播)------- |
+  [获得 IP 地址]
+                </div>
+            </section>
+            
+            <section>
+                <h3>4.8 ICMP 协议</h3>
+                <ul>
+                    <li><strong>功能</strong>：网络层错误报告和诊断</li>
+                    <li class="fragment"><strong>常见消息类型</strong>：
+                        <ul>
+                            <li>Type 0/8：回显应答/请求 (ping)</li>
+                            <li>Type 3：目的不可达</li>
+                            <li>Type 11：超时 (traceroute 使用)</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>应用</strong>：
+                        <ul>
+                            <li>ping：测试连通性</li>
+                            <li>traceroute：路径追踪</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>4.9 ARP 地址解析协议</h3>
+                <ul>
+                    <li><strong>功能</strong>：IP 地址 → MAC 地址映射</li>
+                    <li class="fragment"><strong>工作过程</strong>：
+                        <ul>
+                            <li>查询 ARP 缓存</li>
+                            <li>若无，广播 ARP 请求</li>
+                            <li>目标主机单播 ARP 应答</li>
+                            <li>更新 ARP 缓存</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>ARP 缓存</strong>：临时存储映射 (通常 2-20 分钟)</li>
+                </ul>
+                <div class="chart-placeholder">
+【图表位置：ARP 工作流程】
+
+主机 A (192.168.1.2)     主机 B (192.168.1.3)
+  | --ARP 请求 (广播)----> |
+  |    "谁是 1.3?"        |
+  | <---ARP 应答 (单播)--- |
+  |    "1.3 是 MAC_B"     |
+  [更新 ARP 缓存]
+                </div>
+            </section>
+            
+            <section>
+                <h3>4.10 网络层在 IoT 中的应用</h3>
+                <ul>
+                    <li><strong>IPv6 over Low-Power Wireless</strong>：
+                        <ul>
+                            <li>6LoWPAN：IPv6 over 802.15.4</li>
+                            <li>头部压缩适应小 MTU</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>RPL 路由协议</strong>：
+                        <ul>
+                            <li>为低功耗有损网络设计</li>
+                            <li>支持多对一、一对多通信</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>挑战</strong>：
+                        <ul>
+                            <li>资源受限 (内存、能量)</li>
+                            <li>网络拓扑动态变化</li>
+                            <li>大规模部署</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 第一部分过渡页 -->
+            <section>
+                <h2>📊 第一部分总结</h2>
+                <p>互联网发展历史与网络基础</p>
+                <ul>
+                    <li>✓ 互联网从 ARPANET 发展到全球互联</li>
+                    <li>✓ OSI 七层模型提供理论框架</li>
+                    <li>✓ TCP/IP 是实际运行的协议栈</li>
+                    <li>✓ 网络层负责路由和转发</li>
+                </ul>
+                <p class="fragment" style="margin-top: 50px;">➡️ 接下来：无线局域网技术</p>
+            </section>
+
+            <!-- ==================== 第二部分：无线局域网技术 (20 页) ==================== -->
+            
+            <section>
+                <h1>第二部分</h1>
+                <h2>📡 无线局域网技术</h2>
+                <p>LoRa · WiFi · Zigbee</p>
+            </section>
+            
+            <section>
+                <h3>5.1 无线技术概览</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>技术</th>
+                        <th>频段</th>
+                        <th>速率</th>
+                        <th>覆盖</th>
+                        <th>功耗</th>
+                        <th>应用</th>
+                    </tr>
+                    <tr>
+                        <td>LoRa</td>
+                        <td>Sub-GHz</td>
+                        <td>0.3-50 kbps</td>
+                        <td>2-15 km</td>
+                        <td>极低</td>
+                        <td>广域 IoT</td>
+                    </tr>
+                    <tr>
+                        <td>WiFi</td>
+                        <td>2.4/5/6 GHz</td>
+                        <td>11M-10Gbps</td>
+                        <td>50-100m</td>
+                        <td>高</td>
+                        <td>高速接入</td>
+                    </tr>
+                    <tr>
+                        <td>Zigbee</td>
+                        <td>2.4/868/915 MHz</td>
+                        <td>20-250 kbps</td>
+                        <td>10-100m</td>
+                        <td>低</td>
+                        <td>智能家居</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- LoRa 技术 -->
+            <section>
+                <h3>5.2 LoRa 技术简介</h3>
+                <ul>
+                    <li><strong>LoRa</strong>：Long Range，物理层调制技术</li>
+                    <li class="fragment"><strong>LoRaWAN</strong>：基于 LoRa 的 MAC 层协议</li>
+                    <li class="fragment"><strong>特点</strong>：
+                        <ul>
+                            <li>长距离通信 (城市 2-5km，郊区 15km+)</li>
+                            <li>低功耗 (电池寿命 5-10 年)</li>
+                            <li>低成本</li>
+                            <li>大连接密度</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>工作频段</strong>：
+                        <ul>
+                            <li>欧洲：868 MHz</li>
+                            <li>北美：915 MHz</li>
+                            <li>中国：470/779 MHz</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>5.3 LoRa 调制技术</h3>
+                <ul>
+                    <li><strong>CSS 调制</strong>：Chirp Spread Spectrum (线性调频)</li>
+                    <li class="fragment"><strong>扩频因子 (SF)</strong>：SF7-SF12
+                        <ul>
+                            <li>SF 越高 → 距离越远，速率越低</li>
+                            <li>SF7: ~5.5kbps, SF12: ~0.3kbps</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>带宽</strong>：125/250/500 kHz</li>
+                    <li class="fragment"><strong>编码率</strong>：4/5, 4/6, 4/7, 4/8</li>
+                </ul>
+                <div class="chart-placeholder">
+【图表位置：LoRa Chirp 信号示意】
+
+频率
+  ↑
+  |    /\      /\      /\
+  |   /  \    /  \    /  \
+  |  /    \  /    \  /    \
+  | /      \/      \/      \
+  +------------------------→ 时间
+  
+  线性调频信号：频率随时间线性变化
+  抗干扰能力强，解调灵敏度高
+                </div>
+            </section>
+            
+            <section>
+                <h3>5.4 LoRaWAN 网络架构</h3>
+                <div class="chart-placeholder">
+【图表位置：LoRaWAN 架构】
+
+    ┌──────────┐
+    │ 终端设备  │
+    │ (End Node)│
+    └────┬─────┘
+         │ LoRa
+         ↓
+    ┌──────────┐      ┌──────────┐
+    │  网关    │──────│  网关    │
+    │ (Gateway)│      │ (Gateway)│
+    └────┬─────┘      └────┬─────┘
+         │                  │
+         └────────┬─────────┘
+                  │ IP/4G/以太网
+                  ↓
+         ┌────────────────┐
+         │  网络服务器    │
+         │(Network Server)│
+         └────────┬───────┘
+                  │
+         ┌────────┴───────┐
+         ↓                ↓
+    ┌─────────┐      ┌─────────┐
+    │应用服务器│      │  Join   │
+    │(App Svr)│      │ Server  │
+    └─────────┘      └─────────┘
+                </div>
+            </section>
+            
+            <section>
+                <h3>5.5 LoRaWAN 设备类别</h3>
+                <ul>
+                    <li><strong>Class A</strong> (All)：
+                        <ul>
+                            <li>双向通信，终端发起</li>
+                            <li>最省电，电池寿命最长</li>
+                            <li>适用于传感器</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>Class B</strong> (Beacon)：
+                        <ul>
+                            <li>定时接收窗口</li>
+                            <li>网关同步信标</li>
+                            <li>适用于需要下行的设备</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>Class C</strong> (Continuous)：
+                        <ul>
+                            <li>持续监听 (发送时除外)</li>
+                            <li>最低延迟，最高功耗</li>
+                            <li>适用于常供电设备</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>5.6 LoRa 应用场景</h3>
+                <ul>
+                    <li>🏙️ <strong>智慧城市</strong>：智能路灯、停车位、垃圾桶</li>
+                    <li class="fragment">🌾 <strong>智慧农业</strong>：土壤监测、灌溉控制</li>
+                    <li class="fragment">🏭 <strong>工业 IoT</strong>：设备监控、预测性维护</li>
+                    <li class="fragment">📦 <strong>物流追踪</strong>：资产跟踪、冷链监控</li>
+                    <li class="fragment">💧 <strong>公用事业</strong>：智能水表、电表、气表</li>
+                </ul>
+                <div class="key-point">
+                    💡 LoRa 适合低速率、长距离、低功耗的 IoT 场景
+                </div>
+            </section>
+
+            <!-- WiFi 技术 -->
+            <section>
+                <h3>5.7 WiFi 技术演进</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>标准</th>
+                        <th>年份</th>
+                        <th>频段</th>
+                        <th>最大速率</th>
+                        <th>关键技术</th>
+                    </tr>
+                    <tr>
+                        <td>802.11</td>
+                        <td>1997</td>
+                        <td>2.4GHz</td>
+                        <td>2 Mbps</td>
+                        <td>DSSS</td>
+                    </tr>
+                    <tr>
+                        <td>802.11b</td>
+                        <td>1999</td>
+                        <td>2.4GHz</td>
+                        <td>11 Mbps</td>
+                        <td>CCK</td>
+                    </tr>
+                    <tr>
+                        <td>802.11a</td>
+                        <td>1999</td>
+                        <td>5GHz</td>
+                        <td>54 Mbps</td>
+                        <td>OFDM</td>
+                    </tr>
+                    <tr>
+                        <td>802.11g</td>
+                        <td>2003</td>
+                        <td>2.4GHz</td>
+                        <td>54 Mbps</td>
+                        <td>OFDM</td>
+                    </tr>
+                    <tr>
+                        <td>802.11n (WiFi 4)</td>
+                        <td>2009</td>
+                        <td>2.4/5GHz</td>
+                        <td>600 Mbps</td>
+                        <td>MIMO</td>
+                    </tr>
+                </table>
+            </section>
+            
+            <section>
+                <h3>5.8 WiFi 5/6/7 演进</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>特性</th>
+                        <th>WiFi 5</th>
+                        <th>WiFi 6</th>
+                        <th>WiFi 7</th>
+                    </tr>
+                    <tr>
+                        <td>标准</td>
+                        <td>802.11ac</td>
+                        <td>802.11ax</td>
+                        <td>802.11be</td>
+                    </tr>
+                    <tr>
+                        <td>年份</td>
+                        <td>2013</td>
+                        <td>2019</td>
+                        <td>2024</td>
+                    </tr>
+                    <tr>
+                        <td>频段</td>
+                        <td>5GHz</td>
+                        <td>2.4/5/6GHz</td>
+                        <td>2.4/5/6GHz</td>
+                    </tr>
+                    <tr>
+                        <td>最大速率</td>
+                        <td>6.9 Gbps</td>
+                        <td>9.6 Gbps</td>
+                        <td>46 Gbps</td>
+                    </tr>
+                    <tr>
+                        <td>关键技术</td>
+                        <td>MU-MIMO<br>(下行)</td>
+                        <td>OFDMA<br>MU-MIMO</td>
+                        <td>MLO<br>4096-QAM</td>
+                    </tr>
+                </table>
+            </section>
+            
+            <section>
+                <h3>5.9 WiFi 6 关键技术</h3>
+                <ul>
+                    <li><strong>OFDMA</strong>：正交频分多址
+                        <ul>
+                            <li>将信道划分为多个子载波</li>
+                            <li>同时服务多个用户</li>
+                            <li>提高频谱效率</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>MU-MIMO</strong>：多用户多输入多输出
+                        <ul>
+                            <li>上行 + 下行同时支持</li>
+                            <li>空间复用</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>TWT</strong>：目标唤醒时间
+                        <ul>
+                            <li>设备协商唤醒时间</li>
+                            <li>显著降低功耗</li>
+                            <li>适合 IoT 设备</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>BSS Coloring</strong>：基本服务集着色
+                        <ul>
+                            <li>减少同频干扰</li>
+                            <li>提高密集部署性能</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>5.10 WiFi 7 新特性</h3>
+                <ul>
+                    <li><strong>MLO</strong>：多链路操作
+                        <ul>
+                            <li>同时使用多个频段/信道</li>
+                            <li>提高吞吐量和可靠性</li>
+                            <li>降低延迟</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>320MHz 信道</strong>：
+                        <ul>
+                            <li>6GHz 频段支持</li>
+                            <li>翻倍信道带宽</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>4096-QAM</strong>：
+                        <ul>
+                            <li>更高阶调制</li>
+                            <li>提升 20% 峰值速率</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>Multi-RU</strong>：多资源单元分配</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>5.11 WiFi 应用场景</h3>
+                <ul>
+                    <li>🏠 <strong>家庭网络</strong>：宽带接入、智能家居</li>
+                    <li class="fragment">🏢 <strong>企业办公</strong>：无线办公、视频会议</li>
+                    <li class="fragment">🏫 <strong>教育</strong>：智慧教室、电子书包</li>
+                    <li class="fragment">🏥 <strong>医疗</strong>：移动查房、远程医疗</li>
+                    <li class="fragment">🏭 <strong>工业</strong>：AGV、AR 辅助</li>
+                    <li class="fragment">📱 <strong>公共场所</strong>：商场、机场、车站</li>
+                </ul>
+            </section>
+
+            <!-- Zigbee 技术 -->
+            <section>
+                <h3>5.12 Zigbee 技术简介</h3>
+                <ul>
+                    <li><strong>基础</strong>：基于 IEEE 802.15.4 标准</li>
+                    <li class="fragment"><strong>特点</strong>：
+                        <ul>
+                            <li>低功耗 (电池寿命 6 个月 -2 年)</li>
+                            <li>低速率 (20-250 kbps)</li>
+                            <li>低成本</li>
+                            <li>网状网络 (Mesh)</li>
+                            <li>自组织、自愈合</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>工作频段</strong>：
+                        <ul>
+                            <li>全球：2.4 GHz (16 信道)</li>
+                            <li>欧洲：868 MHz (1 信道)</li>
+                            <li>北美：915 MHz (10 信道)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>5.13 Zigbee 网络拓扑</h3>
+                <div class="chart-placeholder">
+【图表位置：Zigbee 网络拓扑】
+
+         ┌─────────┐
+         │ 协调器  │ ← 网络创建者
+         │(Coordinator)
+         └────┬────┘
+              │
+         ┌────┴────┐
+         │         │
+    ┌────┴───┐ ┌───┴────┐
+    │ 路由器  │ │ 路由器  │ ← 中继 + 终端
+    │(Router)│ │(Router)│
+    └───┬────┘ └────┬───┘
+        │           │
+   ┌────┴───┐  ┌────┴────┐
+   │终端设备│  │终端设备 │ ← 只通信
+   │  (ED)  │  │  (ED)   │
+   └────────┘  └─────────┘
+   
+   网状网络：多路径，自愈合
+                </div>
+            </section>
+            
+            <section>
+                <h3>5.14 Zigbee 设备类型</h3>
+                <ul>
+                    <li><strong>协调器 (Coordinator)</strong>：
+                        <ul>
+                            <li>每个网络只有一个</li>
+                            <li>创建网络、存储密钥</li>
+                            <li>通常常供电 (如网关)</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>路由器 (Router)</strong>：
+                        <ul>
+                            <li>扩展网络覆盖</li>
+                            <li>中继消息</li>
+                            <li>可连接子设备</li>
+                            <li>通常常供电</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>终端设备 (End Device)</strong>：
+                        <ul>
+                            <li>只能与父节点通信</li>
+                            <li>可睡眠，低功耗</li>
+                            <li>如传感器、开关</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>5.15 Zigbee 协议栈</h3>
+                <div class="chart-placeholder">
+【图表位置：Zigbee 协议栈】
+
+┌─────────────────────────┐
+│     应用层 (APL)        │ ← 应用对象、ZDO
+├─────────────────────────┤
+│  应用支持子层 (APS)     │ ← 绑定、寻址
+├─────────────────────────┤
+│   网络层 (NWK)          │ ← 路由、组网
+├─────────────────────────┤
+│   MAC 层 (802.15.4)     │ ← 帧处理、CSMA
+├─────────────────────────┤
+│   物理层 (PHY)          │ ← 调制、收发
+└─────────────────────────┘
+                </div>
+            </section>
+            
+            <section>
+                <h3>5.16 Zigbee 3.0 与 Matter</h3>
+                <ul>
+                    <li><strong>Zigbee 3.0</strong> (2016)：
+                        <ul>
+                            <li>统一之前多个应用层标准</li>
+                            <li>更好的互操作性</li>
+                            <li>增强的安全性</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>Matter</strong> (2022)：
+                        <ul>
+                            <li>基于 IP 的智能家居标准</li>
+                            <li>由 CSA 联盟推动</li>
+                            <li>支持 WiFi、Thread、Ethernet</li>
+                            <li>Zigbee 设备可通过网关接入</li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="key-point">
+                    💡 Matter 正在成为智能家居新标准，但 Zigbee 仍有大量存量设备
+                </div>
+            </section>
+            
+            <section>
+                <h3>5.17 三种技术对比总结</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>维度</th>
+                        <th>LoRa</th>
+                        <th>WiFi</th>
+                        <th>Zigbee</th>
+                    </tr>
+                    <tr>
+                        <td>覆盖范围</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>⭐⭐</td>
+                        <td>⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td>传输速率</td>
+                        <td>⭐</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td>功耗</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>⭐</td>
+                        <td>⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td>成本</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐</td>
+                        <td>⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td>网络拓扑</td>
+                        <td>星型</td>
+                        <td>星型</td>
+                        <td>网状</td>
+                    </tr>
+                </table>
+            </section>
+            
+            <section>
+                <h3>5.18 技术选择指南</h3>
+                <div class="chart-placeholder">
+【图表位置：技术选择决策树】
+
+              需要长距离 (>1km)?
+                    /       \
+                  是         否
+                  /           \
+           需要高数据速率？需要高数据速率？
+              /    \          /    \
+            否      是       是     否
+            /        \       /       \
+         LoRa     WiFi   WiFi    Zigbee
+      (广域 IoT) (高速) (局域网) (低功耗 Mesh)
+                </div>
+            </section>
+            
+            <section>
+                <h3>5.19 无线技术发展趋势</h3>
+                <ul>
+                    <li>📈 <strong>融合</strong>：多技术协同 (WiFi+Zigbee+BLE)</li>
+                    <li class="fragment">🔋 <strong>低功耗</strong>：能量收集、超低功耗设计</li>
+                    <li class="fragment">🤖 <strong>智能化</strong>：AI 优化信道选择、路由</li>
+                    <li class="fragment">🔒 <strong>安全</strong>：端到端加密、安全启动</li>
+                    <li class="fragment">🌐 <strong>IP 化</strong>：6LoWPAN、Thread、Matter</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>📊 第二部分总结</h2>
+                <p>无线局域网技术</p>
+                <ul>
+                    <li>✓ LoRa：长距离、低功耗、广域 IoT</li>
+                    <li>✓ WiFi：高速率、短距离、主流接入</li>
+                    <li>✓ Zigbee：低功耗、网状网、智能家居</li>
+                    <li>✓ 根据场景选择合适的技术</li>
+                </ul>
+                <p class="fragment" style="margin-top: 50px;">➡️ 接下来：6G 网络前沿</p>
+            </section>
+
+            <!-- ==================== 第三部分：6G 网络前沿 (50 页) ==================== -->
+            
+            <section>
+                <h1>第三部分</h1>
+                <h2>🚀 6G 网络前沿技术</h2>
+                <p>愿景 · 关键技术 · 挑战</p>
+            </section>
+            
+            <section>
+                <h3>6.1 移动通信代际演进</h3>
+                <div class="chart-placeholder">
+【图表位置：移动通信代际演进】
+
+1G (1980s)  模拟语音
+   │
+   ↓
+2G (1990s)  数字语音 + 短信
+   │
+   ↓
+3G (2000s)  移动数据 + 多媒体
+   │
+   ↓
+4G (2010s)  高速数据 + 移动宽带
+   │
+   ↓
+5G (2020s)  eMBB + URLLC + mMTC
+   │
+   ↓
+6G (2030s)  智能泛在 + 通感算一体
+                </div>
+            </section>
+            
+            <section>
+                <h3>6.2 5G 回顾与局限</h3>
+                <ul>
+                    <li><strong>5G 三大场景</strong>：
+                        <ul>
+                            <li>eMBB：增强移动宽带 (峰值 20Gbps)</li>
+                            <li>URLLC：超高可靠低时延 (1ms, 99.999%)</li>
+                            <li>mMTC：海量机器通信 (100 万/km²)</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>5G 局限</strong>：
+                        <ul>
+                            <li>覆盖不足 (高频段穿透差)</li>
+                            <li>AI 能力有限</li>
+                            <li>感知能力弱</li>
+                            <li>能效待提升</li>
+                            <li>不支持全息通信等新业态</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.3 6G 愿景与目标</h3>
+                <ul>
+                    <li><strong>愿景</strong>：万物智联，数字孪生</li>
+                    <li class="fragment"><strong>关键目标</strong>：
+                        <ul>
+                            <li>峰值速率：1 Tbps (5G 的 50 倍)</li>
+                            <li>用户体验速率：1 Gbps 无处不在</li>
+                            <li>时延：0.1ms 空口时延</li>
+                            <li>连接密度：1000 万/km²</li>
+                            <li>定位精度：厘米级</li>
+                            <li>能效：提升 10-100 倍</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.4 6G 典型应用场景</h3>
+                <ul>
+                    <li>🤖 <strong>全息通信</strong>：3D 全息投影通话</li>
+                    <li class="fragment">🧠 <strong>数字孪生</strong>：物理世界实时映射</li>
+                    <li class="fragment">🚗 <strong>自动驾驶</strong>：车路云一体化</li>
+                    <li class="fragment">🏥 <strong>远程手术</strong>：触觉互联网</li>
+                    <li class="fragment">🛰️ <strong>空天地海</strong>：全域覆盖</li>
+                    <li class="fragment">👓 <strong>XR 沉浸</strong>：元宇宙基础</li>
+                    <li class="fragment">🌐 <strong>智能体互联</strong>：AI Agent 通信</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.5 6G 关键技术概览</h3>
+                <div class="chart-placeholder">
+【图表位置：6G 技术体系】
+
+            6G 关键技术
+                 │
+    ┌────────────┼────────────┐
+    │            │            │
+新频谱      新架构      新技术
+    │            │            │
+太赫兹     空天地     智能超表面
+可见光     一体化     通感算一体
+        分布式 MIMO   AI 原生
+                </div>
+            </section>
+
+            <!-- 太赫兹通信 -->
+            <section>
+                <h3>6.6 太赫兹通信 (1)</h3>
+                <ul>
+                    <li><strong>频段范围</strong>：0.1-10 THz</li>
+                    <li class="fragment"><strong>优势</strong>：
+                        <ul>
+                            <li>超大带宽 (数十 GHz)</li>
+                            <li>超高数据速率 (Tbps 级)</li>
+                            <li>极高空间分辨率</li>
+                            <li>安全性好 (易被阻挡)</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>挑战</strong>：
+                        <ul>
+                            <li>路径损耗大</li>
+                            <li>大气吸收严重</li>
+                            <li>器件不成熟</li>
+                            <li>覆盖范围小</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.7 太赫兹通信 (2)</h3>
+                <div class="chart-placeholder">
+【图表位置：太赫兹频段划分】
+
+频率 (THz)     应用
+────────────────────────────
+0.1 - 0.3      6G 通信 (主要)
+0.3 - 0.5      成像、传感
+0.5 - 1.0      光谱分析
+1.0 - 3.0      安全检测
+3.0 - 10.0     科学研究
+
+大气吸收窗口：
+  低吸收窗口：0.1-0.3 THz, 0.5-0.7 THz
+  高吸收峰：0.55 THz (水蒸气)
+                </div>
+            </section>
+            
+            <section>
+                <h3>6.8 可见光通信 (LiFi)</h3>
+                <ul>
+                    <li><strong>原理</strong>：LED 快速调制传输数据</li>
+                    <li class="fragment"><strong>优势</strong>：
+                        <ul>
+                            <li>频谱免费、无许可</li>
+                            <li>无电磁干扰 (适合医院、飞机)</li>
+                            <li>高安全性 (光不穿墙)</li>
+                            <li>照明 + 通信融合</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>挑战</strong>：
+                        <ul>
+                            <li>需要视距传播</li>
+                            <li>上行链路困难</li>
+                            <li>环境光干扰</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>速率</strong>：实验室已达 100+ Gbps</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.9 智能超表面 (RIS)</h3>
+                <ul>
+                    <li><strong>定义</strong>：Reconfigurable Intelligent Surface</li>
+                    <li class="fragment"><strong>原理</strong>：
+                        <ul>
+                            <li>大量低成本无源反射单元</li>
+                            <li>可编程控制反射相位/幅度</li>
+                            <li>智能重构无线传播环境</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>作用</strong>：
+                        <ul>
+                            <li>扩展覆盖 (绕过障碍物)</li>
+                            <li>增强信号 (波束赋形)</li>
+                            <li>降低干扰</li>
+                            <li>提升能效</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.10 RIS 工作原理</h3>
+                <div class="chart-placeholder">
+【图表位置：RIS 工作原理】
+
+     基站 ────→ ┌───────────┐
+                 │    RIS    │ ← 智能调控
+                 │  ▓▓▓▓▓▓▓▓ │   反射相位
+                 └─────┬─────┘
+                       ↓
+                    用户设备
+                    
+    传统：基站 → 障碍物阻挡 → 用户 (信号弱)
+    RIS：  基站 → RIS 反射 → 用户 (信号强)
+    
+    RIS 单元可独立调控，形成虚拟视距
+                </div>
+            </section>
+            
+            <section>
+                <h3>6.11 空天地海一体化</h3>
+                <ul>
+                    <li><strong>愿景</strong>：全域无缝覆盖</li>
+                    <li class="fragment"><strong>组成</strong>：
+                        <ul>
+                            <li>🛰️ 卫星网络 (LEO/MEO/GEO)</li>
+                            <li>🎈 高空平台 (HAPS：飞艇、无人机)</li>
+                            <li>📡 地面网络 (蜂窝、WiFi)</li>
+                            <li>🚢 海洋网络 (水下通信、船舶)</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>挑战</strong>：
+                        <ul>
+                            <li>异构网络融合</li>
+                            <li>高速移动管理</li>
+                            <li>时延差异大</li>
+                            <li>协议适配</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.12 低轨卫星星座</h3>
+                <ul>
+                    <li><strong>代表系统</strong>：
+                        <ul>
+                            <li>Starlink (SpaceX)：4000+ 颗</li>
+                            <li>OneWeb：600+ 颗</li>
+                            <li>中国：国网、G60 星座</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>优势</strong>：
+                        <ul>
+                            <li>低时延 (20-50ms)</li>
+                            <li>全球覆盖</li>
+                            <li>部署灵活</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>6G 集成</strong>：
+                        <ul>
+                            <li>NTN (非地面网络) 标准化</li>
+                            <li>手机直连卫星</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.13 通感算一体化</h3>
+                <ul>
+                    <li><strong>概念</strong>：Communication + Sensing + Computing</li>
+                    <li class="fragment"><strong>通信感知一体化 (ISAC)</strong>：
+                        <ul>
+                            <li>同一硬件实现通信和感知</li>
+                            <li>共享频谱和资源</li>
+                            <li>感知辅助通信，通信增强感知</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>应用场景</strong>：
+                        <ul>
+                            <li>车联网：感知周围车辆</li>
+                            <li>智能家居：人员定位、手势识别</li>
+                            <li>工业：设备监测、缺陷检测</li>
+                            <li>安防：入侵检测</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.14 AI 原生空口</h3>
+                <ul>
+                    <li><strong>理念</strong>：AI 深度融入物理层</li>
+                    <li class="fragment"><strong>应用方向</strong>：
+                        <ul>
+                            <li>智能信道编码/解码</li>
+                            <li>AI 调制识别</li>
+                            <li>智能波束管理</li>
+                            <li>信道预测与预编码</li>
+                            <li>干扰智能消除</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>挑战</strong>：
+                        <ul>
+                            <li>模型复杂度 vs 实时性</li>
+                            <li>训练数据获取</li>
+                            <li>可解释性</li>
+                            <li>标准化</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.15 网络智能化</h3>
+                <ul>
+                    <li><strong>自组织网络 (SON) 演进</strong>：
+                        <ul>
+                            <li>自配置、自优化、自愈</li>
+                            <li>AI 驱动的智能运维</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>数字孪生网络</strong>：
+                        <ul>
+                            <li>物理网络虚拟映射</li>
+                            <li>仿真优化后下发</li>
+                            <li>预测性维护</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>意图驱动网络</strong>：
+                        <ul>
+                            <li>用户表达业务意图</li>
+                            <li>网络自动配置实现</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.16 新型多址技术</h3>
+                <ul>
+                    <li><strong>NOMA</strong>：非正交多址
+                        <ul>
+                            <li>功率域复用</li>
+                            <li>串行干扰消除</li>
+                            <li>提升连接数</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>SCMA</strong>：稀疏码多址
+                        <ul>
+                            <li>码域非正交</li>
+                            <li>低检测复杂度</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>PDMA</strong>：图样分割多址
+                        <ul>
+                            <li>多维图样复用</li>
+                            <li>灵活资源配置</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.17 新型波形技术</h3>
+                <ul>
+                    <li><strong>OFDM 局限</strong>：
+                        <ul>
+                            <li>高峰均比 (PAPR)</li>
+                            <li>对频偏敏感</li>
+                            <li>带外泄漏</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>候选波形</strong>：
+                        <ul>
+                            <li>FBMC：滤波器组多载波</li>
+                            <li>UFMC：通用滤波多载波</li>
+                            <li>GFDM：广义频分复用</li>
+                            <li>OTFS：正交时频空间 (高多普勒)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.18 全息 MIMO</h3>
+                <ul>
+                    <li><strong>概念</strong>：超大规模天线阵列</li>
+                    <li class="fragment"><strong>特点</strong>：
+                        <ul>
+                            <li>天线间距&lt;半波长</li>
+                            <li>连续孔径近似</li>
+                            <li>三维波束赋形</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>优势</strong>：
+                        <ul>
+                            <li>极高空间分辨率</li>
+                            <li>精确用户定位</li>
+                            <li>多用户分离</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>挑战</strong>：硬件复杂度、信道估计、信号处理</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.19 量子通信与 6G</h3>
+                <ul>
+                    <li><strong>量子密钥分发 (QKD)</strong>：
+                        <ul>
+                            <li>物理原理保证安全</li>
+                            <li>检测窃听</li>
+                            <li>与 6G 融合增强安全</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>量子互联网</strong>：
+                        <ul>
+                            <li>量子纠缠分发</li>
+                            <li>分布式量子计算</li>
+                            <li>长期愿景</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>挑战</strong>：距离限制、中继技术、成本</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.20 6G 安全新挑战</h3>
+                <ul>
+                    <li><strong>新攻击面</strong>：
+                        <ul>
+                            <li>AI 模型攻击 (对抗样本)</li>
+                            <li>RIS 操控攻击</li>
+                            <li>卫星链路劫持</li>
+                            <li>量子计算威胁</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>防护策略</strong>：
+                        <ul>
+                            <li>内生安全设计</li>
+                            <li>零信任架构</li>
+                            <li>后量子密码</li>
+                            <li>区块链辅助</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.21 6G 标准化进展</h3>
+                <ul>
+                    <li><strong>ITU-R</strong>：IMT-2030 框架
+                        <ul>
+                            <li>2023：愿景和需求</li>
+                            <li>2025：技术评估方法</li>
+                            <li>2027：技术方案征集</li>
+                            <li>2030：标准发布</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>3GPP</strong>：
+                        <ul>
+                            <li>Release 21 (2027)：6G 第一版</li>
+                            <li>Release 22+：持续演进</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>各国布局</strong>：
+                        <ul>
+                            <li>中国：IMT-2030 推进组</li>
+                            <li>欧盟：Hexa-X 项目</li>
+                            <li>美国：Next G Alliance</li>
+                            <li>日韩：6G 研发计划</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.22 6G 关键性能指标 (KPI)</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>指标</th>
+                        <th>5G</th>
+                        <th>6G 目标</th>
+                        <th>提升倍数</th>
+                    </tr>
+                    <tr>
+                        <td>峰值速率</td>
+                        <td>20 Gbps</td>
+                        <td>1 Tbps</td>
+                        <td>50x</td>
+                    </tr>
+                    <tr>
+                        <td>用户体验速率</td>
+                        <td>100 Mbps</td>
+                        <td>1 Gbps</td>
+                        <td>10x</td>
+                    </tr>
+                    <tr>
+                        <td>空口时延</td>
+                        <td>1 ms</td>
+                        <td>0.1 ms</td>
+                        <td>10x</td>
+                    </tr>
+                    <tr>
+                        <td>连接密度</td>
+                        <td>10⁶/km²</td>
+                        <td>10⁷/km²</td>
+                        <td>10x</td>
+                    </tr>
+                    <tr>
+                        <td>定位精度</td>
+                        <td>米级</td>
+                        <td>厘米级</td>
+                        <td>100x</td>
+                    </tr>
+                    <tr>
+                        <td>能效</td>
+                        <td>基准</td>
+                        <td>提升 10-100 倍</td>
+                        <td>10-100x</td>
+                    </tr>
+                </table>
+            </section>
+            
+            <section>
+                <h3>6.23 6G 使能的垂直行业</h3>
+                <ul>
+                    <li>🏭 <strong>工业 4.0</strong>：
+                        <ul>
+                            <li>无线 PLC 控制</li>
+                            <li>协作机器人</li>
+                            <li>预测性维护</li>
+                        </ul>
+                    </li>
+                    <li class="fragment">🚗 <strong>智慧交通</strong>：
+                        <ul>
+                            <li>L5 自动驾驶</li>
+                            <li>车路云协同</li>
+                            <li>编队行驶</li>
+                        </ul>
+                    </li>
+                    <li class="fragment">🏥 <strong>智慧医疗</strong>：
+                        <ul>
+                            <li>远程手术</li>
+                            <li>可穿戴监测</li>
+                            <li>数字孪生人体</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.24 6G 使能的垂直行业 (续)</h3>
+                <ul>
+                    <li>🌾 <strong>智慧农业</strong>：
+                        <ul>
+                            <li>精准农业</li>
+                            <li>无人机植保</li>
+                            <li>环境监测</li>
+                        </ul>
+                    </li>
+                    <li class="fragment">⚡ <strong>智慧能源</strong>：
+                        <ul>
+                            <li>智能电网</li>
+                            <li>分布式能源管理</li>
+                            <li>虚拟电厂</li>
+                        </ul>
+                    </li>
+                    <li class="fragment">🏙️ <strong>智慧城市</strong>：
+                        <ul>
+                            <li>城市数字孪生</li>
+                            <li>全域感知</li>
+                            <li>智能治理</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.25 6G 面临的挑战 (1)</h3>
+                <ul>
+                    <li><strong>技术挑战</strong>：
+                        <ul>
+                            <li>太赫兹器件成熟度</li>
+                            <li>RIS 大规模部署</li>
+                            <li>AI 模型实时性</li>
+                            <li>星地融合协议</li>
+                            <li>能耗与散热</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>频谱挑战</strong>：
+                        <ul>
+                            <li>高频段传播特性</li>
+                            <li>频谱共享机制</li>
+                            <li>国际协调</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.26 6G 面临的挑战 (2)</h3>
+                <ul>
+                    <li><strong>商业挑战</strong>：
+                        <ul>
+                            <li>投资回报周期</li>
+                            <li>杀手级应用缺失</li>
+                            <li>商业模式创新</li>
+                            <li>产业链协同</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>社会挑战</strong>：
+                        <ul>
+                            <li>数字鸿沟</li>
+                            <li>隐私保护</li>
+                            <li>电磁辐射担忧</li>
+                            <li>就业影响</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.27 6G 绿色节能</h3>
+                <ul>
+                    <li><strong>问题</strong>：5G 基站能耗是 4G 的 3 倍</li>
+                    <li class="fragment"><strong>6G 节能技术</strong>：
+                        <ul>
+                            <li>智能休眠 (符号/时隙/信道级)</li>
+                            <li>AI 节能优化</li>
+                            <li>超材料天线 (降低损耗)</li>
+                            <li>能量收集 (太阳能、射频)</li>
+                            <li>液冷散热</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>目标</strong>：比特能耗降低 10-100 倍</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.28 6G 与可持续发展</h3>
+                <ul>
+                    <li><strong>联合国 SDGs 贡献</strong>：
+                        <ul>
+                            <li>优质教育 (远程教育)</li>
+                            <li>良好健康 (远程医疗)</li>
+                            <li>产业创新 (智能制造)</li>
+                            <li>可持续城市 (智慧管理)</li>
+                            <li>气候行动 (环境监测)</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>数字包容</strong>：
+                        <ul>
+                            <li>偏远地区覆盖</li>
+                            <li>可负担的接入</li>
+                            <li>数字技能培训</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.29 6G 时间线预测</h3>
+                <div class="chart-placeholder">
+【图表位置：6G 发展时间线】
+
+2024-2026  关键技术预研
+     │
+     ↓
+2027-2028  标准化制定 (3GPP R21)
+     │
+     ↓
+2029       早期试验网
+     │
+     ↓
+2030       6G 商用启动
+     │
+     ↓
+2032+      规模部署
+     │
+     ↓
+2035+      成熟应用期
+                </div>
+            </section>
+            
+            <section>
+                <h3>6.30 中国在 6G 的布局</h3>
+                <ul>
+                    <li><strong>政策支持</strong>：
+                        <ul>
+                            <li>"十四五"规划重点</li>
+                            <li>IMT-2030(6G) 推进组</li>
+                            <li>国家实验室支持</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>技术优势</strong>：
+                        <ul>
+                            <li>专利领先 (全球 40%+)</li>
+                            <li>太赫兹研究</li>
+                            <li>卫星互联网</li>
+                            <li>应用场景丰富</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>企业参与</strong>：华为、中兴、三大运营商等</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.31 6G 专利竞争格局</h3>
+                <ul>
+                    <li><strong>专利申请趋势</strong>：
+                        <ul>
+                            <li>2020 年起快速增长</li>
+                            <li>中国申请量领先</li>
+                            <li>美日韩欧紧随其后</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>热点技术领域</strong>：
+                        <ul>
+                            <li>太赫兹通信</li>
+                            <li>智能超表面</li>
+                            <li>空天地一体化</li>
+                            <li>AI+ 通信</li>
+                            <li>通感算一体</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.32 6G 测试验证平台</h3>
+                <ul>
+                    <li><strong>中国</strong>：
+                        <ul>
+                            <li>IMT-2030 测试平台</li>
+                            <li>紫金山实验室</li>
+                            <li>华为 6G 测试床</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>国际</strong>：
+                        <ul>
+                            <li>芬兰 6G Flagship</li>
+                            <li>美国 NYU Wireless</li>
+                            <li>韩国 6G Forum</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>测试重点</strong>：太赫兹、RIS、ISAC、AI 空口</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.33 从 5G-Advanced 到 6G</h3>
+                <ul>
+                    <li><strong>5G-Advanced (5.5G)</strong>：
+                        <ul>
+                            <li>3GPP R18/19/20</li>
+                            <li>2024 年开始商用</li>
+                            <li>6G 技术的过渡和验证</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>关键特性</strong>：
+                        <ul>
+                            <li>RedCap (轻量化 5G)</li>
+                            <li>无源 IoT</li>
+                            <li>通感一体初步</li>
+                            <li>AI/ML 增强</li>
+                            <li> NTN 增强</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.34 6G 与 AI 的深度融合</h3>
+                <ul>
+                    <li><strong>AI for Network</strong>：
+                        <ul>
+                            <li>网络优化</li>
+                            <li>故障预测</li>
+                            <li>资源调度</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>Network for AI</strong>：
+                        <ul>
+                            <li>分布式训练</li>
+                            <li>联邦学习</li>
+                            <li>模型分发</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>原生 AI</strong>：
+                        <ul>
+                            <li>空口 AI 化</li>
+                            <li>端到端学习</li>
+                            <li>语义通信</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.35 语义通信</h3>
+                <ul>
+                    <li><strong>概念</strong>：传输"含义"而非"比特"</li>
+                    <li class="fragment"><strong>原理</strong>：
+                        <ul>
+                            <li>提取信息语义</li>
+                            <li>压缩冗余</li>
+                            <li>接收端重建</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>优势</strong>：
+                        <ul>
+                            <li>大幅降低数据量</li>
+                            <li>提升有效性</li>
+                            <li>适应算力场景</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>应用</strong>：图像、语音、视频传输</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.36 6G 网络架构演进</h3>
+                <div class="chart-placeholder">
+【图表位置：6G 网络架构】
+
+        ┌─────────────────┐
+        │   应用层        │ ← 数字孪生、全息
+        └────────┬────────┘
+                 │
+        ┌────────┴────────┐
+        │   控制层        │ ← AI 原生控制
+        └────────┬────────┘
+                 │
+        ┌────────┴────────┐
+        │   转发层        │ ←  RIS+ 分布式
+        └────────┬────────┘
+                 │
+    ┌────────────┼────────────┐
+    │            │            │
+ 地面网      卫星网      高空平台
+ (蜂窝)      (LEO)       (HAPS)
+    
+    空天地海一体化、云边端协同
+                </div>
+            </section>
+            
+            <section>
+                <h3>6.37 边缘智能</h3>
+                <ul>
+                    <li><strong>概念</strong>：AI 推理下沉到网络边缘</li>
+                    <li class="fragment"><strong>优势</strong>：
+                        <ul>
+                            <li>降低时延</li>
+                            <li>减少回传带宽</li>
+                            <li>隐私保护</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>6G 增强</strong>：
+                        <ul>
+                            <li>算网融合</li>
+                            <li>协同推理</li>
+                            <li>模型动态部署</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.38 6G 与区块链</h3>
+                <ul>
+                    <li><strong>应用场景</strong>：
+                        <ul>
+                            <li>去身份认证</li>
+                            <li>频谱共享交易</li>
+                            <li>切片市场</li>
+                            <li>数据确权</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>挑战</strong>：
+                        <ul>
+                            <li>性能瓶颈</li>
+                            <li>存储开销</li>
+                            <li>能耗问题</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>方案</strong>：轻量级共识、分片技术</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.39 6G 频谱共享</h3>
+                <ul>
+                    <li><strong>动态频谱共享</strong>：
+                        <ul>
+                            <li>认知无线电演进</li>
+                            <li>AI 辅助频谱感知</li>
+                            <li>实时频谱接入</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>频谱池化</strong>：
+                        <ul>
+                            <li>多运营商共享</li>
+                            <li>提高利用率</li>
+                            <li>区块链记录</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.40 6G 终端演进</h3>
+                <ul>
+                    <li><strong>新形态</strong>：
+                        <ul>
+                            <li>XR 眼镜</li>
+                            <li>可穿戴设备</li>
+                            <li>植入式设备</li>
+                            <li>智能尘埃</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>新要求</strong>：
+                        <ul>
+                            <li>太赫兹收发</li>
+                            <li>多模多频</li>
+                            <li>超低功耗</li>
+                            <li>AI 加速</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.41 6G 与元宇宙</h3>
+                <ul>
+                    <li><strong>需求匹配</strong>：
+                        <ul>
+                            <li>超高带宽 (全息、XR)</li>
+                            <li>超低时延 (交互)</li>
+                            <li>大规模连接 (用户)</li>
+                            <li>精准定位 (空间计算)</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>6G 使能</strong>：
+                        <ul>
+                            <li>沉浸式体验</li>
+                            <li>虚实融合</li>
+                            <li>数字孪生世界</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.42 6G 伦理与社会影响</h3>
+                <ul>
+                    <li><strong>隐私问题</strong>：
+                        <ul>
+                            <li>感知能力过强</li>
+                            <li>位置追踪</li>
+                            <li>行为分析</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>数字鸿沟</strong>：
+                        <ul>
+                            <li>技术获取不平等</li>
+                            <li>加剧社会分化</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>应对</strong>：
+                        <ul>
+                            <li>隐私设计 (Privacy by Design)</li>
+                            <li>包容性发展</li>
+                            <li>法规完善</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.43 6G 研究热点方向</h3>
+                <ul>
+                    <li>📡 太赫兹器件与系统</li>
+                    <li class="fragment">🪞 智能超表面设计与优化</li>
+                    <li class="fragment">🧠 AI 原生空口与网络</li>
+                    <li class="fragment">🛰️ 空天地海融合</li>
+                    <li class="fragment">📊 通感算一体化</li>
+                    <li class="fragment">🔒 内生安全</li>
+                    <li class="fragment">🌱 绿色节能</li>
+                    <li class="fragment">💬 语义通信</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.44 6G 国际合作与竞争</h3>
+                <ul>
+                    <li><strong>合作</strong>：
+                        <ul>
+                            <li>3GPP 标准化</li>
+                            <li>ITU 框架制定</li>
+                            <li>学术联合研究</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>竞争</strong>：
+                        <ul>
+                            <li>技术主导权</li>
+                            <li>专利布局</li>
+                            <li>产业生态</li>
+                            <li>标准话语权</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.45 6G 投资机会</h3>
+                <ul>
+                    <li>🔬 <strong>基础研究</strong>：太赫兹、新材料</li>
+                    <li class="fragment">🏭 <strong>器件制造</strong>：芯片、天线、RIS</li>
+                    <li class="fragment">📱 <strong>终端设备</strong>：XR、可穿戴</li>
+                    <li class="fragment">🌐 <strong>网络建设</strong>：基站、卫星</li>
+                    <li class="fragment">💡 <strong>应用开发</strong>：垂直行业解决方案</li>
+                    <li class="fragment">🔒 <strong>安全服务</strong>：量子安全、隐私保护</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.46 6G 人才培养</h3>
+                <ul>
+                    <li><strong>跨学科需求</strong>：
+                        <ul>
+                            <li>通信 +AI</li>
+                            <li>通信 + 材料</li>
+                            <li>通信 + 量子</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>培养方向</strong>：
+                        <ul>
+                            <li>基础理论研究</li>
+                            <li>系统设计与实现</li>
+                            <li>标准与专利</li>
+                            <li>应用创新</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.47 6G 展望：2030+</h3>
+                <ul>
+                    <li>🌍 <strong>全球无缝覆盖</strong>：任何时间、任何地点</li>
+                    <li class="fragment">🧠 <strong>智慧泛在</strong>：AI 融入每个比特</li>
+                    <li class="fragment">🪞 <strong>数字孪生</strong>：物理与虚拟融合</li>
+                    <li class="fragment">🤖 <strong>智能体互联</strong>：人机物深度融合</li>
+                    <li class="fragment">♾️ <strong>无限可能</strong>：新应用不断涌现</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.48 总结：6G 的变革意义</h3>
+                <ul>
+                    <li><strong>技术层面</strong>：
+                        <ul>
+                            <li>性能数量级提升</li>
+                            <li>新频谱、新架构、新技术</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>产业层面</strong>：
+                        <ul>
+                            <li>万亿级市场</li>
+                            <li>全产业链升级</li>
+                        </ul>
+                    </li>
+                    <li class="fragment"><strong>社会层面</strong>：
+                        <ul>
+                            <li>数字化转型加速</li>
+                            <li>生活方式变革</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.49 学习资源推荐</h3>
+                <ul>
+                    <li>📚 <strong>标准文档</strong>：ITU-R、3GPP</li>
+                    <li class="fragment">📰 <strong>行业报告</strong>：GSMA、爱立信、华为</li>
+                    <li class="fragment">🎓 <strong>学术论文</strong>：IEEE、ACM</li>
+                    <li class="fragment">🌐 <strong>开源项目</strong>：O-RAN、srsRAN</li>
+                    <li class="fragment">💻 <strong>仿真工具</strong>：NS-3、MATLAB</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>6.50 第三部分总结</h3>
+                <p>6G 网络前沿技术</p>
+                <ul>
+                    <li>✓ 6G 愿景：万物智联，数字孪生</li>
+                    <li>✓ 关键技术：太赫兹、RIS、AI 原生、通感算一体</li>
+                    <li>✓ 空天地海一体化覆盖</li>
+                    <li>✓ 2030 年商用，现在正是研究关键期</li>
+                </ul>
+            </section>
+
+            <!-- 结束页 -->
+            <section class="title-slide">
+                <h1>🎓 课程结束</h1>
+                <h2>物联网网络层技术</h2>
+                <p>感谢学习！</p>
+                <div class="chart-placeholder" style="margin-top: 50px;">
+【完整内容总结】
+
+第一部分：互联网历史与网络基础 (50 页)
+  - 互联网发展历程
+  - OSI 七层模型
+  - TCP/IP 协议栈
+  - 网络层核心概念
+
+第二部分：无线局域网技术 (20 页)
+  - LoRa 广域物联网
+  - WiFi 高速接入
+  - Zigbee 智能家居
+
+第三部分：6G 网络前沿 (50 页)
+  - 6G 愿景与目标
+  - 太赫兹、RIS、AI 原生
+  - 空天地海一体化
+  - 挑战与展望
+
+总计：120+ 页
+                </div>
+                <p style="margin-top: 30px; font-size: 0.6em;">
+                    📁 文件位置：ppt-output/iot-network-ppt.html<br>
+                    🌐 用浏览器打开即可演示和编辑
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script>
+        // 以文档模式显示，而非幻灯片模式
+        Reveal.initialize({
+            hash: false,
+            slideNumber: false,
+            controls: false,
+            progress: false,
+            center: false,
+            width: 1200,
+            height: null,
+            margin: 0.1,
+            transition: 'none',
+            minScale: 1,
+            maxScale: 1,
+            // 禁用键盘导航和触摸
+            keyboard: false,
+            touch: false,
+            // 禁用鼠标滚轮导航
+            mouseWheel: false
+        });
+        
+        // 强制所有幻灯片显示为块级元素
+        document.addEventListener('DOMContentLoaded', function() {
+            var sections = document.querySelectorAll('.reveal .slides section');
+            sections.forEach(function(section) {
+                section.style.display = 'block';
+                section.style.position = 'relative';
+                section.style.top = 'auto';
+                section.style.left = 'auto';
+                section.style.transform = 'none';
+                section.style.opacity = '1';
+                section.style.visibility = 'visible';
+            });
+        });
+    </script>
+</body>
+</html>

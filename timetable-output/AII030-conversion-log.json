@@ -1,0 +1,16 @@
+{
+  "course_code": "AII030",
+  "course_name": "无线电频率工程",
+  "total_entries": 27,
+  "unparseable": [],
+  "conflicts": [
+    "Conflict at Wednesday Class 3",
+    "Conflict at Wednesday Class 4",
+    "Conflict at Thursday Class 6",
+    "Conflict at Thursday Class 7",
+    "Conflict at Thursday Class 8"
+  ],
+  "notes": [],
+  "converted_entries": 42,
+  "timestamp": "2026-05-25T04:36:40.481607"
+}

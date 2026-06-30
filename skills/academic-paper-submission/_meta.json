@@ -1,0 +1,10 @@
+{
+  "name": "academic-paper-submission",
+  "displayName": "学术论文投稿流程",
+  "version": "1.0.0",
+  "description": "学术论文投稿流程指南 - 期刊选择、材料准备、投稿信模板、审稿流程跟踪",
+  "author": "诸葛斌 (根据 Manus AI 设计)",
+  "tags": ["academic", "paper", "submission", "journal", "publishing", "学术", "论文", "投稿"],
+  "createdAt": "2026-03-29T09:25:00+08:00",
+  "license": "MIT"
+}

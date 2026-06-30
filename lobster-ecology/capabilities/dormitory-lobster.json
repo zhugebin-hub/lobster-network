@@ -1,0 +1,83 @@
+{
+  "lobster_id": "lobster-dorm-001",
+  "lobster_name": "新生选寝小龙虾",
+  "version": "1.0.0",
+  "status": "online",
+  "server_ip": "172.24.57.34",
+  "mcp_endpoint": "http://172.24.57.34:8765/api",
+  "capabilities": [
+    {
+      "name": "match_dormitories",
+      "description": "读取官方新生名单与问卷表，自动生成宿舍分配方案",
+      "input": {
+        "official_file": "string (xlsx/csv/tsv)",
+        "survey_file": "string (xlsx/csv/tsv)",
+        "room_size": "number (2-8, default 4)"
+      },
+      "output": {
+        "plan_id": "string",
+        "summary": "总人数/寝室数/挂起数/冲突数",
+        "warnings": "array",
+        "advice": "array"
+      }
+    },
+    {
+      "name": "get_plan_summary",
+      "description": "获取方案摘要：总人数、寝室数、挂起人数、冲突寝室数",
+      "input": { "plan_id": "string" },
+      "output": { "summary": "object", "warnings": "array", "advice": "array" }
+    },
+    {
+      "name": "query_student",
+      "description": "查找学生画像与当前位置（支持姓名/学号/城市/学校搜索）",
+      "input": { "plan_id": "string", "keyword": "string" },
+      "output": { "count": "number", "students": "array" }
+    },
+    {
+      "name": "query_rooms",
+      "description": "查询房间列表（支持性别过滤、只看风险、关键词搜索）",
+      "input": { "plan_id": "string", "gender": "string?", "risk_only": "boolean?", "keyword": "string?" },
+      "output": { "rooms": "array", "suspended_count": "number", "suspended": "array" }
+    },
+    {
+      "name": "move_student",
+      "description": "移动学生到指定寝室或挂起池",
+      "input": { "plan_id": "string", "student_key": "string", "target_room_id": "string" },
+      "output": { "ok": "boolean", "message": "string" }
+    },
+    {
+      "name": "swap_students",
+      "description": "互换两个学生的位置",
+      "input": { "plan_id": "string", "student_a": "string", "student_b": "string" },
+      "output": { "ok": "boolean", "message": "string" }
+    },
+    {
+      "name": "move_to_suspended",
+      "description": "将学生移入混寝挂起池",
+      "input": { "plan_id": "string", "student_key": "string" },
+      "output": { "ok": "boolean", "message": "string" }
+    },
+    {
+      "name": "save_version",
+      "description": "保存当前方案为命名版本",
+      "input": { "plan_id": "string", "version_name": "string" },
+      "output": { "ok": "boolean", "version_id": "string" }
+    },
+    {
+      "name": "restore_version",
+      "description": "恢复历史版本方案",
+      "input": { "version_id": "string" },
+      "output": { "ok": "boolean", "plan_id": "string" }
+    },
+    {
+      "name": "export_assignment",
+      "description": "导出寝室分配方案为 Excel（三张工作表）",
+      "input": { "plan_id": "string" },
+      "output": { "ok": "boolean", "output_path": "string" }
+    }
+  ],
+  "tags": ["education", "dormitory", "assignment", "freshman"],
+  "description": "新生宿舍智能分配业务小龙虾，支持导入名单+问卷、智能匹配、人工调整、版本管理、Excel 导出",
+  "auth_type": "Bearer Token",
+  "created_at": "2026-06-15T20:52:00+08:00"
+}

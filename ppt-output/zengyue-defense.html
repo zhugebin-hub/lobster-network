@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>庄子与保罗的死亡观比较研究 — 答辩陈述</title>
+  <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/tailwindcss/3.0.23/tailwind.min.js"></script>
+  <link href="https://fonts.loli.net/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans SC', 'Inter', sans-serif; background: #000; color: #fff; overflow: hidden; }
+    .slides-container { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; background: #0a0a0a; }
+    .slide {
+      width: 100%; height: 100%; max-width: 450px; max-height: 800px;
+      aspect-ratio: 9/16; position: absolute; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding: 2rem;
+      opacity: 0; transform: translateX(100%);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden; background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+    }
+    .slide.active { opacity: 1; transform: translateX(0); }
+    .slide.prev { opacity: 0; transform: translateX(-100%); }
+    .light-spot { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.3; pointer-events: none; }
+    .ls1 { width: 300px; height: 300px; background: #3b82f6; top: -100px; right: -100px; animation: f1 20s ease-in-out infinite; }
+    .ls2 { width: 250px; height: 250px; background: #8b5cf6; bottom: -80px; left: -80px; animation: f2 25s ease-in-out infinite; }
+    .ls3 { width: 200px; height: 200px; background: #06b6d4; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: f3 18s ease-in-out infinite; }
+    .ls4 { width: 280px; height: 280px; background: #f59e0b; top: 20%; right: -80px; animation: f1 22s ease-in-out infinite reverse; }
+    .ls5 { width: 220px; height: 220px; background: #10b981; bottom: 10%; left: -60px; animation: f2 20s ease-in-out infinite reverse; }
+    @keyframes f1 { 0%,100%{transform:translate(0,0)} 25%{transform:translate(-50px,30px)} 50%{transform:translate(30px,50px)} 75%{transform:translate(50px,-20px)} }
+    @keyframes f2 { 0%,100%{transform:translate(0,0)} 33%{transform:translate(40px,-40px)} 66%{transform:translate(-30px,30px)} }
+    @keyframes f3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.2)} }
+    .slide-content { position: relative; z-index: 10; text-align: center; width: 100%; }
+    .progress-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 100; }
+    .progress-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s; }
+    .progress-dot.active { background: #fff; transform: scale(1.3); }
+    .progress-dot:hover { background: rgba(255,255,255,0.6); }
+    .page-number { position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%); font-size: 0.875rem; color: rgba(255,255,255,0.4); z-index: 100; }
+    .divider { width: 40px; height: 2px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); margin: 1rem auto; border-radius: 1px; }
+    .tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; }
+    .tag-blue { background: rgba(59,130,246,0.2); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+    .tag-purple { background: rgba(139,92,246,0.2); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+    .tag-cyan { background: rgba(6,182,212,0.2); color: #22d3ee; border: 1px solid rgba(6,182,212,0.3); }
+    .tag-amber { background: rgba(245,158,11,0.2); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+    .tag-green { background: rgba(16,185,129,0.2); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+    .compare-box { display: flex; gap: 1rem; width: 100%; margin-top: 1rem; }
+    .compare-half { flex: 1; padding: 1rem; border-radius: 12px; text-align: center; }
+    .compare-left { background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); }
+    .compare-right { background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2); }
+    .arrow-icon { font-size: 2rem; color: rgba(255,255,255,0.3); align-self: center; }
+    .highlight { background: linear-gradient(90deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  </style>
+</head>
+<body>
+  <div class="slides-container">
+
+    <!-- Slide 1: 封面 -->
+    <div class="slide active">
+      <div class="light-spot ls1"></div>
+      <div class="light-spot ls2"></div>
+      <div class="slide-content">
+        <span class="tag tag-blue mb-8 inline-block">浙江省双通人才研修班</span>
+        <h1 class="text-4xl font-black mb-4 leading-tight">庄子与保罗的<br>死亡观比较研究</h1>
+        <div class="divider"></div>
+        <p class="text-lg font-light text-gray-400 mb-8">A Comparative Study of Zhuangzi's and Paul's Views on Death</p>
+        <div class="text-left space-y-2 text-sm text-gray-500">
+          <p>作者：曾跃</p>
+          <p>导师：蒋伟胜 副教授</p>
+          <p>研究方向：文化比较研究</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: 冲击页 -->
+    <div class="slide">
+      <div class="light-spot ls3"></div>
+      <div class="light-spot ls4"></div>
+      <div class="slide-content">
+        <h1 class="text-5xl font-black leading-tight">
+          生死之间<br>
+          <span class="highlight">殊途同归</span>
+        </h1>
+        <p class="text-lg font-light text-gray-500 mt-6">跨越两千年的中西对话</p>
+      </div>
+    </div>
+
+    <!-- Slide 3: 研究问题 -->
+    <div class="slide">
+      <div class="light-spot ls1"></div>
+      <div class="light-spot ls5"></div>
+      <div class="slide-content">
+        <span class="tag tag-blue mb-6 inline-block">研究问题</span>
+        <h2 class="text-2xl font-bold mb-8">为什么比较庄子与保罗？</h2>
+        <div class="space-y-4 text-left">
+          <div class="flex items-start gap-3">
+            <span class="text-blue-400 text-xl mt-1">◆</span>
+            <p class="text-gray-300 text-sm">庄子：先秦道家对死亡思考最深的哲学家</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-purple-400 text-xl mt-1">◆</span>
+            <p class="text-gray-300 text-sm">保罗：早期基督教最重要的神学家</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-cyan-400 text-xl mt-1">◆</span>
+            <p class="text-gray-300 text-sm">自然主义哲学 vs 启示神学</p>
+          </div>
+        </div>
+        <div class="mt-8 pt-4 border-t border-gray-800">
+          <p class="text-sm text-gray-500">现有研究：多集中于单一传统内部<br>本文尝试：将二者置于同一对话平台</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: 研究方法 -->
+    <div class="slide">
+      <div class="light-spot ls2"></div>
+      <div class="light-spot ls4"></div>
+      <div class="slide-content">
+        <span class="tag tag-purple mb-6 inline-block">研究方法</span>
+        <h2 class="text-2xl font-bold mb-8">三种方法</h2>
+        <div class="space-y-5 w-full">
+          <div class="text-left p-4 rounded-xl bg-white/5 border border-white/10">
+            <span class="text-3xl font-black text-blue-400">01</span>
+            <h3 class="text-lg font-bold mt-1">文献研究法</h3>
+            <p class="text-xs text-gray-500 mt-1">《庄子》原文 + 保罗书信 + 44条参考文献</p>
+          </div>
+          <div class="text-left p-4 rounded-xl bg-white/5 border border-white/10">
+            <span class="text-3xl font-black text-purple-400">02</span>
+            <h3 class="text-lg font-bold mt-1">比较研究法</h3>
+            <p class="text-xs text-gray-500 mt-1">认知 · 态度 · 社会影响 三维比较</p>
+          </div>
+          <div class="text-left p-4 rounded-xl bg-white/5 border border-white/10">
+            <span class="text-3xl font-black text-cyan-400">03</span>
+            <h3 class="text-lg font-bold mt-1">跨学科研究法</h3>
+            <p class="text-xs text-gray-500 mt-1">哲学 × 神学 × 伦理学 × 文化学</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: 庄子死亡观 -->
+    <div class="slide">
+      <div class="light-spot ls1"></div>
+      <div class="light-spot ls3"></div>
+      <div class="slide-content">
+        <span class="tag tag-blue mb-6 inline-block">庄子</span>
+        <h2 class="text-3xl font-black mb-2">由智入静</h2>
+        <p class="text-sm text-gray-500 mb-6">自然主义的生死智慧</p>
+        <div class="space-y-3 text-left">
+          <div class="p-3 rounded-lg bg-blue-500/10 border border-blue-500/20">
+            <p class="text-blue-300 font-bold text-sm">道通为一</p>
+            <p class="text-xs text-gray-400 mt-1">死亡是"气之散"，反其真</p>
+          </div>
+          <div class="p-3 rounded-lg bg-blue-500/10 border border-blue-500/20">
+            <p class="text-blue-300 font-bold text-sm">安时处顺</p>
+            <p class="text-xs text-gray-400 mt-1">生死如四季更替，坦然接受</p>
+          </div>
+          <div class="p-3 rounded-lg bg-blue-500/10 border border-blue-500/20">
+            <p class="text-blue-300 font-bold text-sm">悬解逍遥</p>
+            <p class="text-xs text-gray-400 mt-1">解除倒悬，精神绝对自由</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6: 保罗死亡观 -->
+    <div class="slide">
+      <div class="light-spot ls2"></div>
+      <div class="light-spot ls4"></div>
+      <div class="slide-content">
+        <span class="tag tag-purple mb-6 inline-block">保罗</span>
+        <h2 class="text-3xl font-black mb-2">由信入望</h2>
+        <p class="text-sm text-gray-500 mb-6">启示神学的复活盼望</p>
+        <div class="space-y-3 text-left">
+          <div class="p-3 rounded-lg bg-purple-500/10 border border-purple-500/20">
+            <p class="text-purple-300 font-bold text-sm">罪的工价</p>
+            <p class="text-xs text-gray-400 mt-1">死亡是罪的后果，人神关系断裂</p>
+          </div>
+          <div class="p-3 rounded-lg bg-purple-500/10 border border-purple-500/20">
+            <p class="text-purple-300 font-bold text-sm">复活盼望</p>
+            <p class="text-xs text-gray-400 mt-1">基督复活击败死亡权势</p>
+          </div>
+          <div class="p-3 rounded-lg bg-purple-500/10 border border-purple-500/20">
+            <p class="text-purple-300 font-bold text-sm">与基督联合</p>
+            <p class="text-xs text-gray-400 mt-1">同死同复活，离世即得着</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7: 比较 — 认知 -->
+    <div class="slide">
+      <div class="light-spot ls3"></div>
+      <div class="light-spot ls5"></div>
+      <div class="slide-content">
+        <span class="tag tag-cyan mb-6 inline-block">比较 · 认知</span>
+        <h2 class="text-2xl font-bold mb-6">循环 vs 线性</h2>
+        <div class="compare-box">
+          <div class="compare-half compare-left">
+            <p class="text-blue-400 font-bold text-lg">庄子</p>
+            <p class="text-xs text-gray-400 mt-2">自然循环</p>
+            <p class="text-xs text-gray-500 mt-3">气化生死<br>死生一如<br>方生方死</p>
+          </div>
+          <div class="compare-half compare-right">
+            <p class="text-purple-400 font-bold text-lg">保罗</p>
+            <p class="text-xs text-gray-400 mt-2">线性救赎</p>
+            <p class="text-xs text-gray-500 mt-3">创造→堕落<br>救赎→成全<br>复活得胜</p>
+          </div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-gray-800">
+          <p class="text-xs text-gray-500">共性：都承认人的有限性<br>都借助高于个体的力量超越死亡</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 8: 比较 — 态度 -->
+    <div class="slide">
+      <div class="light-spot ls1"></div>
+      <div class="light-spot ls2"></div>
+      <div class="slide-content">
+        <span class="tag tag-amber mb-6 inline-block">比较 · 态度</span>
+        <h2 class="text-2xl font-bold mb-6">无情 vs 哀情</h2>
+        <div class="compare-box">
+          <div class="compare-half compare-left">
+            <p class="text-blue-400 font-bold text-lg">庄子</p>
+            <p class="text-xs text-gray-400 mt-2">以理化情</p>
+            <p class="text-xs text-gray-500 mt-3">鼓盆而歌<br>哀乐不能入<br>由智入静</p>
+          </div>
+          <div class="compare-half compare-right">
+            <p class="text-purple-400 font-bold text-lg">保罗</p>
+            <p class="text-xs text-gray-400 mt-2">以信化惧</p>
+            <p class="text-xs text-gray-500 mt-3">有指望的忧伤<br>死是得着<br>由信入望</p>
+          </div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-gray-800">
+          <p class="text-xs text-gray-500">都拒绝让恐惧支配生命<br>都主张情感需要被转化而非压抑</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 9: 金句页 -->
+    <div class="slide">
+      <div class="light-spot ls3"></div>
+      <div class="light-spot ls4"></div>
+      <div class="slide-content">
+        <span class="text-6xl text-gray-700 block mb-4">"</span>
+        <p class="text-xl font-bold mb-6 leading-relaxed">
+          庄子以"道"消解生死界限<br>
+          保罗以"复活"战胜死亡权势<br><br>
+          <span class="highlight">二者殊途同归</span>
+        </p>
+        <span class="text-sm font-light text-gray-500">— 共同指向生命尊严的维护</span>
+      </div>
+    </div>
+
+    <!-- Slide 10: 现代意义 -->
+    <div class="slide">
+      <div class="light-spot ls5"></div>
+      <div class="light-spot ls1"></div>
+      <div class="slide-content">
+        <span class="tag tag-green mb-6 inline-block">现代意义</span>
+        <h2 class="text-2xl font-bold mb-6">视域融合</h2>
+        <div class="space-y-4 w-full">
+          <div class="text-left p-4 rounded-xl bg-white/5 border border-white/10">
+            <p class="text-green-400 font-bold">🏥 临终关怀</p>
+            <p class="text-xs text-gray-400 mt-1">庄子：化解恐惧 · 保罗：赋予意义</p>
+          </div>
+          <div class="text-left p-4 rounded-xl bg-white/5 border border-white/10">
+            <p class="text-green-400 font-bold">📚 死亡教育</p>
+            <p class="text-xs text-gray-400 mt-1">自然主义生死观 + 复活盼望</p>
+          </div>
+          <div class="text-left p-4 rounded-xl bg-white/5 border border-white/10">
+            <p class="text-green-400 font-bold">🌍 跨文化对话</p>
+            <p class="text-xs text-gray-400 mt-1">构建人类命运共同体的生死观基础</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 11: 结论 -->
+    <div class="slide">
+      <div class="light-spot ls2"></div>
+      <div class="light-spot ls4"></div>
+      <div class="slide-content">
+        <span class="tag tag-amber mb-6 inline-block">研究结论</span>
+        <h2 class="text-2xl font-bold mb-8">三点核心发现</h2>
+        <div class="space-y-5 w-full">
+          <div class="text-left flex items-start gap-3">
+            <span class="text-2xl font-black text-blue-400">壹</span>
+            <div>
+              <p class="text-sm font-bold">各具特质，互为补充</p>
+              <p class="text-xs text-gray-500 mt-1">认知、态度、实践三维度的差异与互补</p>
+            </div>
+          </div>
+          <div class="text-left flex items-start gap-3">
+            <span class="text-2xl font-black text-purple-400">贰</span>
+            <div>
+              <p class="text-sm font-bold">视域融合，实现互鉴</p>
+              <p class="text-xs text-gray-500 mt-1">不是求同存异，而是通过间距实现深层对话</p>
+            </div>
+          </div>
+          <div class="text-left flex items-start gap-3">
+            <span class="text-2xl font-black text-cyan-400">叁</span>
+            <div>
+              <p class="text-sm font-bold">当代实践，互补价值</p>
+              <p class="text-xs text-gray-500 mt-1">为临终关怀、死亡教育、跨文化对话提供资源</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 12: 不足与展望 -->
+    <div class="slide">
+      <div class="light-spot ls3"></div>
+      <div class="light-spot ls5"></div>
+      <div class="slide-content">
+        <span class="tag tag-blue mb-6 inline-block">研究不足</span>
+        <h2 class="text-2xl font-bold mb-6">三点反思</h2>
+        <div class="space-y-4 w-full">
+          <div class="text-left p-3 rounded-lg bg-white/5 border border-white/10">
+            <p class="text-sm font-bold text-gray-300">① 文本分析深度</p>
+            <p class="text-xs text-gray-500 mt-1">外篇杂篇挖掘不足，希腊文词源考释有限</p>
+          </div>
+          <div class="text-left p-3 rounded-lg bg-white/5 border border-white/10">
+            <p class="text-sm font-bold text-gray-300">② 历史语境还原</p>
+            <p class="text-xs text-gray-500 mt-1">战国乱世 vs 罗马帝国，社会机制比较待深化</p>
+          </div>
+          <div class="text-left p-3 rounded-lg bg-white/5 border border-white/10">
+            <p class="text-sm font-bold text-gray-300">③ 实践转化效度</p>
+            <p class="text-xs text-gray-500 mt-1">缺乏实证研究与案例分析，需走向实践</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 13: 结尾 -->
+    <div class="slide">
+      <div class="light-spot ls1"></div>
+      <div class="light-spot ls2"></div>
+      <div class="light-spot ls3"></div>
+      <div class="slide-content">
+        <h1 class="text-3xl font-black mb-6 leading-tight">
+          愿以更大的智慧<br>与更深的盼望<br>
+          <span class="highlight">活出有意义的人生</span>
+        </h1>
+        <div class="divider"></div>
+        <p class="text-lg font-light text-gray-400 mt-6">感谢各位评审老师</p>
+        <p class="text-sm text-gray-600 mt-2">恳请批评指正</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 进度条 -->
+  <div class="progress-bar" id="progressBar"></div>
+  <div class="page-number" id="pageNumber">1 / 13</div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const progressBar = document.getElementById('progressBar');
+    const pageNumber = document.getElementById('pageNumber');
+    let currentSlide = 0;
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.className = `progress-dot ${index === 0 ? 'active' : ''}`;
+      dot.addEventListener('click', () => goToSlide(index));
+      progressBar.appendChild(dot);
+    });
+
+    function updateSlides() {
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active', 'prev');
+        if (index === currentSlide) slide.classList.add('active');
+        else if (index < currentSlide) slide.classList.add('prev');
+      });
+      document.querySelectorAll('.progress-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+      pageNumber.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    function nextSlide() { if (currentSlide < slides.length - 1) { currentSlide++; updateSlides(); } }
+    function prevSlide() { if (currentSlide > 0) { currentSlide--; updateSlides(); } }
+    function goToSlide(index) { currentSlide = index; updateSlides(); }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+      else if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+    document.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) { diff > 0 ? nextSlide() : prevSlide(); }
+    });
+  </script>
+</body>
+</html>

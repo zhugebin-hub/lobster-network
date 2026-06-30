@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学校食堂菜单管理系统</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-plus@2.5.6/dist/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.4.21/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/element-plus@2.5.6/dist/index.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/element-plus@2.5.6/dist/locale/zh-cn.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft YaHei', sans-serif; background: #f5f7fa; }
+        .app-container { min-height: 100vh; }
+        .login-container { 
+            display: flex; justify-content: center; align-items: center; 
+            height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .login-box { 
+            background: white; padding: 40px; border-radius: 10px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2); width: 400px;
+        }
+        .login-title { text-align: center; margin-bottom: 30px; color: #333; }
+        .main-header { 
+            background: white; padding: 0 20px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-content { 
+            display: flex; justify-content: space-between; align-items: center; 
+            height: 60px; max-width: 1400px; margin: 0 auto;
+        }
+        .logo { font-size: 20px; font-weight: bold; color: #667eea; }
+        .main-content { max-width: 1400px; margin: 20px auto; padding: 0 20px; }
+        .card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .card-title { font-size: 18px; font-weight: bold; margin-bottom: 20px; color: #333; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 20px; }
+        .stat-card { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            color: white; padding: 20px; border-radius: 8px; text-align: center;
+        }
+        .stat-number { font-size: 32px; font-weight: bold; }
+        .stat-label { opacity: 0.9; margin-top: 5px; }
+        .table-container { overflow-x: auto; }
+        .action-buttons { display: flex; gap: 8px; }
+        .week-selector { display: flex; gap: 10px; align-items: center; margin-bottom: 20px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; }
+        .day-card { 
+            background: #f8f9fa; border-radius: 8px; padding: 15px; 
+            border: 1px solid #e9ecef;
+        }
+        .day-header { 
+            font-weight: bold; text-align: center; padding: 10px; 
+            background: #667eea; color: white; border-radius: 6px; margin-bottom: 10px;
+        }
+        .meal-section { margin-bottom: 15px; }
+        .meal-label { 
+            font-size: 12px; color: #666; background: #e9ecef; 
+            padding: 4px 8px; border-radius: 4px; display: inline-block; margin-bottom: 5px;
+        }
+        .dish-item { 
+            background: white; padding: 10px; border-radius: 6px; 
+            margin-bottom: 8px; border-left: 3px solid #667eea;
+        }
+        .dish-name { font-weight: bold; color: #333; }
+        .dish-info { font-size: 12px; color: #666; margin-top: 5px; }
+        .print-area { background: white; padding: 40px; }
+        @media print {
+            .no-print { display: none !important; }
+            .print-area { box-shadow: none; }
+        }
+        .status-badge { padding: 4px 12px; border-radius: 12px; font-size: 12px; }
+        .status-draft { background: #f0f0f0; color: #666; }
+        .status-pending { background: #fff7e6; color: #fa8c16; }
+        .status-reviewed { background: #e6f7ff; color: #1890ff; }
+        .status-published { background: #f6ffed; color: #52c41a; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 登录页面 -->
+        <div v-if="!currentUser" class="login-container">
+            <div class="login-box">
+                <h1 class="login-title">🍽️ 学校食堂菜单管理系统</h1>
+                <el-form :model="loginForm" label-width="80px">
+                    <el-form-item label="用户名">
+                        <el-input v-model="loginForm.username" placeholder="请输入用户名"></el-input>
+                    </el-form-item>
+                    <el-form-item label="密码">
+                        <el-input v-model="loginForm.password" type="password" placeholder="请输入密码" @keyup.enter="handleLogin"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" @click="handleLogin" style="width: 100%">登录</el-button>
+                    </el-form-item>
+                </el-form>
+            </div>
+        </div>
+
+        <!-- 主界面 -->
+        <div v-else class="app-container">
+            <!-- 顶部导航 -->
+            <header class="main-header">
+                <div class="header-content">
+                    <div class="logo">🍽️ 学校食堂菜单管理系统</div>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <span>{{ currentUser.real_name }} ({{ roleNames[currentUser.role] }})</span>
+                        <el-button size="small" @click="handleLogout">退出</el-button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 主内容区 -->
+            <div class="main-content">
+                <!-- 导航标签 -->
+                <el-tabs v-model="activeTab" @tab-change="handleTabChange">
+                    <el-tab-pane label="📊 概览" name="dashboard"></el-tab-pane>
+                    <el-tab-pane label="🥬 原材料管理" name="ingredients"></el-tab-pane>
+                    <el-tab-pane label="🍳 菜品管理" name="dishes"></el-tab-pane>
+                    <el-tab-pane label="📅 周菜单制定" name="weekly-menus"></el-tab-pane>
+                    <el-tab-pane label="👥 用户管理" name="users" v-if="currentUser.role === 1"></el-tab-pane>
+                    <el-tab-pane label="📝 操作日志" name="logs" v-if="currentUser.role === 1"></el-tab-pane>
+                </el-tabs>
+
+                <!-- 概览页面 -->
+                <div v-if="activeTab === 'dashboard'" class="card">
+                    <div class="card-title">本周菜单概览</div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">{{ stats.totalDishes }}</div>
+                            <div class="stat-label">菜品总数</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">{{ stats.thisWeekMenus }}</div>
+                            <div class="stat-label">本周菜单</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">{{ stats.pendingReview }}</div>
+                            <div class="stat-label">待审核</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">{{ stats.totalIngredients }}</div>
+                            <div class="stat-label">原材料种类</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 原材料管理 -->
+                <div v-if="activeTab === 'ingredients'" class="card">
+                    <div class="card-title">
+                        🥬 原材料管理
+                        <el-button type="primary" size="small" @click="showIngredientDialog()" style="float: right">+ 新增原材料</el-button>
+                    </div>
+                    <el-table :data="ingredients" style="width: 100%">
+                        <el-table-column prop="name" label="名称" width="150"></el-table-column>
+                        <el-table-column prop="category" label="类别" width="100"></el-table-column>
+                        <el-table-column prop="unit" label="单位" width="80"></el-table-column>
+                        <el-table-column prop="unit_price" label="单价 (元)" width="100"></el-table-column>
+                        <el-table-column prop="supplier" label="供应商"></el-table-column>
+                        <el-table-column label="操作" width="200">
+                            <template #default="scope">
+                                <div class="action-buttons">
+                                    <el-button size="small" @click="showIngredientDialog(scope.row)">编辑</el-button>
+                                    <el-button size="small" type="danger" @click="deleteIngredient(scope.row.id)" v-if="currentUser.role === 1">删除</el-button>
+                                </div>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                </div>
+
+                <!-- 菜品管理 -->
+                <div v-if="activeTab === 'dishes'" class="card">
+                    <div class="card-title">
+                        🍳 菜品管理
+                        <el-button type="primary" size="small" @click="showDishDialog()" style="float: right">+ 新增菜品</el-button>
+                    </div>
+                    <el-table :data="dishes" style="width: 100%">
+                        <el-table-column prop="name" label="菜名" width="150"></el-table-column>
+                        <el-table-column prop="category" label="类别" width="100"></el-table-column>
+                        <el-table-column prop="prep_time" label="切配时间" width="100">
+                            <template #default="scope">{{ scope.row.prep_time }}分钟</template>
+                        </el-table-column>
+                        <el-table-column prop="cook_time" label="烹饪时间" width="100">
+                            <template #default="scope">{{ scope.row.cook_time }}分钟</template>
+                        </el-table-column>
+                        <el-table-column prop="base_cost" label="成本 (元)" width="100"></el-table-column>
+                        <el-table-column label="操作" width="200">
+                            <template #default="scope">
+                                <div class="action-buttons">
+                                    <el-button size="small" @click="showDishDialog(scope.row)">编辑</el-button>
+                                    <el-button size="small" type="danger" @click="deleteDish(scope.row.id)" v-if="currentUser.role === 1">删除</el-button>
+                                </div>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                </div>
+
+                <!-- 周菜单管理 -->
+                <div v-if="activeTab === 'weekly-menus'" class="card">
+                    <div class="card-title">
+                        📅 周菜单制定
+                        <el-button type="primary" size="small" @click="showWeeklyMenuDialog()" style="float: right">+ 新建周菜单</el-button>
+                    </div>
+                    
+                    <el-table :data="weeklyMenus" style="width: 100%">
+                        <el-table-column prop="week_start" label="周开始日期" width="150"></el-table-column>
+                        <el-table-column prop="week_end" label="周结束日期" width="150"></el-table-column>
+                        <el-table-column prop="created_name" label="创建人" width="100"></el-table-column>
+                        <el-table-column label="状态" width="100">
+                            <template #default="scope">
+                                <span class="status-badge" :class="'status-' + statusKeys[scope.row.status]">
+                                    {{ statusNames[scope.row.status] }}
+                                </span>
+                            </template>
+                        </el-table-column>
+                        <el-table-column label="操作" width="300">
+                            <template #default="scope">
+                                <div class="action-buttons">
+                                    <el-button size="small" @click="viewWeeklyMenu(scope.row)">查看</el-button>
+                                    <el-button size="small" @click="editWeeklyMenu(scope.row)" v-if="scope.row.status === 1">编辑</el-button>
+                                    <el-button size="small" type="success" @click="showReviewDialog(scope.row)" v-if="scope.row.status === 2 && currentUser.role >= 2">审核</el-button>
+                                    <el-button size="small" @click="exportMenu(scope.row.id)">导出 Excel</el-button>
+                                    <el-button size="small" @click="printMenu(scope.row)">打印</el-button>
+                                </div>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                </div>
+
+                <!-- 用户管理 -->
+                <div v-if="activeTab === 'users'" class="card">
+                    <div class="card-title">
+                        👥 用户管理
+                        <el-button type="primary" size="small" @click="showUserDialog()" style="float: right">+ 新增用户</el-button>
+                    </div>
+                    <el-table :data="users" style="width: 100%">
+                        <el-table-column prop="username" label="用户名" width="150"></el-table-column>
+                        <el-table-column prop="real_name" label="姓名" width="100"></el-table-column>
+                        <el-table-column label="角色" width="100">
+                            <template #default="scope">{{ roleNames[scope.row.role] }}</template>
+                        </el-table-column>
+                        <el-table-column prop="created_at" label="创建时间"></el-table-column>
+                    </el-table>
+                </div>
+
+                <!-- 操作日志 -->
+                <div v-if="activeTab === 'logs'" class="card">
+                    <div class="card-title">📝 操作日志</div>
+                    <el-table :data="logs" style="width: 100%">
+                        <el-table-column prop="user_name" label="操作人" width="100"></el-table-column>
+                        <el-table-column prop="action" label="操作" width="150"></el-table-column>
+                        <el-table-column prop="target_type" label="目标类型" width="100"></el-table-column>
+                        <el-table-column prop="created_at" label="时间" width="180"></el-table-column>
+                        <el-table-column prop="details" label="详情"></el-table-column>
+                    </el-table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 原材料对话框 -->
+        <el-dialog v-model="ingredientDialog.visible" :title="ingredientDialog.isEdit ? '编辑原材料' : '新增原材料'" width="500px">
+            <el-form :model="ingredientForm" label-width="80px">
+                <el-form-item label="名称" required>
+                    <el-input v-model="ingredientForm.name"></el-input>
+                </el-form-item>
+                <el-form-item label="类别">
+                    <el-select v-model="ingredientForm.category" placeholder="选择类别">
+                        <el-option label="蔬菜" value="蔬菜"></el-option>
+                        <el-option label="肉类" value="肉类"></el-option>
+                        <el-option label="水产" value="水产"></el-option>
+                        <el-option label="禽蛋" value="禽蛋"></el-option>
+                        <el-option label="豆制品" value="豆制品"></el-option>
+                        <el-option label="主食" value="主食"></el-option>
+                        <el-option label="调料" value="调料"></el-option>
+                        <el-option label="其他" value="其他"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="单位" required>
+                    <el-input v-model="ingredientForm.unit" placeholder="如：克、千克、个"></el-input>
+                </el-form-item>
+                <el-form-item label="单价 (元)">
+                    <el-input-number v-model="ingredientForm.unit_price" :precision="2" :step="0.1"></el-input-number>
+                </el-form-item>
+                <el-form-item label="供应商">
+                    <el-input v-model="ingredientForm.supplier"></el-input>
+                </el-form-item>
+            </el-form>
+            <template #footer>
+                <el-button @click="ingredientDialog.visible = false">取消</el-button>
+                <el-button type="primary" @click="saveIngredient">保存</el-button>
+            </template>
+        </el-dialog>
+
+        <!-- 菜品对话框 -->
+        <el-dialog v-model="dishDialog.visible" :title="dishDialog.isEdit ? '编辑菜品' : '新增菜品'" width="700px">
+            <el-form :model="dishForm" label-width="100px">
+                <el-form-item label="菜名" required>
+                    <el-input v-model="dishForm.name"></el-input>
+                </el-form-item>
+                <el-form-item label="类别">
+                    <el-select v-model="dishForm.category" placeholder="选择类别">
+                        <el-option label="荤菜" value="荤菜"></el-option>
+                        <el-option label="素菜" value="素菜"></el-option>
+                        <el-option label="半荤素" value="半荤素"></el-option>
+                        <el-option label="汤品" value="汤品"></el-option>
+                        <el-option label="主食" value="主食"></el-option>
+                        <el-option label="小吃" value="小吃"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="切配时间 (分钟)">
+                    <el-input-number v-model="dishForm.prep_time" :min="0"></el-input-number>
+                </el-form-item>
+                <el-form-item label="烹饪时间 (分钟)">
+                    <el-input-number v-model="dishForm.cook_time" :min="0"></el-input-number>
+                </el-form-item>
+                <el-form-item label="配料明细">
+                    <el-table :data="dishForm.ingredients" style="width: 100%">
+                        <el-table-column label="原材料" width="150">
+                            <template #default="scope">
+                                <el-select v-model="scope.row.ingredient_id" placeholder="选择" size="small">
+                                    <el-option v-for="ing in ingredients" :key="ing.id" :label="ing.name" :value="ing.id"></el-option>
+                                </el-select>
+                            </template>
+                        </el-table-column>
+                        <el-table-column label="用量" width="100">
+                            <template #default="scope">
+                                <el-input-number v-model="scope.row.quantity" :min="0" :precision="2" size="small"></el-input-number>
+                            </template>
+                        </el-table-column>
+                        <el-table-column label="操作" width="80">
+                            <template #default="scope">
+                                <el-button size="small" type="danger" @click="dishForm.ingredients.splice(scope.$index, 1)">删除</el-button>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                    <el-button size="small" @click="addDishIngredient" style="margin-top: 10px">+ 添加配料</el-button>
+                </el-form-item>
+            </el-form>
+            <template #footer>
+                <el-button @click="dishDialog.visible = false">取消</el-button>
+                <el-button type="primary" @click="saveDish">保存</el-button>
+            </template>
+        </el-dialog>
+
+        <!-- 周菜单对话框 -->
+        <el-dialog v-model="weeklyMenuDialog.visible" :title="weeklyMenuDialog.isEdit ? '编辑周菜单' : '新建周菜单'" width="900px">
+            <el-form :model="weeklyMenuForm" label-width="100px">
+                <el-form-item label="周开始日期" required>
+                    <el-date-picker v-model="weeklyMenuForm.week_start" type="date" placeholder="选择周一日期" @change="calculateWeekEnd"></el-date-picker>
+                </el-form-item>
+                <el-form-item label="周结束日期">
+                    <el-input v-model="weeklyMenuForm.week_end" disabled></el-input>
+                </el-form-item>
+                <el-form-item label="每日菜单">
+                    <div style="border: 1px solid #dcdfe6; border-radius: 4px; padding: 15px;">
+                        <el-tabs>
+                            <el-tab-pane v-for="day in 5" :key="day" :label="'周' + ['一','二','三','四','五'][day-1]">
+                                <div style="margin-bottom: 15px;">
+                                    <strong>中餐：</strong>
+                                    <el-select v-model="weeklyMenuForm.daily_menus[day-1].lunch" placeholder="选择菜品" style="width: 300px">
+                                        <el-option v-for="dish in dishes" :key="dish.id" :label="dish.name" :value="dish.id"></el-option>
+                                    </el-select>
+                                </div>
+                                <div>
+                                    <strong>晚餐：</strong>
+                                    <el-select v-model="weeklyMenuForm.daily_menus[day-1].dinner" placeholder="选择菜品" style="width: 300px">
+                                        <el-option v-for="dish in dishes" :key="dish.id" :label="dish.name" :value="dish.id"></el-option>
+                                    </el-select>
+                                </div>
+                            </el-tab-pane>
+                        </el-tabs>
+                    </div>
+                </el-form-item>
+            </el-form>
+            <template #footer>
+                <el-button @click="weeklyMenuDialog.visible = false">取消</el-button>
+                <el-button type="primary" @click="saveWeeklyMenu">保存</el-button>
+            </template>
+        </el-dialog>
+
+        <!-- 审核对话框 -->
+        <el-dialog v-model="reviewDialog.visible" title="菜单审核" width="500px">
+            <el-form :model="reviewForm" label-width="80px">
+                <el-form-item label="审核意见">
+                    <el-input v-model="reviewForm.comment" type="textarea" rows="4" placeholder="请输入审核意见"></el-input>
+                </el-form-item>
+            </el-form>
+            <template #footer>
+                <el-button @click="reviewDialog.visible = false">取消</el-button>
+                <el-button type="danger" @click="submitReview(false)">驳回</el-button>
+                <el-button type="success" @click="submitReview(true)">通过</el-button>
+            </template>
+        </el-dialog>
+
+        <!-- 查看周菜单对话框 -->
+        <el-dialog v-model="viewMenuDialog.visible" title="周菜单详情" width="1000px">
+            <div class="print-area" id="printArea">
+                <h2 style="text-align: center; margin-bottom: 20px;">学校食堂周菜单</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 30px;">
+                    {{ viewMenuDialog.menu?.week_start }} 至 {{ viewMenuDialog.menu?.week_end }}
+                </p>
+                <div class="menu-grid">
+                    <div v-for="day in 5" :key="day" class="day-card">
+                        <div class="day-header">周{{ ['一','二','三','四','五'][day-1] }}</div>
+                        <div class="meal-section">
+                            <div class="meal-label">中餐</div>
+                            <div class="dish-item" v-if="getDishForDay(day, 1)">
+                                <div class="dish-name">{{ getDishForDay(day, 1)?.dish_name }}</div>
+                                <div class="dish-info">
+                                    切配：{{ getDishForDay(day, 1)?.prep_time }}分钟 | 
+                                    烹饪：{{ getDishForDay(day, 1)?.cook_time }}分钟 | 
+                                    成本：¥{{ getDishForDay(day, 1)?.base_cost }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="meal-section">
+                            <div class="meal-label">晚餐</div>
+                            <div class="dish-item" v-if="getDishForDay(day, 2)">
+                                <div class="dish-name">{{ getDishForDay(day, 2)?.dish_name }}</div>
+                                <div class="dish-info">
+                                    切配：{{ getDishForDay(day, 2)?.prep_time }}分钟 | 
+                                    烹饪：{{ getDishForDay(day, 2)?.cook_time }}分钟 | 
+                                    成本：¥{{ getDishForDay(day, 2)?.base_cost }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <template #footer>
+                <el-button @click="viewMenuDialog.visible = false">关闭</el-button>
+                <el-button type="primary" @click="printMenu(viewMenuDialog.menu, true)">打印</el-button>
+            </template>
+        </el-dialog>
+    </div>
+
+    <script>
+        const { createApp, ref, reactive, onMounted } = Vue;
+        const API_BASE = '/api';
+
+        createApp({
+            setup() {
+                // 状态
+                const currentUser = ref(null);
+                const activeTab = ref('dashboard');
+                const loginForm = reactive({ username: '', password: '' });
+                
+                // 数据
+                const ingredients = ref([]);
+                const dishes = ref([]);
+                const weeklyMenus = ref([]);
+                const users = ref([]);
+                const logs = ref([]);
+                const stats = reactive({ totalDishes: 0, thisWeekMenus: 0, pendingReview: 0, totalIngredients: 0 });
+
+                // 对话框
+                const ingredientDialog = reactive({ visible: false, isEdit: false });
+                const ingredientForm = reactive({ id: null, name: '', category: '', unit: '', unit_price: 0, supplier: '' });
+
+                const dishDialog = reactive({ visible: false, isEdit: false });
+                const dishForm = reactive({ id: null, name: '', category: '', prep_time: 0, cook_time: 0, ingredients: [] });
+
+                const weeklyMenuDialog = reactive({ visible: false, isEdit: false });
+                const weeklyMenuForm = reactive({ 
+                    id: null, week_start: '', week_end: '', 
+                    daily_menus: Array(5).fill(null).map(() => ({ lunch: null, dinner: null }))
+                });
+
+                const reviewDialog = reactive({ visible: false });
+                const reviewForm = reactive({ comment: '', menuId: null });
+
+                const viewMenuDialog = reactive({ visible: false, menu: null });
+
+                // 常量
+                const roleNames = { 1: '超级管理员', 2: '食堂管理员', 3: '审核人员' };
+                const statusNames = { 1: '草稿', 2: '待审核', 3: '已审核', 4: '已发布', 5: '已归档' };
+                const statusKeys = { 1: 'draft', 2: 'pending', 3: 'reviewed', 4: 'published', 5: 'archived' };
+
+                // API 请求
+                const api = async (url, options = {}) => {
+                    const token = localStorage.getItem('token');
+                    const headers = { 'Content-Type': 'application/json' };
+                    if (token) headers['Authorization'] = `Bearer ${token}`;
+                    
+                    const res = await fetch(API_BASE + url, { ...options, headers });
+                    const data = await res.json();
+                    if (!res.ok) throw new Error(data.error || '请求失败');
+                    return data;
+                };
+
+                // 登录
+                const handleLogin = async () => {
+                    try {
+                        const data = await api('/login', {
+                            method: 'POST',
+                            body: JSON.stringify(loginForm)
+                        });
+                        localStorage.setItem('token', data.token);
+                        currentUser.value = data.user;
+                        loadAllData();
+                    } catch (err) {
+                        ElementPlus.ElMessage.error(err.message);
+                    }
+                };
+
+                // 登出
+                const handleLogout = () => {
+                    localStorage.removeItem('token');
+                    currentUser.value = null;
+                };
+
+                // 加载数据
+                const loadAllData = async () => {
+                    try {
+                        const [ingRes, dishRes, menuRes] = await Promise.all([
+                            api('/ingredients'),
+                            api('/dishes'),
+                            api('/weekly-menus')
+                        ]);
+                        ingredients.value = ingRes;
+                        dishes.value = dishRes;
+                        weeklyMenus.value = menuRes;
+                        
+                        stats.totalIngredients = ingRes.length;
+                        stats.totalDishes = dishRes.length;
+                        stats.thisWeekMenus = menuRes.filter(m => m.status === 4).length;
+                        stats.pendingReview = menuRes.filter(m => m.status === 2).length;
+                    } catch (err) {
+                        console.error('加载数据失败:', err);
+                    }
+                };
+
+                // Tab 切换
+                const handleTabChange = async (tab) => {
+                    if (tab === 'users') {
+                        try {
+                            users.value = await api('/users');
+                        } catch (err) {}
+                    }
+                    if (tab === 'logs') {
+                        try {
+                            logs.value = await api('/logs');
+                        } catch (err) {}
+                    }
+                };
+
+                // 原材料操作
+                const showIngredientDialog = (row = null) => {
+                    ingredientDialog.isEdit = !!row;
+                    if (row) {
+                        Object.assign(ingredientForm, row);
+                    } else {
+                        Object.assign(ingredientForm, { id: null, name: '', category: '', unit: '', unit_price: 0, supplier: '' });
+                    }
+                    ingredientDialog.visible = true;
+                };
+
+                const saveIngredient = async () => {
+                    try {
+                        if (ingredientDialog.isEdit) {
+                            await api(`/ingredients/${ingredientForm.id}`, {
+                                method: 'PUT',
+                                body: JSON.stringify(ingredientForm)
+                            });
+                        } else {
+                            await api('/ingredients', {
+                                method: 'POST',
+                                body: JSON.stringify(ingredientForm)
+                            });
+                        }
+                        ElementPlus.ElMessage.success('保存成功');
+                        ingredientDialog.visible = false;
+                        loadAllData();
+                    } catch (err) {
+                        ElementPlus.ElMessage.error(err.message);
+                    }
+                };
+
+                const deleteIngredient = async (id) => {
+                    try {
+                        await ElementPlus.ElMessageBox.confirm('确定删除此原材料？', '提示', { type: 'warning' });
+                        await api(`/ingredients/${id}`, { method: 'DELETE' });
+                        ElementPlus.ElMessage.success('删除成功');
+                        loadAllData();
+                    } catch (err) {
+                        if (err.message !== 'cancel') ElementPlus.ElMessage.error(err.message);
+                    }
+                };
+
+                // 菜品操作
+                const showDishDialog = (row = null) => {
+                    dishDialog.isEdit = !!row;
+                    if (row) {
+                        Object.assign(dishForm, { 
+                            id: row.id, name: row.name, category: row.category, 
+                            prep_time: row.prep_time, cook_time: row.cook_time,
+                            ingredients: row.ingredients || []
+                        });
+                    } else {
+                        Object.assign(dishForm, { id: null, name: '', category: '', prep_time: 0, cook_time: 0, ingredients: [] });
+                    }
+                    dishDialog.visible = true;
+                };
+
+                const addDishIngredient = () => {
+                    dishForm.ingredients.push({ ingredient_id: null, quantity: 0, unit: '' });
+                };
+
+                const saveDish = async () => {
+                    try {
+                        const payload = { ...dishForm };
+                        payload.ingredients = dishForm.ingredients.map(ing => ({
+                            ingredient_id: ing.ingredient_id,
+                            quantity: ing.quantity,
+                            unit: ing.unit
+                        }));
+
+                        if (dishDialog.isEdit) {
+                            await api(`/dishes/${dishForm.id}`, {
+                                method: 'PUT',
+                                body: JSON.stringify(payload)
+                            });
+                        } else {
+                            await api('/dishes', {
+                                method: 'POST',
+                                body: JSON.stringify(payload)
+                            });
+                        }
+                        ElementPlus.ElMessage.success('保存成功');
+                        dishDialog.visible = false;
+                        loadAllData();
+                    } catch (err) {
+                        ElementPlus.ElMessage.error(err.message);
+                    }
+                };
+
+                const deleteDish = async (id) => {
+                    try {
+                        await ElementPlus.ElMessageBox.confirm('确定删除此菜品？', '提示', { type: 'warning' });
+                        await api(`/dishes/${id}`, { method: 'DELETE' });
+                        ElementPlus.ElMessage.success('删除成功');
+                        loadAllData();
+                    } catch (err) {
+                        if (err.message !== 'cancel') ElementPlus.ElMessage.error(err.message);
+                    }
+                };
+
+                // 周菜单操作
+                const showWeeklyMenuDialog = (row = null) => {
+                    weeklyMenuDialog.isEdit = !!row;
+                    if (row) {
+                        // TODO: 加载现有菜单数据
+                    } else {
+                        Object.assign(weeklyMenuForm, { 
+                            id: null, week_start: '', week_end: '',
+                            daily_menus: Array(5).fill(null).map(() => ({ lunch: null, dinner: null }))
+                        });
+                    }
+                    weeklyMenuDialog.visible = true;
+                };
+
+                const calculateWeekEnd = () => {
+                    if (weeklyMenuForm.week_start) {
+                        const date = new Date(weeklyMenuForm.week_start);
+                        date.setDate(date.getDate() + 6);
+                        weeklyMenuForm.week_end = date.toISOString().split('T')[0];
+                    }
+                };
+
+                const saveWeeklyMenu = async () => {
+                    try {
+                        const dailyMenus = [];
+                        weeklyMenuForm.daily_menus.forEach((day, index) => {
+                            if (day.lunch) {
+                                dailyMenus.push({ day_of_week: index + 1, meal_type: 1, dish_id: day.lunch, sort_order: 0 });
+                            }
+                            if (day.dinner) {
+                                dailyMenus.push({ day_of_week: index + 1, meal_type: 2, dish_id: day.dinner, sort_order: 0 });
+                            }
+                        });
+
+                        const payload = {
+                            week_start: weeklyMenuForm.week_start,
+                            week_end: weeklyMenuForm.week_end,
+                            daily_menus: dailyMenus
+                        };
+
+                        await api('/weekly-menus', {
+                            method: 'POST',
+                            body: JSON.stringify(payload)
+                        });
+                        ElementPlus.ElMessage.success('保存成功');
+                        weeklyMenuDialog.visible = false;
+                        loadAllData();
+                    } catch (err) {
+                        ElementPlus.ElMessage.error(err.message);
+                    }
+                };
+
+                const viewWeeklyMenu = async (row) => {
+                    try {
+                        const menu = await api(`/weekly-menus/${row.id}`);
+                        viewMenuDialog.menu = menu;
+                        viewMenuDialog.visible = true;
+                    } catch (err) {
+                        ElementPlus.ElMessage.error(err.message);
+                    }
+                };
+
+                const getDishForDay = (day, mealType) => {
+                    if (!viewMenuDialog.menu?.daily_menus) return null;
+                    return viewMenuDialog.menu.daily_menus.find(
+                        dm => dm.day_of_week === day && dm.meal_type === mealType
+                    );
+                };
+
+                const showReviewDialog = (row) => {
+                    reviewForm.menuId = row.id;
+                    reviewForm.comment = '';
+                    reviewDialog.visible = true;
+                };
+
+                const submitReview = async (approved) => {
+                    try {
+                        await api(`/weekly-menus/${reviewForm.menuId}/review`, {
+                            method: 'POST',
+                            body: JSON.stringify({ approved, comment: reviewForm.comment })
+                        });
+                        ElementPlus.ElMessage.success(approved ? '审核通过' : '已驳回');
+                        reviewDialog.visible = false;
+                        loadAllData();
+                    } catch (err) {
+                        ElementPlus.ElMessage.error(err.message);
+                    }
+                };
+
+                const exportMenu = (id) => {
+                    const token = localStorage.getItem('token');
+                    window.open(`${API_BASE}/weekly-menus/${id}/export/excel?token=${token}`);
+                };
+
+                const printMenu = (menu, fromDialog = false) => {
+                    const printWindow = window.open('', '_blank');
+                    printWindow.document.write(`
+                        <html>
+                        <head>
+                            <title>周菜单打印 - ${menu.week_start} 至 ${menu.week_end}</title>
+                            <style>
+                                body { font-family: 'Microsoft YaHei', sans-serif; padding: 40px; }
+                                h2 { text-align: center; }
+                                .date { text-align: center; color: #666; margin-bottom: 30px; }
+                                .menu-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; }
+                                .day-card { border: 1px solid #ddd; border-radius: 8px; padding: 15px; }
+                                .day-header { background: #667eea; color: white; padding: 10px; text-align: center; border-radius: 6px; margin-bottom: 10px; }
+                                .meal-section { margin-bottom: 15px; }
+                                .meal-label { font-size: 12px; color: #666; background: #f0f0f0; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-bottom: 5px; }
+                                .dish-item { background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 3px solid #667eea; }
+                                .dish-name { font-weight: bold; }
+                                .dish-info { font-size: 12px; color: #666; margin-top: 5px; }
+                            </style>
+                        </head>
+                        <body>
+                            <h2>学校食堂周菜单</h2>
+                            <p class="date">${menu.week_start} 至 ${menu.week_end}</p>
+                            <div class="menu-grid">
+                                ${[1,2,3,4,5].map(day => {
+                                    const lunch = getDishForDay(day, 1);
+                                    const dinner = getDishForDay(day, 2);
+                                    return `
+                                        <div class="day-card">
+                                            <div class="day-header">周${['一','二','三','四','五'][day-1]}</div>
+                                            <div class="meal-section">
+                                                <div class="meal-label">中餐</div>
+                                                ${lunch ? `<div class="dish-item"><div class="dish-name">${lunch.dish_name}</div><div class="dish-info">切配：${lunch.prep_time}分钟 | 烹饪：${lunch.cook_time}分钟 | 成本：¥${lunch.base_cost}</div></div>` : '<div class="dish-item">未安排</div>'}
+                                            </div>
+                                            <div class="meal-section">
+                                                <div class="meal-label">晚餐</div>
+                                                ${dinner ? `<div class="dish-item"><div class="dish-name">${dinner.dish_name}</div><div class="dish-info">切配：${dinner.prep_time}分钟 | 烹饪：${dinner.cook_time}分钟 | 成本：¥${dinner.base_cost}</div></div>` : '<div class="dish-item">未安排</div>'}
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </body>
+                        </html>
+                    `);
+                    printWindow.document.close();
+                    printWindow.print();
+                    if (fromDialog) viewMenuDialog.visible = false;
+                };
+
+                // 用户管理
+                const showUserDialog = () => {
+                    const username = prompt('请输入用户名:');
+                    if (!username) return;
+                    const password = prompt('请输入密码:');
+                    if (!password) return;
+                    const real_name = prompt('请输入姓名:');
+                    if (!real_name) return;
+                    const role = prompt('请输入角色 (1:超级管理员 2:食堂管理员 3:审核人员):');
+                    
+                    api('/users', {
+                        method: 'POST',
+                        body: JSON.stringify({ username, password, real_name, role: parseInt(role) })
+                    }).then(() => {
+                        ElementPlus.ElMessage.success('用户创建成功');
+                        loadAllData();
+                    }).catch(err => ElementPlus.ElMessage.error(err.message));
+                };
+
+                // 初始化
+                onMounted(() => {
+                    const token = localStorage.getItem('token');
+                    if (token) {
+                        api('/user/me')
+                            .then(user => {
+                                currentUser.value = user;
+                                loadAllData();
+                            })
+                            .catch(() => localStorage.removeItem('token'));
+                    }
+                });
+
+                return {
+                    currentUser, activeTab, loginForm, handleLogin, handleLogout,
+                    ingredients, dishes, weeklyMenus, users, logs, stats,
+                    ingredientDialog, ingredientForm, showIngredientDialog, saveIngredient, deleteIngredient,
+                    dishDialog, dishForm, showDishDialog, addDishIngredient, saveDish, deleteDish,
+                    weeklyMenuDialog, weeklyMenuForm, showWeeklyMenuDialog, calculateWeekEnd, saveWeeklyMenu,
+                    viewMenuDialog, viewWeeklyMenu, getDishForDay, exportMenu, printMenu,
+                    reviewDialog, reviewForm, showReviewDialog, submitReview,
+                    showUserDialog,
+                    roleNames, statusNames, statusKeys
+                };
+            }
+        }).use(ElementPlus, { locale: ElementPlusLocaleZhCn }).mount('#app');
+    </script>
+</body>
+</html>

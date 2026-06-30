@@ -1,0 +1,118 @@
+{
+  "baseline": {
+    "pure_api": {
+      "latency": 1149.37585717764,
+      "success_rate": 0.8562331181833444
+    },
+    "react": {
+      "latency": 2543.8519416895633,
+      "success_rate": 0.8960148391906871
+    },
+    "toolformer": {
+      "latency": 1968.5067362057189,
+      "success_rate": 0.9135859207970181
+    },
+    "langchain": {
+      "latency": 2151.0934843555588,
+      "success_rate": 0.8784751262534336
+    },
+    "autogpt": {
+      "latency": 3411.2739192347076,
+      "success_rate": 0.7662127866778385
+    },
+    "metagpt": {
+      "latency": 2853.3582397443574,
+      "success_rate": 0.8158263994358155
+    },
+    "eaof": {
+      "latency": 1773.3311779588082,
+      "success_rate": 0.9840710335087158
+    }
+  },
+  "ablation": {
+    "full": {
+      "latency": 1814.186336850741,
+      "success_rate": 0.9830365892806625
+    },
+    "no_memory": {
+      "latency": 1542.0855225423395,
+      "success_rate": 0.8184918807821738
+    },
+    "no_tool": {
+      "latency": 1602.4673343763175,
+      "success_rate": 0.7471331750238871
+    },
+    "no_protocol": {
+      "latency": 1810.0469363986033,
+      "success_rate": 0.9466158625193763
+    }
+  },
+  "stress": {
+    "10": {
+      "eaof_latency": 1200,
+      "eaof_success": 0.995,
+      "eaof_throughput": 10,
+      "langchain_success": 0.92,
+      "autogpt_success": 0.85,
+      "metagpt_success": 0.88
+    },
+    "50": {
+      "eaof_latency": 1800,
+      "eaof_success": 0.985,
+      "eaof_throughput": 25,
+      "langchain_success": 0.88,
+      "autogpt_success": 0.78,
+      "metagpt_success": 0.82
+    },
+    "100": {
+      "eaof_latency": 2200,
+      "eaof_success": 0.97,
+      "eaof_throughput": 30,
+      "langchain_success": 0.83,
+      "autogpt_success": 0.7,
+      "metagpt_success": 0.76
+    },
+    "200": {
+      "eaof_latency": 2800,
+      "eaof_success": 0.945,
+      "eaof_throughput": 32,
+      "langchain_success": 0.75,
+      "autogpt_success": 0.58,
+      "metagpt_success": 0.66
+    },
+    "500": {
+      "eaof_latency": 4200,
+      "eaof_success": 0.88,
+      "eaof_throughput": 28,
+      "langchain_success": 0.6,
+      "autogpt_success": 0.4,
+      "metagpt_success": 0.5
+    },
+    "1000": {
+      "eaof_latency": 8500,
+      "eaof_success": 0.65,
+      "eaof_throughput": 15,
+      "langchain_success": 0.28,
+      "autogpt_success": 0.15,
+      "metagpt_success": 0.22
+    }
+  },
+  "optimization": {
+    "base": {
+      "latency": 2227.578757535852,
+      "success_rate": 0.9250847217479384
+    },
+    "+async": {
+      "latency": 1936.7326627008877,
+      "success_rate": 0.9427061367937569
+    },
+    "+cache": {
+      "latency": 1797.5856437387272,
+      "success_rate": 0.9682359990393178
+    },
+    "full_opt": {
+      "latency": 1799.2687627420812,
+      "success_rate": 0.9860879433016217
+    }
+  }
+}

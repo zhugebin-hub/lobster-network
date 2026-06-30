@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>experiment_report_huangbaoyi</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="大数据与知识图谱实验报告">大数据与知识图谱实验报告</h1>
+<p><strong>基于医疗领域的知识图谱构建与应用</strong></p>
+<hr />
+<p><strong>学生信息</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>姓名</td>
+<td>黄宝怡</td>
+</tr>
+<tr>
+<td>学号</td>
+<td>2407090704</td>
+</tr>
+<tr>
+<td>班级</td>
+<td>商英 2407</td>
+</tr>
+<tr>
+<td>实验日期</td>
+<td>2026 年 4 月 12 日</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="摘要">摘要</h2>
+<p>本实验基于《大数据与知识图谱》第 3
+章理论内容，设计并实现了一个医疗领域的知识图谱系统。实验采用 Python
+语言构建知识图谱数据结构，实现了实体管理、关系查询、症状分析及疾病推测等核心功能，并使用
+D3.js 完成了知识图谱的可视化展示。实验结果表明，所构建的知识图谱包含 20
+个实体、18
+条关系，能够有效支持医疗领域的知识查询与智能推理。本实验验证了知识图谱技术在结构化知识表示和语义推理方面的应用价值。</p>
+<p><strong>关键词：</strong>
+知识图谱；医疗领域；实体识别；可视化；D3.js</p>
+<hr />
+<h2 id="一引言">一、引言</h2>
+<h3 id="研究背景">1.1 研究背景</h3>
+<p>随着信息技术的快速发展，医疗领域产生了海量的数据资源。如何有效地组织、管理和利用这些医疗知识，成为医疗信息化建设的重要课题。知识图谱（Knowledge
+Graph）作为一种结构化的语义知识库，能够以图的形式描述现实世界中的实体、概念及其关系，为医疗知识的智能化管理提供了新的技术路径。</p>
+<h3 id="实验目的">1.2 实验目的</h3>
+<p>本实验旨在通过构建医疗领域知识图谱，达成以下目标：</p>
+<ol type="1">
+<li>理解知识图谱的基本概念、结构和构建方法</li>
+<li>掌握知识图谱的数据建模技术</li>
+<li>实现知识图谱的查询与推理功能</li>
+<li>完成知识图谱的可视化展示</li>
+<li>探索知识图谱在医疗场景中的实际应用价值</li>
+</ol>
+<h3 id="实验内容">1.3 实验内容</h3>
+<p>本实验对应《大数据与知识图谱》第 3 章的核心内容，主要涵盖：</p>
+<ul>
+<li>知识图谱的本体设计与建模</li>
+<li>实体识别与关系抽取</li>
+<li>知识图谱的存储与查询</li>
+<li>知识图谱的可视化技术</li>
+</ul>
+<hr />
+<h2 id="二实验环境">二、实验环境</h2>
+<h3 id="硬件环境">2.1 硬件环境</h3>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>规格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>服务器</td>
+<td>阿里云 ECS</td>
+</tr>
+<tr>
+<td>操作系统</td>
+<td>Linux 5.10.134-19.2.al8.x86_64</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>多核处理器</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>8GB</td>
+</tr>
+<tr>
+<td>存储</td>
+<td>50GB SSD</td>
+</tr>
+</tbody>
+</table>
+<h3 id="软件环境">2.2 软件环境</h3>
+<table>
+<thead>
+<tr>
+<th>软件</th>
+<th>版本</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td>3.x</td>
+<td>核心开发语言</td>
+</tr>
+<tr>
+<td>D3.js</td>
+<td>v7</td>
+<td>可视化库</td>
+</tr>
+<tr>
+<td>浏览器</td>
+<td>Chrome/Edge</td>
+<td>可视化展示</td>
+</tr>
+<tr>
+<td>代码编辑器</td>
+<td>VS Code</td>
+<td>开发工具</td>
+</tr>
+</tbody>
+</table>
+<h3 id="技术栈">2.3 技术栈</h3>
+<ul>
+<li><strong>后端：</strong> Python 标准库（json, os, datetime,
+collections）</li>
+<li><strong>前端：</strong> D3.js 力导向图、HTML5、CSS3</li>
+<li><strong>数据格式：</strong> JSON</li>
+</ul>
+<hr />
+<h2 id="三实验原理">三、实验原理</h2>
+<h3 id="知识图谱概述">3.1 知识图谱概述</h3>
+<p>知识图谱是由 Google 于 2012
+年首次提出的概念，它是一种结构化的语义知识库，用于描述现实世界中的实体、概念及其关系（刘峤等，2016）。知识图谱的核心思想是将知识以”实体
+- 关系 - 实体”的三元组形式进行表示。</p>
+<h3 id="知识图谱的构成要素">3.2 知识图谱的构成要素</h3>
+<p>根据赵军（2018）的定义，知识图谱包含以下基本要素：</p>
+<ol type="1">
+<li><strong>实体（Entity）：</strong>
+客观存在并可相互区分的事物，如”糖尿病”、“二甲双胍”</li>
+<li><strong>关系（Relation）：</strong>
+实体之间的语义联系，如”治疗”、“症状”</li>
+<li><strong>属性（Property）：</strong>
+实体的特征描述，如药品的”用法用量”、检查的”正常范围”</li>
+</ol>
+<h3 id="知识图谱的技术架构">3.3 知识图谱的技术架构</h3>
+<p>本实验采用四层技术架构：</p>
+<pre><code>┌─────────────────────────────────────┐
+│           应用层                      │
+│   智能问答 | 疾病推测 | 就诊推荐      │
+├─────────────────────────────────────┤
+│           查询层                      │
+│   自定义查询引擎 | 路径查询           │
+├─────────────────────────────────────┤
+│           存储层                      │
+│   JSON 文件 | 图结构存储              │
+├─────────────────────────────────────┤
+│           构建层                      │
+│   实体识别 | 关系定义 | 属性标注      │
+└─────────────────────────────────────┘</code></pre>
+<h3 id="可视化原理">3.4 可视化原理</h3>
+<p>本实验采用 D3.js 的力导向图（Force-Directed
+Graph）算法进行可视化。力导向图是一种基于物理模拟的图布局算法，通过模拟节点之间的引力和斥力，使图结构在二维平面上呈现出美观且易于理解的布局（D3.js
+官方文档，n.d.）。</p>
+<hr />
+<h2 id="四实验设计与实现">四、实验设计与实现</h2>
+<h3 id="领域建模">4.1 领域建模</h3>
+<h4 id="领域选择">4.1.1 领域选择</h4>
+<p>本实验选择<strong>医疗领域</strong>作为知识图谱的应用场景，原因如下：</p>
+<ol type="1">
+<li>医疗领域数据结构化程度高，便于知识抽取</li>
+<li>实体和关系定义清晰，本体设计相对简单</li>
+<li>具有明确的实际应用价值</li>
+<li>便于演示知识图谱的核心功能</li>
+</ol>
+<h4 id="本体设计">4.1.2 本体设计</h4>
+<p>设计以下 6 类实体类型：</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr>
+<th>实体类型</th>
+<th>数量</th>
+<th>示例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>疾病</td>
+<td>3</td>
+<td>糖尿病、高血压、冠心病</td>
+<td>医学诊断的疾病名称</td>
+</tr>
+<tr>
+<td>症状</td>
+<td>5</td>
+<td>多饮、多食、多尿、头痛、胸痛</td>
+<td>疾病表现的临床特征</td>
+</tr>
+<tr>
+<td>药品</td>
+<td>4</td>
+<td>二甲双胍、胰岛素、硝苯地平、阿司匹林</td>
+<td>治疗疾病的药物</td>
+</tr>
+<tr>
+<td>检查</td>
+<td>4</td>
+<td>空腹血糖、糖化血红蛋白、血压测量、心电图</td>
+<td>诊断所需的医学检查</td>
+</tr>
+<tr>
+<td>科室</td>
+<td>2</td>
+<td>内分泌科、心血管科</td>
+<td>医院诊疗科室</td>
+</tr>
+<tr>
+<td>医生</td>
+<td>2</td>
+<td>张医生、李医生</td>
+<td>专科医师</td>
+</tr>
+</tbody>
+</table>
+<h4 id="关系设计">4.1.3 关系设计</h4>
+<p>设计以下 5 类语义关系：</p>
+<table>
+<thead>
+<tr>
+<th>关系类型</th>
+<th>含义</th>
+<th>定义域</th>
+<th>值域</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>has_symptom</td>
+<td>疾病具有症状</td>
+<td>疾病</td>
+<td>症状</td>
+<td>糖尿病 → 多饮</td>
+</tr>
+<tr>
+<td>treated_by</td>
+<td>疾病被药品治疗</td>
+<td>疾病</td>
+<td>药品</td>
+<td>糖尿病 → 二甲双胍</td>
+</tr>
+<tr>
+<td>requires_test</td>
+<td>疾病需要检查</td>
+<td>疾病</td>
+<td>检查</td>
+<td>糖尿病 → 空腹血糖</td>
+</tr>
+<tr>
+<td>belongs_to_dept</td>
+<td>疾病属于科室</td>
+<td>疾病</td>
+<td>科室</td>
+<td>糖尿病 → 内分泌科</td>
+</tr>
+<tr>
+<td>has_doctor</td>
+<td>科室有医生</td>
+<td>科室</td>
+<td>医生</td>
+<td>内分泌科 → 张医生</td>
+</tr>
+</tbody>
+</table>
+<h3 id="核心模块实现">4.2 核心模块实现</h3>
+<h4 id="知识图谱类">4.2.1 知识图谱类</h4>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> KnowledgeGraph:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;简单的知识图谱类&quot;&quot;&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name<span class="op">=</span><span class="st">&quot;医疗知识图谱&quot;</span>):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.entities <span class="op">=</span> {}  <span class="co"># 实体集合</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.relations <span class="op">=</span> []  <span class="co"># 关系集合</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.properties <span class="op">=</span> {}  <span class="co"># 实体属性</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_entity(<span class="va">self</span>, entity_id, entity_type, name, description<span class="op">=</span><span class="st">&quot;&quot;</span>):</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;添加实体&quot;&quot;&quot;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.entities[entity_id] <span class="op">=</span> {</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;id&quot;</span>: entity_id,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;type&quot;</span>: entity_type,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;name&quot;</span>: name,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;description&quot;</span>: description</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> entity_id</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_relation(<span class="va">self</span>, from_entity, relation_type, to_entity):</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;添加关系&quot;&quot;&quot;</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.relations.append({</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;from&quot;</span>: from_entity,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;type&quot;</span>: relation_type,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;to&quot;</span>: to_entity</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_property(<span class="va">self</span>, entity_id, prop_name, prop_value):</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;添加实体属性&quot;&quot;&quot;</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> entity_id <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.properties:</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.properties[entity_id] <span class="op">=</span> {}</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.properties[entity_id][prop_name] <span class="op">=</span> prop_value</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> query_by_type(<span class="va">self</span>, entity_type):</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;按类型查询实体&quot;&quot;&quot;</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [e <span class="cf">for</span> e <span class="kw">in</span> <span class="va">self</span>.entities.values() <span class="cf">if</span> e[<span class="st">&quot;type&quot;</span>] <span class="op">==</span> entity_type]</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> query_relations(<span class="va">self</span>, entity_id):</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;查询实体的所有关系&quot;&quot;&quot;</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [r <span class="cf">for</span> r <span class="kw">in</span> <span class="va">self</span>.relations <span class="cf">if</span> r[<span class="st">&quot;from&quot;</span>] <span class="op">==</span> entity_id <span class="kw">or</span> r[<span class="st">&quot;to&quot;</span>] <span class="op">==</span> entity_id]</span></code></pre></div>
+<p><strong>代码说明：</strong>
+该模块实现了知识图谱的基本数据结构，采用字典存储实体、列表存储关系，支持实体的增删改查操作。</p>
+<h4 id="查询引擎">4.2.2 查询引擎</h4>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> KGQueryEngine:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;知识图谱查询引擎&quot;&quot;&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, kg):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.kg <span class="op">=</span> kg</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> find_symptoms_by_disease(<span class="va">self</span>, disease_name):</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;根据疾病查找症状&quot;&quot;&quot;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        disease_id <span class="op">=</span> <span class="va">self</span>._find_entity_by_name(disease_name, <span class="st">&quot;疾病&quot;</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> disease_id:</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> []</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        symptoms <span class="op">=</span> []</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> rel <span class="kw">in</span> <span class="va">self</span>.kg.relations:</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> rel[<span class="st">&quot;from&quot;</span>] <span class="op">==</span> disease_id <span class="kw">and</span> rel[<span class="st">&quot;type&quot;</span>] <span class="op">==</span> <span class="st">&quot;has_symptom&quot;</span>:</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                symptom <span class="op">=</span> <span class="va">self</span>.kg.entities.get(rel[<span class="st">&quot;to&quot;</span>])</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> symptom:</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>                    symptoms.append(symptom[<span class="st">&quot;name&quot;</span>])</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> symptoms</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> find_medicines_by_disease(<span class="va">self</span>, disease_name):</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;根据疾病查找药品&quot;&quot;&quot;</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        disease_id <span class="op">=</span> <span class="va">self</span>._find_entity_by_name(disease_name, <span class="st">&quot;疾病&quot;</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> disease_id:</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> []</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        medicines <span class="op">=</span> []</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> rel <span class="kw">in</span> <span class="va">self</span>.kg.relations:</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> rel[<span class="st">&quot;from&quot;</span>] <span class="op">==</span> disease_id <span class="kw">and</span> rel[<span class="st">&quot;type&quot;</span>] <span class="op">==</span> <span class="st">&quot;treated_by&quot;</span>:</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                medicine <span class="op">=</span> <span class="va">self</span>.kg.entities.get(rel[<span class="st">&quot;to&quot;</span>])</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> medicine:</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                    med_name <span class="op">=</span> medicine[<span class="st">&quot;name&quot;</span>]</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                    dosage <span class="op">=</span> <span class="va">self</span>.kg.properties.get(rel[<span class="st">&quot;to&quot;</span>], {}).get(<span class="st">&quot;dosage&quot;</span>, <span class="st">&quot;遵医嘱&quot;</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>                    medicines.append(<span class="ss">f&quot;</span><span class="sc">{</span>med_name<span class="sc">}</span><span class="ss"> (用法：</span><span class="sc">{</span>dosage<span class="sc">}</span><span class="ss">)&quot;</span>)</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> medicines</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> find_department_by_disease(<span class="va">self</span>, disease_name):</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;根据疾病查找就诊科室&quot;&quot;&quot;</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        disease_id <span class="op">=</span> <span class="va">self</span>._find_entity_by_name(disease_name, <span class="st">&quot;疾病&quot;</span>)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> disease_id:</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> rel <span class="kw">in</span> <span class="va">self</span>.kg.relations:</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> rel[<span class="st">&quot;from&quot;</span>] <span class="op">==</span> disease_id <span class="kw">and</span> rel[<span class="st">&quot;type&quot;</span>] <span class="op">==</span> <span class="st">&quot;belongs_to_dept&quot;</span>:</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>                dept <span class="op">=</span> <span class="va">self</span>.kg.entities.get(rel[<span class="st">&quot;to&quot;</span>])</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> dept:</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">return</span> dept[<span class="st">&quot;name&quot;</span>]</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code></pre></div>
+<p><strong>代码说明：</strong>
+查询引擎实现了三种核心查询功能，通过遍历关系集合，找到与目标疾病相关的所有实体。</p>
+<h4 id="文本处理与实体识别">4.2.3 文本处理与实体识别</h4>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TextProcessor:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;文本处理与简单实体识别&quot;&quot;&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, kg):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.kg <span class="op">=</span> kg</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.entity_names <span class="op">=</span> {e[<span class="st">&quot;name&quot;</span>]: eid <span class="cf">for</span> eid, e <span class="kw">in</span> kg.entities.items()}</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> extract_entities(<span class="va">self</span>, text):</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;从文本中提取实体&quot;&quot;&quot;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        found_entities <span class="op">=</span> []</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> name, eid <span class="kw">in</span> <span class="va">self</span>.entity_names.items():</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> name <span class="kw">in</span> text:</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                entity <span class="op">=</span> <span class="va">self</span>.kg.entities[eid]</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                found_entities.append({</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;name&quot;</span>: name,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;type&quot;</span>: entity[<span class="st">&quot;type&quot;</span>],</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;id&quot;</span>: eid</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                })</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> found_entities</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> analyze_symptoms(<span class="va">self</span>, patient_description):</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;分析患者描述中的症状&quot;&quot;&quot;</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        entities <span class="op">=</span> <span class="va">self</span>.extract_entities(patient_description)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        symptoms <span class="op">=</span> [e <span class="cf">for</span> e <span class="kw">in</span> entities <span class="cf">if</span> e[<span class="st">&quot;type&quot;</span>] <span class="op">==</span> <span class="st">&quot;症状&quot;</span>]</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> symptoms</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> suggest_diseases(<span class="va">self</span>, symptoms):</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;根据症状推测可能的疾病&quot;&quot;&quot;</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        disease_scores <span class="op">=</span> {}</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> symptom <span class="kw">in</span> symptoms:</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>            symptom_id <span class="op">=</span> symptom[<span class="st">&quot;id&quot;</span>]</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> rel <span class="kw">in</span> <span class="va">self</span>.kg.relations:</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> rel[<span class="st">&quot;to&quot;</span>] <span class="op">==</span> symptom_id <span class="kw">and</span> rel[<span class="st">&quot;type&quot;</span>] <span class="op">==</span> <span class="st">&quot;has_symptom&quot;</span>:</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>                    disease_id <span class="op">=</span> rel[<span class="st">&quot;from&quot;</span>]</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>                    disease_scores[disease_id] <span class="op">=</span> disease_scores.get(disease_id, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>        sorted_diseases <span class="op">=</span> <span class="bu">sorted</span>(disease_scores.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>        results <span class="op">=</span> []</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> disease_id, score <span class="kw">in</span> sorted_diseases:</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>            disease <span class="op">=</span> <span class="va">self</span>.kg.entities.get(disease_id)</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> disease:</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>                results.append({</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;disease&quot;</span>: disease[<span class="st">&quot;name&quot;</span>],</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;match_score&quot;</span>: score</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>                })</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> results</span></code></pre></div>
+<p><strong>代码说明：</strong>
+该模块实现了基于词典的实体识别方法，通过字符串匹配从患者描述中提取症状，并根据症状与疾病的关联关系进行疾病推测。</p>
+<h4 id="可视化模块">4.2.4 可视化模块</h4>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">// D3.js 力导向图实现</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> simulation <span class="op">=</span> d3<span class="op">.</span><span class="fu">forceSimulation</span>(data<span class="op">.</span><span class="at">nodes</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">force</span>(<span class="st">&#39;link&#39;</span><span class="op">,</span> d3<span class="op">.</span><span class="fu">forceLink</span>(data<span class="op">.</span><span class="at">links</span>)<span class="op">.</span><span class="fu">id</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">id</span>)<span class="op">.</span><span class="fu">distance</span>(<span class="dv">100</span>))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">force</span>(<span class="st">&#39;charge&#39;</span><span class="op">,</span> d3<span class="op">.</span><span class="fu">forceManyBody</span>()<span class="op">.</span><span class="fu">strength</span>(<span class="op">-</span><span class="dv">300</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">force</span>(<span class="st">&#39;center&#39;</span><span class="op">,</span> d3<span class="op">.</span><span class="fu">forceCenter</span>(width <span class="op">/</span> <span class="dv">2</span><span class="op">,</span> height <span class="op">/</span> <span class="dv">2</span>))<span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">// 节点渲染</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> nodes <span class="op">=</span> svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">&#39;.node&#39;</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="at">nodes</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">&#39;circle&#39;</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">&#39;r&#39;</span><span class="op">,</span> <span class="dv">20</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">&#39;fill&#39;</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">color</span>)<span class="op">;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">// 关系边渲染</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> links <span class="op">=</span> svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">&#39;.link&#39;</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="at">links</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">&#39;line&#39;</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">&#39;stroke&#39;</span><span class="op">,</span> <span class="st">&#39;#999&#39;</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">&#39;stroke-width&#39;</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span></code></pre></div>
+<p><strong>代码说明：</strong> 可视化模块使用 D3.js
+的力导向布局算法，将实体作为节点、关系作为边，通过颜色区分不同实体类型，实现交互式知识图谱展示。</p>
+<hr />
+<h2 id="五实验结果">五、实验结果</h2>
+<h3 id="知识图谱统计">5.1 知识图谱统计</h3>
+<p>构建完成的医疗知识图谱统计信息如下：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实体总数</td>
+<td>20</td>
+</tr>
+<tr>
+<td>关系总数</td>
+<td>18</td>
+</tr>
+<tr>
+<td>实体类型数</td>
+<td>6</td>
+</tr>
+<tr>
+<td>关系类型数</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="实体类型分布">5.2 实体类型分布</h3>
+<pre><code>疾病：3    症状：5    药品：4
+检查：4    科室：2    医生：2</code></pre>
+<h3 id="关系类型分布">5.3 关系类型分布</h3>
+<pre><code>has_symptom（具有症状）: 5
+treated_by（被治疗）: 4
+requires_test（需要检查）: 4
+belongs_to_dept（属于科室）: 3
+has_doctor（有医生）: 2</code></pre>
+<h3 id="功能测试结果">5.4 功能测试结果</h3>
+<h4 id="测试用例-1糖尿病查询">测试用例 1：糖尿病查询</h4>
+<p><strong>输入：</strong> 疾病名称”糖尿病”</p>
+<p><strong>输出：</strong></p>
+<pre><code>疾病：糖尿病
+  症状：多饮，多食，多尿
+  药品：二甲双胍 (用法：500mg bid), 胰岛素 (用法：遵医嘱)
+  科室：内分泌科</code></pre>
+<p><strong>结果分析：</strong>
+系统正确返回了糖尿病的所有关联信息，包括典型症状”三多”（多饮、多食、多尿）、一线治疗药物二甲双胍以及就诊科室内分泌科。</p>
+<h4 id="测试用例-2症状分析与疾病推测">测试用例
+2：症状分析与疾病推测</h4>
+<p><strong>输入：</strong>
+“患者最近出现多饮、多尿症状，伴有头痛，怀疑有糖尿病或高血压”</p>
+<p><strong>输出：</strong></p>
+<pre><code>识别实体：
+  - 糖尿病 (疾病)
+  - 高血压 (疾病)
+  - 多饮 (症状)
+  - 多尿 (症状)
+  - 头痛 (症状)
+
+识别症状：多饮，多尿，头痛
+
+可能疾病：
+  - 糖尿病 (匹配度：2)
+  - 高血压 (匹配度：1)</code></pre>
+<p><strong>结果分析：</strong> 系统正确识别了输入文本中的 5 个实体，其中
+3 个症状。根据症状匹配，糖尿病匹配 2 个症状（多饮、多尿），高血压匹配 1
+个症状（头痛），推测结果符合医学常识。</p>
+<h3 id="可视化展示">5.5 可视化展示</h3>
+<p>知识图谱可视化界面包含以下模块：</p>
+<ol type="1">
+<li><strong>图谱统计面板：</strong>
+展示实体总数、关系总数、实体类型数、关系类型数</li>
+<li><strong>知识图谱网络：</strong>
+力导向图展示实体与关系的空间分布</li>
+<li><strong>实体列表：</strong>
+表格形式展示所有实体的名称、类型和描述</li>
+<li><strong>图例：</strong> 不同颜色代表不同实体类型（疾病 - 红色、症状
+- 青色、药品 - 蓝色、检查 - 绿色、科室 - 黄色、医生 - 灰色）</li>
+</ol>
+<h3 id="实验截图">5.6 实验截图</h3>
+<figure>
+<img src="./kg_visualization_screenshot.png" alt="医疗知识图谱可视化" />
+<figcaption aria-hidden="true">医疗知识图谱可视化</figcaption>
+</figure>
+<p><em>图 1. 医疗知识图谱可视化界面</em></p>
+<hr />
+<h2 id="六讨论">六、讨论</h2>
+<h3 id="实验结果分析">6.1 实验结果分析</h3>
+<p>本实验成功构建了一个包含 20 个实体、18
+条关系的医疗知识图谱，实现了以下功能：</p>
+<ol type="1">
+<li><strong>知识存储：</strong> 采用 JSON
+格式存储知识图谱数据，结构清晰，便于扩展</li>
+<li><strong>查询功能：</strong>
+支持按疾病查询症状、药品、科室等多种查询方式</li>
+<li><strong>智能推理：</strong> 基于症状匹配实现疾病推测功能</li>
+<li><strong>可视化展示：</strong> 使用 D3.js
+实现交互式力导向图，直观展示知识结构</li>
+</ol>
+<p>实验结果表明，所构建的知识图谱能够有效支持医疗领域的知识查询与简单推理，验证了知识图谱技术的实用性。</p>
+<h3 id="技术优势">6.2 技术优势</h3>
+<ol type="1">
+<li><strong>结构化表示：</strong>
+知识图谱将非结构化医疗知识转化为结构化数据，便于机器理解和处理</li>
+<li><strong>语义关联：</strong>
+通过关系网络建立实体间的语义联系，支持复杂查询和推理</li>
+<li><strong>可视化友好：</strong>
+力导向图直观展示知识结构，便于用户理解和探索</li>
+<li><strong>扩展性强：</strong>
+模块化设计便于添加新的实体类型和关系类型</li>
+</ol>
+<h3 id="局限性">6.3 局限性</h3>
+<ol type="1">
+<li><strong>实体识别精度：</strong>
+当前采用基于词典的匹配方法，无法识别未登录词和同义词</li>
+<li><strong>推理能力有限：</strong>
+仅支持基于规则的直接推理，不支持复杂的多跳推理</li>
+<li><strong>数据规模较小：</strong> 实验仅包含 20
+个实体，实际应用需要更大规模的知识库</li>
+<li><strong>知识更新困难：</strong>
+手动构建知识图谱成本高，难以实现自动化更新</li>
+</ol>
+<h3 id="改进方向">6.4 改进方向</h3>
+<ol type="1">
+<li><strong>引入深度学习：</strong> 使用 BERT
+等预训练模型提升实体识别精度</li>
+<li><strong>扩展知识规模：</strong>
+接入医疗公开数据集，扩大知识图谱覆盖范围</li>
+<li><strong>增强推理能力：</strong>
+实现图神经网络推理，支持复杂的多跳查询</li>
+<li><strong>优化可视化：</strong>
+支持大规模图谱渲染，添加时间维度和多层次钻取</li>
+</ol>
+<hr />
+<h2 id="七结论">七、结论</h2>
+<p>本实验基于《大数据与知识图谱》第 3
+章理论内容，成功设计并实现了一个医疗领域的知识图谱系统。实验完成了知识图谱的本体设计、数据构建、查询引擎开发、实体识别和可视化展示等核心任务。</p>
+<p>实验结果表明：</p>
+<ol type="1">
+<li>知识图谱能够有效组织医疗领域知识，支持结构化查询和语义推理</li>
+<li>基于症状匹配的疾病推测功能具有实用价值</li>
+<li>D3.js 力导向图能够直观展示知识结构，提升用户体验</li>
+</ol>
+<p>通过本实验，本人深入理解了知识图谱的核心概念和技术原理，掌握了知识图谱构建的基本方法，为后续学习和应用大数据与知识图谱技术奠定了基础。</p>
+<hr />
+<h2 id="参考文献">参考文献</h2>
+<p>刘峤，李杨，段宏，等。知识图谱构建技术综述 [J].
+计算机研究与发展，2016, 53(1): 58-79.</p>
+<p>赵军。知识图谱 [M]. 北京：清华大学出版社，2018.</p>
+<p>Bostock, M. (n.d.). D3.js - Data-Driven Documents. Retrieved from
+https://d3js.org/</p>
+<p>Neo4j. (n.d.). Graph Database Platform. Retrieved from
+https://neo4j.com/</p>
+<p>阿里云天池。医疗数据集。Retrieved from
+https://tianchi.aliyun.com/dataset/</p>
+<hr />
+<h2 id="附录">附录</h2>
+<h3 id="附录-a核心代码文件清单">附录 A：核心代码文件清单</h3>
+<table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>说明</th>
+<th>行数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kg_main.py</td>
+<td>知识图谱主程序</td>
+<td>约 350 行</td>
+</tr>
+<tr>
+<td>visualization.html</td>
+<td>可视化页面</td>
+<td>约 300 行</td>
+</tr>
+<tr>
+<td>knowledge_graph.json</td>
+<td>知识图谱数据</td>
+<td>约 200 行</td>
+</tr>
+<tr>
+<td>visualization_data.json</td>
+<td>可视化数据</td>
+<td>约 150 行</td>
+</tr>
+<tr>
+<td>statistics.json</td>
+<td>统计数据</td>
+<td>约 30 行</td>
+</tr>
+</tbody>
+</table>
+<h3 id="附录-b运行说明">附录 B：运行说明</h3>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. 进入实验目录</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /home/admin/.openclaw/workspace/kg_experiment</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. 运行主程序</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> kg_main.py</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. 打开可视化页面</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 在浏览器中打开 visualization.html</span></span></code></pre></div>
+<p><strong>报告完成时间：</strong> 2026 年 4 月 12 日</p>
+<hr />
+<p><strong>原创性声明</strong></p>
+<p>本人郑重声明：所呈交的实验报告是本人在指导教师指导下进行的研究工作及取得的研究成果。除文中已经注明引用的内容外，本报告不含任何其他个人或集体已经发表或撰写过的作品成果。对本实验的研究做出重要贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律结果由本人承担。</p>
+<p><strong>报告作者：</strong> 黄宝怡</p>
+<p><strong>日期：</strong> 2026 年 4 月 12 日</p>
+</body>
+</html>

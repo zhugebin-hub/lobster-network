@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>experiment-report-xujie</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="github.css" />
+</head>
+<body>
+<h1 id="基于小龙虾-ai-助手的健康管理系统开发实验报告">基于小龙虾 AI
+助手的健康管理系统开发实验报告</h1>
+<p><strong>学号：</strong> [填写你的学号]<br />
+<strong>姓名：</strong> 徐杰<br />
+<strong>课程：</strong> 人工智能应用开发<br />
+<strong>实验时间：</strong> 2026 年 4 月 21 日<br />
+<strong>指导教师：</strong> [填写教师姓名]</p>
+<hr />
+<h2 id="一项目背景">一、项目背景</h2>
+<h3 id="问题提出">1.1 问题提出</h3>
+<p>在现代快节奏生活中，健康管理尤其是减脂期间的饮食控制成为许多人的痛点。主要问题包括：</p>
+<ul>
+<li><strong>忘记按时进食</strong>：作息不规律导致三餐时间混乱</li>
+<li><strong>营养素配比不清</strong>：不了解减脂期碳水、蛋白质、脂肪的合理比例</li>
+<li><strong>缺乏持续监督</strong>：难以坚持健康饮食习惯</li>
+<li><strong>数据记录缺失</strong>：没有系统的体重、饮食、运动记录</li>
+</ul>
+<h3 id="项目目标">1.2 项目目标</h3>
+<p>基于 OpenClaw 平台的小龙虾 AI
+助手（诸葛虾），开发一个个性化的健康管理系统，实现：</p>
+<ol type="1">
+<li>定时提醒三餐进食和喝水</li>
+<li>提供科学的营养素配比建议</li>
+<li>每日打卡记录功能</li>
+<li>个性化作息适配</li>
+</ol>
+<h3 id="技术选型">1.3 技术选型</h3>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>选择</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI 助手</td>
+<td>小龙虾/诸葛虾</td>
+<td>OpenClaw 内置助手，支持技能扩展</td>
+</tr>
+<tr>
+<td>提醒系统</td>
+<td>schedule-reminder</td>
+<td>双保险架构，可靠性高</td>
+</tr>
+<tr>
+<td>定时任务</td>
+<td>cron-helper</td>
+<td>自然语言调度，易于配置</td>
+</tr>
+<tr>
+<td>推送渠道</td>
+<td>钉钉</td>
+<td>已集成，消息可达性好</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="二需求分析">二、需求分析</h2>
+<h3 id="用户画像">2.1 用户画像</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>身高</td>
+<td>183cm</td>
+</tr>
+<tr>
+<td>当前体重</td>
+<td>81kg</td>
+</tr>
+<tr>
+<td>目标体重</td>
+<td>75kg</td>
+</tr>
+<tr>
+<td>作息</td>
+<td>凌晨 3 点睡，上午 10 点起</td>
+</tr>
+<tr>
+<td>运动频率</td>
+<td>每周 5 次</td>
+</tr>
+<tr>
+<td>饮食偏好</td>
+<td>爱吃垃圾食品</td>
+</tr>
+</tbody>
+</table>
+<h3 id="功能需求">2.2 功能需求</h3>
+<table>
+<thead>
+<tr>
+<th>需求编号</th>
+<th>需求描述</th>
+<th>优先级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>每日三餐定时提醒</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>每 2 小时喝水提醒</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>运动时间提醒</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>每日打卡记录</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>睡觉时间提醒</td>
+<td>P2</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>营养素配比建议</td>
+<td>P0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="营养需求计算">2.3 营养需求计算</h3>
+<p>基于用户数据（183cm/81kg，每周运动 5 次），计算每日营养目标：</p>
+<table>
+<thead>
+<tr>
+<th>营养素</th>
+<th>计算公式</th>
+<th>目标值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基础代谢</td>
+<td>Mifflin-St Jeor 公式</td>
+<td>≈1900 大卡</td>
+</tr>
+<tr>
+<td>每日消耗</td>
+<td>BMR × 活动系数 (1.55)</td>
+<td>≈2900 大卡</td>
+</tr>
+<tr>
+<td>减脂热量</td>
+<td>TDEE - 500 大卡</td>
+<td>2300-2500 大卡</td>
+</tr>
+<tr>
+<td>蛋白质</td>
+<td>1.8g/kg 体重</td>
+<td>150g</td>
+</tr>
+<tr>
+<td>碳水</td>
+<td>3.5g/kg 体重</td>
+<td>280g</td>
+</tr>
+<tr>
+<td>脂肪</td>
+<td>1g/kg 体重</td>
+<td>80g</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三餐配比设计">2.4 三餐配比设计</h3>
+<table>
+<thead>
+<tr>
+<th>餐次</th>
+<th>碳水</th>
+<th>蛋白质</th>
+<th>脂肪</th>
+<th>推荐食物</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>早餐 (11:00)</td>
+<td>50%</td>
+<td>30%</td>
+<td>20%</td>
+<td>燕麦 + 鸡蛋 + 牛奶</td>
+</tr>
+<tr>
+<td>午餐 (15:00)</td>
+<td>40%</td>
+<td>40%</td>
+<td>20%</td>
+<td>糙米 + 鸡胸肉 + 蔬菜</td>
+</tr>
+<tr>
+<td>晚餐 (22:00)</td>
+<td>20%</td>
+<td>50%</td>
+<td>30%</td>
+<td>鱼肉 + 蔬菜沙拉</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="三技能安装与配置">三、技能安装与配置</h2>
+<h3 id="技能清单">3.1 技能清单</h3>
+<table>
+<thead>
+<tr>
+<th>技能名称</th>
+<th>版本</th>
+<th>用途</th>
+<th>安装状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>schedule-reminder</td>
+<td>-</td>
+<td>双保险提醒系统</td>
+<td>✅ 已安装</td>
+</tr>
+<tr>
+<td>cron-helper</td>
+<td>1.0.0</td>
+<td>定时任务管理</td>
+<td>✅ 已安装</td>
+</tr>
+</tbody>
+</table>
+<h3 id="安装过程">3.2 安装过程</h3>
+<p><strong>步骤 1：检查已安装技能</strong></p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/.openclaw/workspace/skills/ <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-E</span> <span class="st">&quot;schedule|cron|reminder&quot;</span></span></code></pre></div>
+<p><strong>输出：</strong></p>
+<pre><code>drwxrwxr-x  3 admin admin  4096 Apr 11 12:59 cron-helper
+drwxrwxr-x  5 admin admin  4096 Apr 11 13:00 schedule-reminder</code></pre>
+<p><strong>结论：</strong> 核心技能已预装，无需额外安装。</p>
+<h3 id="配置文件创建">3.3 配置文件创建</h3>
+<p><strong>3.3.1 提醒系统配置</strong></p>
+<p>文件路径：<code>~/.openclaw/data/schedule-reminder-config.json</code></p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;primaryChannel&quot;</span><span class="fu">:</span> <span class="st">&quot;dingtalk&quot;</span><span class="fu">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;backupEnabled&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;userId&quot;</span><span class="fu">:</span> <span class="st">&quot;011621542958784864&quot;</span><span class="fu">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;accountId&quot;</span><span class="fu">:</span> <span class="st">&quot;zhugexia&quot;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p><strong>3.3.2 用户健康档案</strong></p>
+<p>文件路径：<code>~/.openclaw/workspace/health-profile-xujie.md</code></p>
+<p>包含内容： - 身体数据（身高、体重、目标） - 每日营养目标 -
+作息与提醒时间表 - 垃圾食品控制策略 - 运动计划 - 打卡模板</p>
+<h3 id="与-ai-助手的对话过程">3.4 与 AI 助手的对话过程</h3>
+<p><strong>关键对话记录：</strong></p>
+<pre><code>用户：我现在要重新做这个作业，给我一个思路
+
+小龙虾：好的！这个作业是让你基于我来完成一个应用开发项目...
+       推荐选择健康管理方向，可以设置三餐提醒、营养素配比建议、
+       每日打卡等功能。
+
+用户：健康方向，例如每天提醒我饮食控制，减脂期间碳水蛋白质
+      脂肪的配比，提醒我打卡
+
+小龙虾：太棒了！健康管理是个非常实用的方向...
+       现在开始安装技能，一步步帮你配置。
+
+用户：183/81kg 目标 75kg 三点睡 十点起床 每周运动五次 爱吃垃圾食品
+
+小龙虾：收到！帮你计算每日营养目标...
+       现在创建定时提醒任务。</code></pre>
+<hr />
+<h2 id="四实现过程">四、实现过程</h2>
+<h3 id="定时任务创建">4.1 定时任务创建</h3>
+<p>使用 OpenClaw CLI 创建每日重复提醒任务：</p>
+<p><strong>任务 1：起床喝水提醒（10:00）</strong></p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> cron add <span class="at">--name</span> <span class="st">&quot;起床喝水&quot;</span> <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--cron</span> <span class="st">&quot;0 10 * * *&quot;</span> <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--message</span> <span class="st">&quot;🌅 起床啦！空腹喝水 500ml，开始新的一天&quot;</span> <span class="dt">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--tz</span> <span class="st">&quot;Asia/Shanghai&quot;</span> <span class="dt">\</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--to</span> <span class="st">&quot;011621542958784864&quot;</span></span></code></pre></div>
+<p><strong>任务 2：早餐提醒（11:00）</strong></p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> cron add <span class="at">--name</span> <span class="st">&quot;早餐提醒&quot;</span> <span class="dt">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--cron</span> <span class="st">&quot;0 11 * * *&quot;</span> <span class="dt">\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--message</span> <span class="st">&quot;🍳 早餐时间！推荐：燕麦 50g + 鸡蛋 3 个 + 牛奶 250ml&quot;</span> <span class="dt">\</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--tz</span> <span class="st">&quot;Asia/Shanghai&quot;</span> <span class="dt">\</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--to</span> <span class="st">&quot;011621542958784864&quot;</span></span></code></pre></div>
+<p><strong>任务 3：午餐提醒（15:00）</strong></p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> cron add <span class="at">--name</span> <span class="st">&quot;午餐提醒&quot;</span> <span class="dt">\</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--cron</span> <span class="st">&quot;0 15 * * *&quot;</span> <span class="dt">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--message</span> <span class="st">&quot;🍱 午餐时间！推荐：糙米 150g + 鸡胸肉 200g + 蔬菜&quot;</span> <span class="dt">\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--tz</span> <span class="st">&quot;Asia/Shanghai&quot;</span> <span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--to</span> <span class="st">&quot;011621542958784864&quot;</span></span></code></pre></div>
+<p><strong>任务 4：运动提醒（20:00）</strong></p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> cron add <span class="at">--name</span> <span class="st">&quot;运动提醒&quot;</span> <span class="dt">\</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--cron</span> <span class="st">&quot;0 20 * * *&quot;</span> <span class="dt">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--message</span> <span class="st">&quot;🏃 运动时间！每周 5 次，今天练什么？&quot;</span> <span class="dt">\</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--tz</span> <span class="st">&quot;Asia/Shanghai&quot;</span> <span class="dt">\</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--to</span> <span class="st">&quot;011621542958784864&quot;</span></span></code></pre></div>
+<p><strong>任务 5：晚餐提醒（22:00）</strong></p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> cron add <span class="at">--name</span> <span class="st">&quot;晚餐提醒&quot;</span> <span class="dt">\</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--cron</span> <span class="st">&quot;0 22 * * *&quot;</span> <span class="dt">\</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--message</span> <span class="st">&quot;🍽️ 晚餐时间！推荐：鱼肉 200g + 蔬菜沙拉&quot;</span> <span class="dt">\</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--tz</span> <span class="st">&quot;Asia/Shanghai&quot;</span> <span class="dt">\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--to</span> <span class="st">&quot;011621542958784864&quot;</span></span></code></pre></div>
+<p><strong>任务 6：每日打卡（02:00）</strong></p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> cron add <span class="at">--name</span> <span class="st">&quot;每日打卡&quot;</span> <span class="dt">\</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--cron</span> <span class="st">&quot;0 2 * * *&quot;</span> <span class="dt">\</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--message</span> <span class="st">&quot;📝 今日打卡时间！请记录：体重 + 三餐 + 运动 + 饮水 + 睡眠&quot;</span> <span class="dt">\</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--tz</span> <span class="st">&quot;Asia/Shanghai&quot;</span> <span class="dt">\</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--to</span> <span class="st">&quot;011621542958784864&quot;</span></span></code></pre></div>
+<p><strong>任务 7：睡觉提醒（03:00）</strong></p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> cron add <span class="at">--name</span> <span class="st">&quot;睡觉提醒&quot;</span> <span class="dt">\</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--cron</span> <span class="st">&quot;0 3 * * *&quot;</span> <span class="dt">\</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--message</span> <span class="st">&quot;😴 睡觉时间！明天继续努力，晚安！&quot;</span> <span class="dt">\</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--tz</span> <span class="st">&quot;Asia/Shanghai&quot;</span> <span class="dt">\</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--to</span> <span class="st">&quot;011621542958784864&quot;</span></span></code></pre></div>
+<p><strong>任务 8：喝水提醒（每 2 小时）</strong></p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> cron add <span class="at">--name</span> <span class="st">&quot;喝水提醒&quot;</span> <span class="dt">\</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--cron</span> <span class="st">&quot;0 */2 * * *&quot;</span> <span class="dt">\</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--message</span> <span class="st">&quot;💧 喝水时间！补充 300-500ml 水&quot;</span> <span class="dt">\</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--tz</span> <span class="st">&quot;Asia/Shanghai&quot;</span> <span class="dt">\</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--to</span> <span class="st">&quot;011621542958784864&quot;</span></span></code></pre></div>
+<h3 id="任务验证">4.2 任务验证</h3>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> cron list</span></code></pre></div>
+<p><strong>输出结果：</strong></p>
+<pre><code>ID                                   Name         Schedule                    Next     Status
+7b456721-5c63-422d-ab71-e3e228a9fc1a 晚餐提醒     cron 0 22 * * *            in 27m   idle
+d84750ee-ecf6-40f5-9070-f236862f1078 喝水提醒     cron 0 */2 * * *           in 28m   idle
+d2180f5d-b273-4ab7-b7fb-51a5a10a6f87 每日打卡     cron 0 2 * * *             in 4h    idle
+5572eaee-4978-4df7-b831-c47e69af75b3 睡觉提醒     cron 0 3 * * *             in 5h    idle
+2661e485-b921-4a97-b077-6cd13db72d95 起床喝水     cron 0 10 * * *            in 12h   idle
+c2351338-21b0-4425-b6cc-dd38fe142699 早餐提醒     cron 0 11 * * *            in 13h   idle
+1d1c9cb2-3137-4041-b863-0653e7f9311a 午餐提醒     cron 0 15 * * *            in 17h   idle
+f7723899-ecf5-4695-8453-6c8d049cd676 运动提醒     cron 0 20 * * *            in 22h   idle</code></pre>
+<p><strong>结论：</strong> 8 个定时任务全部创建成功，状态正常。</p>
+<h3 id="打卡记录模板">4.3 打卡记录模板</h3>
+<p>文件路径：<code>~/.openclaw/workspace/health-checkin-xujie.md</code></p>
+<p>模板内容：</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>【日期】2026-04-21</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>【体重】81.0kg</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>【早餐】燕麦 50g + 鸡蛋 3 个 + 牛奶 250ml</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>【午餐】糙米 150g + 鸡胸肉 200g + 西兰花</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>【晚餐】鱼肉 200g + 蔬菜沙拉</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>【运动】力量训练 45min</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>【饮水】2500ml</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>【睡眠】7h</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>【心情】😊</span></code></pre></div>
+<h3 id="系统架构图">4.4 系统架构图</h3>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                    用户（徐杰）                          │
+│              钉钉消息接收/发送                           │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│                  OpenClaw Gateway                       │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐ │
+│  │ cron 调度器 │───▶│ 消息推送器  │───▶│ 钉钉渠道    │ │
+│  └─────────────┘    └─────────────┘    └─────────────┘ │
+│         ▲                                              │
+│         │                                              │
+│  ┌──────┴──────┐                                       │
+│  │ 定时任务列表 │                                       │
+│  │ (8 个任务)   │                                       │
+│  └─────────────┘                                       │
+└─────────────────────────────────────────────────────────┘
+                     ▲
+                     │
+┌────────────────────┴────────────────────────────────────┐
+│              小龙虾 AI 助手 (诸葛虾)                      │
+│  ┌─────────────┐    ┌─────────────┐                     │
+│  │ 健康档案    │    │ 打卡记录    │                     │
+│  │ health-    │    │ health-     │                     │
+│  │ profile.md │    │ checkin.md  │                     │
+│  └─────────────┘    └─────────────┘                     │
+└─────────────────────────────────────────────────────────┘</code></pre>
+<hr />
+<h2 id="五使用效果">五、使用效果</h2>
+<h3 id="提醒时间表">5.1 提醒时间表</h3>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>提醒类型</th>
+<th>消息内容</th>
+<th>预期效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10:00</td>
+<td>起床喝水</td>
+<td>🌅 空腹喝水 500ml</td>
+<td>启动新陈代谢</td>
+</tr>
+<tr>
+<td>11:00</td>
+<td>早餐</td>
+<td>🍳 高碳水早餐建议</td>
+<td>保证上午能量</td>
+</tr>
+<tr>
+<td>每 2h</td>
+<td>喝水</td>
+<td>💧 补充 300-500ml</td>
+<td>每日饮水 2500ml+</td>
+</tr>
+<tr>
+<td>15:00</td>
+<td>午餐</td>
+<td>🍱 均衡配比建议</td>
+<td>营养全面</td>
+</tr>
+<tr>
+<td>20:00</td>
+<td>运动</td>
+<td>🏃 运动提醒</td>
+<td>保证每周 5 次</td>
+</tr>
+<tr>
+<td>22:00</td>
+<td>晚餐</td>
+<td>🍽️ 低碳高蛋白</td>
+<td>利于夜间减脂</td>
+</tr>
+<tr>
+<td>02:00</td>
+<td>打卡</td>
+<td>📝 记录数据</td>
+<td>形成数据追踪</td>
+</tr>
+<tr>
+<td>03:00</td>
+<td>睡觉</td>
+<td>😴 晚安提醒</td>
+<td>保证 7h 睡眠</td>
+</tr>
+</tbody>
+</table>
+<h3 id="预期成效">5.2 预期成效</h3>
+<p><strong>短期（1 周）：</strong> - 建立规律的三餐时间 - 每日饮水量达标
+- 完成 5 次运动</p>
+<p><strong>中期（1 个月）：</strong> - 体重下降 2-3kg - 形成健康饮食习惯
+- 减少垃圾食品摄入</p>
+<p><strong>长期（6 周）：</strong> - 达到目标体重 75kg -
+建立可持续的生活方式</p>
+<h3 id="测试计划">5.3 测试计划</h3>
+<table>
+<thead>
+<tr>
+<th>测试项</th>
+<th>测试方法</th>
+<th>预期结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提醒准时性</td>
+<td>观察消息到达时间</td>
+<td>误差&lt;1 分钟</td>
+</tr>
+<tr>
+<td>消息可达性</td>
+<td>检查钉钉消息</td>
+<td>100% 送达</td>
+</tr>
+<tr>
+<td>打卡完整性</td>
+<td>每日填写记录</td>
+<td>连续 7 天无遗漏</td>
+</tr>
+<tr>
+<td>体重变化</td>
+<td>每周称重</td>
+<td>每周下降 0.5-1kg</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="六问题与解决">六、问题与解决</h2>
+<h3 id="遇到的问题">6.1 遇到的问题</h3>
+<p><strong>问题 1：作息时间与常规不同</strong></p>
+<p>用户凌晨 3 点睡、上午 10 点起，与常规作息差异大。</p>
+<p><strong>解决方案：</strong> - 调整所有提醒时间适配夜猫子作息 -
+晚餐时间设为 22:00（睡前 1 小时） - 睡觉提醒设为
+03:00（实际入睡时间）</p>
+<p><strong>问题 2：垃圾食品偏好</strong></p>
+<p>用户爱吃垃圾食品，完全禁止难以坚持。</p>
+<p><strong>解决方案：</strong> - 采用 80/20 原则（80% 健康 +20% 放纵） -
+提供替代方案（空气炸锅代替油炸） - 允许每周 1-2 次放纵餐</p>
+<p><strong>问题 3：CLI 命令参数不熟悉</strong></p>
+<p>初次使用 OpenClaw cron 命令，参数格式需要摸索。</p>
+<p><strong>解决方案：</strong> - 使用
+<code>openclaw cron add --help</code> 查看帮助 - 参考 cron 表达式语法（5
+字段格式） - 通过 <code>openclaw cron list</code> 验证创建结果</p>
+<h3 id="技术难点">6.2 技术难点</h3>
+<p><strong>难点：双保险提醒架构的理解</strong></p>
+<p>schedule-reminder 技能采用双保险架构： - 主方案：OpenClaw Cron（依赖
+Gateway） - 备用方案：系统级 crontab（不依赖 Gateway）</p>
+<p><strong>学习收获：</strong> - 理解了高可用系统的设计思路 -
+学会了配置文件的创建和编辑 - 掌握了 cron 表达式的写法</p>
+<hr />
+<h2 id="七实验总结">七、实验总结</h2>
+<h3 id="完成情况">7.1 完成情况</h3>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>状态</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>技能安装</td>
+<td>✅ 完成</td>
+<td>2 个核心技能</td>
+</tr>
+<tr>
+<td>配置创建</td>
+<td>✅ 完成</td>
+<td>3 个配置文件</td>
+</tr>
+<tr>
+<td>定时任务</td>
+<td>✅ 完成</td>
+<td>8 个每日任务</td>
+</tr>
+<tr>
+<td>打卡模板</td>
+<td>✅ 完成</td>
+<td>Markdown 格式</td>
+</tr>
+<tr>
+<td>实验报告</td>
+<td>✅ 完成</td>
+<td>本文档</td>
+</tr>
+</tbody>
+</table>
+<h3 id="创新点">7.2 创新点</h3>
+<ol type="1">
+<li><strong>个性化作息适配</strong>：根据用户实际作息（夜猫子）调整提醒时间，而非套用常规模板</li>
+<li><strong>80/20
+饮食原则</strong>：不追求完美主义，允许适度放纵，提高可持续性</li>
+<li><strong>双保险架构</strong>：利用 schedule-reminder
+的主备方案，确保提醒不丢失</li>
+<li><strong>数据驱动</strong>：通过打卡记录形成数据追踪，便于分析和调整</li>
+</ol>
+<h3 id="不足与改进">7.3 不足与改进</h3>
+<p><strong>不足之处：</strong> - 缺少自动体重记录功能（需手动填写） -
+营养素计算需人工核对 - 缺少可视化图表展示</p>
+<p><strong>改进方向：</strong> - 集成体重秤 API 自动记录 -
+开发营养素计算器 - 使用图表库生成体重变化曲线</p>
+<hr />
+<h2 id="八心得体会">八、心得体会</h2>
+<h3 id="对-ai-助手的重新认识">8.1 对 AI 助手的重新认识</h3>
+<p>在这次实验之前，我对 AI
+助手的理解停留在”问答工具”的层面——我提问，它回答。但通过这次与小龙虾助手的深度协作，我发现
+AI 助手可以是<strong>主动的合作伙伴</strong>：</p>
+<ul>
+<li><strong>不只是执行命令</strong>：小龙虾会主动询问我的作息、饮食习惯，然后根据这些信息个性化配置</li>
+<li><strong>不只是单次交互</strong>：它创建了持续的提醒系统，每天都在发挥作用</li>
+<li><strong>不只是工具</strong>：它像一个健康教练，会鼓励、会提醒、会监督</li>
+</ul>
+<p>这种从”被动工具”到”主动伙伴”的转变，让我对 AI
+的应用场景有了全新的认识。</p>
+<h3 id="技术与人性的结合">8.2 技术与人性的结合</h3>
+<p>在配置过程中，我深刻体会到<strong>技术必须服务于人性</strong>：</p>
+<p>最初我想完全禁止垃圾食品，但小龙虾建议采用 80/20
+原则。它说：“完全禁止难以坚持，适度放纵反而更容易长期执行。”这句话让我意识到，好的系统设计不是追求理论上的完美，而是考虑人性的弱点，用灵活的方式帮助用户达成目标。</p>
+<p>这启发我思考：未来的 AI 系统应该更懂人性，而不是让人去适应系统。</p>
+<h3 id="持续性的挑战">8.3 持续性的挑战</h3>
+<p>系统搭建只用了 30
+分钟，但真正的挑战在于<strong>坚持使用</strong>。</p>
+<p>我意识到： - 工具易搭建，习惯难养成 - 提醒只是辅助，自律才是核心 -
+数据记录的价值在于回顾和反思</p>
+<p>这让我想到，也许可以在系统中加入”周复盘”功能，每周回顾自己的饮食和运动情况，分析哪些做得好、哪些需要改进。这样
+AI 助手就不仅是提醒者，还是反思的引导者。</p>
+<h3 id="对-openclaw-平台的理解">8.4 对 OpenClaw 平台的理解</h3>
+<p>通过这次实验，我对 OpenClaw 平台有了更深入的了解：</p>
+<ul>
+<li><strong>技能生态</strong>：通过安装技能可以快速扩展功能</li>
+<li><strong>CLI 友好</strong>：命令行工具让配置变得透明和可控</li>
+<li><strong>多渠道支持</strong>：可以推送到钉钉、微信、Telegram 等</li>
+<li><strong>双保险设计</strong>：关键功能有备用方案，可靠性高</li>
+</ul>
+<p>这些特性让 OpenClaw
+成为一个适合快速原型开发的平台，尤其适合学生做课程实验。</p>
+<h3 id="对未来学习的启发">8.5 对未来学习的启发</h3>
+<p>这次实验让我意识到几个重要的学习方向：</p>
+<ol type="1">
+<li><strong>API 集成能力</strong>：未来可以学习如何调用第三方
+API（如营养数据库、体重秤 API）</li>
+<li><strong>数据分析能力</strong>：学习如何分析打卡数据，生成有意义的洞察</li>
+<li><strong>用户体验设计</strong>：学习如何设计更友好的交互方式</li>
+<li><strong>系统架构思维</strong>：学习高可用系统的设计原则</li>
+</ol>
+<h3 id="最后的感悟">8.6 最后的感悟</h3>
+<p>实验开始时，我以为这只是一个”完成作业”的任务。但随着系统的搭建，我开始期待每天收到提醒、期待记录自己的变化、期待看到体重的下降。</p>
+<p>也许这就是好技术的力量——它不是冷冰冰的工具，而是能激发人变得更好的伙伴。</p>
+<p>感谢小龙虾助手，让我看到了 AI 的另一种可能。</p>
+<hr />
+<h2 id="附录">附录</h2>
+<h3 id="a.-核心命令速查">A. 核心命令速查</h3>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看定时任务</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> cron list</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加定时任务</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> cron add <span class="at">--name</span> <span class="st">&quot;任务名&quot;</span> <span class="at">--cron</span> <span class="st">&quot;表达式&quot;</span> <span class="at">--message</span> <span class="st">&quot;消息&quot;</span> <span class="at">--to</span> <span class="st">&quot;用户 ID&quot;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除定时任务</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> cron rm <span class="op">&lt;</span>任务 ID<span class="op">&gt;</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看技能目录</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/.openclaw/workspace/skills/</span></code></pre></div>
+<h3 id="b.-cron-表达式参考">B. Cron 表达式参考</h3>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0 10 * * *</code></td>
+<td>每天 10:00</td>
+</tr>
+<tr>
+<td><code>0 */2 * * *</code></td>
+<td>每 2 小时</td>
+</tr>
+<tr>
+<td><code>0 0 * * 0</code></td>
+<td>每周日 00:00</td>
+</tr>
+<tr>
+<td><code>0 0 1 * *</code></td>
+<td>每月 1 日 00:00</td>
+</tr>
+</tbody>
+</table>
+<h3 id="c.-相关文件路径">C. 相关文件路径</h3>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>健康档案</td>
+<td><code>~/.openclaw/workspace/health-profile-xujie.md</code></td>
+</tr>
+<tr>
+<td>打卡记录</td>
+<td><code>~/.openclaw/workspace/health-checkin-xujie.md</code></td>
+</tr>
+<tr>
+<td>提醒配置</td>
+<td><code>~/.openclaw/data/schedule-reminder-config.json</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="d.-参考资料">D. 参考资料</h3>
+<ol type="1">
+<li>OpenClaw 官方文档：https://docs.openclaw.ai</li>
+<li>Cron 表达式生成器：https://cronmaker.com</li>
+<li>减脂营养学基础：《运动营养学》（人民体育出版社）</li>
+<li>schedule-reminder
+技能文档：<code>~/.openclaw/workspace/skills/schedule-reminder/SKILL.md</code></li>
+</ol>
+<hr />
+<p><strong>报告完成日期：</strong> 2026 年 4 月 21 日<br />
+<strong>报告撰写人：</strong> 徐杰<br />
+<strong>AI 助手：</strong> 小龙虾/诸葛虾 🦞</p>
+</body>
+</html>

@@ -1,0 +1,264 @@
+' ============================================
+' 室外远程驾驶无人车路径规划与避障系统设计
+' PPT 自动生成 VBA 代码
+' 作者：李皓然 | 指导教师：孟玲玲
+' ============================================
+
+Sub CreateUnmannedVehiclePPT()
+    Dim ppt As Presentation
+    Dim slide As slide
+    Dim layout As CustomLayout
+    
+    ' 创建新演示文稿
+    Set ppt = Presentations.Add
+    
+    ' ============================================
+    ' 第1页：封面
+    ' ============================================
+    Set slide = ppt.Slides.Add(1, ppLayoutTitle)
+    With slide
+        .Shapes.Title.TextFrame.TextRange.Text = "室外远程驾驶无人车路径规划与避障系统设计"
+        .Shapes(2).TextFrame.TextRange.Text = "基于5G通信、OpenCV与PID控制的竞赛无人车系统" & vbCrLf & _
+            "李皓然 | 电子与电气工程学院 | 指导教师：孟玲玲"
+    End With
+    
+    ' ============================================
+    ' 第2页：目录
+    ' ============================================
+    Set slide = ppt.Slides.Add(2, ppLayoutText)
+    With slide
+        .Shapes.Title.TextFrame.TextRange.Text = "目录"
+        .Shapes(2).TextFrame.TextRange.Text = _
+            "1. 项目背景与目标" & vbCrLf & _
+            "2. 系统总体架构" & vbCrLf & _
+            "3. 5G远程通信技术" & vbCrLf & _
+            "4. 视觉感知与图像处理" & vbCrLf & _
+            "5. 标志物识别算法" & vbCrLf & _
+            "6. PID控制与避障策略" & vbCrLf & _
+            "7. 总结与展望" & vbCrLf & _
+            "8. 竞赛历程"
+    End With
+    
+    ' ============================================
+    ' 第3页：引言 - 项目背景与目标
+    ' ============================================
+    Set slide = ppt.Slides.Add(3, ppLayoutText)
+    With slide
+        .Shapes.Title.TextFrame.TextRange.Text = "1. 项目背景与目标"
+        .Shapes(2).TextFrame.TextRange.Text = _
+            "面临的挑战" & vbCrLf & _
+            "  • 传统自动驾驶在复杂环境和紧急情况下存在局限" & vbCrLf & _
+            "  • 救灾、矿山等危险场景需要减少人员风险" & vbCrLf & _
+            "" & vbCrLf & _
+            "5G带来的机遇" & vbCrLf & _
+            "  • 低延迟（空口1ms）、大带宽（峰值20Gbit/s）、高可靠" & vbCrLf & _
+            "  • 远程驾驶成为新一代自动驾驶的核心方向" & vbCrLf & _
+            "" & vbCrLf & _
+            "项目目标" & vbCrLf & _
+            "  • 构建高效稳定的5G远程驾驶无人车系统" & vbCrLf & _
+            "  • 实现远程遥控 + 自主导航双模式" & vbCrLf & _
+            "  • 以低成本硬件实现竞赛场景可靠自动驾驶"
+    End With
+    
+    ' ============================================
+    ' 第4页：系统总体架构
+    ' ============================================
+    Set slide = ppt.Slides.Add(4, ppLayoutText)
+    With slide
+        .Shapes.Title.TextFrame.TextRange.Text = "2. 系统总体架构"
+        .Shapes(2).TextFrame.TextRange.Text = _
+            "【图1：系统整体硬件架构图】" & vbCrLf & _
+            "" & vbCrLf & _
+            "硬件平台" & vbCrLf & _
+            "  • 主控：树莓派4B（Raspberry Pi OS）" & vbCrLf & _
+            "  • 通信：RM500U 5G模块（免驱即插即用）" & vbCrLf & _
+            "  • 感知：USB广角摄像头（320×240，30fps）" & vbCrLf & _
+            "  • 执行：数字舵机（68°~92°）+ 直流电机" & vbCrLf & _
+            "  • 供电：双独立电池（控制/动力隔离）" & vbCrLf & _
+            "" & vbCrLf & _
+            "软件架构（Python模块化设计）" & vbCrLf & _
+            "  • 图像采集 → 图像处理 → 标志物识别 → PID控制 → 通信/语音"
+    End With
+    
+    ' ============================================
+    ' 第5页：5G远程通信与视觉技术基础
+    ' ============================================
+    Set slide = ppt.Slides.Add(5, ppLayoutText)
+    With slide
+        .Shapes.Title.TextFrame.TextRange.Text = "3. 5G远程通信与视觉技术基础"
+        .Shapes(2).TextFrame.TextRange.Text = _
+            "【图2：远程操控软件流程与遥控视角图】" & vbCrLf & _
+            "" & vbCrLf & _
+            "5G通信模块" & vbCrLf & _
+            "  • 车载视频回传 + 控制指令下发" & vbCrLf & _
+            "  • 车载终端采集状态信息 → JT/T808协议封装 → 5G发送" & vbCrLf & _
+            "  • 控制中心网页界面实时显示，操作者远程操控" & vbCrLf & _
+            "" & vbCrLf & _
+            "OpenCV视觉处理" & vbCrLf & _
+            "  • 开源跨平台计算机视觉库，Python绑定" & vbCrLf & _
+            "  • 在树莓派嵌入式设备上实现实时视觉任务" & vbCrLf & _
+            "  • 完整流水线：采集→灰度→二值化→滤波→边缘→霍夫变换"
+    End With
+    
+    ' ============================================
+    ' 第6页：视觉感知 - 图像预处理流水线
+    ' ============================================
+    Set slide = ppt.Slides.Add(6, ppLayoutText)
+    With slide
+        .Shapes.Title.TextFrame.TextRange.Text = "4. 视觉感知 – 图像预处理流水线"
+        .Shapes(2).TextFrame.TextRange.Text = _
+            "【图3：Canny边缘检测预处理流程与效果对比】" & vbCrLf & _
+            "" & vbCrLf & _
+            "预处理步骤" & vbCrLf & _
+            "  ① ROI裁剪：保留图像下方3/4，排除天空/建筑干扰" & vbCrLf & _
+            "  ② 灰度化：BGR→单通道，数据量降至1/3，效率提升3倍" & vbCrLf & _
+            "  ③ 二值化：固定阈值 + 自适应阈值（8×6子块）结合" & vbCrLf & _
+            "  ④ 降噪：双边滤波（保边去噪）+ 高斯模糊（平滑高频）" & vbCrLf & _
+            "  ⑤ Canny边缘检测：滞后阈值（30/100），提取连续锐利边缘" & vbCrLf & _
+            "  ⑥ 形态学操作：膨胀→开运算→闭运算，连接断裂、去除噪点" & vbCrLf & _
+            "" & vbCrLf & _
+            "关键：自适应阈值有效缓解树荫/楼影造成的局部暗区漏检"
+    End With
+    
+    ' ============================================
+    ' 第7页：车道线检测与中线提取
+    ' ============================================
+    Set slide = ppt.Slides.Add(7, ppLayoutText)
+    With slide
+        .Shapes.Title.TextFrame.TextRange.Text = "4. 视觉感知 – 车道线检测与中线提取"
+        .Shapes(2).TextFrame.TextRange.Text = _
+            "【图4：霍夫直线检测与赛道中线提取结果】" & vbCrLf & _
+            "" & vbCrLf & _
+            "霍夫变换参数" & vbCrLf & _
+            "  • rho=1, theta=1°, threshold=70, minLineLength=25, maxLineGap=5" & vbCrLf & _
+            "  • 角度过滤：仅保留10°~170°线段，去除水平/垂直干扰" & vbCrLf & _
+            "" & vbCrLf & _
+            "中线提取算法" & vbCrLf & _
+            "  • 形态学膨胀弥补虚线间隙 → 自中间列向左右逐列扫描" & vbCrLf & _
+            "  • 检测白像素跳变确定左右边界 → 取平均值 = 赛道中心线" & vbCrLf & _
+            "  • 横向偏差 = 中心线位置 − 图像中心 → PID控制器输入" & vbCrLf & _
+            "" & vbCrLf & _
+            "稳定性保障" & vbCrLf & _
+            "  • 历史记忆补偿（单侧车道线丢失时外推）" & vbCrLf & _
+            "  • 中值滤波（5帧）+ 滑动平均（窗口3）抑制抖动"
+    End With
+    
+    ' ============================================
+    ' 第8页：标志物识别 (一)
+    ' ============================================
+    Set slide = ppt.Slides.Add(8, ppLayoutText)
+    With slide
+        .Shapes.Title.TextFrame.TextRange.Text = "5. 标志物识别算法（一）"
+        .Shapes(2).TextFrame.TextRange.Text = _
+            "【图5：斑马线（左）与蓝色挡板（右）识别效果】" & vbCrLf & _
+            "" & vbCrLf & _
+            "斑马线识别" & vbCrLf & _
+            "  • 高斯模糊 → 高阈值提取白色区域 → 开运算去噪" & vbCrLf & _
+            "  • Canny边缘检测 + 轮廓查找" & vbCrLf & _
+            "  • 筛选条件：面积合理 + 长宽比2:1~5:1 + 数量≥3" & vbCrLf & _
+            "  • 触发后：停车5秒 + 语音播报" & vbCrLf & _
+            "" & vbCrLf & _
+            "蓝色挡板识别（发车/停车信号）" & vbCrLf & _
+            "  • HSV色彩空间：蓝色范围[110,50,50]~[130,255,255]" & vbCrLf & _
+            "  • inRange生成蓝色掩膜 → 腐蚀/膨胀 → 最大轮廓" & vbCrLf & _
+            "  • 面积 > 图像10% → 判定挡板存在" & vbCrLf & _
+            "  • 挡板消失连续3帧 → 自动发车"
+    End With
+    
+    ' ============================================
+    ' 第9页：标志物识别 (二)
+    ' ============================================
+    Set slide = ppt.Slides.Add(9, ppLayoutText)
+    With slide
+        .Shapes.Title.TextFrame.TextRange.Text = "5. 标志物识别算法（二）"
+        .Shapes(2).TextFrame.TextRange.Text = _
+            "【图6：A/B字母与左右变道线识别效果】" & vbCrLf & _
+            "" & vbCrLf & _
+            "字母A/B识别（终点停车区判断）" & vbCrLf & _
+            "  • 二值化 + 双边滤波 + 开闭运算连接笔画" & vbCrLf & _
+            "  • 形状因子 = 周长²/(4π×面积)" & vbCrLf & _
+            "  • 字母A：顶点数=3，形状因子<0.25 → 左前方A区" & vbCrLf & _
+            "  • 字母B：顶点数=4，形状因子1.5~2.1 → 右前方B区" & vbCrLf & _
+            "" & vbCrLf & _
+            "变道线识别" & vbCrLf & _
+            "  • 白色/蓝色双掩膜提取候选区域" & vbCrLf & _
+            "  • 霍夫直线检测 + 斜率分析" & vbCrLf & _
+            "  • 斜率>阈值且偏左 → 左转向；斜率<阈值且偏右 → 右转向"
+    End With
+    
+    ' ============================================
+    ' 第10页：PID控制与避障策略
+    ' ============================================
+    Set slide = ppt.Slides.Add(10, ppLayoutText)
+    With slide
+        .Shapes.Title.TextFrame.TextRange.Text = "6. PID控制与避障策略"
+        .Shapes(2).TextFrame.TextRange.Text = _
+            "【图7：PID闭环控制与避障流程图】" & vbCrLf & _
+            "" & vbCrLf & _
+            "舵机转向 — 位置式PD控制" & vbCrLf & _
+            "  • 输出 = Kp×偏差 + Kd×(偏差−上次偏差)" & vbCrLf & _
+            "  • 去除积分项，防止机械间隙低频振荡" & vbCrLf & _
+            "  • PWM频率50Hz，角度限制68°~92°" & vbCrLf & _
+            "" & vbCrLf & _
+            "电机速度 — 增量式PID" & vbCrLf & _
+            "  • 输出增量限制±10，占空比限制30%~90%" & vbCrLf & _
+            "  • 防止偏差过大导致速度突变打滑" & vbCrLf & _
+            "" & vbCrLf & _
+            "避障策略" & vbCrLf & _
+            "  • 障碍物占比>30% → 减速至60%，向反方向转向" & vbCrLf & _
+            "  • 正前方占比>50% → 后退0.8秒 + 最大角度转向" & vbCrLf & _
+            "  • 视觉输入到舵机响应延迟 < 80ms"
+    End With
+    
+    ' ============================================
+    ' 第11页：系统总结与展望
+    ' ============================================
+    Set slide = ppt.Slides.Add(11, ppLayoutText)
+    With slide
+        .Shapes.Title.TextFrame.TextRange.Text = "7. 系统总结与展望"
+        .Shapes(2).TextFrame.TextRange.Text = _
+            "已完成成果" & vbCrLf & _
+            "  ✅ 树莓派4B + 5G + OpenCV无人车系统" & vbCrLf & _
+            "  ✅ 远程遥控模式：5G视频回传 + 网页操控界面" & vbCrLf & _
+            "  ✅ 自主导航模式：视觉循迹 + 标志物识别 + 避障" & vbCrLf & _
+            "  ✅ 完整视觉流水线：ROI→灰度→二值化→Canny→霍夫→中线" & vbCrLf & _
+            "  ✅ 标志物识别：斑马线/蓝色挡板/A字母/B字母/变道线" & vbCrLf & _
+            "  ✅ PID控制 + 有限状态机（5状态自动切换）" & vbCrLf & _
+            "" & vbCrLf & _
+            "未来展望" & vbCrLf & _
+            "  • 多传感器融合（激光雷达/IMU/GPS）" & vbCrLf & _
+            "  • 深度学习目标检测替代传统视觉" & vbCrLf & _
+            "  • 应用场景扩展：巡检、物流、农业"
+    End With
+    
+    ' ============================================
+    ' 第12页：竞赛历程与致谢
+    ' ============================================
+    Set slide = ppt.Slides.Add(12, ppLayoutText)
+    With slide
+        .Shapes.Title.TextFrame.TextRange.Text = "8. 竞赛历程与致谢"
+        .Shapes(2).TextFrame.TextRange.Text = _
+            "备赛历程（5个月）" & vbCrLf & _
+            "  • 6人团队分工：机械/硬件/通信/视觉/控制/网页" & vbCrLf & _
+            "  • 从零搭建：树莓派刷写→GPIO分配→摄像头驱动→5G配置" & vbCrLf & _
+            "  • 参数调优：记录20+组不同天气/时段参数组合" & vbCrLf & _
+            "  • 深夜抢修：舵机齿轮崩裂，凌晨3点重新上路" & vbCrLf & _
+            "" & vbCrLf & _
+            "心得体会" & vbCrLf & _
+            "  • 书本公式与工程应用之间存在巨大差距" & vbCrLf & _
+            "  • 良好的分工和信任是完成复杂项目的基础" & vbCrLf & _
+            "" & vbCrLf & _
+            "致谢" & vbCrLf & _
+            "  感谢导师孟玲玲老师的悉心指导，感谢队友胡应浩、崔浩宇、" & vbCrLf & _
+            "  韩磊、刘泽悦的并肩作战！"
+    End With
+    
+    ' ============================================
+    ' 应用统一设计主题
+    ' ============================================
+    ppt.ApplyTheme (msoThemeTypeOffice)
+    
+    MsgBox "PPT生成完毕！共12页。" & vbCrLf & _
+        "请根据需要插入图片和调整排版。", vbInformation, "完成"
+        
+End Sub

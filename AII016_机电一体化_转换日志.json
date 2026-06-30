@@ -1,0 +1,81 @@
+{
+  "mode": "redraw_single_file_no_template",
+  "source_file": "AII016-机电一体化.xlsx",
+  "output": "AII016_机电一体化_英方课表.xlsx",
+  "courses": [
+    {
+      "file": "AII016-机电一体化.xlsx",
+      "course_code": "AII016",
+      "course_name": "机电一体化",
+      "event_count": 16,
+      "sheet": "H7121Z 机电一体化",
+      "token_estimate": {
+        "note": "估算值，不是精确 API 计费；脚本本身不调用大模型。用于判断上传一门中方课表给 Agent 转换时的大致 token 消耗。",
+        "method": "mixed_zh_en_chars_estimate_plus_skill_overhead",
+        "source_file_size_bytes": 5776,
+        "source_text_chars": 1517,
+        "generated_cell_text_chars": 886,
+        "event_count": 16,
+        "warning_count": 0,
+        "estimated_input_tokens": 1554,
+        "estimated_output_tokens": 528,
+        "estimated_total_tokens": 2082,
+        "human_readable": "约 2,082 tokens / 门课"
+      },
+      "status": "redrawn_converted"
+    }
+  ],
+  "warnings": [
+    {
+      "event": {
+        "course_code": "AII016",
+        "course_name": "机电一体化",
+        "source_file": "AII016-机电一体化.xlsx",
+        "raw": "李培熙讲师/(6-7节)15周/下沙 萨塞克斯305/(2025-2026-2)-AII016-01B/AI电子2303/33/未安排/ /理论:64,实验:32/10/160",
+        "day": "Thursday",
+        "start_period": 6,
+        "end_period": 7,
+        "weeks": "15",
+        "location": "下沙 萨塞克斯305",
+        "room_text": "Building Lab, Room 305",
+        "class_text": "REE 2303",
+        "section_code": "(2025-2026-2)-AII016-01B",
+        "class_type": "Lab",
+        "explicit_period": true
+      },
+      "warning": "No empty subcolumn available; appended into occupied cell"
+    },
+    {
+      "event": {
+        "course_code": "AII016",
+        "course_name": "机电一体化",
+        "source_file": "AII016-机电一体化.xlsx",
+        "raw": "李培熙讲师/(8-9节)15周/下沙 萨塞克斯305/(2025-2026-2)-AII016-01B/AI电子2303/33/未安排/ /理论:64,实验:32/10/160",
+        "day": "Thursday",
+        "start_period": 8,
+        "end_period": 9,
+        "weeks": "15",
+        "location": "下沙 萨塞克斯305",
+        "room_text": "Building Lab, Room 305",
+        "class_text": "REE 2303",
+        "section_code": "(2025-2026-2)-AII016-01B",
+        "class_type": "Lab",
+        "explicit_period": true
+      },
+      "warning": "No empty subcolumn available; appended into occupied cell"
+    }
+  ],
+  "token_estimate": {
+    "note": "估算值，不是精确 API 计费；脚本本身不调用大模型。用于判断上传一门中方课表给 Agent 转换时的大致 token 消耗。",
+    "method": "mixed_zh_en_chars_estimate_plus_skill_overhead",
+    "source_file_size_bytes": 5776,
+    "source_text_chars": 1517,
+    "generated_cell_text_chars": 886,
+    "event_count": 16,
+    "warning_count": 0,
+    "estimated_input_tokens": 1554,
+    "estimated_output_tokens": 528,
+    "estimated_total_tokens": 2082,
+    "human_readable": "约 2,082 tokens / 门课"
+  }
+}

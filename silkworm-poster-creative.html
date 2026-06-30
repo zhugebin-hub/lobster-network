@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蚕的一生 - 创意海报</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    width: 1190px;
+    min-height: 1684px;
+    background: linear-gradient(180deg, #fff9e6 0%, #ffe8c8 50%, #fff3d5 100%);
+    font-family: 'ZCOOL KuaiLe', cursive;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* 手绘背景装饰 */
+  .scribble {
+    position: absolute;
+    opacity: 0.1;
+    stroke: #ff9a5a;
+    stroke-width: 3;
+    fill: none;
+  }
+  
+  .container {
+    position: relative;
+    padding: 30px 40px;
+  }
+  
+  /* 标题 - 云朵形状 */
+  .title-cloud {
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+  }
+  
+  .title-blob {
+    display: inline-block;
+    background: #fff;
+    padding: 20px 60px;
+    border-radius: 50% 40% 50% 45% / 45% 50% 40% 50%;
+    box-shadow: 5px 5px 0 #ffd5a8;
+    transform: rotate(-2deg);
+    border: 4px solid #ff6b35;
+  }
+  
+  .main-title {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 75px;
+    color: #ff6b35;
+    letter-spacing: 15px;
+    text-shadow: 3px 3px 0 #ffd5a8;
+  }
+  
+  .subtitle {
+    font-size: 20px;
+    color: #ff8c42;
+    margin-top: 10px;
+    letter-spacing: 5px;
+  }
+  
+  /* 阶段 1 - 波浪边框圆形 */
+  .stage-1-wrapper {
+    position: absolute;
+    top: 180px;
+    left: 50px;
+    width: 480px;
+  }
+  
+  .stage-1-blob {
+    background: #fff9f0;
+    padding: 25px;
+    border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
+    border: 4px dashed #ffb347;
+    box-shadow: 8px 8px 0 rgba(255,179,71,0.3);
+    transform: rotate(3deg);
+  }
+  
+  .stage-badge {
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    background: #ffb347;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 55px;
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    box-shadow: 3px 3px 0 #ff9a35;
+  }
+  
+  .stage-title {
+    font-size: 30px;
+    color: #ff9a35;
+    margin-bottom: 8px;
+  }
+  
+  .stage-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #666;
+  }
+  
+  .stage-text b {
+    color: #ff6b35;
+    font-size: 18px;
+  }
+  
+  .illustration-1 {
+    position: absolute;
+    right: -120px;
+    top: 20px;
+    width: 140px;
+    height: 140px;
+    background: #fff5e0;
+    border: 3px solid #ffb347;
+    border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+    transform: rotate(5deg);
+  }
+  
+  .diary-1 {
+    background: #fff;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 15px 5px 15px 5px;
+    border: 2px solid #ffd5a8;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #777;
+    position: relative;
+  }
+  
+  .diary-1::before {
+    content: '✏️ 我的日记：';
+    display: block;
+    font-weight: 700;
+    color: #ff8c42;
+    margin-bottom: 5px;
+  }
+  
+  /* 阶段 2 - 锯齿边框 */
+  .stage-2-wrapper {
+    position: absolute;
+    top: 420px;
+    right: 60px;
+    width: 470px;
+  }
+  
+  .stage-2-star {
+    background: #f9f6f3;
+    padding: 25px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    border: 4px solid #8b7355;
+    transform: rotate(-3deg);
+  }
+  
+  .stage-2 .stage-badge {
+    background: #8b7355;
+  }
+  
+  .stage-2 .stage-title {
+    color: #7a6250;
+  }
+  
+  .illustration-2 {
+    position: absolute;
+    left: -130px;
+    top: 30px;
+    width: 150px;
+    height: 150px;
+    background: #f5f0eb;
+    border: 3px solid #8b7355;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 75px;
+    transform: rotate(-5deg);
+  }
+  
+  /* 阶段 3 - 叶子形状 */
+  .stage-3-wrapper {
+    position: absolute;
+    top: 700px;
+    left: 70px;
+    width: 500px;
+  }
+  
+  .stage-3-leaf {
+    background: #f0fff0;
+    padding: 30px 25px 25px 30px;
+    border-radius: 50% 80% 50% 80% / 60% 50% 70% 40%;
+    border: 4px solid #7bc67e;
+    box-shadow: 8px 8px 0 rgba(123,198,126,0.3);
+    transform: rotate(2deg);
+  }
+  
+  .stage-3 .stage-badge {
+    background: #7bc67e;
+  }
+  
+  .stage-3 .stage-title {
+    color: #5cb85c;
+  }
+  
+  .illustration-3 {
+    position: absolute;
+    right: -110px;
+    top: 25px;
+    width: 130px;
+    height: 130px;
+    background: #e8f8e8;
+    border: 3px dashed #7bc67e;
+    border-radius: 40% 60% 50% 50% / 55% 45% 55% 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+    transform: rotate(4deg);
+  }
+  
+  /* 阶段 4 - 花朵形状 */
+  .stage-4-wrapper {
+    position: absolute;
+    top: 980px;
+    right: 50px;
+    width: 480px;
+  }
+  
+  .stage-4-flower {
+    background: #fff0ff;
+    padding: 25px;
+    border-radius: 50% 40% 45% 55% / 55% 50% 40% 45%;
+    border: 4px dotted #dda0dd;
+    box-shadow: 8px 8px 0 rgba(221,160,221,0.3);
+    transform: rotate(-2deg);
+  }
+  
+  .stage-4 .stage-badge {
+    background: #dda0dd;
+  }
+  
+  .stage-4 .stage-title {
+    color: #c47bc4;
+  }
+  
+  .illustration-4 {
+    position: absolute;
+    left: -120px;
+    top: 20px;
+    width: 140px;
+    height: 140px;
+    background: #f8e8f8;
+    border: 3px dotted #dda0dd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 75px;
+    transform: rotate(-3deg);
+  }
+  
+  /* 箭头连接 */
+  .arrow-connector {
+    position: absolute;
+    font-size: 35px;
+    color: #ff9a5a;
+    opacity: 0.6;
+  }
+  .arrow-1 { top: 395px; left: 280px; transform: rotate(45deg); }
+  .arrow-2 { top: 670px; right: 290px; transform: rotate(225deg); }
+  .arrow-3 { top: 950px; left: 300px; transform: rotate(45deg); }
+  
+  /* 趣味知识 - 气泡框 */
+  .fun-bubbles {
+    position: absolute;
+    bottom: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+  }
+  
+  .bubble {
+    position: absolute;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 50%;
+    border: 3px solid;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+  }
+  
+  .bubble-1 {
+    width: 200px;
+    height: 200px;
+    border-color: #ffb347;
+    top: 0;
+    left: 0;
+    border-radius: 55% 45% 50% 50% / 50% 55% 45% 50%;
+    transform: rotate(5deg);
+  }
+  
+  .bubble-2 {
+    width: 180px;
+    height: 180px;
+    border-color: #7bc67e;
+    top: 20px;
+    left: 220px;
+    border-radius: 50% 50% 45% 55% / 55% 50% 50% 45%;
+    transform: rotate(-3deg);
+  }
+  
+  .bubble-3 {
+    width: 220px;
+    height: 220px;
+    border-color: #4a90d9;
+    top: 0;
+    right: 0;
+    border-radius: 45% 55% 50% 50% / 50% 45% 55% 50%;
+    transform: rotate(2deg);
+  }
+  
+  .bubble-4 {
+    width: 190px;
+    height: 190px;
+    border-color: #dda0dd;
+    bottom: 0;
+    left: 150px;
+    border-radius: 50% 45% 55% 50% / 45% 50% 50% 55%;
+    transform: rotate(-4deg);
+  }
+  
+  .bubble-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  
+  .bubble-1 .bubble-title { color: #ff9a35; }
+  .bubble-2 .bubble-title { color: #5cb85c; }
+  .bubble-3 .bubble-title { color: #4a90d9; }
+  .bubble-4 .bubble-title { color: #c47bc4; }
+  
+  .bubble-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #666;
+  }
+  
+  .bubble-title .emoji {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+  
+  /* 照片区 - 拍立得风格 */
+  .photo-polaroids {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 25px;
+  }
+  
+  .polaroid {
+    background: white;
+    padding: 12px 12px 35px 12px;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.15);
+    transform: rotate(var(--rot));
+    transition: transform 0.3s;
+  }
+  
+  .polaroid:nth-child(1) { --rot: -5deg; }
+  .polaroid:nth-child(2) { --rot: 3deg; }
+  .polaroid:nth-child(3) { --rot: -3deg; }
+  
+  .polaroid-frame {
+    width: 130px;
+    height: 130px;
+    border: 2px dashed #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fafafa;
+  }
+  
+  .polaroid-frame .icon {
+    font-size: 45px;
+    margin-bottom: 8px;
+  }
+  
+  .polaroid-frame .label {
+    font-size: 12px;
+    color: #999;
+  }
+  
+  /* 签名区 */
+  .sign-section {
+    position: absolute;
+    bottom: 25px;
+    right: 40px;
+    text-align: right;
+  }
+  
+  .sign-line {
+    margin: 8px 0;
+  }
+  
+  .sign-line .label {
+    font-size: 14px;
+    color: #888;
+    margin-right: 10px;
+  }
+  
+  .sign-line .line {
+    display: inline-block;
+    width: 150px;
+    border-bottom: 2px dashed #ffb347;
+  }
+  
+  /* 装饰小元素 */
+  .deco-star {
+    position: absolute;
+    font-size: 25px;
+    animation: twinkle 2s infinite;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.2); }
+  }
+  
+  .deco-star.s1 { top: 150px; left: 30px; }
+  .deco-star.s2 { top: 400px; right: 30px; }
+  .deco-star.s3 { top: 680px; left: 40px; }
+  .deco-star.s4 { top: 960px; right: 25px; }
+  
+  /* 时间标签 */
+  .time-tag {
+    display: inline-block;
+    background: #fff3cd;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+    color: #856404;
+    margin: 8px 0;
+    border: 2px solid #ffe082;
+  }
+</style>
+</head>
+<body>
+  <!-- 背景涂鸦 -->
+  <svg class="scribble" style="top: 100px; left: 100px; width: 200px;" viewBox="0 0 200 100">
+    <path d="M10 50 Q30 20 50 50 T90 50 T130 50 T170 50 T190 50"/>
+  </svg>
+  <svg class="scribble" style="bottom: 300px; right: 100px; width: 150px;" viewBox="0 0 150 100">
+    <path d="M10 50 Q30 80 50 50 T90 50 T130 50"/>
+  </svg>
+  
+  <div class="container">
+    <!-- 标题云朵 -->
+    <div class="title-cloud">
+      <div class="title-blob">
+        <div class="main-title">🐛 蚕的一生 </div>
+        <div class="subtitle">✨ 三年级科学观察记录 ✨</div>
+      </div>
+    </div>
+    
+    <!-- 装饰星星 -->
+    <div class="deco-star s1">⭐</div>
+    <div class="deco-star s2">✨</div>
+    <div class="deco-star s3">⭐</div>
+    <div class="deco-star s4">✨</div>
+    
+    <!-- 阶段 1 -->
+    <div class="stage-1-wrapper">
+      <div class="stage-1-blob">
+        <div class="stage-badge">1</div>
+        <div class="stage-title">蚕卵宝宝</div>
+        <div class="time-tag">📅 第 1-14 天</div>
+        <div class="stage-text">
+          蚕卵<b>小小的</b>、<b>椭圆形</b>，像<b>芝麻</b>一样大！刚生下来是<b>淡黄色</b>的，慢慢变成<b>紫灰色</b>，蚕宝宝要出来啦！
+        </div>
+        <div class="diary-1">
+          今天蚕卵变色了！从黄色变成了紫灰色，妈妈说蚕宝宝快要孵化了。我用放大镜看，卵的表面有一点点凹进去，还有细细的纹路呢！
+        </div>
+      </div>
+      <div class="illustration-1">🥚</div>
+    </div>
+    
+    <!-- 箭头 1 -->
+    <div class="arrow-connector arrow-1">⬇️</div>
+    
+    <!-- 阶段 2 -->
+    <div class="stage-2-wrapper">
+      <div class="stage-2-star">
+        <div class="stage-badge">2</div>
+        <div class="stage-title">蚁蚕出生</div>
+        <div class="time-tag"> 第 15-18 天</div>
+        <div class="stage-text">
+          蚕宝宝孵化了！因为又<b>黑</b>又<b>小</b>，像小蚂蚁，所以叫"<b>蚁蚕</b>"。只有<b>2-3 毫米</b>长，最喜欢吃<b>嫩桑叶</b>！
+        </div>
+        <div class="diary-1" style="border-color: #a08870;">
+          哇！蚕宝宝终于出来了！它们黑黑小小的，真的好可爱！我用羽毛轻轻把它们扫到桑叶上，它们立刻开始吃，吃得可香了！
+        </div>
+      </div>
+      <div class="illustration-2"></div>
+    </div>
+    
+    <!-- 箭头 2 -->
+    <div class="arrow-connector arrow-2">⬇️</div>
+    
+    <!-- 阶段 3 -->
+    <div class="stage-3-wrapper">
+      <div class="stage-3-leaf">
+        <div class="stage-badge">3</div>
+        <div class="stage-title">蚕宝宝长大</div>
+        <div class="time-tag">📅 第 19-45 天</div>
+        <div class="stage-text">
+          这是蚕宝宝长得<b>最快</b>的时候！它们会<b>蜕皮 4 次</b>（一龄→五龄），身体从黑色变成<b>白色</b>，长到<b>6-7 厘米</b>！每天都在<b>吃吃吃</b>
+        </div>
+        <div class="diary-1" style="border-color: #95d698;">
+          蚕宝宝已经长到我的手指那么长了！白白胖胖的，摸起来凉凉的、软软的。它们吃桑叶的声音"沙沙沙"，像下雨一样。今天有一条蚕在蜕皮，它抬着头一动不动，好像在睡觉！
+        </div>
+      </div>
+      <div class="illustration-3">🐛</div>
+    </div>
+    
+    <!-- 箭头 3 -->
+    <div class="arrow-connector arrow-3">️</div>
+    
+    <!-- 阶段 4 -->
+    <div class="stage-4-wrapper">
+      <div class="stage-4-flower">
+        <div class="stage-badge">4</div>
+        <div class="stage-title">结茧变蛾</div>
+        <div class="time-tag">📅 第 46-60 天</div>
+        <div class="stage-text">
+          蚕宝宝身体变得<b>透明发亮</b>，开始<b>吐丝结茧</b>！在茧里变成<b>蛹</b>，再过 10-15 天，<b>蚕蛾</b>破茧而出！蚕蛾有翅膀但不会飞哦～
+        </div>
+        <div class="diary-1" style="border-color: #e8b8e8;">
+          蚕宝宝开始吐丝了！它们吐出细细的丝，把自己裹起来，两天后就看到了一个完整的茧，摸上去软软的。两周后，蚕蛾出来了，白白的身子，小小的翅膀，好神奇！
+        </div>
+      </div>
+      <div class="illustration-4"></div>
+    </div>
+    
+    <!-- 趣味知识气泡 -->
+    <div class="fun-bubbles">
+      <div class="bubble bubble-1">
+        <div class="bubble-title"><span class="emoji">🐛</span>蚕是什么？</div>
+        <div class="bubble-text">蚕是一种昆虫，和蝴蝶是亲戚！要经过卵→幼虫→蛹→成虫四个阶段</div>
+      </div>
+      <div class="bubble bubble-2">
+        <div class="bubble-title"><span class="emoji">🍃</span>蚕吃什么？</div>
+        <div class="bubble-text">蚕只吃桑叶！每天要喂 3-4 次新鲜的桑叶，它们很挑食呢</div>
+      </div>
+      <div class="bubble bubble-3">
+        <div class="bubble-title"><span class="emoji">🧵</span>蚕丝有多长？</div>
+        <div class="bubble-text">一根蚕丝最长可以有<b>1500 米</b>！比 10 个操场还要长！</div>
+      </div>
+      <div class="bubble bubble-4">
+        <div class="bubble-title"><span class="emoji">⏱️</span>蚕活多久？</div>
+        <div class="bubble-text">蚕的一生大约<b>50-60 天</b>，一只蚕蛾妈妈可以生 400-500 个宝宝！</div>
+      </div>
+    </div>
+    
+    <!-- 照片区 - 拍立得风格 -->
+    <div class="photo-polaroids">
+      <div class="polaroid">
+        <div class="polaroid-frame">
+          <div class="icon">🥚</div>
+          <div class="label">蚕卵照片</div>
+        </div>
+      </div>
+      <div class="polaroid">
+        <div class="polaroid-frame">
+          <div class="icon">🐛</div>
+          <div class="label">蚕宝宝照片</div>
+        </div>
+      </div>
+      <div class="polaroid">
+        <div class="polaroid-frame">
+          <div class="icon">🧶</div>
+          <div class="label">蚕茧照片</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 签名区 -->
+    <div class="sign-section">
+      <div class="sign-line">
+        <span class="label">姓名：</span>
+        <span class="line"></span>
+      </div>
+      <div class="sign-line">
+        <span class="label">班级：</span>
+        <span class="line"></span>
+      </div>
+      <div class="sign-line">
+        <span class="label">日期：</span>
+        <span class="line"></span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

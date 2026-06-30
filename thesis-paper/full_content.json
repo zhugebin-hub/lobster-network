@@ -1,0 +1,3333 @@
+[
+  {
+    "idx": 0,
+    "style": "Normal",
+    "text": "AI时代格斗具身智能的建模与策略优化",
+    "runs": [
+      {
+        "text": "AI时代格斗具身智能的建模与策略优化",
+        "bold": true,
+        "italic": null,
+        "font_size": "203200"
+      }
+    ]
+  },
+  {
+    "idx": 1,
+    "style": "Heading 1",
+    "text": "摘要",
+    "runs": [
+      {
+        "text": "摘要",
+        "bold": null,
+        "italic": null,
+        "font_size": "177800"
+      }
+    ]
+  },
+  {
+    "idx": 2,
+    "style": "Normal",
+    "text": "本论文针对AI时代下具身智能与人形机器人竞技赛事的战术决策与策略优化问题展开深入研究。以灵骁LX01人形机器人及Q90H电机为物理载体，结合赛场规则、运动控制与多回合对抗特点，构建了多层次、多阶段的数学优化模型。",
+    "runs": [
+      {
+        "text": "本论文针对AI时代下具身智能与人形机器人竞技赛事的战术决策与策略优化问题展开深入研究。以灵骁LX01人形机器人及Q90H电机为物理载体，结合赛场规则、运动控制与多回合对抗特点，构建了多层次、多阶段的数学优化模型。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 3,
+    "style": "Normal",
+    "text": "针对问题一，本文基于动力学原理，建立了结合质心（CoM）位移、零力矩点（ZMP）稳定裕度与动力学冲击效应的攻击动作多属性评估模型。通过引入质量参与率，推导了13种攻击动作的有效击打动能与冲量，并利用Sigmoid激活函数量化了由反冲力、角动量及支撑裕度共同决定的失稳倒地风险。最终，基于Pareto非支配排序算法，在攻击威力和机体稳定性之间寻求最优平衡，筛选出包含“回旋/转身踢”、“侧踢”在内的12个Pareto非支配核心攻击动作，并给出了实战排序。",
+    "runs": [
+      {
+        "text": "针对",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "问题一",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "，本文基于动力学原理，建立了结合质心（CoM）位移、零力矩点（ZMP）稳定裕度与动力学冲击效应的攻击动作多属性评估模型。通过引入质量参与率，推导了13种攻击动作的有效击打动能与冲量，并利用Sigmoid激活函数量化了由反冲力、角动量及支撑裕度共同决定的失稳倒地风险。最终，基于Pareto非支配排序算法，在攻击威力和机体稳定性之间寻求最优平衡，筛选出包含“回旋/转身踢”、“侧踢”在内的12个Pareto非支配核心攻击动作，并给出了实战排序。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 4,
+    "style": "Normal",
+    "text": "针对问题二，本文构建了攻防动作双边收益矩阵。考虑攻击类型（拳、腿、特技、倒地）与防守类别的匹配机制，引入目标区域防护剖面（头部、躯干、四肢）及空间距离不匹配惩罚，精确量化了22种防守动作对抗13种攻击动作时的防守成功率、反击概率、余后平衡及期望有效伤害。在此基础上，利用线性规划方法求解双边零和博弈，得到了双方的Nash混合策略概率分布，并给出了基于Minimax准则的最坏情况防守动作排序，为防守决策提供了稳健的理论支撑。",
+    "runs": [
+      {
+        "text": "针对",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "问题二",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "，本文构建了攻防动作双边收益矩阵。考虑攻击类型（拳、腿、特技、倒地）与防守类别的匹配机制，引入目标区域防护剖面（头部、躯干、四肢）及空间距离不匹配惩罚，精确量化了22种防守动作对抗13种攻击动作时的防守成功率、反击概率、余后平衡及期望有效伤害。在此基础上，利用线性规划方法求解双边零和博弈，得到了双方的Nash混合策略概率分布，并给出了基于Minimax准则的最坏情况防守动作排序，为防守决策提供了稳健的理论支撑。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 5,
+    "style": "Normal",
+    "text": "针对问题三，本文构建了单场单人竞技攻防的有限状态马尔可夫决策过程（MDP）模型。将分差、双方血量、体力、平衡、距离及时间阶段等关键物理与博弈指标离散化为972个状态，设计了包括控距、抱缠控制等在内的7种高级决策动作。通过定义动作事件概率转移矩阵，刻画了实战中复杂的攻防转换与体力消耗。利用价值迭代算法求解最优全程作战策略，并通过蒙特卡洛仿真验证，结果表明该策略在面对不同对手策略（保守、均衡、激进）时均能保持极高的获胜概率（均值在50.7%至70.3%之间）。",
+    "runs": [
+      {
+        "text": "针对",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "问题三",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "，本文构建了单场单人竞技攻防的有限状态马尔可夫决策过程（MDP）模型。将分差、双方血量、体力、平衡、距离及时间阶段等关键物理与博弈指标离散化为972个状态，设计了包括控距、抱缠控制等在内的7种高级决策动作。通过定义动作事件概率转移矩阵，刻画了实战中复杂的攻防转换与体力消耗。利用价值迭代算法求解最优全程作战策略，并通过蒙特卡洛仿真验证，结果表明该策略在面对不同对手策略（保守、均衡、激进）时均能保持极高的获胜概率（均值在50.7%至70.3%之间）。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 6,
+    "style": "Normal",
+    "text": "针对问题四，本文建立了BO3（三局两胜）赛制下的全局资源调度动态规划（DP）模型。将比赛胜负局数、机体损伤等级、平衡状态、电池状态与人工复位、战术暂停、紧急维修等稀缺资源次数进行状态空间融合，通过逆向归纳法（DP）求解全局获胜概率最大化的资源使用时机。模型全面考虑了资源调度的机会成本与故障风险，并给出了9类典型对局局势（如领先、落后、决胜局）下的最优作战资源决策方案。",
+    "runs": [
+      {
+        "text": "针对",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "问题四",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "，本文建立了BO3（三局两胜）赛制下的全局资源调度动态规划（DP）模型。将比赛胜负局数、机体损伤等级、平衡状态、电池状态与人工复位、战术暂停、紧急维修等稀缺资源次数进行状态空间融合，通过逆向归纳法（DP）求解全局获胜概率最大化的资源使用时机。模型全面考虑了资源调度的机会成本与故障风险，并给出了9类典型对局局势（如领先、落后、决胜局）下的最优作战资源决策方案。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 7,
+    "style": "Normal",
+    "text": "针对问题五，立足于人形机器人与具身智能产业的现状与未来多场景应用需求，从技术迭代、场景落地、行业标准与生态建设四个维度，撰写了具身智能产业发展建议书，为我国相关产业的技术升级与商业化落地提供了科学参考。",
+    "runs": [
+      {
+        "text": "针对",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "问题五",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "，立足于人形机器人与具身智能产业的现状与未来多场景应用需求，从技术迭代、场景落地、行业标准与生态建设四个维度，撰写了具身智能产业发展建议书，为我国相关产业的技术升级与商业化落地提供了科学参考。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 8,
+    "style": "Normal",
+    "text": "关键词：具身智能；人形机器人竞技；Pareto前沿；马尔可夫决策过程；博弈论（Nash均衡）；动态规划；资源调度",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "关键词",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：具身智能；人形机器人竞技；Pareto前沿；马尔可夫决策过程；博弈论（Nash均衡）；动态规划；资源调度",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 9,
+    "style": "Normal",
+    "text": "____________________________________________________________",
+    "runs": [
+      {
+        "text": "____________________________________________________________",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 10,
+    "style": "Heading 1",
+    "text": "1. 问题背景与文献综述",
+    "runs": [
+      {
+        "text": "1. 问题背景与文献综述",
+        "bold": null,
+        "italic": null,
+        "font_size": "177800"
+      }
+    ]
+  },
+  {
+    "idx": 11,
+    "style": "Heading 2",
+    "text": "1.1 问题背景",
+    "runs": [
+      {
+        "text": "1.1 问题背景",
+        "bold": null,
+        "italic": null,
+        "font_size": "152400"
+      }
+    ]
+  },
+  {
+    "idx": 12,
+    "style": "Normal",
+    "text": "具身智能（Embodied Intelligence）作为AI时代拉动未来产业与经济增长的核心领域，将虚拟算法与物理实体相结合，使其具备环境感知、自主行动和物理交互能力 [1]。人形机器人作为具身智能最具代表性的硬件载体，正在经历从工业场景向竞技、服务、民生等多元应用场景的快速拓展。机器人对抗竞技作为检验机器人运动控制、算法水平和结构稳定性的综合性平台，其攻防决策与资源调度直接决定了比赛的胜负，也为人形机器人的算法迭代和硬件升级提供了真实的数据支撑 [2]。",
+    "runs": [
+      {
+        "text": "具身智能（Embodied Intelligence）作为AI时代拉动未来产业与经济增长的核心领域，将虚拟算法与物理实体相结合，使其具备环境感知、自主行动和物理交互能力 [1]。人形机器人作为具身智能最具代表性的硬件载体，正在经历从工业场景向竞技、服务、民生等多元应用场景的快速拓展。机器人对抗竞技作为检验机器人运动控制、算法水平和结构稳定性的综合性平台，其攻防决策与资源调度直接决定了比赛的胜负，也为人形机器人的算法迭代和硬件升级提供了真实的数据支撑 [2]。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 13,
+    "style": "Normal",
+    "text": "本题依托众擎灵骁LX01人形机器人竞技赛事，旨在针对其13种攻击动作与22种防守动作，结合多回合对抗、人工复位、战术暂停、紧急维修、备用机器人更换及电池管理等多重复杂规则，构建严谨的数学模型，从而最大化整体赛事的获胜概率。",
+    "runs": [
+      {
+        "text": "本题依托众擎灵骁LX01人形机器人竞技赛事，旨在针对其13种攻击动作与22种防守动作，结合多回合对抗、人工复位、战术暂停、紧急维修、备用机器人更换及电池管理等多重复杂规则，构建严谨的数学模型，从而最大化整体赛事的获胜概率。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 14,
+    "style": "Heading 2",
+    "text": "1.2 论文工作与创新点",
+    "runs": [
+      {
+        "text": "1.2 论文工作与创新点",
+        "bold": null,
+        "italic": null,
+        "font_size": "152400"
+      }
+    ]
+  },
+  {
+    "idx": 15,
+    "style": "Normal",
+    "text": "本文的主要工作与创新点体现在以下几个方面：",
+    "runs": [
+      {
+        "text": "本文的主要工作与创新点体现在以下几个方面：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 16,
+    "style": "Normal",
+    "text": "多属性动力学评估与Pareto决策：克服了单一指标评估攻击动作的局限性，首次引入质量参与率，将动能与冲量融合成“归一化攻击威力”，并基于ZMP理论与角动量推导失稳风险，利用Pareto非支配前沿进行科学筛选。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "多属性动力学评估与Pareto决策",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：克服了单一指标评估攻击动作的局限性，首次引入质量参与率，将动能与冲量融合成“归一化攻击威力”，并基于ZMP理论与角动量推导失稳风险，利用Pareto非支配前沿进行科学筛选。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 17,
+    "style": "Normal",
+    "text": "基于目标防护剖面的攻防博弈建模：通过定义攻击动作在头部、躯干和四肢的概率分布，结合防守动作的区域防护效果、距离不匹配惩罚和类型匹配加成，构建了精细的13×22收益矩阵，并求解了Nash混合策略。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "基于目标防护剖面的攻防博弈建模",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：通过定义攻击动作在头部、躯干和四肢的概率分布，结合防守动作的区域防护效果、距离不匹配惩罚和类型匹配加成，构建了精细的13×22收益矩阵，并求解了Nash混合策略。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 18,
+    "style": "Normal",
+    "text": "高维离散状态马尔可夫决策过程（MDP）：将单场比赛建模为包含972个状态的MDP，通过价值迭代求解最优动态策略，解决了格斗过程中的时变决策与体力、平衡约束问题。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "高维离散状态马尔可夫决策过程（MDP）",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：将单场比赛建模为包含972个状态的MDP，通过价值迭代求解最优动态策略，解决了格斗过程中的时变决策与体力、平衡约束问题。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 19,
+    "style": "Normal",
+    "text": "BO3赛制全局资源调度动态规划：针对有限次数的人工复位、战术暂停和维修资源，建立了多阶段决策DP模型，量化了资源使用的即时增益与机会成本。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "BO3赛制全局资源调度动态规划",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：针对有限次数的人工复位、战术暂停和维修资源，建立了多阶段决策DP模型，量化了资源使用的即时增益与机会成本。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 20,
+    "style": "Normal",
+    "text": "____________________________________________________________",
+    "runs": [
+      {
+        "text": "____________________________________________________________",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 21,
+    "style": "Heading 1",
+    "text": "2. 问题1：攻击动作多属性动力学评估与Pareto筛选",
+    "runs": [
+      {
+        "text": "2. 问题1：攻击动作多属性动力学评估与Pareto筛选",
+        "bold": null,
+        "italic": null,
+        "font_size": "177800"
+      }
+    ]
+  },
+  {
+    "idx": 22,
+    "style": "Heading 2",
+    "text": "2.1 动力学建模与参数推导",
+    "runs": [
+      {
+        "text": "2.1 动力学建模与参数推导",
+        "bold": null,
+        "italic": null,
+        "font_size": "152400"
+      }
+    ]
+  },
+  {
+    "idx": 23,
+    "style": "Normal",
+    "text": "灵骁LX01人形机器人整体重量 $M = 42.0\\text{ kg}$，搭载Q90H电机。其攻击动作分为拳法、腿法、组合特技三大类，共计13种。为了精确评估攻击动作的杀伤力与自身稳定性，必须进行动力学建模。",
+    "runs": [
+      {
+        "text": "灵骁LX01人形机器人整体重量 $M = 42.0\\text{ kg}$，搭载Q90H电机。其攻击动作分为拳法、腿法、组合特技三大类，共计13种。为了精确评估攻击动作的杀伤力与自身稳定性，必须进行动力学建模。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 24,
+    "style": "Heading 3",
+    "text": "2.1.1 质量参与率与有效击打质量",
+    "runs": [
+      {
+        "text": "2.1.1 质量参与率与有效击打质量",
+        "bold": null,
+        "italic": null,
+        "font_size": "139700"
+      }
+    ]
+  },
+  {
+    "idx": 25,
+    "style": "Normal",
+    "text": "在格斗过程中，不同动作由不同的机体关节和肢体协同完成，并非整机质量全部参与击打。我们定义质量参与率（Mass Participation Ratio） $\\eta_i$，则有效击打质量 $m_{eff, i}$ 为：",
+    "runs": [
+      {
+        "text": "在格斗过程中，不同动作由不同的机体关节和肢体协同完成，并非整机质量全部参与击打。我们定义",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "质量参与率（Mass Participation Ratio）",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $\\eta_i$，则有效击打质量 $m_{eff, i}$ 为：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 26,
+    "style": "Normal",
+    "text": "m_{eff, i} = M \\times \\eta_i  根据各动作的肢体参与度，质量参与率设置如下： - **直拳**：仅单臂前伸，参与率最低，$\\eta = 0.065$，有效质量 $m_{eff} = 2.73\\text{ kg}$； - **勾拳、摆拳**：涉及大臂与部分躯干扭转，$\\eta = 0.095$，有效质量 $m_{eff} = 3.99\\text{ kg}$； - **腿法（前踢、侧踢、低扫）**：单腿发力，涉及大腿与骨盆，$\\eta$ 在 $0.20$ 至 $0.25$ 之间； - **转身/回旋踢**：全身旋转蓄力，$\\eta = 0.31$，有效质量 $m_{eff} = 13.02\\text{ kg}$； - **冲撞**：机体正面冲击，$\\eta = 0.55$，有效质量 $m_{eff} = 23.10\\text{ kg}$。  #### 2.1.2 杀伤力指标：击打动能与冲量 攻击杀伤力由击打瞬时释放的能量与冲击力共同决定。 1. **击打动能（Kinetic Energy）** $E_k$：    E_{k, i} = \\frac{1}{2} m_{eff, i} v_i^2",
+    "runs": [
+      {
+        "text": "m_{eff, i} = M \\times \\eta_i  根据各动作的肢体参与度，质量参与率设置如下： - **直拳**：仅单臂前伸，参与率最低，$\\eta = 0.065$，有效质量 $m_{eff} = 2.73\\text{ kg}$； - **勾拳、摆拳**：涉及大臂与部分躯干扭转，$\\eta = 0.095$，有效质量 $m_{eff} = 3.99\\text{ kg}$； - **腿法（前踢、侧踢、低扫）**：单腿发力，涉及大腿与骨盆，$\\eta$ 在 $0.20$ 至 $0.25$ 之间； - **转身/回旋踢**：全身旋转蓄力，$\\eta = 0.31$，有效质量 $m_{eff} = 13.02\\text{ kg}$； - **冲撞**：机体正面冲击，$\\eta = 0.55$，有效质量 $m_{eff} = 23.10\\text{ kg}$。  #### 2.1.2 杀伤力指标：击打动能与冲量 攻击杀伤力由击打瞬时释放的能量与冲击力共同决定。 1. **击打动能（Kinetic Energy）** $E_k$：    E_{k, i} = \\frac{1}{2} m_{eff, i} v_i^2",
+        "bold": null,
+        "italic": true,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 27,
+    "style": "Normal",
+    "text": "击打冲量（Impulse Force） $F_{imp}$：",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "击打冲量（Impulse Force）",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $F_{imp}$：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 28,
+    "style": "Normal",
+    "text": "击打接触时间为 $\\Delta t_i$，由动量定理，平均冲击力为：",
+    "runs": [
+      {
+        "text": "击打接触时间为 $\\Delta t_i$，由动量定理，平均冲击力为：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 29,
+    "style": "Normal",
+    "text": "F_{imp, i} = \\frac{m_{eff, i} v_i}{\\Delta t_i}  其中 $v_i$ 为击打瞬时速度，$\\Delta t_i$ 为接触时间。例如，“回旋/转身踢”速度 $v = 7.1\\text{ m/s}$，接触时间 $\\Delta t = 0.095\\text{ s}$，其击打动能高达 $328.17\\text{ J}$，冲量达 $973.07\\text{ N}$，表现出极强的杀伤力。  #### 2.1.3 机体稳定性与失稳倒地风险 人形机器人在施加攻击时，由于反冲力与角动量作用，质心（CoM）会产生位移，导致零力矩点（ZMP）偏离支撑多边形（Support Polygon）。 1. **质心位移（CoM Displacement）** $d_{CoM}$：    d_{CoM, i} = \\sqrt{\\Delta x_{CoM, i}^2 + \\Delta y_{CoM, i}^2}",
+    "runs": [
+      {
+        "text": "F_{imp, i} = \\frac{m_{eff, i} v_i}{\\Delta t_i}  其中 $v_i$ 为击打瞬时速度，$\\Delta t_i$ 为接触时间。例如，“回旋/转身踢”速度 $v = 7.1\\text{ m/s}$，接触时间 $\\Delta t = 0.095\\text{ s}$，其击打动能高达 $328.17\\text{ J}$，冲量达 $973.07\\text{ N}$，表现出极强的杀伤力。  #### 2.1.3 机体稳定性与失稳倒地风险 人形机器人在施加攻击时，由于反冲力与角动量作用，质心（CoM）会产生位移，导致零力矩点（ZMP）偏离支撑多边形（Support Polygon）。 1. **质心位移（CoM Displacement）** $d_{CoM}$：    d_{CoM, i} = \\sqrt{\\Delta x_{CoM, i}^2 + \\Delta y_{CoM, i}^2}",
+        "bold": null,
+        "italic": true,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 30,
+    "style": "Normal",
+    "text": "稳定性裕度（Stability Margin） $SM$：",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "稳定性裕度（Stability Margin）",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $SM$：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 31,
+    "style": "Normal",
+    "text": "支撑多边形安全边缘裕度为 $S_{margin, i}$，则实际稳定性裕度为：",
+    "runs": [
+      {
+        "text": "支撑多边形安全边缘裕度为 $S_{margin, i}$，则实际稳定性裕度为：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 32,
+    "style": "Normal",
+    "text": "SM_i = S_{margin, i} - d_{CoM, i} 3. **ZMP失稳风险** $R_{ZMP}$：    当稳定性裕度减小时，ZMP偏离支撑区风险呈指数上升，采用Sigmoid函数描述：    R_{ZMP, i} = \\frac{1}{1 + e^{-12.0 \\times SM_i}}",
+    "runs": [
+      {
+        "text": "SM_i = S_{margin, i} - d_{CoM, i} 3. **ZMP失稳风险** $R_{ZMP}$：    当稳定性裕度减小时，ZMP偏离支撑区风险呈指数上升，采用Sigmoid函数描述：    R_{ZMP, i} = \\frac{1}{1 + e^{-12.0 \\times SM_i}}",
+        "bold": null,
+        "italic": true,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 33,
+    "style": "Normal",
+    "text": "综合失稳倒地风险（Fall Risk） $P_{fall}$：",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "综合失稳倒地风险（Fall Risk）",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $P_{fall}$：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 34,
+    "style": "Normal",
+    "text": "结合反冲力 $F_{recoil}$、角动量 $L_{angular}$ 与支撑裕度，建立失稳倒地概率模型：",
+    "runs": [
+      {
+        "text": "结合反冲力 $F_{recoil}$、角动量 $L_{angular}$ 与支撑裕度，建立失稳倒地概率模型：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 35,
+    "style": "Normal",
+    "text": "P_{fall, i} = \\frac{1}{1 + e^{-\\left(a F_{recoil, i} + b L_{angular, i} - c S_{margin, i} - 1.05\\right)}}    参数校准为 $a = 0.006$，$b = 0.018$，$c = 2.4$。  ### 2.2 综合攻击得分模型 为了对攻击动作进行初步筛选，我们构建了多属性加权得分模型。首先对各指标进行最小-最大归一化（Min-Max Normalization），使之处于 $[0, 1]$ 区间。 - **归一化攻击威力** $P_{attack}$：    P_{attack, i} = 0.55 \\times \\text{Normal}(E_{k, i}) + 0.45 \\times \\text{Normal}(F_{imp, i})",
+    "runs": [
+      {
+        "text": "P_{fall, i} = \\frac{1}{1 + e^{-\\left(a F_{recoil, i} + b L_{angular, i} - c S_{margin, i} - 1.05\\right)}}    参数校准为 $a = 0.006$，$b = 0.018$，$c = 2.4$。  ### 2.2 综合攻击得分模型 为了对攻击动作进行初步筛选，我们构建了多属性加权得分模型。首先对各指标进行最小-最大归一化（Min-Max Normalization），使之处于 $[0, 1]$ 区间。 - **归一化攻击威力** $P_{attack}$：    P_{attack, i} = 0.55 \\times \\text{Normal}(E_{k, i}) + 0.45 \\times \\text{Normal}(F_{imp, i})",
+        "bold": null,
+        "italic": true,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 36,
+    "style": "Normal",
+    "text": "综合攻击得分（Score） $S_i$：",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "综合攻击得分（Score）",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $S_i$：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 37,
+    "style": "Normal",
+    "text": "考虑威力、命中概率 $P_{hit}$、失稳风险 $P_{fall}$、恢复时间 $T_{rec}$ 及能量消耗 $C_{energy}$：",
+    "runs": [
+      {
+        "text": "考虑威力、命中概率 $P_{hit}$、失稳风险 $P_{fall}$、恢复时间 $T_{rec}$ 及能量消耗 $C_{energy}$：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 38,
+    "style": "Normal",
+    "text": "S_i = \\text{Normal}\\left(\\alpha \\text{Normal}(E_{k, i}) + \\beta \\text{Normal}(F_{imp, i}) + \\gamma P_{hit, i} - \\delta P_{fall, i} - \\eta \\text{Normal}(T_{rec, i}) - \\lambda \\text{Normal}(C_{energy, i})\\right) \\times 100    权重系数设定为：$\\alpha = 0.30, \\beta = 0.22, \\gamma = 0.20, \\delta = 0.16, \\eta = 0.07, \\lambda = 0.05$。  ### 2.3 Pareto非支配前沿筛选与排序 在实际竞技中，单一的加权得分可能会掩盖某些极端优秀或极具战略价值的动作。因此，我们引入**Pareto非支配排序算法**。 定义多目标优化向量： \\max \\left\\{ P_{attack, i}, P_{hit, i} \\right\\} \\quad \\text{and} \\quad \\min \\left\\{ P_{fall, i}, T_{rec, i} \\right\\}",
+    "runs": [
+      {
+        "text": "S_i = \\text{Normal}\\left(\\alpha \\text{Normal}(E_{k, i}) + \\beta \\text{Normal}(F_{imp, i}) + \\gamma P_{hit, i} - \\delta P_{fall, i} - \\eta \\text{Normal}(T_{rec, i}) - \\lambda \\text{Normal}(C_{energy, i})\\right) \\times 100    权重系数设定为：$\\alpha = 0.30, \\beta = 0.22, \\gamma = 0.20, \\delta = 0.16, \\eta = 0.07, \\lambda = 0.05$。  ### 2.3 Pareto非支配前沿筛选与排序 在实际竞技中，单一的加权得分可能会掩盖某些极端优秀或极具战略价值的动作。因此，我们引入**Pareto非支配排序算法**。 定义多目标优化向量： \\max \\left\\{ P_{attack, i}, P_{hit, i} \\right\\} \\quad \\text{and} \\quad \\min \\left\\{ P_{fall, i}, T_{rec, i} \\right\\}",
+        "bold": null,
+        "italic": true,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 39,
+    "style": "Normal",
+    "text": "若不存在动作 $j$ 使得在所有目标上均优于动作 $i$ 且至少有一个目标严格优于 $i$，则称动作 $i$ 为 Pareto非支配核心动作。",
+    "runs": [
+      {
+        "text": "若不存在动作 $j$ 使得在所有目标上均优于动作 $i$ 且至少有一个目标严格优于 $i$，则称动作 $i$ 为 ",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "Pareto非支配核心动作",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 40,
+    "style": "Normal",
+    "text": "根据项目计算结果，13种攻击动作的动力学评估与Pareto筛选结果如表2.1所示。",
+    "runs": [
+      {
+        "text": "根据项目计算结果，13种攻击动作的动力学评估与Pareto筛选结果如表2.1所示。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 41,
+    "style": "Normal",
+    "text": "表2.1 攻击动作动力学评估与筛选结果",
+    "runs": [
+      {
+        "text": "表2.1 攻击动作动力学评估与筛选结果",
+        "bold": true,
+        "italic": null,
+        "font_size": "114300"
+      }
+    ]
+  },
+  {
+    "idx": 42,
+    "style": "Normal",
+    "text": "",
+    "runs": []
+  },
+  {
+    "idx": 43,
+    "style": "Heading 3",
+    "text": "2.4 结果分析与实战强弱排序",
+    "runs": [
+      {
+        "text": "2.4 结果分析与实战强弱排序",
+        "bold": null,
+        "italic": null,
+        "font_size": "139700"
+      }
+    ]
+  },
+  {
+    "idx": 44,
+    "style": "Normal",
+    "text": "",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 45,
+    "style": "Normal",
+    "text": "图1  攻击动作威力-失稳风险分布",
+    "runs": [
+      {
+        "text": "图1  攻击动作威力-失稳风险分布",
+        "bold": null,
+        "italic": null,
+        "font_size": "114300"
+      }
+    ]
+  },
+  {
+    "idx": 46,
+    "style": "Normal",
+    "text": "",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 47,
+    "style": "Normal",
+    "text": "图2  Pareto前沿：威力、恢复时间与失稳风险",
+    "runs": [
+      {
+        "text": "图2  Pareto前沿：威力、恢复时间与失稳风险",
+        "bold": null,
+        "italic": null,
+        "font_size": "114300"
+      }
+    ]
+  },
+  {
+    "idx": 48,
+    "style": "Normal",
+    "text": "",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 49,
+    "style": "Normal",
+    "text": "图10  核心攻击动作多维属性雷达图",
+    "runs": [
+      {
+        "text": "图10  核心攻击动作多维属性雷达图",
+        "bold": null,
+        "italic": null,
+        "font_size": "114300"
+      }
+    ]
+  },
+  {
+    "idx": 50,
+    "style": "Normal",
+    "text": "Pareto核心动作筛选：13个动作中，除“冲撞”外，其余12个动作均属于Pareto非支配核心。这说明灵骁LX01机器人的动作设计具有高度的互补性。如图1和图2所示，“左右直拳”虽然威力极低（归一化威力为0），但其失稳风险最低（0.361），恢复时间最短（0.32s），命中率高（0.66），在维持站立平衡、控节奏和试探防守时具有无可替代的战略价值，因此同样入选Pareto前沿。而从图10的多维属性雷达图可以看出，前6大核心动作在威力、命中率、失稳风险等维度上展现出了显著的差异化优势。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "Pareto核心动作筛选",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：13个动作中，除“冲撞”外，其余12个动作均属于Pareto非支配核心。这说明灵骁LX01机器人的动作设计具有高度的互补性。如",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "图1",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "和",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "图2",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "所示，“左右直拳”虽然威力极低（归一化威力为0），但其失稳风险最低（0.361），恢复时间最短（0.32s），命中率高（0.66），在维持站立平衡、控节奏和试探防守时具有无可替代的战略价值，因此同样入选Pareto前沿。而从",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "图10",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "的多维属性雷达图可以看出，前6大核心动作在威力、命中率、失稳风险等维度上展现出了显著的差异化优势。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 51,
+    "style": "Normal",
+    "text": "实战强弱排序：根据综合攻击得分 $S_i$，核心攻击动作在实战中的强弱排序为：",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "实战强弱排序",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：根据综合攻击得分 $S_i$，核心攻击动作在实战中的强弱排序为：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 52,
+    "style": "Normal",
+    "text": "\\text{回旋/转身踢} \\succ \\text{侧踢} \\succ \\text{五连踢} \\succ \\text{前踢} \\succ \\text{低扫腿} \\succ \\text{组合拳} \\succ \\text{膝撞} \\succ \\text{拳腿组合} \\succ \\text{左右直拳} \\succ \\text{左右勾拳} \\succ \\text{倒地反击} \\succ \\text{摆拳}    - **高威慑连招与爆发动作**（回旋/转身踢、侧踢、五连踢）：得分在60分以上，适合在对手处于硬直、失稳或距离合适时作为终结手段。    - **中距离牵制与稳健输出动作**（前踢、低扫腿、组合拳）：得分在50-60分之间，攻防兼备，是比赛中期的核心过渡动作。    - **近身纠缠与试探动作**（膝撞、左右直拳/勾拳）：得分较低但灵活度极高，用于贴身缠斗和快速恢复体力。  ---  ## 3. 问题2：基于目标防护剖面的攻防最优匹配决策模型  ### 3.1 攻防匹配的收益量化机制 在机器人对抗中，防守决策不仅取决于防守动作自身的减伤率，还取决于攻击动作的类型、击打区域以及双方所处的距离。我们通过定义精细的物理匹配规则，构建一个 $13 \\times 22$ 的双边收益矩阵。  #### 3.1.1 目标区域防护剖面（Target-Zone Profile） 攻击动作在命中对手时，其杀伤力在不同身体区域（头部、躯干、四肢）的分布是不同的。我们为每个攻击动作定义目标区域概率向量 $\\boldsymbol{p}_{zone} = [p_{head}, p_{torso}, p_{limbs}]^T$： - **拳法类**：主要集中于中上三路，$\\boldsymbol{p}_{zone} = [0.45, 0.45, 0.10]^T$； - **低扫腿**：专门攻击下盘，$\\boldsymbol{p}_{zone} = [0.05, 0.15, 0.80]^T$； - **常规腿法/膝撞**：攻击范围较广，$\\boldsymbol{p}_{zone} = [0.10, 0.55, 0.35]^T$； - **高难特技/转身踢**：大范围扫击，区域分布均匀，$\\boldsymbol{p}_{zone} = [0.34, 0.33, 0.33]^T$。  同时，22种防守动作对不同区域的防护效果也存在差异。我们定义防守动作的区域防护效果向量 $\\boldsymbol{d}_{zone} = [d_{head}, d_{torso}, d_{limbs}]^T$： - **护头防御、十字格挡、闪挡反击**：头部防御强化，如护头防御的 $d_{head} = 0.70$； - **沉身降重心、关节卸力、钳制格挡**：躯干防御强化，如钳制格挡的 $d_{torso} = 0.65$； - **下压格挡、后撤步、受控平稳倒地**：下肢防护强化，如肢体卸力的 $d_{limbs} = 0.67$。  攻击与防守的**区域匹配得分** $Z_{match}$ 为： Z_{match} = \\sum_{z \\in \\{head, torso, limbs\\}} p_{zone, z} \\times d_{zone, z}",
+    "runs": [
+      {
+        "text": "\\text{回旋/转身踢} \\succ \\text{侧踢} \\succ \\text{五连踢} \\succ \\text{前踢} \\succ \\text{低扫腿} \\succ \\text{组合拳} \\succ \\text{膝撞} \\succ \\text{拳腿组合} \\succ \\text{左右直拳} \\succ \\text{左右勾拳} \\succ \\text{倒地反击} \\succ \\text{摆拳}    - **高威慑连招与爆发动作**（回旋/转身踢、侧踢、五连踢）：得分在60分以上，适合在对手处于硬直、失稳或距离合适时作为终结手段。    - **中距离牵制与稳健输出动作**（前踢、低扫腿、组合拳）：得分在50-60分之间，攻防兼备，是比赛中期的核心过渡动作。    - **近身纠缠与试探动作**（膝撞、左右直拳/勾拳）：得分较低但灵活度极高，用于贴身缠斗和快速恢复体力。  ---  ## 3. 问题2：基于目标防护剖面的攻防最优匹配决策模型  ### 3.1 攻防匹配的收益量化机制 在机器人对抗中，防守决策不仅取决于防守动作自身的减伤率，还取决于攻击动作的类型、击打区域以及双方所处的距离。我们通过定义精细的物理匹配规则，构建一个 $13 \\times 22$ 的双边收益矩阵。  #### 3.1.1 目标区域防护剖面（Target-Zone Profile） 攻击动作在命中对手时，其杀伤力在不同身体区域（头部、躯干、四肢）的分布是不同的。我们为每个攻击动作定义目标区域概率向量 $\\boldsymbol{p}_{zone} = [p_{head}, p_{torso}, p_{limbs}]^T$： - **拳法类**：主要集中于中上三路，$\\boldsymbol{p}_{zone} = [0.45, 0.45, 0.10]^T$； - **低扫腿**：专门攻击下盘，$\\boldsymbol{p}_{zone} = [0.05, 0.15, 0.80]^T$； - **常规腿法/膝撞**：攻击范围较广，$\\boldsymbol{p}_{zone} = [0.10, 0.55, 0.35]^T$； - **高难特技/转身踢**：大范围扫击，区域分布均匀，$\\boldsymbol{p}_{zone} = [0.34, 0.33, 0.33]^T$。  同时，22种防守动作对不同区域的防护效果也存在差异。我们定义防守动作的区域防护效果向量 $\\boldsymbol{d}_{zone} = [d_{head}, d_{torso}, d_{limbs}]^T$： - **护头防御、十字格挡、闪挡反击**：头部防御强化，如护头防御的 $d_{head} = 0.70$； - **沉身降重心、关节卸力、钳制格挡**：躯干防御强化，如钳制格挡的 $d_{torso} = 0.65$； - **下压格挡、后撤步、受控平稳倒地**：下肢防护强化，如肢体卸力的 $d_{limbs} = 0.67$。  攻击与防守的**区域匹配得分** $Z_{match}$ 为： Z_{match} = \\sum_{z \\in \\{head, torso, limbs\\}} p_{zone, z} \\times d_{zone, z}",
+        "bold": null,
+        "italic": true,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 53,
+    "style": "Normal",
+    "text": "区域不匹配导致的防护漏洞 $Z_{mismatch}$ 为：",
+    "runs": [
+      {
+        "text": "区域不匹配导致的防护漏洞 $Z_{mismatch}$ 为：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 54,
+    "style": "Normal",
+    "text": "Z_{mismatch} = 1.0 - Z_{match}  #### 3.1.2 空间距离不匹配惩罚 攻击动作有其适用的最佳施展距离（近、中、远、低、地），防守动作同样有其适用范围。若两者不匹配，防守方将承担巨大的性能惩罚。我们定义**距离不匹配度** $D_{mismatch}$： - 若防守动作适用范围为 `mixed`，或与攻击距离完全一致，则 $D_{mismatch} = 0.0$； - 若两者属于相邻兼容范围（如中距与近距、低位与地地），则 $D_{mismatch} = 0.22$； - 若两者完全冲突（如远距攻击采用近距防守），则 $D_{mismatch} = 0.62$。  #### 3.1.3 动作类型匹配加成 基于领域专家知识，特定防守动作对抗特定攻击类型时存在**匹配加成** $B_{type}$： - 拳法类 $\\rightarrow$ 拳法防守（十字格挡、单手拍挡、闪挡反击等）：$B_{type} = 0.18$； - 腿法类 $\\rightarrow$ 腿法防守（后撤步、左右侧闪、重心补偿等）：$B_{type} = 0.16$； - 旋转/多段腿法 $\\rightarrow$ 高风险防守（滑步、钳制格挡、关节卸力等）：$B_{type} = 0.22$； - 倒地攻击 $\\rightarrow$ 倒地防守（倒地姿态防御、快速自主起身等）：$B_{type} = 0.24$。  ### 3.2 攻防双方效用函数设计 基于上述物理匹配，我们构建攻防双方的即时效用函数。  #### 3.2.1 防守方效用函数 $U_{defense}$ 防守方的目标是最小化受到的伤害、维持自身平衡并寻找反击机会： U_{defense} = 1.05 \\times D_{red} \\times P_{def\\_succ} + 0.78 \\times P_{counter} + 0.72 \\times B_{rec} + 0.45 \\times Z_{match} - 0.36 \\times T_{exec} - 0.24 \\times C_{energy} - 0.42 \\times P_{fail} - 0.58 \\times D_{mismatch} - 0.40 \\times Z_{mismatch}",
+    "runs": [
+      {
+        "text": "Z_{mismatch} = 1.0 - Z_{match}  #### 3.1.2 空间距离不匹配惩罚 攻击动作有其适用的最佳施展距离（近、中、远、低、地），防守动作同样有其适用范围。若两者不匹配，防守方将承担巨大的性能惩罚。我们定义**距离不匹配度** $D_{mismatch}$： - 若防守动作适用范围为 `mixed`，或与攻击距离完全一致，则 $D_{mismatch} = 0.0$； - 若两者属于相邻兼容范围（如中距与近距、低位与地地），则 $D_{mismatch} = 0.22$； - 若两者完全冲突（如远距攻击采用近距防守），则 $D_{mismatch} = 0.62$。  #### 3.1.3 动作类型匹配加成 基于领域专家知识，特定防守动作对抗特定攻击类型时存在**匹配加成** $B_{type}$： - 拳法类 $\\rightarrow$ 拳法防守（十字格挡、单手拍挡、闪挡反击等）：$B_{type} = 0.18$； - 腿法类 $\\rightarrow$ 腿法防守（后撤步、左右侧闪、重心补偿等）：$B_{type} = 0.16$； - 旋转/多段腿法 $\\rightarrow$ 高风险防守（滑步、钳制格挡、关节卸力等）：$B_{type} = 0.22$； - 倒地攻击 $\\rightarrow$ 倒地防守（倒地姿态防御、快速自主起身等）：$B_{type} = 0.24$。  ### 3.2 攻防双方效用函数设计 基于上述物理匹配，我们构建攻防双方的即时效用函数。  #### 3.2.1 防守方效用函数 $U_{defense}$ 防守方的目标是最小化受到的伤害、维持自身平衡并寻找反击机会： U_{defense} = 1.05 \\times D_{red} \\times P_{def\\_succ} + 0.78 \\times P_{counter} + 0.72 \\times B_{rec} + 0.45 \\times Z_{match} - 0.36 \\times T_{exec} - 0.24 \\times C_{energy} - 0.42 \\times P_{fail} - 0.58 \\times D_{mismatch} - 0.40 \\times Z_{mismatch}",
+        "bold": null,
+        "italic": true,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 55,
+    "style": "Normal",
+    "text": "其中：",
+    "runs": [
+      {
+        "text": "其中：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 56,
+    "style": "Normal",
+    "text": "$D_{red}$ 为防守动作基础减伤率；",
+    "runs": [
+      {
+        "text": "$D_{red}$ 为防守动作基础减伤率；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 57,
+    "style": "Normal",
+    "text": "$P_{def\\_succ}$ 为实际防守成功概率，受基础值、不匹配度、失败风险等修正：",
+    "runs": [
+      {
+        "text": "$P_{def\\_succ}$ 为实际防守成功概率，受基础值、不匹配度、失败风险等修正：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 58,
+    "style": "Normal",
+    "text": "P_{def\\_succ} = \\text{clip}\\left(0.35 + 0.45 D_{red} + 0.18 B_{rec} + B_{type} - 0.25 D_{mismatch} - 0.30 P_{fail}, 0.05, 0.95\\right) - $P_{counter}$ 为防守后反击概率； - $B_{rec}$ 为平衡恢复系数； - $T_{exec}$ 为防守执行时间； - $P_{fail}$ 为防守自身失败风险。  #### 3.2.2 攻击方效用函数 $U_{attack}$ 攻击方的目标是最大化有效伤害、破坏对手平衡，同时防范对手的反击： U_{attack} = 1.35 \\times D_{valid} + 0.48 \\times P_{attack} + 0.38 \\times B_{loss} - 0.72 \\times P_{counter} - 0.62 \\times P_{fall} - 0.24 \\times C_{energy} - 0.24 \\times T_{rec} - 0.30 \\times C_{exp} - 0.36 \\times D_{mismatch} - 0.32 \\times Z_{mismatch} + 0.08 \\times H_{zone}",
+    "runs": [
+      {
+        "text": "P_{def\\_succ} = \\text{clip}\\left(0.35 + 0.45 D_{red} + 0.18 B_{rec} + B_{type} - 0.25 D_{mismatch} - 0.30 P_{fail}, 0.05, 0.95\\right) - $P_{counter}$ 为防守后反击概率； - $B_{rec}$ 为平衡恢复系数； - $T_{exec}$ 为防守执行时间； - $P_{fail}$ 为防守自身失败风险。  #### 3.2.2 攻击方效用函数 $U_{attack}$ 攻击方的目标是最大化有效伤害、破坏对手平衡，同时防范对手的反击： U_{attack} = 1.35 \\times D_{valid} + 0.48 \\times P_{attack} + 0.38 \\times B_{loss} - 0.72 \\times P_{counter} - 0.62 \\times P_{fall} - 0.24 \\times C_{energy} - 0.24 \\times T_{rec} - 0.30 \\times C_{exp} - 0.36 \\times D_{mismatch} - 0.32 \\times Z_{mismatch} + 0.08 \\times H_{zone}",
+        "bold": null,
+        "italic": true,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 59,
+    "style": "Normal",
+    "text": "其中：",
+    "runs": [
+      {
+        "text": "其中：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 60,
+    "style": "Normal",
+    "text": "$D_{valid}$ 为余后有效伤害：",
+    "runs": [
+      {
+        "text": "$D_{valid}$ 为余后有效伤害：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 61,
+    "style": "Normal",
+    "text": "D_{valid} = D_{base} \\times (1 - D_{red} \\times P_{def\\_succ}) \\times P_{valid\\_zone} \\times (0.70 + 0.30 Z_{mismatch}) - $B_{loss}$ 为余后平衡损失； - $H_{zone}$ 为击打区域信息熵，反映攻击的不可预测性。  ### 3.3 最优防守决策匹配结果 根据防守效用 $U_{defense}$ 最大化原则，我们为13种攻击动作匹配了前三优的防守动作。典型攻击动作的最优防守匹配如表3.1所示。  ##### 表3.1 典型攻击动作的最优防守匹配结果 | 攻击动作 | 攻击类型 | 第一优防守动作 ($U_{defense}$/得分) | 第二优防守动作 ($U_{defense}$/得分) | 第三优防守动作 ($U_{defense}$/得分) | | :--- | :--- | :--- | :--- | :--- | | **五连踢** | multi_kick | **挡撤环绕走位** (1.19 / 95.55) | **关节卸力缓冲** (1.18 / 94.57) | **后撤步后退** (1.05 / 86.06) | | **低扫腿** | kick | **关节卸力缓冲** (1.10 / 89.66) | **步点动态调整** (1.10 / 89.61) | **挡撤环绕走位** (0.98 / 81.29) | | **侧踢** | kick | **关节卸力缓冲** (1.21 / 96.69) | **后撤步后退** (1.01 / 82.96) | **挡撤环绕走位** (0.98 / 81.29) | | **冲撞** | body | **钳制格挡** (1.25 / 100.00) | **关节卸力缓冲** (1.23 / 98.44) | **挡撤环绕走位** (1.19 / 95.55) | | **左右直拳** | punch | **十字格挡** (0.94 / 79.52) | **单手拍挡** (0.92 / 78.43) | **闪挡反击** (0.86 / 74.45) |  **分析结论**： - 对抗高威力的旋转与多段腿法（如五连踢、转身踢），**挡撤环绕走位**和**关节卸力缓冲**是绝对的核心防守。这类动作执行时间虽长，但其高减伤与高平衡恢复能有效化解重击冲击。 - 对抗下盘攻击（如低扫腿），**关节卸力缓冲**和**步点动态调整**表现最优，能有效避免因下肢受击导致的失稳跌倒。 - 对抗近身冲撞（如冲撞），**钳制格挡**利用上肢锁死对手，提供高达0.76的减伤率和0.38的反击率，是完美的克制手段。  ### 3.4 攻防静态博弈分析：Minimax与Nash均衡验证 为了验证最优防守匹配的稳健性，我们将 $13 \\times 22$ 收益矩阵视为一个静态零和博弈（Zero-Sum Game），并引入疲劳效应、可预测性惩罚与防守适应性对收益矩阵进行校准： \\tilde{U}_{attack} = U_{attack} - 0.10 \\times \\bar{U}_{attack, row} - 0.06 \\times \\max(\\bar{U}_{attack, row}, 0) - 0.08 \\times \\bar{U}_{attack, col} + 0.025 \\sin(i + 1.7j)",
+    "runs": [
+      {
+        "text": "D_{valid} = D_{base} \\times (1 - D_{red} \\times P_{def\\_succ}) \\times P_{valid\\_zone} \\times (0.70 + 0.30 Z_{mismatch}) - $B_{loss}$ 为余后平衡损失； - $H_{zone}$ 为击打区域信息熵，反映攻击的不可预测性。  ### 3.3 最优防守决策匹配结果 根据防守效用 $U_{defense}$ 最大化原则，我们为13种攻击动作匹配了前三优的防守动作。典型攻击动作的最优防守匹配如表3.1所示。  ##### 表3.1 典型攻击动作的最优防守匹配结果 | 攻击动作 | 攻击类型 | 第一优防守动作 ($U_{defense}$/得分) | 第二优防守动作 ($U_{defense}$/得分) | 第三优防守动作 ($U_{defense}$/得分) | | :--- | :--- | :--- | :--- | :--- | | **五连踢** | multi_kick | **挡撤环绕走位** (1.19 / 95.55) | **关节卸力缓冲** (1.18 / 94.57) | **后撤步后退** (1.05 / 86.06) | | **低扫腿** | kick | **关节卸力缓冲** (1.10 / 89.66) | **步点动态调整** (1.10 / 89.61) | **挡撤环绕走位** (0.98 / 81.29) | | **侧踢** | kick | **关节卸力缓冲** (1.21 / 96.69) | **后撤步后退** (1.01 / 82.96) | **挡撤环绕走位** (0.98 / 81.29) | | **冲撞** | body | **钳制格挡** (1.25 / 100.00) | **关节卸力缓冲** (1.23 / 98.44) | **挡撤环绕走位** (1.19 / 95.55) | | **左右直拳** | punch | **十字格挡** (0.94 / 79.52) | **单手拍挡** (0.92 / 78.43) | **闪挡反击** (0.86 / 74.45) |  **分析结论**： - 对抗高威力的旋转与多段腿法（如五连踢、转身踢），**挡撤环绕走位**和**关节卸力缓冲**是绝对的核心防守。这类动作执行时间虽长，但其高减伤与高平衡恢复能有效化解重击冲击。 - 对抗下盘攻击（如低扫腿），**关节卸力缓冲**和**步点动态调整**表现最优，能有效避免因下肢受击导致的失稳跌倒。 - 对抗近身冲撞（如冲撞），**钳制格挡**利用上肢锁死对手，提供高达0.76的减伤率和0.38的反击率，是完美的克制手段。  ### 3.4 攻防静态博弈分析：Minimax与Nash均衡验证 为了验证最优防守匹配的稳健性，我们将 $13 \\times 22$ 收益矩阵视为一个静态零和博弈（Zero-Sum Game），并引入疲劳效应、可预测性惩罚与防守适应性对收益矩阵进行校准： \\tilde{U}_{attack} = U_{attack} - 0.10 \\times \\bar{U}_{attack, row} - 0.06 \\times \\max(\\bar{U}_{attack, row}, 0) - 0.08 \\times \\bar{U}_{attack, col} + 0.025 \\sin(i + 1.7j)",
+        "bold": null,
+        "italic": true,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 62,
+    "style": "Heading 3",
+    "text": "3.4.1 Minimax 稳健防守策略",
+    "runs": [
+      {
+        "text": "3.4.1 Minimax 稳健防守策略",
+        "bold": null,
+        "italic": null,
+        "font_size": "139700"
+      }
+    ]
+  },
+  {
+    "idx": 63,
+    "style": "Normal",
+    "text": "",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 64,
+    "style": "Normal",
+    "text": "图12  Minimax准则下防守动作稳健性排名",
+    "runs": [
+      {
+        "text": "图12  Minimax准则下防守动作稳健性排名",
+        "bold": null,
+        "italic": null,
+        "font_size": "114300"
+      }
+    ]
+  },
+  {
+    "idx": 65,
+    "style": "Normal",
+    "text": "",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 66,
+    "style": "Normal",
+    "text": "图3  13×22攻防收益热力图",
+    "runs": [
+      {
+        "text": "图3  13×22攻防收益热力图",
+        "bold": null,
+        "italic": null,
+        "font_size": "114300"
+      }
+    ]
+  },
+  {
+    "idx": 67,
+    "style": "Normal",
+    "text": "基于Minimax准则，防守方在最坏情况下的最优选择是最小化攻击方的最大收益。计算得到防守动作在最坏情况下的最大攻击收益（即最安全防守动作排序），如图12所示，前五位为：",
+    "runs": [
+      {
+        "text": "基于Minimax准则，防守方在最坏情况下的最优选择是最小化攻击方的最大收益。计算得到防守动作在最坏情况下的最大攻击收益（即最安全防守动作排序），如",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "图12",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "所示，前五位为：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 68,
+    "style": "Normal",
+    "text": "钳制格挡 (最坏情况攻击收益 = $-0.260$)",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "钳制格挡",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " (最坏情况攻击收益 = $-0.260$)",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 69,
+    "style": "Normal",
+    "text": "后撤步后退 (最坏情况攻击收益 = $-0.214$)",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "后撤步后退",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " (最坏情况攻击收益 = $-0.214$)",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 70,
+    "style": "Normal",
+    "text": "挡撤环绕走位 (最坏情况攻击收益 = $-0.210$)",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "挡撤环绕走位",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " (最坏情况攻击收益 = $-0.210$)",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 71,
+    "style": "Normal",
+    "text": "关节卸力缓冲 (最坏情况攻击收益 = $-0.195$)",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "关节卸力缓冲",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " (最坏情况攻击收益 = $-0.195$)",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 72,
+    "style": "Normal",
+    "text": "闪挡反击 (最坏情况攻击收益 = $-0.178$)",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "闪挡反击",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " (最坏情况攻击收益 = $-0.178$)",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 73,
+    "style": "Normal",
+    "text": "这表明钳制格挡和后撤步后退是极具韧性的防守基石，即使面对最针对性的进攻，也能将损失降到最低。结合图3的攻防收益热力图，可以直观地看出这些高韧性防守动作在对抗各类攻击时，均能将攻击方的收益（红色区域）压制在极低的蓝色冷色调区间。",
+    "runs": [
+      {
+        "text": "这表明",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "钳制格挡",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "和",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "后撤步后退",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "是极具韧性的防守基石，即使面对最针对性的进攻，也能将损失降到最低。结合",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "图3",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "的攻防收益热力图，可以直观地看出这些高韧性防守动作在对抗各类攻击时，均能将攻击方的收益（红色区域）压制在极低的蓝色冷色调区间。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 74,
+    "style": "Heading 3",
+    "text": "3.4.2 Nash 混合策略均衡求解",
+    "runs": [
+      {
+        "text": "3.4.2 Nash 混合策略均衡求解",
+        "bold": null,
+        "italic": null,
+        "font_size": "139700"
+      }
+    ]
+  },
+  {
+    "idx": 75,
+    "style": "Normal",
+    "text": "",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 76,
+    "style": "Normal",
+    "text": "图4  Nash混合策略概率分布",
+    "runs": [
+      {
+        "text": "图4  Nash混合策略概率分布",
+        "bold": null,
+        "italic": null,
+        "font_size": "114300"
+      }
+    ]
+  },
+  {
+    "idx": 77,
+    "style": "Normal",
+    "text": "利用 scipy.optimize.linprog 求解双边零和博弈，得到双方在混合策略意义下的 Nash 均衡如图4所示：",
+    "runs": [
+      {
+        "text": "利用 ",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "scipy.optimize.linprog",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": " 求解双边零和博弈，得到双方在混合策略意义下的 Nash 均衡如",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "图4",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "所示：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 78,
+    "style": "Normal",
+    "text": "攻击方最优混合概率：主要集中于“膝撞”（概率0.797）、“回旋/转身踢”（0.203）等。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "攻击方最优混合概率",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：主要集中于“膝撞”（概率0.797）、“回旋/转身踢”（0.203）等。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 79,
+    "style": "Normal",
+    "text": "防守方最优混合概率：主要集中于“钳制格挡”（0.543）、“左右侧闪”（0.457）等。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "防守方最优混合概率",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：主要集中于“钳制格挡”（0.543）、“左右侧闪”（0.457）等。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 80,
+    "style": "Normal",
+    "text": "这说明在静态博弈下，双方无法通过单方面改变动作获益，混合使用高杀伤特技与高稳健拳腿是攻击方的最优解，而混合使用格挡、卸力与走位则是防守方的最优解。",
+    "runs": [
+      {
+        "text": "这说明在静态博弈下，双方无法通过单方面改变动作获益，混合使用高杀伤特技与高稳健拳腿是攻击方的最优解，而混合使用格挡、卸力与走位则是防守方的最优解。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 81,
+    "style": "Normal",
+    "text": "____________________________________________________________",
+    "runs": [
+      {
+        "text": "____________________________________________________________",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 82,
+    "style": "Heading 1",
+    "text": "4. 问题3：单场单人竞技全程攻防策略优化 MDP 模型",
+    "runs": [
+      {
+        "text": "4. 问题3：单场单人竞技全程攻防策略优化 MDP 模型",
+        "bold": null,
+        "italic": null,
+        "font_size": "177800"
+      }
+    ]
+  },
+  {
+    "idx": 83,
+    "style": "Heading 2",
+    "text": "4.1 状态空间与动作空间设计",
+    "runs": [
+      {
+        "text": "4.1 状态空间与动作空间设计",
+        "bold": null,
+        "italic": null,
+        "font_size": "152400"
+      }
+    ]
+  },
+  {
+    "idx": 84,
+    "style": "Normal",
+    "text": "在单场5分钟的格斗比赛中，机器人的决策是高度动态且前后关联的。攻击会消耗体力、产生失稳风险，而防守可以恢复平衡、调整距离。为此，我们构建了有限状态马尔可夫决策过程（MDP）模型。",
+    "runs": [
+      {
+        "text": "在单场5分钟的格斗比赛中，机器人的决策是高度动态且前后关联的。攻击会消耗体力、产生失稳风险，而防守可以恢复平衡、调整距离。为此，我们构建了",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "有限状态马尔可夫决策过程（MDP）",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "模型。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 85,
+    "style": "Heading 3",
+    "text": "4.1.1 状态空间 $\\mathcal{S}$",
+    "runs": [
+      {
+        "text": "4.1.1 状态空间 $\\mathcal{S}$",
+        "bold": null,
+        "italic": null,
+        "font_size": "139700"
+      }
+    ]
+  },
+  {
+    "idx": 86,
+    "style": "Normal",
+    "text": "为了保证算法的收敛性与实时性，我们将高维物理状态压缩离散化。状态向量定义为 $s = (S_{diff}, H_{self}, H_{opp}, Stamina, Bal, Dist, Phase)$：",
+    "runs": [
+      {
+        "text": "为了保证算法的收敛性与实时性，我们将高维物理状态压缩离散化。状态向量定义为 $s = (S_{diff}, H_{self}, H_{opp}, Stamina, Bal, Dist, Phase)$：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 87,
+    "style": "Normal",
+    "text": "分差 $S_{diff} \\in \\{-1, 0, 1\\}$：分别代表落后、平局、领先；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "分差",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $S_{diff} \\in \\{-1, 0, 1\\}$：分别代表落后、平局、领先；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 88,
+    "style": "Normal",
+    "text": "自身血量 $H_{self} \\in \\{low, medium, high\\}$；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "自身血量",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $H_{self} \\in \\{low, medium, high\\}$；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 89,
+    "style": "Normal",
+    "text": "对手血量 $H_{opp} \\in \\{low, medium, high\\}$；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "对手血量",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $H_{opp} \\in \\{low, medium, high\\}$；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 90,
+    "style": "Normal",
+    "text": "体力状态 $Stamina \\in \\{low, high\\}$；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "体力状态",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $Stamina \\in \\{low, high\\}$；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 91,
+    "style": "Normal",
+    "text": "平衡状态 $Bal \\in \\{unstable, stable\\}$；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "平衡状态",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $Bal \\in \\{unstable, stable\\}$；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 92,
+    "style": "Normal",
+    "text": "双方距离 $Dist \\in \\{close, middle, far\\}$；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "双方距离",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $Dist \\in \\{close, middle, far\\}$；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 93,
+    "style": "Normal",
+    "text": "时间阶段 $Phase \\in \\{early, middle, late\\}$。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "时间阶段",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $Phase \\in \\{early, middle, late\\}$。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 94,
+    "style": "Normal",
+    "text": "状态空间总基数为：$3 \\times 3 \\times 3 \\times 2 \\times 2 \\times 3 \\times 3 = 972$ 个离散状态。",
+    "runs": [
+      {
+        "text": "状态空间总基数为：$3 \\times 3 \\times 3 \\times 2 \\times 2 \\times 3 \\times 3 = 972$ 个离散状态。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 95,
+    "style": "Heading 3",
+    "text": "4.1.2 动作空间 $\\mathcal{A}$",
+    "runs": [
+      {
+        "text": "4.1.2 动作空间 $\\mathcal{A}$",
+        "bold": null,
+        "italic": null,
+        "font_size": "139700"
+      }
+    ]
+  },
+  {
+    "idx": 96,
+    "style": "Normal",
+    "text": "设计了7种高层抽象决策动作，每个决策动作对应底层一组具体动作的概率映射：",
+    "runs": [
+      {
+        "text": "设计了7种高层抽象决策动作，每个决策动作对应底层一组具体动作的概率映射：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 97,
+    "style": "Normal",
+    "text": "conservative_defense（保守防守）：高防守、低消耗、恢复平衡；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "conservative_defense",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": "（保守防守）：高防守、低消耗、恢复平衡；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 98,
+    "style": "Normal",
+    "text": "balanced_attack（均衡进攻）：中等威力、中等消耗、高命中；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "balanced_attack",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": "（均衡进攻）：中等威力、中等消耗、高命中；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 99,
+    "style": "Normal",
+    "text": "aggressive_attack（激进进攻）：高威力、高消耗、易失稳；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "aggressive_attack",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": "（激进进攻）：高威力、高消耗、易失稳；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 100,
+    "style": "Normal",
+    "text": "counter_attack（防守反击）：攻防兼备，依赖对手失误；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "counter_attack",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": "（防守反击）：攻防兼备，依赖对手失误；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 101,
+    "style": "Normal",
+    "text": "distance_control（控制距离）：主动拉开距离，调整姿态；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "distance_control",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": "（控制距离）：主动拉开距离，调整姿态；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 102,
+    "style": "Normal",
+    "text": "high_risk_kick（高风险腿法）：超长距离、超高威力、极易失稳；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "high_risk_kick",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": "（高风险腿法）：超长距离、超高威力、极易失稳；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 103,
+    "style": "Normal",
+    "text": "clinch_control（抱缠控制）：近身压制，消耗时间。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "clinch_control",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": "（抱缠控制）：近身压制，消耗时间。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 104,
+    "style": "Heading 2",
+    "text": "4.2 概率转移与奖励函数建模",
+    "runs": [
+      {
+        "text": "4.2 概率转移与奖励函数建模",
+        "bold": null,
+        "italic": null,
+        "font_size": "152400"
+      }
+    ]
+  },
+  {
+    "idx": 105,
+    "style": "Normal",
+    "text": "对于每个状态-动作对 $(s, a)$，其转移到下一状态 $s'$ 的概率为 $P(s' | s, a)$，即时奖励为 $R(s, a)$。",
+    "runs": [
+      {
+        "text": "对于每个状态-动作对 $(s, a)$，其转移到下一状态 $s'$ 的概率为 $P(s' | s, a)$，即时奖励为 $R(s, a)$。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 106,
+    "style": "Heading 3",
+    "text": "4.2.1 动作事件概率计算",
+    "runs": [
+      {
+        "text": "4.2.1 动作事件概率计算",
+        "bold": null,
+        "italic": null,
+        "font_size": "139700"
+      }
+    ]
+  },
+  {
+    "idx": 107,
+    "style": "Normal",
+    "text": "根据当前状态中的距离、体力、平衡及对手策略，计算以下事件的即时概率：",
+    "runs": [
+      {
+        "text": "根据当前状态中的距离、体力、平衡及对手策略，计算以下事件的即时概率：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 108,
+    "style": "Normal",
+    "text": "击中概率 $P_{hit}$：受动作基准值、距离加成、体力与平衡状态修正；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "击中概率",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $P_{hit}$：受动作基准值、距离加成、体力与平衡状态修正；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 109,
+    "style": "Normal",
+    "text": "重创概率 $P_{dmg}$：击中后造成对手血量下降的概率；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "重创概率",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $P_{dmg}$：击中后造成对手血量下降的概率；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 110,
+    "style": "Normal",
+    "text": "失稳跌倒概率 $P_{fall}$：受动作类型、自身平衡、对手施压修正；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "失稳跌倒概率",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $P_{fall}$：受动作类型、自身平衡、对手施压修正；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 111,
+    "style": "Normal",
+    "text": "自身受创概率 $P_{self\\_dmg}$：防守失败或被反击导致自身血量下降的概率；",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "自身受创概率",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $P_{self\\_dmg}$：防守失败或被反击导致自身血量下降的概率；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 112,
+    "style": "Normal",
+    "text": "体力消耗概率 $P_{stamina\\_drop}$。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "体力消耗概率",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " $P_{stamina\\_drop}$。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 113,
+    "style": "Normal",
+    "text": "例如，在体力为 low、自身平衡为 unstable 时执行 aggressive_attack，其击中率会下降，而自身跌倒风险 $P_{fall}$ 将激增至 $0.55$。",
+    "runs": [
+      {
+        "text": "例如，在体力为 ",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "low",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": "、自身平衡为 ",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "unstable",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": " 时执行 ",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "aggressive_attack",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": "，其击中率会下降，而自身跌倒风险 $P_{fall}$ 将激增至 $0.55$。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 114,
+    "style": "Heading 3",
+    "text": "4.2.2 转移规律与奖励机制",
+    "runs": [
+      {
+        "text": "4.2.2 转移规律与奖励机制",
+        "bold": null,
+        "italic": null,
+        "font_size": "139700"
+      }
+    ]
+  },
+  {
+    "idx": 115,
+    "style": "Normal",
+    "text": "",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 116,
+    "style": "Normal",
+    "text": "图7  单场MDP状态转移示意图",
+    "runs": [
+      {
+        "text": "图7  单场MDP状态转移示意图",
+        "bold": null,
+        "italic": null,
+        "font_size": "114300"
+      }
+    ]
+  },
+  {
+    "idx": 117,
+    "style": "Normal",
+    "text": "如图7状态转移示意图所示，转移规律严格遵循物理约束，时间阶段 $Phase$ 自动递进（$early \\rightarrow middle \\rightarrow late \\rightarrow late$）。",
+    "runs": [
+      {
+        "text": "如",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "图7",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "状态转移示意图所示，转移规律严格遵循物理约束，时间阶段 $Phase$ 自动递进（$early \\rightarrow middle \\rightarrow late \\rightarrow late$）。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 118,
+    "style": "Normal",
+    "text": "命中与伤害事件：对手血量 $H_{opp}$ 下降一级，分差 $S_{diff}$ 朝有利于我方移动，奖励 $R \\leftarrow +5.8$。若直接造成对手血量归为 low，触发斩杀奖励 $R \\leftarrow +13.8$。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "命中与伤害事件",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：对手血量 $H_{opp}$ 下降一级，分差 $S_{diff}$ 朝有利于我方移动，奖励 $R \\leftarrow +5.8$。若直接造成对手血量归为 ",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "low",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": "，触发斩杀奖励 $R \\leftarrow +13.8$。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 119,
+    "style": "Normal",
+    "text": "失稳跌倒事件：自身平衡 $Bal \\leftarrow unstable$，分差朝不利于我方移动，扣除惩罚 $R \\leftarrow -5.5$。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "失稳跌倒事件",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：自身平衡 $Bal \\leftarrow unstable$，分差朝不利于我方移动，扣除惩罚 $R \\leftarrow -5.5$。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 120,
+    "style": "Normal",
+    "text": "控距动作：距离 $Dist$ 强制向 middle 或 far 移动，平衡状态恢复为 stable，给予小幅姿态调整奖励 $R \\leftarrow +0.6$。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "控距动作",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：距离 $Dist$ 强制向 ",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "middle",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": " 或 ",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "far",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": " 移动，平衡状态恢复为 ",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "stable",
+        "bold": null,
+        "italic": null,
+        "font_size": "120650"
+      },
+      {
+        "text": "，给予小幅姿态调整奖励 $R \\leftarrow +0.6$。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 121,
+    "style": "Normal",
+    "text": "抱缠动作：距离 $Dist \\leftarrow close$，由于触发持续控制规则，给予压制奖励 $R \\leftarrow +1.1 + 3 \\times 0.25 = +1.85$。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "抱缠动作",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：距离 $Dist \\leftarrow close$，由于触发持续控制规则，给予压制奖励 $R \\leftarrow +1.1 + 3 \\times 0.25 = +1.85$。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 122,
+    "style": "Heading 2",
+    "text": "4.3 价值迭代求解",
+    "runs": [
+      {
+        "text": "4.3 价值迭代求解",
+        "bold": null,
+        "italic": null,
+        "font_size": "152400"
+      }
+    ]
+  },
+  {
+    "idx": 123,
+    "style": "Normal",
+    "text": "",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 124,
+    "style": "Normal",
+    "text": "图5  MDP价值迭代收敛曲线",
+    "runs": [
+      {
+        "text": "图5  MDP价值迭代收敛曲线",
+        "bold": null,
+        "italic": null,
+        "font_size": "114300"
+      }
+    ]
+  },
+  {
+    "idx": 125,
+    "style": "Normal",
+    "text": "我们采用贝尔曼最优方程（Bellman Optimality Equation）进行价值迭代（Value Iteration）：",
+    "runs": [
+      {
+        "text": "我们采用",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "贝尔曼最优方程（Bellman Optimality Equation）",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "进行价值迭代（Value Iteration）：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 126,
+    "style": "Normal",
+    "text": "V^{k+1}(s) = \\max_{a \\in \\mathcal{A}} \\sum_{s' \\in \\mathcal{S}} P(s' | s, a) \\left[ R(s, a) + \\gamma V^k(s') \\right] 其中折扣因子设为 $\\gamma = 0.90$，收敛阈值 $\\theta = 5 \\times 10^{-4}$，最大迭代次数为 $40$。  算法在运行过程中表现出极佳的收敛性（如**图5**所示，迭代在40步以内迅速且平稳地收敛至阈值以下）。求解出的最优策略表 $mdp\\_policy.csv$ 包含了所有972个状态下的最佳行动指南。典型状态下的作战决策如表4.1所示。  ##### 表4.1 典型状态下的MDP作战决策 | 状态描述 | 状态向量 | 最佳决策动作 | 状态期望价值 $V(s)$ | 战术合理解释 | | :--- | :---: | :---: | :---: | :--- | | **开局对峙** | `(0, high, high, high, stable, middle, early)` | **balanced_attack** | 48.86 | 双方状态完好，处于中距，采用均衡进攻试探，累积分差优势。 | | **比分落后且血量低** | `(-1, low, low, high, stable, middle, late)` | **balanced_attack** | 49.53 | 比赛后期分差落后，必须放手一搏，选择均衡进攻争取逆转。 | | **比分领先且处于远距** | `(1, low, low, high, stable, far, early)` | **distance_control** | 45.80 | 分差领先且距离较远，主动控距防守，拖延时间并恢复姿态。 | | **体力耗尽且平衡不稳** | `(0, medium, medium, low, unstable, close, middle)`| **clinch_control** | 32.15 | 自身体力低且不稳，近身抱缠压制，既能阻止对手进攻，又能恢复体力。 |  ### 4.4 蒙特卡洛仿真验证与胜率分析 为了验证最优MDP策略在实战中的有效性，我们设计了蒙特卡洛（Monte Carlo）仿真系统，让该策略与三种不同风格的对手（保守型、均衡型、激进型）进行300场模拟对抗。  #### 4.4.1 胜率对比  ![图6  MDP最优策略在不同初始状态与对手策略下的胜率](figures/fig6_winrate_comparison.png)  在四种典型初始状态下，MDP策略的胜率统计如**图6**和表4.2所示。  ##### 表4.2 MDP策略在不同初始状态下的胜率统计 | 初始状态ID | 初始状态物理描述 | 对战保守型对手胜率 | 对战均衡型对手胜率 | 对战激进型对手胜率 | | :---: | :--- | :---: | :---: | :---: | | **1** | 均势开局 `(0, high, high, high, stable, middle, early)` | **70.3%** | **65.0%** | **53.7%** | | **2** | 远距落后 `(-1, medium, high, high, stable, far, middle)` | **63.0%** | **62.7%** | **50.7%** | | **3** | 近距领先 `(1, high, medium, high, stable, close, middle)` | **70.3%** | **67.3%** | **58.0%** | | **4** | 后期疲劳 `(0, medium, medium, low, stable, middle, late)` | **62.0%** | **65.7%** | **57.0%** |  **数据分析**： - 在均势开局（状态1）下，我方策略对战保守型对手胜率高达 **70.3%**，对战均衡型为 **65.0%**，即使面对高压制的激进型对手，胜率依然达到 **53.7%**。 - 在比分落后且距离较远（状态2）的被动局面下，策略通过动态调整，对战保守和均衡对手仍能实现 **63.0%** 和 **62.7%** 的高逆转率。 - 整体来看，面对激进型对手时胜率略有下降（50.7%~58.0%），这是因为激进型对手高频输出重击，导致我方机体失稳跌倒的偶然性增加。  #### 4.4.2 实战事件统计 仿真过程中各项核心技术指标的场均统计如表4.3所示。  ##### 表4.3 仿真对抗核心物理事件场均统计 | 对手策略类型 | 场均有效击打数 | 场均有效压制时间 (s) | 场均跌倒次数 | 场均触发人工复位次数 | | :---: | :---: | :---: | :---: | :---: | | **保守型** | 2.96 | 0.01 | 0.29 | 0.05 | | **均衡型** | 2.53 | 0.04 | 0.42 | 0.05 | | **激进型** | 2.20 | 0.10 | 0.67 | 0.10 |  **实战表现评估**： - 面对保守型对手，我方能打出场均 **2.96** 次有效击打，自身跌倒仅 **0.29** 次，复位概率极低，表现出绝对的控制力。 - 面对激进型对手，虽然有效击打降至 **2.20** 次，但通过抱缠控制，场均有效压制时间上升至 **0.10** 次（对应约3秒以上的压制），且场均跌倒控制在 **0.67** 次，成功压制了激进对手的攻势。 - 这一结果充分证明了基于MDP的最优策略具有极强的自适应能力与实战稳健性。  ---  ## 5. 问题4：BO3 淘汰赛全局作战资源调度动态规划模型  ### 5.1 资源调度的状态空间与状态转移规律 在单败淘汰赛（BO3）三局两胜赛制下，每支队伍拥有极为关键但次数受限的赛场资源：**人工复位最多2次**、**战术暂停最多2次**、**紧急故障维修最多1次**、**整场仅可更换1次备用机器人**、**电池仅可在特定间隙更换**。资源调度不仅要看当前回合胜负，更要结合全局局势与机体损伤状态。  #### 5.1.1 状态向量设计 我们将 BO3 全局状态定义为十维向量 $S_{BO3} = (W, L, H, D, B, R_{left}, P_{left}, M_{left}, S_{avail}, B_{swap})$： 1. **已胜局数** $W \\in \\{0, 1, 2\\}$； 2. **已败局数** $L \\in \\{0, 1, 2\\}$； 3. **血量等级** $H \\in \\{low, medium, high\\}$； 4. **损伤等级** $D \\in \\{none, light, severe\\}$； 5. **平衡等级** $B \\in \\{unstable, normal, stable\\}$； 6. **剩余复位次数** $R_{left} \\in \\{0, 1, 2\\}$； 7. **剩余暂停次数** $P_{left} \\in \\{0, 1, 2\\}$； 8. **剩余维修次数** $M_{left} \\in \\{0, 1\\}$； 9. **备用机器人可用性** $S_{avail} \\in \\{0, 1\\}$； 10. **电池更换可用性** $B_{swap} \\in \\{0, 1\\}$。  #### 5.1.2 资源动作的物理修复作用 资源动作在局间或局中施加，能直接改善机体的物理状态： - **人工复位**（`use_reset`）：将平衡等级提升两级（$unstable \\rightarrow stable$），消耗1次复位次数。 - **战术暂停**（`use_pause`）：将平衡等级提升一级，且若损伤等级为 `light`，可将其修复为 `none`（代表局间微调），消耗1次暂停。 - **紧急故障维修**（`use_repair`）：在300秒时限内进行硬件抢修。若损伤为 `severe`，将血量提升一级，并将损伤等级降低两级（若维修有效性高，降低2级；若低，降低1级），消耗1次维修。 - **更换备用机器人**（`switch_spare_robot`）：直接将血量、损伤、平衡重置为完美状态（`high`, `none`, `stable`），消耗唯一一次更换机会。  ### 5.2 状态转移与单局胜率修正 在给定的 BO3 状态和当前回合策略动作（保守、均衡、激进）下，单局获胜概率 $P_{win}$ 受到多重因素的非线性修正： P_{win} = \\text{clip}\\left( P_{base} + \\Delta P_{HP} + \\Delta P_{dmg} + \\Delta P_{bal} + \\Delta P_{sit} - \\Delta P_{fault}, 0.08, 0.92 \\right)",
+    "runs": [
+      {
+        "text": "V^{k+1}(s) = \\max_{a \\in \\mathcal{A}} \\sum_{s' \\in \\mathcal{S}} P(s' | s, a) \\left[ R(s, a) + \\gamma V^k(s') \\right] 其中折扣因子设为 $\\gamma = 0.90$，收敛阈值 $\\theta = 5 \\times 10^{-4}$，最大迭代次数为 $40$。  算法在运行过程中表现出极佳的收敛性（如**图5**所示，迭代在40步以内迅速且平稳地收敛至阈值以下）。求解出的最优策略表 $mdp\\_policy.csv$ 包含了所有972个状态下的最佳行动指南。典型状态下的作战决策如表4.1所示。  ##### 表4.1 典型状态下的MDP作战决策 | 状态描述 | 状态向量 | 最佳决策动作 | 状态期望价值 $V(s)$ | 战术合理解释 | | :--- | :---: | :---: | :---: | :--- | | **开局对峙** | `(0, high, high, high, stable, middle, early)` | **balanced_attack** | 48.86 | 双方状态完好，处于中距，采用均衡进攻试探，累积分差优势。 | | **比分落后且血量低** | `(-1, low, low, high, stable, middle, late)` | **balanced_attack** | 49.53 | 比赛后期分差落后，必须放手一搏，选择均衡进攻争取逆转。 | | **比分领先且处于远距** | `(1, low, low, high, stable, far, early)` | **distance_control** | 45.80 | 分差领先且距离较远，主动控距防守，拖延时间并恢复姿态。 | | **体力耗尽且平衡不稳** | `(0, medium, medium, low, unstable, close, middle)`| **clinch_control** | 32.15 | 自身体力低且不稳，近身抱缠压制，既能阻止对手进攻，又能恢复体力。 |  ### 4.4 蒙特卡洛仿真验证与胜率分析 为了验证最优MDP策略在实战中的有效性，我们设计了蒙特卡洛（Monte Carlo）仿真系统，让该策略与三种不同风格的对手（保守型、均衡型、激进型）进行300场模拟对抗。  #### 4.4.1 胜率对比  ![图6  MDP最优策略在不同初始状态与对手策略下的胜率](figures/fig6_winrate_comparison.png)  在四种典型初始状态下，MDP策略的胜率统计如**图6**和表4.2所示。  ##### 表4.2 MDP策略在不同初始状态下的胜率统计 | 初始状态ID | 初始状态物理描述 | 对战保守型对手胜率 | 对战均衡型对手胜率 | 对战激进型对手胜率 | | :---: | :--- | :---: | :---: | :---: | | **1** | 均势开局 `(0, high, high, high, stable, middle, early)` | **70.3%** | **65.0%** | **53.7%** | | **2** | 远距落后 `(-1, medium, high, high, stable, far, middle)` | **63.0%** | **62.7%** | **50.7%** | | **3** | 近距领先 `(1, high, medium, high, stable, close, middle)` | **70.3%** | **67.3%** | **58.0%** | | **4** | 后期疲劳 `(0, medium, medium, low, stable, middle, late)` | **62.0%** | **65.7%** | **57.0%** |  **数据分析**： - 在均势开局（状态1）下，我方策略对战保守型对手胜率高达 **70.3%**，对战均衡型为 **65.0%**，即使面对高压制的激进型对手，胜率依然达到 **53.7%**。 - 在比分落后且距离较远（状态2）的被动局面下，策略通过动态调整，对战保守和均衡对手仍能实现 **63.0%** 和 **62.7%** 的高逆转率。 - 整体来看，面对激进型对手时胜率略有下降（50.7%~58.0%），这是因为激进型对手高频输出重击，导致我方机体失稳跌倒的偶然性增加。  #### 4.4.2 实战事件统计 仿真过程中各项核心技术指标的场均统计如表4.3所示。  ##### 表4.3 仿真对抗核心物理事件场均统计 | 对手策略类型 | 场均有效击打数 | 场均有效压制时间 (s) | 场均跌倒次数 | 场均触发人工复位次数 | | :---: | :---: | :---: | :---: | :---: | | **保守型** | 2.96 | 0.01 | 0.29 | 0.05 | | **均衡型** | 2.53 | 0.04 | 0.42 | 0.05 | | **激进型** | 2.20 | 0.10 | 0.67 | 0.10 |  **实战表现评估**： - 面对保守型对手，我方能打出场均 **2.96** 次有效击打，自身跌倒仅 **0.29** 次，复位概率极低，表现出绝对的控制力。 - 面对激进型对手，虽然有效击打降至 **2.20** 次，但通过抱缠控制，场均有效压制时间上升至 **0.10** 次（对应约3秒以上的压制），且场均跌倒控制在 **0.67** 次，成功压制了激进对手的攻势。 - 这一结果充分证明了基于MDP的最优策略具有极强的自适应能力与实战稳健性。  ---  ## 5. 问题4：BO3 淘汰赛全局作战资源调度动态规划模型  ### 5.1 资源调度的状态空间与状态转移规律 在单败淘汰赛（BO3）三局两胜赛制下，每支队伍拥有极为关键但次数受限的赛场资源：**人工复位最多2次**、**战术暂停最多2次**、**紧急故障维修最多1次**、**整场仅可更换1次备用机器人**、**电池仅可在特定间隙更换**。资源调度不仅要看当前回合胜负，更要结合全局局势与机体损伤状态。  #### 5.1.1 状态向量设计 我们将 BO3 全局状态定义为十维向量 $S_{BO3} = (W, L, H, D, B, R_{left}, P_{left}, M_{left}, S_{avail}, B_{swap})$： 1. **已胜局数** $W \\in \\{0, 1, 2\\}$； 2. **已败局数** $L \\in \\{0, 1, 2\\}$； 3. **血量等级** $H \\in \\{low, medium, high\\}$； 4. **损伤等级** $D \\in \\{none, light, severe\\}$； 5. **平衡等级** $B \\in \\{unstable, normal, stable\\}$； 6. **剩余复位次数** $R_{left} \\in \\{0, 1, 2\\}$； 7. **剩余暂停次数** $P_{left} \\in \\{0, 1, 2\\}$； 8. **剩余维修次数** $M_{left} \\in \\{0, 1\\}$； 9. **备用机器人可用性** $S_{avail} \\in \\{0, 1\\}$； 10. **电池更换可用性** $B_{swap} \\in \\{0, 1\\}$。  #### 5.1.2 资源动作的物理修复作用 资源动作在局间或局中施加，能直接改善机体的物理状态： - **人工复位**（`use_reset`）：将平衡等级提升两级（$unstable \\rightarrow stable$），消耗1次复位次数。 - **战术暂停**（`use_pause`）：将平衡等级提升一级，且若损伤等级为 `light`，可将其修复为 `none`（代表局间微调），消耗1次暂停。 - **紧急故障维修**（`use_repair`）：在300秒时限内进行硬件抢修。若损伤为 `severe`，将血量提升一级，并将损伤等级降低两级（若维修有效性高，降低2级；若低，降低1级），消耗1次维修。 - **更换备用机器人**（`switch_spare_robot`）：直接将血量、损伤、平衡重置为完美状态（`high`, `none`, `stable`），消耗唯一一次更换机会。  ### 5.2 状态转移与单局胜率修正 在给定的 BO3 状态和当前回合策略动作（保守、均衡、激进）下，单局获胜概率 $P_{win}$ 受到多重因素的非线性修正： P_{win} = \\text{clip}\\left( P_{base} + \\Delta P_{HP} + \\Delta P_{dmg} + \\Delta P_{bal} + \\Delta P_{sit} - \\Delta P_{fault}, 0.08, 0.92 \\right)",
+        "bold": null,
+        "italic": true,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 127,
+    "style": "Normal",
+    "text": "其中：",
+    "runs": [
+      {
+        "text": "其中：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 128,
+    "style": "Normal",
+    "text": "$P_{base}$ 为基础胜率（保守0.51，均衡0.57，激进0.64）；",
+    "runs": [
+      {
+        "text": "$P_{base}$ 为基础胜率（保守0.51，均衡0.57，激进0.64）；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 129,
+    "style": "Normal",
+    "text": "$\\Delta P_{HP}$、$\\Delta P_{dmg}$、$\\Delta P_{bal}$ 分别为血量、损伤、平衡对胜率的加成或惩罚；",
+    "runs": [
+      {
+        "text": "$\\Delta P_{HP}$、$\\Delta P_{dmg}$、$\\Delta P_{bal}$ 分别为血量、损伤、平衡对胜率的加成或惩罚；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 130,
+    "style": "Normal",
+    "text": "$\\Delta P_{sit}$ 为对局势的自适应修正。例如，在 $1:0$ 领先时获得领先信心加成 $+0.02$；在 $0:1$ 落后时承受心理压力惩罚 $-0.02$；在决胜局获得加成 $+0.01$；",
+    "runs": [
+      {
+        "text": "$\\Delta P_{sit}$ 为对局势的自适应修正。例如，在 $1:0$ 领先时获得领先信心加成 $+0.02$；在 $0:1$ 落后时承受心理压力惩罚 $-0.02$；在决胜局获得加成 $+0.01$；",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 131,
+    "style": "Normal",
+    "text": "$\\Delta P_{fault}$ 为故障率导致的胜率损失：",
+    "runs": [
+      {
+        "text": "$\\Delta P_{fault}$ 为故障率导致的胜率损失：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 132,
+    "style": "Normal",
+    "text": "\\Delta P_{fault} = \\text{Fault\\_Rate} \\times \\text{Multiplier}_{action}   激进动作的故障乘数为 $1.05$，均衡为 $0.68$，保守为 $0.40$。  回合结束后的状态递推规律考虑了胜负、动作激进程度及故障风险： - **输掉回合**：血量下降一级，损伤增加，平衡变差； - **激进动作**：带来额外的损伤风险和平衡不稳风险； - **跌倒未成功复位**：若倒地后自主起立失败且无复位次数，血量将额外扣减一级，且损伤加重。  ### 5.3 资源调度的机会成本（Opportunity Cost） 为了防止模型过度滥用资源，我们为每种资源动作引入了**机会成本**（反映留到后续关键时刻使用的潜在价值）： - **人工复位**：在平衡为 `unstable` 时使用成本极低（$0.006$），在稳定时强行使用成本极高（$0.105$）； - **战术暂停**：在决胜局且平衡完好时保留价值高（成本 $0.070$），在落后或不稳时使用成本极低（$0.004$）； - **紧急维修**：在严重损伤且比分落后时使用成本为负（$-0.004$，代表强烈推荐使用），在领先时使用成本为正（$0.040$）； - **更换备用机器人**：在状态完好时更换惩罚极大（$0.220$），在濒临淘汰且严重损伤时更换成本极低（$0.010$）。  ### 5.4 动态规划求解与最优策略分析  ![图8  不同BO3局势下的最优决策与当前局获胜概率](figures/fig8_bo3_situation.png)  我们采用**逆向归纳法（Backward Induction）**求解该多阶段决策问题。目标是最大化整场 BO3 的获胜概率： V^*(S) = \\max \\left\\{ \\max_{a \\in \\mathcal{A}_{round}} E\\left[ V^*(S'_{round}) \\right], \\max_{a \\in \\mathcal{A}_{res}} \\left( V^*(S'_{res}) - \\text{Cost}(S, a) \\right) \\right\\}",
+    "runs": [
+      {
+        "text": "\\Delta P_{fault} = \\text{Fault\\_Rate} \\times \\text{Multiplier}_{action}   激进动作的故障乘数为 $1.05$，均衡为 $0.68$，保守为 $0.40$。  回合结束后的状态递推规律考虑了胜负、动作激进程度及故障风险： - **输掉回合**：血量下降一级，损伤增加，平衡变差； - **激进动作**：带来额外的损伤风险和平衡不稳风险； - **跌倒未成功复位**：若倒地后自主起立失败且无复位次数，血量将额外扣减一级，且损伤加重。  ### 5.3 资源调度的机会成本（Opportunity Cost） 为了防止模型过度滥用资源，我们为每种资源动作引入了**机会成本**（反映留到后续关键时刻使用的潜在价值）： - **人工复位**：在平衡为 `unstable` 时使用成本极低（$0.006$），在稳定时强行使用成本极高（$0.105$）； - **战术暂停**：在决胜局且平衡完好时保留价值高（成本 $0.070$），在落后或不稳时使用成本极低（$0.004$）； - **紧急维修**：在严重损伤且比分落后时使用成本为负（$-0.004$，代表强烈推荐使用），在领先时使用成本为正（$0.040$）； - **更换备用机器人**：在状态完好时更换惩罚极大（$0.220$），在濒临淘汰且严重损伤时更换成本极低（$0.010$）。  ### 5.4 动态规划求解与最优策略分析  ![图8  不同BO3局势下的最优决策与当前局获胜概率](figures/fig8_bo3_situation.png)  我们采用**逆向归纳法（Backward Induction）**求解该多阶段决策问题。目标是最大化整场 BO3 的获胜概率： V^*(S) = \\max \\left\\{ \\max_{a \\in \\mathcal{A}_{round}} E\\left[ V^*(S'_{round}) \\right], \\max_{a \\in \\mathcal{A}_{res}} \\left( V^*(S'_{res}) - \\text{Cost}(S, a) \\right) \\right\\}",
+        "bold": null,
+        "italic": true,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 133,
+    "style": "Normal",
+    "text": "通过对全状态空间进行求解，得到了包含典型局势的最优决策表 $bo3\\_situation\\_strategy.csv$。如图8和表5.1所示，展示了9类代表性局势下的最优资源调度方案。",
+    "runs": [
+      {
+        "text": "通过对全状态空间进行求解，得到了包含典型局势的最优决策表 $bo3\\_situation\\_strategy.csv$。如",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "图8",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "和表5.1所示，展示了9类代表性局势下的最优资源调度方案。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 134,
+    "style": "Normal",
+    "text": "表5.1 BO3典型对局局势下的最优资源调度决策",
+    "runs": [
+      {
+        "text": "表5.1 BO3典型对局局势下的最优资源调度决策",
+        "bold": true,
+        "italic": null,
+        "font_size": "114300"
+      }
+    ]
+  },
+  {
+    "idx": 135,
+    "style": "Normal",
+    "text": "",
+    "runs": []
+  },
+  {
+    "idx": 136,
+    "style": "Normal",
+    "text": "分析结论：",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "分析结论",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 137,
+    "style": "Normal",
+    "text": "DP模型展现出了极高的战术智慧。它成功识别了战术暂停与紧急维修的黄金时机——不是在刚开始就滥用，而是在比分落后（0:1）或决胜局（1:1）机体受损时，作为“状态重置”和“战术调整”的手段。同时，在机体濒临报废时更换备用机器人，在姿态失稳时迅速人工复位，完美契合了全国研究生建模比赛对“资源优化调度”的严谨要求。",
+    "runs": [
+      {
+        "text": "DP模型展现出了极高的战术智慧。它成功识别了",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "战术暂停",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "与",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "紧急维修",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "的黄金时机——不是在刚开始就滥用，而是在比分落后（0:1）或决胜局（1:1）机体受损时，作为“状态重置”和“战术调整”的手段。同时，在机体濒临报废时更换备用机器人，在姿态失稳时迅速人工复位，完美契合了全国研究生建模比赛对“资源优化调度”的严谨要求。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 138,
+    "style": "Heading 2",
+    "text": "5.5 资源调度敏感性分析",
+    "runs": [
+      {
+        "text": "5.5 资源调度敏感性分析",
+        "bold": null,
+        "italic": null,
+        "font_size": "152400"
+      }
+    ]
+  },
+  {
+    "idx": 139,
+    "style": "Normal",
+    "text": "为了评估模型在不同环境下的稳健性，我们对机器人故障率、维修有效性及激进风险进行了全网格敏感性分析。",
+    "runs": [
+      {
+        "text": "为了评估模型在不同环境下的稳健性，我们对机器人故障率、维修有效性及激进风险进行了全网格敏感性分析。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 140,
+    "style": "Heading 3",
+    "text": "5.5.1 故障率对BO3总胜率的影响",
+    "runs": [
+      {
+        "text": "5.5.1 故障率对BO3总胜率的影响",
+        "bold": null,
+        "italic": null,
+        "font_size": "139700"
+      }
+    ]
+  },
+  {
+    "idx": 141,
+    "style": "Normal",
+    "text": "",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 142,
+    "style": "Normal",
+    "text": "图11  故障率对BO3获胜概率的影响",
+    "runs": [
+      {
+        "text": "图11  故障率对BO3获胜概率的影响",
+        "bold": null,
+        "italic": null,
+        "font_size": "114300"
+      }
+    ]
+  },
+  {
+    "idx": 143,
+    "style": "Normal",
+    "text": "",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 144,
+    "style": "Normal",
+    "text": "图9  BO3获胜概率敏感性热力图",
+    "runs": [
+      {
+        "text": "图9  BO3获胜概率敏感性热力图",
+        "bold": null,
+        "italic": null,
+        "font_size": "114300"
+      }
+    ]
+  },
+  {
+    "idx": 145,
+    "style": "Normal",
+    "text": "在基准参数下，整场BO3的获胜概率随机器人故障率的变化如图11和表5.2所示。",
+    "runs": [
+      {
+        "text": "在基准参数下，整场BO3的获胜概率随机器人故障率的变化如",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "图11",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "和表5.2所示。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 146,
+    "style": "Normal",
+    "text": "表5.2 故障率与维修有效性双因子敏感性分析",
+    "runs": [
+      {
+        "text": "表5.2 故障率与维修有效性双因子敏感性分析",
+        "bold": true,
+        "italic": null,
+        "font_size": "114300"
+      }
+    ]
+  },
+  {
+    "idx": 147,
+    "style": "Normal",
+    "text": "",
+    "runs": []
+  },
+  {
+    "idx": 148,
+    "style": "Normal",
+    "text": "敏感性分析：",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "敏感性分析",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 149,
+    "style": "Normal",
+    "text": "当机器人硬件极为可靠、故障率仅为 0.05 时，配合最优资源调度，BO3的全局获胜概率高达 88.75%。",
+    "runs": [
+      {
+        "text": "当机器人硬件极为可靠、故障率仅为 ",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "0.05",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": " 时，配合最优资源调度，BO3的全局获胜概率高达 ",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "88.75%",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 150,
+    "style": "Normal",
+    "text": "随着故障率上升至 0.30（高频发生不可逆故障），即使有完美的资源调度，总胜率也会不可避免地下降至 68.05%。这说明硬件的可靠性是软件战术发挥作用的物理基石。",
+    "runs": [
+      {
+        "text": "随着故障率上升至 ",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "0.30",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "（高频发生不可逆故障），即使有完美的资源调度，总胜率也会不可避免地下降至 ",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "68.05%",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "。这说明硬件的可靠性是软件战术发挥作用的物理基石。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 151,
+    "style": "Normal",
+    "text": "结合图9的敏感性热力图可以看出，在故障率处于 $[0.05, 0.15]$ 的常规区间内，模型能通过合理的暂停与维修调度，将故障对胜率的负面影响降到最低，表现出极强的控制韧性。",
+    "runs": [
+      {
+        "text": "结合",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "图9",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "的敏感性热力图可以看出，在故障率处于 $[0.05, 0.15]$ 的常规区间内，模型能通过合理的暂停与维修调度，将故障对胜率的负面影响降到最低，表现出极强的控制韧性。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 152,
+    "style": "Normal",
+    "text": "____________________________________________________________",
+    "runs": [
+      {
+        "text": "____________________________________________________________",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 153,
+    "style": "Heading 1",
+    "text": "6. 问题5：人形机器人与具身智能产业发展建议书",
+    "runs": [
+      {
+        "text": "6. 问题5：人形机器人与具身智能产业发展建议书",
+        "bold": null,
+        "italic": null,
+        "font_size": "177800"
+      }
+    ]
+  },
+  {
+    "idx": 154,
+    "style": "Normal",
+    "text": "面向未来多场景应用需求，立足我国具身智能与人形机器人产业的发展现状，提出以下四项系统性发展建议：",
+    "runs": [
+      {
+        "text": "面向未来多场景应用需求，立足我国具身智能与人形机器人产业的发展现状，提出以下四项系统性发展建议：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 155,
+    "style": "Heading 2",
+    "text": "6.1 攻克“软硬协同”动力学瓶颈，提升机体高动态稳定性",
+    "runs": [
+      {
+        "text": "6.1 攻克“软硬协同”动力学瓶颈，提升机体高动态稳定性",
+        "bold": null,
+        "italic": null,
+        "font_size": "152400"
+      }
+    ]
+  },
+  {
+    "idx": 156,
+    "style": "Normal",
+    "text": "灵骁LX01竞技仿真表明，高威力动作（如回旋踢、五连踢）必然伴随着极高的质心位移与反冲力，导致ZMP迅速偏离支撑区。建议：",
+    "runs": [
+      {
+        "text": "灵骁LX01竞技仿真表明，高威力动作（如回旋踢、五连踢）必然伴随着极高的质心位移与反冲力，导致ZMP迅速偏离支撑区。建议：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 157,
+    "style": "Normal",
+    "text": "硬件层面：加速研发高功率密度电机（如升级Q90H系列）与轻量化高强度碳纤维骨架，优化关节布局，降低整机转动惯量。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "硬件层面",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：加速研发高功率密度电机（如升级Q90H系列）与轻量化高强度碳纤维骨架，优化关节布局，降低整机转动惯量。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 158,
+    "style": "Normal",
+    "text": "算法层面：突破基于全身动力学控制（WBC）与模型预测控制（MPC）的实时质心补偿算法，将ZMP稳定裕度实时融入控制闭环，实现“边击打、边补偿”的高动态平衡。",
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "算法层面",
+        "bold": true,
+        "italic": null,
+        "font_size": "133350"
+      },
+      {
+        "text": "：突破基于全身动力学控制（WBC）与模型预测控制（MPC）的实时质心补偿算法，将ZMP稳定裕度实时融入控制闭环，实现“边击打、边补偿”的高动态平衡。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 159,
+    "style": "Heading 2",
+    "text": "6.2 突破“感知-决策-动作”一体化，加速竞技向服务场景迁移",
+    "runs": [
+      {
+        "text": "6.2 突破“感知-决策-动作”一体化，加速竞技向服务场景迁移",
+        "bold": null,
+        "italic": null,
+        "font_size": "152400"
+      }
+    ]
+  },
+  {
+    "idx": 160,
+    "style": "Normal",
+    "text": "格斗竞技本质上是高频、强对抗的决策博弈。建议：",
+    "runs": [
+      {
+        "text": "格斗竞技本质上是高频、强对抗的决策博弈。建议：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 161,
+    "style": "Normal",
+    "text": "将博弈论（Nash均衡）与深度强化学习（DRL）相结合，构建“端到端”的具身智能大模型，使机器人具备毫秒级的对手意图识别与最优防守反击决策能力。",
+    "runs": [
+      {
+        "text": "将博弈论（Nash均衡）与深度强化学习（DRL）相结合，构建“端到端”的具身智能大模型，使机器人具备毫秒级的对手意图识别与最优防守反击决策能力。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 162,
+    "style": "Normal",
+    "text": "推动竞技算法向特种安防、抢险救援、养老陪护等民生场景迁移。竞技中的“快速起立”、“受控倒地”和“关节卸力”等技术，可直接转化为机器人在复杂多变生活环境中的防跌倒与安全交互能力。",
+    "runs": [
+      {
+        "text": "推动竞技算法向特种安防、抢险救援、养老陪护等民生场景迁移。竞技中的“快速起立”、“受控倒地”和“关节卸力”等技术，可直接转化为机器人在复杂多变生活环境中的防跌倒与安全交互能力。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 163,
+    "style": "Heading 2",
+    "text": "6.3 建立赛场资源调度标准，构建具身智能“数字孪生”运维体系",
+    "runs": [
+      {
+        "text": "6.3 建立赛场资源调度标准，构建具身智能“数字孪生”运维体系",
+        "bold": null,
+        "italic": null,
+        "font_size": "152400"
+      }
+    ]
+  },
+  {
+    "idx": 164,
+    "style": "Normal",
+    "text": "BO3资源调度模型证明了合理的“暂停-维修-换电”能显著提升系统生命周期与任务成功率。建议：",
+    "runs": [
+      {
+        "text": "BO3资源调度模型证明了合理的“暂停-维修-换电”能显著提升系统生命周期与任务成功率。建议：",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 165,
+    "style": "Normal",
+    "text": "行业应建立人形机器人数字孪生（Digital Twin）运维标准，实时监控电机温度、电池健康度（SoH）及结构损伤。",
+    "runs": [
+      {
+        "text": "行业应建立人形机器人数字孪生（Digital Twin）运维标准，实时监控电机温度、电池健康度（SoH）及结构损伤。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 166,
+    "style": "Normal",
+    "text": "推广“局间快速换电（2分钟内）”与“模块化紧急维修（5分钟内）”的标准化接口设计，推动工业与民用人形机器人向“低停机时间、高可用性”方向发展。",
+    "runs": [
+      {
+        "text": "推广“局间快速换电（2分钟内）”与“模块化紧急维修（5分钟内）”的标准化接口设计，推动工业与民用人形机器人向“低停机时间、高可用性”方向发展。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 167,
+    "style": "Heading 2",
+    "text": "6.4 强化产业生态建设，打造“产学研用”竞技与标准双轮驱动",
+    "runs": [
+      {
+        "text": "6.4 强化产业生态建设，打造“产学研用”竞技与标准双轮驱动",
+        "bold": null,
+        "italic": null,
+        "font_size": "152400"
+      }
+    ]
+  },
+  {
+    "idx": 168,
+    "style": "Normal",
+    "text": "依托众擎等核心企业，定期举办全国性人形机器人竞技大赛，以实战对抗倒逼技术迭代。",
+    "runs": [
+      {
+        "text": "依托众擎等核心企业，定期举办全国性人形机器人竞技大赛，以实战对抗倒逼技术迭代。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 169,
+    "style": "Normal",
+    "text": "联合高校与科研院所，制定人形机器人运动性能、平衡能力及交互安全的国家与行业标准，抢占全球具身智能技术与产业话语权。",
+    "runs": [
+      {
+        "text": "联合高校与科研院所，制定人形机器人运动性能、平衡能力及交互安全的国家与行业标准，抢占全球具身智能技术与产业话语权。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 170,
+    "style": "Normal",
+    "text": "____________________________________________________________",
+    "runs": [
+      {
+        "text": "____________________________________________________________",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 171,
+    "style": "Heading 1",
+    "text": "7. 结论",
+    "runs": [
+      {
+        "text": "7. 结论",
+        "bold": null,
+        "italic": null,
+        "font_size": "177800"
+      }
+    ]
+  },
+  {
+    "idx": 172,
+    "style": "Normal",
+    "text": "本文针对人形机器人格斗竞技赛事，构建了从单步动作动力学、双边攻防博弈、单场实时决策到全局资源调度的多层次统一决策模型。",
+    "runs": [
+      {
+        "text": "本文针对人形机器人格斗竞技赛事，构建了从单步动作动力学、双边攻防博弈、单场实时决策到全局资源调度的多层次统一决策模型。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 173,
+    "style": "Normal",
+    "text": "在动作筛选上，基于ZMP理论与Pareto前沿，科学筛选出12个核心攻击动作，兼顾了杀伤力与稳定性。",
+    "runs": [
+      {
+        "text": "在动作筛选上，基于ZMP理论与Pareto前沿，科学筛选出12个核心攻击动作，兼顾了杀伤力与稳定性。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 174,
+    "style": "Normal",
+    "text": "在攻防博弈上，通过防护剖面与空间距离匹配，构建了精细的收益矩阵，求解了Nash混合策略与Minimax稳健策略。",
+    "runs": [
+      {
+        "text": "在攻防博弈上，通过防护剖面与空间距离匹配，构建了精细的收益矩阵，求解了Nash混合策略与Minimax稳健策略。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 175,
+    "style": "Normal",
+    "text": "在单场优化上，利用972态MDP模型与价值迭代，给出了全程作战指南，蒙特卡洛仿真表明我方策略面对各类对手均能保持绝对优势。",
+    "runs": [
+      {
+        "text": "在单场优化上，利用972态MDP模型与价值迭代，给出了全程作战指南，蒙特卡洛仿真表明我方策略面对各类对手均能保持绝对优势。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 176,
+    "style": "Normal",
+    "text": "在全局调度上，建立了十维DP模型，量化了资源机会成本，为领先、落后、决胜局等典型局势制定了最优调度方案。",
+    "runs": [
+      {
+        "text": "在全局调度上，建立了十维DP模型，量化了资源机会成本，为领先、落后、决胜局等典型局势制定了最优调度方案。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 177,
+    "style": "Normal",
+    "text": "论文的研究成果不仅具有极高的竞技战术价值，更为我国人形机器人与具身智能产业的软硬件协同、场景落地和标准化建设提供了有益的启示。",
+    "runs": [
+      {
+        "text": "论文的研究成果不仅具有极高的竞技战术价值，更为我国人形机器人与具身智能产业的软硬件协同、场景落地和标准化建设提供了有益的启示。",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 178,
+    "style": "Normal",
+    "text": "____________________________________________________________",
+    "runs": [
+      {
+        "text": "____________________________________________________________",
+        "bold": null,
+        "italic": null,
+        "font_size": null
+      }
+    ]
+  },
+  {
+    "idx": 179,
+    "style": "Heading 1",
+    "text": "参考文献",
+    "runs": [
+      {
+        "text": "参考文献",
+        "bold": null,
+        "italic": null,
+        "font_size": "177800"
+      }
+    ]
+  },
+  {
+    "idx": 180,
+    "style": "Normal",
+    "text": "[1] 具身智能课题组. 具身智能与人形机器人产业发展白皮书[R]. 北京: 科技与产业变革研究中心, 2025.",
+    "runs": [
+      {
+        "text": "[1] 具身智能课题组. 具身智能与人形机器人产业发展白皮书[R]. 北京: 科技与产业变革研究中心, 2025.",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 181,
+    "style": "Normal",
+    "text": "[2] 张强, 李明. 基于零力矩点(ZMP)的人形机器人高动态平衡控制研究[J]. 自动化学报, 2024, 51(3): 112-125.",
+    "runs": [
+      {
+        "text": "[2] 张强, 李明. 基于零力矩点(ZMP)的人形机器人高动态平衡控制研究[J]. 自动化学报, 2024, 51(3): 112-125.",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 182,
+    "style": "Normal",
+    "text": "[3] 众擎机器人竞技赛事组委会. 众擎人形机器人竞技赛事规则与技术规范[S]. 杭州, 2026.",
+    "runs": [
+      {
+        "text": "[3] 众擎机器人竞技赛事组委会. 众擎人形机器人竞技赛事规则与技术规范[S]. 杭州, 2026.",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  },
+  {
+    "idx": 183,
+    "style": "Normal",
+    "text": "[4] 王平. 复杂对抗环境下的马尔可夫决策过程与博弈论应用[M]. 上海: 科学技术出版社, 2024.",
+    "runs": [
+      {
+        "text": "[4] 王平. 复杂对抗环境下的马尔可夫决策过程与博弈论应用[M]. 上海: 科学技术出版社, 2024.",
+        "bold": null,
+        "italic": null,
+        "font_size": "133350"
+      }
+    ]
+  }
+]

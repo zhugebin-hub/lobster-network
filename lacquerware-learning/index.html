@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国漆器探索之旅 - 小学五年级美术</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 首页 - 情境导入 -->
+    <section id="home" class="section active">
+        <div class="home-container">
+            <div class="lacquer-animation">
+                <div class="lacquer-bowl"></div>
+                <div class="shine"></div>
+            </div>
+            <h1 class="title">中国漆器探索之旅</h1>
+            <p class="subtitle">穿越千年的光泽</p>
+            <div class="intro-text">
+                <p>你知道吗？有一种工艺品，</p>
+                <p>越老越亮，能保存几千年...</p>
+                <p>它就是我们中国的瑰宝——漆器！</p>
+            </div>
+            <button class="start-btn" onclick="navigateTo('history')">🚀 开启探索之旅</button>
+        </div>
+    </section>
+
+    <!-- 漆器故事 - 历史时间轴 -->
+    <section id="history" class="section">
+        <div class="section-header">
+            <button class="back-btn" onclick="navigateTo('home')">← 返回</button>
+            <h2>📜 漆器故事</h2>
+        </div>
+        <div class="timeline-container">
+            <div class="timeline">
+                <div class="timeline-item" data-period="1">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>🌱 新石器时代</h3>
+                        <p class="time">约 7000 年前</p>
+                        <p class="desc">河姆渡人制作了最早的朱漆碗</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-period="2">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>🏛️ 商周时期</h3>
+                        <p class="time">约 3600 年前</p>
+                        <p class="desc">漆器成为重要礼器</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-period="3">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>🎭 战国汉代</h3>
+                        <p class="time">约 2500 年前</p>
+                        <p class="desc">漆器工艺繁荣发展</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-period="4">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>🌸 唐宋元明</h3>
+                        <p class="time">约 1400 年前</p>
+                        <p class="desc">技艺达到巅峰</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-period="5">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>🏮 清代至今</h3>
+                        <p class="time">传承创新</p>
+                        <p class="desc">传统工艺焕发新生</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="detail-panel" id="history-detail">
+            <div class="detail-content">
+                <h3 id="detail-title"></h3>
+                <img id="detail-image" src="" alt="">
+                <p id="detail-desc"></p>
+            </div>
+        </div>
+        <button class="next-btn" onclick="navigateTo('craft')">下一步：漆器探秘 →</button>
+    </section>
+
+    <!-- 漆器探秘 - 工艺解析 -->
+    <section id="craft" class="section">
+        <div class="section-header">
+            <button class="back-btn" onclick="navigateTo('history')">← 返回</button>
+            <h2>🔍 漆器探秘</h2>
+        </div>
+        <div class="craft-cards">
+            <div class="craft-card" onclick="showCraftDetail(1)">
+                <div class="card-icon">🌳</div>
+                <h3>天然漆</h3>
+                <p>从漆树采集的"液体黄金"</p>
+            </div>
+            <div class="craft-card" onclick="showCraftDetail(2)">
+                <div class="card-icon">🪵</div>
+                <h3>制胎</h3>
+                <p>木胎、竹胎、铜胎等</p>
+            </div>
+            <div class="craft-card" onclick="showCraftDetail(3)">
+                <div class="card-icon">🖌️</div>
+                <h3>髹漆</h3>
+                <p>一层层涂刷，每层都要阴干</p>
+            </div>
+            <div class="craft-card" onclick="showCraftDetail(4)">
+                <div class="card-icon">✨</div>
+                <h3>装饰</h3>
+                <p>镶嵌、雕刻、描金等</p>
+            </div>
+            <div class="craft-card" onclick="showCraftDetail(5)">
+                <div class="card-icon">💎</div>
+                <h3>打磨</h3>
+                <p>越磨越亮</p>
+            </div>
+        </div>
+        <div class="craft-detail-modal" id="craft-modal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeCraftModal()">×</button>
+                <div id="craft-detail-content"></div>
+            </div>
+        </div>
+        <div class="quiz-section">
+            <h3>🤔 小测试</h3>
+            <p>一件精美的漆器需要刷多少层漆？</p>
+            <div class="quiz-options">
+                <button class="quiz-option" onclick="checkAnswer(1)">A. 3-5 层</button>
+                <button class="quiz-option" onclick="checkAnswer(2)">B. 10-20 层</button>
+                <button class="quiz-option" onclick="checkAnswer(3)">C. 几十到上百层</button>
+            </div>
+            <div class="quiz-feedback" id="quiz-feedback"></div>
+        </div>
+        <button class="next-btn" onclick="navigateTo('make')">下一步：我来做漆器 →</button>
+    </section>
+
+    <!-- 互动体验 - 虚拟制作 -->
+    <section id="make" class="section">
+        <div class="section-header">
+            <button class="back-btn" onclick="navigateTo('craft')">← 返回</button>
+            <h2>🎮 我来做漆器</h2>
+        </div>
+        <div class="make-container">
+            <div class="step-indicator">
+                <div class="step active" data-step="1">1<br>选器型</div>
+                <div class="step" data-step="2">2<br>选胎体</div>
+                <div class="step" data-step="3">3<br>涂漆</div>
+                <div class="step" data-step="4">4<br>装饰</div>
+                <div class="step" data-step="5">5<br>打磨</div>
+            </div>
+            
+            <!-- 步骤 1: 选器型 -->
+            <div class="make-step active" data-step="1">
+                <h3>第一步：选择器型</h3>
+                <div class="shape-options">
+                    <div class="shape-option" onclick="selectShape('bowl')">
+                        <div class="shape-preview bowl"></div>
+                        <p>碗</p>
+                    </div>
+                    <div class="shape-option" onclick="selectShape('box')">
+                        <div class="shape-preview box"></div>
+                        <p>盒</p>
+                    </div>
+                    <div class="shape-option" onclick="selectShape('vase')">
+                        <div class="shape-preview vase"></div>
+                        <p>瓶</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 步骤 2: 选胎体 -->
+            <div class="make-step" data-step="2">
+                <h3>第二步：选择胎体</h3>
+                <div class="material-options">
+                    <div class="material-option" onclick="selectMaterial('wood')">
+                        <div class="material-preview wood"></div>
+                        <p>木胎</p>
+                    </div>
+                    <div class="material-option" onclick="selectMaterial('bamboo')">
+                        <div class="material-preview bamboo"></div>
+                        <p>竹胎</p>
+                    </div>
+                    <div class="material-option" onclick="selectMaterial('copper')">
+                        <div class="material-preview copper"></div>
+                        <p>铜胎</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 步骤 3: 涂漆 -->
+            <div class="make-step" data-step="3">
+                <h3>第三步：涂刷漆层</h3>
+                <p class="instruction">点击器物的不同部位来涂漆，每涂一层会有光泽变化哦！</p>
+                <div class="paint-area">
+                    <div class="paint-object" id="paint-object"></div>
+                    <div class="layer-counter">已涂 <span id="layer-count">0</span> 层</div>
+                </div>
+                <button class="action-btn" onclick="nextMakeStep()">完成涂漆 →</button>
+            </div>
+
+            <!-- 步骤 4: 装饰 -->
+            <div class="make-step" data-step="4">
+                <h3>第四步：选择装饰</h3>
+                <div class="decoration-options">
+                    <div class="decoration-option" onclick="selectDecoration('none')">
+                        <div class="decoration-preview">素面</div>
+                        <p>素面</p>
+                    </div>
+                    <div class="decoration-option" onclick="selectDecoration('gold')">
+                        <div class="decoration-preview gold">描金</div>
+                        <p>描金</p>
+                    </div>
+                    <div class="decoration-option" onclick="selectDecoration('carve')">
+                        <div class="decoration-preview carve">雕刻</div>
+                        <p>雕刻</p>
+                    </div>
+                    <div class="decoration-option" onclick="selectDecoration('inlay')">
+                        <div class="decoration-preview inlay">镶嵌</div>
+                        <p>镶嵌</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 步骤 5: 打磨 -->
+            <div class="make-step" data-step="5">
+                <h3>第五步：打磨抛光</h3>
+                <p class="instruction">在器物上来回滑动鼠标进行打磨，让它更亮！</p>
+                <div class="polish-area">
+                    <div class="polish-object" id="polish-object"></div>
+                    <div class="polish-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="polish-progress"></div>
+                        </div>
+                        <p>打磨进度：<span id="polish-percent">0</span>%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 完成展示 -->
+            <div class="make-step" data-step="6">
+                <h3>🎉 恭喜你完成了一件漆器！</h3>
+                <div class="finished-product" id="finished-product"></div>
+                <div class="product-info">
+                    <p>器型：<span id="final-shape"></span></p>
+                    <p>胎体：<span id="final-material"></span></p>
+                    <p>装饰：<span id="final-decoration"></span></p>
+                    <p>漆层：<span id="final-layers"></span>层</p>
+                </div>
+                <button class="save-btn" onclick="saveProduct()">💾 保存作品</button>
+                <button class="next-btn" onclick="navigateTo('gallery')">下一步：名作欣赏 →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 名作欣赏 - 3D 展馆 -->
+    <section id="gallery" class="section">
+        <div class="section-header">
+            <button class="back-btn" onclick="navigateTo('make')">← 返回</button>
+            <h2>🖼️ 名作欣赏</h2>
+        </div>
+        <div class="gallery-container">
+            <div class="gallery-item" onclick="showArtwork(1)">
+                <div class="artwork-preview" style="background: linear-gradient(135deg, #8B0000, #2d0000);">
+                    <div class="artwork-icon">瑟</div>
+                </div>
+                <h3>战国·彩绘漆瑟</h3>
+            </div>
+            <div class="gallery-item" onclick="showArtwork(2)">
+                <div class="artwork-preview" style="background: linear-gradient(135deg, #654321, #1a0f0a);">
+                    <div class="artwork-icon">盒</div>
+                </div>
+                <h3>汉代·云气纹漆盒</h3>
+            </div>
+            <div class="gallery-item" onclick="showArtwork(3)">
+                <div class="artwork-preview" style="background: linear-gradient(135deg, #DAA520, #4a3a0a);">
+                    <div class="artwork-icon">镜</div>
+                </div>
+                <h3>唐代·金银平脱漆镜</h3>
+            </div>
+            <div class="gallery-item" onclick="showArtwork(4)">
+                <div class="artwork-preview" style="background: linear-gradient(135deg, #DC143C, #3d0a10);">
+                    <div class="artwork-icon">牡丹</div>
+                </div>
+                <h3>明代·剔红牡丹纹盒</h3>
+            </div>
+        </div>
+        <div class="artwork-modal" id="artwork-modal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeArtworkModal()">×</button>
+                <div id="artwork-detail"></div>
+            </div>
+        </div>
+        <div class="like-wall">
+            <h3>💭 留言墙</h3>
+            <p>写下你最喜欢的作品和理由：</p>
+            <textarea id="like-message" placeholder="我最喜欢...因为..."></textarea>
+            <button class="submit-btn" onclick="submitLike()">提交留言</button>
+        </div>
+        <button class="next-btn" onclick="navigateTo('create')">下一步：创意工坊 →</button>
+    </section>
+
+    <!-- 创意工坊 - 学生创作 -->
+    <section id="create" class="section">
+        <div class="section-header">
+            <button class="back-btn" onclick="navigateTo('gallery')">← 返回</button>
+            <h2>✏️ 创意工坊</h2>
+        </div>
+        <div class="create-container">
+            <h3>设计一件现代漆器</h3>
+            <p class="instruction">结合传统工艺，设计一件你想象中的现代漆器</p>
+            
+            <div class="design-tools">
+                <div class="tool-section">
+                    <h4>1. 选择器型</h4>
+                    <select id="design-shape">
+                        <option value="bowl">碗</option>
+                        <option value="box">盒</option>
+                        <option value="vase">瓶</option>
+                        <option value="plate">盘</option>
+                        <option value="custom">自定义</option>
+                    </select>
+                </div>
+                
+                <div class="tool-section">
+                    <h4>2. 选择主色调</h4>
+                    <div class="color-options">
+                        <div class="color-option" style="background: #8B0000;" onclick="selectColor('#8B0000')"></div>
+                        <div class="color-option" style="background: #000000;" onclick="selectColor('#000000')"></div>
+                        <div class="color-option" style="background: #DAA520;" onclick="selectColor('#DAA520')"></div>
+                        <div class="color-option" style="background: #8B4513;" onclick="selectColor('#8B4513')"></div>
+                        <div class="color-option" style="background: #DC143C;" onclick="selectColor('#DC143C')"></div>
+                    </div>
+                </div>
+                
+                <div class="tool-section">
+                    <h4>3. 选择纹样</h4>
+                    <div class="pattern-options">
+                        <div class="pattern-option" onclick="selectPattern('cloud')">☁️ 云纹</div>
+                        <div class="pattern-option" onclick="selectPattern('thunder')">⚡ 雷纹</div>
+                        <div class="pattern-option" onclick="selectPattern('dragon')">🐉 夔龙纹</div>
+                        <div class="pattern-option" onclick="selectPattern('flower')">🌸 花卉纹</div>
+                        <div class="pattern-option" onclick="selectPattern('geometric')">🔷 几何纹</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="design-canvas" id="design-canvas">
+                <div class="canvas-placeholder">
+                    <p>在这里绘制你的设计</p>
+                    <p class="hint">（可以用画笔工具自由创作）</p>
+                </div>
+                <canvas id="design-canvas-element"></canvas>
+            </div>
+            
+            <div class="canvas-tools">
+                <button class="tool-btn" onclick="setTool('brush')">🖌️ 画笔</button>
+                <button class="tool-btn" onclick="setTool('eraser')">🧹 橡皮</button>
+                <button class="tool-btn" onclick="clearCanvas()">🗑️ 清空</button>
+                <input type="color" id="brush-color" value="#8B0000">
+            </div>
+            
+            <div class="design-description">
+                <h4>设计说明（50 字以内）</h4>
+                <textarea id="design-desc" maxlength="50" placeholder="我的设计理念是..."></textarea>
+            </div>
+            
+            <button class="submit-btn" onclick="submitDesign()">提交作品</button>
+        </div>
+    </section>
+
+    <!-- 完成页 -->
+    <section id="complete" class="section">
+        <div class="complete-container">
+            <h1>🎊 恭喜你完成学习！</h1>
+            <div class="achievement">
+                <div class="badge">🏆</div>
+                <h2>漆器小专家</h2>
+                <p>你已经完成了中国漆器的探索之旅！</p>
+            </div>
+            <div class="summary">
+                <h3>学习总结</h3>
+                <ul>
+                    <li>✅ 了解了漆器的历史</li>
+                    <li>✅ 学习了漆器的制作工艺</li>
+                    <li>✅ 体验了漆器制作过程</li>
+                    <li>✅ 欣赏了经典漆器作品</li>
+                    <li>✅ 创作了自己的设计</li>
+                </ul>
+            </div>
+            <div class="reflection">
+                <h3>💭 我的收获</h3>
+                <textarea id="reflection-text" placeholder="写下你今天的收获和感想..."></textarea>
+            </div>
+            <button class="restart-btn" onclick="navigateTo('home')">🔄 重新开始</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

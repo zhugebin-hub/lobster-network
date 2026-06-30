@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦞 小龙虾消消乐</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .score-board {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .score-board span {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        #score {
+            color: #ffd700;
+            font-size: 28px;
+        }
+        
+        .game-container {
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            grid-template-rows: repeat(8, 50px);
+            gap: 5px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 15px;
+        }
+        
+        .cell {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        
+        .cell:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .cell.selected {
+            background: rgba(255,215,0,0.5);
+            transform: scale(1.15);
+            box-shadow: 0 0 15px rgba(255,215,0,0.6);
+        }
+        
+        .cell.match {
+            animation: pop 0.3s ease-out;
+        }
+        
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: bold;
+        }
+        
+        .btn-restart {
+            background: #ffd700;
+            color: #333;
+        }
+        
+        .btn-restart:hover {
+            background: #ffed4a;
+            transform: translateY(-2px);
+        }
+        
+        .message {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            min-height: 40px;
+            text-align: center;
+        }
+        
+        .combo {
+            color: #ffd700;
+            font-weight: bold;
+            animation: pulse 0.5s ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @media (max-width: 500px) {
+            #game-board {
+                grid-template-columns: repeat(8, 40px);
+                grid-template-rows: repeat(8, 40px);
+            }
+            
+            .cell {
+                width: 40px;
+                height: 40px;
+                font-size: 24px;
+            }
+            
+            h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🦞 小龙虾消消乐 🦞</h1>
+    
+    <div class="score-board">
+        <span>得分：</span><span id="score">0</span>
+    </div>
+    
+    <div class="game-container">
+        <div id="game-board"></div>
+    </div>
+    
+    <div class="message" id="message">点击方块开始游戏！</div>
+    
+    <div class="controls">
+        <button class="btn-restart" onclick="initGame()">🔄 重新开始</button>
+    </div>
+    
+    <script>
+        const BOARD_SIZE = 8;
+        const CANDIES = ['🦞', '🍎', '🍊', '🍇', '🍓', '💎'];
+        
+        let board = [];
+        let selected = null;
+        let score = 0;
+        let isProcessing = false;
+        
+        function initGame() {
+            board = [];
+            score = 0;
+            selected = null;
+            isProcessing = false;
+            updateScore();
+            document.getElementById('message').textContent = '点击方块开始游戏！';
+            
+            // 生成初始棋盘，确保没有初始匹配
+            do {
+                board = [];
+                for (let i = 0; i < BOARD_SIZE; i++) {
+                    board[i] = [];
+                    for (let j = 0; j < BOARD_SIZE; j++) {
+                        board[i][j] = CANDIES[Math.floor(Math.random() * CANDIES.length)];
+                    }
+                }
+            } while (findMatches().length > 0);
+            
+            renderBoard();
+        }
+        
+        function renderBoard() {
+            const gameBoard = document.getElementById('game-board');
+            gameBoard.innerHTML = '';
+            
+            for (let i = 0; i < BOARD_SIZE; i++) {
+                for (let j = 0; j < BOARD_SIZE; j++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.textContent = board[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', () => handleClick(i, j));
+                    gameBoard.appendChild(cell);
+                }
+            }
+        }
+        
+        function handleClick(row, col) {
+            if (isProcessing) return;
+            
+            const cells = document.querySelectorAll('.cell');
+            
+            if (!selected) {
+                // 第一次点击，选中
+                selected = { row, col };
+                cells.forEach(c => c.classList.remove('selected'));
+                cells[row * BOARD_SIZE + col].classList.add('selected');
+                document.getElementById('message').textContent = '选择相邻的方块交换';
+            } else {
+                // 第二次点击，检查是否相邻
+                const rowDiff = Math.abs(selected.row - row);
+                const colDiff = Math.abs(selected.col - col);
+                
+                if ((rowDiff === 1 && colDiff === 0) || (rowDiff === 0 && colDiff === 1)) {
+                    // 相邻，交换
+                    swap(selected.row, selected.col, row, col);
+                } else {
+                    // 不相邻，重新选择
+                    selected = { row, col };
+                    cells.forEach(c => c.classList.remove('selected'));
+                    cells[row * BOARD_SIZE + col].classList.add('selected');
+                    document.getElementById('message').textContent = '选择相邻的方块交换';
+                    return;
+                }
+                
+                selected = null;
+                cells.forEach(c => c.classList.remove('selected'));
+            }
+        }
+        
+        async function swap(row1, col1, row2, col2) {
+            isProcessing = true;
+            
+            // 交换
+            [board[row1][col1], board[row2][col2]] = [board[row2][col2], board[row1][col1]];
+            renderBoard();
+            
+            // 检查是否有匹配
+            const matches = findMatches();
+            
+            if (matches.length === 0) {
+                // 没有匹配，换回来
+                await sleep(300);
+                [board[row1][col1], board[row2][col2]] = [board[row2][col2], board[row1][col1]];
+                renderBoard();
+                document.getElementById('message').textContent = '没有匹配，交换失败';
+            } else {
+                // 有匹配，消除
+                await processMatches(matches);
+            }
+            
+            isProcessing = false;
+        }
+        
+        function findMatches() {
+            const matches = new Set();
+            
+            // 横向匹配
+            for (let i = 0; i < BOARD_SIZE; i++) {
+                for (let j = 0; j < BOARD_SIZE - 2; j++) {
+                    const candy = board[i][j];
+                    if (candy && candy === board[i][j+1] && candy === board[i][j+2]) {
+                        matches.add(`${i},${j}`);
+                        matches.add(`${i},${j+1}`);
+                        matches.add(`${i},${j+2}`);
+                    }
+                }
+            }
+            
+            // 纵向匹配
+            for (let i = 0; i < BOARD_SIZE - 2; i++) {
+                for (let j = 0; j < BOARD_SIZE; j++) {
+                    const candy = board[i][j];
+                    if (candy && candy === board[i+1][j] && candy === board[i+2][j]) {
+                        matches.add(`${i},${j}`);
+                        matches.add(`${i+1},${j}`);
+                        matches.add(`${i+2},${j}`);
+                    }
+                }
+            }
+            
+            return Array.from(matches).map(str => {
+                const [row, col] = str.split(',').map(Number);
+                return { row, col };
+            });
+        }
+        
+        async function processMatches(matches) {
+            let combo = 1;
+            
+            while (matches.length > 0) {
+                // 消除
+                const points = matches.length * 10 * combo;
+                score += points;
+                updateScore();
+                
+                // 显示消除动画
+                const cells = document.querySelectorAll('.cell');
+                matches.forEach(({ row, col }) => {
+                    const cell = cells[row * BOARD_SIZE + col];
+                    cell.classList.add('match');
+                    cell.textContent = '';
+                });
+                
+                if (combo > 1) {
+                    document.getElementById('message').innerHTML = 
+                        `<span class="combo">🔥 Combo x${combo}! +${points}分</span>`;
+                } else {
+                    document.getElementById('message').textContent = `消除 ${matches.length} 个，+${points}分`;
+                }
+                
+                await sleep(400);
+                
+                // 下落
+                dropCandies();
+                renderBoard();
+                
+                await sleep(300);
+                
+                // 检查新的匹配
+                matches = findMatches();
+                combo++;
+            }
+            
+            document.getElementById('message').textContent = '继续消除！';
+        }
+        
+        function dropCandies() {
+            for (let j = 0; j < BOARD_SIZE; j++) {
+                let emptyRow = BOARD_SIZE - 1;
+                
+                // 从下往上找空位
+                for (let i = BOARD_SIZE - 1; i >= 0; i--) {
+                    if (board[i][j]) {
+                        board[emptyRow][j] = board[i][j];
+                        if (emptyRow !== i) {
+                            board[i][j] = null;
+                        }
+                        emptyRow--;
+                    }
+                }
+                
+                // 填充顶部
+                for (let i = emptyRow; i >= 0; i--) {
+                    board[i][j] = CANDIES[Math.floor(Math.random() * CANDIES.length)];
+                }
+            }
+        }
+        
+        function updateScore() {
+            document.getElementById('score').textContent = score;
+        }
+        
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        
+        // 初始化游戏
+        initGame();
+    </script>
+</body>
+</html>

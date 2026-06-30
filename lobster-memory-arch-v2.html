@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦞 小龙虾三级记忆 × 百炼知识库 + CLI 集成方案 v2</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #e0e0e0;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+  h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 8px;
+    background: linear-gradient(90deg, #ff6b6b, #ffa500, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .subtitle {
+    text-align: center;
+    color: #8899aa;
+    margin-bottom: 30px;
+    font-size: 0.95em;
+  }
+  .section {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+  }
+  .section h2 {
+    font-size: 1.3em;
+    margin-bottom: 16px;
+    color: #ffa500;
+    border-left: 4px solid #ffa500;
+    padding-left: 12px;
+  }
+  .section h3 {
+    font-size: 1.1em;
+    margin: 16px 0 8px;
+    color: #87ceeb;
+  }
+  .arch-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .layer {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+  }
+  .layer-title {
+    font-weight: bold;
+    font-size: 1.05em;
+    margin-bottom: 6px;
+  }
+  .layer-desc {
+    font-size: 0.85em;
+    opacity: 0.85;
+  }
+  .layer-user { background: linear-gradient(135deg, #1a5276, #2e86c1); }
+  .layer-dingtalk { background: linear-gradient(135deg, #0e6655, #1abc9c); }
+  .layer-openclaw { background: linear-gradient(135deg, #7d3c98, #a569bd); }
+  .layer-memory { background: linear-gradient(135deg, #b7410e, #e67e22); }
+  .layer-bailian { background: linear-gradient(135deg, #1a5276, #3498db); }
+  .layer-data { background: linear-gradient(135deg, #1e4d2b, #27ae60); }
+  .arrow { font-size: 1.5em; color: #ffa500; }
+  .memory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .memory-card {
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .memory-card h4 {
+    color: #ffa500;
+    margin-bottom: 8px;
+    font-size: 1em;
+  }
+  .memory-card .level {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.75em;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .level-1 { background: #e74c3c; color: white; }
+  .level-2 { background: #3498db; color: white; }
+  .level-3 { background: #27ae60; color: white; }
+  .memory-card ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0.85em;
+  }
+  .memory-card li {
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .memory-card li:last-child { border: none; }
+  .flow-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    margin: 12px 0;
+  }
+  .flow-node {
+    background: rgba(255,255,255,0.1);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.85em;
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-arrow { color: #ffa500; font-size: 1.2em; }
+  .tech-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.9em;
+  }
+  .tech-table th {
+    background: rgba(255,165,0,0.2);
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 2px solid #ffa500;
+  }
+  .tech-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .tech-table tr:hover { background: rgba(255,255,255,0.03); }
+  .code-block {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 16px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.82em;
+    overflow-x: auto;
+    margin: 12px 0;
+    line-height: 1.5;
+    color: #a8d8a8;
+  }
+  .highlight { color: #ffa500; font-weight: bold; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    margin: 2px;
+  }
+  .tag-api { background: #e74c3c33; color: #ff6b6b; }
+  .tag-file { background: #3498db33; color: #87ceeb; }
+  .tag-rag { background: #27ae6033; color: #6fcf97; }
+  .tag-llm { background: #9b59b633; color: #c39bd3; }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .stat-card {
+    text-align: center;
+    padding: 16px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+  }
+  .stat-num {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ffa500;
+  }
+  .stat-label {
+    font-size: 0.8em;
+    color: #8899aa;
+    margin-top: 4px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.75em;
+    font-weight: bold;
+  }
+  .badge-ready { background: #27ae60; color: white; }
+  .badge-plan { background: #f39c12; color: white; }
+  .badge-dev { background: #3498db; color: white; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🦞 小龙虾三级记忆 × 百炼知识库 + CLI</h1>
+<p class="subtitle">OpenClaw 集成方案 v2 — 面向信电学院课程知识问答</p>
+
+<!-- ========== 一、系统总览 ========== -->
+<div class="section">
+<h2>📐 一、系统架构总览（含百炼 CLI）</h2>
+<div class="arch-diagram">
+  <div class="layer layer-user">
+    <div class="layer-title">👥 钉钉群成员（教师/学员）</div>
+    <div class="layer-desc">提问 → 获取知识问答 → 追问 → 收藏</div>
+  </div>
+  <div class="arrow">⬇⬆</div>
+  <div class="layer layer-dingtalk">
+    <div class="layer-title">💬 钉钉开放平台（Webhook / Robot API）</div>
+    <div class="layer-desc">消息收发 · 群聊上下文 · 用户身份识别</div>
+  </div>
+  <div class="arrow">⬇⬆</div>
+  <div class="layer layer-openclaw">
+    <div class="layer-title">🧠 OpenClaw 智能体引擎（小龙虾数字员工）</div>
+    <div class="layer-desc">意图识别 → 三级记忆路由 → 答案生成 → 记忆沉淀</div>
+  </div>
+  <div class="arrow">⬇⬆</div>
+  <div class="layer layer-memory">
+    <div class="layer-title">📚 三级记忆系统</div>
+    <div class="layer-desc">
+      <span class="tag tag-file">L1 工作记忆</span>
+      <span class="tag tag-rag">L2 知识记忆（百炼RAG）</span>
+      <span class="tag tag-file">L3 长期记忆（文件）</span>
+    </div>
+  </div>
+  <div class="arrow">⬇⬆</div>
+  <div class="layer layer-bailian">
+    <div class="layer-title">☁️ 阿里云百炼知识库 + CLI</div>
+    <div class="layer-desc">文档解析 → 分块 → 向量化 → 语义检索 → 重排序</div>
+  </div>
+  <div class="arrow">⬇⬆</div>
+  <div class="layer layer-data">
+    <div class="layer-title">📖 行业知识源（信电学院课程教材）</div>
+    <div class="layer-desc">PDF / DOCX / Markdown → 知识图谱构建</div>
+  </div>
+</div>
+</div>
+
+<!-- ========== 二、三级记忆详解 ========== -->
+<div class="section">
+<h2>🧠 二、三级记忆架构详解</h2>
+
+<div class="memory-grid">
+  <div class="memory-card">
+    <h4>🔴 L1 — 工作记忆</h4>
+    <span class="level level-1">SHORT-TERM</span>
+    <ul>
+      <li>📌 当前会话上下文（最近 N 轮对话）</li>
+      <li>📌 用户即时提问与追问意图</li>
+      <li>📌 百炼 RAG 检索到的知识片段</li>
+      <li>📌 当前回答的中间推理链</li>
+      <li>⏱ 生命周期：单次对话会话</li>
+      <li>💾 存储：OpenClaw Session Context</li>
+    </ul>
+  </div>
+  <div class="memory-card">
+    <h4>🔵 L2 — 知识记忆</h4>
+    <span class="level level-2">RETRIEVAL</span>
+    <ul>
+      <li>📌 信电学院课程知识</li>
+      <li>📌 百炼知识库向量索引</li>
+      <li>📌 行业术语表 & 知识图谱</li>
+      <li>📌 FAQ 标准问答对</li>
+      <li>⏱ 生命周期：持久化，定期更新</li>
+      <li>💾 存储：百炼知识库 + 向量数据库</li>
+    </ul>
+  </div>
+  <div class="memory-card">
+    <h4>🟢 L3 — 长期记忆</h4>
+    <span class="level level-3">LONG-TERM</span>
+    <ul>
+      <li>📌 用户学习画像（偏好/薄弱点）</li>
+      <li>📌 高频问题 & 知识盲区统计</li>
+      <li>📌 对话摘要 & 经验教训</li>
+      <li>📌 系统提示词 & 行为规则</li>
+      <li>⏱ 生命周期：永久，持续进化</li>
+      <li>💾 存储：OpenClaw 文件系统</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ========== 三、数据流转 ========== -->
+<div class="section">
+<h2>🔄 三、知识问答数据流转</h2>
+
+<h3>3.1 用户提问流程</h3>
+<div class="flow-diagram">
+  <div class="flow-node">👤 钉钉群<br>用户提问</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">📥 钉钉<br>Webhook</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">🧠 OpenClaw<br>意图识别</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">🔍 百炼<br>语义检索</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">📝 LLM<br>答案生成</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">📤 钉钉<br>回复用户</div>
+</div>
+
+<h3>3.2 记忆沉淀流程</h3>
+<div class="flow-diagram">
+  <div class="flow-node">💬 对话结束</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">📊 摘要提取</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">👤 更新用户画像<br>(L3)</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">📈 更新统计<br>(L3)</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">🔑 有价值QA<br>入库(L2)</div>
+</div>
+</div>
+
+<!-- ========== 四、技术实现 ========== -->
+<div class="section">
+<h2>⚙️ 四、技术实现方案</h2>
+
+<h3>4.1 核心组件</h3>
+<table class="tech-table">
+  <tr><th>组件</th><th>技术选型</th><th>职责</th><th>状态</th></tr>
+  <tr>
+    <td>🤖 数字员工引擎</td>
+    <td>OpenClaw Agent</td>
+    <td>意图识别、记忆路由、答案生成</td>
+    <td><span class="badge badge-ready">✅ 就绪</span></td>
+  </tr>
+  <tr>
+    <td>💬 消息通道</td>
+    <td>钉钉 OpenAPI + Webhook</td>
+    <td>消息收发、群聊管理</td>
+    <td><span class="badge badge-ready">✅ 就绪</span></td>
+  </tr>
+  <tr>
+    <td>📚 知识库引擎</td>
+    <td>阿里云百炼知识库 + CLI</td>
+    <td>文档解析、向量化、语义检索</td>
+    <td><span class="badge badge-plan">📋 待接入</span></td>
+  </tr>
+  <tr>
+    <td>🧠 大模型</td>
+    <td>通义千问 (Qwen-Max/Plus)</td>
+    <td>答案生成、摘要提取、意图识别</td>
+    <td><span class="badge badge-ready">✅ 就绪</span></td>
+  </tr>
+  <tr>
+    <td>📊 向量存储</td>
+    <td>百炼内置 / DashVector</td>
+    <td>教材知识向量索引</td>
+    <td><span class="badge badge-plan">📋 待接入</span></td>
+  </tr>
+  <tr>
+    <td>📁 文件存储</td>
+    <td>OpenClaw 文件系统</td>
+    <td>L3 长期记忆、用户画像</td>
+    <td><span class="badge badge-ready">✅ 就绪</span></td>
+  </tr>
+</table>
+
+<h3>4.2 百炼知识库接入配置</h3>
+<div class="code-block">
+<span class="highlight"># 百炼知识库 API 接入配置</span>
+<span class="highlight"># 文件: ~/.openclaw/config/bailian-kb.json</span>
+
+{
+  "api_key": "sk-bailian-xxxxxxxx",
+  "api_endpoint": "https://bailian.aliyuncs.com",
+  "knowledge_base": {
+    "id": "kb-xxxxxxxx",
+    "name": "信电学院课程知识库",
+    "embedding_model": "text-embedding-v3",
+    "dimension": 1024,
+    "chunk_size": 800,
+    "chunk_overlap": 200,
+    "top_k": 5,
+    "rerank_model": "gte-rerank"
+  },
+  "llm": {
+    "model": "qwen-max",
+    "temperature": 0.3,
+    "max_tokens": 2000
+  }
+}
+</div>
+
+<h3>4.3 百炼 CLI 集成（新增）</h3>
+<div class="code-block">
+<span class="highlight"># 百炼 CLI 安装与配置</span>
+<span class="highlight"># 参考：https://mp.weixin.qq.com/s/3_CBCcARtfipa0PPxOU93g</span>
+
+<span class="highlight"># 1. 安装百炼 CLI</span>
+pip install bailian-cli
+
+<span class="highlight"># 2. 配置 API Key</span>
+bailian config set --api-key "sk-bailian-xxxxxxxx"
+
+<span class="highlight"># 3. 创建知识库</span>
+bailian kb create --name "信电学院课程知识库" --embedding-model "text-embedding-v3"
+
+<span class="highlight"># 4. 上传教材文档</span>
+bailian kb upload --kb-id "kb-xxxxxxxx" --file "教材01_基础理论.pdf"
+
+<span class="highlight"># 5. 语义检索</span>
+bailian kb search --kb-id "kb-xxxxxxxx" --query "电路分析基础" --top-k 5
+
+<span class="highlight"># 6. AI Agent 接入（一行命令）</span>
+bailian agent connect --kb-id "kb-xxxxxxxx" --model "qwen-max"
+</div>
+</div>
+
+<!-- ========== 五、记忆读写逻辑 ========== -->
+<div class="section">
+<h2>📝 五、三级记忆读写逻辑</h2>
+
+<h3>5.1 写入规则</h3>
+<table class="tech-table">
+  <tr><th>记忆层级</th><th>触发条件</th><th>写入内容</th><th>写入时机</th></tr>
+  <tr>
+    <td><span class="tag tag-file">L1</span></td>
+    <td>每次用户提问</td>
+    <td>用户问题 + 检索到的知识片段 + 中间推理</td>
+    <td>实时（Session Context）</td>
+  </tr>
+  <tr>
+    <td><span class="tag tag-rag">L2</span></td>
+    <td>管理员审核通过</td>
+    <td>高质量 QA 对 → 百炼知识库</td>
+    <td>定期批量 / 手动触发</td>
+  </tr>
+  <tr>
+    <td><span class="tag tag-file">L3</span></td>
+    <td>对话结束 / 心跳检查</td>
+    <td>用户画像更新、高频问题统计、对话摘要</td>
+    <td>异步写入文件</td>
+  </tr>
+</table>
+
+<h3>5.2 读取优先级</h3>
+<div class="flow-diagram">
+  <div class="flow-node" style="border:2px solid #e74c3c">🔴 L1<br>会话上下文<br><small>最快</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node" style="border:2px solid #3498db">🔵 L2<br>百炼RAG检索<br><small>最准</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node" style="border:2px solid #27ae60">🟢 L3<br>长期记忆<br><small>最深</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node" style="border:2px solid #f39c12">🌐 联网搜索<br><small>兜底</small></div>
+</div>
+</div>
+
+<!-- ========== 六、规模估算 ========== -->
+<div class="section">
+<h2>📊 六、规模与性能估算</h2>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">本教材/资料</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">100万+</div>
+    <div class="stat-label">总字符数</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">~1,250</div>
+    <div class="stat-label">知识块 (800字/块)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">&lt;2s</div>
+    <div class="stat-label">平均响应时间</div>
+  </div>
+</div>
+
+<h3>6.1 成本估算（月度）</h3>
+<table class="tech-table">
+  <tr><th>项目</th><th>规格</th><th>月费用</th></tr>
+  <tr>
+    <td>百炼知识库</td>
+    <td>100万字符存储 + 向量索引</td>
+    <td>~¥50/月</td>
+  </tr>
+  <tr>
+    <td>通义千问 API</td>
+    <td>Qwen-Plus, 日均500次问答</td>
+    <td>~¥200/月</td>
+  </tr>
+  <tr>
+    <td>Embedding</td>
+    <td>text-embedding-v3, 检索调用</td>
+    <td>~¥30/月</td>
+  </tr>
+  <tr>
+    <td>OpenClaw 服务器</td>
+    <td>现有 ECS</td>
+    <td>¥0（复用）</td>
+  </tr>
+  <tr>
+    <td><strong>合计</strong></td>
+    <td></td>
+    <td><strong>~¥280/月</strong></td>
+  </tr>
+</table>
+</div>
+
+<!-- ========== 七、部署步骤 ========== -->
+<div class="section">
+<h2>🚀 七、部署实施步骤</h2>
+
+<div class="code-block">
+<span class="highlight"># Phase 1: 百炼知识库搭建（1-2天）</span>
+<span class="highlight"># ─────────────────────────────────</span>
+1. 开通阿里云百炼服务 → 创建知识库实例
+2. 上传 10+ 本教材 → 配置分块策略（800字/块）
+3. 选择 Embedding 模型（text-embedding-v3）
+4. 测试检索效果 → 调整 chunk_size / top_k
+5. 配置重排序模型（gte-rerank）提升精度
+
+<span class="highlight"># Phase 2: 百炼 CLI 集成（新增）（1天）</span>
+<span class="highlight"># ─────────────────────────────────</span>
+6. 安装百炼 CLI：pip install bailian-cli
+7. 配置 API Key：bailian config set --api-key "sk-xxx"
+8. 创建知识库：bailian kb create --name "信电学院课程知识库"
+9. 上传教材：bailian kb upload --kb-id "kb-xxx" --file "教材.pdf"
+10. 测试检索：bailian kb search --kb-id "kb-xxx" --query "电路分析"
+
+<span class="highlight"># Phase 3: OpenClaw 集成（2-3天）</span>
+<span class="highlight"># ─────────────────────────────────</span>
+11. 编写百炼 API 调用 Skill
+12. 配置 L2 记忆路由（百炼 RAG 优先）
+13. 编写 L3 长期记忆沉淀逻辑
+14. 设计 Prompt 模板（课程知识问答专用）
+15. 测试端到端问答流程
+
+<span class="highlight"># Phase 4: 钉钉对接（1天）</span>
+<span class="highlight"># ─────────────────────────────────</span>
+16. 创建钉钉机器人 → 配置 Webhook
+17. 对接 OpenClaw 钉钉扩展
+18. 群聊权限配置 → 邀请成员测试
+19. 上线运行 → 收集反馈迭代
+
+<span class="highlight"># Phase 5: 优化运营（持续）</span>
+<span class="highlight"># ─────────────────────────────────</span>
+20. 分析高频问题 → 补充 FAQ 到知识库
+21. 监控回答质量 → 调整检索参数
+22. 用户画像分析 → 个性化推荐
+23. 定期更新教材 → 增量入库
+</div>
+</div>
+
+<!-- ========== 八、优势总结 ========== -->
+<div class="section">
+<h2>✨ 八、方案优势总结</h2>
+
+<div class="memory-grid" style="grid-template-columns: repeat(2, 1fr);">
+  <div class="memory-card">
+    <h4>🎯 精准回答</h4>
+    <ul>
+      <li>✅ 基于教材原文，回答有据可查</li>
+      <li>✅ 百炼 RAG 检索 + 重排序，精度高</li>
+      <li>✅ 引用原文段落，可溯源</li>
+    </ul>
+  </div>
+  <div class="memory-card">
+    <h4>🧠 持续进化</h4>
+    <ul>
+      <li>✅ L3 记忆积累用户画像</li>
+      <li>✅ 高频问题自动沉淀</li>
+      <li>✅ 教材更新增量入库</li>
+    </ul>
+  </div>
+  <div class="memory-card">
+    <h4>💰 成本可控</h4>
+    <ul>
+      <li>✅ 月均 ¥280，远低于人力</li>
+      <li>✅ 复用现有 OpenClaw 服务器</li>
+      <li>✅ 按调用量计费，弹性扩展</li>
+    </ul>
+  </div>
+  <div class="memory-card">
+    <h4>🔒 安全可控</h4>
+    <ul>
+      <li>✅ 数据存储在阿里云</li>
+      <li>✅ 教材知识不外泄</li>
+      <li>✅ 群聊权限精细控制</li>
+    </ul>
+  </div>
+  <div class="memory-card">
+    <h4>⚡ CLI 一键接入</h4>
+    <ul>
+      <li>✅ 百炼 CLI 开源，一行命令接入</li>
+      <li>✅ 自动化文档上传与索引</li>
+      <li>✅ 支持批量操作与脚本化</li>
+    </ul>
+  </div>
+  <div class="memory-card">
+    <h4>📚 信电学院专属</h4>
+    <ul>
+      <li>✅ 覆盖电路分析、模电、数电等核心课程</li>
+      <li>✅ 信号与系统、通信原理、单片机等</li>
+      <li>✅ 嵌入式系统、数字信号处理等</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<p style="text-align:center; color:#666; margin-top:20px; font-size:0.85em;">
+  🦞 小龙虾数字员工 × 百炼知识库 + CLI — 让知识触手可及<br>
+  方案版本: v2.0 | 生成时间: 2026-05-29
+</p>
+
+</div>
+</body>
+</html>
+HTMLEOF
+echo "HTML generated: $(wc -c < /home/admin/.openclaw/workspace/lobster-memory-arch-v2.html) bytes"

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排课系统下载</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        .subtitle {
+            color: #888;
+            margin-bottom: 30px;
+        }
+        .download-box {
+            background: #f7fafc;
+            border: 2px dashed #667eea;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 10px 0;
+        }
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        .file-info {
+            color: #666;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        .steps {
+            text-align: left;
+            background: #f0f4ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .steps h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        .steps ol {
+            margin-left: 20px;
+            line-height: 2;
+            color: #555;
+        }
+        .tips {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+            border-radius: 5px;
+        }
+        .tips strong {
+            color: #856404;
+        }
+        .tips p {
+            color: #856404;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 学校排课系统</h1>
+        <p class="subtitle">一键安装包 - Web 版</p>
+        
+        <div class="download-box">
+            <p style="color: #666; margin-bottom: 15px;">点击下方按钮下载安装包</p>
+            <a href="/downloads/scheduling-system.zip" class="download-btn" download>
+                📦 立即下载
+            </a>
+            <p class="file-info">
+                文件大小：约 30 KB<br>
+                格式：ZIP 压缩包
+            </p>
+        </div>
+        
+        <div class="steps">
+            <h3>🚀 使用步骤</h3>
+            <ol>
+                <li>下载并解压 <code>scheduling-system.zip</code></li>
+                <li>双击运行 <code>start.bat</code>（Windows）或 <code>start.sh</code>（Mac/Linux）</li>
+                <li>浏览器打开 <strong>http://localhost:5000</strong></li>
+                <li>开始使用排课系统！</li>
+            </ol>
+        </div>
+        
+        <div class="tips">
+            <strong>💡 温馨提示：</strong>
+            <p>• 首次运行会自动安装依赖，请耐心等待</p>
+            <p>• 如未安装 Python，请先访问 <a href="https://www.python.org/downloads/" target="_blank">python.org</a> 下载</p>
+            <p>• 所有数据保存在 <code>data/school.db</code>，请妥善备份</p>
+        </div>
+        
+        <p style="color: #888; font-size: 0.9rem; margin-top: 20px;">
+            如有问题，请联系技术支持
+        </p>
+    </div>
+</body>
+</html>
