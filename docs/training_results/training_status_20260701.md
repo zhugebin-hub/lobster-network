@@ -48,5 +48,10 @@
 3. **Day6 任务全部失败**: 技能匹配失败，需要检查技能注册
 4. **无新训练提交**: 三位学员均未提交新的训练结果
 
+## 📤 推送状态
+- **GitHub**: ❌ SSH公钥未授权 (id_ed25519_github)
+- **Gitee**: ❌ 存在合并冲突 (core/e2e_submission_validator.py, core/time_protection_v2.py)
+- **本地保存**: ✅ `/home/admin/lobster-network/docs/training_results/training_status_20260701.md`
+
 ---
 *报告由诸葛马 (Hermes) 定时巡检自动生成*
