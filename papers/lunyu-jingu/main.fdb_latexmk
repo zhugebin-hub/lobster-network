@@ -1,0 +1,13 @@
+# Fdb version 3
+["pdflatex"] 1782037098 "main.tex" "main.pdf" "main" 1782037098
+  "/home/admin/.texlive2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1780129184 1329201 5618727176d3922d7ad1ebfff5f4550f ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1731578201 1288 655e228510b4c2a1abe905c368440826 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/article.cls" 1731578204 20145 aad8c3dd3bc36e260347b84002182bc2 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo" 1731578204 8450 6fd3588c0e9d06f6f56c6cf4f7246466 ""
+  "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1731578209 39615 4ca7b2be4e89b50848d4f0b4d97130bb ""
+  "ctex.sty" 0 -1 0 ""
+  "main.aux" 1782037098 8 a94a2480d3289e625eea47cd1b285758 ""
+  "main.tex" 1782037094 14045 01a367b09ebc30df26bb1850e1c0e90b ""
+  (generated)
+  "main.pdf"
+  "main.log"

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利玛窦的译名实践 — 论文答辩</title>
+  <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/tailwindcss/3.0.23/tailwind.min.js"></script>
+  <link href="https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans SC', sans-serif; background: #000; color: #fff; overflow: hidden; }
+    .slides-container { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; background: #0a0a0a; }
+    .slide { width: 100%; height: 100%; max-width: 960px; max-height: 600px; position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2.5rem 4rem; opacity: 0; transform: translateX(100%); transition: all 0.45s cubic-bezier(0.4,0,0.2,1); overflow: hidden; background: #0a0a0a; }
+    .slide.active { opacity: 1; transform: translateX(0); }
+    .slide.prev { opacity: 0; transform: translateX(-100%); }
+    .spot { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.2; pointer-events: none; }
+    .s1 { width: 400px; height: 400px; background: #3b82f6; top: -150px; right: -100px; animation: m1 22s ease-in-out infinite; }
+    .s2 { width: 350px; height: 350px; background: #8b5cf6; bottom: -120px; left: -100px; animation: m2 28s ease-in-out infinite; }
+    .s3 { width: 250px; height: 250px; background: #06b6d4; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: m3 20s ease-in-out infinite; }
+    @keyframes m1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-60px,50px)} }
+    @keyframes m2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(50px,-40px)} }
+    @keyframes m3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.3)} }
+    .content { position: relative; z-index: 10; text-align: center; width: 100%; }
+    .prog { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 100; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s; }
+    .dot.on { background: #fff; transform: scale(1.4); }
+    .pg { position: fixed; bottom: 45px; left: 50%; transform: translateX(-50%); font-size: 0.8rem; color: rgba(255,255,255,0.35); z-index: 100; }
+    .line { width: 50px; height: 3px; background: linear-gradient(90deg,#3b82f6,#8b5cf6); margin: 0.8rem auto; border-radius: 2px; }
+    .b { text-align: left; margin: 0.5rem 0; font-size: 1.05rem; line-height: 1.7; color: #d1d5db; }
+    .b strong { color: #fff; }
+    .hl { color: #60a5fa; font-weight: 700; }
+    .hl2 { color: #a78bfa; font-weight: 700; }
+    .cols { display: flex; gap: 2rem; text-align: left; width: 100%; justify-content: center; }
+    .cols > div { flex: 1; }
+    .card { padding: 0.8rem 1.2rem; border-radius: 12px; margin: 0.4rem 0; }
+  </style>
+</head>
+<body>
+  <div class="slides-container">
+
+    <!-- 1 封面 -->
+    <div class="slide active">
+      <div class="spot s1"></div><div class="spot s2"></div>
+      <div class="content">
+        <p class="text-xs tracking-widest text-gray-500 mb-3 uppercase">浙江省宗教界"双通"人才研修班 · 毕业论文答辩</p>
+        <h1 class="text-4xl font-black mb-3">利玛窦的译名实践</h1>
+        <div class="line"></div>
+        <p class="text-lg font-light text-gray-400 mb-6">从"太极""理"的诠释看耶儒思想的碰撞与调适</p>
+        <div class="flex flex-col items-center gap-1 text-sm text-gray-500">
+          <span>全方明 &nbsp;|&nbsp; 指导教师：王绪琴</span>
+          <span class="text-gray-600">2026年6月</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 研究问题 -->
+    <div class="slide">
+      <div class="spot s1"></div><div class="spot s3"></div>
+      <div class="content">
+        <p class="text-xs tracking-widest text-gray-500 mb-4 uppercase">研究问题</p>
+        <h2 class="text-3xl font-black mb-8">核心困境</h2>
+        <p class="text-xl text-gray-300 mb-6">如何用<span class="hl">儒家话语</span>表达<span class="hl2">基督教神学</span>？</p>
+        <div class="b">利玛窦的选择：进入<span class="hl">"理"与"太极"</span>的语义场</div>
+        <div class="b">本质：一次有自觉的<span class="hl2">"概念嫁接"</span></div>
+      </div>
+    </div>
+
+    <!-- 3 方法框架 -->
+    <div class="slide">
+      <div class="spot s2"></div><div class="spot s3"></div>
+      <div class="content">
+        <p class="text-xs tracking-widest text-gray-500 mb-4 uppercase">方法与框架</p>
+        <h2 class="text-3xl font-black mb-8">三重方法</h2>
+        <div class="cols">
+          <div class="card" style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2)">
+            <h3 class="text-blue-400 font-bold mb-2">① 概念史</h3>
+            <p class="text-sm text-gray-400">追踪语义位移</p>
+          </div>
+          <div class="card" style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2)">
+            <h3 class="text-purple-400 font-bold mb-2">② 修辞分析</h3>
+            <p class="text-sm text-gray-400">拆解论证逻辑</p>
+          </div>
+          <div class="card" style="background:rgba(6,182,212,0.08);border:1px solid rgba(6,182,212,0.2)">
+            <h3 class="text-cyan-400 font-bold mb-2">③ 接受史</h3>
+            <p class="text-sm text-gray-400">揭示意义游移</p>
+          </div>
+        </div>
+        <div class="mt-8 text-lg text-gray-400">策略 → 接受 → <span class="hl">意义</span></div>
+      </div>
+    </div>
+
+    <!-- 4 釜底抽薪 -->
+    <div class="slide">
+      <div class="spot s1"></div><div class="spot s3"></div>
+      <div class="content">
+        <p class="text-xs tracking-widest text-gray-500 mb-4 uppercase">策略一 · 破</p>
+        <h2 class="text-4xl font-black mb-8">釜底抽薪</h2>
+        <div class="b"><strong>① 降格：</strong>"理" = <span class="hl">"依赖者"</span>（偶性），非本体</div>
+        <div class="b"><strong>② 剥离：</strong>否定"理"的<span class="hl">生成能力</span></div>
+        <div class="b"><strong>③ 反转：</strong>以<span class="hl2">"古儒"</span>压<span class="hl2">"今儒"</span></div>
+      </div>
+    </div>
+
+    <!-- 5 借壳上市 -->
+    <div class="slide">
+      <div class="spot s2"></div><div class="spot s1"></div>
+      <div class="content">
+        <p class="text-xs tracking-widest text-gray-500 mb-4 uppercase">策略二 · 立</p>
+        <h2 class="text-4xl font-black mb-8">借壳上市</h2>
+        <div class="cols">
+          <div>
+            <h3 class="text-blue-400 font-bold mb-3">壳：上帝</h3>
+            <div class="b" style="font-size:0.95rem">• 《诗》《书》中的至上神</div>
+            <div class="b" style="font-size:0.95rem">• 中国经典已有概念</div>
+          </div>
+          <div>
+            <h3 class="text-purple-400 font-bold mb-3">核：Deus</h3>
+            <div class="b" style="font-size:0.95rem">• 位格性造物主</div>
+            <div class="b" style="font-size:0.95rem">• 基督教一神论</div>
+          </div>
+        </div>
+        <p class="text-gray-500 mt-6 text-sm">借用中国文化之壳，装入基督教信仰之核</p>
+      </div>
+    </div>
+
+    <!-- 6 三种接受 -->
+    <div class="slide">
+      <div class="spot s1"></div><div class="spot s2"></div>
+      <div class="content">
+        <p class="text-xs tracking-widest text-gray-500 mb-4 uppercase">接受与变异</p>
+        <h2 class="text-3xl font-black mb-8">三种回应</h2>
+        <div class="cols" style="gap:1.5rem">
+          <div class="card" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25)">
+            <h3 class="text-blue-400 font-bold mb-1">合作性接受</h3>
+            <p class="text-xs text-gray-500 mb-2">徐光启 · 李之藻</p>
+            <p class="text-sm text-gray-300">"补儒易佛"</p>
+          </div>
+          <div class="card" style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25)">
+            <h3 class="text-amber-400 font-bold mb-1">选择性借鉴</h3>
+            <p class="text-xs text-gray-500 mb-2">李贽</p>
+            <p class="text-sm text-gray-300">借力反理学</p>
+          </div>
+          <div class="card" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25)">
+            <h3 class="text-red-400 font-bold mb-1">批判性拒绝</h3>
+            <p class="text-xs text-gray-500 mb-2">黄宗羲</p>
+            <p class="text-sm text-gray-300">维护儒学正统</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 创造性误解 -->
+    <div class="slide">
+      <div class="spot s3"></div><div class="spot s1"></div>
+      <div class="content">
+        <p class="text-xs tracking-widest text-gray-500 mb-4 uppercase">深层机制</p>
+        <h2 class="text-3xl font-black mb-8">创造性误解</h2>
+        <div class="p-4 rounded-xl bg-white/5 border border-white/10 mb-6">
+          <p class="text-lg italic text-gray-300">"误解不是意外，而是<span class="hl">常态</span>"</p>
+        </div>
+        <div class="b">前理解 → 意义游移 → <span class="hl2">新思想诞生</span></div>
+        <div class="b">双重误读 = 利玛窦误解理学 + 士人误解利玛窦</div>
+      </div>
+    </div>
+
+    <!-- 8 结论 -->
+    <div class="slide">
+      <div class="spot s1"></div><div class="spot s2"></div>
+      <div class="content">
+        <p class="text-xs tracking-widest text-gray-500 mb-4 uppercase">结论</p>
+        <h2 class="text-3xl font-black mb-8">跨文明的"化学反应"</h2>
+        <div class="b">不是"物理拼贴"，而是<span class="hl">不可逆的概念化合</span></div>
+        <div class="b">当代启示：文化适应 ≠ 妥协，而是<span class="hl2">本土化表达</span></div>
+        <div class="b">创造性误解是文化创新的<span class="hl">源泉</span></div>
+      </div>
+    </div>
+
+    <!-- 9 致谢 -->
+    <div class="slide">
+      <div class="spot s1"></div><div class="spot s2"></div><div class="spot s3"></div>
+      <div class="content">
+        <h1 class="text-5xl font-black mb-6">感谢聆听</h1>
+        <div class="line"></div>
+        <p class="text-lg font-light text-gray-400 mb-8">恳请各位老师批评指正</p>
+        <p class="text-sm text-gray-500">全方明 · 浙江省宗教界"双通"人才研修班</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="prog" id="prog"></div>
+  <div class="pg" id="pg">1 / 9</div>
+
+  <script>
+    const slides=document.querySelectorAll('.slide'),prog=document.getElementById('prog'),pg=document.getElementById('pg');
+    let cur=0;
+    slides.forEach((_,i)=>{const d=document.createElement('div');d.className=`dot ${i===0?'on':''}`;d.onclick=()=>go(i);prog.appendChild(d)});
+    function upd(){slides.forEach((s,i)=>{s.classList.remove('active','prev');if(i===cur)s.classList.add('active');else if(i<cur)s.classList.add('prev')});document.querySelectorAll('.dot').forEach((d,i)=>{d.classList.toggle('on',i===cur)});pg.textContent=`${cur+1} / ${slides.length}`}
+    function next(){if(cur<slides.length-1){cur++;upd()}}
+    function prev(){if(cur>0){cur--;upd()}}
+    function go(i){cur=i;upd()}
+    document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')next();else if(e.key==='ArrowLeft')prev()});
+    let tx=0;
+    document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX});
+    document.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>50){d>0?next():prev()}});
+  </script>
+</body>
+</html>

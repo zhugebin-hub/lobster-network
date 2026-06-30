@@ -1,0 +1,14 @@
+{
+  "nodes": [
+    {
+      "lobster_id": "lobster-001",
+      "status": "online",
+      "last_heartbeat": 1719420000,
+      "version": "2.0.0",
+      "heartbeat_count": 1,
+      "last_heartbeat_at": "2026-06-27T03:05:30.937415",
+      "auto_registered": true
+    }
+  ],
+  "next_id": 5
+}

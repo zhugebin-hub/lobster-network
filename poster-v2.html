@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1920px;
+    background: linear-gradient(160deg, #0a1628 0%, #0d2137 25%, #112d4e 50%, #0d2137 75%, #0a1628 100%);
+    font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(circle at 20% 15%, rgba(0, 150, 255, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 85%, rgba(100, 200, 255, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(0, 100, 200, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .top-line {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, transparent, #0096ff, #00d4ff, #0096ff, transparent);
+  }
+
+  .poster {
+    padding: 60px 70px;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 标签 */
+  .tag-row { display: flex; gap: 16px; margin-bottom: 40px; }
+  .tag {
+    background: linear-gradient(135deg, rgba(0, 150, 255, 0.2), rgba(0, 200, 255, 0.1));
+    border: 1px solid rgba(0, 180, 255, 0.4);
+    padding: 8px 24px; border-radius: 4px;
+    font-size: 22px; color: #00d4ff; font-weight: 500; letter-spacing: 2px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .tag svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+  /* 主标题 */
+  .main-title { margin-bottom: 36px; }
+  .main-title .sub {
+    font-size: 28px; color: #00d4ff; font-weight: 500;
+    letter-spacing: 4px; margin-bottom: 16px;
+  }
+  .main-title h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 56px; font-weight: 700; line-height: 1.35;
+    background: linear-gradient(135deg, #ffffff 0%, #a0e8ff 50%, #00d4ff 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; letter-spacing: 2px;
+  }
+  .main-title h1 .highlight {
+    background: linear-gradient(135deg, #ffcc00, #ff8800);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .divider {
+    height: 2px; margin: 8px 0 32px;
+    background: linear-gradient(90deg, transparent, rgba(0, 180, 255, 0.5), transparent);
+  }
+
+  /* 图书信息 */
+  .book-info {
+    background: linear-gradient(135deg, rgba(255, 200, 0, 0.08), rgba(255, 150, 0, 0.04));
+    border: 1px solid rgba(255, 200, 0, 0.25);
+    border-radius: 8px; padding: 20px 28px;
+    margin-bottom: 32px; display: flex; align-items: center; gap: 16px;
+  }
+  .book-info svg { width: 36px; height: 36px; flex-shrink: 0; }
+  .book-info .text { font-size: 24px; color: #ffd700; font-weight: 500; letter-spacing: 1px; }
+
+  /* 作者信息卡片 */
+  .author-card {
+    background: linear-gradient(135deg, rgba(0, 150, 255, 0.08), rgba(0, 100, 200, 0.04));
+    border: 1px solid rgba(0, 150, 255, 0.2);
+    border-radius: 12px; padding: 28px;
+    margin-bottom: 32px; display: flex; gap: 24px; align-items: flex-start;
+  }
+  .author-card .avatar {
+    width: 120px; height: 120px; border-radius: 50%;
+    border: 3px solid rgba(0, 180, 255, 0.5);
+    background: linear-gradient(135deg, #1a3a5c, #0d2840);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; overflow: hidden;
+  }
+  .author-card .avatar svg { width: 60px; height: 60px; }
+  .author-card .info { flex: 1; }
+  .author-card .name { font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .author-card .title { font-size: 20px; color: #88ccff; margin-bottom: 12px; line-height: 1.5; }
+  .author-card .desc { font-size: 18px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+  /* 时间卡片 */
+  .time-card {
+    background: linear-gradient(135deg, rgba(255, 100, 50, 0.12), rgba(255, 150, 0, 0.06));
+    border: 1px solid rgba(255, 130, 50, 0.35);
+    border-radius: 12px; padding: 24px 28px;
+    margin-bottom: 32px; display: flex; align-items: center; gap: 20px;
+  }
+  .time-card svg { width: 44px; height: 44px; flex-shrink: 0; }
+  .time-card .time { font-size: 36px; font-weight: 700; color: #ff8844; letter-spacing: 2px; }
+  .time-card .time-sub { font-size: 20px; color: rgba(255,200,150,0.8); margin-top: 4px; }
+
+  /* 五大场景 */
+  .scenes-title {
+    font-size: 26px; color: #00d4ff; font-weight: 500;
+    margin-bottom: 20px; letter-spacing: 3px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .scenes-title::before {
+    content: ''; width: 4px; height: 24px;
+    background: linear-gradient(180deg, #00d4ff, transparent); border-radius: 2px;
+  }
+
+  .scenes-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 14px; margin-bottom: 32px;
+  }
+  .scene-item {
+    background: linear-gradient(180deg, rgba(0, 150, 255, 0.1), rgba(0, 100, 200, 0.05));
+    border: 1px solid rgba(0, 150, 255, 0.2);
+    border-radius: 10px; padding: 20px 12px; text-align: center;
+  }
+  .scene-item .icon-box {
+    width: 52px; height: 52px; margin: 0 auto 10px;
+    background: linear-gradient(135deg, rgba(0,180,255,0.2), rgba(0,100,200,0.1));
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  }
+  .scene-item .icon-box svg { width: 28px; height: 28px; }
+  .scene-item .text { font-size: 18px; color: rgba(255,255,255,0.85); font-weight: 500; line-height: 1.4; }
+  .scene-item .highlight-text { font-size: 16px; color: #ffd700; margin-top: 6px; font-weight: 400; }
+
+  /* 介绍文本 */
+  .intro-text {
+    font-size: 19px; color: rgba(255,255,255,0.6); line-height: 1.7;
+    margin-bottom: 32px; padding: 16px 20px;
+    border-left: 3px solid rgba(0,180,255,0.3);
+    background: rgba(0,150,255,0.03);
+  }
+
+  /* 入群福利 */
+  .benefits-section { margin-top: auto; margin-bottom: 40px; }
+  .benefits-title {
+    font-size: 26px; color: #ffd700; font-weight: 700;
+    margin-bottom: 18px; letter-spacing: 3px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .benefits-title svg { width: 28px; height: 28px; }
+  .benefits-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .benefit-item {
+    background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(255,150,0,0.03));
+    border: 1px solid rgba(255,200,0,0.15);
+    border-radius: 8px; padding: 16px 18px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .benefit-item .num {
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, #ffcc00, #ff8800);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700; color: #1a1a2e; flex-shrink: 0;
+  }
+  .benefit-item .text { font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+
+  /* 二维码区域 */
+  .qr-section {
+    background: linear-gradient(135deg, rgba(0,150,255,0.1), rgba(0,100,200,0.05));
+    border: 1px solid rgba(0,150,255,0.2);
+    border-radius: 12px; padding: 24px;
+    display: flex; align-items: center; justify-content: center; gap: 24px;
+    margin-bottom: 30px;
+  }
+  .qr-placeholder {
+    width: 140px; height: 140px; background: #fff; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; color: #333; font-size: 14px;
+  }
+  .qr-text { font-size: 22px; color: #00d4ff; font-weight: 500; }
+  .qr-text .sub { font-size: 16px; color: rgba(255,255,255,0.5); margin-top: 6px; font-weight: 400; }
+
+  /* 底部 */
+  .footer {
+    text-align: center; padding: 20px 0 10px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer .text { font-size: 18px; color: rgba(255,255,255,0.35); letter-spacing: 2px; }
+</style>
+</head>
+<body>
+<div class="top-line"></div>
+<div class="poster">
+
+  <!-- 标签 -->
+  <div class="tag-row">
+    <div class="tag">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="8" stroke="#ff4444" stroke-width="2"/>
+        <circle cx="12" cy="12" r="4" fill="#ff4444"/>
+      </svg>
+      直播预告
+    </div>
+    <div class="tag">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="3" width="16" height="18" rx="2" stroke="#00d4ff" stroke-width="2"/>
+        <line x1="8" y1="8" x2="16" y2="8" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="8" y1="12" x2="16" y2="12" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="8" y1="16" x2="12" y2="16" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      新书发布
+    </div>
+  </div>
+
+  <!-- 主标题 -->
+  <div class="main-title">
+    <div class="sub">AI 赋能 · 教学革新</div>
+    <h1>智能体赋能高校教学新范式<br><span class="highlight">小龙虾 + Manus</span> 一站式解决方案</h1>
+    <div class="divider"></div>
+  </div>
+
+  <!-- 图书信息 -->
+  <div class="book-info">
+    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5" y="4" width="22" height="28" rx="2" stroke="#ffd700" stroke-width="2"/>
+      <path d="M5 6l8-2v28l-8 2" fill="rgba(255,215,0,0.15)" stroke="#ffd700" stroke-width="2"/>
+      <line x1="10" y1="10" x2="22" y2="10" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="10" y1="14" x2="22" y2="14" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="10" y1="18" x2="18" y2="18" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <div class="text">所用图书：《Manus智能体全攻略》（清华大学出版社）</div>
+  </div>
+
+  <!-- 作者信息 -->
+  <div class="author-card">
+    <div class="avatar">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="22" r="12" stroke="#00d4ff" stroke-width="2.5" fill="none"/>
+        <path d="M10 52c0-12 9-22 20-22s20 10 20 22" stroke="#00d4ff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="info">
+      <div class="name">诸葛斌 教授</div>
+      <div class="title">浙江工商大学信息与电子工程学院 / 萨塞克斯人工智能学院</div>
+      <div class="desc">研究方向为互联网应用开发与AI教育，获浙江省技术发明一等奖。联合阿里钉钉撰写国内首本低代码开发教材，获2025全国高校人工智能教育大会优秀案例一等奖。</div>
+    </div>
+  </div>
+
+  <!-- 直播时间 -->
+  <div class="time-card">
+    <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22" cy="22" r="18" stroke="#ff8844" stroke-width="2.5" fill="none"/>
+      <line x1="22" y1="12" x2="22" y2="22" stroke="#ff8844" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="22" y1="22" x2="30" y2="26" stroke="#ff8844" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="22" cy="22" r="2" fill="#ff8844"/>
+    </svg>
+    <div>
+      <div class="time">6月24日（下周三）下午 3:00 - 4:00</div>
+      <div class="time-sub">敬请期待</div>
+    </div>
+  </div>
+
+  <!-- 五大教学场景 -->
+  <div class="scenes-title">五大教学场景演示</div>
+  <div class="scenes-grid">
+    <div class="scene-item">
+      <div class="icon-box">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="3" width="22" height="18" rx="2" stroke="#00d4ff" stroke-width="2"/>
+          <line x1="3" y1="9" x2="25" y2="9" stroke="#00d4ff" stroke-width="1.5"/>
+          <line x1="8" y1="13" x2="20" y2="13" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="8" y1="17" x2="16" y2="17" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="text">课件智能生成</div>
+      <div class="highlight-text">"小龙虾三部曲"</div>
+    </div>
+    <div class="scene-item">
+      <div class="icon-box">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="14" cy="10" r="6" stroke="#00d4ff" stroke-width="2"/>
+          <path d="M14 16v8" stroke="#00d4ff" stroke-width="2" stroke-linecap="round"/>
+          <path d="M8 20l6 4 6-4" stroke="#00d4ff" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="14" cy="10" r="2" fill="#00d4ff"/>
+        </svg>
+      </div>
+      <div class="text">教学案例开发</div>
+      <div class="highlight-text">数据挖掘实战</div>
+    </div>
+    <div class="scene-item">
+      <div class="icon-box">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="20" height="24" rx="2" stroke="#00d4ff" stroke-width="2"/>
+          <line x1="8" y1="10" x2="20" y2="10" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="8" y1="14" x2="20" y2="14" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="8" y1="18" x2="16" y2="18" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="8" y1="22" x2="12" y2="22" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="text">论文协作写作</div>
+      <div class="highlight-text">从选题到IEEE成稿</div>
+    </div>
+    <div class="scene-item">
+      <div class="icon-box">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="6" width="22" height="16" rx="2" stroke="#00d4ff" stroke-width="2"/>
+          <polygon points="12,10 12,18 20,14" fill="#00d4ff"/>
+        </svg>
+      </div>
+      <div class="text">教学视频制作</div>
+      <div class="highlight-text">PPT自动转视频</div>
+    </div>
+    <div class="scene-item">
+      <div class="icon-box">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="20" height="20" rx="2" stroke="#00d4ff" stroke-width="2"/>
+          <rect x="7" y="14" width="4" height="7" rx="1" fill="#00d4ff" opacity="0.6"/>
+          <rect x="12" y="10" width="4" height="11" rx="1" fill="#00d4ff" opacity="0.8"/>
+          <rect x="17" y="7" width="4" height="14" rx="1" fill="#00d4ff"/>
+        </svg>
+      </div>
+      <div class="text">数据可视化</div>
+      <div class="highlight-text">实操演示</div>
+    </div>
+  </div>
+
+  <!-- 直播介绍 -->
+  <div class="intro-text">
+    本次直播解读清华版《Manus智能体全攻略》，现场演示五大教学场景，实操2小时教案制作压缩至10分钟。
+  </div>
+
+  <!-- 入群福利 -->
+  <div class="benefits-section">
+    <div class="benefits-title">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="10" width="20" height="14" rx="2" stroke="#ffd700" stroke-width="2"/>
+        <path d="M4 10l10 6 10-6" stroke="#ffd700" stroke-width="2" fill="none"/>
+        <path d="M14 16v8" stroke="#ffd700" stroke-width="2"/>
+        <circle cx="14" cy="10" r="3" fill="#ffd700"/>
+      </svg>
+      入群福利
+    </div>
+    <div class="benefits-list">
+      <div class="benefit-item">
+        <div class="num">1</div>
+        <div class="text"><strong>小龙虾AI体验</strong>——群内部署OpenClaw智能体，实时体验课件生成、教案制作等AI能力</div>
+      </div>
+      <div class="benefit-item">
+        <div class="num">2</div>
+        <div class="text"><strong>教学资料包</strong>——小龙虾三部曲课件、数据挖掘案例、16章教学动画、微信小程序案例等全套Manus实战案例</div>
+      </div>
+      <div class="benefit-item">
+        <div class="num">3</div>
+        <div class="text"><strong>免费样书赠送</strong>——直播间专享10本《Manus智能体全攻略》免费样书（名额有限，抽奖获得）</div>
+      </div>
+      <div class="benefit-item">
+        <div class="num">4</div>
+        <div class="text"><strong>教学交流社区</strong>——"智能体"系列课程高校教师AI教学实践交流、问题解答、经验分享</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 二维码区域 -->
+  <div class="qr-section">
+    <div class="qr-placeholder">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:50px;height:50px;margin-bottom:8px;">
+        <rect x="4" y="4" width="18" height="18" rx="2" stroke="#333" stroke-width="2"/>
+        <rect x="8" y="8" width="10" height="10" rx="1" fill="#333"/>
+        <rect x="38" y="4" width="18" height="18" rx="2" stroke="#333" stroke-width="2"/>
+        <rect x="42" y="8" width="10" height="10" rx="1" fill="#333"/>
+        <rect x="4" y="38" width="18" height="18" rx="2" stroke="#333" stroke-width="2"/>
+        <rect x="8" y="42" width="10" height="10" rx="1" fill="#333"/>
+        <rect x="30" y="30" width="4" height="4" fill="#333"/>
+        <rect x="38" y="30" width="4" height="4" fill="#333"/>
+        <rect x="46" y="30" width="4" height="4" fill="#333"/>
+        <rect x="30" y="38" width="4" height="4" fill="#333"/>
+        <rect x="46" y="38" width="4" height="4" fill="#333"/>
+        <rect x="30" y="46" width="4" height="4" fill="#333"/>
+        <rect x="38" y="46" width="4" height="4" fill="#333"/>
+        <rect x="46" y="46" width="4" height="4" fill="#333"/>
+      </svg>
+      <div style="font-size:16px;font-weight:600;">扫码入群</div>
+    </div>
+    <div class="qr-text">
+      请提前扫码加入读者服务群
+      <div class="sub">此群长期有效 · 群成员享专属福利</div>
+    </div>
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer">
+    <div class="text">清华大学出版社 · 浙江工商大学萨塞克斯人工智能学院</div>
+  </div>
+
+</div>
+</body>
+</html>

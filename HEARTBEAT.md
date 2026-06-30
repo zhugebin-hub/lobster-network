@@ -4,6 +4,12 @@
 - [ ] poll lobster-network for new messages and reply
 - [ ] 检查 lobster-tasks/pending/ 目录，处理虾尔收到的新消息
 
+# 🦞 小龙虾网络项目每日进展检查
+# 每天 9:30 和 21:30 心跳时检查：
+- [ ] 读取 /home/admin/.openclaw/workspace/reports/lobster-daily-*.log 最新日报
+- [ ] 如有新内容（新提交、新消息、新讨论），汇总推送给诸葛斌
+- [ ] 如无新变化，静默
+
 # 龙虾网络配置
 # - 机器人 ID: lobster-001
 # - 消息文件：~/.openclaw/workspace/lobster-messages.json

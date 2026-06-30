@@ -2,15 +2,22 @@
 
 ## 🦞 我的身份
 
-- **名字：虾尔**
-- **主人：黄宝怡**
-- 这是虾尔的核心身份，不属于任何人的分身或镜像
+- **正式名：诸葛虾**
+- **小名：虾尔**（诸葛虾 = 虾尔，是同一个人，2026-06-27 诸葛斌确认）
+- ~~主人：黄宝怡~~（待确认）
 
 ## Preferences
 
 - **联网搜索优先使用 searxng skill** —— 只要涉及联网搜索任务，优先调用 searxng 技能而非直接使用 web_search 工具。
 - **中方课表转换优先使用专用脚本** —— 转换中方课表为英方 Teaching Calendar 时，使用 `~/.openclaw/workspace/skills/cn-to-uk-timetable/scripts/convert_cn_to_uk_timetable.py` 脚本，而非内联 Python 代码。
 - **钉钉群不发觅游社区互动汇报** —— 诸葛斌要求：社区互动汇报不要发到群里（2026-06-06）。
+- **回复格式要求** —— 2026-06-29 诸葛斌要求：所有回复使用纯文本格式，不使用markdown格式（无emoji、无粗体、无代码块标记），确保复制出来是干净文本。
+
+## ⚠️ 安全与经验教训
+
+- **技能广告陷阱识别**（2026-06-23）：ckt-design（创客贴）本质是导流到第三方商业平台 chuangkit.com。检查方法：API 调用指向第三方商业平台 + 返回编辑跳转链接 = 广告陷阱。已卸载该技能。
+- **OpenClaw Agent Key ≠ DashScope API Key**：Agent Key（sk-oc-*）用于智能体连接 OpenClaw 实例，不能用于 DashScope 视觉模型。视觉模型需要 DashScope API Key（sk-sp-*）。
+- **NFS 通道不稳定**：/shared 挂载点经常不可用，重要文件需要通过其他方式传输。
 
 ## Notes
 
@@ -51,20 +58,69 @@
 - 持仓配置：`~/.openclaw/workspace/stock-holdings.md`
 - 最新报告：`~/.openclaw/workspace/stock-reports/`
 
-## 🤝 诸葛马（Hermes）双向通道
+## 🤝 小龙虾网络 — 节点拓扑（2026-06-27 更新）
 
-**重要：与 Hermes 服务器已建立 NFS 双向通道，通过 /shared 目录通信。**
+**四个节点关系：**
+```
+诸葛马（Hermes）── 围棋教练
+  ├── 诸葛虾（虾尔/zhuguxia）── 学员，加速型，25级
+  ├── qoder（小龙虾）── 学员，实战型，~25级
+  └── xiaochen（信电大虾/小陈）── 学员，稳健型，30级
+```
 
-- **Hermes 服务器 IP（内网）：** 172.24.57.34
-- **NFS 挂载：** 172.24.57.34:/shared → /shared（NFS4，每30分钟自动同步）
-- **消息目录：**
-  - 我发给诸葛马：`/shared/messages/from-lobster/`
-  - 诸葛马回给我：`/shared/messages/from-hermes/`
-  - 归档：`/shared/messages/archive/`
-- **共享能力文件：** `/shared/capabilities/`
-- **技能共享：** `/shared/skills-all/`
+**节点详细信息（2026-06-27 11:28 最终确认）：**
 
-**规则：当看到"诸葛马"时，通过 NFS 双向通道联系，不要通过其他方式。**
+| 节点 | 内网 IP | 公网 IP | SSH 状态 | GitHub |
+|------|---------|---------|----------|--------|
+| 诸葛马（Hermes） | 172.24.57.34 | 47.93.6.57 | ✓ 已配置 | ✓ |
+| 诸葛虾（虾尔） | 172.24.56.3 | 60.205.139.51 | ✓ 已配置 | ✓ |
+| 小陈（xiaochen） | 172.27.52.212 | 121.43.80.231 | ✓ 已配置 | ✓ |
+| qoder（小龙虾） | 192.168.1.161 | 无 | ✗ 仅 GitHub | ✓ |
+
+**通信矩阵（2026-06-27 11:28 最终确认）：**
+
+| 通信路径 | 状态 | 协议 |
+|----------|------|------|
+| 诸葛马→诸葛虾 | ✓ | SSH (60.205.139.51) |
+| 诸葛虾→诸葛马 | ✓ | SSH (172.24.57.34) |
+| 诸葛马→小陈 | ✓ | SSH (121.43.80.231) |
+| 小陈→诸葛马 | ✓ | SSH (47.93.6.57) |
+| 诸葛马→qoder | ✓ | GitHub |
+| qoder→诸葛马 | ✓ | GitHub |
+
+**三层通信架构：**
+1. **第一层：GitHub 工作流**（短期，已就绪）✅
+2. **第二层：SSH 密钥**（中期，诸葛马/小陈/诸葛虾已配置）✓
+3. **第三层：HTTP 传输层**（长期，推荐部署）🌐 — `scripts/deploy_http_transport.sh`（端口 8199）
+
+**⚠️ 注意：** qoder 无公网 IP，只能通过 GitHub 通信。
+
+**通讯检查结果（2026-06-27 10:55）：**
+
+| 传输层 | 状态 | 说明 |
+|--------|------|------|
+| SCP/SSH 传输层 | ✅ 全部正常 | 诸葛马→三位学员均正常 |
+| 消息文件通道 | ✅ 全部正常 | 三位学员→诸葛马均正常 |
+| NFS 文件通道 | ❌ 不可用 | /shared 未挂载 |
+
+**通讯矩阵：**
+- 诸葛马→诸葛虾：✓ SCP/SSH
+- 诸葛马→小陈：✓ SCP/SSH
+- 诸葛马→qoder：✓ SCP/SSH
+- 诸葛虾→诸葛马：✓ 消息文件
+- 小陈→诸葛马：✓ 消息文件
+- qoder→诸葛马：✓ 消息文件
+
+**评估数据已同步（2026-06-27）：**
+- 综合评估数据已保存到 GitHub（docs/assessments/comprehensive_*.json）
+- 评估数据已发送给三位学员
+- Day2 对抗赛结果已记录
+- 通信测试报告已推送（docs/communication/comm_test_*.json）
+
+**🚀 下一步：**
+1. 继续 7 天速成训练（Day2 已发送）
+2. 收集训练结果并生成评估报告
+3. 根据评估结果调整训练计划
 
 ## 🎓 毕业论文系统（thesis-instance-1 & thesis-instance-2）
 
@@ -155,3 +211,73 @@
   - 核心能力：CDP Proxy 直连 Chrome（携带登录态）、三层工具调度、站点经验积累、并行分治
   - 使用场景：搜索、网页抓取、需要登录的网站、动态页面、社交媒体内容获取
   - 前置要求：Chrome 需开启远程调试（`chrome://inspect/#remote-debugging`）
+
+## 🦞 小龙虾网络开源项目（lobster-network）
+
+**仓库：** https://github.com/zhugebin-hub/lobster-network  
+**GitHub Token：** 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（lobster-workflow，2026-06-24 更新）  
+**状态：** V3.0（2026-06-27 推送，提交 884312d，1,600行新增代码）  
+**协作角色：** 虾尔 = 世界地图管理员（engine/world-map.py、spec/drp.md）  
+**维护者：** 诸葛斌（发起人）、诸葛马/Hermes（架构师）、诸葛虾（SDK）、小陈（文档）、虾尔（世界地图）  
+**协作流程：** Issue 驱动 → PR → 审查 → 合并，NFS通道作为真实集成测试  
+**更新日期：** 2026-06-27
+
+**V3.0 新增组件：**
+- `mcp/mcp_server.py` — MCP 协议服务器
+- `vector-memory/vector_memory.py` — 向量记忆系统（V2.0: 离线 n-gram 嵌入）
+- `a2a/a2a_protocol.py` — A2A 协议（V2.0: SSH/GitHub 传输层对接）
+- `federated-learning/federated_learning.py` — 联邦学习系统（V2.0: 真实训练数据）
+- `agent-economy/economy_system.py` — 智能体经济系统（V2.0: 信誉与准确率挂钩）
+
+**V3.0 V2.0 改进（2026-06-27 完成）：**
+- P1-1: 向量记忆离线 n-gram 嵌入（256 维，不依赖网络）
+- P1-2: A2A 协议对接 SSH/GitHub 传输层
+- P2-1: 联邦学习接入真实围棋训练数据
+- P2-2: 经济系统信誉与训练准确率挂钩
+- 所有组件 storage_path 可配置（/shared fallback 到 ~/.lobster-network/）
+- Git 提交：84546d5，已推送到 GitHub
+
+## 🦞 OADP 协议层开发完成（2026-06-22）
+
+**已完成：**
+- spec/protocol.md — OADP 核心协议
+- spec/drp.md — 对话渲染协议
+- spec/world-map.md — 世界地图索引协议
+- spec/soul_schema.md — SOUL.md 灵魂种子格式规范
+- spec/memory_schema.md — MEMORY.md 记忆格式规范
+- spec/portal.md — 传送门协议
+
+**状态：** 已推送到 GitHub（第 8 次提交，1367 行新增）
+**待审查：** 诸葛马（Hermes）
+**下一步：** engine/world-map.py 实现
+
+## 📚 《网络通信原理实践》课程多平台上线（2026-06-25）
+
+**课程名称：** 网络通信原理实践  
+**学校：** 浙江工商大学  
+**教师团队：** 诸葛斌、金蓉、高明、李传煌、张子天  
+**学分/学时：** 2.0学分 / 37学时 / 6次见面课  
+**实验工具：** eNSP、Mininet、OpenVSwitch  
+**合作企业：** 杭州阿里云计算有限公司
+
+**三个在线平台链接：**
+
+1. **智慧树**  
+   https://coursehome.zhihuishu.com/courseHome/1000166945#teachTeam
+
+2. **中国大学MOOC（icourse163）**  
+   https://www.icourse163.org/learn/HZIC-1466005174?tid=1476646457#/learn/announce
+
+3. **浙江在线开放教育联盟（zjooc）**  
+   https://www.zjooc.cn/course/8a2211889c46f956019cad63f4a8441c
+
+---
+
+## 🦞 小龙虾网络项目每日检查配置（2026-06-22）
+
+**仓库：** https://github.com/zhugebin-hub/lobster-network
+**本地路径：** /tmp/lobster-network-test/
+**检查脚本：** ~/.openclaw/workspace/scripts/lobster-daily-check.sh
+**系统 cron：** 每天 09:00 执行脚本，生成日报到 reports/lobster-daily-YYYYMMDD.log
+**心跳检查：** HEARTBEAT.md 已添加每日进展检查（9:30/21:30 心跳时读取日报，有新内容推送给诸葛斌）
+**NFS 消息：** /shared/messages/from-hermes/ 和 /shared/messages/from-lobster/ 用于小龙虾间讨论

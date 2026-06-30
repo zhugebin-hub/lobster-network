@@ -1,0 +1,20 @@
+{
+  "owner": "戴建华",
+  "events": [
+    {
+      "id": "evt_20260624_livestream",
+      "title": "智能体赋能高校教学新范式——小龙虾+Manus一站式解决方案",
+      "type": "直播",
+      "date": "2026-06-24",
+      "day_of_week": "周三",
+      "start_time": "15:00",
+      "end_time": "16:00",
+      "status": "已安排",
+      "created_at": "2026-06-18T13:22:00+08:00",
+      "reminders": [
+        {"time": "14:30", "cron_id": "fe81431e-30fe-4334-8b5a-122770e525ed", "label": "提前30分钟"},
+        {"time": "14:55", "cron_id": "7d823263-2b18-49e5-a4e8-4538b72de67b", "label": "提前5分钟"}
+      ]
+    }
+  ]
+}
