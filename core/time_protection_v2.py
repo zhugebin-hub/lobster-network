@@ -35,6 +35,7 @@ class TimeProtectionV2:
         "morning": {"start": "07:00", "end": "09:00", "description": "早晨训练窗口"},
         "afternoon": {"start": "14:00", "end": "16:00", "description": "下午训练窗口"},
         "evening": {"start": "20:00", "end": "22:00", "description": "晚间训练窗口"},
+        "night": {"start": "22:00", "end": "23:59", "description": "夜间训练窗口"},
     }
     
     # 任务超时配置

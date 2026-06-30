@@ -1,0 +1,91 @@
+{
+  "student_id": "qoder",
+  "created_at": "2026-06-30T23:39:39.189010",
+  "updated_at": "2026-06-30T23:39:39.194609",
+  "level": 30,
+  "total_problems": 720,
+  "total_games": 64,
+  "dimensions": {
+    "计算力": {
+      "score": 78.6,
+      "history": [
+        {
+          "date": "2026-06-30",
+          "score": 78.6
+        }
+      ]
+    },
+    "棋形感": {
+      "score": 93.3,
+      "history": [
+        {
+          "date": "2026-06-30",
+          "score": 93.3
+        }
+      ]
+    },
+    "战略思维": {
+      "score": 65.0,
+      "history": [
+        {
+          "date": "2026-06-30",
+          "score": 65.0
+        }
+      ]
+    },
+    "推理力": {
+      "score": 100.0,
+      "history": [
+        {
+          "date": "2026-06-30",
+          "score": 100.0
+        }
+      ]
+    },
+    "执行力": {
+      "score": 83.3,
+      "history": [
+        {
+          "date": "2026-06-30",
+          "score": 83.3
+        }
+      ]
+    },
+    "反思力": {
+      "score": 0.0,
+      "history": [
+        {
+          "date": "2026-06-30",
+          "score": 0.0
+        }
+      ]
+    },
+    "学习速度": {
+      "score": 55.7,
+      "history": [
+        {
+          "date": "2026-06-30",
+          "score": 55.7
+        }
+      ]
+    },
+    "稳定性": {
+      "score": 87.4,
+      "history": [
+        {
+          "date": "2026-06-30",
+          "score": 87.4
+        }
+      ]
+    }
+  },
+  "training_history": [],
+  "weaknesses": [
+    "学习速度",
+    "反思力"
+  ],
+  "strengths": [
+    "推理力",
+    "棋形感"
+  ]
+}

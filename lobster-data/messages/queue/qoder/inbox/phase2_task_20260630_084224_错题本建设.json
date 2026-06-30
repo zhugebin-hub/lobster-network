@@ -1,0 +1,15 @@
+{
+  "student_id": "qoder",
+  "student_name": "qoder",
+  "task_name": "错题本建设",
+  "focus": "速率套利 + 系统性提升",
+  "timestamp": "2026-06-30T08:42:24.367017",
+  "problem_count": 15,
+  "spaced_repetition": true,
+  "intervals": [
+    1,
+    3,
+    7,
+    14
+  ]
+}

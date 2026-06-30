@@ -1,0 +1,235 @@
+{
+  "timestamp": "2026-06-30T23:39:39.183595",
+  "students": {
+    "xiaochen": {
+      "distribution": {
+        "student_id": "xiaochen",
+        "inbox_exists": true,
+        "task_count": 8,
+        "tasks": [
+          {
+            "file": "phase2_task_20260630_084224_实战对局.json",
+            "task_name": "实战对局",
+            "timestamp": "2026-06-30T08:42:24.366994"
+          },
+          {
+            "file": "phase2_task_20260630_084224_扑 vs 倒扑辨析.json",
+            "task_name": "扑 vs 倒扑辨析",
+            "timestamp": "2026-06-30T08:42:24.366968"
+          },
+          {
+            "file": "phase2_task_20260630_084224_征子路线判断.json",
+            "task_name": "征子路线判断",
+            "timestamp": "2026-06-30T08:42:24.366987"
+          },
+          {
+            "file": "phase2_task_20260630_233939_扑 vs 倒扑辨析.json",
+            "task_name": "扑 vs 倒扑辨析",
+            "timestamp": "2026-06-30T23:39:39.158859"
+          },
+          {
+            "file": "phase2_task_20260630_233939_征子路线判断.json",
+            "task_name": "征子路线判断",
+            "timestamp": "2026-06-30T23:39:39.158866"
+          },
+          {
+            "file": "phase2_task_20260630_233939_实战对局.json",
+            "task_name": "实战对局",
+            "timestamp": "2026-06-30T23:39:39.158873"
+          },
+          {
+            "file": "phase2_task_20260630_084224_高级死活分步推理.json",
+            "task_name": "高级死活分步推理",
+            "timestamp": "2026-06-30T08:42:24.366991"
+          },
+          {
+            "file": "phase2_task_20260630_233939_高级死活分步推理.json",
+            "task_name": "高级死活分步推理",
+            "timestamp": "2026-06-30T23:39:39.158870"
+          }
+        ]
+      },
+      "submission": {
+        "student_id": "xiaochen",
+        "submission_dir_exists": true,
+        "submission_count": 2,
+        "submissions": [
+          {
+            "file": "day3_result_xiaochen.json",
+            "day": 3,
+            "problem_count": 13,
+            "correct_count": 10,
+            "accuracy": 0.7692307692307693,
+            "game_count": 10
+          },
+          {
+            "file": "day4_xiaochen.json",
+            "error": "'int' object is not iterable"
+          }
+        ]
+      },
+      "avg_quality_score": 70.0,
+      "status": "pass"
+    },
+    "zhuguxia": {
+      "distribution": {
+        "student_id": "zhuguxia",
+        "inbox_exists": true,
+        "task_count": 8,
+        "tasks": [
+          {
+            "file": "phase2_task_20260630_233939_征子路线专项.json",
+            "task_name": "征子路线专项",
+            "timestamp": "2026-06-30T23:39:39.160984"
+          },
+          {
+            "file": "phase2_task_20260630_084224_4 步反思日志.json",
+            "task_name": "4 步反思日志",
+            "timestamp": "2026-06-30T08:42:24.366999"
+          },
+          {
+            "file": "phase2_task_20260630_233939_4 步反思日志.json",
+            "task_name": "4 步反思日志",
+            "timestamp": "2026-06-30T23:39:39.160940"
+          },
+          {
+            "file": "phase2_task_20260630_084224_实战对局.json",
+            "task_name": "实战对局",
+            "timestamp": "2026-06-30T08:42:24.367008"
+          },
+          {
+            "file": "phase2_task_20260630_084224_中级手筋强化.json",
+            "task_name": "中级手筋强化",
+            "timestamp": "2026-06-30T08:42:24.367002"
+          },
+          {
+            "file": "phase2_task_20260630_233939_中级手筋强化.json",
+            "task_name": "中级手筋强化",
+            "timestamp": "2026-06-30T23:39:39.160978"
+          },
+          {
+            "file": "phase2_task_20260630_233939_实战对局.json",
+            "task_name": "实战对局",
+            "timestamp": "2026-06-30T23:39:39.160990"
+          },
+          {
+            "file": "phase2_task_20260630_084224_征子路线专项.json",
+            "task_name": "征子路线专项",
+            "timestamp": "2026-06-30T08:42:24.367005"
+          }
+        ]
+      },
+      "submission": {
+        "student_id": "zhuguxia",
+        "submission_dir_exists": false,
+        "submission_count": 0,
+        "submissions": []
+      },
+      "avg_quality_score": 0,
+      "status": "fail"
+    },
+    "qoder": {
+      "distribution": {
+        "student_id": "qoder",
+        "inbox_exists": true,
+        "task_count": 8,
+        "tasks": [
+          {
+            "file": "phase2_task_20260630_084224_实战对局.json",
+            "task_name": "实战对局",
+            "timestamp": "2026-06-30T08:42:24.367020"
+          },
+          {
+            "file": "phase2_task_20260630_233939_速率套利训练.json",
+            "task_name": "速率套利训练",
+            "timestamp": "2026-06-30T23:39:39.162445"
+          },
+          {
+            "file": "phase2_task_20260630_233939_错题本建设.json",
+            "task_name": "错题本建设",
+            "timestamp": "2026-06-30T23:39:39.162465"
+          },
+          {
+            "file": "phase2_task_20260630_084224_系统性知识体系.json",
+            "task_name": "系统性知识体系",
+            "timestamp": "2026-06-30T08:42:24.367014"
+          },
+          {
+            "file": "phase2_task_20260630_233939_实战对局.json",
+            "task_name": "实战对局",
+            "timestamp": "2026-06-30T23:39:39.162468"
+          },
+          {
+            "file": "phase2_task_20260630_084224_错题本建设.json",
+            "task_name": "错题本建设",
+            "timestamp": "2026-06-30T08:42:24.367017"
+          },
+          {
+            "file": "phase2_task_20260630_233939_系统性知识体系.json",
+            "task_name": "系统性知识体系",
+            "timestamp": "2026-06-30T23:39:39.162462"
+          },
+          {
+            "file": "phase2_task_20260630_084224_速率套利训练.json",
+            "task_name": "速率套利训练",
+            "timestamp": "2026-06-30T08:42:24.367011"
+          }
+        ]
+      },
+      "submission": {
+        "student_id": "qoder",
+        "submission_dir_exists": true,
+        "submission_count": 6,
+        "submissions": [
+          {
+            "file": "day4_result.json",
+            "day": 4,
+            "problem_count": 150,
+            "correct_count": 131,
+            "accuracy": 0.8733333333333333,
+            "game_count": 15
+          },
+          {
+            "file": "day3_result.json",
+            "day": 3,
+            "problem_count": 150,
+            "correct_count": 134,
+            "accuracy": 0.8933333333333333,
+            "game_count": 12
+          },
+          {
+            "file": "day3_result_qoder.json",
+            "day": 3,
+            "problem_count": 150,
+            "correct_count": 134,
+            "accuracy": 0.8933333333333333,
+            "game_count": 12
+          },
+          {
+            "file": "sync_v3_report.json",
+            "day": "N/A",
+            "problem_count": 0,
+            "correct_count": 0,
+            "accuracy": 0,
+            "game_count": 0
+          },
+          {
+            "file": "day4_qoder.json",
+            "error": "'int' object is not iterable"
+          },
+          {
+            "file": "day2_result.json",
+            "day": 2,
+            "problem_count": 120,
+            "correct_count": 98,
+            "accuracy": 0.8166666666666667,
+            "game_count": 10
+          }
+        ]
+      },
+      "avg_quality_score": 56.0,
+      "status": "fail"
+    }
+  },
+  "overall_status": "fail"
+}
