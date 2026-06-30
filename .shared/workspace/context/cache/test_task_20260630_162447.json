@@ -1,0 +1,16 @@
+{
+  "system_constraint": "训练任务必须在 24 小时内完成",
+  "task_definition": "完成 Day 5 训练任务",
+  "current_state": "Day 4 已完成，准确率 85%",
+  "tool_signatures": "schedule_training, evaluate_performance",
+  "history_summary": [
+    {
+      "day": 3,
+      "accuracy": 0.81
+    },
+    {
+      "day": 4,
+      "accuracy": 0.85
+    }
+  ]
+}
