@@ -4,6 +4,17 @@ Lobster Network - Unified Entry Point
 
 对话即创造：一人一世界的世界观
 
+v0.8.0 变更 (Harness Engineering 驾驭工程):
+- 新增: harness/ 模块 — Agent Harness Engineering 完整实现
+- 新增: ContextBuilder (上下文工程) — 结构化、分段化、可回放、可审计的上下文构建
+- 新增: ConstraintEngine (架构约束) — Linter 级可执行约束，每条对应真实失败案例
+- 新增: FeedbackLoop (反馈回路) — Agent Review Agent + 失败分析器 + 自动约束生成
+- 新增: EntropyManager (熵管理) — 文档园丁 + 漂移检测器，防止代码腐化
+- 新增: Workspace (工作空间) — Agent 的 Git 仓库，状态文件化，RPA 断点续传
+- 新增: DualStageExecutor (双阶段架构) — Init + Exec 不共享 Context Window
+- 新增: 六大工程模式 — DualStage/ToolSignature/SubAgentIsolation/Backpressure/AgentReview/EntropyManagement
+- 理论来源: 阿里云开发者《给野马套上缰绳：Agent Harness 工程实践》+ Mitchell Hashimoto
+
 v0.7.0 变更 (V3.1 优化层):
 - 新增: 熔断器 (CircuitBreaker)，API 调用保护，CLOSED→OPEN→HALF_OPEN 状态机
 - 新增: 健康检查 (HealthCheck)，CPU/内存/磁盘监控 + 服务连通性检测
@@ -35,7 +46,7 @@ v0.4.0 变更:
 - 新增: 跨链系统 (CrossChainSystem)、多币种系统 (MultiCurrencySystem)
 """
 
-__version__ = "0.7.0"
+__version__ = "0.8.0"
 
 # 框架层 (Framework Layer)
 from .node import Node
@@ -105,6 +116,23 @@ try:
 except ImportError:
     pass  # http_transport 模块为可选增强
 
+# v0.8.0 Harness Engineering — 可选导入
+try:
+    from .harness import (
+        ContextBuilder, ContextSlot, context_for_task,
+        Constraint, ConstraintEngine, LinterConstraint,
+        FeedbackLoop, AgentReviewer, FailureAnalyzer,
+        EntropyManager, DocGardener, DriftDetector,
+        Workspace, WorkspaceFile, RpaLock,
+        DualStageExecutor, InitStage, ExecStage,
+        HarnessPattern, DualStagePattern, ToolSignaturePattern,
+        SubAgentIsolationPattern, BackpressurePattern,
+        AgentReviewPattern, EntropyManagementPattern,
+        apply_pattern,
+    )
+except ImportError:
+    pass  # harness 模块为可选增强
+
 
 __all__ = [
     # Version
@@ -145,4 +173,15 @@ __all__ = [
     "DIMENSION_REGISTRY", "DIMENSION_DESCRIPTIONS", "DIMENSION_WEIGHTS",
     # v0.6.0 Learning Coordinator & HTTP Transport
     "LearningCoordinator", "HTTPTransport",
+    # v0.8.0 Harness Engineering
+    "ContextBuilder", "ContextSlot", "context_for_task",
+    "Constraint", "ConstraintEngine", "LinterConstraint",
+    "FeedbackLoop", "AgentReviewer", "FailureAnalyzer",
+    "EntropyManager", "DocGardener", "DriftDetector",
+    "Workspace", "WorkspaceFile", "RpaLock",
+    "DualStageExecutor", "InitStage", "ExecStage",
+    "HarnessPattern", "DualStagePattern", "ToolSignaturePattern",
+    "SubAgentIsolationPattern", "BackpressurePattern",
+    "AgentReviewPattern", "EntropyManagementPattern",
+    "apply_pattern",
 ]
