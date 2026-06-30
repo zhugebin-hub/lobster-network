@@ -1,0 +1,16 @@
+{
+  "student_id": "xiaochen",
+  "student_name": "小陈",
+  "task_name": "扑 vs 倒扑辨析",
+  "focus": "推理力专项突破",
+  "timestamp": "2026-06-30T08:42:24.366968",
+  "problem_count": 30,
+  "target_accuracy": 0.8,
+  "require_analysis": true,
+  "analysis_template": {
+    "step1": "这是扑还是倒扑？为什么？",
+    "step2": "正确思路是什么？",
+    "step3": "我的思路与正确思路的差距",
+    "step4": "下次如何改进？"
+  }
+}
