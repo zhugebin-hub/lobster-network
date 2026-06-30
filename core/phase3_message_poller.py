@@ -32,17 +32,17 @@ class Config:
     STUDENTS = {
         "xiaochen": {
             "name": "小陈",
-            "inbox_dir": "/shared/training/go/xiaochen/inbox",
+            "inbox_dir": "/home/admin/go-training/shared/training/xiaochen/inbox",
             "db_path": "/home/admin/go-training/shared/messages/xiaochen_messages.db",
         },
         "zhuguxia": {
             "name": "诸葛虾",
-            "inbox_dir": "/shared/training/go/zhuguxia/inbox",
+            "inbox_dir": "/home/admin/go-training/shared/training/zhuguxia/inbox",
             "db_path": "/home/admin/go-training/shared/messages/zhuguxia_messages.db",
         },
         "qoder": {
             "name": "qoder",
-            "inbox_dir": "/shared/training/go/qoder/inbox",
+            "inbox_dir": "/home/admin/go-training/shared/training/qoder/inbox",
             "db_path": "/home/admin/go-training/shared/messages/qoder_messages.db",
         },
     }
