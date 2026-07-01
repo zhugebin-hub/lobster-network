@@ -98,6 +98,7 @@ class MessageHandler:
             "reminder": self._handle_reminder,
             "assessment": self._handle_assessment,
             "system": self._handle_system,
+            "go_move_ask": self._handle_go_move_ask,
         }
         
         handler = handlers.get(msg_type, self._handle_unknown)
@@ -180,6 +181,91 @@ class MessageHandler:
         self._send_ack(msg.get("id", filename), "system", "received")
         return True
     
+
+    def _handle_go_move_ask(self, msg, filename):
+        """处理落子询问 - 调用AI引擎生成落子"""
+        import json, os, sys, subprocess
+        from datetime import datetime
+        
+        match_id = msg.get("match_id", "unknown")
+        role = msg.get("role", "?")
+        board_size = msg.get("board_size", 19)
+        
+        self.logger.info(f"落子询问: 你是{role}方, 棋盘={board_size}x{board_size}")
+        
+        # 查找AI引擎
+        engine_path = os.path.join(self.shared_base, "..", "lobster-network", "core", "go_ai_engine_v1.py")
+        if not os.path.exists(engine_path):
+            engine_path = "/home/admin/lobster-network/core/go_ai_engine_v1.py"
+        
+        if not os.path.exists(engine_path):
+            self.logger.error(f"AI引擎未找到: {engine_path}")
+            return False
+        
+        # 调用AI引擎生成落子
+        try:
+            result = subprocess.run(
+                [sys.executable, engine_path, str(board_size)],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                universal_newlines=True,
+                timeout=30
+            )
+            
+            if result.returncode != 0:
+                self.logger.error(f"AI引擎错误: {result.stderr}")
+                return False
+            
+            # 解析AI输出，提取最后一手棋
+            output = result.stdout
+            last_move = None
+            for line in output.strip().split("\n"):
+                if "手:" in line and "→" in line:
+                    # 格式: 第N手: 黑方 → Q16
+                    parts = line.split("→")
+                    if len(parts) >= 2:
+                        coord = parts[-1].strip().split()[0]
+                        last_move = coord
+            
+            if last_move:
+                self.logger.info(f"AI落子: {last_move}")
+                
+                # 回复落子到 from-{student}/
+                reply = {
+                    "id": f"go_move_{match_id}_{self.student_id}_{int(__import__('time').time())}",
+                    "type": "go_move",
+                    "match_id": match_id,
+                    "student_id": self.student_id,
+                    "role": role,
+                    "move": last_move,
+                    "move_num": None,  # 教练端裁判计算
+                    "board_size": board_size,
+                    "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    "ai_engine": "go_ai_engine_v1.py"
+                }
+                
+                reply_dir = os.path.join(self.shared_base, "from-" + self.student_id)
+                os.makedirs(reply_dir, exist_ok=True)
+                reply_file = os.path.join(reply_dir, reply["id"] + ".json")
+                with open(reply_file, 'w') as f:
+                    json.dump(reply, f, indent=2, ensure_ascii=False)
+                
+                self.logger.info(f"落子已回复: {last_move}")
+                
+                # 发送ACK
+                self._send_ack(msg.get("id", filename), "go_move_ask", f"move={last_move}")
+                return True
+            else:
+                self.logger.error("AI未生成有效落子")
+                return False
+                
+        except subprocess.TimeoutExpired:
+            self.logger.error("AI引擎超时")
+            return False
+        except Exception as e:
+            self.logger.error(f"AI落子失败: {e}")
+            return False
+
     def _handle_unknown(self, msg, filename):
         """处理未知类型消息"""
         self.logger.warning(f"未知消息类型: {msg.get('type', 'none')}")
