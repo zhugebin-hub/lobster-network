@@ -26,7 +26,7 @@ from pathlib import Path
 
 class PollerConfig:
     """轮询器配置"""
-    POLL_INTERVAL = 30  # 轮询间隔(秒)
+    POLL_INTERVAL = 15  # 轮询间隔(秒) - v4.1优化
     SHARED_BASE = "/home/admin/go-training/shared"
     PROCESSED_DIR = "processed"  # 已处理消息目录
     LOG_FILE = "poller.log"
@@ -194,9 +194,9 @@ class MessageHandler:
         self.logger.info(f"落子询问: 你是{role}方, 棋盘={board_size}x{board_size}")
         
         # 查找AI引擎
-        engine_path = os.path.join(self.shared_base, "..", "lobster-network", "core", "go_ai_engine_v1.py")
+        engine_path = os.path.join(self.shared_base, "..", "lobster-network", "core", "go_ai_engine_v2.py")
         if not os.path.exists(engine_path):
-            engine_path = "/home/admin/lobster-network/core/go_ai_engine_v1.py"
+            engine_path = "/home/admin/lobster-network/core/go_ai_engine_v2.py"
         
         if not os.path.exists(engine_path):
             self.logger.error(f"AI引擎未找到: {engine_path}")
@@ -205,7 +205,7 @@ class MessageHandler:
         # 调用AI引擎生成落子
         try:
             result = subprocess.run(
-                [sys.executable, engine_path, str(board_size)],
+                [sys.executable, engine_path, str(board_size), role],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 universal_newlines=True,
