@@ -22,7 +22,7 @@ from datetime import datetime, timedelta
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
 
-from src.lobster_network.utils.logger import get_logger
+from .utils.logger import get_logger
 
 logger = get_logger(__name__)
 
