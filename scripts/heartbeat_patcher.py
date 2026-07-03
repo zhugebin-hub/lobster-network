@@ -112,8 +112,8 @@ def determine_status(node_id, node_data):
         return "inactive", None
     
     if node_id == "xiaochen":
-        # 小陈：检查 student_poller
-        running, pid = check_process_running(["xiaochen", "student_poller"])
+        # 小陈：检查 student_poller 进程
+        running, pid = check_process_running("student_poller")
         if running:
             return "active", pid
         if check_training_activity(node_id) or check_message_activity(node_id, max_hours=48):
