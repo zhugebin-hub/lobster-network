@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦞 小龙虾网络监控仪表盘</title>
+<style>
+  :root {
+    --bg-primary: #0a0e1a;
+    --bg-card: #131826;
+    --bg-card-hover: #1a2033;
+    --border: #2a3050;
+    --text-primary: #e0e6f0;
+    --text-secondary: #8892b0;
+    --text-muted: #5a6378;
+    --accent-red: #e94560;
+    --accent-green: #2ed573;
+    --accent-yellow: #ffa502;
+    --accent-blue: #00d4ff;
+    --accent-purple: #a29bfe;
+    --accent-orange: #ff6b35;
+    --lobster-red: #e94560;
+    --shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* 动画背景 */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(233,69,96,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(0,212,255,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(162,155,254,0.04) 0%, transparent 60%);
+    z-index: -1;
+    animation: bgPulse 10s ease-in-out infinite;
+  }
+  @keyframes bgPulse {
+    0%,100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  /* 顶部导航 */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 28px;
+    background: linear-gradient(135deg, rgba(19,24,38,0.95), rgba(10,14,26,0.95));
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .logo {
+    font-size: 28px;
+    animation: lobsterFloat 3s ease-in-out infinite;
+  }
+  @keyframes lobsterFloat {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-4px) rotate(5deg); }
+  }
+  .title { font-size: 20px; font-weight: 700; letter-spacing: 1px; }
+  .title span { color: var(--lobster-red); }
+  .version-badge {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    color: #000;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .header-right { display: flex; align-items: center; gap: 20px; }
+  .refresh-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .pulse-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent-green);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(46,213,115,0.6); }
+    70% { box-shadow: 0 0 0 8px rgba(46,213,115,0); }
+    100% { box-shadow: 0 0 0 0 rgba(46,213,115,0); }
+  }
+  .scan-time { font-size: 12px; color: var(--text-muted); }
+
+  /* 布局 */
+  .container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  .full-width { grid-column: 1 / -1; }
+
+  /* 卡片 */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: border-color 0.3s;
+  }
+  .card:hover { border-color: var(--accent-blue); }
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .card-title .icon { font-size: 18px; }
+
+  /* 统计概览 */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+  }
+  .stat-item {
+    text-align: center;
+    padding: 16px 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: transform 0.2s;
+  }
+  .stat-item:hover { transform: translateY(-3px); }
+  .stat-value {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .stat-value.red { background: linear-gradient(135deg, var(--accent-red), var(--accent-orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .stat-value.green { background: linear-gradient(135deg, var(--accent-green), var(--accent-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .stat-value.yellow { background: linear-gradient(135deg, var(--accent-yellow), var(--accent-orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* 网络拓扑图 */
+  .topology-container {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .topology-svg {
+    width: 100%;
+    height: 100%;
+  }
+  .node-circle {
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .node-circle:hover { filter: brightness(1.3); }
+  .connection-line {
+    stroke-dasharray: 5,5;
+    animation: dashFlow 1.5s linear infinite;
+  }
+  @keyframes dashFlow {
+    to { stroke-dashoffset: -20; }
+  }
+  .hub-pulse {
+    animation: hubPulse 2s ease-in-out infinite;
+  }
+  @keyframes hubPulse {
+    0%,100% { r: 38; opacity: 0.8; }
+    50% { r: 44; opacity: 1; }
+  }
+
+  /* 节点卡片 */
+  .nodes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .node-card {
+    background: var(--bg-card-hover);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .node-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+  }
+  .node-card.coach::before { background: var(--accent-red); }
+  .node-card.student::before { background: var(--accent-blue); }
+  .node-card.observer::before { background: var(--accent-purple); }
+  .node-card:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
+
+  .node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .node-name {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .node-role-tag {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-weight: 600;
+  }
+  .role-coach { background: rgba(233,69,96,0.2); color: var(--accent-red); }
+  .role-student { background: rgba(0,212,255,0.15); color: var(--accent-blue); }
+  .role-observer { background: rgba(162,155,254,0.15); color: var(--accent-purple); }
+
+  .node-info {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .node-info .label { color: var(--text-muted); }
+  .node-info .value { color: var(--text-primary); font-weight: 500; }
+
+  .node-stats {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+  }
+  .node-stat {
+    flex: 1;
+    text-align: center;
+    font-size: 11px;
+  }
+  .node-stat .num { font-size: 16px; font-weight: 700; }
+  .node-stat .lbl { color: var(--text-muted); }
+
+  .status-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    margin-right: 4px;
+  }
+  .status-active { background: var(--accent-green); box-shadow: 0 0 6px var(--accent-green); }
+  .status-error { background: var(--accent-red); }
+  .status-unknown { background: var(--text-muted); }
+
+  /* CC追踪 */
+  .cc-stats {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .cc-stat {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+  }
+  .cc-completed { background: rgba(46,213,115,0.1); border: 1px solid rgba(46,213,115,0.3); }
+  .cc-pending { background: rgba(255,165,2,0.1); border: 1px solid rgba(255,165,2,0.3); }
+  .cc-escalated { background: rgba(233,69,96,0.1); border: 1px solid rgba(233,69,96,0.3); }
+  .cc-stat .num { font-size: 24px; font-weight: 800; }
+  .cc-stat .lbl { font-size: 11px; color: var(--text-muted); }
+
+  .cc-list {
+    max-height: 280px;
+    overflow-y: auto;
+  }
+  .cc-list::-webkit-scrollbar { width: 4px; }
+  .cc-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .cc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .cc-item:last-child { border-bottom: none; }
+  .cc-from {
+    font-weight: 600;
+    color: var(--accent-blue);
+    min-width: 70px;
+  }
+  .cc-subject {
+    flex: 1;
+    color: var(--text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .cc-acks {
+    display: flex;
+    gap: 3px;
+  }
+  .ack-badge {
+    font-size: 9px;
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: rgba(46,213,115,0.15);
+    color: var(--accent-green);
+  }
+
+  /* 消息流 */
+  .msg-list {
+    max-height: 360px;
+    overflow-y: auto;
+  }
+  .msg-list::-webkit-scrollbar { width: 4px; }
+  .msg-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .msg-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    font-size: 12px;
+    transition: background 0.2s;
+  }
+  .msg-item:hover { background: var(--bg-card-hover); }
+  .msg-type-icon {
+    width: 20px; height: 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .msg-type-cc { background: rgba(162,155,254,0.2); color: var(--accent-purple); }
+  .msg-type-ack { background: rgba(46,213,115,0.15); color: var(--accent-green); }
+  .msg-type-normal { background: rgba(0,212,255,0.1); color: var(--accent-blue); }
+  .msg-from { font-weight: 600; color: var(--text-primary); min-width: 60px; }
+  .msg-arrow { color: var(--text-muted); }
+  .msg-to { color: var(--text-secondary); min-width: 60px; }
+  .msg-subject { flex: 1; color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .msg-age { color: var(--text-muted); font-size: 10px; white-space: nowrap; }
+
+  /* 训练雷达 */
+  .training-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .training-card {
+    background: var(--bg-card-hover);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .training-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .training-name { font-size: 14px; font-weight: 700; }
+  .training-level {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 8px;
+    background: rgba(255,165,2,0.15);
+    color: var(--accent-yellow);
+    font-weight: 600;
+  }
+  .skill-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .skill-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+  }
+  .skill-name { min-width: 50px; color: var(--text-secondary); }
+  .skill-track {
+    flex: 1;
+    height: 6px;
+    background: var(--bg-primary);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.8s ease;
+  }
+  .skill-val { min-width: 28px; text-align: right; color: var(--text-primary); font-weight: 600; }
+
+  /* 模块健康 */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .module-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--bg-card-hover);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 12px;
+  }
+  .module-status {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .module-installed { background: var(--accent-green); box-shadow: 0 0 4px var(--accent-green); }
+  .module-missing { background: var(--accent-red); }
+
+  /* Git 活动 */
+  .git-list {
+    font-family: "SF Mono", "Fira Code", monospace;
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  .git-commit {
+    display: flex;
+    gap: 10px;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(42,48,80,0.5);
+  }
+  .git-commit:last-child { border-bottom: none; }
+  .git-hash { color: var(--accent-yellow); font-weight: 600; }
+  .git-msg { color: var(--text-secondary); }
+
+  /* 加载状态 */
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  .spinner {
+    width: 24px; height: 24px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent-blue);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: 10px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* 响应式 */
+  @media (max-width: 1200px) {
+    .container { grid-template-columns: 1fr 1fr; }
+    .stats-grid { grid-template-columns: repeat(3, 1fr); }
+    .nodes-grid { grid-template-columns: repeat(2, 1fr); }
+    .modules-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .container { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .nodes-grid { grid-template-columns: 1fr; }
+    .training-section { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<div class="header">
+  <div class="header-left">
+    <span class="logo">🦞</span>
+    <div>
+      <div class="title">小龙虾<span>网络</span>监控仪表盘</div>
+    </div>
+    <span class="version-badge" id="versionBadge">v4.0</span>
+  </div>
+  <div class="header-right">
+    <div class="refresh-indicator">
+      <span class="pulse-dot"></span>
+      <span>实时监控</span>
+    </div>
+    <div class="scan-time" id="scanTime">--</div>
+  </div>
+</div>
+
+<!-- 主内容区 -->
+<div class="container">
+
+  <!-- 统计概览 -->
+  <div class="full-width">
+    <div class="stats-grid" id="statsGrid">
+      <div class="stat-item">
+        <div class="stat-value" id="statNodes">--</div>
+        <div class="stat-label">在线节点</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value green" id="statMsgs">--</div>
+        <div class="stat-label">消息总量</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value yellow" id="statCC">--</div>
+        <div class="stat-label">CC追踪</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value green" id="statAck">--</div>
+        <div class="stat-label">ACK完成</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value red" id="statPending">--</div>
+        <div class="stat-label">待处理</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="statModules">--</div>
+        <div class="stat-label">模块状态</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 网络拓扑图 -->
+  <div class="card full-width">
+    <div class="card-title">
+      <span class="icon">🌐</span> 网络拓扑
+    </div>
+    <div class="topology-container">
+      <svg class="topology-svg" id="topologySvg" viewBox="0 0 800 420">
+        <!-- 连线和节点由JS动态生成 -->
+      </svg>
+    </div>
+  </div>
+
+  <!-- 节点状态 -->
+  <div class="card full-width">
+    <div class="card-title">
+      <span class="icon">📡</span> 节点状态
+    </div>
+    <div class="nodes-grid" id="nodesGrid">
+      <div class="loading"><div class="spinner"></div>加载中...</div>
+    </div>
+  </div>
+
+  <!-- CC消息追踪 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="icon">📨</span> CC协议追踪
+    </div>
+    <div class="cc-stats" id="ccStats">
+      <div class="cc-stat cc-completed"><div class="num" id="ccCompleted">--</div><div class="lbl">已完成</div></div>
+      <div class="cc-stat cc-pending"><div class="num" id="ccPending">--</div><div class="lbl">待确认</div></div>
+      <div class="cc-stat cc-escalated"><div class="num" id="ccEscalated">--</div><div class="lbl">已升级</div></div>
+    </div>
+    <div class="cc-list" id="ccList">
+      <div class="loading"><div class="spinner"></div>加载中...</div>
+    </div>
+  </div>
+
+  <!-- 消息流 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="icon">💬</span> 实时消息流
+    </div>
+    <div class="msg-list" id="msgList">
+      <div class="loading"><div class="spinner"></div>加载中...</div>
+    </div>
+  </div>
+
+  <!-- 训练进度 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="icon">🎯</span> 围棋训练进度
+    </div>
+    <div id="trainingContainer">
+      <div class="loading"><div class="spinner"></div>加载中...</div>
+    </div>
+  </div>
+
+  <!-- 模块健康 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="icon">🔧</span> 模块健康检查
+    </div>
+    <div class="modules-grid" id="modulesGrid">
+      <div class="loading"><div class="spinner"></div>加载中...</div>
+    </div>
+  </div>
+
+  <!-- Git 活动 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="icon">📝</span> Git 提交历史
+    </div>
+    <div class="git-list" id="gitList">
+      <div class="loading"><div class="spinner"></div>加载中...</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ========== 全局状态 ==========
+let lastData = null;
+const REFRESH_INTERVAL = 5000; // 5秒刷新
+
+// 节点颜色映射
+const NODE_COLORS = {
+  zhugema: '#e94560',
+  xiaochen: '#00d4ff',
+  zhuguxia: '#2ed573',
+  qoder: '#ffa502',
+  xiaowei: '#a29bfe',
+  'zhugebin-001': '#ff6b35',
+};
+
+const NODE_NAMES = {
+  zhugema: '诸葛马',
+  xiaochen: '小陈',
+  zhuguxia: '诸葛虾',
+  qoder: 'qoder',
+  xiaowei: '小薇',
+  'zhugebin-001': '诸葛斌',
+};
+
+// ========== 数据获取 ==========
+async function fetchData() {
+  try {
+    const res = await fetch('/api/status?_=' + Date.now());
+    const data = await res.json();
+    lastData = data;
+    renderAll(data);
+  } catch (e) {
+    console.error('获取数据失败:', e);
+    // 尝试加载快照
+    try {
+      const res = await fetch('status_snapshot.json');
+      const data = await res.json();
+      lastData = data;
+      renderAll(data);
+    } catch (e2) {
+      console.error('快照加载也失败:', e2);
+    }
+  }
+}
+
+// ========== 渲染 ==========
+function renderAll(data) {
+  renderHeader(data);
+  renderStats(data);
+  renderTopology(data);
+  renderNodes(data);
+  renderCC(data);
+  renderMessages(data);
+  renderTraining(data);
+  renderModules(data);
+  renderGit(data);
+}
+
+function renderHeader(data) {
+  document.getElementById('versionBadge').textContent = data.version || 'v4.0';
+  const t = data.scan_time || '';
+  document.getElementById('scanTime').textContent = t ? '扫描: ' + t.substring(11, 19) : '--';
+}
+
+function renderStats(data) {
+  const activeNodes = data.nodes.filter(n => n.status === 'active').length;
+  document.getElementById('statNodes').textContent = activeNodes;
+  document.getElementById('statMsgs').textContent = data.message_stats?.total || 0;
+  document.getElementById('statCC').textContent = data.cc_tracking?.total || 0;
+  document.getElementById('statAck').textContent = data.cc_tracking?.completed || 0;
+  document.getElementById('statPending').textContent = (data.cc_tracking?.pending || 0) + (data.cc_tracking?.escalated || 0);
+
+  const modules = data.modules || {};
+  const installed = Object.values(modules).filter(v => v === 'installed').length;
+  const total = Object.keys(modules).length;
+  document.getElementById('statModules').textContent = `${installed}/${total}`;
+}
+
+// ========== 拓扑图 ==========
+function renderTopology(data) {
+  const svg = document.getElementById('topologySvg');
+  const cx = 400, cy = 210;
+  const radius = 150;
+
+  // 主节点在中心，其他节点环绕
+  const nodes = data.nodes || [];
+  const hub = nodes.find(n => n.node_id === 'zhugema') || nodes[0];
+  const satellites = nodes.filter(n => n.node_id !== 'zhugema' && n.node_id !== 'zhugebin-001');
+
+  let html = '';
+
+  // 定义渐变
+  html += '<defs>';
+  for (const [nid, color] of Object.entries(NODE_COLORS)) {
+    html += `<radialGradient id="grad-${nid}"><stop offset="0%" stop-color="${color}" stop-opacity="0.3"/><stop offset="100%" stop-color="${color}" stop-opacity="0"/></radialGradient>`;
+  }
+  html += '</defs>';
+
+  // 连接线
+  for (let i = 0; i < satellites.length; i++) {
+    const angle = (i / satellites.length) * 2 * Math.PI - Math.PI / 2;
+    const x = cx + radius * Math.cos(angle);
+    const y = cy + radius * Math.sin(angle);
+    const color = NODE_COLORS[satellites[i].node_id] || '#555';
+    const isCC = satellites[i].inbox_count > 0;
+    html += `<line class="connection-line" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="${color}" stroke-width="${isCC ? 2 : 1}" opacity="${isCC ? 0.6 : 0.3}"/>`;
+  }
+
+  // 中心节点（诸葛马）
+  const hubColor = NODE_COLORS['zhugema'];
+  html += `<circle cx="${cx}" cy="${cy}" r="50" fill="url(#grad-zhugema)" />`;
+  html += `<circle class="hub-pulse" cx="${cx}" cy="${cy}" r="38" fill="${hubColor}" opacity="0.15" />`;
+  html += `<circle class="node-circle" cx="${cx}" cy="${cy}" r="32" fill="${hubColor}" opacity="0.9" stroke="${hubColor}" stroke-width="2"/>`;
+  html += `<text x="${cx}" y="${cy-2}" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">诸葛马</text>`;
+  html += `<text x="${cx}" y="${cy+14}" text-anchor="middle" fill="#fff" font-size="9" opacity="0.8">AI教练·主节点</text>`;
+
+  // 环绕节点
+  for (let i = 0; i < satellites.length; i++) {
+    const n = satellites[i];
+    const angle = (i / satellites.length) * 2 * Math.PI - Math.PI / 2;
+    const x = cx + radius * Math.cos(angle);
+    const y = cy + radius * Math.sin(angle);
+    const color = NODE_COLORS[n.node_id] || '#555';
+    const isActive = n.status === 'active';
+    const r = 26;
+    const msgCount = n.inbox_count + n.sent_count;
+
+    // 光晕
+    html += `<circle cx="${x}" cy="${y}" r="${r+12}" fill="url(#grad-${n.node_id})" />`;
+
+    // 节点圆
+    html += `<circle class="node-circle" cx="${x}" cy="${y}" r="${r}" fill="${color}" opacity="${isActive ? 0.85 : 0.4}" stroke="${color}" stroke-width="${isActive ? 2 : 1}"/>`;
+
+    // 消息计数徽章
+    if (msgCount > 0) {
+      html += `<circle cx="${x+r-4}" cy="${y-r+4}" r="9" fill="#e94560" stroke="#0a0e1a" stroke-width="1.5"/>`;
+      html += `<text x="${x+r-4}" y="${y-r+7}" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">${msgCount > 99 ? '99+' : msgCount}</text>`;
+    }
+
+    // 节点名
+    const name = NODE_NAMES[n.node_id] || n.node_id;
+    html += `<text x="${x}" y="${y+3}" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">${name}</text>`;
+
+    // 角色
+    const roleText = n.role === 'student' ? '学员' : (n.role === 'observer' ? '观察' : '教练');
+    html += `<text x="${x}" y="${y+16}" text-anchor="middle" fill="#fff" font-size="8" opacity="0.7">${roleText}</text>`;
+
+    // 服务器地址
+    if (n.server && n.server !== 'local' && n.server !== 'macOS-local') {
+      const serverText = n.server.length > 15 ? n.server.substring(0, 13) + '..' : n.server;
+      html += `<text x="${x}" y="${y+r+14}" text-anchor="middle" fill="${color}" font-size="8" opacity="0.6">${serverText}</text>`;
+    }
+
+    // 活跃状态指示
+    if (isActive) {
+      html += `<circle cx="${x-r+5}" cy="${y-r+5}" r="4" fill="#2ed573" stroke="#0a0e1a" stroke-width="1.5"><animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/></circle>`;
+    }
+  }
+
+  // 诸葛斌（观察者，放在外围）
+  const observer = nodes.find(n => n.node_id === 'zhugebin-001');
+  if (observer) {
+    const ox = cx, oy = cy - radius - 60;
+    const color = NODE_COLORS['zhugebin-001'];
+    html += `<line x1="${cx}" y1="${cy}" x2="${ox}" y2="${oy}" stroke="${color}" stroke-width="1" stroke-dasharray="3,6" opacity="0.3"/>`;
+    html += `<circle class="node-circle" cx="${ox}" cy="${oy}" r="20" fill="${color}" opacity="0.7" stroke="${color}" stroke-width="1.5"/>`;
+    html += `<text x="${ox}" y="${oy+3}" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">诸葛斌</text>`;
+    html += `<text x="${ox}" y="${oy+14}" text-anchor="middle" fill="#fff" font-size="8" opacity="0.6">观察者</text>`;
+  }
+
+  // 图例
+  html += `<g transform="translate(20, 380)">`;
+  html += `<circle cx="8" cy="8" r="5" fill="#2ed573"/><text x="20" y="12" fill="#8892b0" font-size="10">活跃</text>`;
+  html += `<circle cx="60" cy="8" r="5" fill="#e94560"/><text x="72" y="12" fill="#8892b0" font-size="10">消息数</text>`;
+  html += `<line x1="120" y1="8" x2="140" y2="8" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="5,5"/><text x="146" y="12" fill="#8892b0" font-size="10">同步链路</text>`;
+  html += `</g>`;
+
+  svg.innerHTML = html;
+}
+
+// ========== 节点卡片 ==========
+function renderNodes(data) {
+  const grid = document.getElementById('nodesGrid');
+  const nodes = data.nodes || [];
+
+  grid.innerHTML = nodes.map(n => {
+    const roleClass = n.role || 'student';
+    const statusClass = n.status === 'active' ? 'status-active' : (n.status === 'error' ? 'status-error' : 'status-unknown');
+    const goLevel = n.go_level || n.goal || '';
+
+    return `
+    <div class="node-card ${roleClass}">
+      <div class="node-header">
+        <div class="node-name">${n.name}</div>
+        <span class="node-role-tag role-${roleClass}">${n.label || n.role}</span>
+      </div>
+      <div class="node-info">
+        <div><span class="status-dot ${statusClass}"></span><span class="label">状态:</span> <span class="value">${n.status || 'unknown'}</span></div>
+        <div><span class="label">服务器:</span> <span class="value">${n.server || '—'}</span></div>
+        ${goLevel ? `<div><span class="label">围棋:</span> <span class="value">${goLevel}</span></div>` : ''}
+        ${n.training_style ? `<div><span class="label">风格:</span> <span class="value">${n.training_style}</span></div>` : ''}
+        ${n.tasks_completed ? `<div><span class="label">任务:</span> <span class="value">${n.tasks_completed} | 协作: ${n.collaborations || 0}</span></div>` : ''}
+      </div>
+      <div class="node-stats">
+        <div class="node-stat"><div class="num" style="color:var(--accent-blue)">${n.inbox_count || 0}</div><div class="lbl">收件</div></div>
+        <div class="node-stat"><div class="num" style="color:var(--accent-green)">${n.sent_count || 0}</div><div class="lbl">已发</div></div>
+        <div class="node-stat"><div class="num" style="color:var(--accent-yellow)">${n.token_balance || 0}</div><div class="lbl">代币</div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ========== CC追踪 ==========
+function renderCC(data) {
+  const cc = data.cc_tracking || {};
+  document.getElementById('ccCompleted').textContent = cc.completed || 0;
+  document.getElementById('ccPending').textContent = cc.pending || 0;
+  document.getElementById('ccEscalated').textContent = cc.escalated || 0;
+
+  const list = document.getElementById('ccList');
+  const details = cc.completed_details || [];
+
+  if (details.length === 0) {
+    list.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;">暂无CC消息记录</div>';
+    return;
+  }
+
+  list.innerHTML = details.slice(0, 15).map(d => {
+    const ackBadges = (d.acks || []).map(a => {
+      const name = NODE_NAMES[a] || a;
+      return `<span class="ack-badge">${name}</span>`;
+    }).join('');
+    return `
+    <div class="cc-item">
+      <span class="cc-from">${NODE_NAMES[d.from] || d.from}</span>
+      <span class="cc-subject">${d.subject}</span>
+      <span class="cc-acks">${ackBadges}</span>
+    </div>`;
+  }).join('');
+}
+
+// ========== 消息流 ==========
+function renderMessages(data) {
+  const list = document.getElementById('msgList');
+  const msgs = data.recent_messages || [];
+
+  if (msgs.length === 0) {
+    list.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;">暂无消息</div>';
+    return;
+  }
+
+  list.innerHTML = msgs.map(m => {
+    const typeIcon = m.type === 'cc' ? 'CC' : (m.type === 'ack' ? '✓' : '→');
+    const typeClass = `msg-type-${m.type}`;
+    const fromName = NODE_NAMES[m.from] || m.from || '?';
+    const toName = NODE_NAMES[m.to_node] || m.to_node || '?';
+    const ageText = m.age_minutes < 60 ? `${m.age_minutes}分钟前` : `${Math.floor(m.age_minutes/60)}小时前`;
+
+    return `
+    <div class="msg-item">
+      <div class="msg-type-icon ${typeClass}">${typeIcon}</div>
+      <span class="msg-from">${fromName}</span>
+      <span class="msg-arrow">→</span>
+      <span class="msg-to">${toName}</span>
+      <span class="msg-subject">${m.subject}</span>
+      <span class="msg-age">${ageText}</span>
+    </div>`;
+  }).join('');
+}
+
+// ========== 训练进度 ==========
+function renderTraining(data) {
+  const container = document.getElementById('trainingContainer');
+  const training = data.training_overview || {};
+  const entries = Object.entries(training);
+
+  if (entries.length === 0) {
+    container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;">暂无训练数据</div>';
+    return;
+  }
+
+  container.innerHTML = entries.map(([nid, t]) => {
+    const skills = t.skill_scores || {};
+    const skillBars = Object.entries(skills).map(([name, val]) => {
+      const pct = (val / 10) * 100;
+      const color = val >= 7 ? 'var(--accent-green)' : (val >= 5 ? 'var(--accent-yellow)' : 'var(--accent-red)');
+      return `
+      <div class="skill-bar">
+        <span class="skill-name">${name}</span>
+        <div class="skill-track"><div class="skill-fill" style="width:${pct}%;background:${color}"></div></div>
+        <span class="skill-val">${val.toFixed(1)}</span>
+      </div>`;
+    }).join('');
+
+    const winRate = t.win_rate ? (t.win_rate * 100).toFixed(0) + '%' : '';
+    const totalProblems = t.total_problems || '';
+
+    return `
+    <div class="training-card">
+      <div class="training-header">
+        <span class="training-name">${t.name}</span>
+        <span class="training-level">${t.level || ''} ${winRate ? '| ' + winRate : ''}</span>
+      </div>
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">
+        ${t.style || ''} ${totalProblems ? '| ' + totalProblems + '题' : ''}
+      </div>
+      ${skillBars || '<div style="font-size:11px;color:var(--text-muted);">无技能评分</div>'}
+      ${t.strengths && t.strengths.length ? `<div style="font-size:10px;color:var(--accent-green);margin-top:8px;">✓ ${t.strengths[0]}</div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+// ========== 模块健康 ==========
+function renderModules(data) {
+  const grid = document.getElementById('modulesGrid');
+  const modules = data.modules || {};
+  const names = {
+    harness: 'Harness工程',
+    security: '安全模块',
+    network: '网络通信',
+    vector_memory: '向量记忆',
+    federated_learning: '联邦学习',
+    agent_economy: '智能体经济',
+    mcp_server: 'MCP服务',
+    a2a_protocol: 'A2A协议',
+  };
+
+  grid.innerHTML = Object.entries(modules).map(([key, status]) => {
+    const displayName = names[key] || key;
+    const statusClass = status === 'installed' ? 'module-installed' : 'module-missing';
+    return `
+    <div class="module-item">
+      <span class="module-status ${statusClass}"></span>
+      <span>${displayName}</span>
+    </div>`;
+  }).join('');
+}
+
+// ========== Git 历史 ==========
+function renderGit(data) {
+  const list = document.getElementById('gitList');
+  const commits = data.git_info?.recent_commits || [];
+
+  if (commits.length === 0) {
+    list.innerHTML = '<div style="color:var(--text-muted);">无Git信息</div>';
+    return;
+  }
+
+  list.innerHTML = commits.map(line => {
+    const parts = line.split(' ', 1);
+    const hash = parts[0];
+    const msg = line.substring(hash.length + 1);
+    return `
+    <div class="git-commit">
+      <span class="git-hash">${hash}</span>
+      <span class="git-msg">${msg}</span>
+    </div>`;
+  }).join('');
+}
+
+// ========== 启动 ==========
+fetchData();
+setInterval(fetchData, REFRESH_INTERVAL);
+</script>
+
+</body>
+</html>
