@@ -225,20 +225,52 @@ def load_wrong_book(player_key):
     return []
 
 
+def load_brain_day(player_key: str) -> int:
+    """从 brain.json 读取指定学员的当前训练 day"""
+    brain_paths = [
+        os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "config", "brain.json"),
+        os.path.join(TRAINING_DIR, "brain.json"),
+    ]
+    for bp in brain_paths:
+        if os.path.exists(bp):
+            try:
+                with open(bp, 'r') as f:
+                    brain = json.load(f)
+                tp = brain.get("training_progress", {}).get(player_key, {})
+                day = tp.get("day")
+                if day is not None:
+                    return day
+            except Exception:
+                continue
+    return None
+
+
 def load_status():
+    # 优先从 STATUS_FILE 读取
     if os.path.exists(STATUS_FILE):
         try:
             with open(STATUS_FILE, 'r') as f:
                 return json.load(f)
         except:
             pass
+
+    # fallback: 从 brain.json 读取最新 day（取各学员最大值）
+    day_from_brain = None
+    for pk in ["xiaochen", "zhuguxia", "qoder"]:
+        d = load_brain_day(pk)
+        if d is not None:
+            day_from_brain = max(day_from_brain or 0, d)
+
+    default_day = day_from_brain if day_from_brain else 17
+
     return {
-        "phase": 1, "week": 3, "day": 17,
-        "topic": "挖与分断",
+        "phase": 1, "week": 3, "day": default_day,
+        "topic": DAILY_PLAN_V4.get(default_day, {}).get("topic", "挖与分断"),
         "started_at": None, "completed_at": None,
         "players": {}, "game_result": {},
-        "next_day_topic": "尖与跳的手筋",
+        "next_day_topic": DAILY_PLAN_V4.get(default_day + 1, {}).get("topic", "未知"),
         "v4_deployed": datetime.now().isoformat(),
+        "brain_sync": True if day_from_brain else False,
     }
 
 
