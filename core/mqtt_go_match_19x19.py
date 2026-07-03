@@ -14,10 +14,10 @@ import signal
 from datetime import datetime
 
 # 添加项目路径
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from core.mqtt_client_base import MQTTClientBase
-from core.mqtt_go_match_sync import GoBoard, GoMoveValidator
+from core.mqtt_client_base import MqttClientBase as MQTTClientBase
+from core.mqtt_go_match_sync import GoBoard, GoMatchSync as GoMoveValidator
 
 class Match19x19:
     """19×19围棋实战对局管理器"""
@@ -29,7 +29,7 @@ class Match19x19:
         
         # 创建教练端MQTT客户端
         self.client = MQTTClientBase(
-            client_id=f"coach_match_{self.match_id}",
+            node_id=f"coach_match_{self.match_id}",
             broker_host=broker_host,
             broker_port=broker_port
         )
