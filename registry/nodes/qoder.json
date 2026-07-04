@@ -1,0 +1,34 @@
+{
+  "node_id": "qoder",
+  "name": "qoder",
+  "type": "agent",
+  "perspective": "实战型 Agent，专注于代码质量和开发效率",
+  "knowledge_base": "代码开发，代码审查，重构优化，测试驱动开发",
+  "value_orientation": "代码质量和开发效率并重",
+  "learning_rate": "fast",
+  "capabilities": [
+    "code_development",
+    "code_review",
+    "refactoring",
+    "test_driven_development",
+    "documentation"
+  ],
+  "metadata": {
+    "version": "5.0",
+    "last_updated": "2026-06-25T01:28:00+08:00",
+    "server": "60.205.139.51",
+    "ssh_enabled": true,
+    "ard_enabled": true,
+    "token_balance": 180,
+    "tasks_completed": 45,
+    "collaborations": 20
+  },
+  "status": "active",
+  "registered_at": "2026-06-24T09:53:00+08:00",
+  "last_heartbeat": "2026-06-25T01:30:45",
+  "heartbeat_count": 850,
+  "host": "60.205.139.51",
+  "port": 22,
+  "ssh_enabled": true,
+  "protocol_version": "2.0"
+}

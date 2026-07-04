@@ -1,0 +1,43 @@
+{
+  "test_date": "2026-06-25T23:39:50.928553",
+  "protocol_version": "v3.0",
+  "total_nodes": 6,
+  "total_tests": 5,
+  "passed_tests": 5,
+  "pass_rate": "100.0%",
+  "results": {
+    "latency_test": {
+      "avg_latency_ms": 1.1223554611206055,
+      "min_latency_ms": 1.096487045288086,
+      "max_latency_ms": 1.2238025665283203,
+      "samples": 20,
+      "pass": true
+    },
+    "reliability_test": {
+      "sent": 50,
+      "received": 50,
+      "confirmed": 50,
+      "reliability_percent": 100.0,
+      "pass": true
+    },
+    "signature_test": {
+      "valid": 30,
+      "invalid": 0,
+      "validity_percent": 100.0,
+      "tamper_detected": true,
+      "pass": true
+    },
+    "heartbeat_test": {
+      "heartbeats_sent": 60,
+      "nodes_alive": 6,
+      "total_nodes": 6,
+      "pass": true
+    },
+    "cross_node_test": {
+      "total_pairs": 6,
+      "successful_pairs": 6,
+      "success_percent": 100.0,
+      "pass": true
+    }
+  }
+}

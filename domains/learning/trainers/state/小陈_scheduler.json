@@ -1,0 +1,10 @@
+{
+  "student": "小陈",
+  "current_phase": 1,
+  "current_week": 1,
+  "current_day": 2,
+  "total_training_days": 1,
+  "last_schedule_date": "2026-06-25",
+  "wrong_book": [],
+  "mastery": {}
+}

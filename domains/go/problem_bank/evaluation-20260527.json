@@ -1,0 +1,72 @@
+{
+  "evaluation_id": "eval-20260527-001",
+  "timestamp": "2026-05-27 17:05:27",
+  "day": 2,
+  "topic": "吃子技巧进阶（扑、倒扑、征子、枷吃）",
+  "xiaochen": {
+    "level": "30级",
+    "total_problems": 8,
+    "correct": 7,
+    "accuracy": 87.5,
+    "total_time": 1056,
+    "avg_time": 132,
+    "by_type": {
+      "手筋": {
+        "total": 7,
+        "correct": 6
+      },
+      "死活": {
+        "total": 1,
+        "correct": 1
+      }
+    },
+    "wrong_problems": [
+      "扑与倒扑组合"
+    ],
+    "strengths": [
+      "死活基础扎实",
+      "扑的概念理解较好"
+    ],
+    "weaknesses": [
+      "进阶题目准确率下降",
+      "倒扑与扑的区分不够清晰"
+    ],
+    "rating": "A"
+  },
+  "zhuguxia": {
+    "level": "25级",
+    "total_problems": 8,
+    "correct": 7,
+    "accuracy": 87.5,
+    "total_time": 892,
+    "avg_time": 112,
+    "by_type": {
+      "手筋": {
+        "total": 7,
+        "correct": 6
+      },
+      "死活": {
+        "total": 1,
+        "correct": 1
+      }
+    },
+    "wrong_problems": [
+      "扑的妙用"
+    ],
+    "strengths": [
+      "学习态度积极"
+    ],
+    "weaknesses": [
+      "手筋题错误率偏高",
+      "征子路线判断能力不足"
+    ],
+    "rating": "A"
+  },
+  "game": {
+    "total_moves": 104,
+    "winner": "小陈",
+    "black_score": 174,
+    "white_score": 169
+  },
+  "coach_summary": "双方表现良好，可以进入第3天训练。"
+}

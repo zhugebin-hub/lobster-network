@@ -1,0 +1,1232 @@
+{
+  "domain": "ai_ml",
+  "phase": "phase1",
+  "total": 72,
+  "generated_at": "2026-06-25T20:54:58.376057",
+  "problems": [
+    {
+      "problem_id": "ai-phase1-ch1-AI概念-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI概念",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI概述 - AI概念 #1",
+      "description": "AI概念基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI概念"
+      ],
+      "created_at": "2026-06-25T20:54:58.374897"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI概念-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI概念",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI概述 - AI概念 #2",
+      "description": "AI概念判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI概念"
+      ],
+      "created_at": "2026-06-25T20:54:58.374921"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI概念-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI概念",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI概述 - AI概念 #3",
+      "description": "AI概念填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI概念"
+      ],
+      "created_at": "2026-06-25T20:54:58.374924"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI概念-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI概念",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI概述 - AI概念 #4",
+      "description": "AI概念实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI概念"
+      ],
+      "created_at": "2026-06-25T20:54:58.374927"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI历史-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI历史",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI概述 - AI历史 #1",
+      "description": "AI历史基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI历史"
+      ],
+      "created_at": "2026-06-25T20:54:58.374937"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI历史-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI历史",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI概述 - AI历史 #2",
+      "description": "AI历史判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI历史"
+      ],
+      "created_at": "2026-06-25T20:54:58.374940"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI历史-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI历史",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI概述 - AI历史 #3",
+      "description": "AI历史填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI历史"
+      ],
+      "created_at": "2026-06-25T20:54:58.374943"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI历史-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI历史",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI概述 - AI历史 #4",
+      "description": "AI历史实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI历史"
+      ],
+      "created_at": "2026-06-25T20:54:58.374946"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI分支-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI分支",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI概述 - AI分支 #1",
+      "description": "AI分支基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI分支"
+      ],
+      "created_at": "2026-06-25T20:54:58.374950"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI分支-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI分支",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI概述 - AI分支 #2",
+      "description": "AI分支判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI分支"
+      ],
+      "created_at": "2026-06-25T20:54:58.374954"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI分支-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI分支",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI概述 - AI分支 #3",
+      "description": "AI分支填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI分支"
+      ],
+      "created_at": "2026-06-25T20:54:58.374957"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI分支-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI分支",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI概述 - AI分支 #4",
+      "description": "AI分支实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI分支"
+      ],
+      "created_at": "2026-06-25T20:54:58.374960"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI应用-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI应用",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI概述 - AI应用 #1",
+      "description": "AI应用基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI应用"
+      ],
+      "created_at": "2026-06-25T20:54:58.374964"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI应用-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI应用",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI概述 - AI应用 #2",
+      "description": "AI应用判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI应用"
+      ],
+      "created_at": "2026-06-25T20:54:58.374967"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI应用-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI应用",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI概述 - AI应用 #3",
+      "description": "AI应用填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI应用"
+      ],
+      "created_at": "2026-06-25T20:54:58.374970"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI应用-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI应用",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI概述 - AI应用 #4",
+      "description": "AI应用实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI应用"
+      ],
+      "created_at": "2026-06-25T20:54:58.374973"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI伦理-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI伦理",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI概述 - AI伦理 #1",
+      "description": "AI伦理基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI伦理"
+      ],
+      "created_at": "2026-06-25T20:54:58.374977"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI伦理-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI伦理",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI概述 - AI伦理 #2",
+      "description": "AI伦理判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI伦理"
+      ],
+      "created_at": "2026-06-25T20:54:58.374980"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI伦理-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI伦理",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI概述 - AI伦理 #3",
+      "description": "AI伦理填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI伦理"
+      ],
+      "created_at": "2026-06-25T20:54:58.374983"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI伦理-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI伦理",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI概述 - AI伦理 #4",
+      "description": "AI伦理实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI伦理"
+      ],
+      "created_at": "2026-06-25T20:54:58.374986"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI未来-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI未来",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI概述 - AI未来 #1",
+      "description": "AI未来基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI未来"
+      ],
+      "created_at": "2026-06-25T20:54:58.374990"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI未来-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI未来",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI概述 - AI未来 #2",
+      "description": "AI未来判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI未来"
+      ],
+      "created_at": "2026-06-25T20:54:58.374993"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI未来-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI未来",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI概述 - AI未来 #3",
+      "description": "AI未来填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI未来"
+      ],
+      "created_at": "2026-06-25T20:54:58.374996"
+    },
+    {
+      "problem_id": "ai-phase1-ch1-AI未来-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI未来",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI概述 - AI未来 #4",
+      "description": "AI未来实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI未来"
+      ],
+      "created_at": "2026-06-25T20:54:58.375001"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-监督学习-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "监督学习",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "机器学习基础 - 监督学习 #1",
+      "description": "监督学习基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "监督学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375006"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-监督学习-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "监督学习",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "机器学习基础 - 监督学习 #2",
+      "description": "监督学习判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "监督学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375009"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-监督学习-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "监督学习",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "机器学习基础 - 监督学习 #3",
+      "description": "监督学习填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "监督学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375012"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-监督学习-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "监督学习",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "机器学习基础 - 监督学习 #4",
+      "description": "监督学习实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "监督学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375015"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-无监督学习-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "无监督学习",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "机器学习基础 - 无监督学习 #1",
+      "description": "无监督学习基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "无监督学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375022"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-无监督学习-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "无监督学习",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "机器学习基础 - 无监督学习 #2",
+      "description": "无监督学习判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "无监督学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375025"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-无监督学习-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "无监督学习",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "机器学习基础 - 无监督学习 #3",
+      "description": "无监督学习填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "无监督学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375028"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-无监督学习-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "无监督学习",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "机器学习基础 - 无监督学习 #4",
+      "description": "无监督学习实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "无监督学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375031"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-强化学习-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "强化学习",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "机器学习基础 - 强化学习 #1",
+      "description": "强化学习基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "强化学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375040"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-强化学习-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "强化学习",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "机器学习基础 - 强化学习 #2",
+      "description": "强化学习判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "强化学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375043"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-强化学习-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "强化学习",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "机器学习基础 - 强化学习 #3",
+      "description": "强化学习填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "强化学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375046"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-强化学习-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "强化学习",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "机器学习基础 - 强化学习 #4",
+      "description": "强化学习实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "强化学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375049"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-特征工程-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "特征工程",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "机器学习基础 - 特征工程 #1",
+      "description": "特征工程基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "特征工程"
+      ],
+      "created_at": "2026-06-25T20:54:58.375054"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-特征工程-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "特征工程",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "机器学习基础 - 特征工程 #2",
+      "description": "特征工程判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "特征工程"
+      ],
+      "created_at": "2026-06-25T20:54:58.375057"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-特征工程-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "特征工程",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "机器学习基础 - 特征工程 #3",
+      "description": "特征工程填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "特征工程"
+      ],
+      "created_at": "2026-06-25T20:54:58.375059"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-特征工程-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "特征工程",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "机器学习基础 - 特征工程 #4",
+      "description": "特征工程实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "特征工程"
+      ],
+      "created_at": "2026-06-25T20:54:58.375062"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-模型评估-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "模型评估",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "机器学习基础 - 模型评估 #1",
+      "description": "模型评估基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "模型评估"
+      ],
+      "created_at": "2026-06-25T20:54:58.375066"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-模型评估-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "模型评估",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "机器学习基础 - 模型评估 #2",
+      "description": "模型评估判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "模型评估"
+      ],
+      "created_at": "2026-06-25T20:54:58.375069"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-模型评估-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "模型评估",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "机器学习基础 - 模型评估 #3",
+      "description": "模型评估填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "模型评估"
+      ],
+      "created_at": "2026-06-25T20:54:58.375074"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-模型评估-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "模型评估",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "机器学习基础 - 模型评估 #4",
+      "description": "模型评估实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "模型评估"
+      ],
+      "created_at": "2026-06-25T20:54:58.375077"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-模型优化-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "模型优化",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "机器学习基础 - 模型优化 #1",
+      "description": "模型优化基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "模型优化"
+      ],
+      "created_at": "2026-06-25T20:54:58.375082"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-模型优化-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "模型优化",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "机器学习基础 - 模型优化 #2",
+      "description": "模型优化判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "模型优化"
+      ],
+      "created_at": "2026-06-25T20:54:58.375085"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-模型优化-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "模型优化",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "机器学习基础 - 模型优化 #3",
+      "description": "模型优化填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "模型优化"
+      ],
+      "created_at": "2026-06-25T20:54:58.375088"
+    },
+    {
+      "problem_id": "ai-phase1-ch2-模型优化-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch2",
+      "topic": "模型优化",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "机器学习基础 - 模型优化 #4",
+      "description": "模型优化实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "模型优化"
+      ],
+      "created_at": "2026-06-25T20:54:58.375091"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-神经网络-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "神经网络",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "深度学习基础 - 神经网络 #1",
+      "description": "神经网络基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "神经网络"
+      ],
+      "created_at": "2026-06-25T20:54:58.375095"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-神经网络-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "神经网络",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "深度学习基础 - 神经网络 #2",
+      "description": "神经网络判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "神经网络"
+      ],
+      "created_at": "2026-06-25T20:54:58.375098"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-神经网络-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "神经网络",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "深度学习基础 - 神经网络 #3",
+      "description": "神经网络填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "神经网络"
+      ],
+      "created_at": "2026-06-25T20:54:58.375100"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-神经网络-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "神经网络",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "深度学习基础 - 神经网络 #4",
+      "description": "神经网络实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "神经网络"
+      ],
+      "created_at": "2026-06-25T20:54:58.375157"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-CNN-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "CNN",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "深度学习基础 - CNN #1",
+      "description": "CNN基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "CNN"
+      ],
+      "created_at": "2026-06-25T20:54:58.375162"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-CNN-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "CNN",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "深度学习基础 - CNN #2",
+      "description": "CNN判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "CNN"
+      ],
+      "created_at": "2026-06-25T20:54:58.375165"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-CNN-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "CNN",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "深度学习基础 - CNN #3",
+      "description": "CNN填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "CNN"
+      ],
+      "created_at": "2026-06-25T20:54:58.375168"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-CNN-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "CNN",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "深度学习基础 - CNN #4",
+      "description": "CNN实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "CNN"
+      ],
+      "created_at": "2026-06-25T20:54:58.375171"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-RNN-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "RNN",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "深度学习基础 - RNN #1",
+      "description": "RNN基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "RNN"
+      ],
+      "created_at": "2026-06-25T20:54:58.375178"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-RNN-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "RNN",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "深度学习基础 - RNN #2",
+      "description": "RNN判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "RNN"
+      ],
+      "created_at": "2026-06-25T20:54:58.375181"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-RNN-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "RNN",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "深度学习基础 - RNN #3",
+      "description": "RNN填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "RNN"
+      ],
+      "created_at": "2026-06-25T20:54:58.375184"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-RNN-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "RNN",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "深度学习基础 - RNN #4",
+      "description": "RNN实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "RNN"
+      ],
+      "created_at": "2026-06-25T20:54:58.375187"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-Transformer-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "Transformer",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "深度学习基础 - Transformer #1",
+      "description": "Transformer基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Transformer"
+      ],
+      "created_at": "2026-06-25T20:54:58.375191"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-Transformer-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "Transformer",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "深度学习基础 - Transformer #2",
+      "description": "Transformer判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Transformer"
+      ],
+      "created_at": "2026-06-25T20:54:58.375194"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-Transformer-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "Transformer",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "深度学习基础 - Transformer #3",
+      "description": "Transformer填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Transformer"
+      ],
+      "created_at": "2026-06-25T20:54:58.375197"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-Transformer-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "Transformer",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "深度学习基础 - Transformer #4",
+      "description": "Transformer实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Transformer"
+      ],
+      "created_at": "2026-06-25T20:54:58.375199"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-生成模型-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "生成模型",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "深度学习基础 - 生成模型 #1",
+      "description": "生成模型基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "生成模型"
+      ],
+      "created_at": "2026-06-25T20:54:58.375204"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-生成模型-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "生成模型",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "深度学习基础 - 生成模型 #2",
+      "description": "生成模型判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "生成模型"
+      ],
+      "created_at": "2026-06-25T20:54:58.375207"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-生成模型-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "生成模型",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "深度学习基础 - 生成模型 #3",
+      "description": "生成模型填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "生成模型"
+      ],
+      "created_at": "2026-06-25T20:54:58.375210"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-生成模型-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "生成模型",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "深度学习基础 - 生成模型 #4",
+      "description": "生成模型实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "生成模型"
+      ],
+      "created_at": "2026-06-25T20:54:58.375213"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-训练技巧-001",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "训练技巧",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "深度学习基础 - 训练技巧 #1",
+      "description": "训练技巧基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "训练技巧"
+      ],
+      "created_at": "2026-06-25T20:54:58.375225"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-训练技巧-002",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "训练技巧",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "深度学习基础 - 训练技巧 #2",
+      "description": "训练技巧判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "训练技巧"
+      ],
+      "created_at": "2026-06-25T20:54:58.375270"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-训练技巧-003",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "训练技巧",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "深度学习基础 - 训练技巧 #3",
+      "description": "训练技巧填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "训练技巧"
+      ],
+      "created_at": "2026-06-25T20:54:58.375273"
+    },
+    {
+      "problem_id": "ai-phase1-ch3-训练技巧-004",
+      "domain": "ai_ml",
+      "phase": "phase1",
+      "chapter": "ch3",
+      "topic": "训练技巧",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "深度学习基础 - 训练技巧 #4",
+      "description": "训练技巧实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "训练技巧"
+      ],
+      "created_at": "2026-06-25T20:54:58.375278"
+    }
+  ]
+}

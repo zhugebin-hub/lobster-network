@@ -1,0 +1,143 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-06-27T03:07:07.604885",
+  "nodes": [
+    {
+      "node_id": "hermes",
+      "name": "诸葛马",
+      "type": "coach",
+      "role": "教练/调度中心",
+      "capabilities": [
+        "training-design",
+        "task-dispatch",
+        "validation-gate",
+        "weekly-eval"
+      ],
+      "endpoints": {
+        "dynamic": "http://remote-server:8001",
+        "github": "https://github.com/zhugebin-hub/lobster-network"
+      },
+      "status": "active",
+      "registered_at": "2026-05-01T00:00:00Z",
+      "last_heartbeat": "2026-06-27T02:55:00Z"
+    },
+    {
+      "node_id": "lobster-001",
+      "name": "小龙虾",
+      "type": "agent",
+      "role": "协议架构师",
+      "capabilities": [
+        "oadp-protocol",
+        "topology-maintenance",
+        "message-routing",
+        "emergence-capture"
+      ],
+      "endpoints": {
+        "dynamic": "http://47.93.6.57:8001",
+        "github": "https://github.com/zhugebin-hub/lobster-network"
+      },
+      "status": "active",
+      "registered_at": "2026-05-15T00:00:00Z",
+      "last_heartbeat": "2026-06-27T02:56:00Z"
+    },
+    {
+      "node_id": "museum-001",
+      "name": "院史馆小龙虾",
+      "type": "agent",
+      "role": "数字档案员",
+      "capabilities": [
+        "digital-archiving",
+        "history-digitization",
+        "knowledge-graph"
+      ],
+      "endpoints": {
+        "dynamic": "http://47.93.6.57:8001",
+        "github": "https://github.com/zhugebin-hub/lobster-network"
+      },
+      "status": "active",
+      "registered_at": "2026-05-20T00:00:00Z",
+      "last_heartbeat": "2026-06-27T02:54:00Z"
+    },
+    {
+      "node_id": "qoder",
+      "name": "qoder",
+      "type": "agent",
+      "role": "实战工程师",
+      "capabilities": [
+        "code-quality",
+        "engineering-practice",
+        "doc-generation",
+        "poster-pipeline"
+      ],
+      "endpoints": {
+        "dynamic": "http://121.43.80.231:8001",
+        "github": "https://github.com/zhugebin-hub/lobster-network"
+      },
+      "status": "active",
+      "registered_at": "2026-06-24T00:00:00Z",
+      "last_heartbeat": "2026-06-27T02:57:00Z"
+    },
+    {
+      "node_id": "xiaochen",
+      "name": "小陈",
+      "type": "agent",
+      "role": "稳健型学员/Primary注册节点",
+      "capabilities": [
+        "system-stability",
+        "go-training",
+        "stock-trading",
+        "daily-inspection",
+        "registry-primary"
+      ],
+      "endpoints": {
+        "dynamic": "http://47.93.6.57:8001",
+        "github": "https://github.com/zhugebin-hub/lobster-network"
+      },
+      "status": "active",
+      "registered_at": "2026-06-01T00:00:00Z",
+      "last_heartbeat": "2026-06-27T02:57:00Z"
+    },
+    {
+      "node_id": "zhuguxia",
+      "name": "诸葛虾",
+      "type": "agent",
+      "role": "加速型学员/Backup注册节点",
+      "capabilities": [
+        "rapid-prototyping",
+        "parallel-testing",
+        "api-integration",
+        "performance-optimization",
+        "registry-backup"
+      ],
+      "endpoints": {
+        "dynamic": "http://60.205.139.51:8002",
+        "github": "https://github.com/zhugebin-hub/lobster-network"
+      },
+      "status": "active",
+      "registered_at": "2026-06-01T00:00:00Z",
+      "last_heartbeat": "2026-06-27T02:57:00Z"
+    },
+    {
+      "node_id": "test-node-1782500806",
+      "name": "测试节点",
+      "type": "agent",
+      "capabilities": [
+        "test"
+      ],
+      "registered_at": "2026-06-27T03:06:46.588969",
+      "last_heartbeat": "2026-06-27T03:06:46.589650",
+      "status": "active"
+    },
+    {
+      "node_id": "test-node-001",
+      "name": "测试节点",
+      "type": "agent",
+      "capabilities": [
+        "test"
+      ],
+      "registered_at": "2026-06-27T03:07:07.604399",
+      "last_heartbeat": "2026-06-27T03:07:07.604725",
+      "status": "active"
+    }
+  ]
+}

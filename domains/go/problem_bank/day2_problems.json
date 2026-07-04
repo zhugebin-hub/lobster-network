@@ -1,0 +1,78 @@
+{
+  "day": 2,
+  "topic": "吃子技巧进阶",
+  "problems": [
+    {
+      "problem_id": "capture-001",
+      "type": "手筋",
+      "title": "扑的妙用",
+      "description": "黑先，如何利用扑来吃掉白棋？",
+      "answer": "扑",
+      "solution": "黑1扑入白棋虎口，白2必须提，黑3再打吃，白棋接不归。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "capture-002",
+      "type": "手筋",
+      "title": "倒扑反杀",
+      "description": "黑先，白棋看似有两眼，黑如何用倒扑破眼？",
+      "answer": "倒扑",
+      "solution": "黑1直接扑入要点，白若提则自撞一气，黑可再打吃吃掉数子。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "capture-003",
+      "type": "手筋",
+      "title": "征子路线判断",
+      "description": "黑先，能否通过连续打吃（征子）吃掉白棋？",
+      "answer": "可以征吃",
+      "solution": "黑1打吃方向正确，白每逃一气都被黑连续打吃，直至棋盘边缘无法逃脱。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "capture-004",
+      "type": "手筋",
+      "title": "枷吃封锁",
+      "description": "黑先，如何用枷吃（门吃）封锁白棋逃跑路线？",
+      "answer": "枷吃",
+      "solution": "黑1跳枷，白棋无论向哪个方向逃都被封锁，无法逃出包围圈。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "capture-005",
+      "type": "死活",
+      "title": "扑后杀棋",
+      "description": "黑先，白棋眼位丰富，黑如何利用扑来杀棋？",
+      "answer": "死",
+      "solution": "黑1扑入破眼，白2提，黑3点入眼位要点，白无法做出两眼。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "capture-006",
+      "type": "手筋",
+      "title": "双打吃选择",
+      "description": "黑先，一子落下同时打吃两块白棋，白只能救一边。",
+      "answer": "双打吃",
+      "solution": "黑1下在要害处，同时打吃左右两块白棋，白只能救一边，另一边被吃。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "capture-007",
+      "type": "手筋",
+      "title": "征子与引征",
+      "description": "白棋有引征子，黑还能征吃吗？",
+      "answer": "不能征吃",
+      "solution": "白棋在征子路线上有接应子，黑若强行征吃会被反断，应改用其他手法。",
+      "difficulty": "进阶"
+    },
+    {
+      "problem_id": "capture-008",
+      "type": "手筋",
+      "title": "扑与倒扑组合",
+      "description": "黑先，组合使用扑和倒扑吃掉白棋。",
+      "answer": "扑+倒扑",
+      "solution": "黑1先扑，白2提后棋形变重，黑3倒扑入要害，白棋无法兼顾。",
+      "difficulty": "进阶"
+    }
+  ]
+}

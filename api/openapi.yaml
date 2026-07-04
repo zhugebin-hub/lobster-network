@@ -1,0 +1,581 @@
+openapi: 3.0.3
+info:
+  title: 小龙虾网络 API
+  description: 小龙虾网络（Lobster Network）RESTful API 文档
+  version: 4.0.0
+  contact:
+    name: 信电大虾
+    url: https://github.com/zhugebin-hub/lobster-network
+
+servers:
+  - url: https://api.lobster-network.ai/v4
+    description: 生产环境
+  - url: https://staging-api.lobster-network.ai/v4
+    description: 测试环境
+
+paths:
+  /wallet:
+    get:
+      summary: 获取钱包信息
+      operationId: getWallet
+      tags:
+        - 钱包
+      parameters:
+        - name: node_id
+          in: query
+          description: 节点 ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wallet'
+
+    post:
+      summary: 创建钱包
+      operationId: createWallet
+      tags:
+        - 钱包
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWalletRequest'
+      responses:
+        '201':
+          description: 创建成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wallet'
+
+  /wallet/{node_id}/balance:
+    get:
+      summary: 获取余额
+      operationId: getBalance
+      tags:
+        - 钱包
+      parameters:
+        - name: node_id
+          in: path
+          description: 节点 ID
+          required: true
+          schema:
+            type: string
+        - name: currency
+          in: query
+          description: 币种
+          schema:
+            type: string
+            default: "🦞"
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Balance'
+
+  /wallet/{node_id}/transfer:
+    post:
+      summary: 转账
+      operationId: transfer
+      tags:
+        - 钱包
+      parameters:
+        - name: node_id
+          in: path
+          description: 发送方节点 ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferRequest'
+      responses:
+        '200':
+          description: 转账成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+
+  /node:
+    get:
+      summary: 获取节点列表
+      operationId: getNodes
+      tags:
+        - 节点
+      parameters:
+        - name: status
+          in: query
+          description: 节点状态
+          schema:
+            type: string
+            enum: [active, inactive, all]
+            default: active
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Node'
+
+    post:
+      summary: 注册节点
+      operationId: registerNode
+      tags:
+        - 节点
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterNodeRequest'
+      responses:
+        '201':
+          description: 注册成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+
+  /node/{node_id}/mine:
+    post:
+      summary: 挖矿
+      operationId: mine
+      tags:
+        - 节点
+      parameters:
+        - name: node_id
+          in: path
+          description: 节点 ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MineRequest'
+      responses:
+        '200':
+          description: 挖矿成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MineResponse'
+
+  /task:
+    get:
+      summary: 获取任务列表
+      operationId: getTasks
+      tags:
+        - 任务
+      parameters:
+        - name: status
+          in: query
+          description: 任务状态
+          schema:
+            type: string
+            enum: [pending, assigned, completed, all]
+            default: pending
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+
+    post:
+      summary: 发布任务
+      operationId: createTask
+      tags:
+        - 任务
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTaskRequest'
+      responses:
+        '201':
+          description: 创建成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+
+  /task/{task_id}/claim:
+    post:
+      summary: 领取任务
+      operationId: claimTask
+      tags:
+        - 任务
+      parameters:
+        - name: task_id
+          in: path
+          description: 任务 ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClaimTaskRequest'
+      responses:
+        '200':
+          description: 领取成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+
+  /proposal:
+    get:
+      summary: 获取提案列表
+      operationId: getProposals
+      tags:
+        - 治理
+      parameters:
+        - name: status
+          in: query
+          description: 提案状态
+          schema:
+            type: string
+            enum: [draft, active, passed, rejected, all]
+            default: active
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Proposal'
+
+    post:
+      summary: 创建提案
+      operationId: createProposal
+      tags:
+        - 治理
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProposalRequest'
+      responses:
+        '201':
+          description: 创建成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Proposal'
+
+  /proposal/{proposal_id}/vote:
+    post:
+      summary: 投票
+      operationId: vote
+      tags:
+        - 治理
+      parameters:
+        - name: proposal_id
+          in: path
+          description: 提案 ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoteRequest'
+      responses:
+        '200':
+          description: 投票成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vote'
+
+  /stats:
+    get:
+      summary: 获取网络统计
+      operationId: getStats
+      tags:
+        - 统计
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkStats'
+
+components:
+  schemas:
+    Wallet:
+      type: object
+      properties:
+        node_id:
+          type: string
+        address:
+          type: string
+        balance:
+          type: number
+        staked:
+          type: number
+        created_at:
+          type: string
+          format: date-time
+
+    Balance:
+      type: object
+      properties:
+        node_id:
+          type: string
+        currency:
+          type: string
+        balance:
+          type: number
+        staked:
+          type: number
+
+    TransferRequest:
+      type: object
+      required:
+        - to_node_id
+        - amount
+      properties:
+        to_node_id:
+          type: string
+        amount:
+          type: number
+        currency:
+          type: string
+          default: "🦞"
+        memo:
+          type: string
+
+    Transaction:
+      type: object
+      properties:
+        tx_id:
+          type: string
+        from_node_id:
+          type: string
+        to_node_id:
+          type: string
+        amount:
+          type: number
+        currency:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+
+    Node:
+      type: object
+      properties:
+        node_id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        perspective:
+          type: string
+        knowledge_base:
+          type: string
+        registered_at:
+          type: string
+          format: date-time
+
+    RegisterNodeRequest:
+      type: object
+      required:
+        - node_id
+        - name
+        - type
+      properties:
+        node_id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum: [agent, coach, student]
+        perspective:
+          type: string
+        knowledge_base:
+          type: string
+
+    MineRequest:
+      type: object
+      properties:
+        emergence_score:
+          type: number
+          description: 涌现值 (0-1)
+          default: 0.5
+
+    MineResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        reward:
+          type: number
+        message:
+          type: string
+
+    Task:
+      type: object
+      properties:
+        task_id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        publisher_id:
+          type: string
+        assignee_id:
+          type: string
+        status:
+          type: string
+        reward_amount:
+          type: number
+        created_at:
+          type: string
+          format: date-time
+
+    CreateTaskRequest:
+      type: object
+      required:
+        - title
+        - description
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        reward_amount:
+          type: number
+          default: 10.0
+        task_type:
+          type: string
+          enum: [labor, flash, bounty]
+          default: labor
+
+    ClaimTaskRequest:
+      type: object
+      required:
+        - node_id
+      properties:
+        node_id:
+          type: string
+
+    Proposal:
+      type: object
+      properties:
+        proposal_id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        creator_id:
+          type: string
+        status:
+          type: string
+        for_votes:
+          type: number
+        against_votes:
+          type: number
+        created_at:
+          type: string
+          format: date-time
+
+    CreateProposalRequest:
+      type: object
+      required:
+        - title
+        - description
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        proposal_type:
+          type: string
+          enum: [param, treasury, contract, generic]
+          default: generic
+
+    VoteRequest:
+      type: object
+      required:
+        - voter_id
+        - option
+      properties:
+        voter_id:
+          type: string
+        option:
+          type: string
+          enum: [for, against, abstain]
+        reason:
+          type: string
+
+    Vote:
+      type: object
+      properties:
+        voter_id:
+          type: string
+        option:
+          type: string
+        weight:
+          type: number
+        timestamp:
+          type: string
+          format: date-time
+
+    NetworkStats:
+      type: object
+      properties:
+        total_nodes:
+          type: integer
+        active_nodes:
+          type: integer
+        total_tasks:
+          type: integer
+        completed_tasks:
+          type: integer
+        total_proposals:
+          type: integer
+        total_supply:
+          type: number
+        circulating_supply:
+          type: number
+        blockchain_length:
+          type: integer

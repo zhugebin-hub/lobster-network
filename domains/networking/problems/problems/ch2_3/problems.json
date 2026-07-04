@@ -1,0 +1,102 @@
+{
+  "domain": "networking",
+  "chapter": "ch2_3",
+  "total": 6,
+  "generated_at": "2026-06-25T19:07:37.991847",
+  "problems": [
+    {
+      "problem_id": "net-ch2_3-MAC地址学习-007",
+      "domain": "networking",
+      "chapter": "ch2_3",
+      "topic": "MAC地址学习",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "第二、三章 交换机原理与STP算法 - MAC地址学习",
+      "description": "交换机学习MAC地址的依据是？",
+      "answer": "A. 数据帧的源MAC地址",
+      "options": [
+        "A. 数据帧的源MAC地址",
+        "B. 数据帧的目的MAC地址",
+        "C. ARP请求",
+        "D. ICMP报文"
+      ],
+      "knowledge": "交换机通过查看数据帧源MAC地址学习，建立MAC地址表",
+      "created_at": "2026-06-25T19:07:37.990673"
+    },
+    {
+      "problem_id": "net-ch2_3-MAC地址学习-008",
+      "domain": "networking",
+      "chapter": "ch2_3",
+      "topic": "MAC地址学习",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "第二、三章 交换机原理与STP算法 - MAC地址学习",
+      "description": "交换机通过查看数据帧的源MAC地址来学习",
+      "answer": "对",
+      "options": [],
+      "knowledge": "交换机通过查看数据帧源MAC地址学习，建立MAC地址表",
+      "created_at": "2026-06-25T19:07:37.990676"
+    },
+    {
+      "problem_id": "net-ch2_3-MAC地址学习-009",
+      "domain": "networking",
+      "chapter": "ch2_3",
+      "topic": "MAC地址学习",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "第二、三章 交换机原理与STP算法 - MAC地址学习",
+      "description": "交换机建立的表称为____地址表",
+      "answer": "MAC",
+      "options": [],
+      "knowledge": "交换机通过查看数据帧源MAC地址学习，建立MAC地址表",
+      "created_at": "2026-06-25T19:07:37.990679"
+    },
+    {
+      "problem_id": "net-ch2_3-STP根桥选举-010",
+      "domain": "networking",
+      "chapter": "ch2_3",
+      "topic": "STP根桥选举",
+      "type": "选择",
+      "difficulty": "初级",
+      "title": "第二、三章 交换机原理与STP算法 - STP根桥选举",
+      "description": "STP根桥选举的依据是？",
+      "answer": "A. Bridge ID最小",
+      "options": [
+        "A. Bridge ID最小",
+        "B. Bridge ID最大",
+        "C. MAC地址最小",
+        "D. 优先级最大"
+      ],
+      "knowledge": "Bridge ID最小的成为根桥，Bridge ID=优先级+MAC地址",
+      "created_at": "2026-06-25T19:07:37.990683"
+    },
+    {
+      "problem_id": "net-ch2_3-STP根桥选举-011",
+      "domain": "networking",
+      "chapter": "ch2_3",
+      "topic": "STP根桥选举",
+      "type": "判断",
+      "difficulty": "初级",
+      "title": "第二、三章 交换机原理与STP算法 - STP根桥选举",
+      "description": "优先级值越大越可能成为根桥",
+      "answer": "错",
+      "options": [],
+      "knowledge": "Bridge ID最小的成为根桥，Bridge ID=优先级+MAC地址",
+      "created_at": "2026-06-25T19:07:37.990685"
+    },
+    {
+      "problem_id": "net-ch2_3-STP根桥选举-012",
+      "domain": "networking",
+      "chapter": "ch2_3",
+      "topic": "STP根桥选举",
+      "type": "填空",
+      "difficulty": "中级",
+      "title": "第二、三章 交换机原理与STP算法 - STP根桥选举",
+      "description": "STP中端口角色包括根端口、____端口和阻塞端口",
+      "answer": "指定",
+      "options": [],
+      "knowledge": "Bridge ID最小的成为根桥，Bridge ID=优先级+MAC地址",
+      "created_at": "2026-06-25T19:07:37.990688"
+    }
+  ]
+}

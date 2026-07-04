@@ -1,0 +1,1232 @@
+{
+  "domain": "ai_ml",
+  "phase": "phase2",
+  "total": 72,
+  "generated_at": "2026-06-25T20:54:58.378818",
+  "problems": [
+    {
+      "problem_id": "ai-phase2-ch4-文本预处理-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "文本预处理",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "自然语言处理 - 文本预处理 #1",
+      "description": "文本预处理基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "文本预处理"
+      ],
+      "created_at": "2026-06-25T20:54:58.375283"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-文本预处理-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "文本预处理",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "自然语言处理 - 文本预处理 #2",
+      "description": "文本预处理判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "文本预处理"
+      ],
+      "created_at": "2026-06-25T20:54:58.375294"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-文本预处理-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "文本预处理",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "自然语言处理 - 文本预处理 #3",
+      "description": "文本预处理填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "文本预处理"
+      ],
+      "created_at": "2026-06-25T20:54:58.375298"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-文本预处理-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "文本预处理",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "自然语言处理 - 文本预处理 #4",
+      "description": "文本预处理实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "文本预处理"
+      ],
+      "created_at": "2026-06-25T20:54:58.375301"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-词向量-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "词向量",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "自然语言处理 - 词向量 #1",
+      "description": "词向量基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "词向量"
+      ],
+      "created_at": "2026-06-25T20:54:58.375307"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-词向量-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "词向量",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "自然语言处理 - 词向量 #2",
+      "description": "词向量判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "词向量"
+      ],
+      "created_at": "2026-06-25T20:54:58.375311"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-词向量-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "词向量",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "自然语言处理 - 词向量 #3",
+      "description": "词向量填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "词向量"
+      ],
+      "created_at": "2026-06-25T20:54:58.375314"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-词向量-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "词向量",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "自然语言处理 - 词向量 #4",
+      "description": "词向量实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "词向量"
+      ],
+      "created_at": "2026-06-25T20:54:58.375317"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-语言模型-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "语言模型",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "自然语言处理 - 语言模型 #1",
+      "description": "语言模型基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "语言模型"
+      ],
+      "created_at": "2026-06-25T20:54:58.375321"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-语言模型-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "语言模型",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "自然语言处理 - 语言模型 #2",
+      "description": "语言模型判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "语言模型"
+      ],
+      "created_at": "2026-06-25T20:54:58.375324"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-语言模型-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "语言模型",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "自然语言处理 - 语言模型 #3",
+      "description": "语言模型填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "语言模型"
+      ],
+      "created_at": "2026-06-25T20:54:58.375327"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-语言模型-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "语言模型",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "自然语言处理 - 语言模型 #4",
+      "description": "语言模型实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "语言模型"
+      ],
+      "created_at": "2026-06-25T20:54:58.375330"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-文本分类-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "文本分类",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "自然语言处理 - 文本分类 #1",
+      "description": "文本分类基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "文本分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.375334"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-文本分类-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "文本分类",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "自然语言处理 - 文本分类 #2",
+      "description": "文本分类判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "文本分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.375337"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-文本分类-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "文本分类",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "自然语言处理 - 文本分类 #3",
+      "description": "文本分类填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "文本分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.375340"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-文本分类-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "文本分类",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "自然语言处理 - 文本分类 #4",
+      "description": "文本分类实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "文本分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.375343"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-机器翻译-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "机器翻译",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "自然语言处理 - 机器翻译 #1",
+      "description": "机器翻译基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "机器翻译"
+      ],
+      "created_at": "2026-06-25T20:54:58.375347"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-机器翻译-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "机器翻译",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "自然语言处理 - 机器翻译 #2",
+      "description": "机器翻译判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "机器翻译"
+      ],
+      "created_at": "2026-06-25T20:54:58.375350"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-机器翻译-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "机器翻译",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "自然语言处理 - 机器翻译 #3",
+      "description": "机器翻译填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "机器翻译"
+      ],
+      "created_at": "2026-06-25T20:54:58.375353"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-机器翻译-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "机器翻译",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "自然语言处理 - 机器翻译 #4",
+      "description": "机器翻译实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "机器翻译"
+      ],
+      "created_at": "2026-06-25T20:54:58.375356"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-问答系统-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "问答系统",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "自然语言处理 - 问答系统 #1",
+      "description": "问答系统基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "问答系统"
+      ],
+      "created_at": "2026-06-25T20:54:58.375360"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-问答系统-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "问答系统",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "自然语言处理 - 问答系统 #2",
+      "description": "问答系统判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "问答系统"
+      ],
+      "created_at": "2026-06-25T20:54:58.375363"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-问答系统-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "问答系统",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "自然语言处理 - 问答系统 #3",
+      "description": "问答系统填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "问答系统"
+      ],
+      "created_at": "2026-06-25T20:54:58.375366"
+    },
+    {
+      "problem_id": "ai-phase2-ch4-问答系统-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch4",
+      "topic": "问答系统",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "自然语言处理 - 问答系统 #4",
+      "description": "问答系统实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "问答系统"
+      ],
+      "created_at": "2026-06-25T20:54:58.375369"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-图像分类-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "图像分类",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "计算机视觉 - 图像分类 #1",
+      "description": "图像分类基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图像分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.375376"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-图像分类-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "图像分类",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "计算机视觉 - 图像分类 #2",
+      "description": "图像分类判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图像分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.375379"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-图像分类-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "图像分类",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "计算机视觉 - 图像分类 #3",
+      "description": "图像分类填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图像分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.375382"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-图像分类-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "图像分类",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "计算机视觉 - 图像分类 #4",
+      "description": "图像分类实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图像分类"
+      ],
+      "created_at": "2026-06-25T20:54:58.375385"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-目标检测-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "目标检测",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "计算机视觉 - 目标检测 #1",
+      "description": "目标检测基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "目标检测"
+      ],
+      "created_at": "2026-06-25T20:54:58.375389"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-目标检测-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "目标检测",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "计算机视觉 - 目标检测 #2",
+      "description": "目标检测判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "目标检测"
+      ],
+      "created_at": "2026-06-25T20:54:58.375392"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-目标检测-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "目标检测",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "计算机视觉 - 目标检测 #3",
+      "description": "目标检测填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "目标检测"
+      ],
+      "created_at": "2026-06-25T20:54:58.375397"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-目标检测-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "目标检测",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "计算机视觉 - 目标检测 #4",
+      "description": "目标检测实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "目标检测"
+      ],
+      "created_at": "2026-06-25T20:54:58.375400"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-图像分割-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "图像分割",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "计算机视觉 - 图像分割 #1",
+      "description": "图像分割基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图像分割"
+      ],
+      "created_at": "2026-06-25T20:54:58.375404"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-图像分割-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "图像分割",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "计算机视觉 - 图像分割 #2",
+      "description": "图像分割判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图像分割"
+      ],
+      "created_at": "2026-06-25T20:54:58.375410"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-图像分割-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "图像分割",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "计算机视觉 - 图像分割 #3",
+      "description": "图像分割填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图像分割"
+      ],
+      "created_at": "2026-06-25T20:54:58.375416"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-图像分割-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "图像分割",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "计算机视觉 - 图像分割 #4",
+      "description": "图像分割实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图像分割"
+      ],
+      "created_at": "2026-06-25T20:54:58.375420"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-图像生成-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "图像生成",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "计算机视觉 - 图像生成 #1",
+      "description": "图像生成基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图像生成"
+      ],
+      "created_at": "2026-06-25T20:54:58.375424"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-图像生成-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "图像生成",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "计算机视觉 - 图像生成 #2",
+      "description": "图像生成判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图像生成"
+      ],
+      "created_at": "2026-06-25T20:54:58.375427"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-图像生成-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "图像生成",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "计算机视觉 - 图像生成 #3",
+      "description": "图像生成填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图像生成"
+      ],
+      "created_at": "2026-06-25T20:54:58.375429"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-图像生成-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "图像生成",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "计算机视觉 - 图像生成 #4",
+      "description": "图像生成实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "图像生成"
+      ],
+      "created_at": "2026-06-25T20:54:58.375432"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-视频分析-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "视频分析",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "计算机视觉 - 视频分析 #1",
+      "description": "视频分析基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "视频分析"
+      ],
+      "created_at": "2026-06-25T20:54:58.375436"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-视频分析-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "视频分析",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "计算机视觉 - 视频分析 #2",
+      "description": "视频分析判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "视频分析"
+      ],
+      "created_at": "2026-06-25T20:54:58.375439"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-视频分析-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "视频分析",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "计算机视觉 - 视频分析 #3",
+      "description": "视频分析填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "视频分析"
+      ],
+      "created_at": "2026-06-25T20:54:58.375442"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-视频分析-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "视频分析",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "计算机视觉 - 视频分析 #4",
+      "description": "视频分析实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "视频分析"
+      ],
+      "created_at": "2026-06-25T20:54:58.375445"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-3D视觉-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "3D视觉",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "计算机视觉 - 3D视觉 #1",
+      "description": "3D视觉基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "3D视觉"
+      ],
+      "created_at": "2026-06-25T20:54:58.375448"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-3D视觉-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "3D视觉",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "计算机视觉 - 3D视觉 #2",
+      "description": "3D视觉判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "3D视觉"
+      ],
+      "created_at": "2026-06-25T20:54:58.375451"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-3D视觉-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "3D视觉",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "计算机视觉 - 3D视觉 #3",
+      "description": "3D视觉填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "3D视觉"
+      ],
+      "created_at": "2026-06-25T20:54:58.375457"
+    },
+    {
+      "problem_id": "ai-phase2-ch5-3D视觉-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch5",
+      "topic": "3D视觉",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "计算机视觉 - 3D视觉 #4",
+      "description": "3D视觉实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "3D视觉"
+      ],
+      "created_at": "2026-06-25T20:54:58.375460"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-MDP-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "MDP",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "强化学习 - MDP #1",
+      "description": "MDP基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "MDP"
+      ],
+      "created_at": "2026-06-25T20:54:58.375464"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-MDP-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "MDP",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "强化学习 - MDP #2",
+      "description": "MDP判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "MDP"
+      ],
+      "created_at": "2026-06-25T20:54:58.375467"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-MDP-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "MDP",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "强化学习 - MDP #3",
+      "description": "MDP填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "MDP"
+      ],
+      "created_at": "2026-06-25T20:54:58.375469"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-MDP-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "MDP",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "强化学习 - MDP #4",
+      "description": "MDP实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "MDP"
+      ],
+      "created_at": "2026-06-25T20:54:58.375472"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-Q学习-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "Q学习",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "强化学习 - Q学习 #1",
+      "description": "Q学习基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Q学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375476"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-Q学习-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "Q学习",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "强化学习 - Q学习 #2",
+      "description": "Q学习判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Q学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375479"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-Q学习-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "Q学习",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "强化学习 - Q学习 #3",
+      "description": "Q学习填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Q学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375482"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-Q学习-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "Q学习",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "强化学习 - Q学习 #4",
+      "description": "Q学习实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Q学习"
+      ],
+      "created_at": "2026-06-25T20:54:58.375485"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-策略梯度-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "策略梯度",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "强化学习 - 策略梯度 #1",
+      "description": "策略梯度基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "策略梯度"
+      ],
+      "created_at": "2026-06-25T20:54:58.375492"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-策略梯度-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "策略梯度",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "强化学习 - 策略梯度 #2",
+      "description": "策略梯度判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "策略梯度"
+      ],
+      "created_at": "2026-06-25T20:54:58.375495"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-策略梯度-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "策略梯度",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "强化学习 - 策略梯度 #3",
+      "description": "策略梯度填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "策略梯度"
+      ],
+      "created_at": "2026-06-25T20:54:58.375498"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-策略梯度-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "策略梯度",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "强化学习 - 策略梯度 #4",
+      "description": "策略梯度实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "策略梯度"
+      ],
+      "created_at": "2026-06-25T20:54:58.375501"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-Actor-Critic-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "Actor-Critic",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "强化学习 - Actor-Critic #1",
+      "description": "Actor-Critic基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Actor-Critic"
+      ],
+      "created_at": "2026-06-25T20:54:58.375505"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-Actor-Critic-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "Actor-Critic",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "强化学习 - Actor-Critic #2",
+      "description": "Actor-Critic判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Actor-Critic"
+      ],
+      "created_at": "2026-06-25T20:54:58.375508"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-Actor-Critic-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "Actor-Critic",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "强化学习 - Actor-Critic #3",
+      "description": "Actor-Critic填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Actor-Critic"
+      ],
+      "created_at": "2026-06-25T20:54:58.375511"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-Actor-Critic-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "Actor-Critic",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "强化学习 - Actor-Critic #4",
+      "description": "Actor-Critic实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "Actor-Critic"
+      ],
+      "created_at": "2026-06-25T20:54:58.375514"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-多智能体-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "多智能体",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "强化学习 - 多智能体 #1",
+      "description": "多智能体基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "多智能体"
+      ],
+      "created_at": "2026-06-25T20:54:58.375521"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-多智能体-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "多智能体",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "强化学习 - 多智能体 #2",
+      "description": "多智能体判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "多智能体"
+      ],
+      "created_at": "2026-06-25T20:54:58.375524"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-多智能体-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "多智能体",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "强化学习 - 多智能体 #3",
+      "description": "多智能体填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "多智能体"
+      ],
+      "created_at": "2026-06-25T20:54:58.375527"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-多智能体-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "多智能体",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "强化学习 - 多智能体 #4",
+      "description": "多智能体实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "多智能体"
+      ],
+      "created_at": "2026-06-25T20:54:58.375530"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-应用实战-001",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "应用实战",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "强化学习 - 应用实战 #1",
+      "description": "应用实战基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "应用实战"
+      ],
+      "created_at": "2026-06-25T20:54:58.375537"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-应用实战-002",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "应用实战",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "强化学习 - 应用实战 #2",
+      "description": "应用实战判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "应用实战"
+      ],
+      "created_at": "2026-06-25T20:54:58.375540"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-应用实战-003",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "应用实战",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "强化学习 - 应用实战 #3",
+      "description": "应用实战填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "应用实战"
+      ],
+      "created_at": "2026-06-25T20:54:58.375542"
+    },
+    {
+      "problem_id": "ai-phase2-ch6-应用实战-004",
+      "domain": "ai_ml",
+      "phase": "phase2",
+      "chapter": "ch6",
+      "topic": "应用实战",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "强化学习 - 应用实战 #4",
+      "description": "应用实战实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "应用实战"
+      ],
+      "created_at": "2026-06-25T20:54:58.375560"
+    }
+  ]
+}

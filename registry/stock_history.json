@@ -1,0 +1,27 @@
+{
+  "predictions": [
+    {
+      "date": "2026-06-26T08:38:56.917674",
+      "student": "zhugebin-001",
+      "total": 17,
+      "correct": 10,
+      "accuracy": 0.5882352941176471
+    },
+    {
+      "date": "2026-06-26T08:39:21.920057",
+      "student": "xiaochen",
+      "total": 7,
+      "correct": 5,
+      "accuracy": 0.7142857142857143
+    },
+    {
+      "date": "2026-06-26T08:39:21.969527",
+      "student": "zhuguxia",
+      "total": 10,
+      "correct": 9,
+      "accuracy": 0.9
+    }
+  ],
+  "accuracy": {},
+  "streak": 0
+}

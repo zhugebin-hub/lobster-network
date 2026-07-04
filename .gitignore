@@ -1,24 +1,61 @@
-# Node modules
-node_modules/
-ppt-opening/node_modules/
-
-# Reports
-reports/
-
-# Research data
-research/simulation/results/
-research/simulation/__pycache__/
-research/data_collection/*.db
-
-# Generated PDFs and zips
-*.pdf
-*.zip
-*.pptx
-
-# Python cache
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Temp files
-*.tmp
-/tmp/
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+config/*.json
+!config/.gitkeep
+shared/
+logs/
+
+# Core module runtime data
+core/harness/logs/
+core/orchestrator/logs/
+core/economy/data/
+core/observability/data/
+
+# Sensitive data
+*.pem
+*.key
+id_rsa*
