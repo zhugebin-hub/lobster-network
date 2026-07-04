@@ -22,14 +22,8 @@
       "level": "1级",
       "total_problems_solved": 847,
       "wrong_book_count": 23,
-      "strengths": [
-        "死活基础",
-        "手筋基础"
-      ],
-      "weaknesses": [
-        "定式变化",
-        "官子计算"
-      ]
+      "strengths": ["死活基础", "手筋基础"],
+      "weaknesses": ["定式变化", "官子计算"]
     },
     "zhuguxia": {
       "phase": 2,
@@ -38,14 +32,22 @@
       "level": "初段",
       "total_problems_solved": 1023,
       "wrong_book_count": 18,
-      "strengths": [
-        "计算速度",
-        "手筋应用"
-      ],
-      "weaknesses": [
-        "布局理论",
-        "官子精度"
-      ]
+      "strengths": ["计算速度", "手筋应用"],
+      "weaknesses": ["布局理论", "官子精度"]
+    },
+    "qoder": {
+      "phase": 2,
+      "week": 5,
+      "day": 22,
+      "level": "1级",
+      "total_problems_solved": 520,
+      "wrong_book_count": 15,
+      "strengths": ["实战对局", "中盘战斗"],
+      "weaknesses": ["定式记忆", "布局理论"],
+      "nocturnal_sessions": 12,
+      "total_games": 42,
+      "game_wins": 18,
+      "game_losses": 24
     }
   },
   "network_stats": {
@@ -55,15 +57,8 @@
     "collaboration_tasks": 89,
     "total_nodes": 6
   },
-  "last_updated": "2026-06-25T06:20:00+08:00",
-  "agents": [
-    "xiaochen",
-    "zhuguxia",
-    "hermes",
-    "qoder",
-    "lobster-001",
-    "museum-001"
-  ],
-  "version": "2.0",
+  "last_updated": "2026-07-04T00:00:00+08:00",
+  "agents": ["xiaochen", "zhuguxia", "hermes", "qoder", "lobster-001", "museum-001"],
+  "version": "2.1",
   "created": "2026-05-26T15:46:00+08:00"
 }

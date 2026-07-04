@@ -1,0 +1,77 @@
+{
+  "version": "5.0.0",
+  "node_id": "qoder",
+  "modules": {
+    "harness": {
+      "enabled": true,
+      "risk_threshold": "medium",
+      "rules_file": "core/harness/harness_rules.json"
+    },
+    "orchestrator": {
+      "enabled": true,
+      "q_learning_rate": 0.1,
+      "discount_factor": 0.95,
+      "exploration_rate": 0.15,
+      "max_decomposition_depth": 5
+    },
+    "observability": {
+      "enabled": true,
+      "collect_interval_sec": 60,
+      "retention_days": 30,
+      "prometheus_export": false,
+      "rich_console": true
+    },
+    "economy": {
+      "enabled": true,
+      "currency": "LBC",
+      "initial_allocations": {
+        "xiaochen": 100,
+        "zhuguxia": 100,
+        "qoder": 100,
+        "hermes": 500,
+        "system_pool": 1000
+      },
+      "reward_per_problem": 0.5,
+      "reward_per_game": 1.0,
+      "reward_per_task": 2.0
+    },
+    "emergence": {
+      "enabled": true,
+      "sensitivity": 0.7,
+      "detection_window_min": 5
+    }
+  },
+  "nodes": ["qoder", "xiaochen", "zhuguxia", "hermes", "xiaowei"],
+  "server": {
+    "host": "121.43.80.231",
+    "user": "admin",
+    "ssh_key": "~/.ssh/id_rsa_hermes",
+    "shared_path": "/shared"
+  },
+  "training": {
+    "plan_version": "V6",
+    "auto_resume": true,
+    "night_training": {
+      "enabled": true,
+      "start_hour": 22,
+      "end_hour": 6,
+      "timezone": "Asia/Shanghai"
+    },
+    "targets": {
+      "qoder": {"current_day": 36, "target_day": 40, "goal": "25k->20k晋升"},
+      "xiaochen": {"current_day": 3, "target_day": 16, "goal": "官子突破+中盘战斗力"},
+      "zhuguxia": {"current_day": 3, "target_day": 17, "goal": "官子精度+中盘计算深化"}
+    }
+  },
+  "mqtt": {
+    "enabled": false,
+    "broker": "localhost",
+    "port": 1883,
+    "topic_prefix": "lobster/"
+  },
+  "dashboard": {
+    "enabled": false,
+    "port": 8080,
+    "auto_refresh_sec": 30
+  }
+}

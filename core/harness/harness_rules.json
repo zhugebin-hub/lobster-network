@@ -1,0 +1,71 @@
+{
+  "version": "1.0.0",
+  "description": "Agent Harness 安全护栏规则配置",
+
+  "l1_input_guard": {
+    "enabled": true,
+    "dangerous_commands": [
+      "rm -rf", "rm -r", "del /f", "dd if=", "mkfs",
+      "format", ":(){ :|:& };:", "chmod 777",
+      "wget", "curl", "nc -", "ncat", "telnet",
+      "eval(", "exec(", "__import__", "subprocess",
+      "os.system", "os.popen", "os.remove", "os.unlink",
+      "shutil.rmtree", "shutil.move"
+    ],
+    "context_max_chars": 16000,
+    "sensitive_patterns": {
+      "api_key": "(?i)(api[_-]?key|apikey|secret[_-]?key)\\s*[:=]\\s*['\"]?[a-zA-Z0-9_\\-]{20,}['\"]?",
+      "token": "(?i)(token|bearer|jwt)\\s*[:=]\\s*['\"]?[a-zA-Z0-9_\\-\\.]{20,}['\"]?",
+      "password": "(?i)(password|passwd|pwd)\\s*[:=]\\s*['\"][^'\"]+['\"]",
+      "private_key": "-----BEGIN\\s+(RSA|EC|DSA|OPENSSH)?\\s*PRIVATE\\s+KEY-----",
+      "aws_secret": "(?i)(aws[_-]?secret|AKIA[A-Z0-9]{16})",
+      "connection_string": "(?i)(mongodb|mysql|postgresql|redis|jdbc)://[^\\s]+"
+    }
+  },
+
+  "l2_execution_guard": {
+    "enabled": true,
+    "allowed_operations": [
+      "read_file", "read_text", "write_file", "edit_file",
+      "search_file", "search_chunk", "search_image",
+      "fs_search_file", "fs_search_content",
+      "shell_executor", "python_executor",
+      "convert_file", "analyze_image",
+      "invoice_detection", "invoice_parsing",
+      "use_skill", "ask_user", "ai_search",
+      "mcp_MacMarvisMCP_send_file"
+    ],
+    "high_risk_operations": [
+      "delete", "shell_executor", "python_executor"
+    ],
+    "quotas": {
+      "max_timeout_seconds": 300,
+      "max_tokens_per_call": 4096,
+      "max_memory_mb": 512,
+      "max_concurrent_calls": 5
+    },
+    "side_effect_patterns": {
+      "file_write": ["write_file", "edit_file", "convert_file"],
+      "network_request": ["ai_search", "shell_executor"],
+      "external_call": ["shell_executor", "python_executor"]
+    }
+  },
+
+  "l3_output_guard": {
+    "enabled": true,
+    "max_output_chars": 50000,
+    "blocked_patterns": [
+      "(?i)how\\s+to\\s+(hack|crack|exploit|bypass)",
+      "(?i)(exploit|payload|backdoor|rootkit)",
+      "(?i)(phishing|malware|ransomware)",
+      "-----BEGIN\\s+(RSA|EC|DSA)?\\s*PRIVATE\\s+KEY-----"
+    ],
+    "required_schema_fields": []
+  },
+
+  "bypass": {
+    "enabled": true,
+    "authorized_roles": ["hermes"],
+    "require_reason": true
+  }
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小龙虾网络 · 运行监控仪表盘</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--dim:#64748b;--accent:#fbbf24;--green:#22c55e;--red:#ef4444;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--pink:#ec4899}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+  .header{background:linear-gradient(135deg,#111827 0%,#1e1b4b 100%);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+  .header h1{font-size:20px;color:var(--accent);display:flex;align-items:center;gap:8px}
+  .header-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .btn{padding:6px 14px;border-radius:8px;font-size:12px;border:1px solid var(--border);background:#0f172a;color:var(--text);cursor:pointer;transition:all .2s}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.active{background:rgba(251,191,36,.15);border-color:var(--accent);color:var(--accent)}
+  .health-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600}
+  .health-ok{background:rgba(34,197,94,.15);color:var(--green)}
+  .health-warn{background:rgba(251,191,36,.15);color:var(--accent)}
+  .health-critical{background:rgba(239,68,68,.15);color:var(--red)}
+  .layout{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .panel{padding:16px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .panel:nth-child(2n){border-right:none}
+  .panel-title{font-size:14px;font-weight:600;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px}
+  .node-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .node-card{background:#0f172a;border-radius:10px;padding:12px;border:1px solid var(--border);position:relative;overflow:hidden}
+  .node-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+  .node-card.online::before{background:var(--green)}
+  .node-card.offline::before{background:var(--red)}
+  .node-card.warning::before{background:var(--accent)}
+  .node-name{font-size:13px;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+  .node-ip{font-size:11px;color:var(--dim);font-family:monospace}
+  .node-meta{display:flex;justify-content:space-between;margin-top:4px;font-size:11px}
+  .node-meta .label{color:var(--dim)}
+  .status-indicator{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .status-indicator.online{background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite}
+  .status-indicator.offline{background:var(--red);box-shadow:0 0 8px var(--red)}
+  .status-indicator.warning{background:var(--accent);box-shadow:0 0 8px var(--accent)}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+  .metric-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #1e293b}
+  .metric-row:last-child{border-bottom:none}
+  .metric-label{font-size:12px;color:var(--dim)}
+  .metric-value{font-size:14px;font-weight:600}
+  .alert-list{max-height:200px;overflow-y:auto}
+  .alert-item{padding:8px 10px;border-radius:6px;margin-bottom:6px;font-size:12px;display:flex;align-items:flex-start;gap:8px}
+  .alert-item.critical{background:rgba(239,68,68,.1);border-left:3px solid var(--red)}
+  .alert-item.warning{background:rgba(251,191,36,.1);border-left:3px solid var(--accent)}
+  .alert-item.info{background:rgba(59,130,246,.1);border-left:3px solid var(--blue)}
+  .alert-time{color:var(--dim);font-size:10px;white-space:nowrap}
+  .score-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
+  .score-box{text-align:center;padding:10px 6px;background:#0f172a;border-radius:8px}
+  .score-box .num{font-size:20px;font-weight:700}
+  .score-box .label{font-size:10px;color:var(--dim);margin-top:2px}
+  .mqtt-topic{font-family:monospace;font-size:11px;color:var(--cyan);padding:4px 8px;background:#0f172a;border-radius:4px;margin:2px 0;display:inline-block}
+  .progress-bar{height:6px;background:#1e293b;border-radius:3px;overflow:hidden}
+  .progress-fill{height:100%;border-radius:3px;transition:width 1s ease}
+  .badge{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+  .badge-green{background:rgba(34,197,94,.15);color:var(--green)}
+  .badge-red{background:rgba(239,68,68,.15);color:var(--red)}
+  .badge-yellow{background:rgba(251,191,36,.15);color:var(--accent)}
+  .badge-blue{background:rgba(59,130,246,.15);color:var(--blue)}
+  .loading{text-align:center;padding:40px;color:var(--dim);font-size:14px}
+  .loading::before{content:'🦞';font-size:32px;display:block;margin-bottom:8px}
+  .update-time{font-size:11px;color:var(--dim);text-align:right;padding:8px 16px}
+  @media(max-width:1200px){.layout{grid-template-columns:1fr}.panel{border-right:none}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🦞 小龙虾网络 · 运行监控仪表盘</h1>
+  <div class="header-actions">
+    <span class="health-badge" id="healthStatus">🔄 加载中</span>
+    <button class="btn active" id="autoRefreshBtn" onclick="toggleAutoRefresh()">🔄 自动刷新 30s</button>
+    <button class="btn" onclick="fetchData()">↻ 立即刷新</button>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="panel">
+    <div class="panel-title">🖥️ 服务器节点状态 <span style="font-size:11px;color:var(--dim)" id="nodeCount">6 节点</span></div>
+    <div class="node-grid" id="nodeGrid"><div class="loading">数据采集中...</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">🏥 系统健康评分</div>
+    <div id="healthSection"><div class="loading">数据采集中...</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">📨 CC 消息系统状态</div>
+    <div id="msgSection"><div class="loading">数据采集中...</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">🚨 告警中心 <span style="font-size:11px;color:var(--red)" id="alertCount">0 条活跃</span></div>
+    <div class="alert-list" id="alertList"><div class="loading">数据采集中...</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">📡 MQTT Broker 状态</div>
+    <div id="mqttSection"><div class="loading">数据采集中...</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">🔄 Git 同步 & 推送</div>
+    <div id="gitSection"><div class="loading">数据采集中...</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">📚 十大学习栏目进度</div>
+    <div id="domainSection"><div class="loading">数据采集中...</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">🏗️ 基础设施组件</div>
+    <div id="infraSection"><div class="loading">数据采集中...</div></div>
+  </div>
+</div>
+
+<div class="update-time" id="updateTime">正在连接 API...</div>
+
+<script>
+let autoRefresh = true;
+let refreshInterval = null;
+
+function toggleAutoRefresh() {
+  autoRefresh = !autoRefresh;
+  const btn = document.getElementById('autoRefreshBtn');
+  btn.classList.toggle('active', autoRefresh);
+  if (autoRefresh) startRefresh(); else stopRefresh();
+}
+
+function startRefresh() {
+  stopRefresh();
+  refreshInterval = setInterval(fetchData, 30000);
+}
+
+function stopRefresh() {
+  if (refreshInterval) clearInterval(refreshInterval);
+}
+
+async function fetchData() {
+  try {
+    const res = await fetch('/api/status');
+    const data = await res.json();
+    renderAll(data);
+  } catch(e) {
+    document.getElementById('updateTime').textContent = '⚠️ API连接失败: ' + e.message;
+  }
+}
+
+function renderAll(data) {
+  renderNodes(data.nodes);
+  renderHealth(data);
+  renderMessages(data.messages);
+  renderAlerts(data.alerts);
+  renderMQTT(data.mqtt);
+  renderGit(data.git);
+  renderDomains(data.domains);
+  renderInfra(data.infra);
+  
+  // 健康状态徽章
+  const critical = data.alerts.filter(a => a.level === 'critical').length;
+  const warning = data.alerts.filter(a => a.level === 'warning').length;
+  const badge = document.getElementById('healthStatus');
+  if (critical > 0) {
+    badge.className = 'health-badge health-critical';
+    badge.textContent = `🔴 ${critical} 严重`;
+  } else if (warning > 0) {
+    badge.className = 'health-badge health-warn';
+    badge.textContent = `⚠️ ${warning} 警告`;
+  } else {
+    badge.className = 'health-badge health-ok';
+    badge.textContent = '✅ 正常';
+  }
+  
+  document.getElementById('updateTime').textContent = `最后更新：${new Date(data.timestamp).toLocaleString('zh-CN')} | 数据源：dashboard_collector.py`;
+}
+
+function renderNodes(nodes) {
+  document.getElementById('nodeCount').textContent = `${nodes.length} 节点`;
+  document.getElementById('nodeGrid').innerHTML = nodes.map(n => `
+    <div class="node-card ${n.status}">
+      <div class="node-name">
+        <span class="status-indicator ${n.status}"></span>
+        ${n.name}
+      </div>
+      <div class="node-ip">${n.ip}${n.public !== '-' ? ' | ' + n.public : ''}</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">${n.role}</div>
+      ${n.disk !== '-' ? `<div class="node-meta"><span class="label">磁盘</span><span>${n.disk}</span></div>` : ''}
+      ${n.cpu !== '-' ? `<div class="node-meta"><span class="label">CPU/内存</span><span>${n.cpu} / ${n.mem}</span></div>` : ''}
+      ${n.expires && n.expires !== '-' ? `<div class="node-meta"><span class="label">到期</span><span style="color:${n.expires<'2026-07-15'?'var(--red)':'var(--dim)'}">${n.expires}</span></div>` : ''}
+    </div>
+  `).join('');
+}
+
+function renderHealth(data) {
+  const system = data.system;
+  const diskPct = system.disk_percent;
+  const memPct = system.mem_percent;
+  const nodeOnline = data.nodes.filter(n => n.status === 'online').length;
+  const msgRate = data.messages.pending_rate;
+  const trainingActive = Object.values(data.training).filter(t => t.active).length;
+  
+  // 计算各项评分
+  const nodeScore = nodeOnline >= 3 ? 5 : nodeOnline >= 2 ? 3 : nodeOnline >= 1 ? 2 : 1;
+  const trainingScore = trainingActive >= 2 ? 5 : trainingActive >= 1 ? 3 : 1;
+  const msgScore = msgRate < 20 ? 5 : msgRate < 50 ? 3 : 2;
+  const infraScore = data.infra.filter(i => i.status === 'online').length >= 6 ? 5 : data.infra.filter(i => i.status === 'online').length >= 4 ? 4 : 3;
+  const pushScore = data.git.github_status === 'ok' ? 5 : 2;
+  
+  const overall = ((nodeScore + trainingScore + msgScore + infraScore + pushScore) / 5).toFixed(1);
+  const overallPct = (overall / 5 * 100).toFixed(0);
+  const overallColor = overall >= 4 ? 'var(--green)' : overall >= 3 ? 'var(--accent)' : 'var(--red)';
+  
+  document.getElementById('healthSection').innerHTML = `
+    <div class="score-grid">
+      <div class="score-box"><div class="num" style="color:${nodeScore>=4?'var(--green)':nodeScore>=3?'var(--accent)':'var(--red)'}">${nodeScore}/5</div><div class="label">节点活跃 (${nodeOnline}/${data.nodes.length})</div></div>
+      <div class="score-box"><div class="num" style="color:${trainingScore>=4?'var(--green)':trainingScore>=3?'var(--accent)':'var(--red)'}">${trainingScore}/5</div><div class="label">训练完成 (${trainingActive}活跃)</div></div>
+      <div class="score-box"><div class="num" style="color:${msgScore>=4?'var(--green)':msgScore>=3?'var(--accent)':'var(--red)'}">${msgScore}/5</div><div class="label">消息系统 (${msgRate}%)</div></div>
+      <div class="score-box"><div class="num" style="color:${infraScore>=4?'var(--green)':infraScore>=3?'var(--accent)':'var(--red)'}">${infraScore}/5</div><div class="label">基础设施</div></div>
+      <div class="score-box"><div class="num" style="color:${pushScore>=4?'var(--green)':'var(--red)'}">${pushScore}/5</div><div class="label">推送可靠</div></div>
+    </div>
+    <div style="margin-top:12px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="font-size:36px;font-weight:700;color:${overallColor}">${overall}</div>
+        <div style="flex:1">
+          <div class="progress-bar" style="height:12px;background:#1e293b;border-radius:6px;overflow:hidden">
+            <div class="progress-fill" style="width:${overallPct}%;height:100%;background:${overallColor};border-radius:6px"></div>
+          </div>
+          <div style="font-size:11px;color:var(--dim);margin-top:4px">综合评分 ${overall}/5 · 磁盘${diskPct}% · 内存${memPct}% · 运行${system.uptime_hours}h</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderMessages(msgs) {
+  document.getElementById('msgSection').innerHTML = `
+    <div class="card" style="padding:12px">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;margin-bottom:12px">
+        <div><div style="font-size:22px;font-weight:700;color:var(--cyan)">${msgs.total_inbox}</div><div style="font-size:10px;color:var(--dim)">总消息</div></div>
+        <div><div style="font-size:22px;font-weight:700;color:${msgs.total_pending>20?'var(--red)':'var(--accent)'}">${msgs.total_pending}</div><div style="font-size:10px;color:var(--dim)">未处理</div></div>
+        <div><div style="font-size:22px;font-weight:700;color:${msgs.pending_rate>50?'var(--red)':msgs.pending_rate>20?'var(--accent)':'var(--green)'}">${msgs.pending_rate}%</div><div style="font-size:10px;color:var(--dim)">堆积率</div></div>
+        <div><div style="font-size:22px;font-weight:700;color:var(--green)">${msgs.total_inbox - msgs.total_pending}</div><div style="font-size:10px;color:var(--dim)">已处理</div></div>
+      </div>
+      <table style="width:100%;font-size:12px;border-collapse:collapse">
+        <thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)"><th style="text-align:left;padding:6px">学员</th><th>Inbox</th><th>未处理</th><th>状态</th></tr></thead>
+        <tbody>
+          ${msgs.stats.map(m => `<tr style="border-bottom:1px solid #1e293b">
+            <td style="padding:6px">${m.name}</td>
+            <td style="text-align:center">${m.inbox}</td>
+            <td style="text-align:center;color:${m.pending>20?'var(--red)':m.pending>10?'var(--accent)':'var(--green)'}">${m.pending}</td>
+            <td style="text-align:center"><span class="badge ${m.pending>20?'badge-red':m.pending>10?'badge-yellow':'badge-green'}" style="padding:2px 8px;border-radius:12px;font-size:11px">${m.pending>20?'积压严重':m.pending>10?'积压':'正常'}</span></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function renderAlerts(alerts) {
+  document.getElementById('alertCount').textContent = `${alerts.length} 条活跃`;
+  if (alerts.length === 0) {
+    document.getElementById('alertList').innerHTML = '<div style="text-align:center;padding:20px;color:var(--green)">✅ 无告警</div>';
+    return;
+  }
+  document.getElementById('alertList').innerHTML = alerts.map(a => `
+    <div class="alert-item ${a.level}">
+      <span class="alert-time">${a.time}</span>
+      <span>${a.level==='critical'?'🔴':a.level==='warning'?'🟡':'🔵'} ${a.msg}</span>
+    </div>
+  `).join('');
+}
+
+function renderMQTT(mqtt) {
+  const statusBadge = mqtt.running ? '<span class="badge badge-green">✅ 运行中</span>' : '<span class="badge badge-red">❌ 未运行</span>';
+  document.getElementById('mqttSection').innerHTML = `
+    <div class="card" style="padding:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div>
+          <div style="font-size:14px;font-weight:600">${mqtt.version}</div>
+          <div style="font-size:11px;color:var(--dim);font-family:monospace">${mqtt.address}</div>
+        </div>
+        ${statusBadge}
+      </div>
+      <div class="metric-row"><span class="metric-label">Topic 根命名空间</span><span class="metric-value" style="font-family:monospace;color:var(--cyan)">lobster/</span></div>
+      <div class="metric-row"><span class="metric-label">活跃连接数</span><span class="metric-value">${mqtt.connections}</span></div>
+      <div class="metric-row"><span class="metric-label">消息吞吐</span><span class="metric-value">~${mqtt.throughput_msg_min} msg/min</span></div>
+      <div class="metric-row"><span class="metric-label">端口开放</span><span class="metric-value" style="color:${mqtt.port_open?'var(--green)':'var(--red)'}">${mqtt.port_open?'✅ 1883':'❌ 关闭'}</span></div>
+      <div style="margin-top:10px">
+        <div style="font-size:11px;color:var(--dim);margin-bottom:6px">Topic 结构</div>
+        ${mqtt.topics.map(t => `<div><span class="mqtt-topic">${t}</span></div>`).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderGit(git) {
+  if (git.error) {
+    document.getElementById('gitSection').innerHTML = `<div class="card" style="padding:12px;color:var(--red)">❌ Git检查失败: ${git.error}</div>`;
+    return;
+  }
+  document.getElementById('gitSection').innerHTML = `
+    <div class="card" style="padding:12px">
+      <div class="metric-row"><span class="metric-label">当前分支</span><span class="metric-value" style="font-family:monospace;color:var(--cyan)">${git.branch}</span></div>
+      <div class="metric-row"><span class="metric-label">工作区状态</span><span class="metric-value" style="color:${git.is_clean?'var(--green)':'var(--accent)'}">${git.is_clean?'✅ 干净':'⚠️ 有修改'}</span></div>
+      <div class="metric-row"><span class="metric-label">GitHub 推送</span><span class="metric-value" style="color:${git.github_status==='ok'?'var(--green)':'var(--red)'}">${git.github_status==='ok'?'✅ 正常':'⏳ 超时频繁'}</span></div>
+      <div class="metric-row"><span class="metric-label">Gitee 推送</span><span class="metric-value" style="color:var(--accent)">⚠️ 备用通道</span></div>
+      <div class="metric-row"><span class="metric-label">24h 提交数</span><span class="metric-value">${git.commits_24h}</span></div>
+      <div style="margin-top:12px">
+        <div style="font-size:12px;color:var(--dim);margin-bottom:8px">最近提交</div>
+        ${git.recent.map(r => `<div style="font-size:11px;color:var(--dim);padding:2px 0;font-family:monospace">${r}</div>`).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderDomains(domains) {
+  document.getElementById('domainSection').innerHTML = `
+    <div class="card" style="padding:12px">
+      <table style="width:100%;font-size:12px;border-collapse:collapse">
+        <thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)"><th style="text-align:left;padding:6px">栏目</th><th>状态</th><th>进度</th><th>最新文件</th></tr></thead>
+        <tbody>
+          ${domains.map(d => {
+            const statusClass = d.status === 'active' ? 'badge-green' : d.status === 'ready' ? 'badge-blue' : 'badge-red';
+            const statusLabel = d.status === 'active' ? '进行中' : d.status === 'ready' ? '就绪' : '停滞';
+            return `<tr style="border-bottom:1px solid #1e293b">
+              <td style="padding:6px">${d.icon} ${d.name}</td>
+              <td><span class="badge ${statusClass}" style="padding:2px 8px;border-radius:12px;font-size:11px">${statusLabel}</span></td>
+              <td>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <div class="progress-bar" style="flex:1;height:4px"><div class="progress-fill" style="width:${d.pct}%;background:${d.pct>60?'var(--green)':d.pct>30?'var(--accent)':'var(--red)'}"></div></div>
+                  <span style="font-size:11px;color:var(--dim)">${d.pct}%</span>
+                </div>
+              </td>
+              <td style="font-size:11px;color:var(--dim);font-family:monospace">${d.latest_file} (${d.latest_date})</td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function renderInfra(infra) {
+  document.getElementById('infraSection').innerHTML = `
+    <div class="card" style="padding:12px">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+        ${infra.map(i => `
+          <div style="background:#0f172a;border-radius:8px;padding:10px;text-align:center;border:1px solid var(--border)">
+            <div style="font-size:20px">${i.icon}</div>
+            <div style="font-size:12px;font-weight:600;margin:4px 0">${i.name}</div>
+            <div style="font-size:10px;color:var(--dim)">${i.desc}</div>
+            <div style="margin-top:6px"><span class="status-indicator ${i.status}"></span> <span style="font-size:10px;color:var(--dim)">${i.status==='online'?'正常':i.status==='warning'?'警告':'离线'}</span></div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+// 初始化
+fetchData();
+startRefresh();
+</script>
+</body>
+</html>

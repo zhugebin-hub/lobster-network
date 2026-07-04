@@ -14,9 +14,9 @@ from dataclasses import dataclass, field, asdict
 from enum import Enum
 from pathlib import Path
 
-from src.lobster_network.registry import NodeRegistry, TransportConfig, TransportType
-from src.lobster_network.utils.logger import get_logger
-from src.lobster_network.security import sign_message, verify_message, CRYPTOGRAPHY_AVAILABLE, DEFAULT_SECRET
+from .registry import NodeRegistry, TransportConfig, TransportType
+from .utils.logger import get_logger
+from .security import sign_message, verify_message, CRYPTOGRAPHY_AVAILABLE, DEFAULT_SECRET
 
 logger = get_logger(__name__)
 

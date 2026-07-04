@@ -1,0 +1,35 @@
+{
+  "report_type": "training_status_check",
+  "timestamp": "2026-07-04 18:31:53",
+  "check_id": "check_20260704_1831",
+  "summary": {
+    "new_training_results": 0,
+    "consecutive_days_no_submissions": 8,
+    "student_status": {
+      "xiaochen": {
+        "name": "小陈",
+        "health": "active",
+        "last_heartbeat": "2026-07-04 18:21",
+        "last_submission": "2026-07-01",
+        "new_results": false,
+        "notes": "在线但无新提交"
+      },
+      "zhuguxia": {
+        "name": "诸葛虾",
+        "health": "warning",
+        "last_heartbeat": "2026-06-30 06:47",
+        "last_submission": "2026-06-27",
+        "new_results": false,
+        "notes": "离线5天，需关注"
+      },
+      "qoder": {
+        "name": "qoder",
+        "health": "unknown",
+        "last_heartbeat": null,
+        "last_submission": null,
+        "new_results": false,
+        "notes": "空目录，无提交记录"
+      }
+    }
+  }
+}

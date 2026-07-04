@@ -12,5 +12,24 @@ build/
 .poller_state_*.json
 poller_*.log
 
+<<<<<<< HEAD
 # 临时结果
 results/*/match_*.json
+=======
+# Project specific
+config/*.json
+!config/.gitkeep
+shared/
+logs/
+
+# Core module runtime data
+core/harness/logs/
+core/orchestrator/logs/
+core/economy/data/
+core/observability/data/
+
+# Sensitive data
+*.pem
+*.key
+id_rsa*
+>>>>>>> fbc3017db51a546a289ef16bd15ae36823f768d7
