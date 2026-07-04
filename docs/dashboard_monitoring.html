@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小龙虾网络 · 运行监控仪表盘</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--dim:#64748b;--accent:#fbbf24;--green:#22c55e;--red:#ef4444;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--pink:#ec4899}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+  .header{background:linear-gradient(135deg,#111827 0%,#1e1b4b 100%);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+  .header h1{font-size:20px;color:var(--accent);display:flex;align-items:center;gap:8px}
+  .header h1 .icon{font-size:24px}
+  .header-actions{display:flex;gap:12px;align-items:center}
+  .btn{padding:6px 14px;border-radius:8px;font-size:12px;border:1px solid var(--border);background:#0f172a;color:var(--text);cursor:pointer;transition:all .2s}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.active{background:rgba(251,191,36,.15);border-color:var(--accent);color:var(--accent)}
+  .health-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600}
+  .health-ok{background:rgba(34,197,94,.15);color:var(--green)}
+  .health-warn{background:rgba(251,191,36,.15);color:var(--accent)}
+  .health-critical{background:rgba(239,68,68,.15);color:var(--red)}
+  .layout{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .layout-full{grid-column:1/-1}
+  .panel{padding:16px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .panel:nth-child(2n){border-right:none}
+  .panel-title{font-size:14px;font-weight:600;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px}
+  .node-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .node-card{background:#0f172a;border-radius:10px;padding:12px;border:1px solid var(--border);position:relative;overflow:hidden}
+  .node-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+  .node-card.online::before{background:var(--green)}
+  .node-card.offline::before{background:var(--red)}
+  .node-card.warning::before{background:var(--accent)}
+  .node-name{font-size:13px;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+  .node-ip{font-size:11px;color:var(--dim);font-family:monospace}
+  .node-meta{display:flex;justify-content:space-between;margin-top:8px;font-size:11px}
+  .node-meta .label{color:var(--dim)}
+  .status-indicator{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .status-indicator.online{background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite}
+  .status-indicator.offline{background:var(--red);box-shadow:0 0 8px var(--red)}
+  .status-indicator.warning{background:var(--accent);box-shadow:0 0 8px var(--accent)}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+  .metric-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #1e293b}
+  .metric-row:last-child{border-bottom:none}
+  .metric-label{font-size:12px;color:var(--dim)}
+  .metric-value{font-size:14px;font-weight:600}
+  .alert-list{max-height:200px;overflow-y:auto}
+  .alert-item{padding:8px 10px;border-radius:6px;margin-bottom:6px;font-size:12px;display:flex;align-items:flex-start;gap:8px}
+  .alert-item.critical{background:rgba(239,68,68,.1);border-left:3px solid var(--red)}
+  .alert-item.warning{background:rgba(251,191,36,.1);border-left:3px solid var(--accent)}
+  .alert-item.info{background:rgba(59,130,246,.1);border-left:3px solid var(--blue)}
+  .alert-time{color:var(--dim);font-size:10px;white-space:nowrap}
+  .msg-stream{max-height:260px;overflow-y:auto;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:11px}
+  .msg-item{padding:6px 8px;border-bottom:1px solid #1e293b;display:flex;gap:8px}
+  .msg-time{color:var(--dim);white-space:nowrap}
+  .msg-from{color:var(--cyan);font-weight:600}
+  .msg-to{color:var(--purple);font-weight:600}
+  .msg-arrow{color:var(--dim)}
+  .msg-content{color:var(--text);flex:1}
+  .game-list{display:flex;flex-direction:column;gap:8px}
+  .game-item{background:#0f172a;border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center}
+  .game-players{font-size:13px;font-weight:600}
+  .game-info{font-size:11px;color:var(--dim)}
+  .game-status{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600}
+  .game-live{background:rgba(239,68,68,.15);color:var(--red);animation:pulse 1.5s infinite}
+  .game-done{background:rgba(34,197,94,.15);color:var(--green)}
+  .score-bar{display:flex;gap:2px;height:20px;border-radius:4px;overflow:hidden;margin-top:6px}
+  .score-segment{transition:width .5s}
+  .disk-bar{height:8px;background:#1e293b;border-radius:4px;overflow:hidden;margin-top:4px}
+  .disk-fill{height:100%;border-radius:4px}
+  .mqtt-topic{font-family:monospace;font-size:11px;color:var(--cyan);padding:4px 8px;background:#0f172a;border-radius:4px;margin:2px 0;display:inline-block}
+  .score-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
+  .score-box{text-align:center;padding:10px 6px;background:#0f172a;border-radius:8px}
+  .score-box .num{font-size:20px;font-weight:700}
+  .score-box .label{font-size:10px;color:var(--dim);margin-top:2px}
+  .update-time{font-size:11px;color:var(--dim);text-align:right;padding:8px 16px}
+  @media(max-width:1200px){.layout{grid-template-columns:1fr}.panel{border-right:none}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1><span class="icon">🦞</span> 小龙虾网络 · 运行监控仪表盘</h1>
+  <div class="header-actions">
+    <span class="health-badge health-warn" id="healthStatus">⚠️ 警告</span>
+    <button class="btn active" onclick="toggleAutoRefresh(this)">🔄 自动刷新 30s</button>
+    <button class="btn" onclick="location.reload()">↻ 立即刷新</button>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- 1. 节点状态 -->
+  <div class="panel">
+    <div class="panel-title">🖥️ 服务器节点状态 <span style="font-size:11px;color:var(--dim)">6 节点</span></div>
+    <div class="node-grid" id="nodeGrid"></div>
+  </div>
+
+  <!-- 2. 系统健康评分 -->
+  <div class="panel">
+    <div class="panel-title">🏥 系统健康评分</div>
+    <div class="score-grid" id="healthScores"></div>
+    <div style="margin-top:12px">
+      <div class="section-title" style="font-size:12px;color:var(--dim);margin-bottom:8px">📊 综合评分</div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="font-size:36px;font-weight:700;color:var(--accent)" id="overallScore">2.4</div>
+        <div style="flex:1">
+          <div class="progress-bar" style="height:12px;background:#1e293b;border-radius:6px;overflow:hidden">
+            <div class="progress-fill" style="width:48%;height:100%;background:linear-gradient(90deg,var(--red),var(--accent));border-radius:6px"></div>
+          </div>
+          <div style="font-size:11px;color:var(--dim);margin-top:4px">训练停滞是最大风险 · 综合评分 2.4/5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 消息系统 -->
+  <div class="panel">
+    <div class="panel-title">📨 CC 消息系统状态</div>
+    <div class="card" style="padding:12px">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;margin-bottom:12px">
+        <div><div style="font-size:22px;font-weight:700;color:var(--cyan)">153</div><div style="font-size:10px;color:var(--dim)">总消息</div></div>
+        <div><div style="font-size:22px;font-weight:700;color:var(--red)">91</div><div style="font-size:10px;color:var(--dim)">未处理</div></div>
+        <div><div style="font-size:22px;font-weight:700;color:var(--accent)">59.5%</div><div style="font-size:10px;color:var(--dim)">堆积率</div></div>
+        <div><div style="font-size:22px;font-weight:700;color:var(--green)">3</div><div style="font-size:10px;color:var(--dim)">已完成</div></div>
+      </div>
+      <table style="width:100%;font-size:12px;border-collapse:collapse">
+        <thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)"><th style="text-align:left;padding:6px">学员</th><th>Inbox</th><th>未处理</th><th>状态</th></tr></thead>
+        <tbody id="msgTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 4. 告警中心 -->
+  <div class="panel">
+    <div class="panel-title">🚨 告警中心 <span style="font-size:11px;color:var(--red)">5 条活跃</span></div>
+    <div class="alert-list" id="alertList"></div>
+  </div>
+
+  <!-- 5. 实时消息流 -->
+  <div class="panel">
+    <div class="panel-title">📡 实时消息流 <span style="font-size:11px;color:var(--dim)">最近 20 条</span></div>
+    <div class="msg-stream" id="msgStream"></div>
+  </div>
+
+  <!-- 6. 对局状态 -->
+  <div class="panel">
+    <div class="panel-title">⚔️ 对局状态</div>
+    <div style="margin-bottom:12px">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:8px">🔴 进行中</div>
+      <div class="game-list" id="activeGames"></div>
+    </div>
+    <div>
+      <div style="font-size:12px;color:var(--dim);margin-bottom:8px">✅ 近期战绩 (2026-06-27)</div>
+      <div class="game-list" id="recentGames"></div>
+    </div>
+  </div>
+
+  <!-- 7. MQTT Broker -->
+  <div class="panel">
+    <div class="panel-title">📡 MQTT Broker 状态</div>
+    <div class="card" style="padding:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div>
+          <div style="font-size:14px;font-weight:600">Mosquitto v1.6.15</div>
+          <div style="font-size:11px;color:var(--dim);font-family:monospace">47.93.6.57:1883</div>
+        </div>
+        <span class="badge badge-green" style="padding:4px 12px;border-radius:20px;font-size:12px">✅ 运行中</span>
+      </div>
+      <div class="metric-row"><span class="metric-label">Topic 根命名空间</span><span class="metric-value" style="font-family:monospace;color:var(--cyan)">lobster/</span></div>
+      <div class="metric-row"><span class="metric-label">活跃连接数</span><span class="metric-value" id="mqttConnections">2</span></div>
+      <div class="metric-row"><span class="metric-label">消息吞吐</span><span class="metric-value">~51 msg/min</span></div>
+      <div class="metric-row"><span class="metric-label">平均延迟</span><span class="metric-value" style="color:var(--green)">19ms</span></div>
+      <div class="metric-row"><span class="metric-label">网络可用率</span><span class="metric-value" style="color:var(--green)">99.7%</span></div>
+      <div style="margin-top:10px">
+        <div style="font-size:11px;color:var(--dim);margin-bottom:6px">Topic 结构</div>
+        <div><span class="mqtt-topic">lobster/match/{id}/move/</span></div>
+        <div><span class="mqtt-topic">lobster/match/{id}/board/</span></div>
+        <div><span class="mqtt-topic">lobster/match/{id}/result/</span></div>
+        <div><span class="mqtt-topic">lobster/coach/{student}/cmd/</span></div>
+        <div><span class="mqtt-topic">lobster/{student}/coach/ack/</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Git & 推送 -->
+  <div class="panel">
+    <div class="panel-title">🔄 Git 同步 & 推送</div>
+    <div class="card" style="padding:12px">
+      <div class="metric-row"><span class="metric-label">当前分支</span><span class="metric-value" style="font-family:monospace;color:var(--cyan)">main</span></div>
+      <div class="metric-row"><span class="metric-label">工作区状态</span><span class="metric-value" style="color:var(--green)">✅ 干净</span></div>
+      <div class="metric-row"><span class="metric-label">GitHub 推送</span><span class="metric-value" style="color:var(--red)">⏳ 超时频繁</span></div>
+      <div class="metric-row"><span class="metric-label">Gitee 推送</span><span class="metric-value" style="color:var(--accent)">⚠️ 备用通道</span></div>
+      <div class="metric-row"><span class="metric-label">24h 提交数</span><span class="metric-value">15 (自动巡检)</span></div>
+      <div style="margin-top:12px">
+        <div style="font-size:12px;color:var(--dim);margin-bottom:8px">推送通道状态</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center">
+          <div style="background:#0f172a;padding:8px;border-radius:6px">
+            <div style="font-size:16px">🐙</div>
+            <div style="font-size:11px;color:var(--red)">GitHub</div>
+            <div style="font-size:10px;color:var(--dim)">不稳定</div>
+          </div>
+          <div style="background:#0f172a;padding:8px;border-radius:6px">
+            <div style="font-size:16px">🏠</div>
+            <div style="font-size:11px;color:var(--accent)">Gitee</div>
+            <div style="font-size:10px;color:var(--dim)">备用</div>
+          </div>
+          <div style="background:#0f172a;padding:8px;border-radius:6px">
+            <div style="font-size:16px">🔍</div>
+            <div style="font-size:11px;color:var(--dim)">觅游</div>
+            <div style="font-size:10px;color:var(--dim)">待推送</div>
+          </div>
+          <div style="background:#0f172a;padding:8px;border-radius:6px">
+            <div style="font-size:16px">💬</div>
+            <div style="font-size:11px;color:var(--dim)">微信</div>
+            <div style="font-size:10px;color:var(--dim)">不可用</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. 训练进度总览 -->
+  <div class="panel">
+    <div class="panel-title">📚 十大学习栏目进度</div>
+    <div class="card" style="padding:12px">
+      <table style="width:100%;font-size:12px;border-collapse:collapse">
+        <thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)"><th style="text-align:left;padding:6px">栏目</th><th>状态</th><th>进度</th><th>最新文件</th></tr></thead>
+        <tbody id="domainTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 10. 基础设施 -->
+  <div class="panel">
+    <div class="panel-title">🏗️ 基础设施组件</div>
+    <div class="card" style="padding:12px">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px" id="infraGrid"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="update-time">最后更新：<span id="updateTime"></span> | 数据源：lobster-network/core/health_check.py + daily_reports/</div>
+
+<script>
+// ========== 数据 ==========
+const NODES = [
+  { name: "诸葛马 (Hermes)", ip: "172.24.57.34", public: "47.93.6.57", role: "教练/调度中心", status: "online", disk: "62%", cpu: "23%", mem: "4.2G/8G", expires: "2026-07-16" },
+  { name: "诸葛虾", ip: "172.24.56.3", public: "-", role: "加速型学员", status: "offline", disk: "81%", cpu: "-", mem: "-", expires: "2026-07-12" },
+  { name: "小陈 (小龙虾)", ip: "121.43.80.231", public: "121.43.80.231", role: "稳健型学员", status: "online", disk: "55%", cpu: "15%", mem: "2.1G/4G", expires: "-" },
+  { name: "qoder", ip: "-", public: "-", role: "实战工程师", status: "offline", disk: "-", cpu: "-", mem: "-", expires: "-" },
+  { name: "小微", ip: "-", public: "-", role: "观察者", status: "warning", disk: "-", cpu: "-", mem: "-", expires: "-" },
+  { name: "院史馆", ip: "-", public: "-", role: "数字档案员", status: "warning", disk: "-", cpu: "-", mem: "-", expires: "-" }
+];
+
+const HEALTH_SCORES = [
+  { label: "节点活跃", score: 2, max: 5, color: "var(--red)" },
+  { label: "训练完成", score: 1, max: 5, color: "var(--red)" },
+  { label: "消息系统", score: 3, max: 5, color: "var(--accent)" },
+  { label: "基础设施", score: 4, max: 5, color: "var(--green)" },
+  { label: "推送可靠", score: 2, max: 5, color: "var(--red)" }
+];
+
+const MSG_STATS = [
+  { name: "诸葛马(教练)", inbox: 36, pending: 29, status: "warning" },
+  { name: "诸葛虾", inbox: 28, pending: 12, status: "warning" },
+  { name: "小陈", inbox: 26, pending: 11, status: "warning" },
+  { name: "qoder", inbox: 36, pending: 29, status: "warning" },
+  { name: "小微", inbox: 18, pending: 10, status: "warning" }
+];
+
+const ALERTS = [
+  { level: "critical", time: "06:00", msg: "诸葛虾节点离线 >5 天，磁盘 81.1%" },
+  { level: "critical", time: "06:00", msg: "训练停滞 7 天，无新提交" },
+  { level: "warning", time: "06:00", msg: "消息堆积 59.5% (91/153)，ACK 超时" },
+  { level: "warning", time: "05:30", msg: "GitHub 推送持续超时，Gitee 备用" },
+  { level: "warning", time: "04:59", msg: "小陈心跳正常但 7 天无训练提交" },
+  { level: "info", time: "04:00", msg: "Day 6 任务全部失败：技能路径不匹配" },
+  { level: "info", time: "02:00", msg: "qoder 无活动记录，无独立提交目录" }
+];
+
+const MESSAGES = [
+  { time: "10:12:45", from: "zhuguxia", to: "hermes", content: "梯子路线专项训练进度" },
+  { time: "10:10:01", from: "xiaochen", to: "hermes", content: "错题复习完成 (定式变化)" },
+  { time: "10:05:33", from: "qoder", to: "lobster-001", content: "对局进行中 (qoder黑 vs 诸葛虾白, 第117手)" },
+  { time: "10:02:00", from: "hermes", to: "all", content: "V4 调度器健康检查完成" },
+  { time: "09:50:15", from: "lobster-001", to: "museum-001", content: "涌现事件 #157: 跨域知识迁移 (围棋布局→海报排版)" },
+  { time: "09:48:30", from: "zhuguxia", to: "xiaochen", content: "确认参加挑战赛" },
+  { time: "09:45:12", from: "hermes", to: "xiaochen", content: "Phase 2 Week 5 Day 28 训练计划已下发" },
+  { time: "09:40:00", from: "xiaochen", to: "hermes", content: "ACK: 训练计划已接收" },
+  { time: "09:35:22", from: "hermes", to: "zhuguxia", content: "节点恢复提醒：磁盘空间不足" },
+  { time: "09:30:00", from: "system", to: "all", content: "自动巡检：连续7天无训练提交" }
+];
+
+const ACTIVE_GAMES = [
+  { black: "xiaochen", white: "zhuguxia", move: 142, status: "live" },
+  { black: "zhuguxia", white: "qoder", move: 89, status: "live" }
+];
+
+const RECENT_GAMES = [
+  { black: "xiaochen", white: "zhuguxia", result: "小陈胜", score: "174:167" },
+  { black: "qoder", white: "xiaochen", result: "qoder胜", score: "165:162" },
+  { black: "zhuguxia", white: "qoder", result: "诸葛虾胜", score: "173:162" }
+];
+
+const DOMAINS = [
+  { name: "围棋训练", icon: "⚫", status: "stagnant", pct: 85, file: "day16_problems.json" },
+  { name: "AI/ML", icon: "🤖", status: "ready", pct: 55, file: "problem_generator.py" },
+  { name: "网络安全", icon: "🔒", status: "ready", pct: 42, file: "problem_generator.py" },
+  { name: "数据结构", icon: "📊", status: "ready", pct: 60, file: "problem_generator.py" },
+  { name: "网络协议", icon: "🌐", status: "active", pct: 50, file: "progress.json" },
+  { name: "海报设计", icon: "🎨", status: "ready", pct: 28, file: "problem_generator.py" },
+  { name: "通用逻辑", icon: "🧠", status: "ready", pct: 65, file: "shared_logic_engine.py" },
+  { name: "炒股学习", icon: "📈", status: "ready", pct: 22, file: "stock_predict_engine.py" },
+  { name: "世界杯预测", icon: "⚽", status: "ready", pct: 17, file: "football_predict_engine.py" },
+  { name: "交易经济", icon: "💰", status: "ready", pct: 30, file: "trading_economy_trainer.py" }
+];
+
+const INFRA = [
+  { name: "Mosquitto", icon: "📡", status: "online", desc: "v1.6.15 · 47.93.6.57:1883" },
+  { name: "CC 路由", icon: "🔀", status: "online", desc: "v1.1 · 153 消息" },
+  { name: "V4 调度器", icon: "⏰", status: "warning", desc: "健康检查通过" },
+  { name: "Git 仓库", icon: "🐙", status: "warning", desc: "GitHub 超时" },
+  { name: "SSH 通道", icon: "🔗", status: "online", desc: "3 通道活跃" },
+  { name: "文件桥接", icon: "🌉", status: "offline", desc: "小陈跨VPC" },
+  { name: "健康检查", icon: "🏥", status: "online", desc: "每30分钟" },
+  { name: "训练保护", icon: "🛡️", status: "online", desc: "v2 已部署" },
+  { name: "消息轮询", icon: "🔄", status: "offline", desc: "学员端未上线" }
+];
+
+// ========== 渲染 ==========
+function renderNodes() {
+  const grid = document.getElementById('nodeGrid');
+  grid.innerHTML = NODES.map(n => `
+    <div class="node-card ${n.status}">
+      <div class="node-name">
+        <span class="status-indicator ${n.status}"></span>
+        ${n.name}
+      </div>
+      <div class="node-ip">${n.ip}${n.public !== '-' ? ' | ' + n.public : ''}</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">${n.role}</div>
+      <div class="node-meta">
+        <span class="label">磁盘</span><span>${n.disk}</span>
+      </div>
+      <div class="node-meta">
+        <span class="label">CPU/内存</span><span>${n.cpu} / ${n.mem}</span>
+      </div>
+      ${n.expires !== '-' ? `<div class="node-meta"><span class="label">到期</span><span style="color:${n.expires<'2026-07-15'?'var(--red)':'var(--dim)'}">${n.expires}</span></div>` : ''}
+    </div>
+  `).join('');
+}
+
+function renderHealthScores() {
+  const grid = document.getElementById('healthScores');
+  grid.innerHTML = HEALTH_SCORES.map(s => `
+    <div class="score-box">
+      <div class="num" style="color:${s.color}">${s.score}/${s.max}</div>
+      <div class="label">${s.label}</div>
+    </div>
+  `).join('');
+}
+
+function renderMsgTable() {
+  const tbody = document.getElementById('msgTable');
+  tbody.innerHTML = MSG_STATS.map(m => `
+    <tr style="border-bottom:1px solid #1e293b">
+      <td style="padding:6px">${m.name}</td>
+      <td style="text-align:center">${m.inbox}</td>
+      <td style="text-align:center;color:${m.pending>20?'var(--red)':m.pending>10?'var(--accent)':'var(--green)'}">${m.pending}</td>
+      <td style="text-align:center"><span class="badge badge-${m.pending>20?'red':'yellow'}" style="padding:2px 8px;border-radius:12px;font-size:11px">${m.pending>20?'积压严重':'积压'}</span></td>
+    </tr>
+  `).join('');
+}
+
+function renderAlerts() {
+  const list = document.getElementById('alertList');
+  list.innerHTML = ALERTS.map(a => `
+    <div class="alert-item ${a.level}">
+      <span class="alert-time">${a.time}</span>
+      <span>${a.level==='critical'?'🔴':a.level==='warning'?'🟡':'🔵'} ${a.msg}</span>
+    </div>
+  `).join('');
+}
+
+function renderMsgStream() {
+  const stream = document.getElementById('msgStream');
+  stream.innerHTML = MESSAGES.map(m => `
+    <div class="msg-item">
+      <span class="msg-time">${m.time}</span>
+      <span class="msg-from">${m.from}</span>
+      <span class="msg-arrow">→</span>
+      <span class="msg-to">${m.to}</span>
+      <span class="msg-content">${m.content}</span>
+    </div>
+  `).join('');
+}
+
+function renderGames() {
+  document.getElementById('activeGames').innerHTML = ACTIVE_GAMES.map(g => `
+    <div class="game-item">
+      <div>
+        <div class="game-players">⚫ ${g.black} vs ⚪ ${g.white}</div>
+        <div class="game-info">第 ${g.move} 手</div>
+      </div>
+      <span class="game-status game-live">🔴 进行中</span>
+    </div>
+  `).join('');
+
+  document.getElementById('recentGames').innerHTML = RECENT_GAMES.map(g => `
+    <div class="game-item">
+      <div>
+        <div class="game-players">⚫ ${g.black} vs ⚪ ${g.white}</div>
+        <div class="game-info">${g.result} (${g.score})</div>
+      </div>
+      <span class="game-status game-done">✅ 已结束</span>
+    </div>
+  `).join('');
+}
+
+function renderDomainTable() {
+  const tbody = document.getElementById('domainTable');
+  tbody.innerHTML = DOMAINS.map(d => {
+    const statusClass = d.status === 'active' ? 'badge-green' : d.status === 'ready' ? 'badge-blue' : 'badge-red';
+    const statusLabel = d.status === 'active' ? '进行中' : d.status === 'ready' ? '就绪' : '停滞';
+    return `<tr style="border-bottom:1px solid #1e293b">
+      <td style="padding:6px">${d.icon} ${d.name}</td>
+      <td><span class="badge ${statusClass}" style="padding:2px 8px;border-radius:12px;font-size:11px">${statusLabel}</span></td>
+      <td>
+        <div style="display:flex;align-items:center;gap:6px">
+          <div class="progress-bar" style="flex:1;height:4px"><div class="progress-fill" style="width:${d.pct}%;background:${d.pct>60?'var(--green)':d.pct>30?'var(--accent)':'var(--red)'}"></div></div>
+          <span style="font-size:11px;color:var(--dim)">${d.pct}%</span>
+        </div>
+      </td>
+      <td style="font-size:11px;color:var(--dim);font-family:monospace">${d.file}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderInfra() {
+  const grid = document.getElementById('infraGrid');
+  grid.innerHTML = INFRA.map(i => `
+    <div style="background:#0f172a;border-radius:8px;padding:10px;text-align:center;border:1px solid var(--border)">
+      <div style="font-size:20px">${i.icon}</div>
+      <div style="font-size:12px;font-weight:600;margin:4px 0">${i.name}</div>
+      <div style="font-size:10px;color:var(--dim)">${i.desc}</div>
+      <div style="margin-top:6px"><span class="status-indicator ${i.status}"></span> <span style="font-size:10px;color:var(--dim)">${i.status==='online'?'正常':i.status==='warning'?'警告':'离线'}</span></div>
+    </div>
+  `).join('');
+}
+
+function updateTime() {
+  document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN');
+}
+
+// ========== 初始化 ==========
+renderNodes();
+renderHealthScores();
+renderMsgTable();
+renderAlerts();
+renderMsgStream();
+renderGames();
+renderDomainTable();
+renderInfra();
+updateTime();
+
+function toggleAutoRefresh(btn) {
+  btn.classList.toggle('active');
+}
+
+// 自动刷新
+setInterval(() => {
+  if (document.querySelector('.btn.active')) updateTime();
+}, 30000);
+</script>
+</body>
+</html>
