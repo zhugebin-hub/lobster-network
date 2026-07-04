@@ -49,6 +49,12 @@ config/*.json
 shared/
 logs/
 
+# Core module runtime data
+core/harness/logs/
+core/orchestrator/logs/
+core/economy/data/
+core/observability/data/
+
 # Sensitive data
 *.pem
 *.key
