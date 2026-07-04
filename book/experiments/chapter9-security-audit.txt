@@ -1,0 +1,73 @@
+│
+◇  Doctor warnings ───────────────────────────────────────────────────╮
+│                                                                     │
+│  - channels.dingtalk.allowFrom: set to ["*"] (required by           │
+│    dmPolicy="open")                                                 │
+│  - Run "openclaw doctor --fix" to add missing allowFrom wildcards.  │
+│                                                                     │
+├─────────────────────────────────────────────────────────────────────╯
+OpenClaw security audit
+Summary: 3 critical · 7 warn · 2 info
+Run deeper: openclaw security audit --deep
+
+CRITICAL
+gateway.control_ui.device_auth_disabled DANGEROUS: Control UI device auth disabled
+  gateway.controlUi.dangerouslyDisableDeviceAuth=true disables device identity checks for the Control UI.
+  Fix: Disable it unless you are in a short-lived break-glass scenario.
+security.exposure.open_groups_with_elevated Open groupPolicy with elevated tools enabled
+  Found groupPolicy="open" at:
+- channels.dingtalk.groupPolicy
+With tools.elevated enabled, a prompt injection in those rooms can become a high-impact incident.
+  Fix: Set groupPolicy="allowlist" and keep elevated allowlists extremely tight.
+security.exposure.open_groups_with_runtime_or_fs Open groupPolicy with runtime/filesystem tools exposed
+  Found groupPolicy="open" at:
+- channels.dingtalk.groupPolicy
+Risky tool exposure contexts:
+- agents.defaults (sandbox=off; runtime=[exec, process]; fs=[read, write, edit, apply_patch]; fs.workspaceOnly=false)
+Prompt injection in open groups can trigger command/file actions in these contexts.
+  Fix: For open groups, prefer tools.profile="messaging" (or deny group:runtime/group:fs), set tools.fs.workspaceOnly=true, and use agents.defaults.sandbox.mode="all" for exposed agents.
+
+WARN
+gateway.control_ui.insecure_auth Control UI insecure auth toggle enabled
+  gateway.controlUi.allowInsecureAuth=true does not bypass secure context or device identity checks; only dangerouslyDisableDeviceAuth disables Control UI device identity checks.
+  Fix: Disable it or switch to HTTPS (Tailscale Serve) or localhost.
+config.insecure_or_dangerous_flags Insecure or dangerous config flags enabled
+  Detected 2 enabled flag(s): gateway.controlUi.allowInsecureAuth=true, gateway.controlUi.dangerouslyDisableDeviceAuth=true.
+  Fix: Disable these flags when not actively debugging, or keep deployment scoped to trusted/local-only networks.
+gateway.auth_no_rate_limit No auth rate limiting configured
+  gateway.bind is not loopback but no gateway.auth.rateLimit is configured. Without rate limiting, brute-force auth attacks are not mitigated.
+  Fix: Set gateway.auth.rateLimit (e.g. { maxAttempts: 10, windowMs: 60000, lockoutMs: 300000 }).
+gateway.nodes.deny_commands_ineffective Some gateway.nodes.denyCommands entries are ineffective
+  gateway.nodes.denyCommands uses exact node command-name matching only (for example `system.run`), not shell-text filtering inside a command payload.
+- Unknown command names (not in defaults/allowCommands): camera.snap (did you mean: camera.list), camera.clip (did you mean: camera.list), screen.record, contacts.add, calendar.add, reminders.add (did you mean: reminders.list), sms.send
+  Fix: Use exact command names (for example: canvas.present, canvas.hide, canvas.navigate, canvas.eval, canvas.snapshot, canvas.a2ui.push, canvas.a2ui.pushJSONL, canvas.a2ui.reset). If you need broader restrictions, remove risky command IDs from allowCommands/default workflows and tighten tools.exec policy.
+security.trust_model.multi_user_heuristic Potential multi-user setup detected (personal-assistant model warning)
+  Heuristic signals indicate this gateway may be reachable by multiple users:
+- channels.dingtalk.groupPolicy="open"
+- channels.dingtalk.dmPolicy="open"
+Runtime/process tools are exposed without full sandboxing in at least one context.
+Potential high-impact tool exposure contexts:
+- agents.defaults (sandbox=off; runtime=[exec, process]; fs=[read, write, edit, apply_patch]; fs.workspaceOnly=false)
+OpenClaw's default security model is personal-assistant (one trusted operator boundary), not hostile multi-tenant isolation on one shared gateway.
+  Fix: If users may be mutually untrusted, split trust boundaries (separate gateways + credentials, ideally separate OS users/hosts). If you intentionally run shared-user access, set agents.defaults.sandbox.mode="all", keep tools.fs.workspaceOnly=true, deny runtime/fs/web tools unless required, and keep personal/private identities + credentials off that runtime.
+plugins.tools_reachable_permissive_policy Extension plugin tools may be reachable under permissive tool policy
+  Enabled extension plugins: dashscope-cfg, dingtalk, qqbot, wecom.
+Permissive tool policy contexts:
+- default
+  Fix: Use restrictive profiles (`minimal`/`coding`) or explicit tool allowlists that exclude plugin tools for agents handling untrusted input.
+plugins.installs_unpinned_npm_specs Plugin installs include unpinned npm specs
+  Unpinned plugin install records:
+- wecom (@openclaw-china/wecom)
+- dingtalk (@soimy/dingtalk)
+  Fix: Pin install specs to exact versions (for example, `@scope/pkg@1.2.3`) for higher supply-chain stability.
+
+INFO
+summary.attack_surface Attack surface summary
+  groups: open=1, allowlist=0
+tools.elevated: enabled
+hooks.webhooks: disabled
+hooks.internal: enabled
+browser control: enabled
+trust model: personal assistant (one trusted operator boundary), not hostile multi-tenant on one shared gateway
+gateway.http.session_key_override_enabled HTTP API session-key override is enabled
+  /v1/chat/completions, /v1/responses accept x-openclaw-session-key for per-request session routing. Treat API credential holders as trusted principals.

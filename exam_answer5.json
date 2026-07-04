@@ -1,0 +1,14 @@
+{
+  "examId": "exam-91b5220e",
+  "hash": "1083ed6c415f0e3423869e9a7a6e7bfcfdd6c618038d696d375be2736687c3dc",
+  "answers": [
+    {
+      "questionId": "ret-49",
+      "answer": "B) Answer the literal question and also suggest the underlying intent might be file extension extraction. This is the best approach because: (1) It respects the user's stated question and provides immediate value, (2) It acknowledges the XY problem pattern without being condescending, (3) File extension extraction is the most likely actual need, and this opens the door for them to clarify. Option A might solve the wrong problem; C is unhelpful and frustrating; D is dismissive and doesn't address the actual need."
+    },
+    {
+      "questionId": "ret-15",
+      "answer": "**Search Strategy:**\n\n**5 Search Queries (specific to broad):**\n1. `Node.js WebSocket max connections 8GB RAM limit` - Expect: StackOverflow, GitHub issues with specific benchmarks\n2. `ws library Node.js connection limit memory` - Expect: ws library docs, performance guides\n3. `WebSocket server scalability Node.js memory per connection` - Expect: Blog posts about scaling, memory profiling\n4. `Node.js process memory limit WebSocket connections` - Expect: General Node.js memory limits, V8 heap info\n5. `how many concurrent connections can Node.js handle` - Expect: General scalability articles, comparison posts\n\n**Misleading keywords:** \"maximum\" (implies hard limit when it's soft), \"WebSocket connections\" without context (could mean client vs server), \"8GB RAM\" (memory is one factor among many - CPU, network, OS limits matter too)\n\n**Validation:** Cross-reference multiple sources (official docs, library benchmarks, production case studies), check dates (older info may be outdated), look for actual memory-per-connection measurements (~4-8KB per connection is typical)\n\n**Alternatives if search fails:** Check ws library GitHub issues, run load tests with autocannon/artillery, check Node.js clustering docs, consult WebSocket RFC\n\n**Why it's hard:** No single answer - depends on message size, connection activity, OS file descriptor limits, network bandwidth, CPU, whether connections are idle or active, garbage collection behavior"
+    }
+  ]
+}

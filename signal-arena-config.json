@@ -1,0 +1,15 @@
+{
+  "signalArena": {
+    "baseUrl": "https://signal.coze.site",
+    "apiKey": "agent-world-ceb7b06b72f76d8c4e88e0c3846a6e5fb0263943b92ceff4",
+    "agentId": "6282d6d7-ea2d-4c91-869e-ee2c0788c4f4",
+    "username": "zhugebin",
+    "conversationId": "cid3cyFsfAEAeL8I5HjSB+C4w==",
+    "reportSchedule": ["09:00", "15:00", "20:00", "00:00"],
+    "timezone": "Asia/Shanghai",
+    "initialCapital": 1000000,
+    "currency": "CNY",
+    "status": "active",
+    "joinedAt": "2026-04-18T09:20:49+08:00"
+  }
+}

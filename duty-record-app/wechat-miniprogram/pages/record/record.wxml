@@ -1,0 +1,93 @@
+<view class="record-container">
+  <view class="form-header">
+    <text class="title">📝 值班记录</text>
+  </view>
+
+  <view class="record-form">
+    <!-- 日期选择 -->
+    <view class="form-item">
+      <text class="label">📅 日期</text>
+      <picker mode="date" value="{{date}}" bindchange="onDateChange">
+        <view class="picker">{{date}}</view>
+      </picker>
+    </view>
+
+    <!-- 时段选择 -->
+    <view class="form-item">
+      <text class="label">⏰ 时段</text>
+      <picker mode="selector" range="{{timePeriods}}" range-key="name" value="{{periodIndex}}" bindchange="onPeriodChange">
+        <view class="picker">{{timePeriods[periodIndex]?.name || '请选择'}}</view>
+      </picker>
+    </view>
+
+    <!-- 班级选择 -->
+    <view class="form-item">
+      <text class="label">🏫 班级</text>
+      <picker mode="selector" range="{{classes}}" range-key="name" value="{{classIndex}}" bindchange="onClassChange">
+        <view class="picker">{{classes[classIndex]?.name || '请选择'}}</view>
+      </picker>
+    </view>
+
+    <!-- 评分项 -->
+    <view class="score-section">
+      <view class="score-item">
+        <text class="score-label">🧹 卫生</text>
+        <view class="score-stars">
+          <text wx:for="{{5}}" wx:key="*this" 
+            class="star {{hygiene >= index + 1 ? 'active' : ''}}"
+            bindtap="setHygiene" data-score="{{index + 1}}">★</text>
+        </view>
+        <text class="score-num">{{hygiene}}分</text>
+      </view>
+
+      <view class="score-item">
+        <text class="score-label">📏 纪律</text>
+        <view class="score-stars">
+          <text wx:for="{{5}}" wx:key="*this" 
+            class="star {{discipline >= index + 1 ? 'active' : ''}}"
+            bindtap="setDiscipline" data-score="{{index + 1}}">★</text>
+        </view>
+        <text class="score-num">{{discipline}}分</text>
+      </view>
+
+      <view class="score-item">
+        <text class="score-label">📚 学习</text>
+        <view class="score-stars">
+          <text wx:for="{{5}}" wx:key="*this" 
+            class="star {{study >= index + 1 ? 'active' : ''}}"
+            bindtap="setStudy" data-score="{{index + 1}}">★</text>
+        </view>
+        <text class="score-num">{{study}}分</text>
+      </view>
+    </view>
+
+    <!-- 备注 -->
+    <view class="form-item">
+      <text class="label">📝 备注说明</text>
+      <textarea 
+        class="textarea" 
+        placeholder="记录具体情况（可选）"
+        value="{{notes}}"
+        bindinput="onNotesInput"
+        maxlength="200"
+      />
+    </view>
+
+    <!-- 拍照上传 -->
+    <view class="form-item">
+      <text class="label">📷 现场照片</text>
+      <view class="photo-upload" bindtap="choosePhoto">
+        <image wx:if="{{photoPath}}" src="{{photoPath}}" mode="aspectFill" />
+        <view wx:else class="upload-placeholder">
+          <text class="icon">📸</text>
+          <text class="tip">点击拍照</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <button class="submit-btn" bindtap="submitRecord" loading="{{submitting}}">
+      提交记录
+    </button>
+  </view>
+</view>

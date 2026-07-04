@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学校值班记录系统</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f6fa; }
+    
+    .header { background: linear-gradient(135deg, #4A90D9 0%, #67B26F 100%); color: white; padding: 30px 20px; text-align: center; }
+    .header h1 { font-size: 28px; margin-bottom: 8px; }
+    .header p { font-size: 14px; opacity: 0.9; }
+    
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    
+    .card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .card-title { font-size: 18px; font-weight: bold; margin-bottom: 16px; color: #333; }
+    
+    .btn { display: inline-block; padding: 12px 24px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; text-align: center; text-decoration: none; }
+    .btn-primary { background: #4A90D9; color: white; }
+    .btn-primary:hover { background: #3a7bc8; }
+    .btn-secondary { background: #f0f0f0; color: #333; }
+    .btn-block { display: block; width: 100%; }
+    
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: #555; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+    
+    .stars { display: flex; gap: 8px; margin-bottom: 8px; }
+    .star { font-size: 32px; cursor: pointer; color: #ddd; transition: color 0.2s; }
+    .star.active { color: #ffd700; }
+    
+    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .stat-item { text-align: center; padding: 20px; background: #f9f9f9; border-radius: 8px; }
+    .stat-num { font-size: 36px; font-weight: bold; color: #4A90D9; display: block; }
+    .stat-label { font-size: 14px; color: #999; }
+    
+    .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .menu-item { background: #f9f9f9; padding: 30px 20px; border-radius: 12px; text-align: center; cursor: pointer; transition: all 0.2s; }
+    .menu-item:hover { background: #e8e8e8; transform: translateY(-2px); }
+    .menu-item .icon { font-size: 40px; display: block; margin-bottom: 10px; }
+    .menu-item .label { font-size: 16px; color: #333; }
+    
+    .record-list { max-height: 400px; overflow-y: auto; }
+    .record-item { padding: 16px; border-bottom: 1px solid #eee; }
+    .record-item:last-child { border-bottom: none; }
+    .record-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+    .record-class { font-weight: bold; font-size: 16px; }
+    .record-date { color: #999; font-size: 13px; }
+    .record-scores { display: flex; gap: 12px; margin-top: 8px; }
+    .score-tag { padding: 4px 10px; background: #f0f0f0; border-radius: 4px; font-size: 13px; }
+    
+    .ranking-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee; }
+    .rank-num { width: 36px; height: 36px; border-radius: 50%; background: #eee; text-align: center; line-height: 36px; font-weight: bold; margin-right: 12px; }
+    .rank-num.top { background: linear-gradient(135deg, #FFD700, #FFA500); color: white; }
+    .rank-info { flex: 1; }
+    .rank-name { font-weight: bold; }
+    .rank-score { color: #4A90D9; font-size: 13px; }
+    
+    .hidden { display: none; }
+    .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 12px 24px; border-radius: 8px; z-index: 1000; }
+    
+    .summary-content { white-space: pre-wrap; line-height: 1.8; color: #333; }
+    
+    .nav-bar { background: white; padding: 12px 20px; display: flex; justify-content: space-around; border-top: 1px solid #eee; position: fixed; bottom: 0; left: 0; right: 0; }
+    .nav-item { text-align: center; color: #999; cursor: pointer; }
+    .nav-item.active { color: #4A90D9; }
+    .nav-item .icon { font-size: 24px; display: block; }
+    .nav-item .label { font-size: 12px; }
+    
+    .page { padding-bottom: 70px; }
+    
+    .user-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 16px; background: white; border-radius: 12px; }
+    .logout-btn { background: #ff6b6b; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🏫 学校值班记录系统</h1>
+    <p>初中部 · 3 年级 24 班</p>
+  </div>
+
+  <div class="container">
+    <!-- 首页 -->
+    <div id="page-home" class="page">
+      <div class="user-info hidden" id="userInfo">
+        <span id="userName">你好</span>
+        <button class="logout-btn" onclick="logout()">退出登录</button>
+      </div>
+
+      <div class="card">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-num" id="todayCount">0</span>
+            <span class="stat-label">今日记录</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="todayAvg">0</span>
+            <span class="stat-label">平均分</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="menu-grid">
+          <div class="menu-item" onclick="goToPage('record')">
+            <span class="icon">📝</span>
+            <span class="label">值班记录</span>
+          </div>
+          <div class="menu-item" onclick="goToPage('view')">
+            <span class="icon">👁️</span>
+            <span class="label">查看记录</span>
+          </div>
+          <div class="menu-item" onclick="goToPage('weekly')">
+            <span class="icon">📊</span>
+            <span class="label">周报总结</span>
+          </div>
+          <div class="menu-item" onclick="goToPage('login')">
+            <span class="icon">👤</span>
+            <span class="label">管理员登录</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 登录页 -->
+    <div id="page-login" class="page hidden">
+      <div class="card">
+        <h2 class="card-title">🔐 管理员登录</h2>
+        <div class="form-group">
+          <label>用户名</label>
+          <input type="text" id="loginUsername" placeholder="请输入用户名">
+        </div>
+        <div class="form-group">
+          <label>密码</label>
+          <input type="password" id="loginPassword" placeholder="请输入密码">
+        </div>
+        <button class="btn btn-primary btn-block" onclick="login()">登录</button>
+        <p style="text-align: center; margin-top: 16px; color: #999; font-size: 14px;">💡 默认账号：admin / admin123</p>
+      </div>
+    </div>
+
+    <!-- 记录页 -->
+    <div id="page-record" class="page hidden">
+      <div class="card">
+        <h2 class="card-title">📝 值班记录</h2>
+        <div class="form-group">
+          <label>📅 日期</label>
+          <input type="date" id="recordDate">
+        </div>
+        <div class="form-group">
+          <label>⏰ 时段</label>
+          <select id="recordPeriod"></select>
+        </div>
+        <div class="form-group">
+          <label>🏫 班级</label>
+          <select id="recordClass"></select>
+        </div>
+        
+        <div class="form-group">
+          <label>🧹 卫生评分</label>
+          <div class="stars" id="hygieneStars">
+            <span class="star" onclick="setScore('hygiene',1)">★</span>
+            <span class="star" onclick="setScore('hygiene',2)">★</span>
+            <span class="star" onclick="setScore('hygiene',3)">★</span>
+            <span class="star" onclick="setScore('hygiene',4)">★</span>
+            <span class="star" onclick="setScore('hygiene',5)">★</span>
+          </div>
+          <span id="hygieneScore">5 分</span>
+        </div>
+
+        <div class="form-group">
+          <label>📏 纪律评分</label>
+          <div class="stars" id="disciplineStars">
+            <span class="star" onclick="setScore('discipline',1)">★</span>
+            <span class="star" onclick="setScore('discipline',2)">★</span>
+            <span class="star" onclick="setScore('discipline',3)">★</span>
+            <span class="star" onclick="setScore('discipline',4)">★</span>
+            <span class="star" onclick="setScore('discipline',5)">★</span>
+          </div>
+          <span id="disciplineScore">5 分</span>
+        </div>
+
+        <div class="form-group">
+          <label>📚 学习评分</label>
+          <div class="stars" id="studyStars">
+            <span class="star" onclick="setScore('study',1)">★</span>
+            <span class="star" onclick="setScore('study',2)">★</span>
+            <span class="star" onclick="setScore('study',3)">★</span>
+            <span class="star" onclick="setScore('study',4)">★</span>
+            <span class="star" onclick="setScore('study',5)">★</span>
+          </div>
+          <span id="studyScore">5 分</span>
+        </div>
+
+        <div class="form-group">
+          <label>📝 备注说明</label>
+          <textarea id="recordNotes" placeholder="记录具体情况（可选）"></textarea>
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="submitRecord()">提交记录</button>
+      </div>
+    </div>
+
+    <!-- 查看页 -->
+    <div id="page-view" class="page hidden">
+      <div class="card">
+        <h2 class="card-title">📋 值班记录</h2>
+        <div class="form-group">
+          <label>筛选日期</label>
+          <input type="date" id="viewDate" onchange="loadRecords()">
+        </div>
+        <div class="record-list" id="recordList"></div>
+      </div>
+    </div>
+
+    <!-- 周报页 -->
+    <div id="page-weekly" class="page hidden">
+      <div class="card">
+        <h2 class="card-title">📊 周报总结</h2>
+        <div class="form-group">
+          <label>开始日期</label>
+          <input type="date" id="weekStart">
+        </div>
+        <div class="form-group">
+          <label>结束日期</label>
+          <input type="date" id="weekEnd">
+        </div>
+        <button class="btn btn-primary btn-block" onclick="generateSummary()" id="generateBtn">生成 AI 总结</button>
+      </div>
+
+      <div class="card hidden" id="summaryCard">
+        <h2 class="card-title">🤖 AI 周报总结</h2>
+        <div class="summary-content" id="summaryContent"></div>
+      </div>
+
+      <div class="card hidden" id="rankingCard">
+        <h2 class="card-title">🏆 班级排名</h2>
+        <div id="rankingList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部导航 -->
+  <div class="nav-bar">
+    <div class="nav-item active" onclick="goToPage('home')" id="nav-home">
+      <span class="icon">🏠</span>
+      <span class="label">首页</span>
+    </div>
+    <div class="nav-item" onclick="goToPage('view')" id="nav-view">
+      <span class="icon">👁️</span>
+      <span class="label">查看</span>
+    </div>
+    <div class="nav-item" onclick="goToPage('record')" id="nav-record">
+      <span class="icon">📝</span>
+      <span class="label">记录</span>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script>
+    const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000' : `http://${window.location.hostname}:3000`;
+    let token = localStorage.getItem('token');
+    let userInfo = JSON.parse(localStorage.getItem('userInfo') || 'null');
+    let classes = [];
+    let periods = [];
+    let scores = { hygiene: 5, discipline: 5, study: 5 };
+
+    // 初始化
+    document.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('recordDate').value = today;
+      document.getElementById('viewDate').value = today;
+      
+      // 设置周一和周日
+      const now = new Date();
+      const day = now.getDay();
+      const diff = now.getDate() - day + (day === 0 ? -6 : 1);
+      const monday = new Date(now.setDate(diff));
+      const sunday = new Date(now.setDate(diff + 6));
+      document.getElementById('weekStart').value = monday.toISOString().split('T')[0];
+      document.getElementById('weekEnd').value = sunday.toISOString().split('T')[0];
+
+      updateUserInfo();
+      loadClasses();
+      loadPeriods();
+      loadTodayStats();
+    });
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 2000);
+    }
+
+    function goToPage(page) {
+      document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+      document.getElementById(`page-${page}`).classList.remove('hidden');
+      
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      const nav = document.getElementById(`nav-${page}`);
+      if (nav) nav.classList.add('active');
+
+      if (page === 'view') loadRecords();
+      if (page === 'record' && !token) {
+        showToast('请先登录');
+        setTimeout(() => goToPage('login'), 1000);
+      }
+    }
+
+    function updateUserInfo() {
+      const userInfoDiv = document.getElementById('userInfo');
+      if (userInfo) {
+        userInfoDiv.classList.remove('hidden');
+        document.getElementById('userName').textContent = `你好，${userInfo.name}`;
+      } else {
+        userInfoDiv.classList.add('hidden');
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('userInfo');
+      token = null;
+      userInfo = null;
+      updateUserInfo();
+      showToast('已退出登录');
+      goToPage('home');
+    }
+
+    async function login() {
+      const username = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+
+      if (!username || !password) {
+        showToast('请输入用户名和密码');
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API_URL}/api/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+
+        if (data.token) {
+          token = data.token;
+          userInfo = data.user;
+          localStorage.setItem('token', token);
+          localStorage.setItem('userInfo', JSON.stringify(userInfo));
+          updateUserInfo();
+          showToast('登录成功');
+          goToPage('home');
+        } else {
+          showToast(data.error || '登录失败');
+        }
+      } catch (e) {
+        showToast('网络错误');
+      }
+    }
+
+    async function loadClasses() {
+      try {
+        const res = await fetch(`${API_URL}/api/classes`);
+        classes = await res.json();
+        const select = document.getElementById('recordClass');
+        select.innerHTML = classes.map((c, i) => `<option value="${c.id}">${c.name}</option>`).join('');
+      } catch (e) {
+        console.error('加载班级失败', e);
+      }
+    }
+
+    async function loadPeriods() {
+      try {
+        const res = await fetch(`${API_URL}/api/time-periods`);
+        periods = await res.json();
+        const select = document.getElementById('recordPeriod');
+        const hour = new Date().getHours();
+        let defaultIndex = 0;
+        if (hour >= 7 && hour < 8) defaultIndex = 0;
+        else if (hour >= 8 && hour < 9) defaultIndex = 1;
+        else if (hour >= 9 && hour < 10) defaultIndex = 2;
+        else if (hour >= 11 && hour < 12) defaultIndex = 3;
+        else if (hour >= 12 && hour < 14) defaultIndex = 4;
+        else if (hour >= 14 && hour < 17) defaultIndex = 5;
+        else if (hour >= 17 && hour < 18) defaultIndex = 6;
+        else if (hour >= 18 && hour < 18.5) defaultIndex = 7;
+        else if (hour >= 18.5) defaultIndex = 8;
+
+        select.innerHTML = periods.map((p, i) => `<option value="${p.id}" ${i === defaultIndex ? 'selected' : ''}>${p.name}</option>`).join('');
+      } catch (e) {
+        console.error('加载时段失败', e);
+      }
+    }
+
+    function setScore(type, value) {
+      scores[type] = value;
+      document.getElementById(`${type}Score`).textContent = `${value}分`;
+      document.getElementById(`${type}Stars`).querySelectorAll('.star').forEach((s, i) => {
+        s.classList.toggle('active', i < value);
+      });
+    }
+
+    async function submitRecord() {
+      if (!token) {
+        showToast('请先登录');
+        setTimeout(() => goToPage('login'), 1000);
+        return;
+      }
+
+      const periodSelect = document.getElementById('recordPeriod');
+      const classSelect = document.getElementById('recordClass');
+      const data = {
+        date: document.getElementById('recordDate').value,
+        time_period: periodSelect.options[periodSelect.selectedIndex].text,
+        class_id: classSelect.value,
+        hygiene_score: scores.hygiene,
+        discipline_score: scores.discipline,
+        study_score: scores.study,
+        notes: document.getElementById('recordNotes').value
+      };
+
+      try {
+        const res = await fetch(`${API_URL}/api/records`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+
+        if (result.id) {
+          showToast('记录成功');
+          document.getElementById('recordNotes').value = '';
+          setScore('hygiene', 5);
+          setScore('discipline', 5);
+          setScore('study', 5);
+          loadTodayStats();
+        } else {
+          showToast(result.error || '提交失败');
+        }
+      } catch (e) {
+        showToast('网络错误');
+      }
+    }
+
+    async function loadRecords() {
+      if (!token) {
+        document.getElementById('recordList').innerHTML = '<p style="text-align:center;color:#999;">请先登录后查看</p>';
+        return;
+      }
+
+      const date = document.getElementById('viewDate').value;
+      try {
+        const res = await fetch(`${API_URL}/api/records?date=${date}`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const records = await res.json();
+
+        if (records.length === 0) {
+          document.getElementById('recordList').innerHTML = '<p style="text-align:center;color:#999;">暂无记录</p>';
+          return;
+        }
+
+        document.getElementById('recordList').innerHTML = records.map(r => `
+          <div class="record-item">
+            <div class="record-header">
+              <span class="record-class">${r.class_name}</span>
+              <span class="record-date">${r.date} ${r.time_period}</span>
+            </div>
+            <div class="record-scores">
+              <span class="score-tag">🧹 卫生${r.hygiene_score}</span>
+              <span class="score-tag">📏 纪律${r.discipline_score}</span>
+              <span class="score-tag">📚 学习${r.study_score}</span>
+            </div>
+            ${r.notes ? `<p style="margin-top:8px;color:#666;font-size:14px;">${r.notes}</p>` : ''}
+          </div>
+        `).join('');
+      } catch (e) {
+        console.error('加载记录失败', e);
+      }
+    }
+
+    async function loadTodayStats() {
+      if (!token) return;
+
+      const today = new Date().toISOString().split('T')[0];
+      try {
+        const res = await fetch(`${API_URL}/api/records?date=${today}`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const records = await res.json();
+
+        const count = records.length;
+        const avg = count > 0 
+          ? (records.reduce((sum, r) => sum + r.hygiene_score + r.discipline_score + r.study_score, 0) / count / 3).toFixed(1)
+          : 0;
+
+        document.getElementById('todayCount').textContent = count;
+        document.getElementById('todayAvg').textContent = avg;
+      } catch (e) {
+        console.error('加载统计失败', e);
+      }
+    }
+
+    async function generateSummary() {
+      if (!token) {
+        showToast('请先登录');
+        setTimeout(() => goToPage('login'), 1000);
+        return;
+      }
+
+      const btn = document.getElementById('generateBtn');
+      btn.textContent = '生成中...';
+      btn.disabled = true;
+
+      const weekStart = document.getElementById('weekStart').value;
+      const weekEnd = document.getElementById('weekEnd').value;
+
+      try {
+        // 获取统计
+        const statsRes = await fetch(`${API_URL}/api/stats/weekly?week_start=${weekStart}`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const rankings = await statsRes.json();
+
+        // 获取 AI 总结
+        const summaryRes = await fetch(`${API_URL}/api/ai/weekly-summary`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ week_start: weekStart, week_end: weekEnd })
+        });
+        const summary = await summaryRes.json();
+
+        if (summary.summary) {
+          document.getElementById('summaryContent').textContent = summary.summary;
+          document.getElementById('summaryCard').classList.remove('hidden');
+        }
+
+        if (rankings.length > 0) {
+          document.getElementById('rankingList').innerHTML = rankings.map((r, i) => `
+            <div class="ranking-item">
+              <div class="rank-num ${i < 3 ? 'top' : ''}">${i + 1}</div>
+              <div class="rank-info">
+                <div class="rank-name">${r.class_name}</div>
+                <div class="rank-score">综合 ${parseFloat(r.total_avg).toFixed(2)}分</div>
+              </div>
+              <div style="font-size:12px;color:#999;">卫生${parseFloat(r.avg_hygiene).toFixed(1)} | 纪律${parseFloat(r.avg_discipline).toFixed(1)} | 学习${parseFloat(r.avg_study).toFixed(1)}</div>
+            </div>
+          `).join('');
+          document.getElementById('rankingCard').classList.remove('hidden');
+        }
+
+        showToast('生成成功');
+      } catch (e) {
+        showToast('生成失败');
+      } finally {
+        btn.textContent = '生成 AI 总结';
+        btn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1848 @@
+{
+  "generated_at": "2026-04-23T18:53:16.158895",
+  "load_data": [
+    {
+      "timestamp": "2026-04-17T00:00:00.158917",
+      "load_mw": 28582,
+      "price_yuan_mwh": 375.82,
+      "temperature": 32
+    },
+    {
+      "timestamp": "2026-04-17T01:00:00.158917",
+      "load_mw": 25081,
+      "price_yuan_mwh": 342.81,
+      "temperature": 20
+    },
+    {
+      "timestamp": "2026-04-17T02:00:00.158917",
+      "load_mw": 28836,
+      "price_yuan_mwh": 368.36,
+      "temperature": 33
+    },
+    {
+      "timestamp": "2026-04-17T03:00:00.158917",
+      "load_mw": 31133,
+      "price_yuan_mwh": 397.33,
+      "temperature": 18
+    },
+    {
+      "timestamp": "2026-04-17T04:00:00.158917",
+      "load_mw": 26318,
+      "price_yuan_mwh": 375.18,
+      "temperature": 32
+    },
+    {
+      "timestamp": "2026-04-17T05:00:00.158917",
+      "load_mw": 30414,
+      "price_yuan_mwh": 401.14,
+      "temperature": 22
+    },
+    {
+      "timestamp": "2026-04-17T06:00:00.158917",
+      "load_mw": 42267,
+      "price_yuan_mwh": 501.67,
+      "temperature": 19
+    },
+    {
+      "timestamp": "2026-04-17T07:00:00.158917",
+      "load_mw": 39984,
+      "price_yuan_mwh": 494.84,
+      "temperature": 35
+    },
+    {
+      "timestamp": "2026-04-17T08:00:00.158917",
+      "load_mw": 41373,
+      "price_yuan_mwh": 537.73,
+      "temperature": 27
+    },
+    {
+      "timestamp": "2026-04-17T09:00:00.158917",
+      "load_mw": 44026,
+      "price_yuan_mwh": 512.26,
+      "temperature": 16
+    },
+    {
+      "timestamp": "2026-04-17T10:00:00.158917",
+      "load_mw": 39581,
+      "price_yuan_mwh": 486.81,
+      "temperature": 15
+    },
+    {
+      "timestamp": "2026-04-17T11:00:00.158917",
+      "load_mw": 33248,
+      "price_yuan_mwh": 425.48,
+      "temperature": 22
+    },
+    {
+      "timestamp": "2026-04-17T12:00:00.158917",
+      "load_mw": 33409,
+      "price_yuan_mwh": 420.09,
+      "temperature": 30
+    },
+    {
+      "timestamp": "2026-04-17T13:00:00.158917",
+      "load_mw": 39039,
+      "price_yuan_mwh": 507.39,
+      "temperature": 29
+    },
+    {
+      "timestamp": "2026-04-17T14:00:00.158917",
+      "load_mw": 39813,
+      "price_yuan_mwh": 497.13,
+      "temperature": 19
+    },
+    {
+      "timestamp": "2026-04-17T15:00:00.158917",
+      "load_mw": 34885,
+      "price_yuan_mwh": 463.85,
+      "temperature": 15
+    },
+    {
+      "timestamp": "2026-04-17T16:00:00.158917",
+      "load_mw": 37751,
+      "price_yuan_mwh": 486.51,
+      "temperature": 23
+    },
+    {
+      "timestamp": "2026-04-17T17:00:00.158917",
+      "load_mw": 48146,
+      "price_yuan_mwh": 603.46,
+      "temperature": 26
+    },
+    {
+      "timestamp": "2026-04-17T18:00:00.158917",
+      "load_mw": 46842,
+      "price_yuan_mwh": 552.42,
+      "temperature": 22
+    },
+    {
+      "timestamp": "2026-04-17T19:00:00.158917",
+      "load_mw": 45397,
+      "price_yuan_mwh": 552.97,
+      "temperature": 16
+    },
+    {
+      "timestamp": "2026-04-17T20:00:00.158917",
+      "load_mw": 43071,
+      "price_yuan_mwh": 527.71,
+      "temperature": 33
+    },
+    {
+      "timestamp": "2026-04-17T21:00:00.158917",
+      "load_mw": 44222,
+      "price_yuan_mwh": 513.22,
+      "temperature": 30
+    },
+    {
+      "timestamp": "2026-04-17T22:00:00.158917",
+      "load_mw": 37896,
+      "price_yuan_mwh": 455.96,
+      "temperature": 29
+    },
+    {
+      "timestamp": "2026-04-17T23:00:00.158917",
+      "load_mw": 40447,
+      "price_yuan_mwh": 489.47,
+      "temperature": 23
+    },
+    {
+      "timestamp": "2026-04-18T00:00:00.158917",
+      "load_mw": 25642,
+      "price_yuan_mwh": 339.42,
+      "temperature": 17
+    },
+    {
+      "timestamp": "2026-04-18T01:00:00.158917",
+      "load_mw": 25221,
+      "price_yuan_mwh": 341.21,
+      "temperature": 32
+    },
+    {
+      "timestamp": "2026-04-18T02:00:00.158917",
+      "load_mw": 30236,
+      "price_yuan_mwh": 413.36,
+      "temperature": 18
+    },
+    {
+      "timestamp": "2026-04-18T03:00:00.158917",
+      "load_mw": 30780,
+      "price_yuan_mwh": 401.8,
+      "temperature": 33
+    },
+    {
+      "timestamp": "2026-04-18T04:00:00.158917",
+      "load_mw": 25837,
+      "price_yuan_mwh": 373.37,
+      "temperature": 15
+    },
+    {
+      "timestamp": "2026-04-18T05:00:00.158917",
+      "load_mw": 30261,
+      "price_yuan_mwh": 393.61,
+      "temperature": 25
+    },
+    {
+      "timestamp": "2026-04-18T06:00:00.158917",
+      "load_mw": 44476,
+      "price_yuan_mwh": 532.76,
+      "temperature": 16
+    },
+    {
+      "timestamp": "2026-04-18T07:00:00.158917",
+      "load_mw": 42458,
+      "price_yuan_mwh": 500.58,
+      "temperature": 23
+    },
+    {
+      "timestamp": "2026-04-18T08:00:00.158917",
+      "load_mw": 47094,
+      "price_yuan_mwh": 550.94,
+      "temperature": 16
+    },
+    {
+      "timestamp": "2026-04-18T09:00:00.158917",
+      "load_mw": 47549,
+      "price_yuan_mwh": 579.49,
+      "temperature": 26
+    },
+    {
+      "timestamp": "2026-04-18T10:00:00.158917",
+      "load_mw": 33553,
+      "price_yuan_mwh": 428.53,
+      "temperature": 32
+    },
+    {
+      "timestamp": "2026-04-18T11:00:00.158917",
+      "load_mw": 39124,
+      "price_yuan_mwh": 461.24,
+      "temperature": 17
+    },
+    {
+      "timestamp": "2026-04-18T12:00:00.158917",
+      "load_mw": 34582,
+      "price_yuan_mwh": 417.82,
+      "temperature": 22
+    },
+    {
+      "timestamp": "2026-04-18T13:00:00.158917",
+      "load_mw": 39486,
+      "price_yuan_mwh": 510.86,
+      "temperature": 20
+    },
+    {
+      "timestamp": "2026-04-18T14:00:00.158917",
+      "load_mw": 32545,
+      "price_yuan_mwh": 422.45,
+      "temperature": 26
+    },
+    {
+      "timestamp": "2026-04-18T15:00:00.158917",
+      "load_mw": 39322,
+      "price_yuan_mwh": 496.22,
+      "temperature": 15
+    },
+    {
+      "timestamp": "2026-04-18T16:00:00.158917",
+      "load_mw": 37618,
+      "price_yuan_mwh": 503.18,
+      "temperature": 31
+    },
+    {
+      "timestamp": "2026-04-18T17:00:00.158917",
+      "load_mw": 44542,
+      "price_yuan_mwh": 551.42,
+      "temperature": 32
+    },
+    {
+      "timestamp": "2026-04-18T18:00:00.158917",
+      "load_mw": 44295,
+      "price_yuan_mwh": 566.95,
+      "temperature": 34
+    },
+    {
+      "timestamp": "2026-04-18T19:00:00.158917",
+      "load_mw": 48621,
+      "price_yuan_mwh": 572.21,
+      "temperature": 31
+    },
+    {
+      "timestamp": "2026-04-18T20:00:00.158917",
+      "load_mw": 48063,
+      "price_yuan_mwh": 580.63,
+      "temperature": 20
+    },
+    {
+      "timestamp": "2026-04-18T21:00:00.158917",
+      "load_mw": 47083,
+      "price_yuan_mwh": 545.83,
+      "temperature": 25
+    },
+    {
+      "timestamp": "2026-04-18T22:00:00.158917",
+      "load_mw": 36408,
+      "price_yuan_mwh": 474.08,
+      "temperature": 18
+    },
+    {
+      "timestamp": "2026-04-18T23:00:00.158917",
+      "load_mw": 33867,
+      "price_yuan_mwh": 441.67,
+      "temperature": 24
+    },
+    {
+      "timestamp": "2026-04-19T00:00:00.158917",
+      "load_mw": 24119,
+      "price_yuan_mwh": 367.19,
+      "temperature": 21
+    },
+    {
+      "timestamp": "2026-04-19T01:00:00.158917",
+      "load_mw": 26526,
+      "price_yuan_mwh": 355.26,
+      "temperature": 21
+    },
+    {
+      "timestamp": "2026-04-19T02:00:00.158917",
+      "load_mw": 24458,
+      "price_yuan_mwh": 340.58,
+      "temperature": 17
+    },
+    {
+      "timestamp": "2026-04-19T03:00:00.158917",
+      "load_mw": 24880,
+      "price_yuan_mwh": 340.8,
+      "temperature": 26
+    },
+    {
+      "timestamp": "2026-04-19T04:00:00.158917",
+      "load_mw": 31360,
+      "price_yuan_mwh": 417.6,
+      "temperature": 17
+    },
+    {
+      "timestamp": "2026-04-19T05:00:00.158917",
+      "load_mw": 23425,
+      "price_yuan_mwh": 336.25,
+      "temperature": 19
+    },
+    {
+      "timestamp": "2026-04-19T06:00:00.158917",
+      "load_mw": 42676,
+      "price_yuan_mwh": 540.76,
+      "temperature": 27
+    },
+    {
+      "timestamp": "2026-04-19T07:00:00.158917",
+      "load_mw": 44945,
+      "price_yuan_mwh": 578.45,
+      "temperature": 27
+    },
+    {
+      "timestamp": "2026-04-19T08:00:00.158917",
+      "load_mw": 44697,
+      "price_yuan_mwh": 532.97,
+      "temperature": 17
+    },
+    {
+      "timestamp": "2026-04-19T09:00:00.158917",
+      "load_mw": 47056,
+      "price_yuan_mwh": 594.56,
+      "temperature": 24
+    },
+    {
+      "timestamp": "2026-04-19T10:00:00.158917",
+      "load_mw": 35295,
+      "price_yuan_mwh": 445.95,
+      "temperature": 26
+    },
+    {
+      "timestamp": "2026-04-19T11:00:00.158917",
+      "load_mw": 37922,
+      "price_yuan_mwh": 505.22,
+      "temperature": 35
+    },
+    {
+      "timestamp": "2026-04-19T12:00:00.158917",
+      "load_mw": 39679,
+      "price_yuan_mwh": 475.79,
+      "temperature": 29
+    },
+    {
+      "timestamp": "2026-04-19T13:00:00.158917",
+      "load_mw": 34858,
+      "price_yuan_mwh": 461.58,
+      "temperature": 35
+    },
+    {
+      "timestamp": "2026-04-19T14:00:00.158917",
+      "load_mw": 31982,
+      "price_yuan_mwh": 442.82,
+      "temperature": 15
+    },
+    {
+      "timestamp": "2026-04-19T15:00:00.158917",
+      "load_mw": 40221,
+      "price_yuan_mwh": 504.21,
+      "temperature": 30
+    },
+    {
+      "timestamp": "2026-04-19T16:00:00.158917",
+      "load_mw": 40322,
+      "price_yuan_mwh": 524.22,
+      "temperature": 30
+    },
+    {
+      "timestamp": "2026-04-19T17:00:00.158917",
+      "load_mw": 42814,
+      "price_yuan_mwh": 550.14,
+      "temperature": 25
+    },
+    {
+      "timestamp": "2026-04-19T18:00:00.158917",
+      "load_mw": 44083,
+      "price_yuan_mwh": 543.83,
+      "temperature": 29
+    },
+    {
+      "timestamp": "2026-04-19T19:00:00.158917",
+      "load_mw": 49071,
+      "price_yuan_mwh": 588.71,
+      "temperature": 15
+    },
+    {
+      "timestamp": "2026-04-19T20:00:00.158917",
+      "load_mw": 43812,
+      "price_yuan_mwh": 515.12,
+      "temperature": 18
+    },
+    {
+      "timestamp": "2026-04-19T21:00:00.158917",
+      "load_mw": 43694,
+      "price_yuan_mwh": 516.94,
+      "temperature": 24
+    },
+    {
+      "timestamp": "2026-04-19T22:00:00.158917",
+      "load_mw": 40618,
+      "price_yuan_mwh": 489.18,
+      "temperature": 24
+    },
+    {
+      "timestamp": "2026-04-19T23:00:00.158917",
+      "load_mw": 32991,
+      "price_yuan_mwh": 435.91,
+      "temperature": 28
+    },
+    {
+      "timestamp": "2026-04-20T00:00:00.158917",
+      "load_mw": 26798,
+      "price_yuan_mwh": 355.98,
+      "temperature": 23
+    },
+    {
+      "timestamp": "2026-04-20T01:00:00.158917",
+      "load_mw": 23865,
+      "price_yuan_mwh": 332.65,
+      "temperature": 34
+    },
+    {
+      "timestamp": "2026-04-20T02:00:00.158917",
+      "load_mw": 25290,
+      "price_yuan_mwh": 338.9,
+      "temperature": 30
+    },
+    {
+      "timestamp": "2026-04-20T03:00:00.158917",
+      "load_mw": 23976,
+      "price_yuan_mwh": 361.76,
+      "temperature": 28
+    },
+    {
+      "timestamp": "2026-04-20T04:00:00.158917",
+      "load_mw": 25767,
+      "price_yuan_mwh": 346.67,
+      "temperature": 34
+    },
+    {
+      "timestamp": "2026-04-20T05:00:00.158917",
+      "load_mw": 28819,
+      "price_yuan_mwh": 408.19,
+      "temperature": 26
+    },
+    {
+      "timestamp": "2026-04-20T06:00:00.158917",
+      "load_mw": 43044,
+      "price_yuan_mwh": 546.44,
+      "temperature": 25
+    },
+    {
+      "timestamp": "2026-04-20T07:00:00.158917",
+      "load_mw": 46901,
+      "price_yuan_mwh": 571.01,
+      "temperature": 17
+    },
+    {
+      "timestamp": "2026-04-20T08:00:00.158917",
+      "load_mw": 44742,
+      "price_yuan_mwh": 572.42,
+      "temperature": 20
+    },
+    {
+      "timestamp": "2026-04-20T09:00:00.158917",
+      "load_mw": 49515,
+      "price_yuan_mwh": 580.15,
+      "temperature": 23
+    },
+    {
+      "timestamp": "2026-04-20T10:00:00.158917",
+      "load_mw": 37744,
+      "price_yuan_mwh": 494.44,
+      "temperature": 21
+    },
+    {
+      "timestamp": "2026-04-20T11:00:00.158917",
+      "load_mw": 35625,
+      "price_yuan_mwh": 439.25,
+      "temperature": 18
+    },
+    {
+      "timestamp": "2026-04-20T12:00:00.158917",
+      "load_mw": 32371,
+      "price_yuan_mwh": 413.71,
+      "temperature": 27
+    },
+    {
+      "timestamp": "2026-04-20T13:00:00.158917",
+      "load_mw": 32665,
+      "price_yuan_mwh": 416.65,
+      "temperature": 24
+    },
+    {
+      "timestamp": "2026-04-20T14:00:00.158917",
+      "load_mw": 36834,
+      "price_yuan_mwh": 446.34,
+      "temperature": 21
+    },
+    {
+      "timestamp": "2026-04-20T15:00:00.158917",
+      "load_mw": 36478,
+      "price_yuan_mwh": 436.78,
+      "temperature": 26
+    },
+    {
+      "timestamp": "2026-04-20T16:00:00.158917",
+      "load_mw": 32056,
+      "price_yuan_mwh": 430.56,
+      "temperature": 17
+    },
+    {
+      "timestamp": "2026-04-20T17:00:00.158917",
+      "load_mw": 45839,
+      "price_yuan_mwh": 554.39,
+      "temperature": 26
+    },
+    {
+      "timestamp": "2026-04-20T18:00:00.158917",
+      "load_mw": 45999,
+      "price_yuan_mwh": 550.99,
+      "temperature": 19
+    },
+    {
+      "timestamp": "2026-04-20T19:00:00.158917",
+      "load_mw": 45800,
+      "price_yuan_mwh": 572.0,
+      "temperature": 24
+    },
+    {
+      "timestamp": "2026-04-20T20:00:00.158917",
+      "load_mw": 47204,
+      "price_yuan_mwh": 561.04,
+      "temperature": 26
+    },
+    {
+      "timestamp": "2026-04-20T21:00:00.158917",
+      "load_mw": 46887,
+      "price_yuan_mwh": 598.87,
+      "temperature": 32
+    },
+    {
+      "timestamp": "2026-04-20T22:00:00.158917",
+      "load_mw": 33839,
+      "price_yuan_mwh": 450.39,
+      "temperature": 16
+    },
+    {
+      "timestamp": "2026-04-20T23:00:00.158917",
+      "load_mw": 40341,
+      "price_yuan_mwh": 533.41,
+      "temperature": 34
+    },
+    {
+      "timestamp": "2026-04-21T00:00:00.158917",
+      "load_mw": 26178,
+      "price_yuan_mwh": 347.78,
+      "temperature": 23
+    },
+    {
+      "timestamp": "2026-04-21T01:00:00.158917",
+      "load_mw": 25001,
+      "price_yuan_mwh": 343.01,
+      "temperature": 33
+    },
+    {
+      "timestamp": "2026-04-21T02:00:00.158917",
+      "load_mw": 26287,
+      "price_yuan_mwh": 335.87,
+      "temperature": 28
+    },
+    {
+      "timestamp": "2026-04-21T03:00:00.158917",
+      "load_mw": 30822,
+      "price_yuan_mwh": 383.22,
+      "temperature": 17
+    },
+    {
+      "timestamp": "2026-04-21T04:00:00.158917",
+      "load_mw": 30954,
+      "price_yuan_mwh": 431.54,
+      "temperature": 35
+    },
+    {
+      "timestamp": "2026-04-21T05:00:00.158917",
+      "load_mw": 23242,
+      "price_yuan_mwh": 337.42,
+      "temperature": 26
+    },
+    {
+      "timestamp": "2026-04-21T06:00:00.158917",
+      "load_mw": 44061,
+      "price_yuan_mwh": 523.61,
+      "temperature": 30
+    },
+    {
+      "timestamp": "2026-04-21T07:00:00.158917",
+      "load_mw": 48386,
+      "price_yuan_mwh": 603.86,
+      "temperature": 18
+    },
+    {
+      "timestamp": "2026-04-21T08:00:00.158917",
+      "load_mw": 45490,
+      "price_yuan_mwh": 559.9,
+      "temperature": 21
+    },
+    {
+      "timestamp": "2026-04-21T09:00:00.158917",
+      "load_mw": 45921,
+      "price_yuan_mwh": 583.21,
+      "temperature": 27
+    },
+    {
+      "timestamp": "2026-04-21T10:00:00.158917",
+      "load_mw": 31334,
+      "price_yuan_mwh": 421.34,
+      "temperature": 28
+    },
+    {
+      "timestamp": "2026-04-21T11:00:00.158917",
+      "load_mw": 40138,
+      "price_yuan_mwh": 528.38,
+      "temperature": 22
+    },
+    {
+      "timestamp": "2026-04-21T12:00:00.158917",
+      "load_mw": 34519,
+      "price_yuan_mwh": 442.19,
+      "temperature": 23
+    },
+    {
+      "timestamp": "2026-04-21T13:00:00.158917",
+      "load_mw": 40051,
+      "price_yuan_mwh": 477.51,
+      "temperature": 25
+    },
+    {
+      "timestamp": "2026-04-21T14:00:00.158917",
+      "load_mw": 39547,
+      "price_yuan_mwh": 504.47,
+      "temperature": 33
+    },
+    {
+      "timestamp": "2026-04-21T15:00:00.158917",
+      "load_mw": 35801,
+      "price_yuan_mwh": 449.01,
+      "temperature": 22
+    },
+    {
+      "timestamp": "2026-04-21T16:00:00.158917",
+      "load_mw": 34890,
+      "price_yuan_mwh": 440.9,
+      "temperature": 33
+    },
+    {
+      "timestamp": "2026-04-21T17:00:00.158917",
+      "load_mw": 48303,
+      "price_yuan_mwh": 574.03,
+      "temperature": 18
+    },
+    {
+      "timestamp": "2026-04-21T18:00:00.158917",
+      "load_mw": 44443,
+      "price_yuan_mwh": 553.43,
+      "temperature": 18
+    },
+    {
+      "timestamp": "2026-04-21T19:00:00.158917",
+      "load_mw": 49552,
+      "price_yuan_mwh": 590.52,
+      "temperature": 22
+    },
+    {
+      "timestamp": "2026-04-21T20:00:00.158917",
+      "load_mw": 46428,
+      "price_yuan_mwh": 556.28,
+      "temperature": 35
+    },
+    {
+      "timestamp": "2026-04-21T21:00:00.158917",
+      "load_mw": 44979,
+      "price_yuan_mwh": 523.79,
+      "temperature": 34
+    },
+    {
+      "timestamp": "2026-04-21T22:00:00.158917",
+      "load_mw": 37728,
+      "price_yuan_mwh": 472.28,
+      "temperature": 15
+    },
+    {
+      "timestamp": "2026-04-21T23:00:00.158917",
+      "load_mw": 39422,
+      "price_yuan_mwh": 503.22,
+      "temperature": 24
+    },
+    {
+      "timestamp": "2026-04-22T00:00:00.158917",
+      "load_mw": 28690,
+      "price_yuan_mwh": 403.9,
+      "temperature": 18
+    },
+    {
+      "timestamp": "2026-04-22T01:00:00.158917",
+      "load_mw": 28147,
+      "price_yuan_mwh": 375.47,
+      "temperature": 21
+    },
+    {
+      "timestamp": "2026-04-22T02:00:00.158917",
+      "load_mw": 26370,
+      "price_yuan_mwh": 365.7,
+      "temperature": 23
+    },
+    {
+      "timestamp": "2026-04-22T03:00:00.158917",
+      "load_mw": 22643,
+      "price_yuan_mwh": 311.43,
+      "temperature": 33
+    },
+    {
+      "timestamp": "2026-04-22T04:00:00.158917",
+      "load_mw": 28175,
+      "price_yuan_mwh": 374.75,
+      "temperature": 15
+    },
+    {
+      "timestamp": "2026-04-22T05:00:00.158917",
+      "load_mw": 29066,
+      "price_yuan_mwh": 366.66,
+      "temperature": 20
+    },
+    {
+      "timestamp": "2026-04-22T06:00:00.158917",
+      "load_mw": 48421,
+      "price_yuan_mwh": 612.21,
+      "temperature": 20
+    },
+    {
+      "timestamp": "2026-04-22T07:00:00.158917",
+      "load_mw": 46460,
+      "price_yuan_mwh": 578.6,
+      "temperature": 32
+    },
+    {
+      "timestamp": "2026-04-22T08:00:00.158917",
+      "load_mw": 42624,
+      "price_yuan_mwh": 515.24,
+      "temperature": 30
+    },
+    {
+      "timestamp": "2026-04-22T09:00:00.158917",
+      "load_mw": 45851,
+      "price_yuan_mwh": 541.51,
+      "temperature": 20
+    },
+    {
+      "timestamp": "2026-04-22T10:00:00.158917",
+      "load_mw": 34313,
+      "price_yuan_mwh": 468.13,
+      "temperature": 23
+    },
+    {
+      "timestamp": "2026-04-22T11:00:00.158917",
+      "load_mw": 40284,
+      "price_yuan_mwh": 479.84,
+      "temperature": 19
+    },
+    {
+      "timestamp": "2026-04-22T12:00:00.158917",
+      "load_mw": 33925,
+      "price_yuan_mwh": 444.25,
+      "temperature": 28
+    },
+    {
+      "timestamp": "2026-04-22T13:00:00.158917",
+      "load_mw": 35495,
+      "price_yuan_mwh": 453.95,
+      "temperature": 31
+    },
+    {
+      "timestamp": "2026-04-22T14:00:00.158917",
+      "load_mw": 32881,
+      "price_yuan_mwh": 433.81,
+      "temperature": 23
+    },
+    {
+      "timestamp": "2026-04-22T15:00:00.158917",
+      "load_mw": 34064,
+      "price_yuan_mwh": 413.64,
+      "temperature": 25
+    },
+    {
+      "timestamp": "2026-04-22T16:00:00.158917",
+      "load_mw": 38325,
+      "price_yuan_mwh": 488.25,
+      "temperature": 18
+    },
+    {
+      "timestamp": "2026-04-22T17:00:00.158917",
+      "load_mw": 47670,
+      "price_yuan_mwh": 584.7,
+      "temperature": 24
+    },
+    {
+      "timestamp": "2026-04-22T18:00:00.158917",
+      "load_mw": 43788,
+      "price_yuan_mwh": 513.88,
+      "temperature": 18
+    },
+    {
+      "timestamp": "2026-04-22T19:00:00.158917",
+      "load_mw": 47929,
+      "price_yuan_mwh": 583.29,
+      "temperature": 16
+    },
+    {
+      "timestamp": "2026-04-22T20:00:00.158917",
+      "load_mw": 46286,
+      "price_yuan_mwh": 554.86,
+      "temperature": 23
+    },
+    {
+      "timestamp": "2026-04-22T21:00:00.158917",
+      "load_mw": 46234,
+      "price_yuan_mwh": 545.34,
+      "temperature": 27
+    },
+    {
+      "timestamp": "2026-04-22T22:00:00.158917",
+      "load_mw": 38642,
+      "price_yuan_mwh": 500.42,
+      "temperature": 20
+    },
+    {
+      "timestamp": "2026-04-22T23:00:00.158917",
+      "load_mw": 38733,
+      "price_yuan_mwh": 492.33,
+      "temperature": 30
+    },
+    {
+      "timestamp": "2026-04-23T00:00:00.158917",
+      "load_mw": 24362,
+      "price_yuan_mwh": 353.62,
+      "temperature": 33
+    },
+    {
+      "timestamp": "2026-04-23T01:00:00.158917",
+      "load_mw": 22969,
+      "price_yuan_mwh": 352.69,
+      "temperature": 30
+    },
+    {
+      "timestamp": "2026-04-23T02:00:00.158917",
+      "load_mw": 26659,
+      "price_yuan_mwh": 355.59,
+      "temperature": 26
+    },
+    {
+      "timestamp": "2026-04-23T03:00:00.158917",
+      "load_mw": 27504,
+      "price_yuan_mwh": 359.04,
+      "temperature": 19
+    },
+    {
+      "timestamp": "2026-04-23T04:00:00.158917",
+      "load_mw": 27169,
+      "price_yuan_mwh": 355.69,
+      "temperature": 21
+    },
+    {
+      "timestamp": "2026-04-23T05:00:00.158917",
+      "load_mw": 26296,
+      "price_yuan_mwh": 371.96,
+      "temperature": 21
+    },
+    {
+      "timestamp": "2026-04-23T06:00:00.158917",
+      "load_mw": 45682,
+      "price_yuan_mwh": 579.82,
+      "temperature": 17
+    },
+    {
+      "timestamp": "2026-04-23T07:00:00.158917",
+      "load_mw": 39941,
+      "price_yuan_mwh": 470.41,
+      "temperature": 26
+    },
+    {
+      "timestamp": "2026-04-23T08:00:00.158917",
+      "load_mw": 47820,
+      "price_yuan_mwh": 592.2,
+      "temperature": 23
+    },
+    {
+      "timestamp": "2026-04-23T09:00:00.158917",
+      "load_mw": 43999,
+      "price_yuan_mwh": 568.99,
+      "temperature": 15
+    },
+    {
+      "timestamp": "2026-04-23T10:00:00.158917",
+      "load_mw": 37543,
+      "price_yuan_mwh": 470.43,
+      "temperature": 33
+    },
+    {
+      "timestamp": "2026-04-23T11:00:00.158917",
+      "load_mw": 37196,
+      "price_yuan_mwh": 498.96,
+      "temperature": 34
+    },
+    {
+      "timestamp": "2026-04-23T12:00:00.158917",
+      "load_mw": 36954,
+      "price_yuan_mwh": 446.54,
+      "temperature": 33
+    },
+    {
+      "timestamp": "2026-04-23T13:00:00.158917",
+      "load_mw": 32299,
+      "price_yuan_mwh": 403.99,
+      "temperature": 19
+    },
+    {
+      "timestamp": "2026-04-23T14:00:00.158917",
+      "load_mw": 34579,
+      "price_yuan_mwh": 444.79,
+      "temperature": 19
+    },
+    {
+      "timestamp": "2026-04-23T15:00:00.158917",
+      "load_mw": 38287,
+      "price_yuan_mwh": 497.87,
+      "temperature": 21
+    },
+    {
+      "timestamp": "2026-04-23T16:00:00.158917",
+      "load_mw": 34271,
+      "price_yuan_mwh": 464.71,
+      "temperature": 16
+    },
+    {
+      "timestamp": "2026-04-23T17:00:00.158917",
+      "load_mw": 43650,
+      "price_yuan_mwh": 552.5,
+      "temperature": 34
+    },
+    {
+      "timestamp": "2026-04-23T18:00:00.158917",
+      "load_mw": 46240,
+      "price_yuan_mwh": 556.4,
+      "temperature": 17
+    },
+    {
+      "timestamp": "2026-04-23T19:00:00.158917",
+      "load_mw": 48272,
+      "price_yuan_mwh": 566.72,
+      "temperature": 23
+    },
+    {
+      "timestamp": "2026-04-23T20:00:00.158917",
+      "load_mw": 47861,
+      "price_yuan_mwh": 564.61,
+      "temperature": 33
+    },
+    {
+      "timestamp": "2026-04-23T21:00:00.158917",
+      "load_mw": 47382,
+      "price_yuan_mwh": 551.82,
+      "temperature": 18
+    },
+    {
+      "timestamp": "2026-04-23T22:00:00.158917",
+      "load_mw": 33853,
+      "price_yuan_mwh": 428.53,
+      "temperature": 17
+    },
+    {
+      "timestamp": "2026-04-23T23:00:00.158917",
+      "load_mw": 36707,
+      "price_yuan_mwh": 447.07,
+      "temperature": 22
+    }
+  ],
+  "trade_records": [
+    {
+      "trade_id": "T20260423182516019",
+      "timestamp": "2026-04-23T18:25:16.159647",
+      "contract": "ELEC-2024Q3",
+      "direction": "卖出",
+      "price": 589.9783218045536,
+      "volume": 789,
+      "amount": 46472.1,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260423181116012",
+      "timestamp": "2026-04-23T18:11:16.159647",
+      "contract": "ELEC-2024Q2",
+      "direction": "买入",
+      "price": 548.1654025274587,
+      "volume": 504,
+      "amount": 27619.2,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423174916010",
+      "timestamp": "2026-04-23T17:49:16.159647",
+      "contract": "ELEC-2024Q3",
+      "direction": "买入",
+      "price": 610.2600048815741,
+      "volume": 726,
+      "amount": 44286.0,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423155316044",
+      "timestamp": "2026-04-23T15:53:16.159647",
+      "contract": "ELEC-2025Q2",
+      "direction": "买入",
+      "price": 589.8266528647774,
+      "volume": 286,
+      "amount": 16845.4,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260423144516035",
+      "timestamp": "2026-04-23T14:45:16.159647",
+      "contract": "ELEC-2024Q2",
+      "direction": "买入",
+      "price": 582.9979703107426,
+      "volume": 176,
+      "amount": 10243.2,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423143116036",
+      "timestamp": "2026-04-23T14:31:16.159647",
+      "contract": "ELEC-2025Q2",
+      "direction": "卖出",
+      "price": 583.2712394151811,
+      "volume": 689,
+      "amount": 40168.7,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423141316015",
+      "timestamp": "2026-04-23T14:13:16.159647",
+      "contract": "ELEC-2025Q1",
+      "direction": "卖出",
+      "price": 565.3501231079774,
+      "volume": 981,
+      "amount": 55426.5,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423134816040",
+      "timestamp": "2026-04-23T13:48:16.159647",
+      "contract": "ELEC-2024Q3",
+      "direction": "买入",
+      "price": 607.4210021429444,
+      "volume": 647,
+      "amount": 39272.9,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423134516041",
+      "timestamp": "2026-04-23T13:45:16.159647",
+      "contract": "ELEC-2025Q1",
+      "direction": "卖出",
+      "price": 564.9471329900092,
+      "volume": 516,
+      "amount": 29102.4,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423132416003",
+      "timestamp": "2026-04-23T13:24:16.159647",
+      "contract": "ELEC-2024Q2",
+      "direction": "卖出",
+      "price": 572.508570424395,
+      "volume": 588,
+      "amount": 33633.6,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423131416017",
+      "timestamp": "2026-04-23T13:14:16.159647",
+      "contract": "ELEC-2025Q1",
+      "direction": "卖出",
+      "price": 559.1384683461887,
+      "volume": 837,
+      "amount": 46788.3,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423130916024",
+      "timestamp": "2026-04-23T13:09:16.159647",
+      "contract": "ELEC-2025Q2",
+      "direction": "卖出",
+      "price": 577.9091850183368,
+      "volume": 521,
+      "amount": 30061.7,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423130316025",
+      "timestamp": "2026-04-23T13:03:16.159647",
+      "contract": "ELEC-2024Q3",
+      "direction": "买入",
+      "price": 572.2108490357218,
+      "volume": 164,
+      "amount": 9380.8,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260423120816047",
+      "timestamp": "2026-04-23T12:08:16.159647",
+      "contract": "ELEC-2024Q4",
+      "direction": "卖出",
+      "price": 634.4701210699577,
+      "volume": 564,
+      "amount": 35757.6,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260423120216005",
+      "timestamp": "2026-04-23T12:02:16.159647",
+      "contract": "ELEC-2025Q1",
+      "direction": "卖出",
+      "price": 556.5236930427253,
+      "volume": 280,
+      "amount": 15568.0,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260423112416009",
+      "timestamp": "2026-04-23T11:24:16.159647",
+      "contract": "ELEC-2025Q1",
+      "direction": "卖出",
+      "price": 567.2812455210361,
+      "volume": 308,
+      "amount": 17463.6,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423104816031",
+      "timestamp": "2026-04-23T10:48:16.159647",
+      "contract": "ELEC-2025Q2",
+      "direction": "卖出",
+      "price": 583.7048218497757,
+      "volume": 468,
+      "amount": 27284.4,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423101616013",
+      "timestamp": "2026-04-23T10:16:16.159647",
+      "contract": "ELEC-2024Q4",
+      "direction": "卖出",
+      "price": 610.6448052956382,
+      "volume": 847,
+      "amount": 51667.0,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423084716021",
+      "timestamp": "2026-04-23T08:47:16.159647",
+      "contract": "ELEC-2025Q1",
+      "direction": "卖出",
+      "price": 564.8769388359451,
+      "volume": 932,
+      "amount": 52564.8,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423083616023",
+      "timestamp": "2026-04-23T08:36:16.159647",
+      "contract": "ELEC-2025Q2",
+      "direction": "卖出",
+      "price": 590.0291241365669,
+      "volume": 580,
+      "amount": 34220.0,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260423082616028",
+      "timestamp": "2026-04-23T08:26:16.159647",
+      "contract": "ELEC-2024Q2",
+      "direction": "买入",
+      "price": 567.523973214354,
+      "volume": 222,
+      "amount": 12587.4,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260423075216037",
+      "timestamp": "2026-04-23T07:52:16.159647",
+      "contract": "ELEC-2025Q2",
+      "direction": "卖出",
+      "price": 583.2850271457407,
+      "volume": 201,
+      "amount": 11718.3,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423075016022",
+      "timestamp": "2026-04-23T07:50:16.159647",
+      "contract": "ELEC-2024Q3",
+      "direction": "卖出",
+      "price": 608.8416652102042,
+      "volume": 939,
+      "amount": 57091.2,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423072516045",
+      "timestamp": "2026-04-23T07:25:16.159647",
+      "contract": "ELEC-2024Q2",
+      "direction": "买入",
+      "price": 568.6049031840644,
+      "volume": 549,
+      "amount": 31183.2,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423071016033",
+      "timestamp": "2026-04-23T07:10:16.159647",
+      "contract": "ELEC-2024Q2",
+      "direction": "卖出",
+      "price": 582.5336079239196,
+      "volume": 780,
+      "amount": 45396.0,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423070016034",
+      "timestamp": "2026-04-23T07:00:16.159647",
+      "contract": "ELEC-2025Q2",
+      "direction": "买入",
+      "price": 561.9379084572503,
+      "volume": 718,
+      "amount": 40279.8,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423064516048",
+      "timestamp": "2026-04-23T06:45:16.159647",
+      "contract": "ELEC-2024Q3",
+      "direction": "买入",
+      "price": 604.0826255659019,
+      "volume": 560,
+      "amount": 33824.0,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423052416011",
+      "timestamp": "2026-04-23T05:24:16.159647",
+      "contract": "ELEC-2025Q1",
+      "direction": "卖出",
+      "price": 539.1326036286824,
+      "volume": 949,
+      "amount": 51151.1,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260423051416042",
+      "timestamp": "2026-04-23T05:14:16.159647",
+      "contract": "ELEC-2024Q2",
+      "direction": "卖出",
+      "price": 580.4025699495992,
+      "volume": 710,
+      "amount": 41180.0,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260423050516026",
+      "timestamp": "2026-04-23T05:05:16.159647",
+      "contract": "ELEC-2025Q1",
+      "direction": "买入",
+      "price": 555.0018224713489,
+      "volume": 904,
+      "amount": 50172.0,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260423050216027",
+      "timestamp": "2026-04-23T05:02:16.159647",
+      "contract": "ELEC-2024Q2",
+      "direction": "买入",
+      "price": 571.7433954887117,
+      "volume": 761,
+      "amount": 43453.1,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423040216006",
+      "timestamp": "2026-04-23T04:02:16.159647",
+      "contract": "ELEC-2025Q1",
+      "direction": "卖出",
+      "price": 539.0668892571276,
+      "volume": 554,
+      "amount": 29860.6,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260423031216014",
+      "timestamp": "2026-04-23T03:12:16.159647",
+      "contract": "ELEC-2024Q3",
+      "direction": "卖出",
+      "price": 597.7145637141938,
+      "volume": 429,
+      "amount": 25611.3,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423023316007",
+      "timestamp": "2026-04-23T02:33:16.159647",
+      "contract": "ELEC-2024Q2",
+      "direction": "买入",
+      "price": 578.4628924032511,
+      "volume": 425,
+      "amount": 24565.0,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423020916032",
+      "timestamp": "2026-04-23T02:09:16.159647",
+      "contract": "ELEC-2024Q4",
+      "direction": "买入",
+      "price": 633.4556040457697,
+      "volume": 503,
+      "amount": 31839.9,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423015816016",
+      "timestamp": "2026-04-23T01:58:16.159647",
+      "contract": "ELEC-2024Q4",
+      "direction": "卖出",
+      "price": 601.9590815969295,
+      "volume": 788,
+      "amount": 47358.8,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423014916000",
+      "timestamp": "2026-04-23T01:49:16.159647",
+      "contract": "ELEC-2025Q1",
+      "direction": "卖出",
+      "price": 550.9437350039935,
+      "volume": 440,
+      "amount": 24200.0,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260423014116008",
+      "timestamp": "2026-04-23T01:41:16.159647",
+      "contract": "ELEC-2024Q2",
+      "direction": "卖出",
+      "price": 580.9437682687916,
+      "volume": 263,
+      "amount": 15254.0,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260423014116030",
+      "timestamp": "2026-04-23T01:41:16.159647",
+      "contract": "ELEC-2024Q3",
+      "direction": "买入",
+      "price": 584.7131733435452,
+      "volume": 184,
+      "amount": 10745.6,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423000516001",
+      "timestamp": "2026-04-23T00:05:16.159647",
+      "contract": "ELEC-2025Q2",
+      "direction": "买入",
+      "price": 573.2477641101926,
+      "volume": 792,
+      "amount": 45381.6,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260423000416020",
+      "timestamp": "2026-04-23T00:04:16.159647",
+      "contract": "ELEC-2024Q4",
+      "direction": "买入",
+      "price": 598.0126373634337,
+      "volume": 686,
+      "amount": 41022.8,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260422231016018",
+      "timestamp": "2026-04-22T23:10:16.159647",
+      "contract": "ELEC-2024Q3",
+      "direction": "卖出",
+      "price": 605.9938516243749,
+      "volume": 187,
+      "amount": 11313.5,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260422223016038",
+      "timestamp": "2026-04-22T22:30:16.159647",
+      "contract": "ELEC-2025Q2",
+      "direction": "卖出",
+      "price": 555.1090529517589,
+      "volume": 704,
+      "amount": 39072.0,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260422214816004",
+      "timestamp": "2026-04-22T21:48:16.159647",
+      "contract": "ELEC-2024Q3",
+      "direction": "卖出",
+      "price": 609.7495457707635,
+      "volume": 791,
+      "amount": 48171.9,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260422211116046",
+      "timestamp": "2026-04-22T21:11:16.159647",
+      "contract": "ELEC-2024Q2",
+      "direction": "买入",
+      "price": 550.7098926224367,
+      "volume": 428,
+      "amount": 23540.0,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260422210816043",
+      "timestamp": "2026-04-22T21:08:16.159647",
+      "contract": "ELEC-2025Q2",
+      "direction": "买入",
+      "price": 589.2771867789385,
+      "volume": 376,
+      "amount": 22146.4,
+      "status": "成交"
+    },
+    {
+      "trade_id": "T20260422205716029",
+      "timestamp": "2026-04-22T20:57:16.159647",
+      "contract": "ELEC-2024Q4",
+      "direction": "买入",
+      "price": 624.4156836450082,
+      "volume": 996,
+      "amount": 62150.4,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260422201916049",
+      "timestamp": "2026-04-22T20:19:16.159647",
+      "contract": "ELEC-2025Q1",
+      "direction": "卖出",
+      "price": 538.3320444318389,
+      "volume": 342,
+      "amount": 18399.6,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260422193716039",
+      "timestamp": "2026-04-22T19:37:16.159647",
+      "contract": "ELEC-2024Q2",
+      "direction": "卖出",
+      "price": 571.7839042106108,
+      "volume": 200,
+      "amount": 11420.0,
+      "status": "待成交"
+    },
+    {
+      "trade_id": "T20260422190416002",
+      "timestamp": "2026-04-22T19:04:16.159647",
+      "contract": "ELEC-2024Q4",
+      "direction": "卖出",
+      "price": 596.9973012116296,
+      "volume": 474,
+      "amount": 28250.4,
+      "status": "成交"
+    }
+  ],
+  "regional_data": [
+    {
+      "city": "杭州",
+      "city_idx": 0,
+      "side": "发电侧",
+      "side_idx": 0,
+      "supply_demand_index": 68,
+      "load_mw": 11356,
+      "gap_mw": -1453
+    },
+    {
+      "city": "杭州",
+      "city_idx": 0,
+      "side": "电网侧",
+      "side_idx": 1,
+      "supply_demand_index": 92,
+      "load_mw": 14599,
+      "gap_mw": 267
+    },
+    {
+      "city": "杭州",
+      "city_idx": 0,
+      "side": "用户侧",
+      "side_idx": 2,
+      "supply_demand_index": 58,
+      "load_mw": 5387,
+      "gap_mw": 1603
+    },
+    {
+      "city": "宁波",
+      "city_idx": 1,
+      "side": "发电侧",
+      "side_idx": 0,
+      "supply_demand_index": 55,
+      "load_mw": 10915,
+      "gap_mw": -1383
+    },
+    {
+      "city": "宁波",
+      "city_idx": 1,
+      "side": "电网侧",
+      "side_idx": 1,
+      "supply_demand_index": 81,
+      "load_mw": 13048,
+      "gap_mw": -21
+    },
+    {
+      "city": "宁波",
+      "city_idx": 1,
+      "side": "用户侧",
+      "side_idx": 2,
+      "supply_demand_index": 75,
+      "load_mw": 11175,
+      "gap_mw": -87
+    },
+    {
+      "city": "温州",
+      "city_idx": 2,
+      "side": "发电侧",
+      "side_idx": 0,
+      "supply_demand_index": 75,
+      "load_mw": 10415,
+      "gap_mw": 910
+    },
+    {
+      "city": "温州",
+      "city_idx": 2,
+      "side": "电网侧",
+      "side_idx": 1,
+      "supply_demand_index": 58,
+      "load_mw": 14776,
+      "gap_mw": 1804
+    },
+    {
+      "city": "温州",
+      "city_idx": 2,
+      "side": "用户侧",
+      "side_idx": 2,
+      "supply_demand_index": 74,
+      "load_mw": 11023,
+      "gap_mw": -1474
+    },
+    {
+      "city": "嘉兴",
+      "city_idx": 3,
+      "side": "发电侧",
+      "side_idx": 0,
+      "supply_demand_index": 66,
+      "load_mw": 11660,
+      "gap_mw": 561
+    },
+    {
+      "city": "嘉兴",
+      "city_idx": 3,
+      "side": "电网侧",
+      "side_idx": 1,
+      "supply_demand_index": 89,
+      "load_mw": 5325,
+      "gap_mw": 1632
+    },
+    {
+      "city": "嘉兴",
+      "city_idx": 3,
+      "side": "用户侧",
+      "side_idx": 2,
+      "supply_demand_index": 58,
+      "load_mw": 14220,
+      "gap_mw": 352
+    },
+    {
+      "city": "湖州",
+      "city_idx": 4,
+      "side": "发电侧",
+      "side_idx": 0,
+      "supply_demand_index": 64,
+      "load_mw": 9738,
+      "gap_mw": 1577
+    },
+    {
+      "city": "湖州",
+      "city_idx": 4,
+      "side": "电网侧",
+      "side_idx": 1,
+      "supply_demand_index": 86,
+      "load_mw": 6650,
+      "gap_mw": -1446
+    },
+    {
+      "city": "湖州",
+      "city_idx": 4,
+      "side": "用户侧",
+      "side_idx": 2,
+      "supply_demand_index": 68,
+      "load_mw": 13634,
+      "gap_mw": -181
+    },
+    {
+      "city": "绍兴",
+      "city_idx": 5,
+      "side": "发电侧",
+      "side_idx": 0,
+      "supply_demand_index": 56,
+      "load_mw": 10700,
+      "gap_mw": 1267
+    },
+    {
+      "city": "绍兴",
+      "city_idx": 5,
+      "side": "电网侧",
+      "side_idx": 1,
+      "supply_demand_index": 93,
+      "load_mw": 12957,
+      "gap_mw": -1785
+    },
+    {
+      "city": "绍兴",
+      "city_idx": 5,
+      "side": "用户侧",
+      "side_idx": 2,
+      "supply_demand_index": 53,
+      "load_mw": 11522,
+      "gap_mw": -674
+    },
+    {
+      "city": "金华",
+      "city_idx": 6,
+      "side": "发电侧",
+      "side_idx": 0,
+      "supply_demand_index": 86,
+      "load_mw": 5784,
+      "gap_mw": 305
+    },
+    {
+      "city": "金华",
+      "city_idx": 6,
+      "side": "电网侧",
+      "side_idx": 1,
+      "supply_demand_index": 54,
+      "load_mw": 10664,
+      "gap_mw": -627
+    },
+    {
+      "city": "金华",
+      "city_idx": 6,
+      "side": "用户侧",
+      "side_idx": 2,
+      "supply_demand_index": 60,
+      "load_mw": 10950,
+      "gap_mw": -612
+    },
+    {
+      "city": "台州",
+      "city_idx": 7,
+      "side": "发电侧",
+      "side_idx": 0,
+      "supply_demand_index": 67,
+      "load_mw": 8662,
+      "gap_mw": -1390
+    },
+    {
+      "city": "台州",
+      "city_idx": 7,
+      "side": "电网侧",
+      "side_idx": 1,
+      "supply_demand_index": 63,
+      "load_mw": 10492,
+      "gap_mw": 280
+    },
+    {
+      "city": "台州",
+      "city_idx": 7,
+      "side": "用户侧",
+      "side_idx": 2,
+      "supply_demand_index": 63,
+      "load_mw": 9307,
+      "gap_mw": 2396
+    }
+  ],
+  "contract_stats": [
+    {
+      "contract": "ELEC-2024Q2",
+      "open": 578.965106130934,
+      "high": 597.3395886470939,
+      "low": 553.5773314364568,
+      "close": 558.7129237767383,
+      "change_percent": -3.46,
+      "volume": 47989,
+      "position": 84855,
+      "turnover": 2725.78
+    },
+    {
+      "contract": "ELEC-2024Q3",
+      "open": 602.9879212735913,
+      "high": 616.66881563613,
+      "low": 571.6959749704176,
+      "close": 587.9596034377165,
+      "change_percent": -2.49,
+      "volume": 28034,
+      "position": 48693,
+      "turnover": 1659.61
+    },
+    {
+      "contract": "ELEC-2024Q4",
+      "open": 608.4571026251195,
+      "high": 619.2521113315292,
+      "low": 595.9571132848636,
+      "close": 613.0663957264521,
+      "change_percent": 0.82,
+      "volume": 35316,
+      "position": 26877,
+      "turnover": 2171.93
+    },
+    {
+      "contract": "ELEC-2025Q1",
+      "open": 536.1907838065745,
+      "high": 560.4385992667152,
+      "low": 525.9519409652286,
+      "close": 540.070692882243,
+      "change_percent": 0.75,
+      "volume": 33530,
+      "position": 37902,
+      "turnover": 1837.44
+    },
+    {
+      "contract": "ELEC-2025Q2",
+      "open": 589.6825618487175,
+      "high": 606.5455680737745,
+      "low": 574.3755057801584,
+      "close": 584.2789547993111,
+      "change_percent": -0.85,
+      "volume": 49545,
+      "position": 92795,
+      "turnover": 2848.84
+    }
+  ],
+  "volatility_data": [
+    {
+      "date": "2026-04-17",
+      "weekday": "周五",
+      "intraday_volatility": 5.6,
+      "historical_volatility": 3.2,
+      "max_price": 694.62,
+      "min_price": 489.46
+    },
+    {
+      "date": "2026-04-18",
+      "weekday": "周六",
+      "intraday_volatility": 2.8,
+      "historical_volatility": 4.2,
+      "max_price": 659.73,
+      "min_price": 537.09
+    },
+    {
+      "date": "2026-04-19",
+      "weekday": "周日",
+      "intraday_volatility": 5.1,
+      "historical_volatility": 4.0,
+      "max_price": 666.04,
+      "min_price": 488.55
+    },
+    {
+      "date": "2026-04-20",
+      "weekday": "周一",
+      "intraday_volatility": 3.0,
+      "historical_volatility": 3.2,
+      "max_price": 694.92,
+      "min_price": 483.69
+    },
+    {
+      "date": "2026-04-21",
+      "weekday": "周二",
+      "intraday_volatility": 3.1,
+      "historical_volatility": 3.9,
+      "max_price": 696.43,
+      "min_price": 485.86
+    },
+    {
+      "date": "2026-04-22",
+      "weekday": "周三",
+      "intraday_volatility": 3.9,
+      "historical_volatility": 4.2,
+      "max_price": 671.13,
+      "min_price": 523.38
+    },
+    {
+      "date": "2026-04-23",
+      "weekday": "周四",
+      "intraday_volatility": 4.0,
+      "historical_volatility": 3.0,
+      "max_price": 674.19,
+      "min_price": 453.45
+    }
+  ]
+}

@@ -1,0 +1,1901 @@
+{
+  "campus": "下沙校区",
+  "lastUpdated": "2026-03-28T03:14:25.468Z",
+  "buildings": [
+    "信电大楼",
+    "科创大楼",
+    "现教中心",
+    "未知楼栋"
+  ],
+  "dateRange": {
+    "start": "2026-03-30",
+    "end": "2026-04-11"
+  },
+  "rooms": [
+    {
+      "id": "XD-101",
+      "name": "信电报告厅 101",
+      "building": "信电大楼",
+      "floor": 1,
+      "capacity": 80,
+      "type": "报告厅",
+      "equipment": [
+        "投影仪",
+        "音响",
+        "麦克风",
+        "录播系统",
+        "空调"
+      ],
+      "availableSlots": [
+        {
+          "date": "2026-03-30",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "XD-205",
+      "name": "信电研讨室 205",
+      "building": "信电大楼",
+      "floor": 2,
+      "capacity": 10,
+      "type": "会议室",
+      "equipment": [
+        "投影仪",
+        "白板",
+        "视频会议系统",
+        "空调"
+      ],
+      "availableSlots": [
+        {
+          "date": "2026-03-30",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "XD-308",
+      "name": "信电创新实验室 308",
+      "building": "信电大楼",
+      "floor": 3,
+      "capacity": 15,
+      "type": "实验室",
+      "equipment": [
+        "电脑",
+        "示波器",
+        "信号发生器",
+        "3D 打印机",
+        "白板",
+        "空调"
+      ],
+      "availableSlots": [
+        {
+          "date": "2026-03-30",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "XD-412",
+      "name": "信电小型会议室 412",
+      "building": "信电大楼",
+      "floor": 4,
+      "capacity": 6,
+      "type": "会议室",
+      "equipment": [
+        "白板",
+        "电视",
+        "空调"
+      ],
+      "availableSlots": [
+        {
+          "date": "2026-03-30",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "KC-101",
+      "name": "科创路演厅 101",
+      "building": "科创大楼",
+      "floor": 1,
+      "capacity": 100,
+      "type": "报告厅",
+      "equipment": [
+        "投影仪",
+        "音响",
+        "麦克风",
+        "LED 大屏",
+        "直播系统",
+        "空调"
+      ],
+      "availableSlots": [
+        {
+          "date": "2026-03-30",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "KC-210",
+      "name": "科创会议室 210",
+      "building": "科创大楼",
+      "floor": 2,
+      "capacity": 20,
+      "type": "会议室",
+      "equipment": [
+        "投影仪",
+        "白板",
+        "视频会议系统",
+        "空调"
+      ],
+      "availableSlots": [
+        {
+          "date": "2026-03-30",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "KC-315",
+      "name": "科创创客空间 315",
+      "building": "科创大楼",
+      "floor": 3,
+      "capacity": 25,
+      "type": "实验室",
+      "equipment": [
+        "电脑",
+        "3D 打印机",
+        "激光切割机",
+        "工作台",
+        "白板",
+        "空调"
+      ],
+      "availableSlots": [
+        {
+          "date": "2026-03-30",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "KC-420",
+      "name": "科创小型研讨室 420",
+      "building": "科创大楼",
+      "floor": 4,
+      "capacity": 8,
+      "type": "会议室",
+      "equipment": [
+        "电视",
+        "白板",
+        "空调"
+      ],
+      "availableSlots": [
+        {
+          "date": "2026-03-30",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "XJ-101",
+      "name": "现教中心报告厅 101",
+      "building": "现教中心",
+      "floor": 1,
+      "capacity": 120,
+      "type": "报告厅",
+      "equipment": [
+        "投影仪",
+        "音响",
+        "麦克风",
+        "同声传译",
+        "录播系统",
+        "空调"
+      ],
+      "availableSlots": [
+        {
+          "date": "2026-03-30",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": false
+        }
+      ]
+    },
+    {
+      "id": "XJ-205",
+      "name": "现教中心智慧教室 205",
+      "building": "现教中心",
+      "floor": 2,
+      "capacity": 40,
+      "type": "会议室",
+      "equipment": [
+        "智能黑板",
+        "投影仪",
+        "录播系统",
+        "空调"
+      ],
+      "availableSlots": [
+        {
+          "date": "2026-03-30",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "XJ-310",
+      "name": "现教中心计算机房 310",
+      "building": "现教中心",
+      "floor": 3,
+      "capacity": 50,
+      "type": "实验室",
+      "equipment": [
+        "电脑",
+        "服务器",
+        "投影仪",
+        "空调"
+      ],
+      "availableSlots": [
+        {
+          "date": "2026-03-30",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "XJ-415",
+      "name": "现教中心多媒体会议室 415",
+      "building": "现教中心",
+      "floor": 4,
+      "capacity": 15,
+      "type": "会议室",
+      "equipment": [
+        "投影仪",
+        "视频会议系统",
+        "白板",
+        "空调"
+      ],
+      "availableSlots": [
+        {
+          "date": "2026-03-30",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-30",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": false
+        },
+        {
+          "date": "2026-03-31",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-01",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-02",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": false
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-03",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "NEW-001",
+      "name": "会议室（信电楼330）",
+      "building": "未知楼栋",
+      "floor": 1,
+      "capacity": 10,
+      "type": "会议室",
+      "equipment": [],
+      "availableSlots": [
+        {
+          "date": "2026-04-07",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-07",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-07",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "NEW-002",
+      "name": "会议室（信电楼330）",
+      "building": "未知楼栋",
+      "floor": 1,
+      "capacity": 10,
+      "type": "会议室",
+      "equipment": [],
+      "availableSlots": [
+        {
+          "date": "2026-04-07",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-07",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-07",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "NEW-003",
+      "name": "会议室（信电楼317）",
+      "building": "未知楼栋",
+      "floor": 1,
+      "capacity": 10,
+      "type": "会议室",
+      "equipment": [],
+      "availableSlots": [
+        {
+          "date": "2026-04-07",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-07",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-07",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "NEW-004",
+      "name": "会议室（信电407）",
+      "building": "未知楼栋",
+      "floor": 1,
+      "capacity": 10,
+      "type": "会议室",
+      "equipment": [],
+      "availableSlots": [
+        {
+          "date": "2026-04-07",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-07",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-07",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "NEW-005",
+      "name": "测试房",
+      "building": "未知楼栋",
+      "floor": 1,
+      "capacity": 10,
+      "type": "会议室",
+      "equipment": [],
+      "availableSlots": [
+        {
+          "date": "2026-04-07",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-07",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-07",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "NEW-006",
+      "name": "机房",
+      "building": "未知楼栋",
+      "floor": 1,
+      "capacity": 10,
+      "type": "会议室",
+      "equipment": [],
+      "availableSlots": [
+        {
+          "date": "2026-04-07",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-07",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-07",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-08",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-09",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-10",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "morning",
+          "time": "08:00-12:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "afternoon",
+          "time": "14:00-18:00",
+          "available": true
+        },
+        {
+          "date": "2026-04-11",
+          "slot": "evening",
+          "time": "19:00-22:00",
+          "available": true
+        }
+      ]
+    }
+  ]
+}

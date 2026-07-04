@@ -1,0 +1,130 @@
+[
+  {
+    "type_code": "ISTJ",
+    "type_name": "物流师",
+    "description": "务实、注重事实，具有强烈的责任感。你可靠、有条理，善于将想法转化为实际行动。",
+    "strengths": "诚实可靠、意志坚定、冷静务实、善于管理事务",
+    "weaknesses": "固执、过于传统、情感表达困难、容易过度工作",
+    "career_suggestions": "会计、审计、项目管理、行政管理、法律工作"
+  },
+  {
+    "type_code": "ISFJ",
+    "type_name": "守卫者",
+    "description": "温暖、有爱心，善于照顾他人。你重视和谐，愿意为他人付出，是可靠的伙伴。",
+    "strengths": "支持他人、耐心细致、忠诚可靠、观察力强",
+    "weaknesses": "过度谦虚、难以拒绝他人、压抑情感、抗拒变化",
+    "career_suggestions": "护理、教育、人力资源、客户服务、社会工作"
+  },
+  {
+    "type_code": "INFJ",
+    "type_name": "提倡者",
+    "description": "富有洞察力、理想主义，追求深层次的意义。你理解他人，有强烈的价值观。",
+    "strengths": "富有创造力、洞察力强、有原则、热情",
+    "weaknesses": "完美主义、容易倦怠、过于私密、敏感",
+    "career_suggestions": "心理咨询、写作、艺术、非营利组织、研究"
+  },
+  {
+    "type_code": "INTJ",
+    "type_name": "建筑师",
+    "description": "战略思维者，独立且有远见。你善于分析复杂问题，制定长期计划。",
+    "strengths": "战略思维、独立、决心强、知识渊博",
+    "weaknesses": "傲慢、情感表达困难、过度分析、批判性强",
+    "career_suggestions": "战略规划、科学研究、软件开发、投资分析"
+  },
+  {
+    "type_code": "ISTP",
+    "type_name": "鉴赏家",
+    "description": "灵活、实用，善于解决具体问题。你喜欢动手操作，享受当下的体验。",
+    "strengths": "乐观、精力充沛、创造力强、理性",
+    "weaknesses": "顽固、冒险、缺乏耐心、难以承诺",
+    "career_suggestions": "工程师、技术员、运动员、手工艺、紧急救援"
+  },
+  {
+    "type_code": "ISFP",
+    "type_name": "探险家",
+    "description": "艺术气质、敏感，善于欣赏美。你活在当下，追求真实和自我表达。",
+    "strengths": "有魅力、敏感、想象力丰富、热情",
+    "weaknesses": "过度独立、难以预测、容易倦怠、缺乏长远规划",
+    "career_suggestions": "艺术设计、音乐、摄影、护理、园艺"
+  },
+  {
+    "type_code": "INFP",
+    "type_name": "调停者",
+    "description": "理想主义、富有同情心，追求真实和意义。你重视价值观，善于理解他人。",
+    "strengths": "富有同情心、开放思维、创造力强、热情",
+    "weaknesses": "不切实际、自我隔离、情感化、缺乏条理",
+    "career_suggestions": "写作、心理咨询、艺术、教育、社会服务"
+  },
+  {
+    "type_code": "INTP",
+    "type_name": "逻辑学家",
+    "description": "好奇心强、善于分析，追求知识和真理。你喜欢探索抽象概念和理论。",
+    "strengths": "分析能力强、客观、富有想象力、诚实",
+    "weaknesses": "社交困难、自我怀疑、完美主义、脱离实际",
+    "career_suggestions": "科学研究、编程、哲学、数据分析、学术"
+  },
+  {
+    "type_code": "ESTP",
+    "type_name": "企业家",
+    "description": "精力充沛、善于感知，享受行动和冒险。你活在当下，善于应对变化。",
+    "strengths": "大胆、理性、原创、善于社交",
+    "weaknesses": "不耐烦、冒险、缺乏敏感、难以坚持",
+    "career_suggestions": "销售、创业、体育、执法、紧急救援"
+  },
+  {
+    "type_code": "ESFP",
+    "type_name": "表演者",
+    "description": "热情、活泼，善于带动气氛。你享受当下，喜欢与人互动。",
+    "strengths": "大胆、原创、审美、表演天赋",
+    "weaknesses": "敏感、冲突回避、缺乏规划、容易厌倦",
+    "career_suggestions": "演艺、销售、活动策划、旅游、公关"
+  },
+  {
+    "type_code": "ENFP",
+    "type_name": "竞选者",
+    "description": "热情、有创造力，善于激发他人。你充满可能性，追求自由和成长。",
+    "strengths": "好奇心强、观察力强、热情、善于社交",
+    "weaknesses": "过度思考、精力分散、情感化、缺乏条理",
+    "career_suggestions": "创意工作、咨询、教学、创业、媒体"
+  },
+  {
+    "type_code": "ENTP",
+    "type_name": "辩论家",
+    "description": "聪明、好奇，善于挑战传统思维。你喜欢智力游戏和创新。",
+    "strengths": "知识渊博、思维敏捷、原创、魅力",
+    "weaknesses": "好争论、缺乏敏感、难以专注、傲慢",
+    "career_suggestions": "创业、法律、咨询、科研、市场营销"
+  },
+  {
+    "type_code": "ESTJ",
+    "type_name": "总经理",
+    "description": "高效、有条理，善于管理和执行。你重视传统和秩序，是天然的领导者。",
+    "strengths": "奉献、有组织、诚实、果断",
+    "weaknesses": "固执、缺乏变通、过于评判、难以放松",
+    "career_suggestions": "管理、行政、金融、法律、军事"
+  },
+  {
+    "type_code": "ESFJ",
+    "type_name": "执政官",
+    "description": "热心、负责任，善于照顾他人。你重视和谐，是团队中的粘合剂。",
+    "strengths": "实用、忠诚、敏感、善于社交",
+    "weaknesses": "过度关心他人、自我价值感低、僵化、压抑情感",
+    "career_suggestions": "人力资源、教育、医疗、客户服务、管理"
+  },
+  {
+    "type_code": "ENFJ",
+    "type_name": "主人公",
+    "description": "有魅力、有领导力，善于激励他人。你关心他人成长，是天然的导师。",
+    "strengths": "宽容、可靠、有魅力、利他",
+    "weaknesses": "过度理想化、自我价值感低、过于顺从、难以做艰难决定",
+    "career_suggestions": "教育、咨询、人力资源、销售、非营利组织"
+  },
+  {
+    "type_code": "ENTJ",
+    "type_name": "指挥官",
+    "description": "果断、有战略眼光，善于领导和组织。你追求效率，是天生的领导者。",
+    "strengths": "高效、精力充沛、自信、意志坚定",
+    "weaknesses": "固执、傲慢、缺乏耐心、情感表达困难",
+    "career_suggestions": "高管、创业、管理咨询、法律、政治"
+  }
+]

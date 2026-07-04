@@ -1,0 +1,25 @@
+{
+  "phase": 1,
+  "week": 1,
+  "day": 1,
+  "topic": "规则基础与死活入门",
+  "started_at": "2026-05-22T17:10:29.268249",
+  "players": {
+    "xiaochen": {
+      "status": "task_sent",
+      "level": "30级"
+    },
+    "zhuguxia": {
+      "status": "task_sent",
+      "level": "25级"
+    }
+  },
+  "problems_today": [
+    "life-001",
+    "life-002",
+    "tesuji-001",
+    "tesuji-002",
+    "life-003"
+  ],
+  "next_day_topic": "吃子技巧进阶（扑、倒扑）"
+}

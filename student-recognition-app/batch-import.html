@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>批量导入学生照片</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(255,255,255,0.98);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { text-align: center; color: #2c3e50; margin-bottom: 10px; }
+        .subtitle { text-align: center; color: #7f8c8d; margin-bottom: 30px; }
+        
+        .step {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .step h3 { color: #3498db; margin-bottom: 15px; }
+        
+        .upload-area {
+            border: 3px dashed #3498db;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .upload-area:hover { background: #e8f4f8; }
+        .upload-area.dragover { background: #d4edda; border-color: #28a745; }
+        
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .btn:hover { background: #2980b9; }
+        .btn:disabled { background: #bdc3c7; cursor: not-allowed; }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .preview-card {
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ecf0f1;
+        }
+        .preview-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .preview-card input {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .preview-card .filename {
+            font-size: 10px;
+            color: #95a5a6;
+            margin-top: 3px;
+        }
+        
+        .progress {
+            background: #ecf0f1;
+            border-radius: 10px;
+            height: 30px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            background: #27ae60;
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .result-box {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        .result-box h3 { color: #155724; margin-bottom: 10px; }
+        
+        .tips {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📁 批量导入学生照片</h1>
+        <p class="subtitle">嘉兴南湖 · 学生证件照识别系统</p>
+        
+        <div class="tips">
+            <strong>💡 使用说明：</strong><br>
+            1. 选择包含学生照片的文件夹（或全选所有照片文件）<br>
+            2. 为每张照片填写学生姓名和班级<br>
+            3. 点击"批量导入"按钮<br>
+            4. 导入完成后，打开主应用即可查看
+        </div>
+        
+        <div class="step">
+            <h3>📂 步骤 1：选择照片文件夹</h3>
+            <div class="upload-area" id="dropZone">
+                <div style="font-size:48px;margin-bottom:10px;">📁</div>
+                <p>点击选择文件夹 或 拖拽文件夹到此处</p>
+                <p style="color:#95a5a6;font-size:12px;margin-top:10px;">支持多选照片文件</p>
+            </div>
+            <input type="file" id="fileInput" class="hidden-input" accept="image/*" multiple webkitdirectory>
+        </div>
+        
+        <div class="step" id="previewStep" style="display:none;">
+            <h3>📝 步骤 2：填写学生信息</h3>
+            <p style="color:#7f8c8d;font-size:14px;margin-bottom:15px;">
+                已选择 <strong id="fileCount">0</strong> 张照片，请填写每名学生的姓名和班级
+            </p>
+            <div class="preview-grid" id="previewGrid"></div>
+            
+            <button class="btn" onclick="importAll()" id="importBtn">
+                ✅ 批量导入到主应用
+            </button>
+            
+            <div class="progress" id="progressBox" style="display:none;">
+                <div class="progress-bar" id="progressBar">0%</div>
+            </div>
+        </div>
+        
+        <div class="result-box" id="resultBox">
+            <h3>✅ 导入成功！</h3>
+            <p id="resultText"></p>
+            <button class="btn" onclick="openMainApp()" style="margin-top:15px;">
+                🎓 打开主应用查看
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        let selectedFiles = [];
+        let studentData = [];
+        
+        // 初始化
+        document.getElementById('dropZone').onclick = () => {
+            document.getElementById('fileInput').click();
+        };
+        
+        document.getElementById('fileInput').onchange = handleFiles;
+        
+        // 拖拽处理
+        const dropZone = document.getElementById('dropZone');
+        dropZone.ondragover = (e) => { e.preventDefault(); dropZone.classList.add('dragover'); };
+        dropZone.ondragleave = () => { dropZone.classList.remove('dragover'); };
+        dropZone.ondrop = (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            processFiles(files);
+        };
+        
+        // 处理文件
+        function handleFiles() {
+            const files = document.getElementById('fileInput').files;
+            processFiles(files);
+        }
+        
+        function processFiles(files) {
+            selectedFiles = Array.from(files).filter(f => f.type.startsWith('image/'));
+            
+            if (selectedFiles.length === 0) {
+                alert('未找到图片文件');
+                return;
+            }
+            
+            document.getElementById('fileCount').textContent = selectedFiles.length;
+            document.getElementById('previewStep').style.display = 'block';
+            
+            renderPreview();
+        }
+        
+        // 渲染预览
+        function renderPreview() {
+            const grid = document.getElementById('previewGrid');
+            grid.innerHTML = selectedFiles.map((file, index) => {
+                const fileName = file.name.replace(/\.[^/.]+$/, '');
+                return `
+                    <div class="preview-card">
+                        <img id="img_${index}" src="" alt="预览">
+                        <input type="text" placeholder="姓名" id="name_${index}" value="${fileName}">
+                        <input type="text" placeholder="班级" id="class_${index}">
+                        <div class="filename">${file.name}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            // 加载图片预览
+            selectedFiles.forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    document.getElementById(`img_${index}`).src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        // 批量导入
+        async function importAll() {
+            const importBtn = document.getElementById('importBtn');
+            const progressBox = document.getElementById('progressBox');
+            const progressBar = document.getElementById('progressBar');
+            
+            importBtn.disabled = true;
+            progressBox.style.display = 'block';
+            
+            studentData = [];
+            let successCount = 0;
+            let failCount = 0;
+            
+            for (let i = 0; i < selectedFiles.length; i++) {
+                const file = selectedFiles[i];
+                const name = document.getElementById(`name_${i}`).value.trim();
+                const className = document.getElementById(`class_${i}`).value.trim();
+                
+                if (!name) {
+                    failCount++;
+                    continue;
+                }
+                
+                // 读取图片
+                const base64 = await fileToBase64(file);
+                
+                // 创建学生数据
+                const student = {
+                    id: Date.now() + i,
+                    name: name,
+                    class: className || '未分班',
+                    photo: base64,
+                    registeredAt: new Date().toISOString()
+                };
+                
+                studentData.push(student);
+                successCount++;
+                
+                // 更新进度
+                const percent = Math.round(((i + 1) / selectedFiles.length) * 100);
+                progressBar.style.width = percent + '%';
+                progressBar.textContent = percent + '%';
+            }
+            
+            // 保存到本地存储
+            const currentDB = JSON.parse(localStorage.getItem('studentDB') || '[]');
+            const newDB = [...currentDB, ...studentData];
+            localStorage.setItem('studentDB', JSON.stringify(newDB));
+            
+            // 显示结果
+            importBtn.disabled = false;
+            progressBox.style.display = 'none';
+            
+            const resultBox = document.getElementById('resultBox');
+            const resultText = document.getElementById('resultText');
+            resultBox.style.display = 'block';
+            resultText.innerHTML = `
+                <strong>成功导入：</strong>${successCount} 名学生<br>
+                <strong>导入失败：</strong>${failCount} 名（未填写姓名）<br>
+                <strong>数据库总计：</strong>${newDB.length} 名学生
+            `;
+        }
+        
+        // 文件转 Base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        // 打开主应用
+        function openMainApp() {
+            // 尝试打开同目录下的主应用
+            const mainAppUrl = window.location.href.replace('batch-import.html', 'index_standalone.html');
+            window.open(mainAppUrl, '_blank');
+        }
+        
+        // 自动从文件名解析信息（可选功能）
+        function autoFillFromFilename(index) {
+            const file = selectedFiles[index];
+            const fileName = file.name.replace(/\.[^/.]+$/, '');
+            
+            // 尝试解析：姓名_班级.jpg 或 班级_姓名.jpg
+            const parts = fileName.split(/[_\-]/);
+            if (parts.length >= 2) {
+                document.getElementById(`name_${index}`).value = parts[0];
+                document.getElementById(`class_${index}`).value = parts[1];
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+H1043Z Individual Project
+Log Book
+STUDENT NAME Zouqi Chen
+CANDIDATE
+NUMBER 269877
+PROJECT TITLE Vision-based Hand Gesture Control of a Robotic Arm
+SUPERVISOR Prof. Yanpei Huang
+For Academic Year 2024-25
+
+---PAGE BREAK---
+2
+Week–by–week record of project work
+Week Commencing - June/ 16/ 2025
+The final project discussion began, and we were exploring which topic would be more suitable.
+Supervisor suggested exploring human: machine interaction (HMI) in robotic systems, especially
+for medical or assistive applications.
+Student expressed interest in gesture: based control as it combines computer vision, real‑time
+processing, and robotics—all aligned with previous coursework. We considered available hardware:
+the lab has a Leap Motion controller and access to MATLAB/Simulink for simulation.
+Week–by–week record of project work
+Week Commencing - Jun/ 30/2025
+After discussing with Prof. Yanpei Huang and based on the previous research analysis, the
+final graduation project topic has been determined as:
+Vision-based Hand Gesture Control of a Robotic Arm
+Visual gesture control falls within the cutting-edge direction of human-computer
+interaction (HMI), and has a clear application prospect especially in the fields of medical
+and rehabilitation robotics. The feasibility of this project is attributed to the availability of
+the Leap Motion device in the laboratory and the mature MATLAB/Simulink simulation
+environment, with the overall technical stack risks being manageable. In terms of time
+management, this project can complete the entire process from literature research, system
+design, algorithm implementation to simulation verification within a one-year cycle, with
+an appropriate workload.
+Its academic value lies in the ability to systematically explore key issues such as gesture
+mapping, tremor filtering, and real-time control, ultimately resulting in a complete
+technical report and simulation outcomes. Additionally, this direction integrates computer
+vision, robot control, and human-computer interaction design, aligning closely with
+personal technological development trends, and is conducive to the enhancement of
+comprehensive capabilities.
+
+---PAGE BREAK---
+3
+Week–by–week record of project work
+Week Commencing - July/ 14/2025
+After determining the research topic, this week we had a discussion with Prof. Yanpei Huang, our
+supervisor, about the key directions for the initial literature review.
+Gesture perception and tracking technology
+Key points:
+1. Performance comparison and application scenarios of visual sensors such as Leap Motion,
+Kinect, and RealSense.
+2. Method for detecting key points on the hand and calculating joint angles
+3. Multi-sensor fusion technology (such as the dual Leap Motion extended field of view)
+4. Hand tremor detection and filtering algorithms (such as EMD, Kalman filtering)
+Objective: To clearly define the gesture recognition solution to be adopted for this project and its
+technical basis.
+Week–by–week record of project work
+Week Commencing - July/ 28/ 2025
+This meeting mainly focuses on sharing relevant literature.
+Gesture perception and sensor technology serve as the data source and hardware
+foundation of visual gesture control systems. Through literature research, it can be known
+that the current mainstream gesture perception devices include Microsoft Kinect, Intel
+RealSense, and Leap Motion controllers, etc.
+Among them, Leap Motion stands out in near-field fine gesture tracking due to its high
+spatial accuracy (about 0.2mm), high frame rate (120 FPS), and relatively reasonable cost
+(about $199), especially suitable for scenarios with high precision and real-time
+requirements such as surgical robots. In contrast, Kinect has a larger field of view but
+lower accuracy and frame rate, while RealSense achieves a balance between cost and
+performance but is more suitable for medium to long-distance perception.
+Therefore, this project selects Leap Motion as the core sensor and plans to expand its field
+of view through multi-sensor fusion strategies when necessary, in order to ensure high
+accuracy while enhancing the operational space and robustness of the system.
+
+---PAGE BREAK---
+4
+Week–by–week record of project work
+Week Commencing - August/ 11/2025
+When conducting literature research, an efficient strategy of "from review to specifics" is
+adopted: Firstly, on academic platforms such as IEEE Xplore and ScienceDirect, by adding
+keywords like "review" and "survey" or directly filtering the types of literature, search for
+high-quality review papers related to the topic.
+Carefully read the abstracts, conclusions and sections on research status of the reviews,
+which can quickly grasp the overall context and technical classification of the field; at the
+same time, directly extract the key references that are repeatedly cited, especially the
+cutting-edge work within the past three years, to form the first batch of reading lists.
+Additionally, trace the series of research by authoritative authors and utilize the "Cited by"
+and "Related articles" functions of Google Scholar to expand the literature network.
+By combining keyword combination search and reference to open-source projects, this
+strategy can systematically build the theoretical foundation of the topic in a short period of
+time, avoiding the risk of blindly reading extensively, and thus providing precise and
+cutting-edge literature support for the subsequent systematic design.
+Week–by–week record of project work
+Week Commencing - August/ 25/ 2025
+Gesture recognition and classification methods are the core for achieving intuitive human-
+computer interaction. Current research mainly focuses on two major directions: traditional
+feature methods and deep learning. Traditional methods extract features such as hand joint
+angles, position coordinates, and movement speeds, and combine classifiers like support
+vector machines and random forests to achieve real-time recognition.
+The annual vacation for the supervisor ends on September 15th.
+
+---PAGE BREAK---
+5
+Week–by–week record of project work
+Week Commencing - September/ 22/ 2025
+Purchase details of the Leap Motion device, process confirmation.
+Submit the equipment purchase form.
+Week–by–week record of project work
+Week Commencing - Oct/ 21/ 2025
+The equipment has arrived. Prepare to set up the debugging environment.
+
+---PAGE BREAK---
+6
+Week–by–week record of project work
+Week Commencing - Nov/ 3/ 2025
+The environment has been debugged. Carefully analyze the code related to device data
+collection based on the open-source code on Github.
+Week–by–week record of project work
+Week Commencing - Nov/ 17/ 2025
+The mid-term report begins. Suggestions for writing about the "project specification"
+
+---PAGE BREAK---
+7
+Week–by–week record of project work
+Week Commencing - Dec/ 1/ 2025
+The writing and communication of the interim report, including how to write the literature
+review and the Risk Assessment section.
+Week–by–week record of project work
+Week Commencing - Dec/ 15/ 2025
+At the beginning of the project, a new program for measuring the range of motion of the
+test subject's fingers should be added to be used for the subsequent threshold
+determination.
+
+---PAGE BREAK---
+8
+Week–by–week record of project work
+Week Commencing - Jan/ 12/ 2026
+The threshold program has been designed. The final project of the thesis will shift from
+controlling a simulated robotic arm to controlling a real one.
+1.13
+Communication regarding the operation and pre-preparation of the robotic arm.
+1.19
+Received the robotic arm, and started preparing to set up the debugging environment.
+1.21
+Debugging the VMware virtual machine.
+Week–by–week record of project work
+Week Commencing - Jan/ 26/ 2026
+Debug the robotic arm according to the website address.
+https://cloud.tencent.com/developer/article/2528040
+Installation Miniconda3 according to document.
+1.28
+As of this day, the Lerobot control environment has been assembled. Next, the servo
+motors will be installed.
+
+---PAGE BREAK---
+9
+Week–by–week record of project work
+Week Commencing - Feb/ 9/ 2026
+Re-design the hardware communication lines, abandon the previous complex operations
+such as virtual machines, and start from the very basics.
+When conducting hardware adaptation in the MATLAB environment, it was found that the
+driver board used is of the Waveshare brand. Although this board is capable of driving
+Raspberry Pi hardware, MATLAB does not provide a dedicated driver for Waveshare
+products (if it were an official Raspberry Pi driver board, MATLAB could operate it
+directly). By consulting the product information provided on the Waveshare official
+website, it was discovered that the driver board comes with a direct Python operation
+example for ST series servos and includes a Python control library for directly connecting
+to ST/SC bus servos. Therefore, utilizing MATLAB's functionality to call Python libraries
+makes it feasible to control the servo through this approach. If this solution is adopted,
+there is no need to use the existing library from the Huggingface/Lerobot open-source
+project provided by the senior.
+Week–by–week record of project work
+Week Commencing - Feb/ 23/ 2026
+The meeting is cancelled during the Spring Festival holiday.
+2.28.2026
+Install the Python environment on a Windows computer. Re-download Python and add it to
+the Windows environment variables. Steps to activate the virtual environment:
+https://www.waveshare.net/wiki/Bus_Servo_Adapter_(A)#.E5.BC.80.E6.BA.90.E9.A1.B9.E7.9B.AE
+Take this website as an example. Note: After opening the terminal in cmd, enter the bold text
+to enter the virtual environment:
+cd "C:\Users\sting\Desktop\Matleap2so_arm_control\STServo_Python"
+The "CD" folder in the website refers to the specific address of the ST servo driver library.
+Due to system decompression issues, double-layer folders may occur during decompression,
+which can prevent the virtual environment from being established. Simply delete one layer.
+All virtual environments will be completed by 3.3.2026.
+3.5
+Test the port. The actual input port is COM3. However, when testing the official WIKI
+example, it was found that the original ping.py example in STServo was for the SC series of
+
+---PAGE BREAK---
+10
+servos, not the ST series. After DS teacher's modification, the original SC series related parts
+were changed to examples applicable to the ST series.
+New modified program: Changed ping.py to st_ping.py
+The servo port drive and read program was completed, and the ID1 servo was successfully
+connected. However, during the test, it was found that the servo could only be read but could
+not execute the READ or Write program, possibly due to insufficient voltage.
+3.7
+The voltage issue has been resolved. Please try reading and writing again.
+The servo can finally rotate! A big step forward. AI summarized why it wouldn't move:
+During the debugging process, several key points were discovered:
+Method name mismatch: Previously, attempts were made to use methods such as
+ReadVoltage and ReadTemp, but from the method list of the sts class, it can be seen that
+these methods do not exist at all! The only actually available methods are:
+ReadPos - Read position
+ReadSpeed - Read speed
+WritePosEx - Write position (with acceleration)
+And some synchronous write, latch, and other methods.
+The correct servo mode: Read the register through the read1ByteTxRx method to confirm
+that the servo is in the correct servo mode (value 0), which is a prerequisite for rotation.
+Normal communication: The Ping test has been successful all the time, indicating that there
+is no problem with the hardware connection.
+Week–by–week record of project work
+Week Commencing - March/ 9 /2026
+Simple progress, but still a problem: How to transfer data to the robotic arm in the most
+straightforward way?
+Option 1: Pure Matlab transmission
+Feasibility: Theoretically feasible, but you need to rewrite the servo communication code
+Workload: High - Reverse engineering the communication protocol of the Python library
+and re-implementing it in Matlab is required.
+Risk: High - Timing, checksums, and protocol details of serial communication are prone to
+errors.
+Debugging difficulty: Difficult. If there's a problem, it's hard to tell if it's due to the
+algorithm or the communication.
+Option 2: Pure Python Control
+Feasibility: Feasible, but your Matleap is the Matlab version.
+Workload: High - Hand data acquisition needs to be re-implemented in Python.
+Risk: Moderate - Matleap is ready-made, rewriting may introduce new bugs.
+Debugging Difficulty Moderate - Accuracy of hand data needs to be re-verified.
+Option 3: Combining Matlab and Python
+
+---PAGE BREAK---
+11
+Feasibility: Most feasible - only need to "connect" two ready-made modules.
+Workload: Small - only need to implement data transfer, approximately 20-50 lines of code
+Risk: Low - no changes to the core code on either side, only adding a layer of
+communication.
+Debugging difficulty Low - can test the visual part and the servo part separately.
+To make the project a complete project package, a new complete startup program was
+rewritten.
+start.bat
+Double-clicking on this project will start all the virtual environments.
+In Python, I wrote a server that can complete data transmission with MATLAB and added
+the gripper and wrist pitch functions. So far, the basic concept of the project has been
+realized.
+3.14
+A small experiment was carried out using this project, which involved grasping the target
+object and moving it to a designated location.
+3.15
+Conduct experiments with multiple participants and record videos for subsequent
+presentation.
+Week–by–week record of project work
+Week Commencing - March/ 23 /2026
+Dissertation writing until 4.15

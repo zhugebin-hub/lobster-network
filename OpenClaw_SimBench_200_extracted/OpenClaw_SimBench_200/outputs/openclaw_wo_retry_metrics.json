@@ -1,0 +1,42 @@
+{
+  "overall": {
+    "N": 200,
+    "TSR": 1.0,
+    "THR": 0.0,
+    "PFER": 0.0,
+    "AIT": 2.09,
+    "RRR": null,
+    "TCR": 1.0,
+    "MCSR": 1.0
+  },
+  "single": {
+    "N": 70,
+    "TSR": 1.0,
+    "THR": 0.0,
+    "PFER": 0.0,
+    "AIT": 1.0,
+    "RRR": null,
+    "TCR": 1.0,
+    "MCSR": null
+  },
+  "multi": {
+    "N": 70,
+    "TSR": 1.0,
+    "THR": 0.0,
+    "PFER": 0.0,
+    "AIT": 3.2571,
+    "RRR": null,
+    "TCR": 1.0,
+    "MCSR": 1.0
+  },
+  "double": {
+    "N": 60,
+    "TSR": 1.0,
+    "THR": 0.0,
+    "PFER": 0.0,
+    "AIT": 2.0,
+    "RRR": null,
+    "TCR": 1.0,
+    "MCSR": null
+  }
+}

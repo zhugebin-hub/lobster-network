@@ -1,0 +1,222 @@
+[
+  {
+    "id": "FK001",
+    "title": "占角选择",
+    "difficulty": "beginner",
+    "board_state": {
+      "black": [],
+      "white": []
+    },
+    "correct_move": "D4",
+    "explanation": "围棋开局的首要任务是占角。D4（星位）是最常见的占角选择，兼顾实地与外势。其他选项包括C4（小目，偏重实地）和C3（三三，专注角部实地）。占角选择决定了整盘棋的基调。"
+  },
+  {
+    "id": "FK002",
+    "title": "守角方式",
+    "difficulty": "beginner",
+    "board_state": {
+      "black": ["D4"],
+      "white": ["Q16", "D16", "Q4"]
+    },
+    "correct_move": "D3",
+    "explanation": "当己方已占角后，守角是巩固实地的关键。D3小飞守角是最常用的方式，兼顾实地和眼位。其他守角方式包括大飞守角（D2）和单关守角（C4），各有优劣。"
+  },
+  {
+    "id": "FK003",
+    "title": "挂角方向",
+    "difficulty": "beginner",
+    "board_state": {
+      "black": ["D4", "Q16", "D16", "Q4"],
+      "white": []
+    },
+    "correct_move": "D6",
+    "explanation": "挂角是阻止对方守角扩大的重要手段。白棋D6小飞挂黑棋D4星位，是标准挂角方式。挂角方向的选择需考虑全局配合，通常从宽的一侧挂入以限制对方发展空间。"
+  },
+  {
+    "id": "FK004",
+    "title": "拆边原则",
+    "difficulty": "beginner",
+    "board_state": {
+      "black": ["D4", "Q4"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "K4",
+    "explanation": "布局阶段拆边是扩展势力的重要手段。黑棋K4在天元和角之间拆边，遵循'立二拆三、立三拆四'的原则。拆边需要平衡实地和外势，并考虑对方打入的可能性。"
+  },
+  {
+    "id": "FK005",
+    "title": "三连星布局",
+    "difficulty": "beginner",
+    "board_state": {
+      "black": ["D4", "Q4"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "K4",
+    "explanation": "三连星布局以同一侧连续三个星位棋子为特征，强调大模样作战。黑棋K4占边星，与角部星位形成三连星，准备构建庞大的中央势力。三连星是武宫正树'宇宙流'的基础。"
+  },
+  {
+    "id": "FK006",
+    "title": "中国流布局",
+    "difficulty": "beginner",
+    "board_state": {
+      "black": ["D4", "Q4"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "D3",
+    "explanation": "中国流布局由陈祖德九段开创，黑棋D3小飞守角后K4拆边，形成独特的快速展开阵型。中国流强调速度和效率，适合积极进攻型棋手。这种布局曾长期统治世界棋坛。"
+  },
+  {
+    "id": "FK007",
+    "title": "小林流布局",
+    "difficulty": "beginner",
+    "board_state": {
+      "black": ["D4", "Q4", "Q3"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "K4",
+    "explanation": "小林流是日本棋手小林光一九段的招牌布局。黑棋先在右下守角，再K4拆边，注重实地和均衡。小林流稳健实用，适合追求实地和稳定性的棋手，是业余棋手学习的好范本。"
+  },
+  {
+    "id": "FK008",
+    "title": "二连星布局",
+    "difficulty": "intermediate",
+    "board_state": {
+      "black": ["D4", "Q4"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "K4",
+    "explanation": "二连星布局是黑棋占据同侧两个星位的布阵方式。黑棋K4占边星形成发展态势，准备进一步扩展为三连星或转为实地作战。二连星灵活多变，是AI时代最流行的布局之一。"
+  },
+  {
+    "id": "FK009",
+    "title": "对角星布局",
+    "difficulty": "intermediate",
+    "board_state": {
+      "black": ["D4", "Q16"],
+      "white": ["D16", "Q4"]
+    },
+    "correct_move": "K4",
+    "explanation": "对角星布局是黑棋占据对角线两个星位的策略。黑棋K4扩展中央势力，利用对角星位的呼应构建全局阵型。对角星适合喜欢全局战斗的棋手，易形成激烈对攻。"
+  },
+  {
+    "id": "FK010",
+    "title": "错小目布局",
+    "difficulty": "intermediate",
+    "board_state": {
+      "black": ["D3", "Q4"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "D5",
+    "explanation": "错小目布局是黑棋在相邻角分别占据小目和星位的策略。黑棋D5挂角是连贯手段，阻止白棋守角扩大。错小目兼顾实地和速度，是均衡型棋手的常见选择。"
+  },
+  {
+    "id": "FK011",
+    "title": "平行型布局",
+    "difficulty": "intermediate",
+    "board_state": {
+      "black": ["D4", "Q4"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "K10",
+    "explanation": "平行型布局是双方各自在棋盘一侧展开阵型的策略。黑棋K10占据天元附近高点，意图构建全局性的中央势力。平行型布局通常导致双方各围一方，中盘在中央决战。"
+  },
+  {
+    "id": "FK012",
+    "title": "秀策流布局",
+    "difficulty": "intermediate",
+    "board_state": {
+      "black": ["D4", "Q4", "Q3"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "D6",
+    "explanation": "秀策流布局以日本棋圣本因坊秀策命名，特点是黑棋1-3-5的经典次序。黑棋D6挂角后准备秀策尖，体现了秀策流重视厚实和全局均衡的理念。秀策流曾被誉为'不败的布局'。"
+  },
+  {
+    "id": "FK013",
+    "title": "变相中国流布局",
+    "difficulty": "intermediate",
+    "board_state": {
+      "black": ["D4", "Q4"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "D3",
+    "explanation": "变相中国流是传统中国流的改良版。黑棋D3守角后不是K4而是选择其他扩展方向，增加迷惑性和灵活性。变相中国流的核心是打破常规，让对手难以预判后续发展。"
+  },
+  {
+    "id": "FK014",
+    "title": "迷你中国流布局",
+    "difficulty": "intermediate",
+    "board_state": {
+      "black": ["D4", "Q4"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "Q3",
+    "explanation": "迷你中国流缩小了传统中国流的展开幅度。黑棋Q3小飞守角后准备小幅拆边，布局更加紧凑。迷你中国流适合快节奏对局，减少对手打入的空间，同时保持发展潜力。"
+  },
+  {
+    "id": "FK015",
+    "title": "AI时代星位布局",
+    "difficulty": "advanced",
+    "board_state": {
+      "black": ["D4", "Q4"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "K4",
+    "explanation": "AI时代星位布局的特点是灵活和高效。黑棋K4快速展开，不拘泥于传统定式。AI布局重视全局速度、先手效率和后续变化，改变了人类围棋数百年的布局理念。"
+  },
+  {
+    "id": "FK016",
+    "title": "点三三时机判断",
+    "difficulty": "advanced",
+    "board_state": {
+      "black": ["D4", "Q4", "Q3"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "Q16",
+    "explanation": "AI时代点三三的时机判断至关重要。白棋Q16直接点入黑棋星位三三是AI的推荐下法，比传统布局更早动手。掌握点三三的正确时机可以获得先手和实地优势。"
+  },
+  {
+    "id": "FK017",
+    "title": "双三三布局",
+    "difficulty": "advanced",
+    "board_state": {
+      "black": ["D3", "Q3"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "D6",
+    "explanation": "双三三布局是黑棋占据两个三三位置的极端实地策略。黑棋D6挂角准备扩张，虽然放弃了初期外势但确保了扎实的实地基础。AI证明了双三三在某些场合是可行的。"
+  },
+  {
+    "id": "FK018",
+    "title": "高位中国流",
+    "difficulty": "advanced",
+    "board_state": {
+      "black": ["D4", "Q4"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "K3",
+    "explanation": "高位中国流将传统中国流提高一路，更激进地追求外势和速度。黑棋K3高位拆边，增加了对中央的影响力但削弱了边路实地。高位中国流适合善于经营大模样的棋手。"
+  },
+  {
+    "id": "FK019",
+    "title": "宇宙流布局",
+    "difficulty": "advanced",
+    "board_state": {
+      "black": ["D4", "Q4", "K4"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "K10",
+    "explanation": "宇宙流是武宫正树九段开创的独特布局风格。黑棋K10占据天元，在三连星基础上进一步向中央发展，意图构建覆盖半个棋盘以上的超级大模样。宇宙流体现了围棋'高者在腹'的境界。"
+  },
+  {
+    "id": "FK020",
+    "title": "实地派布局",
+    "difficulty": "advanced",
+    "board_state": {
+      "black": ["D3", "Q3"],
+      "white": ["D16", "Q16"]
+    },
+    "correct_move": "D5",
+    "explanation": "实地派布局以小林光一九段为代表，强调每一步都确保实地收获。黑棋D5挂角控制实地，不与对手进行大规模对围。实地派布局需要精准的官子技术来将实地优势转化为胜势。"
+  }
+]

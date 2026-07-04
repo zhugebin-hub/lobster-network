@@ -1,0 +1,50 @@
+{
+  "skill_version": "v37_reference_merge_contiguous_weeks_same_slot",
+  "mode": "redraw_single_file_no_template",
+  "source_file": "AII017-机构与机器人力学_converted.xlsx",
+  "output": "AII017_机构与机器人力学_英方课表.xls",
+  "courses": [
+    {
+      "file": "AII017-机构与机器人力学_converted.xlsx",
+      "course_code": "AII017",
+      "course_name": "机构与机器人力学",
+      "event_count": 12,
+      "sheet": "H7120Z 机构与机器人力学",
+      "token_estimate": {
+        "note": "估算值，不是精确 API 计费；脚本本身不调用大模型。用于判断上传一门中方课表给 Agent 转换时的大致 token 消耗。",
+        "method": "mixed_zh_en_chars_estimate_plus_skill_overhead",
+        "source_file_size_bytes": 5766,
+        "source_text_chars": 1258,
+        "generated_cell_text_chars": 854,
+        "event_count": 12,
+        "warning_count": 0,
+        "estimated_input_tokens": 1407,
+        "estimated_output_tokens": 525,
+        "estimated_total_tokens": 1932,
+        "human_readable": "约 1,932 tokens / 门课"
+      },
+      "status": "redrawn_converted"
+    }
+  ],
+  "warnings": [
+    {
+      "info": "No-class day columns narrowed to 12.66 characters: Monday, Saturday, Sunday"
+    },
+    {
+      "info": "Merged 29 adjacent blank cell runs within same-day lanes for cleaner layout"
+    }
+  ],
+  "token_estimate": {
+    "note": "估算值，不是精确 API 计费；脚本本身不调用大模型。用于判断上传一门中方课表给 Agent 转换时的大致 token 消耗。",
+    "method": "mixed_zh_en_chars_estimate_plus_skill_overhead",
+    "source_file_size_bytes": 5766,
+    "source_text_chars": 1258,
+    "generated_cell_text_chars": 854,
+    "event_count": 12,
+    "warning_count": 0,
+    "estimated_input_tokens": 1407,
+    "estimated_output_tokens": 525,
+    "estimated_total_tokens": 1932,
+    "human_readable": "约 1,932 tokens / 门课"
+  }
+}

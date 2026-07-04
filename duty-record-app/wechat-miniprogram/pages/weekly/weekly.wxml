@@ -1,0 +1,58 @@
+<view class="weekly-container">
+  <view class="header">
+    <text class="title">📊 周报总结</text>
+    <text class="subtitle">AI 智能分析</text>
+  </view>
+
+  <!-- 日期范围选择 -->
+  <view class="date-range">
+    <view class="date-item">
+      <text class="label">开始日期</text>
+      <picker mode="date" value="{{weekStart}}" bindchange="onStartChange">
+        <view class="picker">{{weekStart}}</view>
+      </picker>
+    </view>
+    <view class="date-item">
+      <text class="label">结束日期</text>
+      <picker mode="date" value="{{weekEnd}}" bindchange="onEndChange">
+        <view class="picker">{{weekEnd}}</view>
+      </picker>
+    </view>
+    <button class="generate-btn" bindtap="generateSummary" loading="{{generating}}">
+      生成 AI 总结
+    </button>
+  </view>
+
+  <!-- AI 总结内容 -->
+  <view class="summary-section" wx:if="{{summary}}">
+    <view class="summary-card">
+      <text class="card-title">🤖 AI 周报总结</text>
+      <view class="summary-content">
+        <text>{{summary}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 班级排名 -->
+  <view class="ranking-section" wx:if="{{rankings && rankings.length > 0}}">
+    <text class="section-title">🏆 班级排名（本周）</text>
+    <view class="ranking-list">
+      <view class="ranking-item" wx:for="{{rankings}}" wx:key="class_id">
+        <view class="rank-num {{index < 3 ? 'top' : ''}}">{{index + 1}}</view>
+        <view class="rank-info">
+          <text class="rank-name">{{class_name}}</text>
+          <text class="rank-score">综合 {{total_avg}}分</text>
+        </view>
+        <view class="rank-detail">
+          <text>卫生{{avg_hygiene}} | 纪律{{avg_discipline}} | 学习{{avg_study}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!summary && !generating}}">
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">选择日期范围，生成周报总结</text>
+  </view>
+</view>

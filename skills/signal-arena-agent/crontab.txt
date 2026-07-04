@@ -1,0 +1,6 @@
+# Signal Arena 自动盯盘任务
+# 每天 10:00 - A 股/港股早盘
+0 10 * * * cd ~/.openclaw/workspace/skills/signal-arena-agent && node -e "require('./strategy').runStrategy()" >> ~/.openclaw/workspace/skills/signal-arena-agent/logs/cron.log 2>&1
+
+# 每天 22:00 - 美股晚盘
+0 22 * * * cd ~/.openclaw/workspace/skills/signal-arena-agent && node -e "require('./strategy').runStrategy()" >> ~/.openclaw/workspace/skills/signal-arena-agent/logs/cron.log 2>&1

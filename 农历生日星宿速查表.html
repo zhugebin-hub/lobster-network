@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>农历生日星宿速查表（二十八宿）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    color: #e0e0e0;
+  }
+  h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #f0c040;
+    text-shadow: 0 0 20px rgba(240,192,64,0.3);
+    letter-spacing: 4px;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: #8899aa;
+    margin-bottom: 30px;
+  }
+  .table-wrapper {
+    overflow-x: auto;
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    background: #1e2a3a;
+  }
+  table {
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 900px;
+  }
+  thead th {
+    background: #0f3460;
+    color: #f0c040;
+    padding: 10px 6px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+  thead th:first-child {
+    border-radius: 12px 0 0 0;
+  }
+  thead th:last-child {
+    border-radius: 0 12px 0 0;
+  }
+  tbody tr:hover {
+    background: rgba(240,192,64,0.08);
+  }
+  td {
+    padding: 8px 6px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  td:first-child {
+    font-weight: 700;
+    color: #f0c040;
+    background: rgba(15,52,96,0.5);
+    padding: 8px 12px;
+    white-space: nowrap;
+    letter-spacing: 2px;
+  }
+  td.empty {
+    color: #445566;
+  }
+  .star-highlight {
+    color: #ff6b6b;
+    font-weight: 600;
+  }
+  .legend {
+    margin-top: 30px;
+    background: #1e2a3a;
+    border-radius: 12px;
+    padding: 20px 30px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    max-width: 900px;
+    width: 100%;
+  }
+  .legend h3 {
+    color: #f0c040;
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+  .legend-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+  .legend-item {
+    text-align: center;
+    padding: 6px;
+    border-radius: 6px;
+    background: rgba(15,52,96,0.4);
+    font-size: 12px;
+  }
+  .legend-item .char {
+    font-size: 18px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .legend-item .group {
+    color: #8899aa;
+    font-size: 11px;
+  }
+  .group-azure .char { color: #4fc3f7; }
+  .group-vermilion .char { color: #ff6b6b; }
+  .group-white .char { color: #e0e0e0; }
+  .group-black .char { color: #ab47bc; }
+  @media print {
+    body { background: white; color: #333; }
+    .table-wrapper { box-shadow: none; background: white; }
+    thead th { background: #f0f0f0; color: #333; }
+    td:first-child { color: #333; background: #f8f8f8; }
+    .legend { background: white; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🌙 农历生日星宿速查表</h1>
+<p class="subtitle">根据农历月份和日期，快速查找对应的二十八宿</p>
+
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>农历月 \ 日</th><th>初一</th><th>初二</th><th>初三</th><th>初四</th><th>初五</th><th>初六</th><th>初七</th><th>初八</th><th>初九</th><th>初十</th><th>十一</th><th>十二</th><th>十三</th><th>十四</th><th>十五</th><th>十六</th><th>十七</th><th>十八</th><th>十九</th><th>二十</th><th>廿一</th><th>廿二</th><th>廿三</th><th>廿四</th><th>廿五</th><th>廿六</th><th>廿七</th><th>廿八</th><th>廿九</th><th>三十</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>正月</td><td>角</td><td>亢</td><td>氐</td><td>房</td><td>心</td><td>尾</td><td>箕</td><td>斗</td><td>牛</td><td>女</td><td>虚</td><td>危</td><td>室</td><td>壁</td><td>奎</td><td>娄</td><td>胃</td><td>昴</td><td>毕</td><td>觜</td><td>参</td><td>井</td><td>鬼</td><td>柳</td><td>星</td><td>张</td><td>翼</td><td>轸</td><td>角</td><td>亢</td></tr>
+<tr><td>二月</td><td>亢</td><td>氐</td><td>房</td><td>心</td><td>尾</td><td>箕</td><td>斗</td><td>牛</td><td>女</td><td>虚</td><td>危</td><td>室</td><td>壁</td><td>奎</td><td>娄</td><td>胃</td><td>昴</td><td>毕</td><td>觜</td><td>参</td><td>井</td><td>鬼</td><td>柳</td><td>星</td><td>张</td><td>翼</td><td>轸</td><td>角</td><td class="empty">—</td><td class="empty">—</td></tr>
+<tr><td>三月</td><td>氐</td><td>房</td><td>心</td><td>尾</td><td>箕</td><td>斗</td><td>牛</td><td>女</td><td>虚</td><td>危</td><td>室</td><td>壁</td><td>奎</td><td>娄</td><td>胃</td><td>昴</td><td>毕</td><td>觜</td><td>参</td><td>井</td><td>鬼</td><td>柳</td><td>星</td><td>张</td><td>翼</td><td>轸</td><td>角</td><td>亢</td><td>氐</td><td>房</td></tr>
+<tr><td>四月</td><td>房</td><td>心</td><td>尾</td><td>箕</td><td>斗</td><td>牛</td><td>女</td><td>虚</td><td>危</td><td>室</td><td>壁</td><td>奎</td><td>娄</td><td>胃</td><td>昴</td><td>毕</td><td>觜</td><td>参</td><td>井</td><td>鬼</td><td>柳</td><td>星</td><td>张</td><td>翼</td><td>轸</td><td>角</td><td>亢</td><td>氐</td><td>房</td><td>心</td></tr>
+<tr><td>五月</td><td>心</td><td>尾</td><td>箕</td><td>斗</td><td>牛</td><td>女</td><td>虚</td><td>危</td><td>室</td><td>壁</td><td>奎</td><td>娄</td><td>胃</td><td>昴</td><td>毕</td><td>觜</td><td>参</td><td>井</td><td>鬼</td><td>柳</td><td>星</td><td>张</td><td>翼</td><td>轸</td><td>角</td><td>亢</td><td>氐</td><td>房</td><td>心</td><td>尾</td></tr>
+<tr><td>六月</td><td>尾</td><td>箕</td><td>斗</td><td>牛</td><td>女</td><td>虚</td><td>危</td><td>室</td><td>壁</td><td>奎</td><td>娄</td><td>胃</td><td>昴</td><td>毕</td><td>觜</td><td>参</td><td>井</td><td>鬼</td><td>柳</td><td>星</td><td>张</td><td>翼</td><td>轸</td><td>角</td><td>亢</td><td>氐</td><td>房</td><td>心</td><td>尾</td><td>箕</td></tr>
+<tr><td>七月</td><td>箕</td><td>斗</td><td>牛</td><td>女</td><td>虚</td><td>危</td><td>室</td><td>壁</td><td>奎</td><td>娄</td><td>胃</td><td>昴</td><td>毕</td><td>觜</td><td>参</td><td>井</td><td>鬼</td><td>柳</td><td>星</td><td>张</td><td>翼</td><td>轸</td><td>角</td><td>亢</td><td>氐</td><td>房</td><td>心</td><td>尾</td><td>箕</td><td>斗</td></tr>
+<tr><td>八月</td><td>斗</td><td>牛</td><td>女</td><td>虚</td><td>危</td><td>室</td><td>壁</td><td>奎</td><td>娄</td><td>胃</td><td>昴</td><td>毕</td><td>觜</td><td>参</td><td>井</td><td>鬼</td><td>柳</td><td>星</td><td>张</td><td>翼</td><td>轸</td><td>角</td><td>亢</td><td>氐</td><td>房</td><td>心</td><td>尾</td><td>箕</td><td>斗</td><td>牛</td></tr>
+<tr><td>九月</td><td>牛</td><td>女</td><td>虚</td><td>危</td><td>室</td><td>壁</td><td>奎</td><td>娄</td><td>胃</td><td>昴</td><td>毕</td><td>觜</td><td>参</td><td>井</td><td>鬼</td><td>柳</td><td>星</td><td>张</td><td>翼</td><td>轸</td><td>角</td><td>亢</td><td>氐</td><td>房</td><td>心</td><td>尾</td><td>箕</td><td>斗</td><td>牛</td><td>女</td></tr>
+<tr><td>十月</td><td>女</td><td>虚</td><td>危</td><td>室</td><td>壁</td><td>奎</td><td>娄</td><td>胃</td><td>昴</td><td>毕</td><td>觜</td><td>参</td><td>井</td><td>鬼</td><td>柳</td><td>星</td><td>张</td><td>翼</td><td>轸</td><td>角</td><td>亢</td><td>氐</td><td>房</td><td>心</td><td>尾</td><td>箕</td><td>斗</td><td>女</td><td>虚</td><td>危</td></tr>
+<tr><td>十一月</td><td>虚</td><td>危</td><td>室</td><td>壁</td><td>奎</td><td>娄</td><td>胃</td><td>昴</td><td>毕</td><td>觜</td><td>参</td><td>井</td><td>鬼</td><td>柳</td><td>星</td><td>张</td><td>翼</td><td>轸</td><td>角</td><td>亢</td><td>氐</td><td>房</td><td>心</td><td>尾</td><td>箕</td><td>斗</td><td>女</td><td>虚</td><td>危</td><td>室</td></tr>
+<tr><td>十二月</td><td>危</td><td>室</td><td>壁</td><td>奎</td><td>娄</td><td>胃</td><td>昴</td><td>毕</td><td>觜</td><td>参</td><td>井</td><td>鬼</td><td>柳</td><td>星</td><td>张</td><td>翼</td><td>轸</td><td>角</td><td>亢</td><td>氐</td><td>房</td><td>心</td><td>尾</td><td>箕</td><td>斗</td><td>女</td><td>虚</td><td>危</td><td>室</td><td>壁</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="legend">
+<h3>🌌 二十八宿 · 四象分组</h3>
+<div class="legend-grid">
+  <div class="legend-item group-azure"><span class="char">角</span><span class="group">东方苍龙</span></div>
+  <div class="legend-item group-azure"><span class="char">亢</span><span class="group">东方苍龙</span></div>
+  <div class="legend-item group-azure"><span class="char">氐</span><span class="group">东方苍龙</span></div>
+  <div class="legend-item group-azure"><span class="char">房</span><span class="group">东方苍龙</span></div>
+  <div class="legend-item group-azure"><span class="char">心</span><span class="group">东方苍龙</span></div>
+  <div class="legend-item group-azure"><span class="char">尾</span><span class="group">东方苍龙</span></div>
+  <div class="legend-item group-azure"><span class="char">箕</span><span class="group">东方苍龙</span></div>
+  <div class="legend-item group-vermilion"><span class="char">斗</span><span class="group">北方玄武</span></div>
+  <div class="legend-item group-vermilion"><span class="char">牛</span><span class="group">北方玄武</span></div>
+  <div class="legend-item group-vermilion"><span class="char">女</span><span class="group">北方玄武</span></div>
+  <div class="legend-item group-vermilion"><span class="char">虚</span><span class="group">北方玄武</span></div>
+  <div class="legend-item group-vermilion"><span class="char">危</span><span class="group">北方玄武</span></div>
+  <div class="legend-item group-vermilion"><span class="char">室</span><span class="group">北方玄武</span></div>
+  <div class="legend-item group-vermilion"><span class="char">壁</span><span class="group">北方玄武</span></div>
+  <div class="legend-item group-white"><span class="char">奎</span><span class="group">西方白虎</span></div>
+  <div class="legend-item group-white"><span class="char">娄</span><span class="group">西方白虎</span></div>
+  <div class="legend-item group-white"><span class="char">胃</span><span class="group">西方白虎</span></div>
+  <div class="legend-item group-white"><span class="char">昴</span><span class="group">西方白虎</span></div>
+  <div class="legend-item group-white"><span class="char">毕</span><span class="group">西方白虎</span></div>
+  <div class="legend-item group-white"><span class="char">觜</span><span class="group">西方白虎</span></div>
+  <div class="legend-item group-white"><span class="char">参</span><span class="group">西方白虎</span></div>
+  <div class="legend-item group-black"><span class="char">井</span><span class="group">南方朱雀</span></div>
+  <div class="legend-item group-black"><span class="char">鬼</span><span class="group">南方朱雀</span></div>
+  <div class="legend-item group-black"><span class="char">柳</span><span class="group">南方朱雀</span></div>
+  <div class="legend-item group-black"><span class="char">星</span><span class="group">南方朱雀</span></div>
+  <div class="legend-item group-black"><span class="char">张</span><span class="group">南方朱雀</span></div>
+  <div class="legend-item group-black"><span class="char">翼</span><span class="group">南方朱雀</span></div>
+  <div class="legend-item group-black"><span class="char">轸</span><span class="group">南方朱雀</span></div>
+</div>
+</div>
+
+</body>
+</html>

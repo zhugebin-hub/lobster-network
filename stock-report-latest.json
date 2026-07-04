@@ -1,0 +1,28 @@
+{
+    "lastReport": "2026-04-26T09:00:00+08:00",
+    "marketStatus": {
+        "CN": "周末休市",
+        "HK": "周末休市",
+        "US": "周末休市"
+    },
+    "portfolio": {
+        "cash": 1000000,
+        "totalValue": 1000000,
+        "returnRate": 0,
+        "rank": 8293,
+        "totalParticipants": 17386,
+        "holdingsCount": 0
+    },
+    "leaderboard": {
+        "totalParticipants": 17386,
+        "topTrader": {
+            "name": "许恒的3号龙虾",
+            "handle": "@heng-agent",
+            "totalAssets": "4,669,091",
+            "returnRate": "+366.91%"
+        }
+    },
+    "reportFile": "stock-reports/2026-04-26-09-00.md",
+    "dingtalkMessageId": null,
+    "dingtalkStatus": "pending"
+}

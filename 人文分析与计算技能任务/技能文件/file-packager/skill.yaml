@@ -1,0 +1,63 @@
+# skill.yaml - OpenClaw Skill Manifest
+# 文件打包发送技能
+
+name: file-packager
+version: 1.0.0
+description: 通用文件打包发送技能。支持将多个文件/文件夹打包成 ZIP，并通过消息发送给用户。适用于案例导出、项目归档、批量文件传输等场景。
+author: 孙豪
+license: MIT
+
+# 技能分类
+category: utilities
+tags:
+  - 文件打包
+  - ZIP
+  - 文件传输
+  - openclaw-skill
+
+# 依赖项
+dependencies:
+  - name: zip
+    version: ">=3.0"
+    required: true
+    description: ZIP 打包工具
+  - name: python3
+    version: ">=3.8"
+    required: true
+    description: Python 运行环境
+
+# Python 依赖（requirements.txt）
+python_requirements: []
+
+# 技能配置项
+config:
+  # 临时打包目录
+  temp_pack_dir: ~/.openclaw/workspace/.packager_temp
+  # 默认压缩包前缀
+  default_prefix: package
+  # 是否自动清理临时文件
+  auto_cleanup: true
+
+# 权限声明
+permissions:
+  - read:workspace     # 读取工作区文件
+  - write:workspace    # 写入工作区文件
+  - exec:shell         # 执行 shell 命令（zip 等）
+  - message:send       # 发送消息和文件给用户
+
+# 触发关键词
+triggers:
+  - 打包文件
+  - 发送压缩包
+  - 打包发送
+  - 创建 ZIP
+  - 文件归档
+  - 打包成 zip
+
+# 变更日志
+changelog:
+  v1.0.0: 初始版本，支持文件打包和发送
+
+# 相关链接
+repository: https://github.com/openclaw/workspace
+documentation: ~/.openclaw/workspace/skills/file-packager/SKILL.md

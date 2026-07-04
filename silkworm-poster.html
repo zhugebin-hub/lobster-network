@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蚕的一生 - 科学实践海报</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    width: 1190px;
+    height: 1684px;
+    background: linear-gradient(135deg, #f0f9e8 0%, #e8f5e1 30%, #fff9f0 70%, #fef7e8 100%);
+    font-family: 'Noto Sans SC', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* 背景装饰 */
+  .bg-pattern {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.06;
+    background-image: 
+      radial-gradient(circle at 10% 20%, #4a7c59 1px, transparent 1px),
+      radial-gradient(circle at 90% 80%, #4a7c59 1px, transparent 1px),
+      radial-gradient(circle at 50% 50%, #4a7c59 0.5px, transparent 0.5px);
+    background-size: 80px 80px, 60px 60px, 40px 40px;
+  }
+  
+  .leaf-deco {
+    position: absolute;
+    opacity: 0.12;
+    font-size: 120px;
+  }
+  .leaf-deco.top-left { top: -20px; left: -20px; transform: rotate(-30deg); }
+  .leaf-deco.bottom-right { bottom: -20px; right: -20px; transform: rotate(150deg); }
+  .leaf-deco.mid-right { top: 40%; right: 10px; transform: rotate(60deg); font-size: 80px; }
+  
+  /* 标题区域 */
+  .header {
+    text-align: center;
+    padding: 50px 60px 30px;
+    position: relative;
+  }
+  
+  .title-wrapper {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .title {
+    font-size: 72px;
+    font-weight: 900;
+    color: #2d5a3d;
+    letter-spacing: 12px;
+    text-shadow: 2px 2px 4px rgba(45,90,61,0.15);
+    position: relative;
+  }
+  
+  .title::before {
+    content: '🐛';
+    position: absolute;
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 50px;
+  }
+  
+  .title::after {
+    content: '🦋';
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 50px;
+  }
+  
+  .subtitle {
+    font-size: 22px;
+    color: #6b8f71;
+    margin-top: 12px;
+    font-weight: 300;
+    letter-spacing: 6px;
+  }
+  
+  .title-line {
+    width: 400px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #4a7c59, transparent);
+    margin: 20px auto 0;
+  }
+  
+  /* 主内容区 */
+  .content {
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  
+  /* 每个阶段卡片 */
+  .stage-card {
+    display: flex;
+    align-items: stretch;
+    background: rgba(255,255,255,0.75);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1.5px solid rgba(74,124,89,0.15);
+    box-shadow: 0 4px 20px rgba(45,90,61,0.06);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  
+  .stage-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    border-radius: 20px 0 0 20px;
+  }
+  
+  .stage-card.stage-1::before { background: linear-gradient(180deg, #8b6f47, #a0845c); }
+  .stage-card.stage-2::before { background: linear-gradient(180deg, #3d3d3d, #555); }
+  .stage-card.stage-3::before { background: linear-gradient(180deg, #7bc67e, #5aad5f); }
+  .stage-card.stage-4::before { background: linear-gradient(180deg, #f5e6c8, #e8d5a8); }
+  
+  .stage-number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 900;
+    color: white;
+    flex-shrink: 0;
+    margin-right: 24px;
+    margin-top: 8px;
+  }
+  
+  .stage-1 .stage-number { background: linear-gradient(135deg, #8b6f47, #a0845c); }
+  .stage-2 .stage-number { background: linear-gradient(135deg, #3d3d3d, #555); }
+  .stage-3 .stage-number { background: linear-gradient(135deg, #5aad5f, #7bc67e); }
+  .stage-4 .stage-number { background: linear-gradient(135deg, #c4a45a, #e8d5a8); color: #5a4a2a; }
+  
+  .stage-visual {
+    width: 200px;
+    height: 180px;
+    border-radius: 16px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .stage-1 .stage-visual { background: linear-gradient(135deg, #f5f0e8, #ebe3d5); }
+  .stage-2 .stage-visual { background: linear-gradient(135deg, #f0f0f0, #e5e5e5); }
+  .stage-3 .stage-visual { background: linear-gradient(135deg, #e8f5e1, #d4edda); }
+  .stage-4 .stage-visual { background: linear-gradient(135deg, #fdf8e8, #f5edda); }
+  
+  .stage-emoji {
+    font-size: 80px;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
+  }
+  
+  .stage-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .stage-title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  
+  .stage-1 .stage-title { color: #8b6f47; }
+  .stage-2 .stage-title { color: #3d3d3d; }
+  .stage-3 .stage-title { color: #3d8b3f; }
+  .stage-4 .stage-title { color: #8b7a3d; }
+  
+  .stage-time {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 10px;
+    font-weight: 300;
+  }
+  
+  .stage-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    font-weight: 300;
+  }
+  
+  .stage-diary {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: rgba(74,124,89,0.05);
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+    font-style: italic;
+    border-left: 3px solid rgba(74,124,89,0.2);
+  }
+  
+  .stage-diary::before {
+    content: '📝 观察日记：';
+    font-style: normal;
+    font-weight: 700;
+    color: #4a7c59;
+  }
+  
+  /* 底部信息 */
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 25px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(0deg, rgba(45,90,61,0.08), transparent);
+  }
+  
+  .footer-left {
+    font-size: 14px;
+    color: #888;
+    font-weight: 300;
+  }
+  
+  .footer-right {
+    font-size: 13px;
+    color: #aaa;
+    font-weight: 300;
+    text-align: right;
+  }
+  
+  /* 流程箭头 */
+  .arrow-container {
+    text-align: center;
+    font-size: 24px;
+    color: #4a7c59;
+    opacity: 0.4;
+    margin: -8px 0;
+  }
+  
+  /* 知识小贴士 */
+  .tip-box {
+    background: linear-gradient(135deg, rgba(74,124,89,0.08), rgba(74,124,89,0.03));
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin: 0 50px;
+    border: 1px dashed rgba(74,124,89,0.25);
+  }
+  
+  .tip-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4a7c59;
+    margin-bottom: 8px;
+  }
+  
+  .tip-content {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+    font-weight: 300;
+  }
+  
+  /* 照片占位区 */
+  .photo-placeholder {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  
+  .photo-box {
+    width: 80px;
+    height: 80px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #bbb;
+    background: rgba(255,255,255,0.5);
+  }
+</style>
+</head>
+<body>
+  <div class="bg-pattern"></div>
+  <div class="leaf-deco top-left">🍃</div>
+  <div class="leaf-deco bottom-right">🍃</div>
+  <div class="leaf-deco mid-right">🌿</div>
+  
+  <!-- 标题 -->
+  <div class="header">
+    <div class="title-wrapper">
+      <div class="title">蚕的一生</div>
+    </div>
+    <div class="subtitle">—— 科学观察实践海报 ——</div>
+    <div class="title-line"></div>
+  </div>
+  
+  <!-- 主内容 -->
+  <div class="content">
+    
+    <!-- 阶段一：蚕卵 -->
+    <div class="stage-card stage-1">
+      <div class="stage-number">一</div>
+      <div class="stage-visual">
+        <div class="stage-emoji">🥚</div>
+      </div>
+      <div class="stage-info">
+        <div class="stage-title">蚕 卵</div>
+        <div class="stage-time">📅 观察时间：3月下旬 — 4月初（约10-14天）</div>
+        <div class="stage-desc">
+          蚕卵呈椭圆形，像芝麻一样大小。刚产下的卵是淡黄色或黄色的，
+          经过1-2天慢慢变成灰绿色或紫灰色，说明蚕宝宝快要孵化了。
+          卵的表面微微凹陷，用放大镜看能看到细细的纹路。
+        </div>
+        <div class="stage-diary">
+          "今天发现蚕卵的颜色变深了，从淡黄色变成了紫灰色，妈妈说这说明蚕宝宝快要出来了！我用放大镜仔细观察，每一颗卵都小小的，像一粒粒黑芝麻。"
+        </div>
+      </div>
+    </div>
+    
+    <div class="arrow-container">⬇️</div>
+    
+    <!-- 阶段二：蚁蚕 -->
+    <div class="stage-card stage-2">
+      <div class="stage-number">二</div>
+      <div class="stage-visual">
+        <div class="stage-emoji">🐛</div>
+      </div>
+      <div class="stage-info">
+        <div class="stage-title">蚁 蚕</div>
+        <div class="stage-time">📅 观察时间：4月初（约3-5天）</div>
+        <div class="stage-desc">
+          蚕宝宝从卵里孵化出来了！因为又黑又小，像小蚂蚁，所以叫"蚁蚕"。
+          身体长约2-3毫米，浑身长满细毛。刚孵化时它们会慢慢爬出来，
+          迫不及待地寻找食物——新鲜的嫩桑叶是它们的最爱！
+        </div>
+        <div class="stage-diary">
+          "蚕宝宝终于孵化了！它们黑黑小小的，真的好像小蚂蚁呀！我小心翼翼地用羽毛把它们扫到桑叶上，它们一碰到桑叶就开始啃，吃得可香了。"
+        </div>
+      </div>
+    </div>
+    
+    <div class="arrow-container">⬇️</div>
+    
+    <!-- 阶段三：蚕宝宝成长 -->
+    <div class="stage-card stage-3">
+      <div class="stage-number">三</div>
+      <div class="stage-visual">
+        <div class="stage-emoji">🐛</div>
+      </div>
+      <div class="stage-info">
+        <div class="stage-title">蚕宝宝成长期</div>
+        <div class="stage-time">📅 观察时间：4月中旬 — 5月中旬（约25-30天）</div>
+        <div class="stage-desc">
+          这是蚕生长最快的时期！蚕宝宝会经历四次蜕皮（一龄→五龄），
+          身体从黑色变成白色，从几毫米长到6-7厘米。它们每天都在不停地吃桑叶，
+          食量越来越大，排出的粪便也从黑色变成绿色。蜕皮时它们会抬起头一动不动，
+          好像在睡觉。
+        </div>
+        <div class="stage-diary">
+          "蚕宝宝已经长到我的手指那么长了！白白胖胖的，摸上去凉凉的、软软的。它们吃桑叶的声音沙沙沙，像下雨一样。今天发现有一条蚕在蜕皮，它抬着头一动不动，我都不敢碰它。"
+        </div>
+      </div>
+    </div>
+    
+    <div class="arrow-container">⬇️</div>
+    
+    <!-- 阶段四：结茧与化蛾 -->
+    <div class="stage-card stage-4">
+      <div class="stage-number">四</div>
+      <div class="stage-visual">
+        <div class="stage-emoji">🦋</div>
+      </div>
+      <div class="stage-info">
+        <div class="stage-title">结茧 · 化蛾 · 产卵</div>
+        <div class="stage-time">📅 观察时间：5月下旬 — 6月（约20-30天）</div>
+        <div class="stage-desc">
+          五龄蚕成熟后，身体变得透明发亮，开始寻找角落吐丝结茧。
+          蚕茧有白色、黄色或粉色。在茧里，蚕变成蛹，再经过10-15天，
+          蚕蛾破茧而出！蚕蛾不会飞，只会扇翅膀、交配。雌蛾产下卵后，
+          生命 cycle 又开始了 🔄
+        </div>
+        <div class="stage-diary">
+          "蚕宝宝开始结茧了！它们吐出细细的丝，把自己裹在里面，过了两天就看到了一个完整的茧，摸上去软软的。两周后，蚕蛾破茧而出，白白的身子，小小的翅膀，好神奇的生命旅程！"
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 知识小贴士 -->
+  <div class="tip-box">
+    <div class="tip-title">💡 知识小贴士</div>
+    <div class="tip-content">
+      🐛 蚕是鳞翅目昆虫，学名 <em>Bombyx mori</em>，完全变态发育（卵→幼虫→蛹→成虫）
+      &nbsp;|&nbsp; 🍃 蚕只吃桑叶，每天要喂3-4次新鲜桑叶
+      &nbsp;|&nbsp; 🧵 一根蚕丝最长可达1500米！中国古代就学会了养蚕缫丝
+      &nbsp;|&nbsp; 🔄 蚕的一生约50-60天，一条雌蛾可产400-500粒卵
+    </div>
+  </div>
+  
+  <!-- 底部 -->
+  <div class="footer">
+    <div class="footer-left">
+      📌 科学实践作业 · 蚕的一生观察记录
+    </div>
+    <div class="footer-right">
+      📸 此处可粘贴观察照片（2-3张）<br>
+      ✏️ 姓名：______ &nbsp; 班级：______ &nbsp; 日期：______
+    </div>
+  </div>
+</body>
+</html>

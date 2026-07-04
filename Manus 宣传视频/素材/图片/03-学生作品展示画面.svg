@@ -1,0 +1,106 @@
+<svg width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a2e;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="1080" height="1920" fill="url(#bgGradient)"/>
+  
+  <!-- 顶部标题 -->
+  <text x="540" y="100" font-family="Source Han Sans CN, sans-serif" 
+        font-size="42" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+    学生已开发部署
+  </text>
+  <text x="540" y="160" font-family="Source Han Sans CN, sans-serif" 
+        font-size="36" fill="#0099FF" text-anchor="middle">
+    数十个应用
+  </text>
+  
+  <!-- 四宫格 - 左上 -->
+  <g transform="translate(60, 240)">
+    <rect x="0" y="0" width="460" height="340" rx="16" fill="#2a2a4e" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="460" height="340" rx="16" fill="none" stroke="#0066FF" stroke-width="2"/>
+    <text x="230" y="160" font-family="sans-serif" font-size="20" fill="#888888" text-anchor="middle">
+      问卷调查网页
+    </text>
+    <text x="230" y="190" font-family="sans-serif" font-size="14" fill="#666666" text-anchor="middle">
+      (400×300px 截图)
+    </text>
+    <text x="230" y="320" font-family="sans-serif" font-size="16" fill="#0099FF" text-anchor="middle">
+      kkh7ikcyjl8x.manus.space
+    </text>
+  </g>
+  
+  <!-- 四宫格 - 右上 -->
+  <g transform="translate(560, 240)">
+    <rect x="0" y="0" width="460" height="340" rx="16" fill="#2a2a4e" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="460" height="340" rx="16" fill="none" stroke="#0066FF" stroke-width="2"/>
+    <text x="230" y="160" font-family="sans-serif" font-size="20" fill="#888888" text-anchor="middle">
+      刻舟求剑动画
+    </text>
+    <text x="230" y="190" font-family="sans-serif" font-size="14" fill="#666666" text-anchor="middle">
+      (400×300px 截图)
+    </text>
+    <text x="230" y="320" font-family="sans-serif" font-size="16" fill="#0099FF" text-anchor="middle">
+      hpzqmjxq.manus.space
+    </text>
+  </g>
+  
+  <!-- 四宫格 - 左下 -->
+  <g transform="translate(60, 620)">
+    <rect x="0" y="0" width="460" height="340" rx="16" fill="#2a2a4e" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="460" height="340" rx="16" fill="none" stroke="#0066FF" stroke-width="2"/>
+    <text x="230" y="160" font-family="sans-serif" font-size="20" fill="#888888" text-anchor="middle">
+      猴子超市游戏
+    </text>
+    <text x="230" y="190" font-family="sans-serif" font-size="14" fill="#666666" text-anchor="middle">
+      (400×300px 截图)
+    </text>
+    <text x="230" y="320" font-family="sans-serif" font-size="16" fill="#0099FF" text-anchor="middle">
+      qbixrlvf.manus.space
+    </text>
+  </g>
+  
+  <!-- 四宫格 - 右下 -->
+  <g transform="translate(560, 620)">
+    <rect x="0" y="0" width="460" height="340" rx="16" fill="#2a2a4e" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="460" height="340" rx="16" fill="none" stroke="#0066FF" stroke-width="2"/>
+    <text x="230" y="160" font-family="sans-serif" font-size="20" fill="#888888" text-anchor="middle">
+      通信实验动画
+    </text>
+    <text x="230" y="190" font-family="sans-serif" font-size="14" fill="#666666" text-anchor="middle">
+      (400×300px 截图)
+    </text>
+    <text x="230" y="320" font-family="sans-serif" font-size="16" fill="#0099FF" text-anchor="middle">
+      livfckau.manus.space
+    </text>
+  </g>
+  
+  <!-- 底部鼓励文字 -->
+  <text x="540" y="1080" font-family="Source Han Sans CN, sans-serif" 
+        font-size="48" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+    你也可以！
+  </text>
+  
+  <!-- 装饰元素 -->
+  <circle cx="540" cy="1180" r="6" fill="#0066FF"/>
+  <circle cx="520" cy="1180" r="3" fill="#0099FF"/>
+  <circle cx="560" cy="1180" r="3" fill="#0099FF"/>
+  
+  <!-- 底部说明 -->
+  <text x="540" y="1300" font-family="Source Han Sans CN, sans-serif" 
+        font-size="28" fill="#888888" text-anchor="middle">
+    涵盖：问卷调查 · 动画 · 游戏 · 小程序
+  </text>
+  
+  <!-- 时间标记 -->
+  <text x="50" y="1880" font-family="Arial, sans-serif" font-size="20" fill="#666666">
+    00:35 - 00:45
+  </text>
+</svg>

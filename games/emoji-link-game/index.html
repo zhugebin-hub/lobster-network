@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji 连连看</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
+
+        .score-board {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            backdrop-filter: blur(10px);
+        }
+
+        .category-select {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .category-select h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .category-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .game-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .game-container.active {
+            display: block;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+            max-width: 600px;
+        }
+
+        .cell {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            cursor: pointer;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .cell:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cell.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.1);
+        }
+
+        .cell.matched {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .control-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .refresh-btn {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .back-btn {
+            background: #f44336;
+            color: white;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            text-align: center;
+            display: none;
+            z-index: 1000;
+        }
+
+        .message.show {
+            display: block;
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .message h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .message button {
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        .timer {
+            font-size: 1.2em;
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎮 Emoji 连连看</h1>
+        <div class="score-board">
+            <span>得分：<span id="score">0</span></span>
+            <span style="margin-left: 20px;">剩余：<span id="remaining">0</span></span>
+            <div class="timer" id="timer"></div>
+        </div>
+    </div>
+
+    <div class="category-select" id="categorySelect">
+        <h2>选择游戏模式</h2>
+        <div class="category-buttons">
+            <button class="category-btn" onclick="startGame('animals')">🐾 动物世界</button>
+            <button class="category-btn" onclick="startGame('fruits')">🍎 水果乐园</button>
+            <button class="category-btn" onclick="startGame('sports')">⚽ 运动健身</button>
+            <button class="category-btn" onclick="startGame('food')">🍕 美食天地</button>
+            <button class="category-btn" onclick="startGame('emotions')">😊 表情达人</button>
+            <button class="category-btn" onclick="startGame('movies')">🎬 电影猜猜</button>
+        </div>
+    </div>
+
+    <div class="game-container" id="gameContainer">
+        <div class="grid" id="grid"></div>
+        <div class="controls">
+            <button class="control-btn refresh-btn" onclick="refreshGame()">🔄 重新开始</button>
+            <button class="control-btn back-btn" onclick="backToMenu()">🏠 返回菜单</button>
+        </div>
+    </div>
+
+    <div class="message" id="winMessage">
+        <h2>🎉 恭喜通关！</h2>
+        <p>你的得分：<span id="finalScore">0</span></p>
+        <p>用时：<span id="gameTime">0</span>秒</p>
+        <button onclick="backToMenu()">再玩一次</button>
+    </div>
+
+    <script>
+        // 游戏数据
+        const categories = {
+            animals: ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼'],
+            fruits: ['🍎', '🍐', '🍊', '🍋', '🍌', '🍉', '🍇', '🍓'],
+            sports: ['⚽', '🏀', '🏈', '⚾', '🎾', '🏐', '🏉', '🎱'],
+            food: ['🍕', '🍔', '🍟', '🌭', '🍿', '🧁', '🍩', '🍪'],
+            emotions: ['😊', '😂', '😍', '🤔', '😎', '🥳', '😴', '🤩'],
+            movies: ['🎬', '🍿', '🎭', '🎪', '🎨', '🎯', '🎲', '🎮']
+        };
+
+        let gameState = {
+            grid: [],
+            selected: null,
+            score: 0,
+            remaining: 0,
+            timer: null,
+            seconds: 0
+        };
+
+        // 初始化游戏
+        function startGame(category) {
+            const emojis = categories[category];
+            // 创建配对（每个 emoji 出现 2 次）
+            let pairs = [...emojis, ...emojis];
+            // 打乱
+            pairs = shuffleArray(pairs);
+            
+            gameState.grid = pairs;
+            gameState.selected = null;
+            gameState.score = 0;
+            gameState.remaining = pairs.length;
+            gameState.seconds = 0;
+
+            document.getElementById('categorySelect').style.display = 'none';
+            document.getElementById('gameContainer').classList.add('active');
+            document.getElementById('winMessage').classList.remove('show');
+
+            renderGrid();
+            updateScore();
+            startTimer();
+        }
+
+        // 渲染网格
+        function renderGrid() {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = '';
+            
+            gameState.grid.forEach((emoji, index) => {
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                cell.textContent = emoji;
+                cell.dataset.index = index;
+                
+                if (emoji === null) {
+                    cell.classList.add('matched');
+                }
+                
+                cell.onclick = () => handleCellClick(index);
+                grid.appendChild(cell);
+            });
+        }
+
+        // 处理点击
+        function handleCellClick(index) {
+            if (gameState.grid[index] === null) return;
+            if (gameState.selected === index) return;
+
+            const cells = document.querySelectorAll('.cell');
+            
+            if (gameState.selected === null) {
+                // 选择第一个
+                gameState.selected = index;
+                cells[index].classList.add('selected');
+            } else {
+                // 选择第二个，检查是否匹配
+                const firstIndex = gameState.selected;
+                const firstEmoji = gameState.grid[firstIndex];
+                const secondEmoji = gameState.grid[index];
+
+                cells[firstIndex].classList.remove('selected');
+
+                if (firstEmoji === secondEmoji) {
+                    // 匹配成功
+                    gameState.grid[firstIndex] = null;
+                    gameState.grid[index] = null;
+                    gameState.score += 10;
+                    gameState.remaining -= 2;
+                    
+                    cells[firstIndex].classList.add('matched');
+                    cells[index].classList.add('matched');
+                    
+                    updateScore();
+                    
+                    if (gameState.remaining === 0) {
+                        gameWin();
+                    }
+                } else {
+                    // 匹配失败
+                    cells[index].classList.add('selected');
+                    setTimeout(() => {
+                        cells[index].classList.remove('selected');
+                    }, 500);
+                }
+
+                gameState.selected = null;
+            }
+        }
+
+        // 更新分数
+        function updateScore() {
+            document.getElementById('score').textContent = gameState.score;
+            document.getElementById('remaining').textContent = gameState.remaining;
+        }
+
+        // 计时器
+        function startTimer() {
+            if (gameState.timer) clearInterval(gameState.timer);
+            gameState.seconds = 0;
+            
+            gameState.timer = setInterval(() => {
+                gameState.seconds++;
+                document.getElementById('timer').textContent = `⏱️ ${gameState.seconds}s`;
+            }, 1000);
+        }
+
+        // 游戏胜利
+        function gameWin() {
+            clearInterval(gameState.timer);
+            document.getElementById('finalScore').textContent = gameState.score;
+            document.getElementById('gameTime').textContent = gameState.seconds;
+            document.getElementById('winMessage').classList.add('show');
+        }
+
+        // 刷新游戏
+        function refreshGame() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            // 获取当前类别（通过查找哪个按钮被点击过 - 简化处理，随机选一个）
+            const categories_keys = Object.keys(categories);
+            const randomCategory = categories_keys[Math.floor(Math.random() * categories_keys.length)];
+            startGame(randomCategory);
+        }
+
+        // 返回菜单
+        function backToMenu() {
+            clearInterval(gameState.timer);
+            document.getElementById('categorySelect').style.display = 'block';
+            document.getElementById('gameContainer').classList.remove('active');
+            document.getElementById('winMessage').classList.remove('show');
+            document.getElementById('timer').textContent = '';
+        }
+
+        // 数组打乱
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+    </script>
+</body>
+</html>

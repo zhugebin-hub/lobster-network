@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦞 OpenClaw 配置面板</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0f1117;
+    color: #e1e4e8;
+    min-height: 100vh;
+    padding: 24px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #58a6ff;
+  }
+  .subtitle { color: #8b949e; margin-bottom: 24px; font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 20px;
+    transition: border-color .2s;
+  }
+  .card:hover { border-color: #58a6ff; }
+  .card h2 {
+    font-size: 16px;
+    color: #58a6ff;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h2 .icon { font-size: 20px; }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #21262d;
+    font-size: 13px;
+  }
+  .row:last-child { border-bottom: none; }
+  .label { color: #8b949e; }
+  .value { color: #c9d1d9; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-green { background: #0d1f0d; color: #3fb950; border: 1px solid #238636; }
+  .badge-blue { background: #0c2d6b; color: #58a6ff; border: 1px solid #1f6feb; }
+  .badge-orange { background: #3d2206; color: #d29922; border: 1px solid #9e6a03; }
+  .badge-purple { background: #2a1a3e; color: #bc8cff; border: 1px solid #8957e5; }
+  .full-width { grid-column: 1 / -1; }
+  .section-title {
+    font-size: 18px;
+    color: #e1e4e8;
+    margin: 24px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #30363d;
+  }
+  .skills-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .skill-tag {
+    background: #1f2937;
+    border: 1px solid #374151;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #9ca3af;
+  }
+  .status-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+  .dot-green { background: #3fb950; box-shadow: 0 0 6px #3fb950; }
+  .dot-orange { background: #d29922; box-shadow: 0 0 6px #d29922; }
+  .footer { text-align: center; color: #484f58; font-size: 12px; margin-top: 32px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🦞 OpenClaw 配置面板</h1>
+  <p class="subtitle">虾尔 (lobster-001) · 运行状态总览 · 2026-05-24</p>
+
+  <p class="section-title">🖥️ 系统信息</p>
+  <div class="grid">
+    <div class="card">
+      <h2><span class="icon">⚙️</span> 运行时</h2>
+      <div class="row"><span class="label">Runtime</span><span class="value">agent=main</span></div>
+      <div class="row"><span class="label">主机</span><span class="value">iZ2zeetm9awnkwdni43joiZ</span></div>
+      <div class="row"><span class="label">OS</span><span class="value">Linux 5.10.134-19.2</span></div>
+      <div class="row"><span class="label">架构</span><span class="value">x64</span></div>
+      <div class="row"><span class="label">Node.js</span><span class="value">v24.14.0</span></div>
+    </div>
+    <div class="card">
+      <h2><span class="icon">🤖</span> 模型</h2>
+      <div class="row"><span class="label">当前模型</span><span class="value">qwen3.5-plus</span></div>
+      <div class="row"><span class="label">提供商</span><span class="value">dashscope-coding</span></div>
+      <div class="row"><span class="label">默认模型</span><span class="value">qwen3.5-plus</span></div>
+      <div class="row"><span class="label">Reasoning</span><span class="value">off</span></div>
+      <div class="row"><span class="label">Shell</span><span class="value">bash</span></div>
+    </div>
+  </div>
+
+  <p class="section-title">🔗 通道与身份</p>
+  <div class="grid">
+    <div class="card">
+      <h2><span class="icon">💬</span> 通道</h2>
+      <div class="row"><span class="label">当前通道</span><span class="value">dingtalk</span></div>
+      <div class="row"><span class="label">Surface</span><span class="value">dingtalk</span></div>
+      <div class="row"><span class="label">群聊</span><span class="value">小龙虾记忆研究群</span></div>
+      <div class="row"><span class="label">Capabilities</span><span class="value">none</span></div>
+    </div>
+    <div class="card">
+      <h2><span class="icon">🦞</span> 身份</h2>
+      <div class="row"><span class="label">名字</span><span class="value">虾尔</span></div>
+      <div class="row"><span class="label">主人</span><span class="value">黄宝怡</span></div>
+      <div class="row"><span class="label">Emoji</span><span class="value">🦞</span></div>
+      <div class="row"><span class="label">时区</span><span class="value">Asia/Shanghai</span></div>
+      <div class="row"><span class="label">工作区</span><span class="value">~/.openclaw/workspace</span></div>
+    </div>
+  </div>
+
+  <p class="section-title">📂 核心文件</p>
+  <div class="grid">
+    <div class="card">
+      <h2><span class="icon">📄</span> 灵魂文件</h2>
+      <div class="row"><span class="label">SOUL.md</span><span class="badge badge-green">已配置</span></div>
+      <div class="row"><span class="label">IDENTITY.md</span><span class="badge badge-green">已配置</span></div>
+      <div class="row"><span class="label">USER.md</span><span class="badge badge-green">已配置</span></div>
+      <div class="row"><span class="label">MEMORY.md</span><span class="badge badge-green">已配置</span></div>
+      <div class="row"><span class="label">TOOLS.md</span><span class="badge badge-green">已配置</span></div>
+      <div class="row"><span class="label">HEARTBEAT.md</span><span class="badge badge-green">已配置</span></div>
+    </div>
+    <div class="card">
+      <h2><span class="icon">🗂️</span> 工作区结构</h2>
+      <div class="row"><span class="label">memory/</span><span class="value">每日日志</span></div>
+      <div class="row"><span class="label">skills/</span><span class="value">已安装技能</span></div>
+      <div class="row"><span class="label">stock-holdings.md</span><span class="value">虚拟炒股</span></div>
+      <div class="row"><span class="label">lobster-messages.json</span><span class="value">龙虾网络</span></div>
+      <div class="row"><span class="label">/shared/</span><span class="value">NFS 诸葛马通道</span></div>
+    </div>
+  </div>
+
+  <p class="section-title">🧩 已安装技能</p>
+  <div class="card full-width">
+    <h2><span class="icon">🛠️</span> Skills (共 35 个)</h2>
+    <div class="skills-list">
+      <span class="skill-tag">qqbot-cron</span>
+      <span class="skill-tag">qqbot-media</span>
+      <span class="skill-tag">clawhub</span>
+      <span class="skill-tag">healthcheck</span>
+      <span class="skill-tag">openai-whisper</span>
+      <span class="skill-tag">skill-creator</span>
+      <span class="skill-tag">video-frames</span>
+      <span class="skill-tag">weather</span>
+      <span class="skill-tag">academic-paper-submission</span>
+      <span class="skill-tag">agent-browser</span>
+      <span class="skill-tag">account-upgrade</span>
+      <span class="skill-tag">ai-mentor</span>
+      <span class="skill-tag">campus-recommend</span>
+      <span class="skill-tag">job-match</span>
+      <span class="skill-tag">pdf-export</span>
+      <span class="skill-tag">resume-analysis</span>
+      <span class="skill-tag">resume-rewrite</span>
+      <span class="skill-tag">cn-resume-optimizer</span>
+      <span class="skill-tag">cron-helper</span>
+      <span class="skill-tag">digital-humanities-tutor</span>
+      <span class="skill-tag">dingtalk-case-export</span>
+      <span class="skill-tag">dingtalk-file-transfer-enhance</span>
+      <span class="skill-tag">dingtalk-voice</span>
+      <span class="skill-tag">docx-generator</span>
+      <span class="skill-tag">file-packager</span>
+      <span class="skill-tag">find-skills</span>
+      <span class="skill-tag">pandoc-convert</span>
+      <span class="skill-tag">proactive-agent</span>
+      <span class="skill-tag">resume-coach</span>
+      <span class="skill-tag">resume-cv-builder</span>
+      <span class="skill-tag">resume-generator-cn</span>
+      <span class="skill-tag">resume-helper</span>
+      <span class="skill-tag">schedule-reminder</span>
+      <span class="skill-tag">searxng</span>
+      <span class="skill-tag">self-improvement</span>
+      <span class="skill-tag">skill-vetter</span>
+      <span class="skill-tag">study-habits</span>
+      <span class="skill-tag">token-monitor</span>
+      <span class="skill-tag">web-access</span>
+      <span class="skill-tag">wechat-article-fetcher</span>
+      <span class="skill-tag">wechat-to-pdf</span>
+      <span class="skill-tag">whisper-transcribe</span>
+      <span class="skill-tag">zj-math-tutor</span>
+    </div>
+  </div>
+
+  <p class="section-title">🔌 外部连接</p>
+  <div class="grid">
+    <div class="card">
+      <h2><span class="icon">🐴</span> 诸葛马 (Hermes)</h2>
+      <div class="row"><span class="label">连接方式</span><span class="value">NFS 双向通道</span></div>
+      <div class="row"><span class="label">服务器 IP</span><span class="value">172.24.57.34</span></div>
+      <div class="row"><span class="label">挂载点</span><span class="value">/shared</span></div>
+      <div class="row"><span class="label">状态</span><span class="badge badge-green">已连接</span></div>
+    </div>
+    <div class="card">
+      <h2><span class="icon">📈</span> 虚拟炒股</h2>
+      <div class="row"><span class="label">平台</span><span class="value">Signal Arena</span></div>
+      <div class="row"><span class="label">初始资金</span><span class="value">¥1,000,000</span></div>
+      <div class="row"><span class="label">汇报时间</span><span class="value">9:00 / 15:00 / 20:00 / 24:00</span></div>
+      <div class="row"><span class="label">API Key</span><span class="badge badge-orange">待配置</span></div>
+    </div>
+  </div>
+
+  <p class="section-title">🎓 毕业论文系统</p>
+  <div class="grid">
+    <div class="card">
+      <h2><span class="icon">📝</span> Thesis Instances</h2>
+      <div class="row"><span class="label">服务器</span><span class="value">10.20.33.63</span></div>
+      <div class="row"><span class="label">用户</span><span class="value">grad</span></div>
+      <div class="row"><span class="label">实例</span><span class="value">thesis-instance-1 & 2</span></div>
+      <div class="row"><span class="label">数据库</span><span class="value">MySQL</span></div>
+      <div class="row"><span class="label">运行方式</span><span class="value">PM2</span></div>
+      <div class="row"><span class="label">状态</span><span class="badge badge-green">运行中</span></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    🦞 OpenClaw Configuration Panel · Generated 2026-05-24 23:21 CST
+  </div>
+</div>
+</body>
+</html>

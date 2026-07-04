@@ -1,0 +1,234 @@
+{
+  "name": "医疗知识图谱",
+  "created_at": "2026-04-05T12:40:34.620000",
+  "entities": {
+    "D001": {
+      "id": "D001",
+      "type": "疾病",
+      "name": "糖尿病",
+      "description": "一种慢性代谢性疾病"
+    },
+    "D002": {
+      "id": "D002",
+      "type": "疾病",
+      "name": "高血压",
+      "description": "血压持续升高的慢性疾病"
+    },
+    "D003": {
+      "id": "D003",
+      "type": "疾病",
+      "name": "冠心病",
+      "description": "冠状动脉粥样硬化性心脏病"
+    },
+    "S001": {
+      "id": "S001",
+      "type": "症状",
+      "name": "多饮",
+      "description": "饮水量异常增多"
+    },
+    "S002": {
+      "id": "S002",
+      "type": "症状",
+      "name": "多食",
+      "description": "食欲亢进"
+    },
+    "S003": {
+      "id": "S003",
+      "type": "症状",
+      "name": "多尿",
+      "description": "排尿次数和尿量增多"
+    },
+    "S004": {
+      "id": "S004",
+      "type": "症状",
+      "name": "头痛",
+      "description": "头部疼痛感"
+    },
+    "S005": {
+      "id": "S005",
+      "type": "症状",
+      "name": "胸痛",
+      "description": "胸部疼痛或不适"
+    },
+    "M001": {
+      "id": "M001",
+      "type": "药品",
+      "name": "二甲双胍",
+      "description": "治疗 2 型糖尿病的一线药物"
+    },
+    "M002": {
+      "id": "M002",
+      "type": "药品",
+      "name": "胰岛素",
+      "description": "调节血糖的激素类药物"
+    },
+    "M003": {
+      "id": "M003",
+      "type": "药品",
+      "name": "硝苯地平",
+      "description": "钙通道阻滞剂，用于治疗高血压"
+    },
+    "M004": {
+      "id": "M004",
+      "type": "药品",
+      "name": "阿司匹林",
+      "description": "抗血小板药物"
+    },
+    "T001": {
+      "id": "T001",
+      "type": "检查",
+      "name": "空腹血糖",
+      "description": "测量空腹状态下的血糖水平"
+    },
+    "T002": {
+      "id": "T002",
+      "type": "检查",
+      "name": "糖化血红蛋白",
+      "description": "反映 2-3 个月平均血糖水平"
+    },
+    "T003": {
+      "id": "T003",
+      "type": "检查",
+      "name": "血压测量",
+      "description": "测量收缩压和舒张压"
+    },
+    "T004": {
+      "id": "T004",
+      "type": "检查",
+      "name": "心电图",
+      "description": "记录心脏电活动"
+    },
+    "DEPT001": {
+      "id": "DEPT001",
+      "type": "科室",
+      "name": "内分泌科",
+      "description": "诊治内分泌系统疾病"
+    },
+    "DEPT002": {
+      "id": "DEPT002",
+      "type": "科室",
+      "name": "心血管科",
+      "description": "诊治心血管疾病"
+    },
+    "DOC001": {
+      "id": "DOC001",
+      "type": "医生",
+      "name": "张医生",
+      "description": "内分泌科主任医师"
+    },
+    "DOC002": {
+      "id": "DOC002",
+      "type": "医生",
+      "name": "李医生",
+      "description": "心血管科副主任医师"
+    }
+  },
+  "relations": [
+    {
+      "from": "D001",
+      "type": "has_symptom",
+      "to": "S001"
+    },
+    {
+      "from": "D001",
+      "type": "has_symptom",
+      "to": "S002"
+    },
+    {
+      "from": "D001",
+      "type": "has_symptom",
+      "to": "S003"
+    },
+    {
+      "from": "D002",
+      "type": "has_symptom",
+      "to": "S004"
+    },
+    {
+      "from": "D003",
+      "type": "has_symptom",
+      "to": "S005"
+    },
+    {
+      "from": "D001",
+      "type": "treated_by",
+      "to": "M001"
+    },
+    {
+      "from": "D001",
+      "type": "treated_by",
+      "to": "M002"
+    },
+    {
+      "from": "D002",
+      "type": "treated_by",
+      "to": "M003"
+    },
+    {
+      "from": "D003",
+      "type": "treated_by",
+      "to": "M004"
+    },
+    {
+      "from": "D001",
+      "type": "requires_test",
+      "to": "T001"
+    },
+    {
+      "from": "D001",
+      "type": "requires_test",
+      "to": "T002"
+    },
+    {
+      "from": "D002",
+      "type": "requires_test",
+      "to": "T003"
+    },
+    {
+      "from": "D003",
+      "type": "requires_test",
+      "to": "T004"
+    },
+    {
+      "from": "D001",
+      "type": "belongs_to_dept",
+      "to": "DEPT001"
+    },
+    {
+      "from": "D002",
+      "type": "belongs_to_dept",
+      "to": "DEPT002"
+    },
+    {
+      "from": "D003",
+      "type": "belongs_to_dept",
+      "to": "DEPT002"
+    },
+    {
+      "from": "DEPT001",
+      "type": "has_doctor",
+      "to": "DOC001"
+    },
+    {
+      "from": "DEPT002",
+      "type": "has_doctor",
+      "to": "DOC002"
+    }
+  ],
+  "properties": {
+    "D001": {
+      "icd10": "E14",
+      "prevalence": "10.9%"
+    },
+    "M001": {
+      "dosage": "500mg bid",
+      "side_effects": "胃肠道反应"
+    },
+    "T001": {
+      "normal_range": "3.9-6.1 mmol/L"
+    },
+    "T003": {
+      "normal_range": "<140/90 mmHg"
+    }
+  }
+}

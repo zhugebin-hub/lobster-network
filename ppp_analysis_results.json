@@ -1,0 +1,58 @@
+{
+  "analysis_date": "2026-06-02",
+  "base_currency": "USD",
+  "data_sources": [
+    "世界银行国际比较项目(ICP)",
+    "美联储经济数据(FRED)",
+    "欧洲央行(ECB)",
+    "日本银行(BOJ)",
+    "英格兰银行(BOE)"
+  ],
+  "nominal_rates": {
+    "Germany/Eurozone": 0.92,
+    "Japan": 148.5,
+    "UK": 0.79,
+    "US": 1.0
+  },
+  "ppp_rates": {
+    "Germany/Eurozone": 0.85,
+    "Japan": 112.0,
+    "UK": 0.76,
+    "US": 1.0
+  },
+  "cpi_indices": {
+    "Germany/Eurozone": 95.2,
+    "Japan": 72.5,
+    "UK": 91.8,
+    "US": 100.0
+  },
+  "results": [
+    {
+      "country": "Germany/Eurozone",
+      "nominal_rate": 0.92,
+      "ppp_rate": 0.85,
+      "cpi_index": 95.2,
+      "real_exchange_rate": 1.0823529411764707,
+      "ppp_deviation_pct": 8.235294117647067,
+      "valuation": "高估 8.2%"
+    },
+    {
+      "country": "Japan",
+      "nominal_rate": 148.5,
+      "ppp_rate": 112.0,
+      "cpi_index": 72.5,
+      "real_exchange_rate": 1.3258928571428572,
+      "ppp_deviation_pct": 32.589285714285715,
+      "valuation": "高估 32.6%"
+    },
+    {
+      "country": "UK",
+      "nominal_rate": 0.79,
+      "ppp_rate": 0.76,
+      "cpi_index": 91.8,
+      "real_exchange_rate": 1.0394736842105263,
+      "ppp_deviation_pct": 3.947368421052635,
+      "valuation": "高估 3.9%"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "course_code": "AII019",
+  "course_name": "机器人设计与实现",
+  "total_entries": 24,
+  "unparseable": [],
+  "conflicts": [
+    "Conflict at Thursday Class 3",
+    "Conflict at Thursday Class 4"
+  ],
+  "notes": [],
+  "converted_entries": 50,
+  "timestamp": "2026-05-25T04:25:44.231466"
+}

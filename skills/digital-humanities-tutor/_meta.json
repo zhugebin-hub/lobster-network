@@ -1,0 +1,12 @@
+{
+  "name": "digital-humanities-tutor",
+  "displayName": "数字人文学习助手",
+  "version": "1.0.0",
+  "description": "专为数字人文学习者设计的 AI 导师",
+  "author": "诸葛斌",
+  "license": "MIT",
+  "emoji": "📚",
+  "tags": ["数字人文", "学习助手", "教育", "文本分析", "DH"],
+  "createdAt": "2026-03-27T21:47:00+08:00",
+  "local": true
+}

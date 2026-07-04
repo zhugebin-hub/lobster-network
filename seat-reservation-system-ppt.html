@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学院公共区域学习座位预约系统</title>
+  <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/tailwindcss/3.0.23/tailwind.min.js"></script>
+  <link href="https://fonts.loli.net/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans SC', 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+    }
+    .slides-container {
+      width: 100vw; height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: #0a0a0a;
+    }
+    .slide {
+      width: 100%; height: 100%;
+      max-width: 450px; max-height: 800px;
+      aspect-ratio: 9/16;
+      position: absolute;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 2rem;
+      opacity: 0; transform: translateX(100%);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+    }
+    .slide.active { opacity: 1; transform: translateX(0); }
+    .slide.prev { opacity: 0; transform: translateX(-100%); }
+    .light-spot {
+      position: absolute; border-radius: 50%;
+      filter: blur(100px); opacity: 0.3; pointer-events: none;
+    }
+    .light-spot-1 { width: 300px; height: 300px; background: #3b82f6; top: -100px; right: -100px; animation: float1 20s ease-in-out infinite; }
+    .light-spot-2 { width: 250px; height: 250px; background: #8b5cf6; bottom: -80px; left: -80px; animation: float2 25s ease-in-out infinite; }
+    .light-spot-3 { width: 200px; height: 200px; background: #06b6d4; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: float3 18s ease-in-out infinite; }
+    @keyframes float1 { 0%,100%{transform:translate(0,0)} 25%{transform:translate(-50px,30px)} 50%{transform:translate(30px,50px)} 75%{transform:translate(50px,-20px)} }
+    @keyframes float2 { 0%,100%{transform:translate(0,0)} 33%{transform:translate(40px,-40px)} 66%{transform:translate(-30px,30px)} }
+    @keyframes float3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.2)} }
+    .slide-content { position: relative; z-index: 10; text-align: center; width: 100%; }
+    .progress-bar {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px; z-index: 100;
+    }
+    .progress-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s;
+    }
+    .progress-dot.active { background: #fff; transform: scale(1.3); }
+    .progress-dot:hover { background: rgba(255,255,255,0.6); }
+    .page-number {
+      position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%);
+      font-size: 0.875rem; color: rgba(255,255,255,0.4); z-index: 100;
+    }
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; margin-top: 20px; }
+    .feature-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 16px; text-align: left;
+    }
+    .feature-card .icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .feature-card .title { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
+    .feature-card .desc { font-size: 0.7rem; color: #9ca3af; line-height: 1.4; }
+    .tech-list { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 24px; }
+    .tech-badge {
+      background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 8px; padding: 8px 16px; font-size: 0.85rem; font-weight: 400; color: #93c5fd;
+    }
+    .stat-row { display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+    .stat-box {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 120px;
+    }
+    .stat-box .num { font-size: 1.8rem; font-weight: 900; color: #3b82f6; }
+    .stat-box .label { font-size: 0.7rem; color: #9ca3af; margin-top: 4px; }
+    .arch-layer {
+      width: 100%; padding: 14px 16px; margin: 8px 0; border-radius: 10px;
+      text-align: center; font-size: 0.85rem; font-weight: 700;
+    }
+    .arch-label { font-size: 0.65rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+    .layer-1 { background: rgba(59,130,246,0.2); border: 1px solid rgba(59,130,246,0.4); }
+    .layer-2 { background: rgba(139,92,246,0.2); border: 1px solid rgba(139,92,246,0.4); }
+    .layer-3 { background: rgba(6,182,212,0.2); border: 1px solid rgba(6,182,212,0.4); }
+    .layer-4 { background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.4); }
+    .db-list { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 16px; }
+    .db-badge {
+      background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3);
+      border-radius: 6px; padding: 6px 12px; font-size: 0.75rem; color: #6ee7b7;
+    }
+    .flow-steps { display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 16px; }
+    .flow-step {
+      display: flex; align-items: center; gap: 12px; text-align: left;
+      background: rgba(255,255,255,0.03); border-radius: 10px; padding: 12px 14px;
+    }
+    .flow-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: #3b82f6; display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 700; flex-shrink: 0;
+    }
+    .flow-text { font-size: 0.8rem; line-height: 1.4; }
+    .highlight { color: #3b82f6; font-weight: 700; }
+    .sub-title { font-size: 0.75rem; color: #6b7280; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <div class="slides-container">
+
+    <!-- Slide 1: 封面 -->
+    <div class="slide active">
+      <div class="light-spot light-spot-1"></div>
+      <div class="light-spot light-spot-2"></div>
+      <div class="light-spot light-spot-3"></div>
+      <div class="slide-content">
+        <p class="text-sm text-blue-400 font-light mb-4">课程设计项目</p>
+        <h1 class="text-4xl font-black mb-6 leading-tight">学院公共区域<br>学习座位<br>预约系统</h1>
+        <div class="w-16 h-0.5 bg-blue-500 mx-auto mb-6"></div>
+        <p class="text-sm font-light text-gray-400">Flask · SQLAlchemy · SocketIO · APScheduler</p>
+        <p class="text-xs text-gray-600 mt-8">汇报人：阳婧</p>
+      </div>
+    </div>
+
+    <!-- Slide 2: 项目背景 -->
+    <div class="slide">
+      <div class="light-spot light-spot-2"></div>
+      <div class="light-spot light-spot-3"></div>
+      <div class="slide-content">
+        <p class="text-xs text-blue-400 font-light mb-2">01 / 为什么做</p>
+        <h1 class="text-3xl font-black mb-6 leading-tight">一个座位<br>有多难找？</h1>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="icon">😤</div>
+            <div class="title">占座难题</div>
+            <div class="desc">一本书占座一整天，资源严重浪费</div>
+          </div>
+          <div class="feature-card">
+            <div class="icon">🔍</div>
+            <div class="title">信息不对称</div>
+            <div class="desc">跑遍所有自习室，不知道哪里有空位</div>
+          </div>
+          <div class="feature-card">
+            <div class="icon">📋</div>
+            <div class="title">管理困难</div>
+            <div class="desc">管理员无法实时掌握座位使用情况</div>
+          </div>
+          <div class="feature-card">
+            <div class="icon">⚖️</div>
+            <div class="title">缺乏约束</div>
+            <div class="desc">没有信用机制，违约成本为零</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: 技术架构 -->
+    <div class="slide">
+      <div class="light-spot light-spot-1"></div>
+      <div class="light-spot light-spot-3"></div>
+      <div class="slide-content">
+        <p class="text-xs text-purple-400 font-light mb-2">02 / 系统架构</p>
+        <h1 class="text-3xl font-black mb-4">四层架构设计</h1>
+        <div class="arch-layer layer-1">📱 前端层：HTML + CSS + JavaScript</div>
+        <div class="arch-label">原生前端，零框架依赖</div>
+        <div class="arch-layer layer-2">🔧 后端层：Flask + Flask-SocketIO</div>
+        <div class="arch-label">RESTful API + WebSocket 实时推送</div>
+        <div class="arch-layer layer-3">💾 数据层：SQLAlchemy ORM</div>
+        <div class="arch-label">支持 SQLite / MySQL 无缝切换</div>
+        <div class="arch-layer layer-4">⏰ 调度层：APScheduler</div>
+        <div class="arch-label">后台定时任务：超时释放 + 自动补位</div>
+        <div class="tech-list">
+          <span class="tech-badge">Flask</span>
+          <span class="tech-badge">SQLAlchemy</span>
+          <span class="tech-badge">SocketIO</span>
+          <span class="tech-badge">APScheduler</span>
+          <span class="tech-badge">QR Code</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: 数据库设计 -->
+    <div class="slide">
+      <div class="light-spot light-spot-1"></div>
+      <div class="light-spot light-spot-2"></div>
+      <div class="slide-content">
+        <p class="text-xs text-green-400 font-light mb-2">03 / 数据库</p>
+        <h1 class="text-3xl font-black mb-2">10 张核心表</h1>
+        <p class="sub-title">完整覆盖预约业务全链路</p>
+        <div class="db-list">
+          <span class="db-badge">users 用户表</span>
+          <span class="db-badge">study_rooms 自习室</span>
+          <span class="db-badge">seats 座位表</span>
+          <span class="db-badge">reservations 预约记录</span>
+          <span class="db-badge">waiting_list 候补队列</span>
+          <span class="db-badge">system_configs 系统配置</span>
+          <span class="db-badge">credit_records 信用变动</span>
+          <span class="db-badge">violation_reports 举报记录</span>
+          <span class="db-badge">notifications 站内通知</span>
+          <span class="db-badge">admin_logs 操作日志</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: 学生端功能 -->
+    <div class="slide">
+      <div class="light-spot light-spot-2"></div>
+      <div class="light-spot light-spot-3"></div>
+      <div class="slide-content">
+        <p class="text-xs text-blue-400 font-light mb-2">04 / 学生端</p>
+        <h1 class="text-3xl font-black mb-4">六大核心功能</h1>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="icon">🪑</div>
+            <div class="title">可视化选座</div>
+            <div class="desc">按日期/时间筛选，实时座位状态一目了然</div>
+          </div>
+          <div class="feature-card">
+            <div class="icon">📅</div>
+            <div class="title">预约管理</div>
+            <div class="desc">创建、取消预约，最多提前7天</div>
+          </div>
+          <div class="feature-card">
+            <div class="icon">📱</div>
+            <div class="title">二维码签到</div>
+            <div class="desc">生成签到码，30分钟宽限，超时自动释放</div>
+          </div>
+          <div class="feature-card">
+            <div class="icon">⏳</div>
+            <div class="title">智能候补</div>
+            <div class="desc">满座自动加入候补，有人释放即时补位</div>
+          </div>
+          <div class="feature-card">
+            <div class="icon">⭐</div>
+            <div class="title">信用体系</div>
+            <div class="desc">初始100分，签到加分、违约扣分</div>
+          </div>
+          <div class="feature-card">
+            <div class="icon">🔔</div>
+            <div class="title">实时通知</div>
+            <div class="desc">SocketIO 推送预约、候补、信用变动</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6: 管理员端功能 -->
+    <div class="slide">
+      <div class="light-spot light-spot-1"></div>
+      <div class="light-spot light-spot-3"></div>
+      <div class="slide-content">
+        <p class="text-xs text-purple-400 font-light mb-2">05 / 管理端</p>
+        <h1 class="text-3xl font-black mb-4">全方位管控能力</h1>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-num">1</div>
+            <div class="flow-text"><b>统计分析看板</b> — 座位使用率、热门时段、热门区域可视化</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">2</div>
+            <div class="flow-text"><b>实时座位总览</b> — 按自习室/区域/状态筛选，一键释放异常占用</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">3</div>
+            <div class="flow-text"><b>自习室管理</b> — 添加/编辑自习室，批量生成座位网格</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">4</div>
+            <div class="flow-text"><b>规则配置</b> — 每日预约次数、签到宽限、信用阈值等 11 项参数</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">5</div>
+            <div class="flow-text"><b>信用管理</b> — 查看信用记录，手动调整分值</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">6</div>
+            <div class="flow-text"><b>举报审核</b> — 审核违规占座举报，通过后自动扣分并释放座位</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">7</div>
+            <div class="flow-text"><b>CSV 导出</b> — 预约数据一键导出，操作日志全程留痕</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7: 信用体系 -->
+    <div class="slide">
+      <div class="light-spot light-spot-1"></div>
+      <div class="light-spot light-spot-2"></div>
+      <div class="slide-content">
+        <p class="text-xs text-yellow-400 font-light mb-2">06 / 亮点</p>
+        <h1 class="text-3xl font-black mb-6">信用积分体系</h1>
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="num">100</div>
+            <div class="label">初始信用分</div>
+          </div>
+          <div class="stat-box">
+            <div class="num" style="color:#10b981">+1</div>
+            <div class="label">正常签到签退</div>
+          </div>
+          <div class="stat-box">
+            <div class="num" style="color:#ef4444">-10</div>
+            <div class="label">超时未签到</div>
+          </div>
+          <div class="stat-box">
+            <div class="num" style="color:#ef4444">-20</div>
+            <div class="label">违规占座</div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-400 mt-6">信用分 <span class="highlight">低于 60</span> 无法预约</p>
+        <p class="text-sm text-gray-400 mt-2">连续违约 <span class="highlight">3 次</span> 冻结预约权限</p>
+        <p class="text-xs text-gray-600 mt-6">形成"守约受益、违约受惩"的良性循环</p>
+      </div>
+    </div>
+
+    <!-- Slide 8: 实时推送 -->
+    <div class="slide">
+      <div class="light-spot light-spot-2"></div>
+      <div class="light-spot light-spot-3"></div>
+      <div class="slide-content">
+        <p class="text-xs text-cyan-400 font-light mb-2">07 / 实时推送</p>
+        <h1 class="text-3xl font-black mb-6">WebSocket 实时通信</h1>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-num" style="background:#06b6d4">⚡</div>
+            <div class="flow-text"><b>座位状态变更</b><br>预约、签到、签退、释放、候补补位 — 全端秒级同步</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num" style="background:#06b6d4">🔔</div>
+            <div class="flow-text"><b>站内通知推送</b><br>预约成功、候补到位、信用变动 — 无需刷新页面</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num" style="background:#06b6d4">🏠</div>
+            <div class="flow-text"><b>按房间订阅</b><br>学生可关注特定自习室，只接收相关房间的更新</div>
+          </div>
+        </div>
+        <p class="text-xs text-gray-600 mt-6">Flask-SocketIO 异步推送 · 前端 Socket.IO 客户端自动监听</p>
+      </div>
+    </div>
+
+    <!-- Slide 9: 后台调度 -->
+    <div class="slide">
+      <div class="light-spot light-spot-1"></div>
+      <div class="light-spot light-spot-2"></div>
+      <div class="slide-content">
+        <p class="text-xs text-orange-400 font-light mb-2">08 / 自动化</p>
+        <h1 class="text-3xl font-black mb-6">后台定时调度</h1>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-num" style="background:#f59e0b">⏰</div>
+            <div class="flow-text"><b>每 60 秒</b> 自动扫描超时预约<br>已确认未签到 → 超时释放 + 扣信用分</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num" style="background:#f59e0b">🔄</div>
+            <div class="flow-text"><b>自动候补补位</b><br>预约释放后，候补队列第一人自动获得座位</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num" style="background:#f59e0b">📝</div>
+            <div class="flow-text"><b>预约结束自动签退</b><br>预约时间到达后自动标记完成，触发候补补位</div>
+          </div>
+        </div>
+        <p class="text-xs text-gray-600 mt-6">APScheduler 后台调度器 · 可配置间隔 · 支持热更新</p>
+      </div>
+    </div>
+
+    <!-- Slide 10: 总结与展望 -->
+    <div class="slide">
+      <div class="light-spot light-spot-1"></div>
+      <div class="light-spot light-spot-2"></div>
+      <div class="light-spot light-spot-3"></div>
+      <div class="slide-content">
+        <p class="text-xs text-blue-400 font-light mb-2">09 / 总结与展望</p>
+        <h1 class="text-3xl font-black mb-6 leading-tight">从手动占座<br>到智能预约</h1>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="icon">✅</div>
+            <div class="title">已实现</div>
+            <div class="desc">预约、候补、信用、举报、实时推送、自动调度、管理后台、数据导出</div>
+          </div>
+          <div class="feature-card">
+            <div class="icon">🚀</div>
+            <div class="title">可扩展</div>
+            <div class="desc">短信/邮件通知、图片上传、数据可视化图表、数据库迁移工具</div>
+          </div>
+        </div>
+        <div class="w-12 h-0.5 bg-blue-500 mx-auto mt-8 mb-4"></div>
+        <p class="text-sm font-light text-gray-400">让每一张座位都发挥价值</p>
+        <p class="text-xs text-gray-600 mt-4">感谢聆听</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 进度条 -->
+  <div class="progress-bar" id="progressBar"></div>
+  <div class="page-number" id="pageNumber">1 / 10</div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const progressBar = document.getElementById('progressBar');
+    const pageNumber = document.getElementById('pageNumber');
+    let currentSlide = 0;
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.className = `progress-dot ${index === 0 ? 'active' : ''}`;
+      dot.addEventListener('click', () => goToSlide(index));
+      progressBar.appendChild(dot);
+    });
+
+    function updateSlides() {
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active', 'prev');
+        if (index === currentSlide) slide.classList.add('active');
+        else if (index < currentSlide) slide.classList.add('prev');
+      });
+      document.querySelectorAll('.progress-dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+      pageNumber.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    function nextSlide() { if (currentSlide < slides.length - 1) { currentSlide++; updateSlides(); } }
+    function prevSlide() { if (currentSlide > 0) { currentSlide--; updateSlides(); } }
+    function goToSlide(index) { currentSlide = index; updateSlides(); }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') { nextSlide(); e.preventDefault(); }
+      else if (e.key === 'ArrowLeft') { prevSlide(); e.preventDefault(); }
+    });
+
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+    document.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) { if (diff > 0) nextSlide(); else prevSlide(); }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "app": "每日学习提醒",
+  "version": "1.0.0",
+  "created": "2026-04-11",
+  "progress": {
+    "2026-04-11": {
+      "英语单词": {
+        "target": 30,
+        "completed": 0,
+        "unit": "个"
+      },
+      "专业课": {
+        "target": 60,
+        "completed": 0,
+        "unit": "分钟"
+      },
+      "习题练习": {
+        "target": 20,
+        "completed": 0,
+        "unit": "分钟"
+      }
+    }
+  },
+  "stats": {
+    "totalDays": 1,
+    "completedDays": 0,
+    "currentStreak": 0
+  }
+}

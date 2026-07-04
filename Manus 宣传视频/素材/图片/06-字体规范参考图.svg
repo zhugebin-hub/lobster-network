@@ -1,0 +1,147 @@
+<svg width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1080" height="1920" fill="#F5F5F5"/>
+  
+  <!-- 标题 -->
+  <text x="540" y="80" font-family="Source Han Sans CN, sans-serif" 
+        font-size="42" font-weight="bold" fill="#333333" text-anchor="middle">
+    🔤 视频字体规范
+  </text>
+  
+  <!-- 推荐字体 -->
+  <g transform="translate(60, 140)">
+    <rect x="0" y="0" width="960" height="140" rx="12" fill="#FFFFFF" stroke="#0066FF" stroke-width="2"/>
+    <text x="60" y="50" font-family="Source Han Sans CN, sans-serif" font-size="24" fill="#0066FF" font-weight="bold">
+      推荐字体
+    </text>
+    <text x="60" y="95" font-family="Source Han Sans CN, sans-serif" font-size="36" fill="#333333">
+      思源黑体 (Source Han Sans CN)
+    </text>
+    <text x="60" y="125" font-family="sans-serif" font-size="18" fill="#888888">
+      Adobe/Google 免费商用字体
+    </text>
+  </g>
+  
+  <!-- 字号规范 - 主标题 -->
+  <g transform="translate(60, 320)">
+    <text x="0" y="0" font-family="Source Han Sans CN, sans-serif" font-size="20" fill="#666666">
+      主标题
+    </text>
+    <text x="0" y="35" font-family="Source Han Sans CN, sans-serif" font-size="60" font-weight="bold" fill="#000000">
+      人人都是开发者
+    </text>
+    <text x="0" y="75" font-family="monospace" font-size="16" fill="#888888">
+      60px · Bold · 白色 (#FFFFFF)
+    </text>
+  </g>
+  
+  <!-- 字号规范 - 副标题 -->
+  <g transform="translate(60, 440)">
+    <text x="0" y="0" font-family="Source Han Sans CN, sans-serif" font-size="20" fill="#666666">
+      副标题
+    </text>
+    <text x="0" y="35" font-family="Source Han Sans CN, sans-serif" font-size="42" font-weight="bold" fill="#000000">
+      的时代来了！
+    </text>
+    <text x="0" y="75" font-family="monospace" font-size="16" fill="#888888">
+      36px · Medium · 亮蓝 (#0099FF)
+    </text>
+  </g>
+  
+  <!-- 字号规范 - 正文 -->
+  <g transform="translate(60, 560)">
+    <text x="0" y="0" font-family="Source Han Sans CN, sans-serif" font-size="20" fill="#666666">
+      正文
+    </text>
+    <text x="0" y="35" font-family="Source Han Sans CN, sans-serif" font-size="28" fill="#000000">
+      清华大学出版社即将出版
+    </text>
+    <text x="0" y="75" font-family="monospace" font-size="16" fill="#888888">
+      28px · Regular · 白色 (#FFFFFF)
+    </text>
+  </g>
+  
+  <!-- 字号规范 - 说明文字 -->
+  <g transform="translate(60, 680)">
+    <text x="0" y="0" font-family="Source Han Sans CN, sans-serif" font-size="20" fill="#666666">
+      说明文字
+    </text>
+    <text x="0" y="35" font-family="Source Han Sans CN, sans-serif" font-size="24" fill="#000000">
+      配套视频、案例回放、实战练习
+    </text>
+    <text x="0" y="75" font-family="monospace" font-size="16" fill="#888888">
+      24px · Regular · 灰色 (#888888)
+    </text>
+  </g>
+  
+  <!-- 字号规范 - 标签 -->
+  <g transform="translate(60, 800)">
+    <text x="0" y="0" font-family="Source Han Sans CN, sans-serif" font-size="20" fill="#666666">
+      标签/按钮
+    </text>
+    <text x="0" y="35" font-family="Source Han Sans CN, sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">
+      ✅ 配套视频
+    </text>
+    <rect x="0" y="45" width="140" height="40" rx="20" fill="#0099FF"/>
+    <text x="70" y="73" font-family="Source Han Sans CN, sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle">
+      标签示例
+    </text>
+    <text x="160" y="75" font-family="monospace" font-size="16" fill="#888888">
+      20px · Medium
+    </text>
+  </g>
+  
+  <!-- 使用建议 -->
+  <text x="540" y="940" font-family="Source Han Sans CN, sans-serif" 
+        font-size="32" font-weight="bold" fill="#333333" text-anchor="middle">
+    📋 使用建议
+  </text>
+  
+  <g transform="translate(60, 1000)">
+    <rect x="0" y="0" width="960" height="100" rx="12" fill="#FFFFFF"/>
+    <text x="50" y="60" font-family="Source Han Sans CN, sans-serif" font-size="24" fill="#333333">
+      1️⃣ 全片使用同一字体家族，保持视觉统一
+    </text>
+  </g>
+  
+  <g transform="translate(60, 1120)">
+    <rect x="0" y="0" width="960" height="100" rx="12" fill="#FFFFFF"/>
+    <text x="50" y="60" font-family="Source Han Sans CN, sans-serif" font-size="24" fill="#333333">
+      2️⃣ 字号层级清晰，主标题 > 副标题 > 正文
+    </text>
+  </g>
+  
+  <g transform="translate(60, 1240)">
+    <rect x="0" y="0" width="960" height="100" rx="12" fill="#FFFFFF"/>
+    <text x="50" y="60" font-family="Source Han Sans CN, sans-serif" font-size="24" fill="#333333">
+      3️⃣ 避免使用超过 3 种字号在同一画面
+    </text>
+  </g>
+  
+  <g transform="translate(60, 1360)">
+    <rect x="0" y="0" width="960" height="100" rx="12" fill="#FFFFFF"/>
+    <text x="50" y="60" font-family="Source Han Sans CN, sans-serif" font-size="24" fill="#333333">
+      4️⃣ 确保文字在视频中有足够对比度
+    </text>
+  </g>
+  
+  <!-- 下载链接 -->
+  <g transform="translate(60, 1520)">
+    <rect x="0" y="0" width="960" height="100" rx="12" fill="#0066FF"/>
+    <text x="480" y="50" font-family="Source Han Sans CN, sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle">
+      📥 字体下载
+    </text>
+    <text x="480" y="85" font-family="sans-serif" font-size="18" fill="#CCCCCC" text-anchor="middle">
+      github.com/adobe-fonts/source-han-sans
+    </text>
+  </g>
+  
+  <!-- 页脚 -->
+  <line x1="60" y1="1700" x2="1020" y2="1700" stroke="#DDDDDD" stroke-width="1"/>
+  <text x="540" y="1750" font-family="sans-serif" font-size="18" fill="#999999" text-anchor="middle">
+    Manus 宣传视频 · 字体规范参考
+  </text>
+  <text x="540" y="1780" font-family="sans-serif" font-size="16" fill="#CCCCCC" text-anchor="middle">
+    2026 年 4 月
+  </text>
+</svg>

@@ -1,0 +1,146 @@
+# Project TODO
+
+- [x] 迁移 Drizzle schema（用户表、学年表、课题表、志愿表、匹配表、冲突表、系统配置表、论文草稿表、论文终稿表、评分表、二导分配表、题目变更表、题库表、指导记录表、采购审核表、管理员日志表）
+- [x] 执行数据库迁移 SQL
+- [x] 迁移 server/db.ts 数据库查询层（6400+ 行）
+- [x] 迁移 server/routers.ts 路由层（3400+ 行）
+- [x] 迁移 server/config 配置文件（auth.ts, env.ts, storage.ts）
+- [x] 迁移 server/init.ts 初始化脚本
+- [x] 迁移 server/stressTest.ts 压力测试模块
+- [x] 迁移 drizzle/relations.ts 关系定义
+- [x] 迁移前端 App.tsx 路由配置
+- [x] 迁移前端 Home.tsx 首页
+- [x] 迁移前端 Login.tsx 和 Register.tsx 登录注册页
+- [x] 迁移前端 StudentDashboard.tsx 学生仪表盘
+- [x] 迁移前端 TeacherDashboard.tsx 教师仪表盘
+- [x] 迁移前端 AdminDashboard.tsx 管理员仪表盘
+- [x] 迁移前端 WishSubmission.tsx 志愿提交
+- [x] 迁移前端 TopicLibrary.tsx 课题浏览
+- [x] 迁移前端 TeacherReview.tsx 教师审核
+- [x] 迁移前端 TeacherStudents.tsx 教师学生管理
+- [x] 迁移前端 MatchResult.tsx 匹配结果
+- [x] 迁移前端 UserManagement.tsx 用户管理
+- [x] 迁移前端 SystemConfig.tsx 系统配置
+- [x] 迁移前端 BulkImport.tsx 批量导入
+- [x] 迁移前端 YearManagement.tsx 学年管理
+- [x] 迁移前端 ReviewStatus.tsx 审核状态
+- [x] 迁移前端 Statistics.tsx 统计页面
+- [x] 迁移前端 ThesisUpload.tsx 论文上传
+- [x] 迁移前端 ThesisReview.tsx 论文评审
+- [x] 迁移前端 SecondTeacherAssignment.tsx 二导分配
+- [x] 迁移前端 AdminScoreStatistics.tsx 成绩统计
+- [x] 迁移前端 TitleChangeRequest.tsx 题目变更申请
+- [x] 迁移前端 TitleChangeReview.tsx 题目变更审核
+- [x] 迁移前端 TopicLibraryManagement.tsx 题库管理
+- [x] 迁移前端 ChineseTeacherMonitoring.tsx 中方导师监控
+- [x] 迁移前端 StudentGuidanceLogs.tsx 学生指导记录
+- [x] 迁移前端 TeacherGuidanceLogs.tsx 教师指导记录
+- [x] 迁移前端 StudentPurchaseRequest.tsx 学生采购申请
+- [x] 迁移前端 AdminPurchaseManagement.tsx 采购管理
+- [x] 迁移前端 TeacherPurchaseReview.tsx 教师采购审核
+- [x] 迁移前端 AdminLogs.tsx 管理员日志
+- [x] 迁移前端 AdminProxyImport.tsx 代理导入
+- [x] 迁移前端 AdminStressTest.tsx 压力测试
+- [x] 迁移前端 UserSettings.tsx 用户设置
+- [x] 迁移前端 ConflictResolution.tsx 冲突解决
+- [x] 迁移前端 SecondTeacherReview.tsx 二导评审
+- [x] 迁移前端 ComponentShowcase.tsx 组件展示
+- [x] 迁移 LanguageContext.tsx 多语言上下文
+- [x] 迁移 shared/types.ts 共享类型
+- [x] 迁移 shared/const.ts 共享常量（如有修改）
+- [x] 迁移 package.json 额外依赖（bcryptjs, xlsx, pdfkit, archiver, multer）
+- [x] 迁移 client/src/index.css 样式
+- [x] 编写测试验证核心功能
+- [x] 保存检查点
+- [x] 学生控制台增加选题志愿进度状态提示（未提交/已提交/第N轮确认中/全部落选/已确认课题）
+- [x] 学生控制台增加当前时间阶段提示（志愿填报/导师确认/论文提交等）
+- [x] 教师控制台增加时间阶段提示横幅（展示当前阶段和起止时间）
+- [x] 管理员控制台增加全局时间阶段概览面板（展示各阶段状态、起止时间、当前审核轮次）
+- [x] 修复学生论文终稿提交功能（无法上传提交论文文件）
+- [x] 修复论文终稿提交页面"扣陆10分"错别字改为"扣除10分"
+- [x] 修复最终成绩未显示问题（两位导师平均分减去迟交扣分）
+- [x] 教师评审页面增加最终成绩显示（含迟交扣分提示和预估成绩）
+- [x] 学生论文上传页面增加最终成绩和评分进度显示
+- [x] 后端查询函数增加 finalScore、latePenalty、needsNegotiation 字段返回
+- [x] 新增 finalScoreCalculation 测试（18个测试用例验证成绩计算逻辑）
+- [x] 删除管理员控制台压力测试模块（前端页面、路由、导航入口）
+- [x] 删除压力测试相关后端路由和数据库函数
+- [x] 删除压力测试相关的服务端脚本文件
+- [x] 创建用户活动日志数据库表 (userActivityLogs)
+- [x] 编写日志记录和查询的数据库操作函数
+- [x] 在后端关键操作中埋入日志记录点（登录、选题、审批、评分、上传、配置修改等）
+- [x] 创建管理员查询用户活动日志的 API 路由（分页、筛选、统计）
+- [x] 创建前端用户活动日志管理页面（表格、筛选、搜索、分页）
+- [x] 在管理员控制台添加用户活动日志模块入口和路由
+- [x] 编写用户活动日志模块的测试用例（34个测试通过）
+- [x] 删除操作日志前端页面 AdminLogs.tsx、路由和导航入口
+- [x] 删除操作日志后端路由（getAdminLogs、getAdminLogStats）
+- [x] 删除操作日志相关数据库函数和 adminLogs 表引用
+- [x] 导师论文评审页面添加搜索框，支持按学生姓名、学号或论文题目快速筛选
+- [x] 需协商修改评分的卡片样式更醒目（红色边框/阴影/脉冲动画）
+- [x] 论文评审模块入口显示红点提示（待评分+需协商总数）
+- [x] 已评分标签中添加快速筛选按钮，可筛选需协商修改评分的内容
+- [x] 重新设计导师控制台指导记录PDF导出功能（完整导出内容、发布时间等）
+- [x] 重新设计学生控制台指导记录PDF导出功能（完整导出内容、发布时间等）
+- [x] 修复 PDF 导出 pdfkit 中文字体 createSubset 错误（从 TTC 提取 TTF 格式字体）
+- [x] 修复 guidancePdf.ts 中 __dirname 在 ES module 中未定义的错误（使用 import.meta.url + fileURLToPath）
+- [x] 重新生成中英文双语用户手册PDF（反映系统最新状态，版本3.0，61页）
+- [x] 后端：批量导入匹配结果数据库函数（验证账号/题目、创建课题、创建匹配、同步状态）
+- [x] 后端：单个添加匹配结果数据库函数
+- [x] 后端：tRPC路由（单个添加、批量导入、下载模板）
+- [x] 前端：匹配结果页面增加单个添加对话框
+- [x] 前端：匹配结果页面增加批量导入功能（上传Excel、预览、确认）
+- [x] 前端：导入失败时显示详细错误原因
+- [x] 导入成功后自动同步：导师课题发布、题库、学生匹配状态、导师学生关系
+- [x] 编写匹配结果导入功能测试（22个测试用例：权限控制、输入验证、批量验证、错误结构）
+- [x] 修复 routers.ts 中 logUserActivity 调用的 details 字段为 description
+- [x] 安装 xlsx 前端依赖用于 Excel 解析
+- [x] 全部 331 个测试通过，TypeScript 编译无错误
+- [x] 单个添加对话框：合并“毕设题目（中文）”和“毕设题目（英文）”为一个“论文题目”字段
+- [x] 批量导入模板：合并“毕设题目”和“毕设题目(英文)”为一个“论文题目”列
+- [x] 导师控制台课题管理：替换批量导入模板为《导师课题导入新.xlsx》（8列：课题标题、描述、关键词、研究方向、选题来源、科研项目名称、适合专业、技能要求）
+- [x] 管理员控制台代理导入课题：替换批量导入模板为《批量导入新.xlsx》（9列：萨塞克斯邮箱、课题标题、描述、关键词、研究方向、选题来源、科研项目名称、适合专业、技能要求）
+- [x] 评估：将文件上传/下载从 S3 改为本地存储的可行性分析和改造方案
+- [x] 改造 storage.ts：将 S3 代理替换为本地文件系统存储（fs 模块）
+- [x] 改造 index.ts：添加 /files 静态文件路由提供文件下载
+- [x] 更新 env.ts：添加 LOCAL_STORAGE_DIR 环境变量
+- [x] 编写本地存储测试（15 个测试用例全部通过）
+- [x] 更新部署指南文档，移除 S3/MinIO 相关内容
+- [x] 修改默认密码规则：从固定“123456”改为“zjsu+账号前三个字符”（如账号abc123则默认密码为zjsuabc）
+- [x] 修改默认密码格式：从“zjsu+前三位”改为“zjsu@+前三位”（如账号abc123则默认密码为zjsu@abc）
+- [x] 修改重置密码逻辑：重置为“zjsu@+登入账号前三位”而非原先的初始密码
+- [x] 修复重置密码逻辑：修复双重哈希问题，改用 db.resetUserPassword 避免 updateUser 二次哈希
+- [x] 新功能：重置密码操作后弹出对话框显示用户名和新密码，支持一键复制
+- [x] 第二导师管理模块：增加按模板格式批量导出所有未指派学生的功能（Excel格式，含序号/姓名/学号/导师/题目/第二导师空列）
+- [x] 第二导师管理：批量导入从文本输入改为 Excel 文件上传，识别导出模板格式（学生姓名+第二导师姓名列）
+- [x] 修复：匹配结果导入后论文题目未关联到第二导师管理模块（INNER JOIN 改为 LEFT JOIN + COALESCE(titleEn, title) fallback）
+- [x] 修复：匹配结果导入后论文题目未关联到评分统计模块（子查询改为 COALESCE(titleEn, title) + 导入时自动填充 titleEn）
+- [x] 修复：用户管理编辑用户时 email 字段验证过严，将 createTeacher/createStudent 的 z.string().email() 改为 z.string().min(1)
+- [x] 统一添加学生对话框的表单标题与学生列表列标题一致（顺序调整为姓名/拼音/中方学号/萨塞克斯学号/萨塞克斯邮箱/类型/专业/学年）
+- [x] 添加学生对话框中移除学院字段，新增萨塞克斯邮箱字段
+- [x] 添加学生对话框中移除考生号字段（前端表单和状态初始化）
+- [x] 修改学生控制台毕设采购申请模块的下载模板功能，使其下载《人工智能本科生耗材申请.docx》文件（CDN托管）
+- [x] 将采购申请模板下载从 CDN 改为本地存储 /files/templates/ 静态路由，部署后无需依赖外部 CDN
+- [x] 部署指南添加模板文件复制说明（DEPLOYMENT.md）
+- [x] 清理 TeacherGuidanceLogs.tsx 中的 TS 编译错误（tsc 编译通过，LSP 假阳性因文件过大）
+- [x] 清理 routers.ts 中的 stressTest 模块引用错误（已在之前版本中清理）
+- [x] 将其他模板文件（批量导入.xlsx、导师课题导入.xlsx）统一放到 templates/ 目录并更新前端引用
+- [x] 删除学生控制台指导记录模块中的 Page 2（来源于 DashboardLayout 默认菜单项）
+- [x] 删除管理员控制台用户活动日志模块中的 Page 2（同上）
+- [x] 删除导师控制台指导记录模块中的 Page 2（同上）
+- [x] 学生指导记录页面移除 DashboardLayout，改用学生控制台标准布局
+- [x] 导师指导记录页面移除 DashboardLayout，改用导师控制台标准布局
+- [x] 管理员用户活动日志页面移除 DashboardLayout，改用管理员控制台标准布局
+- [x] 替换 vite.config.ts 移除 Manus 插件
+- [x] 替换 context.ts 移除 Manus OAuth 依赖
+- [x] 替换 const.ts 登录跳转到本地 /login
+- [x] 替换 index.html 移除 Analytics 脚本
+- [x] 修改 server/_core/index.ts 移除 OAuth 路由
+- [x] 修改 Home.tsx 用户手册改为本地路径
+- [x] 修改 llm.ts 默认 URL 改为可配置（支持 DeepSeek 等国内 API）
+- [x] 修改 package.json 移除 Manus 专用依赖（vite-plugin-manus-runtime、@builder.io/vite-plugin-jsx-loc）
+- [x] 修改 notification.ts 移除 Manus 通知服务依赖（改为本地日志）
+- [x] 修改 env.ts 添加 LLM_API_URL/LLM_API_KEY 环境变量支持
+- [x] 修改 useAuth.ts 移除 manus-runtime localStorage key
+- [x] 复制用户手册 PDF 到本地 templates 目录
+- [x] tsc 编译通过，pnpm build 构建成功，无 Manus 平台引用

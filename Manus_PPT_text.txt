@@ -1,0 +1,482 @@
+Slide 1
+
+[背景]
+
+Manus 及其操作实战
+
+主讲：诸葛斌
+
+浙江工商大学信息与电子工程学院
+
+（萨塞克斯人工智能学院）
+
+Slide 2
+
+[]
+
+AI大模型和智能体关系
+
+大模型是智能体的 “ 大脑 ” ，提供通用认知能力；
+
+智能体（ AI Agent ）作为人工智能技术的核心形态，其开发特点和未来应用趋势正在重塑技术生态，并推动 “ 人人都是开发者 ” 的愿景逐步实现。
+
+Slide 3
+
+技术民主化的演进逻辑
+
+[preencoded.png]
+
+C语言时代
+
+ 培养"计算机的思维方式"，强调底层原理理解和精确控制，但技术门槛高，限制了计算思维的普及范围。 
+
+[preencoded.png]
+
+微信小程序/钉钉低代码时代
+
+ 应用构建门槛降低，重心从"如何让机器懂我"转向"如何解决问题"，开发者群体从专业工程师向更广泛的业务人员扩展。 
+
+[preencoded.png]
+
+智能体开发时代
+
+ 实现"意图即应用"，通过自然语言交互，大模型作为核心引擎，计算思维内化为如同读写一样的基本素养，使任何人都能通过表达意图来创造数字工具。 
+
+[preencoded.png]
+
+Slide 4
+
+C语言时代：基础编码教学
+
+C语言时代的编码教学以培养"计算机的思维方式"为核心目标，强调对计算机底层运作原理的理解。
+
+[preencoded.png]
+
+严谨的抽象思维
+
+培养学生通过精确的语法和结构化编程，建立严谨的逻辑思维能力。
+
+[preencoded.png]
+
+底层系统理解
+
+通过内存管理、指针操作等概念，让学生理解计算机如何执行指令。
+
+[preencoded.png]
+
+高门槛的技术壁垒
+
+复杂的语法和概念要求较长的学习周期，将大多数人挡在开发门外。
+
+C语言示例
+
+#include <stdio.h>
+
+int main() {
+
+    int numbers[5] = {1, 2, 3, 4, 5};
+
+    int *ptr = numbers;
+
+    int sum = 0;
+
+    
+
+    for(int i = 0; i < 5; i++) {
+
+        sum += *(ptr + i);
+
+    }
+
+    
+
+    printf("Sum: %d\n", sum);
+
+    return 0;
+
+}
+
+C语言教学强调对内存、指针等底层概念的掌握，
+
+这些概念对非专业人士形成了较高的学习门槛。
+
+Slide 5
+
+小程序/低代码时代：降低应用构建门槛
+
+小程序和低代码平台代表了应用开发民主化的重要阶段，它们将开发者群体从专业工程师扩展到业务人员。
+
+教学重心转变
+
+从"如何让机器懂我"转向"如何解决问题"，计算思维开始与具体场景结合。
+
+降低开发门槛
+
+通过可视化界面、组件化开发和模板系统，大幅降低了应用开发的技术门槛。
+
+应用规模扩大
+
+微信小程序超600万个，低代码应用约1000万个，远超传统App数量。
+
+特性
+
+传统开发
+
+小程序/低代码
+
+开发周期
+
+数月
+
+数天至数周
+
+技术要求
+
+专业编程知识
+
+基础逻辑思维
+
+开发者类型
+
+专业工程师
+
+业务人员/公民开发者
+
+[preencoded.png]
+
+[preencoded.png]
+
+微信小程序
+
+[preencoded.png]
+
+钉钉宜搭
+
+[preencoded.png]
+
+Mendix
+
+Slide 6
+
+智能体开发时代：意图即应用
+
+智能体开发时代实现了"意图即应用"的终极民主化，以自然语言为交互界面，让学习者直接描述需求，由大模型作为核心引擎来理解和执行。
+
+[preencoded.png]
+
+自然语言交互
+
+从"编程"到"调教"，未来的"开发"不再是编写逐行代码，而是通过自然语言与提示词，去"调教"和"约束"大模型这一超级智能体。
+
+[preencoded.png]
+
+亿级开发者
+
+开发者的潜在规模将发生数量级的跃迁，从培养少数"软件工程师"，转变为赋能每一个拥有专业知识和场景需求的人。
+
+[preencoded.png]
+
+长尾需求满足
+
+智能体可以零成本、即时地满足海量的、个性化的"长尾需求"，解决过去被技术门槛所压抑的个性化问题。
+
+我们正在从"教学生如何为计算机服务"（编程），转向"教学生如何让计算机为人服务"（创造智能体）。
+
+— 技术民主化教育理念
+
+[preencoded.png]
+
+智能体开发工作流
+
+1
+
+用自然语言描述需求和意图
+
+2
+
+大模型理解需求并规划解决方案
+
+3
+
+智能体自主调用工具和API完成任务
+
+4
+
+用户通过反馈优化智能体行为
+
+5
+
+智能体持续学习并适应新场景
+
+Slide 7
+
+[]
+
+Manus智能体 体
+
+Slide 8
+
+[]
+
+[徽标
+
+描述已自动生成]
+
+[文本
+
+描述已自动生成]
+
+- 必须用 VPN 通过国外 IP 访问 manus 网站进行操作
+- 通过包含邀请码进行注册，可以多获得 500 积分
+- https://manus.im/invitation/MRXSHWHGHBZUH
+- 扫描二维码进行 Manus 账号注册
+
+[]
+
+[]
+
+Slide 9
+
+问卷调查网页生成
+
+新的应用链接：  https://kkh7ikcyjl8x.manus.space
+
+管理员登录信息： admin ， admin123
+
+manus 回放地址 ：https://manus.im/share/poMaCSzq3l6zLyLa000Nl3?replay=1  
+
+[]
+
+[]
+
+[]
+
+Slide 10
+
+[]
+
+Slide 11
+
+[]
+
+Slide 12
+
+[]
+
+Slide 13
+
+[Graphic: other: http://schemas.openxmlformats.org/presentationml/2006/ole]
+
+[]
+
+Slide 14
+
+[]
+
+Slide 15
+
+[]
+
+演示网址 ：https://ykeqjjpe.manus.space
+
+[]
+
+[]
+
+[]
+
+[]
+
+Slide 16
+
+[]
+
+课件生成
+
+回放： https://manus.im/share/6pSOpT5B00our7dlzUUKyA?replay=1
+
+Slide 17
+
+回放： https://manus.im/share/qSjNj12o4mde6dFcgM063G?replay=1
+
+实验 报告总结
+
+[]
+
+[]
+
+Slide 18
+
+[]
+
+[]
+
+https://dwduckan.manus.space/
+
+实验报告展示 ： 数据科学 2201- 万方
+
+[Graphic: other: http://schemas.openxmlformats.org/presentationml/2006/ole]
+
+Slide 19
+
+[]
+
+[]
+
+Slide 20
+
+[]
+
+[]
+
+[]
+
+[]
+
+通信实验原理交互式动画
+
+Slide 21
+
+通信实验原理交互式动画
+
+演示网址 ：https://livfckau.manus.space/
+
+花费 ：873 点
+
+[]
+
+[]
+
+Slide 22
+
+Slide 23
+
+manus 视频生成
+
+打开 manus 网页，注册并 登录。
+
+输入提示此：生成一段视频，展示刻舟求剑故事
+
+[]
+
+Slide 24
+
+[]
+
+Slide 25
+
+[]
+
+[]
+
+Slide 26
+
+[]
+
+[]
+
+Slide 27
+
+[]
+
+Slide 28
+
+[]
+
+Slide 29
+
+[]
+
+Slide 30
+
+[]
+
+[]
+
+我已经成功将 " 刻舟求剑 " 动画网页永久部署到互联网上！
+
+您可以通过以下链接随时访问这个水墨画风格的刻舟求剑故事：
+
+https://hpzqmjxq.manus.space
+
+[]
+
+Slide 31
+
+游戏 ： 猴子超市网页生成
+
+生成一个卡通游戏 monkeymart ，参考 https://poki.com/zh/g/monkey-mart
+
+[]
+
+manus 回放地址 ：https://manus.im/share/yKkN05ksHqFcwCFZgjvluI?replay=1
+
+Slide 32
+
+猴子超市网页
+
+演示网址 ：https://qbixrlvf.manus.space/
+
+花费 ：4000 点
+
+[]
+
+[]
+
+[]
+
+游戏 ： 猴子超市网页生成
+
+[]
+
+[]
+
+Slide 34
+
+[]
+
+Slide 35
+
+[]
+
+Slide 36
+
+[]
+
+Slide 37
+
+[]
+
+Slide 38
+
+[]
+
+Slide 39
+
+[]
+
+Slide 40
+
+自动 开发微信小程序
+
+https://manus.im/share/SXjydsNREt49Nj5lSy6a0N?replay=1  刷题微信小程序设计与心理测试题生成 ,
+
+[]
+
+[]
+
+Slide 41
+
+[]
+
+Manus未来发展趋势——从智能体到"超级协作者"
+
+[]
+
+Slide 43
+
+[背景]
+
+谢谢
+
+THE END

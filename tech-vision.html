@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>破局 重构 领跑</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0d0d2b 100%);
+            position: relative;
+        }
+        
+        /* 背景网格 */
+        .grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 20s linear infinite;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(60px); }
+        }
+        
+        /* 光效 */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+        }
+        
+        .glow-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #00ffff 0%, transparent 70%);
+            top: -200px;
+            left: -100px;
+            animation: pulse1 4s ease-in-out infinite;
+        }
+        
+        .glow-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #ff00ff 0%, transparent 70%);
+            bottom: -150px;
+            right: -100px;
+            animation: pulse2 5s ease-in-out infinite;
+        }
+        
+        .glow-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #0080ff 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse3 6s ease-in-out infinite;
+        }
+        
+        @keyframes pulse1 {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        
+        @keyframes pulse2 {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.15); }
+        }
+        
+        @keyframes pulse3 {
+            0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.2); }
+        }
+        
+        /* 粒子效果 */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: float 15s infinite;
+            opacity: 0.6;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        /* 主容器 */
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        /* 关键词容器 */
+        .keywords {
+            display: flex;
+            gap: 80px;
+            position: relative;
+        }
+        
+        .keyword {
+            text-align: center;
+            position: relative;
+        }
+        
+        .keyword-text {
+            font-size: 120px;
+            font-weight: 900;
+            background: linear-gradient(180deg, #ffffff 0%, #00ffff 50%, #0080ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 60px rgba(0, 255, 255, 0.5);
+            letter-spacing: 20px;
+            animation: textGlow 3s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+        
+        @keyframes textGlow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.5)); }
+            50% { filter: drop-shadow(0 0 40px rgba(0, 255, 255, 0.8)); }
+        }
+        
+        /* 六边形装饰 */
+        .hexagon {
+            position: absolute;
+            width: 200px;
+            height: 230px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(0, 128, 255, 0.1) 100%);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        /* 线条装饰 */
+        .line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            height: 2px;
+            animation: lineMove 3s ease-in-out infinite;
+        }
+        
+        .line-h {
+            width: 100%;
+            top: 20%;
+            left: 0;
+        }
+        
+        .line-h2 {
+            width: 100%;
+            bottom: 20%;
+            left: 0;
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes lineMove {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* 底部标语 */
+        .subtitle {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 15px;
+            text-transform: uppercase;
+        }
+        
+        /* 电路纹理 */
+        .circuit {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 20%, rgba(0, 128, 255, 0.1) 0%, transparent 20%);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
+    
+    <div class="particles" id="particles"></div>
+    
+    <div class="line line-h"></div>
+    <div class="line line-h2"></div>
+    
+    <div class="circuit"></div>
+    
+    <div class="container">
+        <div class="keywords">
+            <div class="keyword">
+                <div class="hexagon"></div>
+                <div class="keyword-text">破局</div>
+            </div>
+            <div class="keyword">
+                <div class="hexagon"></div>
+                <div class="keyword-text">重构</div>
+            </div>
+            <div class="keyword">
+                <div class="hexagon"></div>
+                <div class="keyword-text">领跑</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="subtitle">BREAKTHROUGH · RECONSTRUCT · LEAD</div>
+    
+    <script>
+        // 生成粒子
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+            
+            const colors = ['#00ffff', '#0080ff', '#ff00ff', '#ffffff'];
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            particlesContainer.appendChild(particle);
+        }
+    </script>
+</body>
+</html>

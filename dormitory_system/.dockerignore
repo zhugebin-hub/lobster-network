@@ -1,0 +1,11 @@
+__pycache__
+*.pyc
+*.pyo
+*.log
+.venv
+.env
+node_modules
+.git
+.plans.json.bak
+data/last_import
+*.tmp

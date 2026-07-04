@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生证件照识别系统 - 嘉兴南湖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 南湖背景效果 */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%2387CEEB" width="1200" height="800"/><ellipse cx="600" cy="500" rx="400" ry="150" fill="%234A90A4" opacity="0.6"/><path d="M 200 600 Q 400 550 600 600 T 1000 600" fill="none" stroke="%232E5C6E" stroke-width="3" opacity="0.4"/><circle cx="300" cy="450" r="80" fill="%235BA3A3" opacity="0.5"/><circle cx="900" cy="480" r="60" fill="%235BA3A3" opacity="0.5"/><path d="M 100 650 L 1100 650" stroke="%232E5C6E" stroke-width="2" opacity="0.3"/></svg>')
+                no-repeat center center;
+            background-size: cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            background: #ecf0f1;
+            border: none;
+            border-radius: 10px 10px 0 0;
+            cursor: pointer;
+            font-size: 16px;
+            color: #7f8c8d;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            background: #3498db;
+            color: white;
+        }
+        
+        .tab:hover:not(.active) {
+            background: #bdc3c7;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .upload-area {
+            border: 3px dashed #3498db;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+        
+        .upload-area:hover {
+            background: #e8f4f8;
+            border-color: #2980b9;
+        }
+        
+        .upload-area.dragover {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+        
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .preview {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+            margin: 20px auto;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        
+        .result.success {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+        
+        .result.error {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+        
+        .result h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        .result p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        
+        .stats {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .stats h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .stats-list {
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hidden-input {
+            display: none;
+        }
+        
+        /* 南湖元素装饰 */
+        .nanhu-decoration {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0.1;
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 学生证件照识别系统</h1>
+        <p class="subtitle">嘉兴南湖 · 智能人脸识别</p>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('register')">📝 学生注册</button>
+            <button class="tab" onclick="switchTab('recognize')">🔍 人脸识別</button>
+            <button class="tab" onclick="switchTab('stats')">📊 数据统计</button>
+        </div>
+        
+        <!-- 学生注册 -->
+        <div id="register" class="tab-content active">
+            <div class="upload-area" onclick="document.getElementById('registerPhoto').click()">
+                <div class="upload-icon">📷</div>
+                <p>点击或拖拽上传学生证件照</p>
+                <p style="color: #95a5a6; font-size: 12px; margin-top: 10px;">支持 JPG、PNG 格式</p>
+            </div>
+            <input type="file" id="registerPhoto" class="hidden-input" accept="image/*" onchange="handleRegisterPhoto(this)">
+            
+            <img id="registerPreview" class="preview" alt="预览">
+            
+            <div class="form-group">
+                <label>学生姓名</label>
+                <input type="text" id="studentName" placeholder="请输入学生姓名">
+            </div>
+            
+            <div class="form-group">
+                <label>班级</label>
+                <input type="text" id="studentClass" placeholder="例如：三年级 2 班">
+            </div>
+            
+            <button class="btn" onclick="registerStudent()" id="registerBtn">
+                添加学生
+            </button>
+        </div>
+        
+        <!-- 人脸识别 -->
+        <div id="recognize" class="tab-content">
+            <div class="upload-area" onclick="document.getElementById('recognizePhoto').click()">
+                <div class="upload-icon">📸</div>
+                <p>点击或拖拽上传现场照片</p>
+                <p style="color: #95a5a6; font-size: 12px; margin-top: 10px;">支持 JPG、PNG 格式</p>
+            </div>
+            <input type="file" id="recognizePhoto" class="hidden-input" accept="image/*" onchange="handleRecognizePhoto(this)">
+            
+            <img id="recognizePreview" class="preview" alt="预览">
+            
+            <button class="btn" onclick="recognizeStudent()" id="recognizeBtn">
+                开始识别
+            </button>
+            
+            <div id="recognizeResult" class="result"></div>
+        </div>
+        
+        <!-- 数据统计 -->
+        <div id="stats" class="tab-content">
+            <div class="stats">
+                <h4>📈 数据库统计</h4>
+                <div id="statsContent">加载中...</div>
+            </div>
+        </div>
+        
+        <div class="nanhu-decoration">🏞️</div>
+    </div>
+    
+    <script>
+        let registerImageBase64 = null;
+        let recognizeImageBase64 = null;
+        
+        // 切换标签页
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            document.querySelector(`.tab[onclick="switchTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+            
+            if (tabName === 'stats') {
+                loadStats();
+            }
+        }
+        
+        // 处理注册照片
+        function handleRegisterPhoto(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    registerImageBase64 = e.target.result;
+                    const preview = document.getElementById('registerPreview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        
+        // 处理识别照片
+        function handleRecognizePhoto(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    recognizeImageBase64 = e.target.result;
+                    const preview = document.getElementById('recognizePreview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        
+        // 注册学生
+        async function registerStudent() {
+            const name = document.getElementById('studentName').value.trim();
+            const className = document.getElementById('studentClass').value.trim();
+            
+            if (!registerImageBase64) {
+                alert('请先上传学生照片');
+                return;
+            }
+            
+            if (!name || !className) {
+                alert('请填写姓名和班级');
+                return;
+            }
+            
+            const btn = document.getElementById('registerBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading"></span>添加中...';
+            
+            try {
+                const response = await fetch('/api/add_student', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        photo: registerImageBase64,
+                        name: name,
+                        class: className
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert(`✅ ${result.message}`);
+                    document.getElementById('studentName').value = '';
+                    document.getElementById('studentClass').value = '';
+                    document.getElementById('registerPreview').style.display = 'none';
+                    registerImageBase64 = null;
+                } else {
+                    alert('❌ ' + result.message);
+                }
+            } catch (error) {
+                alert('❌ 网络错误：' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '添加学生';
+            }
+        }
+        
+        // 识别学生
+        async function recognizeStudent() {
+            if (!recognizeImageBase64) {
+                alert('请先上传照片');
+                return;
+            }
+            
+            const btn = document.getElementById('recognizeBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading"></span>识别中...';
+            
+            const resultDiv = document.getElementById('recognizeResult');
+            resultDiv.style.display = 'none';
+            
+            try {
+                const response = await fetch('/api/recognize', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        photo: recognizeImageBase64
+                    })
+                });
+                
+                const result = await response.json();
+                
+                resultDiv.style.display = 'block';
+                
+                if (result.success) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `
+                        <h3>✅ 识别成功</h3>
+                        <p><strong>姓名：</strong>${result.name}</p>
+                        <p><strong>班级：</strong>${result.class}</p>
+                        <p><strong>匹配度：</strong>${result.confidence}</p>
+                    `;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `
+                        <h3>❌ 识别失败</h3>
+                        <p>${result.message}</p>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <h3>❌ 网络错误</h3>
+                    <p>${error.message}</p>
+                `;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '开始识别';
+            }
+        }
+        
+        // 加载统计
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const data = await response.json();
+                
+                const statsContent = document.getElementById('statsContent');
+                statsContent.innerHTML = `
+                    <p><strong>总学生数：</strong>${data.total_students}</p>
+                    ${data.students.length > 0 ? `
+                        <div class="stats-list">
+                            ${data.students.map(([name, cls]) => `<div>• ${name} - ${cls}</div>`).join('')}
+                        </div>
+                    ` : '<p style="color: #95a5a6;">暂无学生数据</p>'}
+                `;
+            } catch (error) {
+                document.getElementById('statsContent').innerHTML = '<p style="color: #e74c3c;">加载失败</p>';
+            }
+        }
+        
+        // 拖拽上传支持
+        document.querySelectorAll('.upload-area').forEach(area => {
+            area.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                area.classList.add('dragover');
+            });
+            
+            area.addEventListener('dragleave', () => {
+                area.classList.remove('dragover');
+            });
+            
+            area.addEventListener('drop', (e) => {
+                e.preventDefault();
+                area.classList.remove('dragover');
+                
+                const file = e.dataTransfer.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const inputId = area.parentElement.querySelector('input[type="file"]').id;
+                    const input = document.getElementById(inputId);
+                    
+                    const dataTransfer = new DataTransfer();
+                    dataTransfer.items.add(file);
+                    input.files = dataTransfer.files;
+                    
+                    if (inputId === 'registerPhoto') {
+                        handleRegisterPhoto(input);
+                    } else {
+                        handleRecognizePhoto(input);
+                    }
+                }
+            });
+        });
+        
+        // 页面加载时加载统计
+        loadStats();
+    </script>
+</body>
+</html>

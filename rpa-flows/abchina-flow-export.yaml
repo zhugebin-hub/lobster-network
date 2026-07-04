@@ -1,0 +1,372 @@
+# 影刀 RPA 流程配置 - 农业银行流水自动下载
+# 版本：1.0
+# 创建日期：2026-04-17
+
+flow:
+  name: "农业银行流水自动下载"
+  description: "自动登录农业银行企业网银，下载指定时间段的账户流水明细"
+  version: "1.0"
+  author: "诸葛虾"
+  
+variables:
+  - name: "username"
+    type: "string"
+    description: "网银用户名"
+    encrypted: true
+    
+  - name: "password"
+    type: "string"
+    description: "网银登录密码"
+    encrypted: true
+    
+  - name: "account_number"
+    type: "string"
+    description: "银行账号"
+    
+  - name: "start_date"
+    type: "date"
+    description: "开始日期"
+    format: "yyyy-MM-dd"
+    
+  - name: "end_date"
+    type: "date"
+    description: "结束日期"
+    format: "yyyy-MM-dd"
+    
+  - name: "download_path"
+    type: "string"
+    description: "下载保存路径"
+    default: "D:\\银行流水\\农业银行"
+    
+  - name: "retry_count"
+    type: "integer"
+    description: "最大重试次数"
+    default: 3
+
+steps:
+  # ========== 1. 打开浏览器 ==========
+  - id: "step_001"
+    name: "打开浏览器"
+    action: "browser.open"
+    params:
+      url: "https://enterprise.abchina.com"
+      browser_type: "chrome"
+      headless: false
+      timeout: 30
+    on_error:
+      action: "retry"
+      max_retries: "${retry_count}"
+      delay: 5
+      
+  # ========== 2. 等待页面加载 ==========
+  - id: "step_002"
+    name: "等待登录页面加载"
+    action: "element.wait"
+    params:
+      selector: "#username"
+      selector_type: "css"
+      timeout: 30
+      
+  # ========== 3. 输入登录信息 ==========
+  - id: "step_003"
+    name: "输入用户名"
+    action: "element.input"
+    params:
+      selector: "#username"
+      selector_type: "css"
+      value: "${username}"
+      clear_first: true
+      
+  - id: "step_004"
+    name: "输入密码"
+    action: "element.input"
+    params:
+      selector: "#password"
+      selector_type: "css"
+      value: "${password}"
+      clear_first: true
+      secure_input: true
+      
+  # ========== 4. 处理验证码（可选） ==========
+  - id: "step_005"
+    name: "检查验证码"
+    action: "element.exists"
+    params:
+      selector: "#captcha"
+      selector_type: "css"
+    output:
+      variable: "has_captcha"
+      
+  - id: "step_006"
+    name: "输入验证码"
+    action: "element.input"
+    condition: "${has_captcha} == true"
+    params:
+      selector: "#captcha"
+      selector_type: "css"
+      value: "${captcha_code}"
+      clear_first: true
+    note: "验证码可通过 OCR 识别或人工输入"
+      
+  # ========== 5. 点击登录 ==========
+  - id: "step_007"
+    name: "点击登录按钮"
+    action: "element.click"
+    params:
+      selector: "//button[contains(text(),'登录')]"
+      selector_type: "xpath"
+      timeout: 10
+      
+  # ========== 6. 等待登录完成 ==========
+  - id: "step_008"
+    name: "等待登录成功"
+    action: "element.wait"
+    params:
+      selector: "//span[contains(text(),'账户管理')]"
+      selector_type: "xpath"
+      timeout: 60
+    on_error:
+      action: "notify"
+      message: "登录失败，请检查账号密码或 U 盾"
+      
+  # ========== 7. U 盾验证（如有） ==========
+  - id: "step_009"
+    name: "检查 U 盾验证"
+    action: "element.exists"
+    params:
+      selector: "#usbkey_password"
+      selector_type: "css"
+    output:
+      variable: "has_usbkey"
+      
+  - id: "step_010"
+    name: "输入 U 盾密码"
+    action: "element.input"
+    condition: "${has_usbkey} == true"
+    params:
+      selector: "#usbkey_password"
+      selector_type: "css"
+      value: "${usbkey_password}"
+      secure_input: true
+      
+  # ========== 8. 导航到账户管理 ==========
+  - id: "step_011"
+    name: "点击账户管理菜单"
+    action: "element.click"
+    params:
+      selector: "//span[text()='账户管理']"
+      selector_type: "xpath"
+      timeout: 10
+      
+  # ========== 9. 点击明细查询 ==========
+  - id: "step_012"
+    name: "点击账户明细查询"
+    action: "element.click"
+    params:
+      selector: "//span[text()='账户明细查询']"
+      selector_type: "xpath"
+      timeout: 10
+      
+  # ========== 10. 等待查询页面加载 ==========
+  - id: "step_013"
+    name: "等待查询页面加载"
+    action: "element.wait"
+    params:
+      selector: "#accountSelect"
+      selector_type: "css"
+      timeout: 30
+      
+  # ========== 11. 选择账号 ==========
+  - id: "step_014"
+    name: "选择目标账户"
+    action: "dropdown.select"
+    params:
+      selector: "#accountSelect"
+      selector_type: "css"
+      value: "${account_number}"
+      select_by: "value"
+      
+  # ========== 12. 输入开始日期 ==========
+  - id: "step_015"
+    name: "输入开始日期"
+    action: "element.input"
+    params:
+      selector: "#startDate"
+      selector_type: "css"
+      value: "${start_date}"
+      clear_first: true
+      
+  # ========== 13. 输入结束日期 ==========
+  - id: "step_016"
+    name: "输入结束日期"
+    action: "element.input"
+    params:
+      selector: "#endDate"
+      selector_type: "css"
+      value: "${end_date}"
+      clear_first: true
+      
+  # ========== 14. 执行查询 ==========
+  - id: "step_017"
+    name: "点击查询按钮"
+    action: "element.click"
+    params:
+      selector: "//button[contains(text(),'查询')]"
+      selector_type: "xpath"
+      timeout: 10
+      
+  # ========== 15. 等待数据加载 ==========
+  - id: "step_018"
+    name: "等待明细表格加载"
+    action: "element.wait"
+    params:
+      selector: "//table[contains(@class,'detail-table')]"
+      selector_type: "xpath"
+      timeout: 60
+      
+  # ========== 16. 检查查询结果 ==========
+  - id: "step_019"
+    name: "检查是否有数据"
+    action: "element.exists"
+    params:
+      selector: "//table[contains(@class,'detail-table')]//tr[2]"
+      selector_type: "xpath"
+    output:
+      variable: "has_data"
+      
+  - id: "step_020"
+    name: "无数据提示"
+    action: "notify"
+    condition: "${has_data} == false"
+    params:
+      message: "查询时间段内无交易明细"
+      level: "warning"
+      
+  # ========== 17. 点击下载按钮 ==========
+  - id: "step_021"
+    name: "点击下载按钮"
+    action: "element.click"
+    condition: "${has_data} == true"
+    params:
+      selector: "//button[contains(text(),'下载')]"
+      selector_type: "xpath"
+      timeout: 10
+      
+  # ========== 18. 选择 Excel 格式 ==========
+  - id: "step_022"
+    name: "选择 Excel 格式"
+    action: "element.click"
+    condition: "${has_data} == true"
+    params:
+      selector: "//span[text()='Excel']"
+      selector_type: "xpath"
+      timeout: 5
+      
+  # ========== 19. 等待下载完成 ==========
+  - id: "step_023"
+    name: "等待下载对话框"
+    action: "element.wait"
+    condition: "${has_data} == true"
+    params:
+      selector: "//div[contains(@class,'download-dialog')]"
+      selector_type: "xpath"
+      timeout: 30
+      
+  # ========== 20. 设置下载路径 ==========
+  - id: "step_024"
+    name: "输入保存路径"
+    action: "element.input"
+    condition: "${has_data} == true"
+    params:
+      selector: "//input[@type='file']"
+      selector_type: "xpath"
+      value: "${download_path}\\农行流水_${start_date}_${end_date}.xlsx"
+      
+  # ========== 21. 确认下载 ==========
+  - id: "step_025"
+    name: "确认下载"
+    action: "element.click"
+    condition: "${has_data} == true"
+    params:
+      selector: "//button[contains(text(),'保存')]"
+      selector_type: "xpath"
+      timeout: 5
+      
+  # ========== 22. 验证文件下载 ==========
+  - id: "step_026"
+    name: "验证文件是否存在"
+    action: "file.exists"
+    condition: "${has_data} == true"
+    params:
+      path: "${download_path}\\农行流水_${start_date}_${end_date}.xlsx"
+      timeout: 120
+    output:
+      variable: "download_success"
+      
+  # ========== 23. 下载成功通知 ==========
+  - id: "step_027"
+    name: "下载成功通知"
+    action: "notify"
+    condition: "${download_success} == true"
+    params:
+      message: "流水下载成功：${download_path}\\农行流水_${start_date}_${end_date}.xlsx"
+      level: "success"
+      
+  # ========== 24. 下载失败通知 ==========
+  - id: "step_028"
+    name: "下载失败通知"
+    action: "notify"
+    condition: "${download_success} == false"
+    params:
+      message: "流水下载失败，请手动检查"
+      level: "error"
+      
+  # ========== 25. 退出登录 ==========
+  - id: "step_029"
+    name: "点击安全退出"
+    action: "element.click"
+    params:
+      selector: "//a[contains(text(),'退出')]"
+      selector_type: "xpath"
+      timeout: 10
+      
+  # ========== 26. 关闭浏览器 ==========
+  - id: "step_030"
+    name: "关闭浏览器"
+    action: "browser.close"
+    params:
+      close_all: true
+
+error_handling:
+  global:
+    - type: "timeout"
+      action: "screenshot"
+      save_path: "${download_path}\\error_screenshots\\${timestamp}.png"
+      
+    - type: "element_not_found"
+      action: "retry"
+      max_retries: 2
+      delay: 3
+      
+    - type: "network_error"
+      action: "retry"
+      max_retries: 3
+      delay: 10
+      
+    - type: "exception"
+      action: "notify"
+      message: "流程执行异常：${error_message}"
+      level: "error"
+
+schedule:
+  enabled: false
+  cron: "0 9 * * *"  # 每天早上 9 点执行
+  timezone: "Asia/Shanghai"
+
+notifications:
+  on_success:
+    - type: "dingtalk"
+      message: "✅ 农业银行流水下载完成"
+  on_failure:
+    - type: "dingtalk"
+      message: "❌ 农业银行流水下载失败：${error_message}"

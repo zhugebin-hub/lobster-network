@@ -1,0 +1,118 @@
+# ============================================
+# 诸葛马 (Hermes) 配置文件
+# 生成时间: 2026-06-23 21:35
+# 生成者: 虾尔 (lobster-001)
+# ============================================
+
+# 基础配置
+server:
+  host: "0.0.0.0"
+  port: 8080
+  debug: false
+
+# API 配置
+api:
+  dashscope:
+    # 使用阿里云百炼平台的 API Key
+    api_key: "sk-sp-397f4158e8034909970b1105ba083999"  # ⚠️ 需要更新为有效 Key
+    base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    models:
+      chat: "qwen-plus"
+      vision: "qwen-vl-max"
+      embedding: "text-embedding-v3"
+    timeout: 30
+
+# 会话配置
+session:
+  # 会话超时时间（秒）- 避免频繁重置
+  timeout: 7200  # 2小时
+  # 自动保存对话历史
+  auto_save: true
+  # 保存路径
+  save_path: "~/.hermes/sessions/"
+  # 保留历史消息数量
+  max_history: 50
+
+# 通信配置
+communication:
+  # NFS 双向通道
+  nfs:
+    enabled: true
+    local_path: "~/.hermes/messages/outgoing/"
+    remote_path: "/shared/messages/from-hermes/"
+    poll_interval: 30  # 秒
+  # 钉钉通知
+  dingtalk:
+    enabled: true
+    webhook_url: ""  # 需要配置
+
+# 模型配置
+models:
+  default: "qwen-plus"
+  vision: "qwen-vl-max"
+  temperature: 0.7
+  max_tokens: 4096
+
+# 日志配置
+logging:
+  level: "INFO"
+  file: "~/.hermes/logs/hermes.log"
+  max_size: "100MB"
+  backup_count: 5
+
+# 安全配置
+security:
+  # API Key 加密存储
+  encrypt_keys: true
+  # 允许的操作
+  allowed_operations:
+    - "read"
+    - "write"
+    - "execute"
+    - "network"
+  # 禁止的操作
+  forbidden_operations:
+    - "rm -rf /"
+    - "sudo su"
+    - "chmod 777 /"
+
+# 任务配置
+tasks:
+  # 自动任务
+  auto_tasks:
+    - name: "daily_check"
+      schedule: "0 9 * * *"  # 每天 9:00
+      action: "system_health_check"
+    - name: "message_sync"
+      schedule: "*/30 * * * *"  # 每 30 分钟
+      action: "sync_messages"
+  # 手动任务
+  manual_tasks:
+    - name: "config_update"
+      description: "更新配置文件"
+    - name: "key_rotation"
+      description: "轮换 API Key"
+
+# 存储配置
+storage:
+  # 本地存储
+  local:
+    path: "~/.hermes/data/"
+    max_size: "1GB"
+  # 缓存配置
+  cache:
+    enabled: true
+    ttl: 3600  # 1 小时
+    max_entries: 1000
+
+# 监控配置
+monitoring:
+  enabled: true
+  metrics:
+    - "api_calls"
+    - "session_duration"
+    - "memory_usage"
+    - "disk_usage"
+  alert_thresholds:
+    memory: 80  # %
+    disk: 90    # %

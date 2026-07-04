@@ -1,0 +1,16 @@
+{
+  "course_code": "AII022",
+  "course_name": "计算机网络",
+  "total_entries": 34,
+  "unparseable": [],
+  "conflicts": [
+    "Conflict at Wednesday Class 2",
+    "Conflict at Wednesday Class 3",
+    "Conflict at Wednesday Class 4",
+    "Conflict at Wednesday Class 5",
+    "Conflict at Monday Class 9"
+  ],
+  "notes": [],
+  "converted_entries": 60,
+  "timestamp": "2026-05-25T04:29:55.930162"
+}

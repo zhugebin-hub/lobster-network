@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  dormitory-system:
+    build: .
+    ports:
+      - "${DORM_PORT:-8765}:8765"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8765
+      - DORM_API_TOKEN=${DORM_API_TOKEN:-}
+    volumes:
+      - ./data:/app/data
+      - ./versions:/app/versions
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8765/api/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

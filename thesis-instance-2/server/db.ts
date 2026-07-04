@@ -1,0 +1,7329 @@
+import { eq, and, or, desc, asc, inArray, sql, like, SQL, isNull, isNotNull, gte, lte } from "drizzle-orm";
+import { alias } from "drizzle-orm/mysql-core";
+import { randomUUID } from "crypto";
+import { drizzle } from "drizzle-orm/mysql2";
+import { 
+  users, InsertUser, User,
+  topics, InsertTopic, Topic,
+  wishes, InsertWish, Wish,
+  matches, InsertMatch, Match,
+  conflicts, Conflict,
+  systemConfig, SystemConfig,
+  academicYears, AcademicYear, InsertAcademicYear,
+  thesisDrafts, ThesisDraft, InsertThesisDraft,
+  thesisDraftHistory, ThesisDraftHistory,
+  supervisorAssignments,
+  titleChangeRequests, TitleChangeRequest,
+  topicLibrary, TopicLibrary,
+  guidanceLogs, GuidanceLog,
+  guidanceAttachments, GuidanceAttachment,
+  guidanceComments, GuidanceComment,
+  adminLogs, AdminLog, InsertAdminLog,
+  userActivityLogs, UserActivityLog, InsertUserActivityLog
+} from "../drizzle/schema";
+import * as bcrypt from "bcryptjs";
+
+/**
+ * 将当前时间转换为 MySQL TIMESTAMP 兼容的字符串格式
+ * MySQL TIMESTAMP 不接受 ISO 8601 格式 (2026-04-02T07:09:09.588Z)
+ * 需要转换为: YYYY-MM-DD HH:MM:SS
+ */
+function toMySQLTimestamp(): string {
+  const now = new Date();
+  return now.getFullYear() + '-' +
+    String(now.getMonth() + 1).padStart(2, '0') + '-' +
+    String(now.getDate()).padStart(2, '0') + ' ' +
+    String(now.getHours()).padStart(2, '0') + ':' +
+    String(now.getMinutes()).padStart(2, '0') + ':' +
+    String(now.getSeconds()).padStart(2, '0');
+}
+
+let _db: ReturnType<typeof drizzle> | null = null;
+
+export async function getDb() {
+  if (!_db && process.env.DATABASE_URL) {
+    try {
+      _db = drizzle(process.env.DATABASE_URL);
+    } catch (error) {
+      console.warn("[Database] Failed to connect:", error);
+      _db = null;
+    }
+  }
+  return _db;
+}
+
+// ==================== 用户相关操作 ====================
+
+export async function createUser(userData: {
+  email: string;
+  password: string;
+  name?: string;
+  role?: "admin" | "teacher" | "student";
+  teacherType?: "chinese" | "british";
+  studentType?: "transfer" | "non_transfer";
+  studentMajor?: "electronic_info" | "communication";
+  studentId?: string;
+  candidateNo?: string;
+  studentClass?: string;
+  faculty?: string;
+}): Promise<User | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const hashedPassword = await bcrypt.hash(userData.password, 10);
+  
+  await db.insert(users).values({
+    email: userData.email,
+    password: hashedPassword,
+    name: userData.name,
+    role: userData.role || "student",
+    teacherType: userData.teacherType,
+    studentType: userData.studentType,
+    studentMajor: userData.studentMajor,
+    studentId: userData.studentId,
+    candidateNo: userData.candidateNo,
+    studentClass: userData.studentClass,
+    faculty: userData.faculty,
+  });
+
+  return getUserByEmail(userData.email);
+}
+
+export async function getUserByEmail(email: string): Promise<User | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(users).where(eq(users.email, email)).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function getUserById(id: number): Promise<User | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(users).where(eq(users.id, id)).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function verifyPassword(email: string, password: string): Promise<User | null> {
+  const user = await getUserByEmail(email);
+  if (!user || !user.password) return null;
+
+  const isValid = await bcrypt.compare(password, user.password);
+  if (!isValid) return null;
+
+  const db = await getDb();
+  if (db) {
+    await db.update(users).set({ lastSignedIn: new Date() }).where(eq(users.id, user.id));
+  }
+
+  return user;
+}
+
+export async function getAllUsers(): Promise<User[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(users);
+}
+
+export async function updateUser(id: number, data: Partial<InsertUser>): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  if (data.password) {
+    data.password = await bcrypt.hash(data.password, 10);
+  }
+
+  await db.update(users).set(data).where(eq(users.id, id));
+  return true;
+}
+
+export async function deleteUser(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  await db.delete(users).where(eq(users.id, id));
+  return true;
+}
+
+// 更新用户密码
+export async function updateUserPassword(id: number, newPassword: string): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+  await db.update(users).set({ password: hashedPassword }).where(eq(users.id, id));
+  return true;
+}
+
+// 重置用户密码为初始密码
+export async function resetUserPassword(id: number): Promise<{ success: boolean; initialPassword?: string }> {
+  const db = await getDb();
+  if (!db) return { success: false };
+
+  const user = await db.select().from(users).where(eq(users.id, id)).limit(1);
+  if (user.length === 0) return { success: false };
+
+  const initialPassword = "zjsu@" + (user[0].email || "").slice(0, 3).toLowerCase();
+  const hashedPassword = await bcrypt.hash(initialPassword, 10);
+  await db.update(users).set({ password: hashedPassword }).where(eq(users.id, id));
+  return { success: true, initialPassword };
+}
+
+// 切换导师发布权限
+export async function toggleTeacherPublishPermission(teacherId: number, canPublish: boolean): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  // canPublish 字段是 tinyint 类型，需要将 boolean 转换为 0 或 1
+  const canPublishValue = canPublish ? 1 : 0;
+  await db.update(users).set({ canPublish: canPublishValue } as any).where(eq(users.id, teacherId));
+  return true;
+}
+
+// 批量创建用户（用于导入）
+export async function bulkCreateUsers(usersData: Array<{
+  email: string;
+  password: string;
+  name?: string;
+  role?: "admin" | "teacher" | "student";
+  teacherType?: "chinese" | "british";
+  studentType?: "transfer" | "non_transfer";
+  studentMajor?: "electronic_info" | "communication";
+  studentId?: string;
+  sussexId?: string; // 萨塞克斯学号
+  candidateNo?: string;
+  studentClass?: string;
+  faculty?: string;
+  annualQuota?: number;
+  teacherNo?: string; // 导师工号
+  sussexEmail?: string; // 萨塞克斯邮箱
+  academicYear?: string; // 学生所属学年
+  namePinyin?: string; // 姓名拼音
+}>): Promise<{ success: number; failed: number; errors: string[] }> {
+  const db = await getDb();
+  if (!db) return { success: 0, failed: usersData.length, errors: ["数据库连接失败"] };
+
+  let success = 0;
+  let failed = 0;
+  const errors: string[] = [];
+
+  // 获取当前学年用于学生年度化数据
+  const currentYear = await getConfig("currentAcademicYear") || "2024-2025";
+
+  for (const userData of usersData) {
+    try {
+      // 导师登录用萨塞克斯邮箱，学生登录用中方学号
+      const loginKey = userData.role === "teacher" 
+        ? (userData.sussexEmail || userData.email) 
+        : (userData.studentId || userData.email);
+
+      // 检查登录标识是否已存在
+      const existing = await getUserByEmail(loginKey);
+      if (existing) {
+        errors.push(`用户 ${loginKey} 已存在`);
+        failed++;
+        continue;
+      }
+
+      // 如果是学生，还要检查中方学号是否已存在
+      if (userData.studentId) {
+        const existingByStudentId = await db.select().from(users)
+          .where(eq(users.studentId, userData.studentId)).limit(1);
+        if (existingByStudentId.length > 0) {
+          errors.push(`中方学号 ${userData.studentId} 已存在`);
+          failed++;
+          continue;
+        }
+      }
+
+      const hashedPassword = await bcrypt.hash(userData.password, 10);
+      await db.insert(users).values({
+        email: loginKey, // 登录标识：导师用萨塞克斯邮箱，学生用中方学号
+        password: hashedPassword,
+        initialPassword: userData.password, // 保存初始密码用于重置
+        name: userData.name,
+        role: userData.role || "student",
+        teacherType: userData.teacherType,
+        teacherNo: userData.teacherNo || "0000000", // 导师工号默认0000000
+        sussexEmail: userData.sussexEmail, // 萨塞克斯邮箱
+        studentType: userData.studentType,
+        studentMajor: userData.studentMajor,
+        studentId: userData.studentId, // 中方学号
+        sussexId: userData.sussexId, // 萨塞克斯学号
+        candidateNo: userData.candidateNo,
+        studentClass: userData.studentClass,
+        faculty: userData.faculty,
+        annualQuota: userData.annualQuota,
+        academicYear: userData.role === "student" ? (userData.academicYear || currentYear) : null, // 学生年度化
+        namePinyin: userData.namePinyin, // 姓名拼音
+      });
+      success++;
+    } catch (error: any) {
+      errors.push(`用户 ${userData.email || userData.studentId} 导入失败: ${error.message}`);
+      failed++;
+    }
+  }
+
+  return { success, failed, errors };
+}
+
+// 单项创建用户
+export async function createSingleUser(userData: {
+  email: string;
+  password: string;
+  name: string;
+  role: "admin" | "teacher" | "student";
+  teacherType?: "chinese" | "british";
+  studentType?: "transfer" | "non_transfer";
+  studentMajor?: "electronic_info" | "communication";
+  studentId?: string;
+  sussexId?: string;
+  candidateNo?: string;
+  studentClass?: string;
+  faculty?: string;
+  annualQuota?: number;
+  teacherNo?: string;
+  sussexEmail?: string;
+  academicYear?: string;
+  namePinyin?: string;
+  initialPassword?: string;
+}): Promise<{ success: boolean; message: string }> {
+  const db = await getDb();
+  if (!db) return { success: false, message: "数据库连接失败" };
+
+  try {
+    // 管理员登录用邮箱，导师登录用萨塞克斯邮箱，学生登录用中方学号
+    let loginKey: string;
+    if (userData.role === "admin") {
+      loginKey = userData.email;
+    } else if (userData.role === "teacher") {
+      loginKey = userData.sussexEmail || userData.email;
+    } else {
+      loginKey = userData.studentId || userData.email;
+    }
+
+    // 检查登录标识是否已存在
+    const existing = await getUserByEmail(loginKey);
+    if (existing) {
+      return { success: false, message: `用户 ${loginKey} 已存在` };
+    }
+
+    // 如果是学生，还要检查中方学号是否已存在
+    if (userData.studentId) {
+      const existingByStudentId = await db.select().from(users)
+        .where(eq(users.studentId, userData.studentId)).limit(1);
+      if (existingByStudentId.length > 0) {
+        return { success: false, message: `中方学号 ${userData.studentId} 已存在` };
+      }
+    }
+
+    // 获取当前学年用于学生年度化数据
+    const currentYear = await getConfig("currentAcademicYear") || "2024-2025";
+
+    await db.insert(users).values({
+      email: loginKey,
+      password: userData.password,
+      initialPassword: userData.initialPassword || ("zjsu@" + loginKey.slice(0, 3).toLowerCase()),
+      name: userData.name,
+      role: userData.role,
+      teacherType: userData.teacherType,
+      teacherNo: userData.teacherNo || "0000000",
+      sussexEmail: userData.sussexEmail,
+      studentType: userData.studentType,
+      studentMajor: userData.studentMajor,
+      studentId: userData.studentId,
+      sussexId: userData.sussexId,
+      candidateNo: userData.candidateNo,
+      studentClass: userData.studentClass,
+      faculty: userData.faculty,
+      annualQuota: userData.annualQuota,
+      academicYear: userData.role === "student" ? (userData.academicYear || currentYear) : null,
+      namePinyin: userData.namePinyin,
+    });
+
+    return { success: true, message: "用户创建成功" };
+  } catch (error: any) {
+    console.error("[Database] Failed to create user:", error);
+    return { success: false, message: `创建失败: ${error.message}` };
+  }
+}
+
+// OAuth兼容函数
+export async function getUserByOpenId(openId: string): Promise<User | null> {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.select().from(users).where(eq(users.email, openId)).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function upsertUser(userData: {
+  openId: string | null;
+  name?: string | null;
+  email?: string | null;
+  loginMethod?: string | null;
+  lastSignedIn?: Date;
+}): Promise<void> {
+  const db = await getDb();
+  if (!db || !userData.openId) return;
+
+  const existing = await getUserByOpenId(userData.openId);
+  if (existing) {
+    const updateData: any = {};
+    if (userData.name !== undefined) updateData.name = userData.name;
+    if (userData.lastSignedIn) updateData.lastSignedIn = userData.lastSignedIn;
+    if (Object.keys(updateData).length > 0) {
+      await db.update(users).set(updateData).where(eq(users.id, existing.id));
+    }
+  }
+}
+
+export async function initializeAdmin(): Promise<void> {
+  const db = await getDb();
+  if (!db) return;
+
+  const existingAdmin = await getUserByEmail("root");
+  if (!existingAdmin) {
+    await createUser({
+      email: "root",
+      password: "xd-zjgsu",
+      name: "系统管理员",
+      role: "admin",
+    });
+    console.log("[Database] Admin account initialized: root / xd-zjgsu");
+  }
+}
+
+// ==================== 课题相关操作 ====================
+
+export async function createTopic(data: InsertTopic): Promise<Topic | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.insert(topics).values(data);
+  const insertId = result[0].insertId;
+  
+  const topic = await db.select().from(topics).where(eq(topics.id, insertId)).limit(1);
+  return topic.length > 0 ? topic[0] : null;
+}
+
+export async function getTopicsByTeacher(teacherId: number): Promise<Topic[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(topics).where(eq(topics.teacherId, teacherId)).orderBy(desc(topics.createdAt));
+}
+
+export async function getPublishedTopics(academicYear: string): Promise<Topic[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(topics)
+    .where(and(
+      eq(topics.status, "published"),
+      eq(topics.academicYear, academicYear)
+    ))
+    .orderBy(desc(topics.createdAt));
+}
+
+export async function getTopicById(id: number): Promise<Topic | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(topics).where(eq(topics.id, id)).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function updateTopic(id: number, data: Partial<InsertTopic>): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  await db.update(topics).set(data).where(eq(topics.id, id));
+  return true;
+}
+
+export async function deleteTopic(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  await db.delete(topics).where(eq(topics.id, id));
+  return true;
+}
+
+export async function checkTopicDuplicate(title: string, excludeId?: number): Promise<Topic[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const results = await db.select().from(topics).where(like(topics.title, `%${title}%`));
+  
+  if (excludeId) {
+    return results.filter(t => t.id !== excludeId);
+  }
+  
+  return results;
+}
+
+// 获取导师在指定学年已发布的课题数量
+export async function getTeacherPublishedTopicCount(teacherId: number, academicYear: string): Promise<number> {
+  const db = await getDb();
+  if (!db) return 0;
+
+  const result = await db.select({ count: sql<number>`count(*)` })
+    .from(topics)
+    .where(and(
+      eq(topics.teacherId, teacherId),
+      eq(topics.academicYear, academicYear),
+      eq(topics.status, "published")
+    ));
+  
+  return result[0]?.count || 0;
+}
+
+// 获取课题被选择的志愿数量
+export async function getTopicWishCount(topicId: number, academicYear: string): Promise<number> {
+  const db = await getDb();
+  if (!db) return 0;
+
+  const result = await db.select({ count: sql<number>`count(*)` })
+    .from(wishes)
+    .where(and(
+      eq(wishes.topicId, topicId),
+      eq(wishes.academicYear, academicYear)
+    ));
+  
+  return result[0]?.count || 0;
+}
+
+// ==================== 志愿相关操作（志愿优先，教师确认制）====================
+
+export async function getWishesByStudent(studentId: number, academicYear: string): Promise<Wish[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(wishes)
+    .where(and(
+      eq(wishes.studentId, studentId),
+      eq(wishes.academicYear, academicYear)
+    ))
+    .orderBy(asc(wishes.priority));
+}
+
+// 获取导师待审核的志愿申请（志愿优先，教师确认制核心）
+export async function getPendingWishesByTeacher(teacherId: number, academicYear: string): Promise<Wish[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // 获取该导师的所有已发布课题ID
+  const teacherTopics = await getTopicsByTeacher(teacherId);
+  const topicIds = teacherTopics.filter(t => t.status === "published" || t.status === "used").map(t => t.id);
+  
+  if (topicIds.length === 0) return [];
+
+  // 获取这些课题的所有待审核志愿
+  const allWishes = await db.select().from(wishes)
+    .where(and(
+      eq(wishes.academicYear, academicYear),
+      eq(wishes.teacherDecision, "pending"),
+      inArray(wishes.topicId, topicIds)
+    ))
+    .orderBy(asc(wishes.priority), asc(wishes.createdAt));
+
+  if (allWishes.length === 0) return [];
+
+  // 批量获取所有相关学生ID
+  const studentIds = Array.from(new Set(allWishes.map(w => w.studentId)));
+
+  // 批量查询：一次性获取所有相关学生的匹配记录
+  const allMatches = studentIds.length > 0
+    ? await db.select().from(matches)
+        .where(and(
+          inArray(matches.studentId, studentIds),
+          eq(matches.academicYear, academicYear)
+        ))
+    : [];
+  const matchedStudentIds = new Set(allMatches.map(m => m.studentId));
+
+  // 批量查询：一次性获取所有相关学生的全部志愿
+  const allStudentWishes = studentIds.length > 0
+    ? await db.select().from(wishes)
+        .where(and(
+          inArray(wishes.studentId, studentIds),
+          eq(wishes.academicYear, academicYear)
+        ))
+        .orderBy(asc(wishes.priority))
+    : [];
+  // 按学生ID分组
+  const wishesByStudent = new Map<number, Wish[]>();
+  for (const w of allStudentWishes) {
+    if (!wishesByStudent.has(w.studentId)) {
+      wishesByStudent.set(w.studentId, []);
+    }
+    wishesByStudent.get(w.studentId)!.push(w);
+  }
+
+  // 过滤：只返回当前志愿优先级 = 学生当前审核优先级的志愿
+  const filteredWishes: Wish[] = [];
+  for (const wish of allWishes) {
+    // 检查学生是否已被匹配
+    if (matchedStudentIds.has(wish.studentId)) continue;
+    
+    // 检查该志愿的优先级是否等于学生当前应该审核的优先级
+    const studentWishes = wishesByStudent.get(wish.studentId) || [];
+    const currentPriority = getCurrentPriorityForStudent(studentWishes);
+    
+    if (wish.priority === currentPriority) {
+      filteredWishes.push(wish);
+    }
+  }
+
+  return filteredWishes;
+}
+
+// 计算学生当前应该处于哪个志愿的审核
+function getCurrentPriorityForStudent(studentWishes: Wish[]): number {
+  // 按优先级排序
+  const sorted = [...studentWishes].sort((a, b) => a.priority - b.priority);
+  
+  for (const wish of sorted) {
+    // 如果该志愿还在pending状态，返回该优先级
+    if (wish.teacherDecision === "pending") {
+      return wish.priority;
+    }
+    // 如果被approved，说明已匹配，不应该再有新的审核
+    if (wish.teacherDecision === "approved") {
+      return -1; // 已匹配
+    }
+    // 如果被rejected，继续检查下一个志愿
+  }
+  
+  // 所有志愿都被拒绝了
+  return -1;
+}
+
+// 导师审核志愿（同意/不同意）
+export async function reviewWish(wishId: number, decision: "approved" | "rejected"): Promise<{ success: boolean; message: string }> {
+  const db = await getDb();
+  if (!db) return { success: false, message: "数据库连接失败" };
+
+  const wish = await db.select().from(wishes).where(eq(wishes.id, wishId)).limit(1);
+  if (wish.length === 0) {
+    return { success: false, message: "志愿不存在" };
+  }
+
+  const currentWish = wish[0];
+  const academicYear = currentWish.academicYear || "";
+
+  // 检查学生是否已被匹配
+  const existingMatch = await getMatchByStudent(currentWish.studentId, academicYear);
+  if (existingMatch) {
+    return { success: false, message: "该学生已被其他导师录取" };
+  }
+
+  // 检查课题是否已被其他学生选中
+  const topic = await getTopicById(currentWish.topicId);
+  if (!topic) {
+    return { success: false, message: "课题不存在" };
+  }
+  
+  if (decision === "approved" && topic.status === "used") {
+    return { success: false, message: "该课题已被其他学生选中" };
+  }
+
+  // 更新志愿状态
+  await db.update(wishes).set({ 
+    teacherDecision: decision,
+    decisionAt: toMySQLTimestamp(),
+    status: decision === "approved" ? "matched" : "rejected"
+  }).where(eq(wishes.id, wishId));
+
+  if (decision === "approved") {
+    // 创建匹配记录
+    await createMatch({
+      studentId: currentWish.studentId,
+      topicId: currentWish.topicId,
+      teacherId: topic.teacherId,
+      matchRound: currentWish.priority,
+      academicYear,
+    });
+    
+    // 更新课题状态为已使用
+    await updateTopic(currentWish.topicId, { status: "used" });
+    
+    // 拒绝该学生的其他志愿
+    await db.update(wishes).set({ 
+      teacherDecision: "rejected",
+      status: "rejected"
+    }).where(and(
+      eq(wishes.studentId, currentWish.studentId),
+      eq(wishes.academicYear, academicYear),
+      sql`${wishes.id} != ${wishId}`
+    ));
+    
+    // ★★★ 核心修复：自动拒绝其他选择该课题的学生，并将他们转入下一志愿审核 ★★★
+    // 查找所有其他选择该课题且状态为pending的志愿
+    const otherWishesForTopic = await db.select().from(wishes).where(and(
+      eq(wishes.topicId, currentWish.topicId),
+      eq(wishes.academicYear, academicYear),
+      sql`${wishes.status} = 'pending'`,
+      sql`${wishes.id} != ${wishId}`
+    ));
+    
+    // 拒绝这些志愿
+    for (const otherWish of otherWishesForTopic) {
+      await db.update(wishes).set({ 
+        teacherDecision: "rejected",
+        decisionAt: toMySQLTimestamp(),
+        status: "rejected"
+      }).where(eq(wishes.id, otherWish.id));
+      
+      // 检查该学生是否已被匹配
+      const studentMatch = await getMatchByStudent(otherWish.studentId, academicYear);
+      if (!studentMatch) {
+        // 查找该学生的下一个志愿（按优先级排序）
+        const nextWishes = await db.select().from(wishes).where(and(
+          eq(wishes.studentId, otherWish.studentId),
+          eq(wishes.academicYear, academicYear),
+          sql`${wishes.status} = 'selected'`,
+          sql`${wishes.priority} > ${otherWish.priority}`
+        )).orderBy(wishes.priority).limit(1);
+        
+        if (nextWishes.length > 0) {
+          // 将下一个志愿状态设为pending，进入审核队列
+          await db.update(wishes).set({ 
+            status: "pending"
+          }).where(eq(wishes.id, nextWishes[0].id));
+        }
+      }
+    }
+    
+    return { success: true, message: `已同意该学生的申请，已自动拒绝其他${otherWishesForTopic.length}名学生的申请并转入下一志愿` };
+  }
+  
+  // 如果是拒绝决定，检查学生是否有下一志愿
+  const studentMatch = await getMatchByStudent(currentWish.studentId, academicYear);
+  if (!studentMatch) {
+    // 查找该学生的下一个志愿
+    const nextWishes = await db.select().from(wishes).where(and(
+      eq(wishes.studentId, currentWish.studentId),
+      eq(wishes.academicYear, academicYear),
+      sql`${wishes.status} = 'selected'`,
+      sql`${wishes.priority} > ${currentWish.priority}`
+    )).orderBy(wishes.priority).limit(1);
+    
+    if (nextWishes.length > 0) {
+      // 将下一个志愿状态设为pending，进入审核队列
+      await db.update(wishes).set({ 
+        status: "pending"
+      }).where(eq(wishes.id, nextWishes[0].id));
+      return { success: true, message: "已拒绝该学生的申请，学生已自动转入下一志愿审核" };
+    } else {
+      return { success: true, message: "已拒绝该学生的申请，该学生已无剩余志愿" };
+    }
+  }
+
+  return { success: true, message: "已拒绝该学生的申请" };
+}
+
+export async function deleteWishesByStudent(studentId: number, academicYear: string): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  await db.delete(wishes).where(and(
+    eq(wishes.studentId, studentId),
+    eq(wishes.academicYear, academicYear)
+  ));
+  return true;
+}
+
+export async function bulkCreateWishes(wishesData: InsertWish[]): Promise<number> {
+  const db = await getDb();
+  if (!db || wishesData.length === 0) return 0;
+
+  await db.insert(wishes).values(wishesData);
+  return wishesData.length;
+}
+
+// ==================== 匹配相关操作 ====================
+
+export async function createMatch(data: InsertMatch): Promise<Match | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.insert(matches).values(data);
+  const insertId = result[0].insertId;
+  
+  const match = await db.select().from(matches).where(eq(matches.id, insertId)).limit(1);
+  return match.length > 0 ? match[0] : null;
+}
+
+export async function getMatchByStudent(studentId: number, academicYear: string): Promise<Match | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(matches)
+    .where(and(
+      eq(matches.studentId, studentId),
+      eq(matches.academicYear, academicYear)
+    ))
+    .limit(1);
+  
+  return result.length > 0 ? result[0] : null;
+}
+
+/** 获取学生已确认的志愿（用于获取导师信息） */
+export async function getConfirmedWishByStudent(studentId: number, academicYear: string): Promise<{ teacherId: number; topicId: number } | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db
+    .select({
+      teacherId: topics.teacherId,
+      topicId: wishes.topicId,
+    })
+    .from(wishes)
+    .innerJoin(topics, eq(wishes.topicId, topics.id))
+    .where(
+      and(
+        eq(wishes.studentId, studentId),
+        eq(wishes.academicYear, academicYear),
+        eq(wishes.teacherDecision, "approved")
+      )
+    )
+    .limit(1);
+
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function getMatchesByTeacher(teacherId: number, academicYear: string): Promise<Match[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(matches)
+    .where(and(
+      eq(matches.teacherId, teacherId),
+      eq(matches.academicYear, academicYear)
+    ));
+}
+
+export async function getAllMatches(academicYear: string): Promise<Match[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(matches).where(eq(matches.academicYear, academicYear));
+}
+
+// ==================== 冲突相关操作（保留兼容）====================
+
+export async function getPendingConflictsByTeacher(teacherId: number, academicYear: string): Promise<Conflict[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(conflicts)
+    .where(and(
+      eq(conflicts.teacherId, teacherId),
+      eq(conflicts.academicYear, academicYear),
+      eq(conflicts.resolved, 0)
+    ));
+}
+
+export async function resolveConflict(id: number, selectedStudentId: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  await db.update(conflicts).set({ 
+    selectedStudentId, 
+    resolved: 1 
+  }).where(eq(conflicts.id, id));
+  
+  return true;
+}
+
+// ==================== 系统配置相关操作 ====================
+
+export async function getConfig(key: string): Promise<string | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(systemConfig)
+    .where(eq(systemConfig.configKey, key))
+    .limit(1);
+  
+  return result.length > 0 ? result[0].configValue : null;
+}
+
+export async function setConfig(key: string, value: string, description?: string): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  const existing = await getConfig(key);
+  
+  if (existing !== null) {
+    await db.update(systemConfig)
+      .set({ configValue: value, description })
+      .where(eq(systemConfig.configKey, key));
+  } else {
+    await db.insert(systemConfig).values({
+      configKey: key,
+      configValue: value,
+      description,
+    });
+  }
+  
+  return true;
+}
+
+export async function getAllConfigs(): Promise<SystemConfig[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(systemConfig);
+}
+
+export async function initializeConfigs(): Promise<void> {
+  const currentYear = new Date().getFullYear();
+  const academicYear = `${currentYear}-${currentYear + 1}`;
+
+  const defaultConfigs = [
+    { key: "currentAcademicYear", value: academicYear, description: "当前学年" },
+    { key: "topicSubmissionDeadline", value: "", description: "出题截止时间" },
+    { key: "wishSubmissionDeadline", value: "", description: "志愿填报截止时间" },
+    { key: "teacherSelectionDays", value: "2", description: "导师筛选期限（天）" },
+    { key: "maxWishesNormal", value: "5", description: "普通学生最大志愿数" },
+    { key: "maxWishesTransfer", value: "8", description: "分流学生最大志愿数" },
+    { key: "statementWordLimit", value: "150", description: "选题声明字数限制" },
+    { key: "currentPhase", value: "topic_collection", description: "当前阶段" },
+    { key: "statementRequired", value: "false", description: "选题声明是否必填" },
+  ];
+
+  for (const config of defaultConfigs) {
+    const existing = await getConfig(config.key);
+    if (existing === null) {
+      await setConfig(config.key, config.value, config.description);
+    }
+  }
+}
+
+// ==================== 导出数据相关操作 ====================
+
+export async function getExportData(academicYear: string): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const allMatches = await getAllMatches(academicYear);
+  const exportData = [];
+
+  for (const match of allMatches) {
+    const student = await getUserById(match.studentId);
+    const teacher = await getUserById(match.teacherId);
+    const topic = await getTopicById(match.topicId);
+
+    if (student && teacher && topic) {
+      exportData.push({
+        序号: exportData.length + 1,
+        学院: student.faculty || "萨塞克斯人工智能学院",
+        专业: student.studentMajor === "electronic_info" ? "电子信息工程（中外合作办学）" : "通信工程（中外合作办学）",
+        学生班级: student.studentClass || "",
+        导师姓名: teacher.name || "",
+        学生中方学号: student.studentId || "",
+        英方学号: student.sussexId || student.candidateNo || "",
+        学生姓名: student.name || "",
+        论文类型: topic.thesisType || "毕业论文",
+        论文题目: topic.titleEn || topic.title || "",
+        论文关键词: topic.keywords || "",
+        论文选题来源: topic.topicSource || "其他",
+        论文研究方向: topic.researchFocus || "",
+        论文撰写语种: topic.topicLanguage || "英语",
+        成绩: match.score ?? "",
+        备注: match.remarks || "",
+      });
+    }
+  }
+
+  return exportData;
+}
+
+
+// ==================== 课题热度统计 ====================
+
+export async function getTopicHeatMap(academicYear: string): Promise<Map<number, number>> {
+  const db = await getDb();
+  if (!db) return new Map();
+
+  // 获取每个课题的被选人数（所有志愿，不仅仅是第一志愿）
+  const allWishes = await db.select().from(wishes)
+    .where(eq(wishes.academicYear, academicYear));
+
+  const heatMap = new Map<number, number>();
+  for (const wish of allWishes) {
+    const current = heatMap.get(wish.topicId) || 0;
+    heatMap.set(wish.topicId, current + 1);
+  }
+
+  return heatMap;
+}
+
+export async function getPublishedTopicsWithHeat(academicYear: string): Promise<(Topic & { heat: number; teacherType?: string })[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const publishedTopics = await getPublishedTopics(academicYear);
+  const heatMap = await getTopicHeatMap(academicYear);
+
+  // 获取所有导师信息以获取teacherType
+  const allTeachers = await db.select().from(users).where(eq(users.role, "teacher"));
+  const teacherMap = new Map(allTeachers.map(t => [t.id, t.teacherType]));
+
+  return publishedTopics.map(topic => ({
+    ...topic,
+    heat: heatMap.get(topic.id) || 0,
+    teacherType: teacherMap.get(topic.teacherId) || undefined,
+  }));
+}
+
+// ==================== 数据统计与监控 ====================
+
+export async function getStudentSelectionStats(academicYear: string): Promise<{
+  totalStudents: number;
+  selectedStudents: number;
+  unselectedStudents: number;
+}> {
+  const db = await getDb();
+  if (!db) return { totalStudents: 0, selectedStudents: 0, unselectedStudents: 0 };
+
+  // 只获取当前学年的学生（根据 academicYear 字段筛选，或未设置学年的学生）
+  const allStudents = await db.select().from(users).where(
+    and(
+      eq(users.role, "student"),
+      or(
+        eq(users.academicYear, academicYear),
+        sql`${users.academicYear} IS NULL`,
+        eq(users.academicYear, "")
+      )
+    )
+  );
+  const totalStudents = allStudents.length;
+
+  // 获取已提交志愿的学生ID（去重）
+  const allWishes = await db.select().from(wishes)
+    .where(eq(wishes.academicYear, academicYear));
+  
+  const selectedStudentIds = new Set(allWishes.map(w => w.studentId));
+  const selectedStudents = selectedStudentIds.size;
+
+  return {
+    totalStudents,
+    selectedStudents,
+    unselectedStudents: totalStudents - selectedStudents,
+  };
+}
+
+export async function getUnselectedStudents(academicYear: string): Promise<User[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // 只获取当前学年的学生（根据 academicYear 字段筛选，或未设置学年的学生）
+  const allStudents = await db.select().from(users).where(
+    and(
+      eq(users.role, "student"),
+      or(
+        eq(users.academicYear, academicYear),
+        sql`${users.academicYear} IS NULL`,
+        eq(users.academicYear, "")
+      )
+    )
+  );
+
+  // 获取已提交志愿的学生ID
+  const allWishes = await db.select().from(wishes)
+    .where(eq(wishes.academicYear, academicYear));
+  
+  const selectedStudentIds = new Set(allWishes.map(w => w.studentId));
+
+  // 返回未选择志愿的学生
+  return allStudents.filter(student => !selectedStudentIds.has(student.id));
+}
+
+// ==================== 志愿轮次匹配逻辑 ====================
+
+// 获取指定志愿轮次的待审核志愿（按提交时间排序）
+export async function getPendingWishesByPriority(priority: number, academicYear: string): Promise<Wish[]> {
+  const db = await getDb();
+  if (!db) return [];
+  // 获取指定优先级的所有待审核志愿
+  const pendingWishes = await db.select().from(wishes)
+    .where(and(
+      eq(wishes.academicYear, academicYear),
+      eq(wishes.priority, priority),
+      eq(wishes.teacherDecision, "pending")
+    ))
+    .orderBy(asc(wishes.createdAt));
+
+  if (pendingWishes.length === 0) return [];
+
+  // 批量查询已匹配学生，避免 N+1
+  const studentIds = Array.from(new Set(pendingWishes.map(w => w.studentId)));
+  const existingMatches = studentIds.length > 0
+    ? await db.select({ studentId: matches.studentId }).from(matches)
+        .where(and(
+          inArray(matches.studentId, studentIds),
+          eq(matches.academicYear, academicYear)
+        ))
+    : [];
+  const matchedStudentIds = new Set(existingMatches.map(m => m.studentId));
+
+  return pendingWishes.filter(w => !matchedStudentIds.has(w.studentId));
+}
+
+// 检查某个志愿轮次是否已全部审核完成
+export async function isPriorityRoundComplete(priority: number, academicYear: string): Promise<boolean> {
+  const pendingWishes = await getPendingWishesByPriority(priority, academicYear);
+  return pendingWishes.length === 0;
+}
+
+// 获取当前应该审核的志愿轮次
+export async function getCurrentReviewPriority(academicYear: string): Promise<number> {
+  // 从第1志愿开始检查，找到第一个未完成的轮次
+  for (let priority = 1; priority <= 6; priority++) {
+    const isComplete = await isPriorityRoundComplete(priority, academicYear);
+    if (!isComplete) {
+      return priority;
+    }
+  }
+  return -1; // 所有轮次都已完成
+}
+
+// 获取某个志愿轮次的实际开始时间（即上一轮次最后一个志愿被处理的时间）
+export async function getRoundStartTime(priority: number, academicYear: string): Promise<Date | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  if (priority <= 1) {
+    // 第1轮的开始时间 = 导师确认开始时间
+    const teacherConfirmStartStr = await getConfig("teacherConfirmStart");
+    return teacherConfirmStartStr ? new Date(teacherConfirmStartStr) : null;
+  }
+
+  // 对于第2轮及以后，开始时间 = 上一轮最后一个志愿的 decisionAt
+  const prevPriority = priority - 1;
+  const lastDecision = await db.select({ decisionAt: wishes.decisionAt })
+    .from(wishes)
+    .where(and(
+      eq(wishes.academicYear, academicYear),
+      eq(wishes.priority, prevPriority),
+      sql`${wishes.teacherDecision} != 'pending'`,
+      sql`${wishes.decisionAt} IS NOT NULL`
+    ))
+    .orderBy(sql`${wishes.decisionAt} DESC`)
+    .limit(1);
+
+  if (lastDecision.length > 0 && lastDecision[0].decisionAt) {
+    return new Date(lastDecision[0].decisionAt);
+  }
+
+  return null;
+}
+
+
+
+// 逾期自动分配：将课题分配给最早提交的学生
+export async function autoAssignOverdueWishes(academicYear: string, overdueDays: number = 1): Promise<{
+  processed: number;
+  assigned: number;
+  details: Array<{ topicId: number; studentId: number; teacherId: number }>;
+}> {
+  const db = await getDb();
+  if (!db) return { processed: 0, assigned: 0, details: [] };
+
+  const now = new Date();
+  const overdueThreshold = new Date(now.getTime() - overdueDays * 24 * 60 * 60 * 1000);
+
+  // 获取当前应审核的轮次
+  const currentPriority = await getCurrentReviewPriority(academicYear);
+  if (currentPriority === -1) {
+    return { processed: 0, assigned: 0, details: [] };
+  }
+
+// ★★★ 修复：计算当前轮次的实际开始时间 ★★★
+  // 只有当前轮次开始超过 overdueDays 天后，才执行自动分配
+  const roundStartTime = await getRoundStartTime(currentPriority, academicYear);
+  if (roundStartTime && now.getTime() - roundStartTime.getTime() < overdueDays * 24 * 60 * 60 * 1000) {
+    // 当前轮次开始时间距今不足 overdueDays 天，不执行自动分配
+    return { processed: 0, assigned: 0, details: [] };
+  }
+
+
+  // 获取该轮次所有逾期的待审核志愿
+  const overdueWishes = await db.select().from(wishes)
+    .where(and(
+      eq(wishes.academicYear, academicYear),
+      eq(wishes.priority, currentPriority),
+      eq(wishes.teacherDecision, "pending"),
+      sql`${wishes.createdAt} < ${overdueThreshold}`
+    ))
+    .orderBy(asc(wishes.createdAt));
+
+  // 按课题分组
+  const topicWishesMap = new Map<number, Wish[]>();
+  for (const wish of overdueWishes) {
+    // 检查学生是否已匹配
+    const existingMatch = await getMatchByStudent(wish.studentId, academicYear);
+    if (existingMatch) continue;
+
+    if (!topicWishesMap.has(wish.topicId)) {
+      topicWishesMap.set(wish.topicId, []);
+    }
+    topicWishesMap.get(wish.topicId)!.push(wish);
+  }
+
+  const details: Array<{ topicId: number; studentId: number; teacherId: number }> = [];
+  let processed = 0;
+  let assigned = 0;
+
+  // 对每个课题，分配给最早提交的学生
+  for (const [topicId, topicWishes] of Array.from(topicWishesMap)) {
+    const topic = await getTopicById(topicId);
+    if (!topic || topic.status === "used") continue;
+
+    // 随机选择一个学生进行分配
+    const randomIndex = Math.floor(Math.random() * topicWishes.length);
+    const selectedWish = topicWishes[randomIndex];
+    processed += topicWishes.length;
+
+    // 自动随机分配给申请该课题的学生
+    await db.update(wishes).set({ 
+      teacherDecision: "approved",
+      decisionAt: toMySQLTimestamp(),
+      status: "matched"
+    }).where(eq(wishes.id, selectedWish.id));
+
+    // 创建匹配记录
+    await createMatch({
+      studentId: selectedWish.studentId,
+      topicId: topicId,
+      teacherId: topic.teacherId,
+      matchRound: currentPriority,
+      academicYear,
+    });
+
+    // 更新课题状态
+    await updateTopic(topicId, { status: "used" });
+
+    details.push({
+      topicId,
+      studentId: selectedWish.studentId,
+      teacherId: topic.teacherId,
+    });
+    assigned++;
+
+    // 拒绝该学生的其他志愿
+    await db.update(wishes).set({ 
+      teacherDecision: "rejected",
+      status: "rejected"
+    }).where(and(
+      eq(wishes.studentId, selectedWish.studentId),
+      eq(wishes.academicYear, academicYear),
+      sql`${wishes.id} != ${selectedWish.id}`
+    ));
+
+    // ★★★ 修复：拒绝所有其他选择该课题的志愿（包括不同轮次的第二、第三志愿），与导师确认逻辑保持一致 ★★★
+    // 查找所有其他选择该课题且状态为 pending 或 selected 的志愿（不限轮次）
+    const allOtherWishesForTopic = await db.select().from(wishes).where(and(
+      eq(wishes.topicId, topicId),
+      eq(wishes.academicYear, academicYear),
+      sql`${wishes.id} != ${selectedWish.id}`,
+      sql`(${wishes.status} = 'pending' OR ${wishes.status} = 'selected')`
+    ));
+
+    // 拒绝这些志愿，并为被拒学生查找下一志愿
+    for (const otherWish of allOtherWishesForTopic) {
+      await db.update(wishes).set({ 
+        teacherDecision: "rejected",
+        decisionAt: toMySQLTimestamp(),
+        status: "rejected"
+      }).where(eq(wishes.id, otherWish.id));
+
+      // 检查该学生是否已匹配
+      const studentMatch = await getMatchByStudent(otherWish.studentId, academicYear);
+      if (!studentMatch) {
+        // 查找该学生的下一个志愿（按优先级排序）
+        const nextWishes = await db.select().from(wishes).where(and(
+          eq(wishes.studentId, otherWish.studentId),
+          eq(wishes.academicYear, academicYear),
+          sql`${wishes.status} = 'selected'`,
+          sql`${wishes.priority} > ${otherWish.priority}`
+        )).orderBy(wishes.priority).limit(1);
+
+        if (nextWishes.length > 0) {
+          // 将下一个志愿状态设为pending，进入审核队列
+          await db.update(wishes).set({ 
+            status: "pending"
+          }).where(eq(wishes.id, nextWishes[0].id));
+        }
+      }
+    }
+  }
+
+  return { processed, assigned, details };
+}
+
+// ==================== 时间配置检查 ====================
+
+export async function checkTimePhase(): Promise<{
+  phase: "none" | "topic_publish" | "student_selection" | "teacher_confirm" | "closed";
+  topicPublishStart: Date | null;
+  topicPublishEnd: Date | null;
+  studentSelectionStart: Date | null;
+  studentSelectionEnd: Date | null;
+  teacherConfirmStart: Date | null;
+  teacherConfirmEnd: Date | null;
+}> {
+  const now = new Date();
+  
+  const topicPublishStartStr = await getConfig("topicPublishStart");
+  const topicPublishEndStr = await getConfig("topicPublishEnd");
+  const studentSelectionStartStr = await getConfig("studentSelectionStart");
+  const studentSelectionEndStr = await getConfig("studentSelectionEnd");
+  const teacherConfirmStartStr = await getConfig("teacherConfirmStart");
+  const teacherConfirmEndStr = await getConfig("teacherConfirmEnd");
+
+  const topicPublishStart = topicPublishStartStr ? new Date(topicPublishStartStr) : null;
+  const topicPublishEnd = topicPublishEndStr ? new Date(topicPublishEndStr) : null;
+  const studentSelectionStart = studentSelectionStartStr ? new Date(studentSelectionStartStr) : null;
+  const studentSelectionEnd = studentSelectionEndStr ? new Date(studentSelectionEndStr) : null;
+  const teacherConfirmStart = teacherConfirmStartStr ? new Date(teacherConfirmStartStr) : null;
+  const teacherConfirmEnd = teacherConfirmEndStr ? new Date(teacherConfirmEndStr) : null;
+
+  let phase: "none" | "topic_publish" | "student_selection" | "teacher_confirm" | "closed" = "none";
+
+  // 检查当前处于哪个阶段
+  if (topicPublishStart && topicPublishEnd &&
+      now >= topicPublishStart && now <= topicPublishEnd) {
+    phase = "topic_publish";
+  } else if (studentSelectionStart && studentSelectionEnd && 
+      now >= studentSelectionStart && now <= studentSelectionEnd) {
+    phase = "student_selection";
+  } else if (teacherConfirmStart && teacherConfirmEnd && 
+             now >= teacherConfirmStart && now <= teacherConfirmEnd) {
+    phase = "teacher_confirm";
+  } else if (teacherConfirmEnd && now > teacherConfirmEnd) {
+    phase = "closed";
+  }
+
+  return {
+    phase,
+    topicPublishStart,
+    topicPublishEnd,
+    studentSelectionStart,
+    studentSelectionEnd,
+    teacherConfirmStart,
+    teacherConfirmEnd,
+  };
+}
+
+export async function validateTimeConfig(
+  studentSelectionStart: string,
+  studentSelectionEnd: string,
+  teacherConfirmStart: string,
+  teacherConfirmEnd: string,
+  topicPublishStart?: string,
+  topicPublishEnd?: string
+): Promise<{ valid: boolean; message: string }> {
+  const ssStart = new Date(studentSelectionStart);
+  const ssEnd = new Date(studentSelectionEnd);
+  const tcStart = new Date(teacherConfirmStart);
+  const tcEnd = new Date(teacherConfirmEnd);
+
+  // 检查时间有效性
+  if (ssStart >= ssEnd) {
+    return { valid: false, message: "学生选题开始时间必须早于截止时间" };
+  }
+  if (tcStart >= tcEnd) {
+    return { valid: false, message: "导师确认开始时间必须早于截止时间" };
+  }
+
+  // 如果设置了导师发布题目时间段，进行验证
+  if (topicPublishStart && topicPublishEnd) {
+    const tpStart = new Date(topicPublishStart);
+    const tpEnd = new Date(topicPublishEnd);
+
+    if (tpStart >= tpEnd) {
+      return { valid: false, message: "导师发布题目开始时间必须早于截止时间" };
+    }
+    // 导师发布题目时间段不能与学生选题时间段重叠
+    if (tpEnd > ssStart && tpStart < ssEnd) {
+      return { valid: false, message: "导师发布题目时间段与学生选题时间段不可重叠" };
+    }
+    // 导师发布题目时间段必须在学生选题之前
+    if (tpEnd > ssStart) {
+      return { valid: false, message: "导师发布题目时间段必须在学生选题时间段之前" };
+    }
+  }
+
+  // 检查两个时间段不重叠
+  // 学生选题结束时间必须早于或等于导师确认开始时间
+  if (ssEnd > tcStart) {
+    return { valid: false, message: "学生选题时间段与导师确认时间段不可重叠，学生选题必须在导师确认之前" };
+  }
+
+  return { valid: true, message: "时间配置有效" };
+}
+
+
+// ==================== 年度管理相关操作 ====================
+
+export async function createAcademicYear(data: InsertAcademicYear): Promise<AcademicYear | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.insert(academicYears).values(data);
+  const insertId = result[0].insertId;
+  
+  const year = await db.select().from(academicYears).where(eq(academicYears.id, insertId)).limit(1);
+  return year.length > 0 ? year[0] : null;
+}
+
+export async function getAllAcademicYears(): Promise<AcademicYear[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(academicYears).orderBy(desc(academicYears.createdAt));
+}
+
+export async function getAcademicYearByName(yearName: string): Promise<AcademicYear | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(academicYears).where(eq(academicYears.yearName, yearName)).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function getAcademicYearById(id: number): Promise<AcademicYear | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(academicYears).where(eq(academicYears.id, id)).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function getCurrentAcademicYear(): Promise<AcademicYear | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(academicYears)
+    .where(eq(academicYears.isCurrentYear, 1))
+    .limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function updateAcademicYear(id: number, data: Partial<InsertAcademicYear>): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  await db.update(academicYears).set(data).where(eq(academicYears.id, id));
+  return true;
+}
+
+export async function setCurrentAcademicYear(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  // 先将所有年度设为非当前
+  await db.update(academicYears).set({ isCurrentYear: 0 });
+  // 再将指定年度设为当前
+  await db.update(academicYears).set({ isCurrentYear: 1, status: "active" }).where(eq(academicYears.id, id));
+  return true;
+}
+
+export async function deleteAcademicYear(id: number): Promise<{ success: boolean; deletedData: { topics: number; wishes: number; matches: number; students: number } }> {
+  const db = await getDb();
+  if (!db) return { success: false, deletedData: { topics: 0, wishes: 0, matches: 0, students: 0 } };
+
+  // 获取学年信息
+  const year = await getAcademicYearById(id);
+  if (!year) return { success: false, deletedData: { topics: 0, wishes: 0, matches: 0, students: 0 } };
+
+  // 删除该年度的所有相关数据
+  const yearName = year.yearName;
+  
+  // 1. 删除匹配结果
+  const matchesResult = await db.delete(matches).where(eq(matches.academicYear, yearName));
+  const deletedMatches = matchesResult[0].affectedRows || 0;
+  
+  // 2. 删除志愿
+  const wishesResult = await db.delete(wishes).where(eq(wishes.academicYear, yearName));
+  const deletedWishes = wishesResult[0].affectedRows || 0;
+  
+  // 3. 删除课题
+  const topicsResult = await db.delete(topics).where(eq(topics.academicYear, yearName));
+  const deletedTopics = topicsResult[0].affectedRows || 0;
+  
+  // 4. 删除该年度的学生账户
+  const studentsResult = await db.delete(users).where(and(
+    eq(users.role, "student"),
+    eq(users.academicYear, yearName)
+  ));
+  const deletedStudents = studentsResult[0].affectedRows || 0;
+  
+  // 5. 删除学年记录
+  await db.delete(academicYears).where(eq(academicYears.id, id));
+  
+  return { 
+    success: true, 
+    deletedData: { 
+      topics: deletedTopics, 
+      wishes: deletedWishes, 
+      matches: deletedMatches, 
+      students: deletedStudents 
+    } 
+  };
+}
+
+export async function copyTopicsFromYear(sourceYearName: string, targetYearName: string, teacherId?: number): Promise<number> {
+  const db = await getDb();
+  if (!db) return 0;
+
+  // 获取源年度的课题
+  let sourceTopics: Topic[];
+  if (teacherId) {
+    sourceTopics = await db.select().from(topics)
+      .where(and(
+        eq(topics.academicYear, sourceYearName),
+        eq(topics.teacherId, teacherId)
+      ));
+  } else {
+    sourceTopics = await db.select().from(topics)
+      .where(eq(topics.academicYear, sourceYearName));
+  }
+
+  if (sourceTopics.length === 0) return 0;
+
+  // 复制课题到目标年度
+  const newTopics = sourceTopics.map(t => ({
+    teacherId: t.teacherId,
+    title: t.title,
+    titleEn: t.titleEn,
+    description: t.description,
+    descriptionEn: t.descriptionEn,
+    requiredSkills: t.requiredSkills,
+    suitableMajor: t.suitableMajor,
+    keywords: t.keywords,
+    researchFocus: t.researchFocus,
+    thesisType: t.thesisType,
+    topicSource: t.topicSource,
+    topicLanguage: t.topicLanguage,
+    status: "draft" as const,
+    isCurrentYear: 0,
+    academicYear: targetYearName,
+  }));
+  await db.insert(topics).values(newTopics as any);
+  return newTopics.length;
+}
+
+// 检查年度时间阶段
+
+// ==================== 导师审核状态分类 ====================
+
+export type TeacherReviewStatus = "completed" | "partial" | "not_started" | "no_students";
+
+export interface TeacherReviewInfo {
+  teacherId: number;
+  teacherName: string;
+  teacherEmail: string;
+  teacherType: string | null;
+  status: TeacherReviewStatus;
+  totalPending: number;
+  totalApproved: number;
+  totalRejected: number;
+  totalStudents: number;
+  topics: Array<{
+    topicId: number;
+    topicTitle: string;
+    pendingCount: number;
+    approvedCount: number;
+    rejectedCount: number;
+  }>;
+}
+
+export async function getTeacherReviewStatuses(academicYear: string): Promise<TeacherReviewInfo[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // 获取所有导师
+  const allTeachers = await db.select().from(users).where(eq(users.role, "teacher"));
+  
+  const result: TeacherReviewInfo[] = [];
+
+  for (const teacher of allTeachers) {
+    // 获取该导师在该年度的所有课题
+    const teacherTopics = await db.select().from(topics)
+      .where(and(
+        eq(topics.teacherId, teacher.id),
+        eq(topics.academicYear, academicYear),
+        eq(topics.status, "published")
+      ));
+
+    if (teacherTopics.length === 0) {
+      result.push({
+        teacherId: teacher.id,
+        teacherName: teacher.name || teacher.email,
+        teacherEmail: teacher.email,
+        teacherType: teacher.teacherType,
+        status: "no_students",
+        totalPending: 0,
+        totalApproved: 0,
+        totalRejected: 0,
+        totalStudents: 0,
+        topics: [],
+      });
+      continue;
+    }
+
+    const topicIds = teacherTopics.map(t => t.id);
+    
+    // 获取这些课题的所有志愿
+    const topicWishes = await db.select().from(wishes)
+      .where(and(
+        inArray(wishes.topicId, topicIds),
+        eq(wishes.academicYear, academicYear)
+      ));
+
+    if (topicWishes.length === 0) {
+      result.push({
+        teacherId: teacher.id,
+        teacherName: teacher.name || teacher.email,
+        teacherEmail: teacher.email,
+        teacherType: teacher.teacherType,
+        status: "no_students",
+        totalPending: 0,
+        totalApproved: 0,
+        totalRejected: 0,
+        totalStudents: 0,
+        topics: teacherTopics.map(t => ({
+          topicId: t.id,
+          topicTitle: t.title,
+          pendingCount: 0,
+          approvedCount: 0,
+          rejectedCount: 0,
+        })),
+      });
+      continue;
+    }
+
+    // 统计各状态数量
+    let totalPending = 0;
+    let totalApproved = 0;
+    let totalRejected = 0;
+
+    const topicsInfo = teacherTopics.map(t => {
+      const topicWishList = topicWishes.filter(w => w.topicId === t.id);
+      const pending = topicWishList.filter(w => w.teacherDecision === "pending").length;
+      const approved = topicWishList.filter(w => w.teacherDecision === "approved").length;
+      const rejected = topicWishList.filter(w => w.teacherDecision === "rejected").length;
+      
+      totalPending += pending;
+      totalApproved += approved;
+      totalRejected += rejected;
+
+      return {
+        topicId: t.id,
+        topicTitle: t.title,
+        pendingCount: pending,
+        approvedCount: approved,
+        rejectedCount: rejected,
+      };
+    });
+
+    // 确定审核状态
+    let status: TeacherReviewStatus;
+    if (totalPending === 0) {
+      status = "completed";
+    } else if (totalApproved > 0 || totalRejected > 0) {
+      status = "partial";
+    } else {
+      status = "not_started";
+    }
+
+    result.push({
+      teacherId: teacher.id,
+      teacherName: teacher.name || teacher.email,
+      teacherEmail: teacher.email,
+      teacherType: teacher.teacherType,
+      status,
+      totalPending,
+      totalApproved,
+      totalRejected,
+      totalStudents: topicWishes.length,
+      topics: topicsInfo,
+    });
+  }
+
+  return result;
+}
+
+export async function getIncompleteReviewTeachers(academicYear: string): Promise<TeacherReviewInfo[]> {
+  const allStatuses = await getTeacherReviewStatuses(academicYear);
+  return allStatuses.filter(t => t.status === "partial" || t.status === "not_started");
+}
+
+// ==================== 历史数据查询 ====================
+
+export async function getMatchesByYear(academicYear: string): Promise<Match[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(matches)
+    .where(eq(matches.academicYear, academicYear))
+    .orderBy(desc(matches.createdAt));
+}
+
+export async function getTeacherHistoryMatches(teacherId: number): Promise<Array<Match & { yearName: string }>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const allMatches = await db.select().from(matches)
+    .where(eq(matches.teacherId, teacherId))
+    .orderBy(desc(matches.createdAt));
+
+  return allMatches.map(m => ({
+    ...m,
+    yearName: m.academicYear || "未知年度",
+  }));
+}
+
+export async function getMatchesByFilters(filters: {
+  academicYear?: string;
+  faculty?: string;
+  studentMajor?: string;
+  teacherId?: number;
+}): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // 获取匹配结果
+  let matchQuery = db.select().from(matches);
+  const conditions: any[] = [];
+
+  if (filters.academicYear) {
+    conditions.push(eq(matches.academicYear, filters.academicYear));
+  }
+  if (filters.teacherId) {
+    conditions.push(eq(matches.teacherId, filters.teacherId));
+  }
+
+  const matchResults = conditions.length > 0 
+    ? await matchQuery.where(and(...conditions))
+    : await matchQuery;
+
+  // 关联学生和课题信息
+  const enrichedResults = [];
+  for (const match of matchResults) {
+    const student = await getUserById(match.studentId);
+    const topic = await getTopicById(match.topicId);
+    const teacher = await getUserById(match.teacherId);
+
+    // 应用学院和专业筛选
+    if (filters.faculty && student?.faculty !== filters.faculty) continue;
+    if (filters.studentMajor && student?.studentMajor !== filters.studentMajor) continue;
+
+    enrichedResults.push({
+      ...match,
+      student,
+      topic,
+      teacher,
+    });
+  }
+
+  return enrichedResults;
+}
+
+
+// ==================== 撤回匹配操作 ====================
+
+export async function revokeMatch(matchId: number): Promise<{ success: boolean; message: string }> {
+  const db = await getDb();
+  if (!db) return { success: false, message: "数据库连接失败" };
+
+  // 获取匹配记录
+  const matchRecord = await db.select().from(matches).where(eq(matches.id, matchId)).limit(1);
+  if (matchRecord.length === 0) {
+    return { success: false, message: "匹配记录不存在" };
+  }
+
+  const match = matchRecord[0];
+
+  // 1. 将课题状态从 used 恢复为 published
+  await db.update(topics).set({ status: "published" }).where(eq(topics.id, match.topicId));
+
+  // 2. 将学生的志愿状态恢复为 pending（待审核）
+  const studentWishes = await db.select().from(wishes)
+    .where(and(
+      eq(wishes.studentId, match.studentId),
+      eq(wishes.academicYear, match.academicYear || "")
+    ));
+  
+  for (const wish of studentWishes) {
+    if (wish.topicId === match.topicId) {
+      // 被匹配的志愿恢复为 selected（已选中待确认）
+      await db.update(wishes).set({ status: "selected" }).where(eq(wishes.id, wish.id));
+    } else {
+      // 其他志愿恢复为 pending
+      await db.update(wishes).set({ status: "pending" }).where(eq(wishes.id, wish.id));
+    }
+  }
+
+  // 3. 删除匹配记录
+  await db.delete(matches).where(eq(matches.id, matchId));
+
+  return { success: true, message: "撤回成功" };
+}
+
+
+// ==================== 论文终稿相关操作 ====================
+
+export async function uploadAiStatement(data: {
+  matchId: number;
+  fileName: string;
+  fileKey: string;
+  fileUrl: string;
+  fileSize: number;
+  mimeType: string;
+}): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  await db.update(thesisDrafts).set({
+    aiStatementFileName: data.fileName,
+    aiStatementFileKey: data.fileKey,
+    aiStatementFileUrl: data.fileUrl,
+    aiStatementFileSize: data.fileSize,
+    aiStatementMimeType: data.mimeType,
+    aiStatementSubmittedAt: toMySQLTimestamp(),
+  }).where(eq(thesisDrafts.matchId, data.matchId));
+
+  return true;
+}
+
+export async function createThesisDraft(data: {
+  studentId: number;
+  matchId: number;
+  fileName: string;
+  fileKey: string;
+  fileUrl: string;
+  fileSize: number;
+  mimeType: string;
+  academicYear?: string;
+  lateSubmission?: number;  // 是否为宽限期提交
+  latePenalty?: number;     // 宽限期扣分
+}): Promise<ThesisDraft | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  // 检查是否已有终稿记录
+  const existing = await db.select().from(thesisDrafts)
+    .where(eq(thesisDrafts.matchId, data.matchId))
+    .limit(1);
+
+  if (existing.length > 0) {
+    // 已有记录，保存历史版本并更新
+    const oldDraft = existing[0];
+    
+    // 保存到历史记录
+    await db.insert(thesisDraftHistory).values({
+      draftId: oldDraft.id,
+      studentId: oldDraft.studentId,
+      fileName: oldDraft.fileName,
+      fileKey: oldDraft.fileKey,
+      fileUrl: oldDraft.fileUrl,
+      fileSize: oldDraft.fileSize,
+      mimeType: oldDraft.mimeType,
+      version: oldDraft.version,
+    });
+
+    // 更新现有记录（包含宽限期信息）
+    await db.update(thesisDrafts).set({
+      fileName: data.fileName,
+      fileKey: data.fileKey,
+      fileUrl: data.fileUrl,
+      fileSize: data.fileSize,
+      mimeType: data.mimeType,
+      version: oldDraft.version + 1,
+      submittedAt: toMySQLTimestamp(),
+      status: "submitted",
+      lateSubmission: data.lateSubmission ?? 0,
+      latePenalty: data.latePenalty ?? 0,
+    }).where(eq(thesisDrafts.id, oldDraft.id));
+
+    const updated = await db.select().from(thesisDrafts)
+      .where(eq(thesisDrafts.id, oldDraft.id))
+      .limit(1);
+    return updated.length > 0 ? updated[0] : null;
+  }
+
+  // 创建新记录（包含宽限期信息）
+  const result = await db.insert(thesisDrafts).values({
+    studentId: data.studentId,
+    matchId: data.matchId,
+    fileName: data.fileName,
+    fileKey: data.fileKey,
+    fileUrl: data.fileUrl,
+    fileSize: data.fileSize,
+    mimeType: data.mimeType,
+    academicYear: data.academicYear,
+    lateSubmission: data.lateSubmission ?? 0,
+    latePenalty: data.latePenalty ?? 0,
+  });
+
+  const insertId = result[0].insertId;
+  const draft = await db.select().from(thesisDrafts)
+    .where(eq(thesisDrafts.id, insertId))
+    .limit(1);
+  return draft.length > 0 ? draft[0] : null;
+}
+
+export async function getThesisDraftByMatchId(matchId: number): Promise<ThesisDraft | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(thesisDrafts)
+    .where(eq(thesisDrafts.matchId, matchId))
+    .limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function getThesisDraftHistory(draftId: number): Promise<ThesisDraftHistory[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(thesisDraftHistory)
+    .where(eq(thesisDraftHistory.draftId, draftId))
+    .orderBy(desc(thesisDraftHistory.version));
+}
+
+export async function getThesisDraftsByTeacherId(teacherId: number, academicYear?: string): Promise<Array<{
+  draft: ThesisDraft;
+  student: User;
+  match: Match;
+  topic: Topic;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // 获取该导师的所有匹配记录
+  let teacherMatches: Match[];
+  if (academicYear) {
+    teacherMatches = await db.select().from(matches)
+      .where(and(
+        eq(matches.teacherId, teacherId),
+        eq(matches.academicYear, academicYear)
+      ));
+  } else {
+    teacherMatches = await db.select().from(matches)
+      .where(eq(matches.teacherId, teacherId));
+  }
+
+  const results: Array<{
+    draft: ThesisDraft;
+    student: User;
+    match: Match;
+    topic: Topic;
+  }> = [];
+
+  for (const match of teacherMatches) {
+    const draft = await getThesisDraftByMatchId(match.id);
+    if (draft) {
+      const student = await getUserById(match.studentId);
+      const topic = await getTopicById(match.topicId);
+      if (student && topic) {
+        results.push({ draft, student, match, topic });
+      }
+    }
+  }
+
+  return results;
+}
+
+export async function getAllThesisDrafts(academicYear?: string): Promise<Array<{
+  draft: ThesisDraft;
+  student: User;
+  match: Match;
+  topic: Topic;
+  teacher: User;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  let allDrafts: ThesisDraft[];
+  if (academicYear) {
+    allDrafts = await db.select().from(thesisDrafts)
+      .where(eq(thesisDrafts.academicYear, academicYear))
+      .orderBy(desc(thesisDrafts.submittedAt));
+  } else {
+    allDrafts = await db.select().from(thesisDrafts)
+      .orderBy(desc(thesisDrafts.submittedAt));
+  }
+
+  const results: Array<{
+    draft: ThesisDraft;
+    student: User;
+    match: Match;
+    topic: Topic;
+    teacher: User;
+  }> = [];
+
+  for (const draft of allDrafts) {
+    const student = await getUserById(draft.studentId);
+    const matchRecord = await db.select().from(matches)
+      .where(eq(matches.id, draft.matchId))
+      .limit(1);
+    
+    if (student && matchRecord.length > 0) {
+      const match = matchRecord[0];
+      const topic = await getTopicById(match.topicId);
+      const teacher = await getUserById(match.teacherId);
+      if (topic && teacher) {
+        results.push({ draft, student, match, topic, teacher });
+      }
+    }
+  }
+
+  return results;
+}
+
+export async function getTransferStudentsWithDraftStatus(academicYear: string): Promise<Array<{
+  student: User;
+  match: Match | null;
+  topic: Topic | null;
+  teacher: User | null;
+  draft: ThesisDraft | null;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // 获取该学年的所有分流学生
+  const transferStudents = await db.select().from(users)
+    .where(and(
+      eq(users.role, "student"),
+      eq(users.studentType, "transfer"),
+      eq(users.academicYear, academicYear)
+    ));
+
+  const results: Array<{
+    student: User;
+    match: Match | null;
+    topic: Topic | null;
+    teacher: User | null;
+    draft: ThesisDraft | null;
+  }> = [];
+
+  for (const student of transferStudents) {
+    const match = await getMatchByStudent(student.id, academicYear);
+    let topic: Topic | null = null;
+    let teacher: User | null = null;
+    let draft: ThesisDraft | null = null;
+
+    if (match) {
+      topic = await getTopicById(match.topicId);
+      teacher = await getUserById(match.teacherId);
+      draft = await getThesisDraftByMatchId(match.id);
+    }
+
+    results.push({ student, match, topic, teacher, draft });
+  }
+
+  return results;
+}
+
+export async function updateThesisDraftStatus(draftId: number, status: "submitted" | "reviewed" | "approved"): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  await db.update(thesisDrafts).set({ status }).where(eq(thesisDrafts.id, draftId));
+  return true;
+}
+
+
+/**
+ * 导师为论文终稿打分
+ * @param draftId 论文终稿ID
+ * @param score 分数（0-100）
+ * @param teacherId 打分导师ID
+ * @returns 是否成功
+ */
+export async function scoreThesisDraft(draftId: number, score: number, teacherId: number): Promise<{ success: boolean; error?: string }> {
+  const db = await getDb();
+  if (!db) return { success: false, error: "数据库连接失败" };
+
+  // 检查论文是否存在
+  const draft = await db.select().from(thesisDrafts)
+    .where(eq(thesisDrafts.id, draftId))
+    .limit(1);
+  
+  if (draft.length === 0) {
+    return { success: false, error: "论文终稿不存在" };
+  }
+
+  // 检查是否已经打分
+  if (draft[0].score !== null) {
+    return { success: false, error: "该论文已经打分，不可更改" };
+  }
+
+  // 验证分数范围
+  if (score < 0 || score > 100) {
+    return { success: false, error: "分数必须在0-100之间" };
+  }
+
+  // 更新打分信息
+  await db.update(thesisDrafts).set({
+    score: score,
+    scoredAt: toMySQLTimestamp(),
+    scoredBy: teacherId,
+  }).where(eq(thesisDrafts.id, draftId));
+
+  return { success: true };
+}
+
+/**
+ * 获取论文终稿的打分信息
+ * @param draftId 论文终稿ID
+ * @returns 打分信息
+ */
+
+// 根据ID获取匹配记录
+export async function getMatchById(id: number): Promise<Match | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(matches).where(eq(matches.id, id)).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+
+// ==================== 第二导师指派相关操作 ====================
+
+/**
+ * 获取待指派第二导师的学生列表
+ */
+export async function getStudentsForSecondTeacherAssignment(filters?: {
+  search?: string;
+  firstTeacherId?: number;
+  academicYear?: string;
+}): Promise<Array<{
+  matchId: number;
+  studentId: number;
+  studentName: string | null;
+  chineseStudentId: string | null;
+  britishStudentId: string | null;
+  firstTeacherId: number;
+  firstTeacherName: string | null;
+  topicTitle: string | null;
+  secondTeacherId: number | null;
+  secondTeacherName: string | null;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const firstTeacher = alias(users, "firstTeacher");
+  const secondTeacher = alias(users, "secondTeacher");
+
+  let query = db.select({
+    matchId: matches.id,
+    studentId: matches.studentId,
+    studentName: users.name,
+    chineseStudentId: users.studentId,
+    britishStudentId: users.sussexId,
+    firstTeacherId: matches.teacherId,
+    firstTeacherName: firstTeacher.name,
+    topicTitle: sql<string>`COALESCE(${topics.titleEn}, ${topics.title})`,
+    secondTeacherId: matches.secondTeacherId,
+    secondTeacherName: secondTeacher.name,
+  })
+  .from(matches)
+  .innerJoin(users, eq(matches.studentId, users.id))
+  .innerJoin(firstTeacher, eq(matches.teacherId, firstTeacher.id))
+  .leftJoin(topics, eq(matches.topicId, topics.id))
+  .leftJoin(secondTeacher, eq(matches.secondTeacherId, secondTeacher.id))
+  .$dynamic();
+
+  const conditions: SQL[] = [];
+  
+  if (filters?.academicYear) {
+    conditions.push(eq(matches.academicYear, filters.academicYear));
+  }
+  
+  if (filters?.firstTeacherId) {
+    conditions.push(eq(matches.teacherId, filters.firstTeacherId));
+  }
+  
+  if (filters?.search) {
+    conditions.push(
+      or(
+        like(users.name, `%${filters.search}%`),
+        like(users.studentId, `%${filters.search}%`),
+        like(users.sussexId, `%${filters.search}%`)
+      )!
+    );
+  }
+
+  if (conditions.length > 0) {
+    query = query.where(and(...conditions));
+  }
+
+  return query.orderBy(desc(matches.createdAt));
+}
+
+/**
+ * 获取所有导师列表（用于选择第二导师）
+ */
+export async function getTeachersForSelection(excludeTeacherId?: number): Promise<Array<{
+  id: number;
+  name: string | null;
+  email: string;
+  teacherType: string | null;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  let query = db.select({
+    id: users.id,
+    name: users.name,
+    email: users.email,
+    teacherType: users.teacherType,
+  })
+  .from(users)
+  .where(eq(users.role, "teacher"))
+  .$dynamic();
+
+  if (excludeTeacherId) {
+    query = query.where(sql`${users.id} != ${excludeTeacherId}`);
+  }
+
+  return query.orderBy(users.name);
+}
+
+/**
+ * 指派第二导师
+ */
+export async function assignSecondTeacher(
+  matchId: number,
+  secondTeacherId: number,
+  operatorId: number
+): Promise<{ success: boolean; error?: string }> {
+  const db = await getDb();
+  if (!db) return { success: false, error: "数据库连接失败" };
+
+  // 获取当前匹配记录
+  const matchRecord = await db.select().from(matches).where(eq(matches.id, matchId)).limit(1);
+  if (matchRecord.length === 0) {
+    return { success: false, error: "匹配记录不存在" };
+  }
+
+  const match = matchRecord[0];
+
+  // 检查第二导师是否与第一导师相同
+  if (match.teacherId === secondTeacherId) {
+    return { success: false, error: "第二导师不能与第一导师相同" };
+  }
+
+  // 记录旧的第二导师ID
+  const oldSecondTeacherId = match.secondTeacherId;
+
+  // 更新匹配记录
+  await db.update(matches).set({
+    secondTeacherId: secondTeacherId,
+  }).where(eq(matches.id, matchId));
+
+  // 记录指派历史（使用systemConfig表存储JSON格式的历史记录）
+  const historyKey = `second_teacher_history_${matchId}`;
+  const existingHistory = await getConfig(historyKey);
+  const history = existingHistory ? JSON.parse(existingHistory) : [];
+  history.push({
+    operatorId,
+    timestamp: toMySQLTimestamp(),
+    oldSecondTeacherId,
+    newSecondTeacherId: secondTeacherId,
+  });
+  await setConfig(historyKey, JSON.stringify(history));
+
+  return { success: true };
+}
+
+/**
+ * 撤销第二导师指派
+ */
+export async function revokeSecondTeacher(
+  matchId: number,
+  operatorId: number
+): Promise<{ success: boolean; error?: string }> {
+  const db = await getDb();
+  if (!db) return { success: false, error: "数据库连接失败" };
+
+  // 获取当前匹配记录
+  const matchRecord = await db.select().from(matches).where(eq(matches.id, matchId)).limit(1);
+  if (matchRecord.length === 0) {
+    return { success: false, error: "匹配记录不存在" };
+  }
+
+  const match = matchRecord[0];
+
+  if (!match.secondTeacherId) {
+    return { success: false, error: "该学生尚未指派第二导师" };
+  }
+
+  // 检查第二导师是否已评分（通过thesisDrafts表检查）
+  const drafts = await db.select().from(thesisDrafts)
+    .where(eq(thesisDrafts.matchId, matchId))
+    .limit(1);
+  
+  if (drafts.length > 0 && drafts[0].secondTeacherScore !== null) {
+    return { success: false, error: "第二导师已评分，无法撤销指派" };
+  }
+
+  // 记录旧的第二导师ID
+  const oldSecondTeacherId = match.secondTeacherId;
+
+  // 清除第二导师
+  await db.update(matches).set({
+    secondTeacherId: null,
+  }).where(eq(matches.id, matchId));
+
+  // 记录撤销历史
+  const historyKey = `second_teacher_history_${matchId}`;
+  const existingHistory = await getConfig(historyKey);
+  const history = existingHistory ? JSON.parse(existingHistory) : [];
+  history.push({
+    operatorId,
+    timestamp: toMySQLTimestamp(),
+    oldSecondTeacherId,
+    newSecondTeacherId: null,
+    action: "revoke",
+  });
+  await setConfig(historyKey, JSON.stringify(history));
+
+  return { success: true };
+}
+
+/**
+ * 获取第二导师指派历史
+ */
+export async function getSecondTeacherAssignmentHistory(matchId: number): Promise<Array<{
+  operatorId: number;
+  operatorName?: string;
+  timestamp: string;
+  oldSecondTeacherId: number | null;
+  oldSecondTeacherName?: string;
+  newSecondTeacherId: number | null;
+  newSecondTeacherName?: string;
+  action?: string;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const historyKey = `second_teacher_history_${matchId}`;
+  const existingHistory = await getConfig(historyKey);
+  if (!existingHistory) return [];
+
+  const history = JSON.parse(existingHistory);
+
+  // 获取所有相关用户的名称
+  const userIds = new Set<number>();
+  for (const record of history) {
+    if (record.operatorId) userIds.add(record.operatorId);
+    if (record.oldSecondTeacherId) userIds.add(record.oldSecondTeacherId);
+    if (record.newSecondTeacherId) userIds.add(record.newSecondTeacherId);
+  }
+
+  const userList = await db.select({ id: users.id, name: users.name })
+    .from(users)
+    .where(inArray(users.id, Array.from(userIds)));
+  
+  const userMap = new Map(userList.map(u => [u.id, u.name]));
+
+  return history.map((record: any) => ({
+    ...record,
+    operatorName: userMap.get(record.operatorId),
+    oldSecondTeacherName: record.oldSecondTeacherId ? userMap.get(record.oldSecondTeacherId) : null,
+    newSecondTeacherName: record.newSecondTeacherId ? userMap.get(record.newSecondTeacherId) : null,
+  }));
+}
+
+/**
+ * 批量指派第二导师
+ */
+export async function batchAssignSecondTeacher(
+  assignments: Array<{ studentName: string; secondTeacherName: string }>,
+  operatorId: number,
+  academicYear: string
+): Promise<{ success: number; failed: Array<{ studentName: string; error: string }> }> {
+  const db = await getDb();
+  if (!db) return { success: 0, failed: assignments.map(a => ({ studentName: a.studentName, error: "数据库连接失败" })) };
+
+  const results = { success: 0, failed: [] as Array<{ studentName: string; error: string }> };
+
+  for (const assignment of assignments) {
+    // 查找学生
+    const studentResult = await db.select({ id: users.id })
+      .from(users)
+      .where(and(
+        eq(users.role, "student"),
+        eq(users.name, assignment.studentName)
+      ))
+      .limit(1);
+
+    if (studentResult.length === 0) {
+      results.failed.push({ studentName: assignment.studentName, error: "学生不存在" });
+      continue;
+    }
+
+    // 查找第二导师
+    const teacherResult = await db.select({ id: users.id })
+      .from(users)
+      .where(and(
+        eq(users.role, "teacher"),
+        eq(users.name, assignment.secondTeacherName)
+      ))
+      .limit(1);
+
+    if (teacherResult.length === 0) {
+      results.failed.push({ studentName: assignment.studentName, error: `导师 "${assignment.secondTeacherName}" 不存在` });
+      continue;
+    }
+
+    // 查找匹配记录
+    const matchResult = await db.select({ id: matches.id, teacherId: matches.teacherId })
+      .from(matches)
+      .where(and(
+        eq(matches.studentId, studentResult[0].id),
+        eq(matches.academicYear, academicYear)
+      ))
+      .limit(1);
+
+    if (matchResult.length === 0) {
+      results.failed.push({ studentName: assignment.studentName, error: "该学生没有匹配记录" });
+      continue;
+    }
+
+    // 检查是否与第一导师相同
+    if (matchResult[0].teacherId === teacherResult[0].id) {
+      results.failed.push({ studentName: assignment.studentName, error: "第二导师不能与第一导师相同" });
+      continue;
+    }
+
+    // 执行指派
+    const assignResult = await assignSecondTeacher(matchResult[0].id, teacherResult[0].id, operatorId);
+    if (assignResult.success) {
+      results.success++;
+    } else {
+      results.failed.push({ studentName: assignment.studentName, error: assignResult.error || "指派失败" });
+    }
+  }
+
+  return results;
+}
+
+
+// ==================== 第二导师评审相关操作 ====================
+
+/**
+ * 获取第二导师的评审任务列表
+ * @param teacherId 第二导师ID
+ * @param academicYear 可选的学年筛选
+ */
+export async function getSecondTeacherReviewTasks(teacherId: number, academicYear?: string): Promise<Array<{
+  matchId: number;
+  studentId: number;
+  studentName: string | null;
+  chineseStudentId: string | null;
+  britishStudentId: string | null;
+  firstTeacherId: number;
+  firstTeacherName: string | null;
+  topicTitle: string;
+  topicTitleEn: string | null;
+  draftId: number | null;
+  draftFileName: string | null;
+  draftFileUrl: string | null;
+  draftSubmittedAt: string | null;
+  firstTeacherScore: number | null;
+  firstTeacherScoredAt: string | null;
+  secondTeacherScore: number | null;
+  secondTeacherScoredAt: string | null;
+  latePenalty: number;
+  finalScore: number | null;
+  needsNegotiation: boolean;
+  bothScored: boolean;
+  status: 'pending' | 'scored';
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const firstTeacher = alias(users, "firstTeacher");
+
+  // 查询被指派为第二导师的所有匹配记录
+  let query = db.select({
+    matchId: matches.id,
+    studentId: matches.studentId,
+    studentName: users.name,
+    chineseStudentId: users.studentId,
+    britishStudentId: users.sussexId,
+    firstTeacherId: matches.teacherId,
+    firstTeacherName: firstTeacher.name,
+    topicTitle: topics.title,
+    topicTitleEn: topics.titleEn,
+    academicYear: matches.academicYear,
+  })
+  .from(matches)
+  .innerJoin(users, eq(matches.studentId, users.id))
+  .innerJoin(firstTeacher, eq(matches.teacherId, firstTeacher.id))
+  .innerJoin(topics, eq(matches.topicId, topics.id))
+  .where(eq(matches.secondTeacherId, teacherId))
+  .$dynamic();
+
+  if (academicYear) {
+    query = query.where(and(
+      eq(matches.secondTeacherId, teacherId),
+      eq(matches.academicYear, academicYear)
+    ));
+  }
+
+  const matchList = await query.orderBy(desc(matches.createdAt));
+
+  // 获取每个匹配的论文终稿信息
+  const results: Array<{
+    matchId: number;
+    studentId: number;
+    studentName: string | null;
+    chineseStudentId: string | null;
+    britishStudentId: string | null;
+    firstTeacherId: number;
+    firstTeacherName: string | null;
+    topicTitle: string;
+    topicTitleEn: string | null;
+    draftId: number | null;
+    draftFileName: string | null;
+    draftFileUrl: string | null;
+    draftSubmittedAt: string | null;
+    firstTeacherScore: number | null;
+    firstTeacherScoredAt: string | null;
+    secondTeacherScore: number | null;
+    secondTeacherScoredAt: string | null;
+    latePenalty: number;
+    finalScore: number | null;
+    needsNegotiation: boolean;
+    bothScored: boolean;
+    status: 'pending' | 'scored';
+  }> = [];
+
+  for (const match of matchList) {
+    // 获取论文终稿信息
+    const draft = await getThesisDraftByMatchId(match.matchId);
+    
+    results.push({
+      matchId: match.matchId,
+      studentId: match.studentId,
+      studentName: match.studentName,
+      chineseStudentId: match.chineseStudentId,
+      britishStudentId: match.britishStudentId,
+      firstTeacherId: match.firstTeacherId,
+      firstTeacherName: match.firstTeacherName,
+      topicTitle: match.topicTitle,
+      topicTitleEn: match.topicTitleEn,
+      draftId: draft?.id ?? null,
+      draftFileName: draft?.fileName ?? null,
+      draftFileUrl: draft?.fileUrl ?? null,
+      draftSubmittedAt: draft?.submittedAt ?? null,
+      firstTeacherScore: draft?.score ?? null,
+      firstTeacherScoredAt: draft?.scoredAt ?? null,
+      secondTeacherScore: draft?.secondTeacherScore ?? null,
+      secondTeacherScoredAt: draft?.secondTeacherScoredAt ?? null,
+      latePenalty: draft?.latePenalty ?? 0,
+      finalScore: draft?.finalScore !== null && draft?.finalScore !== undefined ? Number(draft.finalScore) : null,
+      needsNegotiation: (draft?.score !== null && draft?.score !== undefined && draft?.secondTeacherScore !== null && draft?.secondTeacherScore !== undefined && draft?.finalScore === null) && Math.abs((draft?.score ?? 0) - (draft?.secondTeacherScore ?? 0)) > 10,
+      bothScored: (draft?.score !== null && draft?.score !== undefined) && (draft?.secondTeacherScore !== null && draft?.secondTeacherScore !== undefined),
+      status: (draft?.secondTeacherScore !== null && draft?.secondTeacherScore !== undefined) ? 'scored' : 'pending',
+    });
+  }
+
+  return results;
+}
+
+/**
+ * 第二导师提交评分
+ * @param draftId 论文终稿ID
+ * @param score 分数（0-100，支持一位小数）
+ * @param teacherId 第二导师ID
+ */
+export async function submitSecondTeacherScore(
+  draftId: number,
+  score: number,
+  teacherId: number
+): Promise<{ success: boolean; error?: string; message?: string; scoreDifferent?: boolean; firstScore?: number; secondScore?: number }> {
+  const db = await getDb();
+  if (!db) return { success: false, error: "数据库连接失败" };
+
+  // 检查论文是否存在
+  const draft = await db.select().from(thesisDrafts)
+    .where(eq(thesisDrafts.id, draftId))
+    .limit(1);
+  
+  if (draft.length === 0) {
+    return { success: false, error: "论文终稿不存在" };
+  }
+
+  // 检查是否已经评分
+  if (draft[0].secondTeacherScore !== null) {
+    return { success: false, error: "您已经对该论文评分，不可更改" };
+  }
+
+  // 验证分数范围（0-100，支持一位小数）
+  if (score < 0 || score > 100) {
+    return { success: false, error: "分数必须在0-100之间" };
+  }
+
+  // 获取匹配记录，验证该导师是否为第二导师
+  const matchRecord = await db.select().from(matches)
+    .where(eq(matches.id, draft[0].matchId))
+    .limit(1);
+  
+  if (matchRecord.length === 0) {
+    return { success: false, error: "匹配记录不存在" };
+  }
+
+  if (matchRecord[0].secondTeacherId !== teacherId) {
+    return { success: false, error: "您不是该学生的第二导师" };
+  }
+
+  // 检查第一导师是否已评分
+  if (draft[0].score === null) {
+    return { success: false, error: "第一导师尚未评分，请等待第一导师评分后再进行评审" };
+  }
+
+  const firstScore = draft[0].score!;
+  const secondScore = Math.round(score * 10) / 10; // 保留一位小数
+  const now = toMySQLTimestamp();
+  
+  // 如果两个分数相同，直接确定最终成绩
+  if (firstScore === secondScore) {
+    // 扣除迟交罚分
+    const penalty = draft[0].latePenalty ?? 0;
+    const computedFinal = Math.max(0, Math.round((firstScore - penalty) * 10) / 10);
+    await db.update(thesisDrafts).set({
+      secondTeacherScore: secondScore,
+      secondTeacherScoredAt: now,
+      secondTeacherScoredBy: teacherId,
+      finalScore: String(computedFinal),
+      finalScoreConfirmedAt: now,
+      requestAverage: 0,
+      averageConfirmed: 1,
+    }).where(eq(thesisDrafts.id, draftId));
+    return { success: true, message: penalty > 0 ? `两位导师评分一致，最终成绩已自动确定（已扣除迟交罚分${penalty}分）` : "两位导师评分一致，最终成绩已自动确定" };
+  }
+  
+  // 分数不同，等待第二导师申请平均分
+  await db.update(thesisDrafts).set({
+    secondTeacherScore: secondScore,
+    secondTeacherScoredAt: now,
+    secondTeacherScoredBy: teacherId,
+  }).where(eq(thesisDrafts.id, draftId));
+
+  return { success: true, scoreDifferent: true, firstScore, secondScore };
+}
+
+/**
+ * 检查第二导师是否已评分（用于判断是否可以撤销指派）
+ * @param matchId 匹配ID
+ */
+/**
+ * 获取第一导师的评审任务列表（作为第一导师的学生论文）
+ * @param teacherId 第一导师ID
+ * @param academicYear 可选的学年筛选
+ */
+export async function getFirstTeacherReviewTasks(teacherId: number, academicYear?: string): Promise<Array<{
+  matchId: number;
+  studentId: number;
+  studentName: string | null;
+  chineseStudentId: string | null;
+  britishStudentId: string | null;
+  secondTeacherId: number | null;
+  secondTeacherName: string | null;
+  topicTitle: string;
+  topicTitleEn: string | null;
+  draftId: number | null;
+  draftFileName: string | null;
+  draftFileUrl: string | null;
+  draftSubmittedAt: string | null;
+  firstTeacherScore: number | null;
+  firstTeacherScoredAt: string | null;
+  secondTeacherScore: number | null;
+  secondTeacherScoredAt: string | null;
+  latePenalty: number;
+  finalScore: number | null;
+  needsNegotiation: boolean;
+  status: 'pending' | 'scored';
+  bothScored: boolean;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const secondTeacher = alias(users, "secondTeacher");
+
+  // 查询作为第一导师的所有匹配记录（仅分流学生）
+  let conditions: SQL[] = [
+    eq(matches.teacherId, teacherId),
+    eq(users.studentType, "transfer"), // 只有分流学生需要评分
+  ];
+
+  if (academicYear) {
+    conditions.push(eq(matches.academicYear, academicYear));
+  }
+
+  const matchList = await db.select({
+    matchId: matches.id,
+    studentId: matches.studentId,
+    studentName: users.name,
+    chineseStudentId: users.studentId,
+    britishStudentId: users.sussexId,
+    secondTeacherId: matches.secondTeacherId,
+    secondTeacherName: secondTeacher.name,
+    topicTitle: topics.title,
+    topicTitleEn: topics.titleEn,
+    academicYear: matches.academicYear,
+  })
+  .from(matches)
+  .innerJoin(users, eq(matches.studentId, users.id))
+  .innerJoin(topics, eq(matches.topicId, topics.id))
+  .leftJoin(secondTeacher, eq(matches.secondTeacherId, secondTeacher.id))
+  .where(and(...conditions))
+  .orderBy(desc(matches.createdAt));
+
+  // 获取每个匹配的论文终稿信息
+  const results: Array<{
+    matchId: number;
+    studentId: number;
+    studentName: string | null;
+    chineseStudentId: string | null;
+    britishStudentId: string | null;
+    secondTeacherId: number | null;
+    secondTeacherName: string | null;
+    topicTitle: string;
+    topicTitleEn: string | null;
+    draftId: number | null;
+    draftFileName: string | null;
+    draftFileUrl: string | null;
+    draftSubmittedAt: string | null;
+    firstTeacherScore: number | null;
+    firstTeacherScoredAt: string | null;
+    secondTeacherScore: number | null;
+    secondTeacherScoredAt: string | null;
+    latePenalty: number;
+    finalScore: number | null;
+    needsNegotiation: boolean;
+    status: 'pending' | 'scored';
+    bothScored: boolean;
+  }> = [];
+
+  for (const match of matchList) {
+    // 获取论文终稿信息
+    const draft = await getThesisDraftByMatchId(match.matchId);
+    
+    const firstScored = draft?.score !== null && draft?.score !== undefined;
+    const secondScored = draft?.secondTeacherScore !== null && draft?.secondTeacherScore !== undefined;
+    const bothScored = firstScored && secondScored;
+    
+    results.push({
+      matchId: match.matchId,
+      studentId: match.studentId,
+      studentName: match.studentName,
+      chineseStudentId: match.chineseStudentId,
+      britishStudentId: match.britishStudentId,
+      secondTeacherId: match.secondTeacherId,
+      secondTeacherName: match.secondTeacherName,
+      topicTitle: match.topicTitle,
+      topicTitleEn: match.topicTitleEn,
+      draftId: draft?.id ?? null,
+      draftFileName: draft?.fileName ?? null,
+      draftFileUrl: draft?.fileUrl ?? null,
+      draftSubmittedAt: draft?.submittedAt ?? null,
+      firstTeacherScore: draft?.score ?? null,
+      firstTeacherScoredAt: draft?.scoredAt ?? null,
+      // 只有双方都评分后才返回第二导师分数
+      secondTeacherScore: bothScored ? (draft?.secondTeacherScore ?? null) : null,
+      secondTeacherScoredAt: bothScored ? (draft?.secondTeacherScoredAt ?? null) : null,
+      latePenalty: draft?.latePenalty ?? 0,
+      finalScore: draft?.finalScore !== null && draft?.finalScore !== undefined ? Number(draft.finalScore) : null,
+      needsNegotiation: bothScored && draft?.finalScore === null && Math.abs((draft?.score ?? 0) - (draft?.secondTeacherScore ?? 0)) > 10,
+      status: firstScored ? 'scored' : 'pending',
+      bothScored,
+    });
+  }
+
+  return results;
+}
+
+/**
+ * 获取第二导师的评审任务列表（带评分可见性控制）
+ * @param teacherId 第二导师ID
+ * @param academicYear 可选的学年筛选
+ */
+export async function getSecondTeacherReviewTasksWithVisibility(teacherId: number, academicYear?: string): Promise<Array<{
+  matchId: number;
+  studentId: number;
+  studentName: string | null;
+  chineseStudentId: string | null;
+  britishStudentId: string | null;
+  firstTeacherId: number;
+  firstTeacherName: string | null;
+  topicTitle: string;
+  topicTitleEn: string | null;
+  draftId: number | null;
+  draftFileName: string | null;
+  draftFileUrl: string | null;
+  draftSubmittedAt: string | null;
+  firstTeacherScore: number | null;
+  firstTeacherScoredAt: string | null;
+  secondTeacherScore: number | null;
+  secondTeacherScoredAt: string | null;
+  latePenalty: number;
+  finalScore: number | null;
+  needsNegotiation: boolean;
+  status: 'pending' | 'scored';
+  bothScored: boolean;
+  canScore: boolean;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const firstTeacher = alias(users, "firstTeacher");
+
+  // 查询被指派为第二导师的所有匹配记录
+  let conditions: SQL[] = [eq(matches.secondTeacherId, teacherId)];
+
+  if (academicYear) {
+    conditions.push(eq(matches.academicYear, academicYear));
+  }
+
+  const matchList = await db.select({
+    matchId: matches.id,
+    studentId: matches.studentId,
+    studentName: users.name,
+    chineseStudentId: users.studentId,
+    britishStudentId: users.sussexId,
+    firstTeacherId: matches.teacherId,
+    firstTeacherName: firstTeacher.name,
+    topicTitle: topics.title,
+    topicTitleEn: topics.titleEn,
+    academicYear: matches.academicYear,
+  })
+  .from(matches)
+  .innerJoin(users, eq(matches.studentId, users.id))
+  .innerJoin(firstTeacher, eq(matches.teacherId, firstTeacher.id))
+  .innerJoin(topics, eq(matches.topicId, topics.id))
+  .where(and(...conditions))
+  .orderBy(desc(matches.createdAt));
+
+  // 获取每个匹配的论文终稿信息
+  const results: Array<{
+    matchId: number;
+    studentId: number;
+    studentName: string | null;
+    chineseStudentId: string | null;
+    britishStudentId: string | null;
+    firstTeacherId: number;
+    firstTeacherName: string | null;
+    topicTitle: string;
+    topicTitleEn: string | null;
+    draftId: number | null;
+    draftFileName: string | null;
+    draftFileUrl: string | null;
+    draftSubmittedAt: string | null;
+    firstTeacherScore: number | null;
+    firstTeacherScoredAt: string | null;
+    secondTeacherScore: number | null;
+    secondTeacherScoredAt: string | null;
+    latePenalty: number;
+    finalScore: number | null;
+    needsNegotiation: boolean;
+    status: 'pending' | 'scored';
+    bothScored: boolean;
+    canScore: boolean;
+  }> = [];
+
+  for (const match of matchList) {
+    // 获取论文终稿信息
+    const draft = await getThesisDraftByMatchId(match.matchId);
+    
+    const firstScored = draft?.score !== null && draft?.score !== undefined;
+    const secondScored = draft?.secondTeacherScore !== null && draft?.secondTeacherScore !== undefined;
+    const bothScored = firstScored && secondScored;
+    // 第二导师可以评分的条件：论文已上传且第二导师尚未评分
+    const canScore = draft !== null && !secondScored;
+    
+    results.push({
+      matchId: match.matchId,
+      studentId: match.studentId,
+      studentName: match.studentName,
+      chineseStudentId: match.chineseStudentId,
+      britishStudentId: match.britishStudentId,
+      firstTeacherId: match.firstTeacherId,
+      firstTeacherName: match.firstTeacherName,
+      topicTitle: match.topicTitle,
+      topicTitleEn: match.topicTitleEn,
+      draftId: draft?.id ?? null,
+      draftFileName: draft?.fileName ?? null,
+      draftFileUrl: draft?.fileUrl ?? null,
+      draftSubmittedAt: draft?.submittedAt ?? null,
+      // 只有双方都评分后才返回第一导师分数
+      firstTeacherScore: bothScored ? (draft?.score ?? null) : null,
+      firstTeacherScoredAt: bothScored ? (draft?.scoredAt ?? null) : null,
+      secondTeacherScore: draft?.secondTeacherScore ?? null,
+      secondTeacherScoredAt: draft?.secondTeacherScoredAt ?? null,
+      latePenalty: draft?.latePenalty ?? 0,
+      finalScore: draft?.finalScore !== null && draft?.finalScore !== undefined ? Number(draft.finalScore) : null,
+      needsNegotiation: bothScored && draft?.finalScore === null && Math.abs((draft?.score ?? 0) - (draft?.secondTeacherScore ?? 0)) > 10,
+      status: secondScored ? 'scored' : 'pending',
+      bothScored,
+      canScore,
+    });
+  }
+
+  return results;
+}
+
+/**
+ * 第二导师提交评分（移除第一导师必须先评分的限制）
+ * @param draftId 论文终稿ID
+ * @param score 分数（0-100，支持一位小数）
+ * @param teacherId 第二导师ID
+ */
+// ==================== 评分统计相关函数 ====================
+
+// 获取所有论文的评分统计数据
+export async function getScoreStatistics(academicYear?: string): Promise<{
+  id: number;
+  studentId: number;
+  studentName: string;
+  chineseStudentId: string;
+  englishStudentId: string;
+  topicTitle: string;
+  teacherName: string;
+  secondTeacherName: string | null;
+  firstScore: number | null;
+  secondScore: number | null;
+  finalScore: number | null;
+  scoreDifference: number | null;
+  firstTeacherComment: string | null;
+  secondTeacherComment: string | null;
+  submittedAt: string;
+}[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const currentYear = academicYear || await getConfig("currentAcademicYear") || "2024-2025";
+
+  const result = await db.select({
+    id: thesisDrafts.id,
+    studentId: thesisDrafts.studentId,
+    studentName: users.name,
+    chineseStudentId: users.studentId,
+    englishStudentId: users.sussexId,
+    topicTitle: sql<string>`(SELECT COALESCE(titleEn, title) FROM topics WHERE id = (SELECT topicId FROM matches WHERE id = ${thesisDrafts.matchId}))`,
+    teacherId: sql<number>`(SELECT teacherId FROM matches WHERE id = ${thesisDrafts.matchId})`,
+    teacherName: sql<string>`(SELECT name FROM users WHERE id = (SELECT teacherId FROM matches WHERE id = ${thesisDrafts.matchId}))`,
+    secondTeacherId: sql<number>`(SELECT secondTeacherId FROM matches WHERE id = ${thesisDrafts.matchId})`,
+    secondTeacherName: sql<string>`(SELECT name FROM users WHERE id = (SELECT secondTeacherId FROM matches WHERE id = ${thesisDrafts.matchId}))`,
+    firstScore: thesisDrafts.score,
+    secondScore: thesisDrafts.secondTeacherScore,
+    finalScore: thesisDrafts.finalScore,
+    firstTeacherComment: thesisDrafts.firstTeacherComment,
+    secondTeacherComment: thesisDrafts.secondTeacherComment,
+    submittedAt: thesisDrafts.submittedAt,
+  })
+  .from(thesisDrafts)
+  .leftJoin(users, eq(users.id, thesisDrafts.studentId))
+  .where(eq(thesisDrafts.academicYear, currentYear))
+  .orderBy(desc(thesisDrafts.submittedAt));
+
+  return result.map(item => ({
+    ...item,
+    studentName: item.studentName || "未知",
+    chineseStudentId: item.chineseStudentId || "",
+    englishStudentId: item.englishStudentId || "",
+    topicTitle: item.topicTitle || "未知题目",
+    teacherName: item.teacherName || "未知",
+    secondTeacherName: item.secondTeacherName || null,
+    finalScore: item.finalScore ? parseFloat(item.finalScore) : null,
+    scoreDifference: (item.firstScore !== null && item.secondScore !== null) 
+      ? Math.abs(item.firstScore - item.secondScore) 
+      : null,
+  }));
+}
+
+// 获取评分统计概览
+export async function getScoreStatisticsOverview(academicYear?: string): Promise<{
+  totalDrafts: number;
+  scoredByFirst: number;
+  scoredBySecond: number;
+  bothScored: number;
+  finalScoreConfirmed: number;
+  avgFirstScore: number | null;
+  avgSecondScore: number | null;
+  avgFinalScore: number | null;
+  avgScoreDifference: number | null;
+  largeDifferenceCount: number;
+}> {
+  const db = await getDb();
+  if (!db) return {
+    totalDrafts: 0,
+    scoredByFirst: 0,
+    scoredBySecond: 0,
+    bothScored: 0,
+    finalScoreConfirmed: 0,
+    avgFirstScore: null,
+    avgSecondScore: null,
+    avgFinalScore: null,
+    avgScoreDifference: null,
+    largeDifferenceCount: 0,
+  };
+
+  const currentYear = academicYear || await getConfig("currentAcademicYear") || "2024-2025";
+
+  const drafts = await db.select({
+    firstScore: thesisDrafts.score,
+    secondScore: thesisDrafts.secondTeacherScore,
+    finalScore: thesisDrafts.finalScore,
+  })
+  .from(thesisDrafts)
+  .where(eq(thesisDrafts.academicYear, currentYear));
+
+  const totalDrafts = drafts.length;
+  const scoredByFirst = drafts.filter(d => d.firstScore !== null).length;
+  const scoredBySecond = drafts.filter(d => d.secondScore !== null).length;
+  const bothScored = drafts.filter(d => d.firstScore !== null && d.secondScore !== null).length;
+  const finalScoreConfirmed = drafts.filter(d => d.finalScore !== null).length;
+
+  const firstScores = drafts.filter(d => d.firstScore !== null).map(d => d.firstScore!);
+  const secondScores = drafts.filter(d => d.secondScore !== null).map(d => d.secondScore!);
+  const bothScoredDrafts = drafts.filter(d => d.firstScore !== null && d.secondScore !== null);
+
+  const avgFirstScore = firstScores.length > 0 
+    ? Math.round(firstScores.reduce((a, b) => a + b, 0) / firstScores.length * 10) / 10 
+    : null;
+  const avgSecondScore = secondScores.length > 0 
+    ? Math.round(secondScores.reduce((a, b) => a + b, 0) / secondScores.length * 10) / 10 
+    : null;
+
+  const finalScores = drafts.filter(d => d.finalScore !== null).map(d => parseFloat(d.finalScore!));
+  const avgFinalScore = finalScores.length > 0 
+    ? Math.round(finalScores.reduce((a, b) => a + b, 0) / finalScores.length * 10) / 10 
+    : null;
+
+  const scoreDifferences = bothScoredDrafts.map(d => Math.abs(d.firstScore! - d.secondScore!));
+  const avgScoreDifference = scoreDifferences.length > 0 
+    ? Math.round(scoreDifferences.reduce((a, b) => a + b, 0) / scoreDifferences.length * 10) / 10 
+    : null;
+
+  // 分数差异大于10分的数量
+  const largeDifferenceCount = scoreDifferences.filter(d => d > 10).length;
+
+  return {
+    totalDrafts,
+    scoredByFirst,
+    scoredBySecond,
+    bothScored,
+    finalScoreConfirmed,
+    avgFirstScore,
+    avgSecondScore,
+    avgFinalScore,
+    avgScoreDifference,
+    largeDifferenceCount,
+  };
+}
+
+
+// 第一导师评分（带评语）
+export async function scoreThesisDraftWithComment(
+  draftId: number, 
+  score: number, 
+  teacherId: number,
+  comment?: string
+): Promise<{ success: boolean; error?: string }> {
+  const db = await getDb();
+  if (!db) return { success: false, error: "数据库连接失败" };
+
+  // 检查论文是否存在
+  const draft = await db.select().from(thesisDrafts).where(eq(thesisDrafts.id, draftId)).limit(1);
+  if (draft.length === 0) {
+    return { success: false, error: "论文不存在" };
+  }
+
+  // 检查是否已评分
+  if (draft[0].score !== null) {
+    return { success: false, error: "该论文已评分，不可重复评分" };
+  }
+
+  // 更新评分和评语
+  await db.update(thesisDrafts).set({
+    score: Math.round(score * 10) / 10, // 保留一位小数
+    scoredAt: toMySQLTimestamp(),
+    scoredBy: teacherId,
+    firstTeacherComment: comment || null,
+  }).where(eq(thesisDrafts.id, draftId));
+
+  return { success: true };
+}
+
+// 第二导师评分（带评语）
+export async function submitSecondTeacherScoreWithComment(
+  draftId: number, 
+  score: number, 
+  teacherId: number,
+  comment?: string
+): Promise<{ success: boolean; error?: string; message?: string; scoreDifferent?: boolean; needNegotiation?: boolean; firstScore?: number; secondScore?: number; finalScore?: number; scoreDiff?: number }> {
+  const db = await getDb();
+  if (!db) return { success: false, error: "数据库连接失败" };
+
+  // 检查论文是否存在
+  const draft = await db.select().from(thesisDrafts).where(eq(thesisDrafts.id, draftId)).limit(1);
+  if (draft.length === 0) {
+    return { success: false, error: "论文不存在" };
+  }
+
+  // 检查是否已评分
+  if (draft[0].secondTeacherScore !== null) {
+    return { success: false, error: "该论文已评分，不可重复评分" };
+  }
+
+  // 检查第一导师是否已评分
+  if (draft[0].score === null) {
+    return { success: false, error: "第一导师尚未评分，请等待第一导师评分后再进行评审" };
+  }
+
+  const firstScore = draft[0].score!;
+  const secondScore = Math.round(score * 10) / 10; // 保留一位小数
+  const now = toMySQLTimestamp();
+  
+  // 更新第二导师指派记录状态为已完成
+  const matchResult = await db.select({ matchId: thesisDrafts.matchId }).from(thesisDrafts).where(eq(thesisDrafts.id, draftId)).limit(1);
+  if (matchResult.length > 0) {
+    await db.update(supervisorAssignments).set({
+      status: 'completed',
+    }).where(eq(supervisorAssignments.matchId, matchResult[0].matchId));
+  }
+  
+  // 计算分差
+  const scoreDiff = Math.abs(firstScore - secondScore);
+  const averageScore = Math.round((firstScore + secondScore) / 2 * 10) / 10; // 保留一位小数
+  
+  // 分差≤0分（评分一致）或分差≤10分，直接取平均分作为最终成绩
+  if (scoreDiff <= 10) {
+    // 扣除迟交罚分
+    const penalty = draft[0].latePenalty ?? 0;
+    const computedFinal = Math.max(0, Math.round((averageScore - penalty) * 10) / 10);
+    await db.update(thesisDrafts).set({
+      secondTeacherScore: secondScore,
+      secondTeacherScoredAt: now,
+      secondTeacherScoredBy: teacherId,
+      secondTeacherComment: comment || null,
+      finalScore: String(computedFinal),
+      finalScoreConfirmedAt: now,
+      requestAverage: 0,
+      averageConfirmed: 1,
+    }).where(eq(thesisDrafts.id, draftId));
+    
+    const penaltyMsg = penalty > 0 ? `（已扣除迟交罚分${penalty}分）` : '';
+    if (firstScore === secondScore) {
+      return { success: true, message: `两位导师评分一致，最终成绩已自动确定${penaltyMsg}`, firstScore, secondScore, finalScore: computedFinal };
+    } else {
+      return { success: true, message: `分差${scoreDiff}分（≤10分），最终成绩已自动取平均分${penaltyMsg}`, firstScore, secondScore, finalScore: computedFinal };
+    }
+  }
+  
+  // 分差>10分，需要导师协商后修改成绩
+  await db.update(thesisDrafts).set({
+    secondTeacherScore: secondScore,
+    secondTeacherScoredAt: now,
+    secondTeacherScoredBy: teacherId,
+    secondTeacherComment: comment || null,
+  }).where(eq(thesisDrafts.id, draftId));
+
+  return { success: true, scoreDifferent: true, needNegotiation: true, firstScore, secondScore, scoreDiff, message: `分差${scoreDiff}分（>10分），请两位导师自行协商后修改成绩` };
+}
+
+
+// ==================== 题目修改申请相关函数 ====================
+
+/**
+ * 学生提交题目修改申请
+ */
+export async function submitTitleChangeRequest(
+  matchId: number,
+  studentId: number,
+  teacherId: number,
+  originalTitle: string,
+  newTitle: string,
+  reason?: string,
+  academicYear?: string
+): Promise<{ success: boolean; error?: string; requestId?: number }> {
+  const db = await getDb();
+  if (!db) return { success: false, error: "数据库连接失败" };
+
+  // 检查是否有待处理的申请
+  const pendingRequests = await db.select().from(titleChangeRequests)
+    .where(and(
+      eq(titleChangeRequests.matchId, matchId),
+      eq(titleChangeRequests.status, 'pending')
+    ));
+  
+  if (pendingRequests.length > 0) {
+    return { success: false, error: "您已有待处理的题目修改申请，请等待导师审核" };
+  }
+
+  const result = await db.insert(titleChangeRequests).values({
+    matchId,
+    studentId,
+    teacherId,
+    originalTitle,
+    newTitle,
+    reason,
+    academicYear,
+    status: 'pending',
+  });
+
+  return { success: true, requestId: result[0].insertId };
+}
+
+/**
+ * 获取学生的题目修改申请历史
+ */
+export async function getStudentTitleChangeRequests(studentId: number): Promise<TitleChangeRequest[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(titleChangeRequests)
+    .where(eq(titleChangeRequests.studentId, studentId))
+    .orderBy(desc(titleChangeRequests.createdAt));
+}
+
+/**
+ * 获取导师待审核的题目修改申请列表
+ */
+export async function getTeacherPendingTitleChangeRequests(teacherId: number): Promise<Array<{
+  id: number;
+  matchId: number;
+  studentId: number;
+  studentName: string | null;
+  chineseStudentId: string | null;
+  englishStudentId: string | null;
+  originalTitle: string;
+  newTitle: string;
+  reason: string | null;
+  status: 'pending' | 'approved' | 'rejected';
+  createdAt: string;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const requests = await db.select().from(titleChangeRequests)
+    .where(and(
+      eq(titleChangeRequests.teacherId, teacherId),
+      eq(titleChangeRequests.status, 'pending')
+    ))
+    .orderBy(desc(titleChangeRequests.createdAt));
+
+  const results: Array<{
+    id: number;
+    matchId: number;
+    studentId: number;
+    studentName: string | null;
+    chineseStudentId: string | null;
+    englishStudentId: string | null;
+    originalTitle: string;
+    newTitle: string;
+    reason: string | null;
+    status: 'pending' | 'approved' | 'rejected';
+    createdAt: string;
+  }> = [];
+
+  for (const req of requests) {
+    const student = await db.select().from(users).where(eq(users.id, req.studentId)).limit(1);
+    results.push({
+      id: req.id,
+      matchId: req.matchId,
+      studentId: req.studentId,
+      studentName: student[0]?.name || null,
+      chineseStudentId: student[0]?.studentId || null,
+      englishStudentId: student[0]?.sussexId || null,
+      originalTitle: req.originalTitle,
+      newTitle: req.newTitle,
+      reason: req.reason,
+      status: req.status as 'pending' | 'approved' | 'rejected',
+      createdAt: req.createdAt,
+    });
+  }
+
+  return results;
+}
+
+/**
+ * 获取导师所有题目修改申请（包括已处理的）
+ */
+export async function getTeacherAllTitleChangeRequests(teacherId: number): Promise<Array<{
+  id: number;
+  matchId: number;
+  studentId: number;
+  studentName: string | null;
+  chineseStudentId: string | null;
+  englishStudentId: string | null;
+  originalTitle: string;
+  newTitle: string;
+  reason: string | null;
+  status: 'pending' | 'approved' | 'rejected';
+  reviewedAt: string | null;
+  reviewComment: string | null;
+  createdAt: string;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const requests = await db.select().from(titleChangeRequests)
+    .where(eq(titleChangeRequests.teacherId, teacherId))
+    .orderBy(desc(titleChangeRequests.createdAt));
+
+  const results: Array<{
+    id: number;
+    matchId: number;
+    studentId: number;
+    studentName: string | null;
+    chineseStudentId: string | null;
+    englishStudentId: string | null;
+    originalTitle: string;
+    newTitle: string;
+    reason: string | null;
+    status: 'pending' | 'approved' | 'rejected';
+    reviewedAt: string | null;
+    reviewComment: string | null;
+    createdAt: string;
+  }> = [];
+
+  for (const req of requests) {
+    const student = await db.select().from(users).where(eq(users.id, req.studentId)).limit(1);
+    results.push({
+      id: req.id,
+      matchId: req.matchId,
+      studentId: req.studentId,
+      studentName: student[0]?.name || null,
+      chineseStudentId: student[0]?.studentId || null,
+      englishStudentId: student[0]?.sussexId || null,
+      originalTitle: req.originalTitle,
+      newTitle: req.newTitle,
+      reason: req.reason,
+      status: req.status as 'pending' | 'approved' | 'rejected',
+      reviewedAt: req.reviewedAt,
+      reviewComment: req.reviewComment,
+      createdAt: req.createdAt,
+    });
+  }
+
+  return results;
+}
+
+/**
+ * 导师审核题目修改申请
+ */
+export async function reviewTitleChangeRequest(
+  requestId: number,
+  teacherId: number,
+  approved: boolean,
+  reviewComment?: string
+): Promise<{ success: boolean; error?: string }> {
+  const db = await getDb();
+  if (!db) return { success: false, error: "数据库连接失败" };
+
+  // 获取申请记录
+  const request = await db.select().from(titleChangeRequests)
+    .where(eq(titleChangeRequests.id, requestId))
+    .limit(1);
+
+  if (request.length === 0) {
+    return { success: false, error: "申请记录不存在" };
+  }
+
+  const req = request[0];
+
+  if (req.teacherId !== teacherId) {
+    return { success: false, error: "您无权审核此申请" };
+  }
+
+  if (req.status !== 'pending') {
+    return { success: false, error: "该申请已被处理" };
+  }
+
+  // 更新申请状态
+  await db.update(titleChangeRequests).set({
+    status: approved ? 'approved' : 'rejected',
+    reviewedAt: toMySQLTimestamp(),
+    reviewComment,
+  }).where(eq(titleChangeRequests.id, requestId));
+
+  // 如果通过，更新课题标题
+  if (approved) {
+    // 获取匹配记录中的课题ID
+    const matchRecord = await db.select().from(matches)
+      .where(eq(matches.id, req.matchId))
+      .limit(1);
+
+    if (matchRecord.length > 0) {
+      const topicId = matchRecord[0].topicId;
+      // 更新课题的英文标题（作为最终标题）
+      await db.update(topics).set({
+        titleEn: req.newTitle,
+      }).where(eq(topics.id, topicId));
+    }
+  }
+
+  return { success: true };
+}
+
+/**
+ * 获取题目修改申请详情
+ */
+/**
+ * 获取导师待审核题目修改申请数量
+ */
+export async function getTeacherPendingTitleChangeCount(teacherId: number): Promise<number> {
+  const db = await getDb();
+  if (!db) return 0;
+
+  const result = await db.select({ count: sql<number>`COUNT(*)` }).from(titleChangeRequests)
+    .where(and(
+      eq(titleChangeRequests.teacherId, teacherId),
+      eq(titleChangeRequests.status, 'pending')
+    ));
+
+  return result[0]?.count || 0;
+}
+
+
+// ==================== 评分流程相关函数 ====================
+
+/**
+ * 第二导师申请取平均分
+ * @param draftId 论文终稿ID
+ * @param teacherId 第二导师ID
+ */
+export async function requestAverageScore(
+  draftId: number,
+  teacherId: number,
+  reason: string
+): Promise<{ success: boolean; error?: string }> {
+  const db = await getDb();
+  if (!db) return { success: false, error: "数据库连接失败" };
+
+  // 检查论文是否存在
+  const draft = await db.select().from(thesisDrafts).where(eq(thesisDrafts.id, draftId)).limit(1);
+  if (draft.length === 0) {
+    return { success: false, error: "论文终稿不存在" };
+  }
+
+  // 检查两位导师是否都已评分
+  if (draft[0].score === null || draft[0].secondTeacherScore === null) {
+    return { success: false, error: "两位导师都需要先完成评分" };
+  }
+
+  // 检查是否已有最终成绩
+  if (draft[0].finalScore !== null) {
+    return { success: false, error: "最终成绩已确定，无法申请" };
+  }
+
+  // 检查是否已申请过
+  if (draft[0].requestAverage === 1) {
+    return { success: false, error: "已申请取平均分，请等待第一导师确认" };
+  }
+
+  // 获取匹配记录，验证该导师是否为第二导师
+  const matchRecord = await db.select().from(matches)
+    .where(eq(matches.id, draft[0].matchId))
+    .limit(1);
+  
+  if (matchRecord.length === 0) {
+    return { success: false, error: "匹配记录不存在" };
+  }
+
+  if (matchRecord[0].secondTeacherId !== teacherId) {
+    return { success: false, error: "您不是该学生的第二导师" };
+  }
+
+  // 更新申请状态
+  await db.update(thesisDrafts).set({
+    requestAverage: 1,
+    requestReason: reason,
+    rejectReason: null, // 清除之前的驳回原因
+  }).where(eq(thesisDrafts.id, draftId));
+
+  return { success: true };
+}
+
+/**
+ * 第二导师申请第一导师手动调整成绩
+ * @param draftId 论文终稿ID
+ * @param teacherId 第二导师ID
+ */
+export async function requestManualAdjust(
+  draftId: number,
+  teacherId: number,
+  reason: string
+): Promise<{ success: boolean; error?: string }> {
+  const db = await getDb();
+  if (!db) return { success: false, error: "数据库连接失败" };
+
+  // 检查论文是否存在
+  const draft = await db.select().from(thesisDrafts).where(eq(thesisDrafts.id, draftId)).limit(1);
+  if (draft.length === 0) {
+    return { success: false, error: "论文终稿不存在" };
+  }
+
+  // 检查两位导师是否都已评分
+  if (draft[0].score === null || draft[0].secondTeacherScore === null) {
+    return { success: false, error: "两位导师都需要先完成评分" };
+  }
+
+  // 检查是否已有最终成绩
+  if (draft[0].finalScore !== null) {
+    return { success: false, error: "最终成绩已确定，无法申请" };
+  }
+
+  // 检查是否已申请过
+  if (draft[0].requestManualAdjust === 1) {
+    return { success: false, error: "已申请手动调整，请等待第一导师确认" };
+  }
+
+  // 获取匹配记录，验证该导师是否为第二导师
+  const matchRecord = await db.select().from(matches)
+    .where(eq(matches.id, draft[0].matchId))
+    .limit(1);
+  
+  if (matchRecord.length === 0) {
+    return { success: false, error: "匹配记录不存在" };
+  }
+
+  if (matchRecord[0].secondTeacherId !== teacherId) {
+    return { success: false, error: "您不是该学生的第二导师" };
+  }
+
+  // 更新申请状态
+  await db.update(thesisDrafts).set({
+    requestManualAdjust: 1,
+    requestReason: reason,
+    rejectReason: null, // 清除之前的驳回原因
+  }).where(eq(thesisDrafts.id, draftId));
+
+  return { success: true };
+}
+
+/**
+ * 第一导师确认/拒绝取平均分或手动设置最终成绩
+ * @param draftId 论文终稿ID
+ * @param teacherId 第一导师ID
+ * @param action 操作类型: 'confirm_average' | 'manual_score'
+ * @param manualScore 手动设置的最终成绩（仅当action为manual_score时需要）
+ */
+export async function confirmFinalScore(
+  draftId: number,
+  teacherId: number,
+  action: 'confirm_average' | 'reject_average' | 'manual_score',
+  manualScore?: number
+): Promise<{ success: boolean; error?: string; finalScore?: number }> {
+  const db = await getDb();
+  if (!db) return { success: false, error: "数据库连接失败" };
+
+  // 检查论文是否存在
+  const draft = await db.select().from(thesisDrafts).where(eq(thesisDrafts.id, draftId)).limit(1);
+  if (draft.length === 0) {
+    return { success: false, error: "论文终稿不存在" };
+  }
+
+  // 检查两位导师是否都已评分
+  if (draft[0].score === null || draft[0].secondTeacherScore === null) {
+    return { success: false, error: "两位导师都需要先完成评分" };
+  }
+
+  // 检查是否已有最终成绩
+  if (draft[0].finalScore !== null) {
+    return { success: false, error: "最终成绩已确定，无法修改" };
+  }
+
+  // 获取匹配记录，验证该导师是否为第一导师
+  const matchRecord = await db.select().from(matches)
+    .where(eq(matches.id, draft[0].matchId))
+    .limit(1);
+  
+  if (matchRecord.length === 0) {
+    return { success: false, error: "匹配记录不存在" };
+  }
+
+  if (matchRecord[0].teacherId !== teacherId) {
+    return { success: false, error: "您不是该学生的第一导师" };
+  }
+
+  const now = toMySQLTimestamp();
+  const firstScore = draft[0].score!;
+  const secondScore = draft[0].secondTeacherScore!;
+  const penalty = draft[0].latePenalty ?? 0;
+  let finalScore: number;
+
+  if (action === 'confirm_average') {
+    // 确认取平均分，并扣除迟交罚分
+    const avgScore = Math.round((firstScore + secondScore) / 2 * 10) / 10;
+    finalScore = Math.max(0, Math.round((avgScore - penalty) * 10) / 10);
+    await db.update(thesisDrafts).set({
+      averageConfirmed: 1,
+      finalScore: String(finalScore),
+      finalScoreConfirmedAt: now,
+    }).where(eq(thesisDrafts.id, draftId));
+  } else if (action === 'manual_score') {
+    // 手动设置最终成绩，并扣除迟交罚分
+    if (manualScore === undefined || manualScore < 0 || manualScore > 100) {
+      return { success: false, error: "请输入有效的分数（0-100）" };
+    }
+    const rawScore = Math.round(manualScore * 10) / 10;
+    finalScore = Math.max(0, Math.round((rawScore - penalty) * 10) / 10);
+    await db.update(thesisDrafts).set({
+      averageConfirmed: 0,
+      finalScore: String(finalScore),
+      finalScoreConfirmedAt: now,
+    }).where(eq(thesisDrafts.id, draftId));
+  } else {
+    return { success: false, error: "无效的操作类型" };
+  }
+
+  return { success: true, finalScore };
+}
+
+/**
+ * 第一导师驳回第二导师的申请
+ * @param draftId 论文终稿ID
+ * @param teacherId 第一导师ID
+ * @param reason 驳回原因
+ */
+export async function rejectRequest(
+  draftId: number,
+  teacherId: number,
+  reason: string
+): Promise<{ success: boolean; error?: string }> {
+  const db = await getDb();
+  if (!db) return { success: false, error: "数据库连接失败" };
+
+  // 检查论文是否存在
+  const draft = await db.select().from(thesisDrafts).where(eq(thesisDrafts.id, draftId)).limit(1);
+  if (draft.length === 0) {
+    return { success: false, error: "论文终稿不存在" };
+  }
+
+  // 检查是否已有最终成绩
+  if (draft[0].finalScore !== null) {
+    return { success: false, error: "最终成绩已确定，无法驳回" };
+  }
+
+  // 检查是否有申请
+  if (draft[0].requestAverage !== 1 && draft[0].requestManualAdjust !== 1) {
+    return { success: false, error: "没有待处理的申请" };
+  }
+
+  // 获取匹配记录，验证该导师是否为第一导师
+  const matchRecord = await db.select().from(matches)
+    .where(eq(matches.id, draft[0].matchId))
+    .limit(1);
+  
+  if (matchRecord.length === 0) {
+    return { success: false, error: "匹配记录不存在" };
+  }
+
+  if (matchRecord[0].teacherId !== teacherId) {
+    return { success: false, error: "您不是该学生的第一导师" };
+  }
+
+  // 重置申请状态，记录驳回原因
+  await db.update(thesisDrafts).set({
+    requestAverage: 0,
+    requestManualAdjust: 0,
+    requestReason: null,
+    rejectReason: reason,
+  }).where(eq(thesisDrafts.id, draftId));
+
+  return { success: true };
+}
+
+/**
+ * 获取需要第一导师确认最终成绩的论文列表
+ * @param teacherId 第一导师ID
+ */
+export async function getPendingFinalScoreConfirmations(teacherId: number): Promise<Array<{
+  draftId: number;
+  studentId: number;
+  studentName: string | null;
+  topicTitle: string | null;
+  firstScore: number;
+  secondScore: number;
+  averageScore: number;
+  requestAverage: boolean;
+  requestManualAdjust: boolean;
+  requestReason: string | null;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // 获取该导师作为第一导师的所有匹配
+  const teacherMatches = await db.select({ id: matches.id })
+    .from(matches)
+    .where(eq(matches.teacherId, teacherId));
+
+  if (teacherMatches.length === 0) return [];
+
+  const matchIds = teacherMatches.map(m => m.id);
+
+  // 获取需要确认的论文（两位导师都已评分，但没有最终成绩，且分数不同）
+  const drafts = await db.select({
+    draftId: thesisDrafts.id,
+    studentId: thesisDrafts.studentId,
+    matchId: thesisDrafts.matchId,
+    firstScore: thesisDrafts.score,
+    secondScore: thesisDrafts.secondTeacherScore,
+    requestAverage: thesisDrafts.requestAverage,
+    requestManualAdjust: thesisDrafts.requestManualAdjust,
+    requestReason: thesisDrafts.requestReason,
+    finalScore: thesisDrafts.finalScore,
+  })
+  .from(thesisDrafts)
+  .where(
+    and(
+      inArray(thesisDrafts.matchId, matchIds),
+      isNotNull(thesisDrafts.score),
+      isNotNull(thesisDrafts.secondTeacherScore),
+      isNull(thesisDrafts.finalScore)
+    )
+  );
+
+  // 过滤出分数不同的论文
+  const pendingDrafts = drafts.filter(d => d.firstScore !== d.secondScore);
+
+  const results: Array<{
+    draftId: number;
+    studentId: number;
+    studentName: string | null;
+    topicTitle: string | null;
+    firstScore: number;
+    secondScore: number;
+    averageScore: number;
+    requestAverage: boolean;
+    requestManualAdjust: boolean;
+    requestReason: string | null;
+  }> = [];
+
+  for (const draft of pendingDrafts) {
+    // 获取学生信息
+    const student = await db.select({ name: users.name })
+      .from(users)
+      .where(eq(users.id, draft.studentId))
+      .limit(1);
+
+    // 获取课题信息
+    const match = await db.select({ topicId: matches.topicId })
+      .from(matches)
+      .where(eq(matches.id, draft.matchId))
+      .limit(1);
+
+    let topicTitle = null;
+    if (match.length > 0 && match[0].topicId) {
+      const topic = await db.select({ titleEn: topics.titleEn, title: topics.title })
+        .from(topics)
+        .where(eq(topics.id, match[0].topicId))
+        .limit(1);
+      topicTitle = topic[0]?.titleEn || topic[0]?.title || null;
+    }
+
+    results.push({
+      draftId: draft.draftId,
+      studentId: draft.studentId,
+      studentName: student[0]?.name || null,
+      topicTitle,
+      firstScore: draft.firstScore!,
+      secondScore: draft.secondScore!,
+      averageScore: Math.round((draft.firstScore! + draft.secondScore!) / 2 * 10) / 10,
+      requestAverage: draft.requestAverage === 1,
+      requestManualAdjust: draft.requestManualAdjust === 1,
+      requestReason: draft.requestReason || null,
+    });
+  }
+
+  return results;
+}
+
+/**
+ * 获取需要第二导师申请平均分的论文列表
+ * @param teacherId 第二导师ID
+ */
+export async function getPendingAverageRequests(teacherId: number): Promise<Array<{
+  draftId: number;
+  studentId: number;
+  studentName: string | null;
+  topicTitle: string | null;
+  firstScore: number;
+  secondScore: number;
+  averageScore: number;
+  requestAverage: boolean;
+  requestManualAdjust: boolean;
+  rejectReason: string | null;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // 获取该导师作为第二导师的所有匹配
+  const teacherMatches = await db.select({ id: matches.id })
+    .from(matches)
+    .where(eq(matches.secondTeacherId, teacherId));
+
+  if (teacherMatches.length === 0) return [];
+
+  const matchIds = teacherMatches.map(m => m.id);
+
+  // 获取需要申请平均分的论文（两位导师都已评分，分数不同，没有最终成绩）
+  const drafts = await db.select({
+    draftId: thesisDrafts.id,
+    studentId: thesisDrafts.studentId,
+    matchId: thesisDrafts.matchId,
+    firstScore: thesisDrafts.score,
+    secondScore: thesisDrafts.secondTeacherScore,
+    requestAverage: thesisDrafts.requestAverage,
+    requestManualAdjust: thesisDrafts.requestManualAdjust,
+    rejectReason: thesisDrafts.rejectReason,
+    finalScore: thesisDrafts.finalScore,
+  })
+  .from(thesisDrafts)
+  .where(
+    and(
+      inArray(thesisDrafts.matchId, matchIds),
+      isNotNull(thesisDrafts.score),
+      isNotNull(thesisDrafts.secondTeacherScore),
+      isNull(thesisDrafts.finalScore)
+    )
+  );
+
+  // 过滤出分数不同的论文
+  const pendingDrafts = drafts.filter(d => d.firstScore !== d.secondScore);
+
+  const results: Array<{
+    draftId: number;
+    studentId: number;
+    studentName: string | null;
+    topicTitle: string | null;
+    firstScore: number;
+    secondScore: number;
+    averageScore: number;
+    requestAverage: boolean;
+    requestManualAdjust: boolean;
+    rejectReason: string | null;
+  }> = [];
+
+  for (const draft of pendingDrafts) {
+    // 获取学生信息
+    const student = await db.select({ name: users.name })
+      .from(users)
+      .where(eq(users.id, draft.studentId))
+      .limit(1);
+
+    // 获取课题信息
+    const match = await db.select({ topicId: matches.topicId })
+      .from(matches)
+      .where(eq(matches.id, draft.matchId))
+      .limit(1);
+
+    let topicTitle = null;
+    if (match.length > 0 && match[0].topicId) {
+      const topic = await db.select({ titleEn: topics.titleEn, title: topics.title })
+        .from(topics)
+        .where(eq(topics.id, match[0].topicId))
+        .limit(1);
+      topicTitle = topic[0]?.titleEn || topic[0]?.title || null;
+    }
+
+    results.push({
+      draftId: draft.draftId,
+      studentId: draft.studentId,
+      studentName: student[0]?.name || null,
+      topicTitle,
+      firstScore: draft.firstScore!,
+      secondScore: draft.secondScore!,
+      averageScore: Math.round((draft.firstScore! + draft.secondScore!) / 2 * 10) / 10,
+      requestAverage: draft.requestAverage === 1,
+      requestManualAdjust: draft.requestManualAdjust === 1,
+      rejectReason: draft.rejectReason || null,
+    });
+  }
+
+  return results;
+}
+
+
+/**
+ * 获取已确定最终成绩的论文列表（教师视角）
+ * @param teacherId 教师ID
+ */
+export async function getCompletedFinalScores(teacherId: number): Promise<Array<{
+  draftId: number;
+  studentId: number;
+  studentName: string | null;
+  topicTitle: string | null;
+  firstScore: number;
+  secondScore: number;
+  averageScore: number;
+  finalScore: number;
+  confirmedAt: Date | null;
+  role: 'first' | 'second';
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // 获取该导师作为第一导师的所有匹配
+  const firstTeacherMatches = await db.select({ id: matches.id })
+    .from(matches)
+    .where(eq(matches.teacherId, teacherId));
+
+  // 获取该导师作为第二导师的所有匹配
+  const secondTeacherMatches = await db.select({ id: matches.id })
+    .from(matches)
+    .where(eq(matches.secondTeacherId, teacherId));
+
+  const firstMatchIds = firstTeacherMatches.map(m => m.id);
+  const secondMatchIds = secondTeacherMatches.map(m => m.id);
+  const allMatchIds = Array.from(new Set([...firstMatchIds, ...secondMatchIds]));
+
+  if (allMatchIds.length === 0) return [];
+
+  // 获取已确定最终成绩的论文
+  const drafts = await db.select({
+    draftId: thesisDrafts.id,
+    studentId: thesisDrafts.studentId,
+    matchId: thesisDrafts.matchId,
+    firstScore: thesisDrafts.score,
+    secondScore: thesisDrafts.secondTeacherScore,
+    finalScore: thesisDrafts.finalScore,
+    averageConfirmed: thesisDrafts.averageConfirmed,
+    updatedAt: thesisDrafts.updatedAt,
+  })
+  .from(thesisDrafts)
+  .where(
+    and(
+      inArray(thesisDrafts.matchId, allMatchIds),
+      isNotNull(thesisDrafts.finalScore)
+    )
+  )
+  .orderBy(desc(thesisDrafts.updatedAt));
+
+  const results: Array<{
+    draftId: number;
+    studentId: number;
+    studentName: string | null;
+    topicTitle: string | null;
+    firstScore: number;
+    secondScore: number;
+    averageScore: number;
+    finalScore: number;
+    confirmedAt: Date | null;
+    role: 'first' | 'second';
+  }> = [];
+
+  for (const draft of drafts) {
+    // 获取学生信息
+    const student = await db.select({ name: users.name })
+      .from(users)
+      .where(eq(users.id, draft.studentId))
+      .limit(1);
+
+    // 获取课题信息
+    const match = await db.select({ topicId: matches.topicId })
+      .from(matches)
+      .where(eq(matches.id, draft.matchId))
+      .limit(1);
+
+    let topicTitle = null;
+    if (match.length > 0 && match[0].topicId) {
+      const topic = await db.select({ titleEn: topics.titleEn, title: topics.title })
+        .from(topics)
+        .where(eq(topics.id, match[0].topicId))
+        .limit(1);
+      topicTitle = topic[0]?.titleEn || topic[0]?.title || null;
+    }
+
+    // 确定角色
+    const role = firstMatchIds.includes(draft.matchId) ? 'first' : 'second';
+
+    results.push({
+      draftId: draft.draftId,
+      studentId: draft.studentId,
+      studentName: student[0]?.name || null,
+      topicTitle,
+      firstScore: draft.firstScore ?? 0,
+      secondScore: draft.secondScore ?? 0,
+      averageScore: (draft.firstScore !== null && draft.firstScore !== undefined && draft.secondScore !== null && draft.secondScore !== undefined)
+        ? Math.round((draft.firstScore + draft.secondScore) / 2 * 10) / 10 
+        : 0,
+      finalScore: parseFloat(draft.finalScore ?? '0'),
+      confirmedAt: draft.updatedAt,
+      role,
+    });
+  }
+
+  return results;
+}
+
+
+// ==================== 题库管理操作 ====================
+
+/**
+ * 添加课题到题库
+ */
+export async function addToTopicLibrary(topic: Topic, teacherName: string): Promise<TopicLibrary | null> {
+  const db = await getDb();
+  if (!db) return null;
+  
+  try {
+    const instanceId = parseInt(process.env.INSTANCE_ID || "1");
+    const result = await db.insert(topicLibrary).values({
+      syncUuid: randomUUID(),
+      sourceInstance: instanceId,
+      originalTopicId: topic.id,
+      title: topic.title,
+      titleEn: topic.titleEn,
+      teacherId: topic.teacherId,
+      teacherName: teacherName,
+      publishedAt: new Date(),
+      status: "published",
+      academicYear: topic.academicYear,
+      description: topic.description,
+      suitableFor: topic.suitableMajor,
+      topicSource: topic.topicSource || null,
+      researchProjectName: topic.researchProjectName || null,
+    });
+    
+    const insertId = result[0].insertId;
+    const [inserted] = await db.select().from(topicLibrary).where(eq(topicLibrary.id, insertId));
+    return inserted || null;
+  } catch (error) {
+    console.error("[TopicLibrary] Failed to add topic:", error);
+    return null;
+  }
+}
+
+/**
+ * 从题库中移除课题（撤回时调用）
+ */
+export async function removeFromTopicLibrary(originalTopicId: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+  
+  try {
+    await db.delete(topicLibrary).where(eq(topicLibrary.originalTopicId, originalTopicId));
+    return true;
+  } catch (error) {
+    console.error("[TopicLibrary] Failed to remove topic:", error);
+    return false;
+  }
+}
+
+/**
+ * 更新题库中课题状态
+ */
+/**
+ * 检查题库中是否存在相同标题的课题
+ */
+export async function checkTopicTitleInLibrary(title: string, excludeTopicId?: number): Promise<{
+  exists: boolean;
+  existingTopic?: {
+    id: number;
+    title: string;
+    teacherName: string | null;
+    academicYear: string | null;
+    status: string;
+  };
+}> {
+  const db = await getDb();
+  if (!db) return { exists: false };
+  
+  try {
+    // 计算三年前的日期
+    const threeYearsAgo = new Date();
+    threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3);
+    
+    let query = db.select({
+      id: topicLibrary.id,
+      title: topicLibrary.title,
+      teacherName: topicLibrary.teacherName,
+      academicYear: topicLibrary.academicYear,
+      status: topicLibrary.status,
+    })
+    .from(topicLibrary)
+    .where(
+      and(
+        eq(topicLibrary.title, title),
+        sql`${topicLibrary.publishedAt} >= ${threeYearsAgo}`
+      )
+    );
+    
+    const results = await query;
+    
+    // 如果需要排除某个课题ID
+    const filtered = excludeTopicId 
+      ? results.filter(r => r.id !== excludeTopicId)
+      : results;
+    
+    if (filtered.length > 0) {
+      return {
+        exists: true,
+        existingTopic: filtered[0]
+      };
+    }
+    
+    return { exists: false };
+  } catch (error) {
+    console.error("[TopicLibrary] Failed to check title:", error);
+    return { exists: false };
+  }
+}
+
+/**
+ * 获取题库列表（支持筛选）
+ */
+export async function getTopicLibraryList(options: {
+  status?: "published" | "used" | "withdrawn" | "all";
+  academicYear?: string;
+  teacherId?: number;
+  searchTerm?: string;
+  dateFrom?: string;
+  dateTo?: string;
+  page?: number;
+  pageSize?: number;
+}): Promise<{
+  items: TopicLibrary[];
+  total: number;
+}> {
+  const db = await getDb();
+  if (!db) return { items: [], total: 0 };
+  
+  const { status = "all", academicYear, teacherId, searchTerm, dateFrom, dateTo, page = 1, pageSize = 20 } = options;
+  
+  try {
+    // 计算三年前的日期
+    const threeYearsAgo = new Date();
+    threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3);
+    
+    const conditions: SQL[] = [
+      sql`${topicLibrary.publishedAt} >= ${threeYearsAgo}`
+    ];
+    
+    if (status !== "all") {
+      conditions.push(eq(topicLibrary.status, status));
+    }
+    
+    if (academicYear) {
+      conditions.push(eq(topicLibrary.academicYear, academicYear));
+    }
+    
+    if (teacherId) {
+      conditions.push(eq(topicLibrary.teacherId, teacherId));
+    }
+    
+    if (searchTerm) {
+      conditions.push(
+        or(
+          like(topicLibrary.title, `%${searchTerm}%`),
+          like(topicLibrary.teacherName, `%${searchTerm}%`)
+        )!
+      );
+    }
+    
+    // 发布时间筛选
+    if (dateFrom) {
+      const fromDate = new Date(dateFrom);
+      conditions.push(sql`${topicLibrary.publishedAt} >= ${fromDate}`);
+    }
+    
+    if (dateTo) {
+      const toDate = new Date(dateTo);
+      toDate.setHours(23, 59, 59, 999); // 包含结束日期当天
+      conditions.push(sql`${topicLibrary.publishedAt} <= ${toDate}`);
+    }
+    
+    const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
+    
+    // 获取总数
+    const countResult = await db.select({ count: sql<number>`count(*)` })
+      .from(topicLibrary)
+      .where(whereClause);
+    const total = countResult[0]?.count || 0;
+    
+    // 获取分页数据
+    const items = await db.select()
+      .from(topicLibrary)
+      .where(whereClause)
+      .orderBy(desc(topicLibrary.publishedAt))
+      .limit(pageSize)
+      .offset((page - 1) * pageSize);
+    
+    return { items, total };
+  } catch (error) {
+    console.error("[TopicLibrary] Failed to get list:", error);
+    return { items: [], total: 0 };
+  }
+}
+
+/**
+ * 删除题库中的课题
+ */
+export async function deleteFromTopicLibrary(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+  
+  try {
+    await db.delete(topicLibrary).where(eq(topicLibrary.id, id));
+    return true;
+  } catch (error) {
+    console.error("[TopicLibrary] Failed to delete:", error);
+    return false;
+  }
+}
+
+/**
+ * 批量删除题库中的课题
+ */
+export async function batchDeleteFromTopicLibrary(ids: number[]): Promise<boolean> {
+  const db = await getDb();
+  if (!db || ids.length === 0) return false;
+  
+  try {
+    await db.delete(topicLibrary).where(inArray(topicLibrary.id, ids));
+    return true;
+  } catch (error) {
+    console.error("[TopicLibrary] Failed to batch delete:", error);
+    return false;
+  }
+}
+
+/**
+ * 清理三年前的题库记录
+ */
+export async function cleanupOldTopicLibrary(): Promise<number> {
+  const db = await getDb();
+  if (!db) return 0;
+  
+  try {
+    const threeYearsAgo = new Date();
+    threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3);
+    
+    const result = await db.delete(topicLibrary)
+      .where(sql`${topicLibrary.publishedAt} < ${threeYearsAgo}`);
+    
+    return result[0].affectedRows || 0;
+  } catch (error) {
+    console.error("[TopicLibrary] Failed to cleanup:", error);
+    return 0;
+  }
+}
+
+/**
+ * 获取题库统计信息
+ */
+export async function getTopicLibraryStats(): Promise<{
+  total: number;
+  published: number;
+  used: number;
+  withdrawn: number;
+  byYear: { year: string; count: number }[];
+}> {
+  const db = await getDb();
+  if (!db) return { total: 0, published: 0, used: 0, withdrawn: 0, byYear: [] };
+  
+  try {
+    // 计算三年前的日期
+    const threeYearsAgo = new Date();
+    threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3);
+    
+    const whereClause = sql`${topicLibrary.publishedAt} >= ${threeYearsAgo}`;
+    
+    // 获取总数
+    const totalResult = await db.select({ count: sql<number>`count(*)` })
+      .from(topicLibrary)
+      .where(whereClause);
+    const total = totalResult[0]?.count || 0;
+    
+    // 获取各状态数量
+    const publishedResult = await db.select({ count: sql<number>`count(*)` })
+      .from(topicLibrary)
+      .where(and(whereClause, eq(topicLibrary.status, "published")));
+    const published = publishedResult[0]?.count || 0;
+    
+    const usedResult = await db.select({ count: sql<number>`count(*)` })
+      .from(topicLibrary)
+      .where(and(whereClause, eq(topicLibrary.status, "used")));
+    const used = usedResult[0]?.count || 0;
+    
+    const withdrawnResult = await db.select({ count: sql<number>`count(*)` })
+      .from(topicLibrary)
+      .where(and(whereClause, eq(topicLibrary.status, "withdrawn")));
+    const withdrawn = withdrawnResult[0]?.count || 0;
+    
+    // 按学年统计
+    const byYearResult = await db.select({
+      year: topicLibrary.academicYear,
+      count: sql<number>`count(*)`
+    })
+    .from(topicLibrary)
+    .where(whereClause)
+    .groupBy(topicLibrary.academicYear)
+    .orderBy(desc(topicLibrary.academicYear));
+    
+    const byYear = byYearResult.map(r => ({
+      year: r.year || "未知",
+      count: r.count
+    }));
+    
+    return { total, published, used, withdrawn, byYear };
+  } catch (error) {
+    console.error("[TopicLibrary] Failed to get stats:", error);
+    return { total: 0, published: 0, used: 0, withdrawn: 0, byYear: [] };
+  }
+}
+
+// ==================== 管理员手动添加题库课题 ====================
+
+/**
+ * 管理员手动添加单个题库课题
+ * 用于添加以前已发布但系统未登记的题目
+ */
+export async function adminAddTopicLibraryItem(data: {
+  title: string;
+  titleEn?: string;
+  teacherName?: string;
+  description?: string;
+  academicYear?: string;
+  publishedAt?: string; // 发布时间，不填则默认为当前时间
+}): Promise<{ success: boolean; message: string; id?: number }> {
+  const db = await getDb();
+  if (!db) {
+    return { success: false, message: "数据库连接失败" };
+  }
+
+  try {
+    // 检查标题是否已存在
+    const existing = await db.select({ id: topicLibrary.id })
+      .from(topicLibrary)
+      .where(eq(topicLibrary.title, data.title))
+      .limit(1);
+    
+    if (existing.length > 0) {
+      return { success: false, message: `题库中已存在相同标题的课题：${data.title}` };
+    }
+
+    // 解析发布时间
+    let publishedAt = new Date();
+    if (data.publishedAt) {
+      const parsedDate = new Date(data.publishedAt);
+      if (!isNaN(parsedDate.getTime())) {
+        publishedAt = parsedDate;
+      }
+    }
+
+    // 获取当前学年（如果未指定）
+    let academicYear = data.academicYear;
+    if (!academicYear) {
+      const currentYear = await db.select({ yearName: academicYears.yearName })
+        .from(academicYears)
+        .where(eq(academicYears.isCurrentYear, 1))
+        .limit(1);
+      academicYear = currentYear[0]?.yearName;
+    }
+
+    // 插入题库记录
+    const instanceId = parseInt(process.env.INSTANCE_ID || "1");
+    const result = await db.insert(topicLibrary).values({
+      syncUuid: randomUUID(),
+      sourceInstance: instanceId,
+      originalTopicId: 0, // 手动添加的课题没有原始课题ID
+      title: data.title,
+      titleEn: data.titleEn || "",
+      teacherId: 0, // 手动添加的课题没有导师ID
+      teacherName: data.teacherName || "手动添加",
+      description: data.description || "",
+      academicYear,
+      publishedAt,
+      status: "published",
+    });
+
+    return {
+      success: true,
+      message: "课题添加成功",
+      id: result[0].insertId,
+    };
+  } catch (error: any) {
+    console.error("[TopicLibrary] Failed to add item:", error);
+    return { success: false, message: error.message || "添加失败" };
+  }
+}
+
+/**
+ * 管理员批量导入题库课题
+ */
+export async function adminBulkImportTopicLibrary(items: Array<{
+  title: string;
+  titleEn?: string;
+  teacherName?: string;
+  description?: string;
+  academicYear?: string;
+  publishedAt?: string;
+}>): Promise<{
+  success: number;
+  failed: number;
+  errors: Array<{ index: number; title: string; error: string }>;
+}> {
+  const results = {
+    success: 0,
+    failed: 0,
+    errors: [] as Array<{ index: number; title: string; error: string }>,
+  };
+
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    try {
+      const result = await adminAddTopicLibraryItem(item);
+      if (result.success) {
+        results.success++;
+      } else {
+        results.failed++;
+        results.errors.push({
+          index: i + 1,
+          title: item.title,
+          error: result.message,
+        });
+      }
+    } catch (error: any) {
+      results.failed++;
+      results.errors.push({
+        index: i + 1,
+        title: item.title,
+        error: error.message || "未知错误",
+      });
+    }
+  }
+
+  return results;
+}
+
+// 删除评分记录（论文草稿）
+export async function deleteScoreRecord(draftId: number): Promise<{ success: boolean; error?: string }> {
+  const database = await getDb();
+  if (!database) {
+    return { success: false, error: "数据库连接失败" };
+  }
+
+  try {
+    // 检查记录是否存在
+    const draft = await database.select().from(thesisDrafts).where(eq(thesisDrafts.id, draftId)).limit(1);
+    if (draft.length === 0) {
+      return { success: false, error: "记录不存在" };
+    }
+
+    // 删除相关的评分历史记录
+    await database.delete(thesisDraftHistory).where(eq(thesisDraftHistory.draftId, draftId));
+    
+    // 删除论文草稿记录
+    await database.delete(thesisDrafts).where(eq(thesisDrafts.id, draftId));
+
+    return { success: true };
+  } catch (error) {
+    console.error("[Database] Failed to delete score record:", error);
+    return { success: false, error: "删除失败，请稍后重试" };
+  }
+}
+
+
+// ==================== 中方导师课题与生源监控 ====================
+
+/**
+ * 获取中方导师课题与生源监控统计数据
+ * 统计范围：当前学年
+ */
+export async function getChineseTeacherTopicMonitoring(): Promise<{
+  publishedTopicsCount: number;      // 已发布课题总数
+  usedTopicsCount: number;           // 已使用课题数（学生选定且导师确认）
+  unusedTopicsCount: number;         // 未使用课题数（已发布但未确认）
+  pendingTransferStudentsCount: number; // 待确认分流学生数
+  currentAcademicYear: string;       // 当前学年
+}> {
+  const db = await getDb();
+  if (!db) {
+    return {
+      publishedTopicsCount: 0,
+      usedTopicsCount: 0,
+      unusedTopicsCount: 0,
+      pendingTransferStudentsCount: 0,
+      currentAcademicYear: "",
+    };
+  }
+
+  // 获取当前学年
+  const currentAcademicYear = await getConfig("currentAcademicYear") || "";
+
+  // 查询中方导师（teacherType = 'chinese'）的用户ID列表
+  const chineseTeachers = await db.select({ id: users.id })
+    .from(users)
+    .where(and(
+      eq(users.role, "teacher"),
+      eq(users.teacherType, "chinese")
+    ));
+  const chineseTeacherIds = chineseTeachers.map(t => t.id);
+
+  if (chineseTeacherIds.length === 0) {
+    return {
+      publishedTopicsCount: 0,
+      usedTopicsCount: 0,
+      unusedTopicsCount: 0,
+      pendingTransferStudentsCount: 0,
+      currentAcademicYear,
+    };
+  }
+
+  // 1. 已发布课题总数：当前学年、中方导师、状态为 published 或 used
+  // 注意：课题被使用后状态会变为 used，但仍然应计入已发布课题总数
+  const publishedTopicsResult = await db.select({ count: sql<number>`COUNT(*)` })
+    .from(topics)
+    .where(and(
+      eq(topics.academicYear, currentAcademicYear),
+      inArray(topics.status, ["published", "used"]),
+      inArray(topics.teacherId, chineseTeacherIds)
+    ));
+  const publishedTopicsCount = Number(publishedTopicsResult[0]?.count || 0);
+
+  // 2. 已使用课题数：课题状态为 "used" 的课题（即已被学生选定且导师确认）
+  const usedTopicsResult = await db.select({ count: sql<number>`COUNT(*)` })
+    .from(topics)
+    .where(and(
+      eq(topics.academicYear, currentAcademicYear),
+      eq(topics.status, "used"),
+      inArray(topics.teacherId, chineseTeacherIds)
+    ));
+  const usedTopicsCount = Number(usedTopicsResult[0]?.count || 0);
+
+  // 3. 未使用课题数 = 已发布课题总数 - 已使用课题数
+  const unusedTopicsCount = publishedTopicsCount - usedTopicsCount;
+
+  // 4. 待确认分流学生数：分流学生类型、尚未被任何导师确认志愿
+  // 即：studentType = 'transfer' 且没有 status = 'confirmed' 的匹配记录
+  const allTransferStudents = await db.select({ id: users.id })
+    .from(users)
+    .where(and(
+      eq(users.role, "student"),
+      eq(users.studentType, "transfer")
+    ));
+  const transferStudentIds = allTransferStudents.map(s => s.id);
+
+  if (transferStudentIds.length === 0) {
+    return {
+      publishedTopicsCount,
+      usedTopicsCount,
+      unusedTopicsCount,
+      pendingTransferStudentsCount: 0,
+      currentAcademicYear,
+    };
+  }
+
+  // 查询已有匹配记录的分流学生（有匹配记录即表示已确认）
+  const confirmedTransferStudents = await db.select({ studentId: matches.studentId })
+    .from(matches)
+    .where(inArray(matches.studentId, transferStudentIds));
+  const confirmedStudentIds = new Set(confirmedTransferStudents.map(s => s.studentId));
+
+  // 待确认分流学生数 = 总分流学生数 - 已确认分流学生数
+  const pendingTransferStudentsCount = transferStudentIds.filter(id => !confirmedStudentIds.has(id)).length;
+
+  return {
+    publishedTopicsCount,
+    usedTopicsCount,
+    unusedTopicsCount,
+    pendingTransferStudentsCount,
+    currentAcademicYear,
+  };
+}
+
+/**
+ * 获取中方导师课题详细列表
+ * 用于展示每个课题的使用状态
+ */
+export async function getChineseTeacherTopicList(filters?: {
+  status?: "used" | "unused" | "all";
+}): Promise<Array<{
+  id: number;
+  title: string;
+  titleEn: string;
+  teacherName: string;
+  teacherEmail: string;
+  status: string;
+  isUsed: boolean;
+  matchedStudentName: string | null;
+  matchedStudentId: string | null;
+  createdAt: Date;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const currentAcademicYear = await getConfig("currentAcademicYear") || "";
+
+  // 查询中方导师ID列表
+  const chineseTeachers = await db.select({ id: users.id })
+    .from(users)
+    .where(and(
+      eq(users.role, "teacher"),
+      eq(users.teacherType, "chinese")
+    ));
+  const chineseTeacherIds = chineseTeachers.map(t => t.id);
+
+  if (chineseTeacherIds.length === 0) return [];
+
+  // 查询所有已发布的中方导师课题（包括 published 和 used 状态）
+  const teacher = alias(users, "teacher");
+  const student = alias(users, "student");
+
+  const topicsList = await db.select({
+    id: topics.id,
+    title: topics.title,
+    titleEn: topics.titleEn,
+    teacherName: teacher.name,
+    teacherEmail: teacher.email,
+    status: topics.status,
+    createdAt: topics.createdAt,
+  })
+    .from(topics)
+    .innerJoin(teacher, eq(topics.teacherId, teacher.id))
+    .where(and(
+      eq(topics.academicYear, currentAcademicYear),
+      inArray(topics.status, ["published", "used"]),
+      inArray(topics.teacherId, chineseTeacherIds)
+    ))
+    .orderBy(desc(topics.createdAt));
+
+  if (topicsList.length === 0) return [];
+
+  // 批量查询所有相关课题的匹配情况（避免 N+1）
+  const topicIds = topicsList.map(t => t.id);
+  const allMatchResults = await db.select({
+    topicId: matches.topicId,
+    studentId: matches.studentId,
+    studentName: student.name,
+    studentIdNo: student.studentId,
+  })
+    .from(matches)
+    .innerJoin(student, eq(matches.studentId, student.id))
+    .where(inArray(matches.topicId, topicIds));
+
+  // 按课题ID分组匹配结果
+  const matchByTopicId = new Map<number, { studentName: string | null; studentIdNo: string | null }>();
+  for (const m of allMatchResults) {
+    if (!matchByTopicId.has(m.topicId)) {
+      matchByTopicId.set(m.topicId, { studentName: m.studentName, studentIdNo: m.studentIdNo });
+    }
+  }
+
+  const result: Array<{
+    id: number;
+    title: string;
+    titleEn: string;
+    teacherName: string;
+    teacherEmail: string;
+    status: string;
+    isUsed: boolean;
+    matchedStudentName: string | null;
+    matchedStudentId: string | null;
+    createdAt: Date;
+  }> = [];
+
+  for (const topic of topicsList) {
+    const matchedStudent = matchByTopicId.get(topic.id);
+    const isUsed = topic.status === "used" || !!matchedStudent;
+
+    if (filters?.status === "used" && !isUsed) continue;
+    if (filters?.status === "unused" && isUsed) continue;
+
+    result.push({
+      id: topic.id,
+      title: topic.title || "",
+      titleEn: topic.titleEn || "",
+      teacherName: topic.teacherName || "",
+      teacherEmail: topic.teacherEmail || "",
+      status: topic.status || "",
+      isUsed,
+      matchedStudentName: matchedStudent?.studentName || null,
+      matchedStudentId: matchedStudent?.studentIdNo || null,
+      createdAt: topic.createdAt,
+    });
+  }
+
+  return result;
+}
+
+/**
+ * 获取待确认分流学生详细列表
+ */
+export async function getPendingTransferStudentsList(): Promise<Array<{
+  id: number;
+  name: string;
+  email: string;
+  studentId: string;
+  studentClass: string;
+  studentMajor: string;
+  wishCount: number;
+  latestWishStatus: string | null;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // 查询所有分流学生
+  const transferStudents = await db.select()
+    .from(users)
+    .where(and(
+      eq(users.role, "student"),
+      eq(users.studentType, "transfer")
+    ));
+
+  // 查询已有匹配记录的学生ID（有匹配记录即表示已确认）
+  const confirmedMatches = await db.select({ studentId: matches.studentId })
+    .from(matches);
+  const confirmedStudentIds = new Set(confirmedMatches.map(m => m.studentId));
+
+  // 过滤出待确认的分流学生
+  const pendingStudents = transferStudents.filter(s => !confirmedStudentIds.has(s.id));
+
+  // 查询每个学生的志愿情况
+  const result: Array<{
+    id: number;
+    name: string;
+    email: string;
+    studentId: string;
+    studentClass: string;
+    studentMajor: string;
+    wishCount: number;
+    latestWishStatus: string | null;
+  }> = [];
+
+  for (const student of pendingStudents) {
+    // 查询该学生的志愿数量和最新状态
+    const studentWishes = await db.select()
+      .from(wishes)
+      .where(eq(wishes.studentId, student.id))
+      .orderBy(desc(wishes.createdAt));
+
+    result.push({
+      id: student.id,
+      name: student.name || "",
+      email: student.email || "",
+      studentId: student.studentId || "",
+      studentClass: student.studentClass || "",
+      studentMajor: student.studentMajor || "",
+      wishCount: studentWishes.length,
+      latestWishStatus: studentWishes[0]?.status || null,
+    });
+  }
+
+  return result;
+}
+
+
+/**
+ * 检查是否处于分流学生优先模式
+ * 触发条件：未使用课题数 <= 待确认分流学生数
+ * @returns 是否处于分流学生优先模式及相关统计数据
+ */
+export async function checkTransferStudentPriorityMode(): Promise<{
+  isActive: boolean;                    // 是否激活分流学生优先模式
+  unusedTopicsCount: number;            // 未使用课题数
+  pendingTransferStudentsCount: number; // 待确认分流学生数
+  message: string;                      // 提示信息
+  quotaFull: boolean;                   // 名额是否已满
+  triggeredByQuota: boolean;            // 是否由名额限制触发
+}> {
+  const monitoring = await getChineseTeacherTopicMonitoring();
+  
+  // 原有条件：未使用课题数 <= 待确认分流学生数
+  const topicBasedActive = monitoring.unusedTopicsCount <= monitoring.pendingTransferStudentsCount;
+  
+  // 新增条件：基于名额限制的分流优先模式
+  const quotaStats = await getChineseTeacherQuotaStats();
+  const quotaBasedActive = quotaStats.quotaEnabled && !quotaStats.isQuotaFull && quotaStats.shouldEnableTransferPriority;
+  const quotaFull = quotaStats.quotaEnabled && quotaStats.isQuotaFull;
+  
+  // 任一条件满足即启动分流优先模式（名额满除外，满额时直接禁止所有确认）
+  const isActive = !quotaFull && (topicBasedActive || quotaBasedActive);
+  
+  let message = "";
+  if (quotaFull) {
+    message = `中方导师可确认学生总名额已满（${quotaStats.confirmedCount}/${quotaStats.totalQuota}）。所有中方导师将无法再确认新的学生志愿。`;
+  } else if (isActive) {
+    if (quotaBasedActive) {
+      message = `当前剩余确认名额（${quotaStats.remainingQuota}）不超过待确认分流学生数（${quotaStats.pendingTransferStudents}），已启动分流学生优先模式。中方导师仅可确认分流学生的志愿申请。`;
+    } else {
+      message = `当前可接收非分流学生的总课题额度已用尽（未使用课题：${monitoring.unusedTopicsCount}，待确认分流学生：${monitoring.pendingTransferStudentsCount}）。此后新增的志愿审核仅可对分流学生进行操作，来自非分流学生的新志愿将被自动拒绝。请优先考虑分流学生。`;
+    }
+  }
+  
+  return {
+    isActive,
+    unusedTopicsCount: monitoring.unusedTopicsCount,
+    pendingTransferStudentsCount: monitoring.pendingTransferStudentsCount,
+    message,
+    quotaFull,
+    triggeredByQuota: quotaBasedActive,
+  };
+}
+
+
+/**
+ * 论文终稿宽限期状态检测
+ * 宽限期规则：
+ * - 截止日期后24小时内提交：扣5分
+ * - 截止日期后超过24小时至7天内提交：扣10分
+ * - 截止日期后超过7天：系统关闭，无法提交
+ */
+export interface GracePeriodStatus {
+  status: "before_deadline" | "normal" | "grace_24h" | "grace_7d" | "closed" | "not_configured";
+  canUpload: boolean;
+  penalty: number;  // 扣分数
+  message: string;  // 状态说明
+  deadlineTime: Date | null;  // 截止时间
+  graceEndTime: Date | null;  // 宽限期结束时间（截止后7天）
+  hoursOverdue: number;  // 超过截止时间的小时数
+  daysOverdue: number;   // 超过截止时间的天数
+}
+
+export async function checkThesisGracePeriod(): Promise<GracePeriodStatus> {
+  const thesisUploadStart = await getConfig("thesisUploadStart");
+  const thesisUploadEnd = await getConfig("thesisUploadEnd");
+  
+  // 未配置时间段
+  if (!thesisUploadStart || !thesisUploadEnd) {
+    return {
+      status: "not_configured",
+      canUpload: false,
+      penalty: 0,
+      message: "论文上传时间段尚未配置",
+      deadlineTime: null,
+      graceEndTime: null,
+      hoursOverdue: 0,
+      daysOverdue: 0,
+    };
+  }
+  
+  const now = new Date();
+  const start = new Date(thesisUploadStart);
+  const end = new Date(thesisUploadEnd);
+  const graceEnd = new Date(end.getTime() + 7 * 24 * 60 * 60 * 1000); // 截止后7天
+  
+  // 尚未开始
+  if (now < start) {
+    return {
+      status: "before_deadline",
+      canUpload: false,
+      penalty: 0,
+      message: `论文上传尚未开始，开始时间：${start.toLocaleString("zh-CN")}`,
+      deadlineTime: end,
+      graceEndTime: graceEnd,
+      hoursOverdue: 0,
+      daysOverdue: 0,
+    };
+  }
+  
+  // 正常时间段内
+  if (now <= end) {
+    return {
+      status: "normal",
+      canUpload: true,
+      penalty: 0,
+      message: "当前处于正常提交时间段",
+      deadlineTime: end,
+      graceEndTime: graceEnd,
+      hoursOverdue: 0,
+      daysOverdue: 0,
+    };
+  }
+  
+  // 计算超时时间
+  const overdueMs = now.getTime() - end.getTime();
+  const hoursOverdue = Math.floor(overdueMs / (60 * 60 * 1000));
+  const daysOverdue = Math.floor(overdueMs / (24 * 60 * 60 * 1000));
+  
+  // 超过7天，系统关闭
+  if (now > graceEnd) {
+    return {
+      status: "closed",
+      canUpload: false,
+      penalty: 0,
+      message: `论文提交已关闭，宽限期已于 ${graceEnd.toLocaleString("zh-CN")} 结束`,
+      deadlineTime: end,
+      graceEndTime: graceEnd,
+      hoursOverdue,
+      daysOverdue,
+    };
+  }
+  
+  // 24小时内宽限期
+  if (hoursOverdue < 24) {
+    return {
+      status: "grace_24h",
+      canUpload: true,
+      penalty: 5,
+      message: `已超过截止时间 ${hoursOverdue} 小时，处于24小时宽限期内，提交将扣除5分`,
+      deadlineTime: end,
+      graceEndTime: graceEnd,
+      hoursOverdue,
+      daysOverdue,
+    };
+  }
+  
+  // 超过24小时至7天宽限期
+  return {
+    status: "grace_7d",
+    canUpload: true,
+    penalty: 10,
+    message: `已超过截止时间 ${daysOverdue} 天 ${hoursOverdue % 24} 小时，处于7天宽限期内，提交将扣除10分`,
+    deadlineTime: end,
+    graceEndTime: graceEnd,
+    hoursOverdue,
+    daysOverdue,
+  };
+}
+
+
+// ==================== 指导记录模块 ====================
+
+/** 创建指导记录 */
+export async function createGuidanceLog(data: {
+  studentId: number;
+  teacherId: number;
+  guidanceDate: Date;
+  topic: string;
+  content: string;
+  status?: "draft" | "submitted" | "confirmed";
+  academicYear?: string;
+}) {
+  const db = await getDb();
+  if (!db) throw new Error("数据库连接失败");
+  const result = await db.insert(guidanceLogs).values({
+    studentId: data.studentId,
+    teacherId: data.teacherId,
+    guidanceDate: data.guidanceDate,
+    topic: data.topic,
+    content: data.content,
+    status: data.status || "draft",
+    academicYear: data.academicYear,
+  });
+  return result[0].insertId;
+}
+
+/** 更新指导记录 */
+export async function updateGuidanceLog(
+  logId: number,
+  studentId: number,
+  data: {
+    guidanceDate?: Date;
+    topic?: string;
+    content?: string;
+    status?: "draft" | "submitted" | "confirmed";
+  }
+) {
+  const db = await getDb();
+  if (!db) throw new Error("数据库连接失败");
+  const updateData: Record<string, unknown> = {};
+  if (data.guidanceDate !== undefined) updateData.guidanceDate = data.guidanceDate;
+  if (data.topic !== undefined) updateData.topic = data.topic;
+  if (data.content !== undefined) updateData.content = data.content;
+  if (data.status !== undefined) updateData.status = data.status;
+  
+  await db
+    .update(guidanceLogs)
+    .set(updateData)
+    .where(and(eq(guidanceLogs.id, logId), eq(guidanceLogs.studentId, studentId)));
+}
+
+/** 删除指导记录（仅草稿状态可删除） */
+export async function deleteGuidanceLog(logId: number, studentId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("数据库连接失败");
+  // 先检查状态
+  const log = await db.select().from(guidanceLogs).where(eq(guidanceLogs.id, logId)).limit(1);
+  if (log.length === 0) {
+    throw new Error("记录不存在");
+  }
+  if (log[0].studentId !== studentId) {
+    throw new Error("无权删除此记录");
+  }
+  if (log[0].status !== "draft") {
+    throw new Error("只能删除草稿状态的记录");
+  }
+  
+  // 删除关联的附件记录
+  await db.delete(guidanceAttachments).where(eq(guidanceAttachments.logId, logId));
+  // 删除关联的评论
+  await db.delete(guidanceComments).where(eq(guidanceComments.logId, logId));
+  // 删除记录
+  await db.delete(guidanceLogs).where(eq(guidanceLogs.id, logId));
+}
+
+/** 获取学生的指导记录列表 */
+export async function getStudentGuidanceLogs(studentId: number, academicYear?: string) {
+  const db = await getDb();
+  if (!db) return [];
+  const query = db
+    .select({
+      id: guidanceLogs.id,
+      studentId: guidanceLogs.studentId,
+      teacherId: guidanceLogs.teacherId,
+      guidanceDate: guidanceLogs.guidanceDate,
+      topic: guidanceLogs.topic,
+      content: guidanceLogs.content,
+      status: guidanceLogs.status,
+      academicYear: guidanceLogs.academicYear,
+      createdAt: guidanceLogs.createdAt,
+      updatedAt: guidanceLogs.updatedAt,
+    })
+    .from(guidanceLogs)
+    .where(eq(guidanceLogs.studentId, studentId))
+    .orderBy(desc(guidanceLogs.guidanceDate));
+  
+  const logs = await query;
+  
+  // 过滤学年
+  const filteredLogs = academicYear 
+    ? logs.filter(log => log.academicYear === academicYear)
+    : logs;
+  
+  // 获取每条记录的附件数量
+  const logsWithAttachments = await Promise.all(
+    filteredLogs.map(async (log) => {
+      const attachments = await db
+        .select({ id: guidanceAttachments.id })
+        .from(guidanceAttachments)
+        .where(eq(guidanceAttachments.logId, log.id));
+      return {
+        ...log,
+        attachmentCount: attachments.length,
+      };
+    })
+  );
+  
+  return logsWithAttachments;
+}
+
+/** 获取单条指导记录详情（包含附件和评论） */
+export async function getGuidanceLogDetail(logId: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const log = await db.select().from(guidanceLogs).where(eq(guidanceLogs.id, logId)).limit(1);
+  if (log.length === 0) {
+    return null;
+  }
+  
+  const attachments = await db
+    .select()
+    .from(guidanceAttachments)
+    .where(eq(guidanceAttachments.logId, logId))
+    .orderBy(desc(guidanceAttachments.createdAt));
+  
+  const comments = await db
+    .select({
+      id: guidanceComments.id,
+      logId: guidanceComments.logId,
+      userId: guidanceComments.userId,
+      userRole: guidanceComments.userRole,
+      content: guidanceComments.content,
+      createdAt: guidanceComments.createdAt,
+    })
+    .from(guidanceComments)
+    .where(eq(guidanceComments.logId, logId))
+    .orderBy(asc(guidanceComments.createdAt));
+  
+  // 获取评论者信息
+  const commentsWithUser = await Promise.all(
+    comments.map(async (comment) => {
+      const user = await db.select({ id: users.id, name: users.name }).from(users).where(eq(users.id, comment.userId)).limit(1);
+      return {
+        ...comment,
+        userName: user[0]?.name || "未知用户",
+      };
+    })
+  );
+  
+  return {
+    ...log[0],
+    attachments,
+    comments: commentsWithUser,
+  };
+}
+
+/** 添加附件 */
+export async function addGuidanceAttachment(data: {
+  logId?: number;
+  studentId: number;
+  fileName: string;
+  fileUrl: string;
+  fileKey: string;
+  mimeType?: string;
+  fileSize?: number;
+}) {
+  const db = await getDb();
+  if (!db) throw new Error("数据库连接失败");
+  const result = await db.insert(guidanceAttachments).values({
+    logId: data.logId,
+    studentId: data.studentId,
+    fileName: data.fileName,
+    fileUrl: data.fileUrl,
+    fileKey: data.fileKey,
+    mimeType: data.mimeType,
+    fileSize: data.fileSize,
+  });
+  return result[0].insertId;
+}
+
+/** 删除附件 */
+export async function deleteGuidanceAttachment(attachmentId: number, studentId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("数据库连接失败");
+  const attachment = await db
+    .select()
+    .from(guidanceAttachments)
+    .where(eq(guidanceAttachments.id, attachmentId))
+    .limit(1);
+  
+  if (attachment.length === 0) {
+    throw new Error("附件不存在");
+  }
+  if (attachment[0].studentId !== studentId) {
+    throw new Error("无权删除此附件");
+  }
+  
+  await db.delete(guidanceAttachments).where(eq(guidanceAttachments.id, attachmentId));
+  return attachment[0];
+}
+
+/** 添加评论 */
+export async function addGuidanceComment(data: {
+  logId: number;
+  userId: number;
+  userRole: "student" | "teacher";
+  content: string;
+}) {
+  const db = await getDb();
+  if (!db) throw new Error("数据库连接失败");
+  const result = await db.insert(guidanceComments).values({
+    logId: data.logId,
+    userId: data.userId,
+    userRole: data.userRole,
+    content: data.content,
+  });
+  return result[0].insertId;
+}
+
+/** 导师确认指导记录 */
+export async function confirmGuidanceLog(logId: number, teacherId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("数据库连接失败");
+  const log = await db.select().from(guidanceLogs).where(eq(guidanceLogs.id, logId)).limit(1);
+  if (log.length === 0) {
+    throw new Error("记录不存在");
+  }
+  if (log[0].teacherId !== teacherId) {
+    throw new Error("无权确认此记录");
+  }
+  if (log[0].status !== "submitted") {
+    throw new Error("只能确认已提交的记录");
+  }
+  
+  await db
+    .update(guidanceLogs)
+    .set({ status: "confirmed" })
+    .where(eq(guidanceLogs.id, logId));
+}
+
+/** 获取导师指导的学生列表（带指导记录统计） */
+export async function getTeacherGuidanceStudents(teacherId: number, academicYear?: string) {
+  const db = await getDb();
+  if (!db) return [];
+  // 获取该导师指导的所有学生（通过wishes表的teacherDecision=approved状态）
+  const confirmedWishes = await db
+    .select({
+      studentId: wishes.studentId,
+      topicId: wishes.topicId,
+    })
+    .from(wishes)
+    .innerJoin(topics, eq(wishes.topicId, topics.id))
+    .where(
+      and(
+        eq(topics.teacherId, teacherId),
+        eq(wishes.teacherDecision, "approved"),
+        academicYear ? eq(topics.academicYear, academicYear) : undefined
+      )
+    );
+  const matchedStudents = confirmedWishes;
+  
+  if (matchedStudents.length === 0) {
+    return [];
+  }
+  
+  // 获取学生信息和指导记录统计
+  const studentIds = Array.from(new Set(matchedStudents.map(m => m.studentId)));
+  const studentsWithStats = await Promise.all(
+    studentIds.map(async (studentId) => {
+      const student = await db
+        .select({ id: users.id, name: users.name, email: users.email, studentId: users.studentId })
+        .from(users)
+        .where(eq(users.id, studentId))
+        .limit(1);
+      
+      if (student.length === 0) return null;
+      
+      // 获取该学生的指导记录统计
+      const logs = await db
+        .select({ id: guidanceLogs.id, status: guidanceLogs.status })
+        .from(guidanceLogs)
+        .where(
+          and(
+            eq(guidanceLogs.studentId, studentId),
+            eq(guidanceLogs.teacherId, teacherId),
+            academicYear ? eq(guidanceLogs.academicYear, academicYear) : undefined
+          )
+        );
+      
+      const totalLogs = logs.length;
+      const submittedLogs = logs.filter(l => l.status === "submitted").length;
+      const confirmedLogs = logs.filter(l => l.status === "confirmed").length;
+      
+      // 获取最新记录时间
+      const latestLog = await db
+        .select({ guidanceDate: guidanceLogs.guidanceDate })
+        .from(guidanceLogs)
+        .where(
+          and(
+            eq(guidanceLogs.studentId, studentId),
+            eq(guidanceLogs.teacherId, teacherId)
+          )
+        )
+        .orderBy(desc(guidanceLogs.guidanceDate))
+        .limit(1);
+      
+      return {
+        ...student[0],
+        totalLogs,
+        submittedLogs,
+        confirmedLogs,
+        latestLogDate: latestLog[0]?.guidanceDate || null,
+      };
+    })
+  );
+  
+  return studentsWithStats.filter(s => s !== null);
+}
+
+/** 获取导师查看的学生指导记录列表 */
+export async function getTeacherViewStudentLogs(
+  teacherId: number,
+  studentId: number,
+  academicYear?: string
+) {
+  const db = await getDb();
+  if (!db) return [];
+  const logs = await db
+    .select()
+    .from(guidanceLogs)
+    .where(
+      and(
+        eq(guidanceLogs.studentId, studentId),
+        eq(guidanceLogs.teacherId, teacherId),
+        academicYear ? eq(guidanceLogs.academicYear, academicYear) : undefined
+      )
+    )
+    .orderBy(desc(guidanceLogs.guidanceDate));
+  
+  // 获取每条记录的附件
+  const logsWithAttachments = await Promise.all(
+    logs.map(async (log) => {
+      const attachments = await db
+        .select()
+        .from(guidanceAttachments)
+        .where(eq(guidanceAttachments.logId, log.id));
+      
+      const comments = await db
+        .select()
+        .from(guidanceComments)
+        .where(eq(guidanceComments.logId, log.id))
+        .orderBy(asc(guidanceComments.createdAt));
+      
+      return {
+        ...log,
+        attachments,
+        commentCount: comments.length,
+      };
+    })
+  );
+  
+  return logsWithAttachments;
+}
+
+/** 获取学生的所有附件（用于批量下载） */
+export async function getStudentAllAttachments(studentId: number, teacherId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  // 验证导师权限
+  const logs = await db
+    .select({ id: guidanceLogs.id })
+    .from(guidanceLogs)
+    .where(
+      and(
+        eq(guidanceLogs.studentId, studentId),
+        eq(guidanceLogs.teacherId, teacherId)
+      )
+    );
+  
+  if (logs.length === 0) {
+    return [];
+  }
+  
+  const logIds = logs.map(l => l.id);
+  
+  const attachments = await db
+    .select()
+    .from(guidanceAttachments)
+    .where(
+      and(
+        eq(guidanceAttachments.studentId, studentId),
+        inArray(guidanceAttachments.logId, logIds)
+      )
+    )
+    .orderBy(desc(guidanceAttachments.createdAt));
+  
+  return attachments;
+}
+
+
+/** 获取学生所有附件用于ZIP下载（包含日志信息） */
+export async function getAllStudentAttachmentsForDownload(studentId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const attachments = await db
+    .select({
+      id: guidanceAttachments.id,
+      fileName: guidanceAttachments.fileName,
+      fileUrl: guidanceAttachments.fileUrl,
+      fileKey: guidanceAttachments.fileKey,
+      mimeType: guidanceAttachments.mimeType,
+      fileSize: guidanceAttachments.fileSize,
+      logId: guidanceAttachments.logId,
+      logTopic: guidanceLogs.topic,
+      guidanceDate: guidanceLogs.guidanceDate,
+    })
+    .from(guidanceAttachments)
+    .leftJoin(guidanceLogs, eq(guidanceAttachments.logId, guidanceLogs.id))
+    .where(eq(guidanceAttachments.studentId, studentId))
+    .orderBy(desc(guidanceLogs.guidanceDate));
+  
+  return attachments.map(a => ({
+    ...a,
+    guidanceDate: a.guidanceDate ? new Date(a.guidanceDate).toISOString().split("T")[0] : "unknown",
+  }));
+}
+
+/** 获取学生指导记录用于PDF导出（包含附件和评论） */
+export async function getGuidanceLogsForExport(studentId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  // 获取所有日志
+  const logs = await db
+    .select()
+    .from(guidanceLogs)
+    .where(eq(guidanceLogs.studentId, studentId))
+    .orderBy(desc(guidanceLogs.guidanceDate));
+  
+  // 获取所有附件
+  const attachments = await db
+    .select()
+    .from(guidanceAttachments)
+    .where(eq(guidanceAttachments.studentId, studentId));
+  
+  // 获取所有评论
+  const comments = await db
+    .select({
+      id: guidanceComments.id,
+      logId: guidanceComments.logId,
+      userId: guidanceComments.userId,
+      userRole: guidanceComments.userRole,
+      content: guidanceComments.content,
+      createdAt: guidanceComments.createdAt,
+    })
+    .from(guidanceComments)
+    .innerJoin(guidanceLogs, eq(guidanceComments.logId, guidanceLogs.id))
+    .where(eq(guidanceLogs.studentId, studentId))
+    .orderBy(guidanceComments.createdAt);
+  
+  // 组装结果
+  return logs.map(log => ({
+    id: log.id,
+    guidanceDate: log.guidanceDate,
+    topic: log.topic,
+    content: log.content,
+    status: log.status,
+    attachments: attachments
+      .filter(a => a.logId === log.id)
+      .map(a => ({
+        fileName: a.fileName,
+        fileSize: a.fileSize || 0,
+      })),
+    comments: comments
+      .filter(c => c.logId === log.id)
+      .map(c => ({
+        userRole: c.userRole,
+        content: c.content,
+        createdAt: c.createdAt,
+      })),
+  }));
+}
+
+
+// ==================== 简化最终成绩流程相关函数 ====================
+
+/**
+ * 导师修改自己的评分（用于分差>10分时协商后修改）
+ * @param draftId 论文终稿ID
+ * @param newScore 新分数
+ * @param teacherId 导师ID
+ * @param isFirstTeacher 是否为第一导师
+ */
+export async function updateTeacherScore(
+  draftId: number,
+  newScore: number,
+  teacherId: number,
+  isFirstTeacher: boolean
+): Promise<{ success: boolean; error?: string; message?: string; finalScore?: number }> {
+  const db = await getDb();
+  if (!db) return { success: false, error: "数据库连接失败" };
+
+  // 检查论文是否存在
+  const draft = await db.select().from(thesisDrafts).where(eq(thesisDrafts.id, draftId)).limit(1);
+  if (draft.length === 0) {
+    return { success: false, error: "论文不存在" };
+  }
+
+  // 检查是否已有最终成绩
+  if (draft[0].finalScore !== null) {
+    return { success: false, error: "最终成绩已确定，无法修改" };
+  }
+
+  // 检查两位导师是否都已评分
+  if (draft[0].score === null || draft[0].secondTeacherScore === null) {
+    return { success: false, error: "两位导师尚未都完成评分" };
+  }
+
+  // 验证分数范围
+  if (newScore < 0 || newScore > 100) {
+    return { success: false, error: "分数必须在0-100之间" };
+  }
+
+  const roundedScore = Math.round(newScore * 10) / 10;
+  const now = toMySQLTimestamp();
+
+  // 获取另一位导师的分数
+  let firstScore: number;
+  let secondScore: number;
+
+  if (isFirstTeacher) {
+    firstScore = roundedScore;
+    secondScore = draft[0].secondTeacherScore!;
+    await db.update(thesisDrafts).set({
+      score: roundedScore,
+      scoredAt: now,
+    }).where(eq(thesisDrafts.id, draftId));
+  } else {
+    firstScore = draft[0].score!;
+    secondScore = roundedScore;
+    await db.update(thesisDrafts).set({
+      secondTeacherScore: roundedScore,
+      secondTeacherScoredAt: now,
+    }).where(eq(thesisDrafts.id, draftId));
+  }
+
+  // 计算新的分差
+  const scoreDiff = Math.abs(firstScore - secondScore);
+  const averageScore = Math.round((firstScore + secondScore) / 2 * 10) / 10;
+
+  // 如果分差≤10分，自动确定最终成绩
+  if (scoreDiff <= 10) {
+    // 扣除迟交罚分
+    const penalty = draft[0].latePenalty ?? 0;
+    const computedFinal = Math.max(0, Math.round((averageScore - penalty) * 10) / 10);
+    await db.update(thesisDrafts).set({
+      finalScore: String(computedFinal),
+      finalScoreConfirmedAt: now,
+      requestAverage: 0,
+      averageConfirmed: 1,
+    }).where(eq(thesisDrafts.id, draftId));
+    
+    const penaltyMsg = penalty > 0 ? `（已扣除迟交罚分${penalty}分）` : '';
+    return { 
+      success: true, 
+      message: `分差${scoreDiff}分（≤10分），最终成绩已自动取平均分：${computedFinal}分${penaltyMsg}`, 
+      finalScore: computedFinal 
+    };
+  }
+
+  return { 
+    success: true, 
+    message: `分数已修改，当前分差${scoreDiff}分（>10分），请继续与另一位导师协商` 
+  };
+}
+
+/**
+ * 获取需要协商的论文列表（分差>10分且未确定最终成绩）
+ * @param teacherId 导师ID
+ */
+export async function getNegotiationPendingDrafts(teacherId: number): Promise<Array<{
+  draftId: number;
+  studentId: number;
+  studentName: string | null;
+  topicTitle: string | null;
+  firstScore: number;
+  secondScore: number;
+  scoreDiff: number;
+  isFirstTeacher: boolean;
+  otherTeacherName: string | null;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // 获取该导师作为第一导师的匹配
+  const firstTeacherMatches = await db.select({ id: matches.id })
+    .from(matches)
+    .where(eq(matches.teacherId, teacherId));
+
+  // 获取该导师作为第二导师的匹配
+  const secondTeacherMatches = await db.select({ id: matches.id })
+    .from(matches)
+    .where(eq(matches.secondTeacherId, teacherId));
+
+  const allMatchIds = [
+    ...firstTeacherMatches.map(m => m.id),
+    ...secondTeacherMatches.map(m => m.id)
+  ];
+
+  if (allMatchIds.length === 0) return [];
+
+  // 获取两位导师都已评分但未确定最终成绩的论文
+  const drafts = await db.select({
+    draftId: thesisDrafts.id,
+    studentId: thesisDrafts.studentId,
+    matchId: thesisDrafts.matchId,
+    firstScore: thesisDrafts.score,
+    secondScore: thesisDrafts.secondTeacherScore,
+    finalScore: thesisDrafts.finalScore,
+  })
+  .from(thesisDrafts)
+  .where(
+    and(
+      inArray(thesisDrafts.matchId, allMatchIds),
+      isNotNull(thesisDrafts.score),
+      isNotNull(thesisDrafts.secondTeacherScore),
+      isNull(thesisDrafts.finalScore)
+    )
+  );
+
+  // 过滤出分差>10分的论文
+  const pendingDrafts = drafts.filter(d => {
+    const diff = Math.abs(d.firstScore! - d.secondScore!);
+    return diff > 10;
+  });
+
+  const results: Array<{
+    draftId: number;
+    studentId: number;
+    studentName: string | null;
+    topicTitle: string | null;
+    firstScore: number;
+    secondScore: number;
+    scoreDiff: number;
+    isFirstTeacher: boolean;
+    otherTeacherName: string | null;
+  }> = [];
+
+  for (const draft of pendingDrafts) {
+    // 获取学生信息
+    const studentInfo = await db.select({ name: users.name })
+      .from(users)
+      .where(eq(users.id, draft.studentId))
+      .limit(1);
+
+    // 获取匹配信息
+    const matchInfo = await db.select({
+      topicId: matches.topicId,
+      firstTeacherId: matches.teacherId,
+      secondTeacherId: matches.secondTeacherId,
+    })
+    .from(matches)
+    .where(eq(matches.id, draft.matchId))
+    .limit(1);
+
+    if (matchInfo.length === 0) continue;
+
+    // 获取课题标题
+    const topicInfo = await db.select({ title: topics.title })
+      .from(topics)
+      .where(eq(topics.id, matchInfo[0].topicId))
+      .limit(1);
+
+    // 判断当前导师是第一导师还是第二导师
+    const isFirstTeacher = matchInfo[0].firstTeacherId === teacherId;
+    const otherTeacherId = isFirstTeacher ? matchInfo[0].secondTeacherId : matchInfo[0].firstTeacherId;
+
+    // 获取另一位导师的姓名
+    let otherTeacherName: string | null = null;
+    if (otherTeacherId) {
+      const otherTeacher = await db.select({ name: users.name })
+        .from(users)
+        .where(eq(users.id, otherTeacherId))
+        .limit(1);
+      otherTeacherName = otherTeacher[0]?.name || null;
+    }
+
+    results.push({
+      draftId: draft.draftId,
+      studentId: draft.studentId,
+      studentName: studentInfo[0]?.name || null,
+      topicTitle: topicInfo[0]?.title || null,
+      firstScore: draft.firstScore!,
+      secondScore: draft.secondScore!,
+      scoreDiff: Math.abs(draft.firstScore! - draft.secondScore!),
+      isFirstTeacher,
+      otherTeacherName,
+    });
+  }
+
+  return results;
+}
+
+
+// ==================== 毕设采购审核模块 ====================
+import { 
+  specialRoles, SpecialRole, InsertSpecialRole,
+  purchaseRequests, PurchaseRequest, InsertPurchaseRequest
+} from "../drizzle/schema";
+
+// 特殊角色管理
+export async function appointSpecialRole(data: {
+  userId: number;
+  roleType: "lab_admin" | "asset_leader";
+  appointedBy: number;
+  wechatId?: string;
+  wechatNote?: string;
+}): Promise<SpecialRole | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  // 检查是否已有相同角色
+  const existing = await db.select()
+    .from(specialRoles)
+    .where(and(
+      eq(specialRoles.userId, data.userId),
+      eq(specialRoles.roleType, data.roleType),
+      eq(specialRoles.status, "active")
+    ))
+    .limit(1);
+
+  if (existing.length > 0) {
+    // 更新现有记录
+    await db.update(specialRoles)
+      .set({
+        wechatId: data.wechatId,
+        wechatNote: data.wechatNote,
+      })
+      .where(eq(specialRoles.id, existing[0].id));
+    return existing[0];
+  }
+
+  // 创建新记录
+  const result = await db.insert(specialRoles).values({
+    userId: data.userId,
+    roleType: data.roleType,
+    appointedBy: data.appointedBy,
+    wechatId: data.wechatId,
+    wechatNote: data.wechatNote,
+  });
+
+  const insertId = result[0].insertId;
+  const role = await db.select().from(specialRoles).where(eq(specialRoles.id, insertId)).limit(1);
+  return role.length > 0 ? role[0] : null;
+}
+
+export async function revokeSpecialRole(userId: number, roleType: "lab_admin" | "asset_leader"): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  await db.update(specialRoles)
+    .set({
+      status: "revoked",
+      revokedAt: toMySQLTimestamp(),
+    })
+    .where(and(
+      eq(specialRoles.userId, userId),
+      eq(specialRoles.roleType, roleType),
+      eq(specialRoles.status, "active")
+    ));
+
+  return true;
+}
+
+export async function getSpecialRolesByType(roleType: "lab_admin" | "asset_leader"): Promise<Array<SpecialRole & { userName?: string; userEmail?: string }>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const roles = await db.select()
+    .from(specialRoles)
+    .where(and(
+      eq(specialRoles.roleType, roleType),
+      eq(specialRoles.status, "active")
+    ));
+
+  // 获取用户信息
+  const results: Array<SpecialRole & { userName?: string; userEmail?: string }> = [];
+  for (const role of roles) {
+    const user = await getUserById(role.userId);
+    results.push({
+      ...role,
+      userName: user?.name || undefined,
+      userEmail: user?.email || undefined,
+    });
+  }
+
+  return results;
+}
+
+export async function getUserSpecialRoles(userId: number): Promise<SpecialRole[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select()
+    .from(specialRoles)
+    .where(and(
+      eq(specialRoles.userId, userId),
+      eq(specialRoles.status, "active")
+    ));
+}
+
+export async function isUserLabAdmin(userId: number): Promise<boolean> {
+  const roles = await getUserSpecialRoles(userId);
+  return roles.some(r => r.roleType === "lab_admin");
+}
+
+export async function isUserAssetLeader(userId: number): Promise<boolean> {
+  const roles = await getUserSpecialRoles(userId);
+  return roles.some(r => r.roleType === "asset_leader");
+}
+
+export async function getLabAdminWechatInfo(): Promise<{ wechatId: string; wechatNote: string } | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const labAdmins = await db.select()
+    .from(specialRoles)
+    .where(and(
+      eq(specialRoles.roleType, "lab_admin"),
+      eq(specialRoles.status, "active"),
+      isNotNull(specialRoles.wechatId)
+    ))
+    .limit(1);
+
+  if (labAdmins.length === 0) return null;
+
+  return {
+    wechatId: labAdmins[0].wechatId || "",
+    wechatNote: labAdmins[0].wechatNote || "",
+  };
+}
+
+export async function updateLabAdminWechat(userId: number, wechatId: string, wechatNote?: string): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  await db.update(specialRoles)
+    .set({
+      wechatId,
+      wechatNote: wechatNote || null,
+    })
+    .where(and(
+      eq(specialRoles.userId, userId),
+      eq(specialRoles.roleType, "lab_admin"),
+      eq(specialRoles.status, "active")
+    ));
+
+  return true;
+}
+
+// 采购申请管理
+export async function createPurchaseRequest(data: {
+  studentId: number;
+  studentName: string;
+  studentClass: string;
+  studentNo: string;
+  totalAmount: string;
+  reason?: string;
+  fileUrl: string;
+  fileKey: string;
+  fileName: string;
+  academicYear?: string;
+}): Promise<PurchaseRequest | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const isOverBudget = parseFloat(data.totalAmount) > 1500 ? 1 : 0;
+
+  const result = await db.insert(purchaseRequests).values({
+    studentId: data.studentId,
+    studentName: data.studentName,
+    studentClass: data.studentClass,
+    studentNo: data.studentNo,
+    totalAmount: data.totalAmount,
+    reason: data.reason,
+    fileUrl: data.fileUrl,
+    fileKey: data.fileKey,
+    fileName: data.fileName,
+    isOverBudget,
+    academicYear: data.academicYear,
+    status: "pending_lab",
+  });
+
+  const insertId = result[0].insertId;
+  const request = await db.select().from(purchaseRequests).where(eq(purchaseRequests.id, insertId)).limit(1);
+  return request.length > 0 ? request[0] : null;
+}
+
+export async function getPurchaseRequestById(id: number): Promise<PurchaseRequest | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(purchaseRequests).where(eq(purchaseRequests.id, id)).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function getStudentPurchaseRequests(studentId: number): Promise<PurchaseRequest[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select()
+    .from(purchaseRequests)
+    .where(eq(purchaseRequests.studentId, studentId))
+    .orderBy(desc(purchaseRequests.applyTime));
+}
+
+export async function getPendingLabReviewRequests(): Promise<Array<PurchaseRequest & { studentInfo?: { name: string; email: string } }>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const requests = await db.select()
+    .from(purchaseRequests)
+    .where(eq(purchaseRequests.status, "pending_lab"))
+    .orderBy(asc(purchaseRequests.applyTime));
+
+  const results: Array<PurchaseRequest & { studentInfo?: { name: string; email: string } }> = [];
+  for (const req of requests) {
+    const student = await getUserById(req.studentId);
+    results.push({
+      ...req,
+      studentInfo: student ? { name: student.name || "", email: student.email } : undefined,
+    });
+  }
+
+  return results;
+}
+
+export async function getPendingTeacherReviewRequests(teacherId: number): Promise<Array<PurchaseRequest & { studentInfo?: { name: string; email: string } }>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // 获取该导师指导的学生的待审核申请
+  const teacherMatches = await db.select({ studentId: matches.studentId })
+    .from(matches)
+    .where(eq(matches.teacherId, teacherId));
+
+  const studentIds = teacherMatches.map(m => m.studentId);
+  if (studentIds.length === 0) return [];
+
+  const requests = await db.select()
+    .from(purchaseRequests)
+    .where(and(
+      eq(purchaseRequests.status, "pending_teacher"),
+      inArray(purchaseRequests.studentId, studentIds)
+    ))
+    .orderBy(asc(purchaseRequests.applyTime));
+
+  const results: Array<PurchaseRequest & { studentInfo?: { name: string; email: string } }> = [];
+  for (const req of requests) {
+    const student = await getUserById(req.studentId);
+    results.push({
+      ...req,
+      studentInfo: student ? { name: student.name || "", email: student.email } : undefined,
+    });
+  }
+
+  return results;
+}
+
+export async function getPendingAssetReviewRequests(): Promise<Array<PurchaseRequest & { studentInfo?: { name: string; email: string } }>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const requests = await db.select()
+    .from(purchaseRequests)
+    .where(eq(purchaseRequests.status, "pending_asset"))
+    .orderBy(asc(purchaseRequests.applyTime));
+
+  const results: Array<PurchaseRequest & { studentInfo?: { name: string; email: string } }> = [];
+  for (const req of requests) {
+    const student = await getUserById(req.studentId);
+    results.push({
+      ...req,
+      studentInfo: student ? { name: student.name || "", email: student.email } : undefined,
+    });
+  }
+
+  return results;
+}
+
+export async function labReviewPurchaseRequest(
+  requestId: number,
+  reviewerId: number,
+  approved: boolean,
+  comment?: string
+): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  const request = await getPurchaseRequestById(requestId);
+  if (!request || request.status !== "pending_lab") return false;
+
+  await db.update(purchaseRequests)
+    .set({
+      status: approved ? "pending_teacher" : "rejected_lab",
+      labReviewedAt: toMySQLTimestamp(),
+      labReviewedBy: reviewerId,
+      labComment: comment,
+    })
+    .where(eq(purchaseRequests.id, requestId));
+
+  return true;
+}
+
+export async function teacherReviewPurchaseRequest(
+  requestId: number,
+  reviewerId: number,
+  approved: boolean,
+  comment?: string
+): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  const request = await getPurchaseRequestById(requestId);
+  if (!request || request.status !== "pending_teacher") return false;
+
+  let newStatus: "pending_asset" | "approved" | "rejected_teacher";
+  if (!approved) {
+    newStatus = "rejected_teacher";
+  } else if (request.isOverBudget) {
+    newStatus = "pending_asset";
+  } else {
+    newStatus = "approved";
+  }
+
+  await db.update(purchaseRequests)
+    .set({
+      status: newStatus,
+      teacherReviewedAt: toMySQLTimestamp(),
+      teacherReviewedBy: reviewerId,
+      teacherComment: comment,
+    })
+    .where(eq(purchaseRequests.id, requestId));
+
+  return true;
+}
+
+export async function assetReviewPurchaseRequest(
+  requestId: number,
+  reviewerId: number,
+  approved: boolean,
+  comment?: string
+): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  const request = await getPurchaseRequestById(requestId);
+  if (!request || request.status !== "pending_asset") return false;
+
+  await db.update(purchaseRequests)
+    .set({
+      status: approved ? "approved" : "rejected_asset",
+      assetReviewedAt: toMySQLTimestamp(),
+      assetReviewedBy: reviewerId,
+      assetComment: comment,
+    })
+    .where(eq(purchaseRequests.id, requestId));
+
+  return true;
+}
+
+export async function getAllPurchaseRequests(filters?: {
+  status?: string;
+  academicYear?: string;
+}): Promise<Array<PurchaseRequest & { studentInfo?: { name: string; email: string } }>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  let conditions: SQL[] = [];
+  if (filters?.status) {
+    conditions.push(eq(purchaseRequests.status, filters.status as any));
+  }
+  if (filters?.academicYear) {
+    conditions.push(eq(purchaseRequests.academicYear, filters.academicYear));
+  }
+
+  const requests = conditions.length > 0
+    ? await db.select().from(purchaseRequests).where(and(...conditions)).orderBy(desc(purchaseRequests.applyTime))
+    : await db.select().from(purchaseRequests).orderBy(desc(purchaseRequests.applyTime));
+
+  const results: Array<PurchaseRequest & { studentInfo?: { name: string; email: string } }> = [];
+  for (const req of requests) {
+    const student = await getUserById(req.studentId);
+    results.push({
+      ...req,
+      studentInfo: student ? { name: student.name || "", email: student.email } : undefined,
+    });
+  }
+
+  return results;
+}
+
+
+/**
+ * 批量拒绝所有中方导师待审核的非分流学生志愿
+ * 仅在分流学生优先模式下可用
+ * @returns 被拒绝的志愿数量
+ */
+export async function batchRejectNonTransferStudentWishes(): Promise<{
+  success: boolean;
+  rejectedCount: number;
+  message: string;
+}> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not connected");
+  
+  // 首先检查是否处于分流优先模式
+  const priorityMode = await checkTransferStudentPriorityMode();
+  if (!priorityMode.isActive) {
+    return {
+      success: false,
+      rejectedCount: 0,
+      message: "当前不处于分流学生优先模式，无法执行批量拒绝操作"
+    };
+  }
+  
+  // 获取当前学年
+  const academicYear = await getConfig("currentAcademicYear") || "2024-2025";
+  
+  // 获取所有中方导师的ID
+  const chineseTeachers = await db.select({ id: users.id })
+    .from(users)
+    .where(and(
+      eq(users.role, "teacher"),
+      eq(users.teacherType, "chinese")
+    ));
+  
+  const chineseTeacherIds = chineseTeachers.map(t => t.id);
+  
+  if (chineseTeacherIds.length === 0) {
+    return {
+      success: false,
+      rejectedCount: 0,
+      message: "没有找到中方导师"
+    };
+  }
+  
+  // 获取所有非分流学生的ID
+  const nonTransferStudents = await db.select({ id: users.id })
+    .from(users)
+    .where(and(
+      eq(users.role, "student"),
+      eq(users.studentType, "non_transfer")
+    ));
+  
+  const nonTransferStudentIds = nonTransferStudents.map(s => s.id);
+  
+  if (nonTransferStudentIds.length === 0) {
+    return {
+      success: true,
+      rejectedCount: 0,
+      message: "没有找到非分流学生"
+    };
+  }
+  
+  // 获取中方导师的课题ID（包含 published 和 used 状态，因为学生可能已填报了 used 状态的课题）
+  const chineseTeacherTopics = await db.select({ id: topics.id })
+    .from(topics)
+    .where(and(
+      inArray(topics.teacherId, chineseTeacherIds),
+      eq(topics.academicYear, academicYear),
+      inArray(topics.status, ["published", "used"])
+    ));
+  
+  const chineseTeacherTopicIds = chineseTeacherTopics.map(t => t.id);
+  
+  if (chineseTeacherTopicIds.length === 0) {
+    return {
+      success: true,
+      rejectedCount: 0,
+      message: "中方导师没有已发布的课题"
+    };
+  }
+  
+  // 查询所有中方导师课题下的非分流学生待审核志愿（需要逐条处理以支持下一志愿流转）
+  const pendingNonTransferWishes = await db.select().from(wishes)
+    .where(and(
+      inArray(wishes.topicId, chineseTeacherTopicIds),
+      inArray(wishes.studentId, nonTransferStudentIds),
+      eq(wishes.status, "pending"),
+      eq(wishes.teacherDecision, "pending")
+    ))
+    .orderBy(asc(wishes.priority));
+  
+  let rejectedCount = 0;
+  
+  for (const wish of pendingNonTransferWishes) {
+    // 检查该学生是否已被匹配
+    const existingMatch = await getMatchByStudent(wish.studentId, academicYear);
+    if (existingMatch) continue;
+    
+    // 拒绝该志愿：同时更新 status 和 teacherDecision
+    await db.update(wishes).set({ 
+      status: "rejected",
+      teacherDecision: "rejected",
+      decisionAt: toMySQLTimestamp(),
+    }).where(eq(wishes.id, wish.id));
+    rejectedCount++;
+    
+    // 触发下一志愿流转：查找该学生的下一个志愿
+    const nextWishes = await db.select().from(wishes).where(and(
+      eq(wishes.studentId, wish.studentId),
+      eq(wishes.academicYear, academicYear),
+      sql`${wishes.status} = 'selected'`,
+      sql`${wishes.priority} > ${wish.priority}`
+    )).orderBy(wishes.priority).limit(1);
+    
+    if (nextWishes.length > 0) {
+      // 检查下一志愿是否也是中方导师课题（如果是，也需要被拒绝，但这里先设为 pending，后续循环会处理）
+      await db.update(wishes).set({ 
+        status: "pending"
+      }).where(eq(wishes.id, nextWishes[0].id));
+    }
+  }
+  
+  return {
+    success: true,
+    rejectedCount,
+    message: rejectedCount > 0 
+      ? `已成功拒绝 ${rejectedCount} 个非分流学生的志愿申请`
+      : "没有找到需要拒绝的非分流学生志愿"
+  };
+}
+
+
+/**
+ * 获取当前学年的所有在读班级列表
+ * 用于采购申请等场景的班级选择
+ */
+export async function getActiveClasses(academicYear?: string): Promise<string[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const currentYear = academicYear || await getConfig("currentAcademicYear") || "2024-2025";
+
+  // 查询当前学年所有学生的班级，去重
+  const result = await db.selectDistinct({ studentClass: users.studentClass })
+    .from(users)
+    .where(and(
+      eq(users.role, "student"),
+      eq(users.academicYear, currentYear),
+      isNotNull(users.studentClass),
+      sql`${users.studentClass} != ''`
+    ))
+    .orderBy(users.studentClass);
+
+  return result
+    .map(r => r.studentClass)
+    .filter((c): c is string => c !== null && c !== "");
+}
+
+
+/**
+ * 导师获取已审核的采购申请记录（包括已审核和待审核的所有记录）
+ * 支持筛选：班级、姓名、申请时间区间、审核结果
+ */
+export async function getTeacherPurchaseReviewHistory(
+  teacherId: number,
+  filters?: {
+    studentClass?: string;
+    studentName?: string;
+    startDate?: Date;
+    endDate?: Date;
+    result?: "approved" | "rejected" | "all";
+  }
+): Promise<Array<{
+  id: number;
+  studentId: number;
+  studentName: string;
+  studentClass: string;
+  studentNo: string;
+  totalAmount: string;
+  reason: string | null;
+  fileUrl: string;
+  fileKey: string;
+  fileName: string;
+  applyTime: Date;
+  status: string;
+  isOverBudget: number | null;
+  approvedTime: Date | null;
+  labReviewedAt: string | null;
+  teacherReviewedAt: string | null;
+  assetReviewedAt: string | null;
+  displayStatus: string;
+  displayStatusEn: string;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // 获取该导师指导的学生ID列表
+  const teacherMatches = await db.select({ studentId: matches.studentId })
+    .from(matches)
+    .where(eq(matches.teacherId, teacherId));
+
+  const studentIds = teacherMatches.map(m => m.studentId);
+  if (studentIds.length === 0) return [];
+
+  // 构建查询条件
+  let conditions: SQL[] = [inArray(purchaseRequests.studentId, studentIds)];
+
+  // 班级筛选
+  if (filters?.studentClass) {
+    conditions.push(eq(purchaseRequests.studentClass, filters.studentClass));
+  }
+
+  // 姓名筛选（模糊匹配）
+  if (filters?.studentName) {
+    conditions.push(like(purchaseRequests.studentName, `%${filters.studentName}%`));
+  }
+
+  // 申请时间区间筛选
+  if (filters?.startDate) {
+    conditions.push(gte(purchaseRequests.applyTime, filters.startDate));
+  }
+  if (filters?.endDate) {
+    conditions.push(lte(purchaseRequests.applyTime, filters.endDate));
+  }
+
+  // 审核结果筛选
+  if (filters?.result === "approved") {
+    conditions.push(eq(purchaseRequests.status, "approved"));
+  } else if (filters?.result === "rejected") {
+    conditions.push(inArray(purchaseRequests.status, ["rejected_lab", "rejected_teacher", "rejected_asset"]));
+  }
+
+  const requests = await db.select()
+    .from(purchaseRequests)
+    .where(and(...conditions))
+    .orderBy(desc(purchaseRequests.applyTime));
+
+  return requests.map(req => {
+    // 计算通过时间：如果超额则为分管领导确认时间，否则为导师确认时间
+    let approvedTime: Date | null = null;
+    if (req.status === "approved") {
+      if (req.isOverBudget && req.assetReviewedAt) {
+        approvedTime = new Date(req.assetReviewedAt);
+      } else if (req.teacherReviewedAt) {
+        approvedTime = new Date(req.teacherReviewedAt);
+      }
+    }
+
+    // 计算显示状态
+    let displayStatus = "";
+    let displayStatusEn = "";
+    switch (req.status) {
+      case "pending_lab":
+        displayStatus = "待实验室管理员审核";
+        displayStatusEn = "Pending Lab Admin Review";
+        break;
+      case "pending_teacher":
+        displayStatus = "待导师审核";
+        displayStatusEn = "Pending Supervisor Review";
+        break;
+      case "pending_asset":
+        displayStatus = "待资产分管领导审核";
+        displayStatusEn = "Pending Asset Leader Review";
+        break;
+      case "approved":
+        displayStatus = "审核通过";
+        displayStatusEn = "Approved";
+        break;
+      case "rejected_lab":
+        displayStatus = "实验室管理员拒绝";
+        displayStatusEn = "Rejected by Lab Admin";
+        break;
+      case "rejected_teacher":
+        displayStatus = "导师拒绝";
+        displayStatusEn = "Rejected by Supervisor";
+        break;
+      case "rejected_asset":
+        displayStatus = "资产分管领导拒绝";
+        displayStatusEn = "Rejected by Asset Leader";
+        break;
+      default:
+        displayStatus = req.status;
+        displayStatusEn = req.status;
+    }
+
+    return {
+      id: req.id,
+      studentId: req.studentId,
+      studentName: req.studentName,
+      studentClass: req.studentClass,
+      studentNo: req.studentNo,
+      totalAmount: req.totalAmount,
+      reason: req.reason,
+      fileUrl: req.fileUrl,
+      fileKey: req.fileKey,
+      fileName: req.fileName,
+      applyTime: req.applyTime,
+      status: req.status,
+      isOverBudget: req.isOverBudget,
+      approvedTime,
+      labReviewedAt: req.labReviewedAt,
+      teacherReviewedAt: req.teacherReviewedAt,
+      assetReviewedAt: req.assetReviewedAt,
+      displayStatus,
+      displayStatusEn,
+    };
+  });
+}
+
+
+/**
+ * 获取所有采购申请记录（实验室管理员和资产分管领导使用）
+ * 支持筛选：班级、姓名、申请时间区间、审核结果
+ */
+export async function getAllPurchaseReviewHistory(
+  filters?: {
+    studentClass?: string;
+    studentName?: string;
+    startDate?: Date;
+    endDate?: Date;
+    result?: "approved" | "rejected" | "all";
+  }
+): Promise<Array<{
+  id: number;
+  studentId: number;
+  studentName: string;
+  studentClass: string;
+  studentNo: string;
+  totalAmount: string;
+  reason: string | null;
+  fileUrl: string;
+  fileKey: string;
+  fileName: string;
+  applyTime: Date;
+  status: string;
+  isOverBudget: number | null;
+  approvedTime: Date | null;
+  labReviewedAt: string | null;
+  teacherReviewedAt: string | null;
+  assetReviewedAt: string | null;
+  displayStatus: string;
+  displayStatusEn: string;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // 构建查询条件
+  let conditions: SQL[] = [];
+
+  // 班级筛选
+  if (filters?.studentClass) {
+    conditions.push(eq(purchaseRequests.studentClass, filters.studentClass));
+  }
+
+  // 姓名筛选（模糊匹配）
+  if (filters?.studentName) {
+    conditions.push(like(purchaseRequests.studentName, `%${filters.studentName}%`));
+  }
+
+  // 申请时间区间筛选
+  if (filters?.startDate) {
+    conditions.push(gte(purchaseRequests.applyTime, filters.startDate));
+  }
+  if (filters?.endDate) {
+    conditions.push(lte(purchaseRequests.applyTime, filters.endDate));
+  }
+
+  // 审核结果筛选
+  if (filters?.result === "approved") {
+    conditions.push(eq(purchaseRequests.status, "approved"));
+  } else if (filters?.result === "rejected") {
+    conditions.push(inArray(purchaseRequests.status, ["rejected_lab", "rejected_teacher", "rejected_asset"]));
+  }
+
+  const requests = conditions.length > 0
+    ? await db.select().from(purchaseRequests).where(and(...conditions)).orderBy(desc(purchaseRequests.applyTime))
+    : await db.select().from(purchaseRequests).orderBy(desc(purchaseRequests.applyTime));
+
+  return requests.map(req => {
+    // 计算通过时间：如果超额则为分管领导确认时间，否则为导师确认时间
+    let approvedTime: Date | null = null;
+    if (req.status === "approved") {
+      if (req.isOverBudget && req.assetReviewedAt) {
+        approvedTime = new Date(req.assetReviewedAt);
+      } else if (req.teacherReviewedAt) {
+        approvedTime = new Date(req.teacherReviewedAt);
+      }
+    }
+
+    // 计算显示状态
+    let displayStatus = "";
+    let displayStatusEn = "";
+    switch (req.status) {
+      case "pending_lab":
+        displayStatus = "待实验室管理员审核";
+        displayStatusEn = "Pending Lab Admin Review";
+        break;
+      case "pending_teacher":
+        displayStatus = "待导师审核";
+        displayStatusEn = "Pending Supervisor Review";
+        break;
+      case "pending_asset":
+        displayStatus = "待资产分管领导审核";
+        displayStatusEn = "Pending Asset Leader Review";
+        break;
+      case "approved":
+        displayStatus = "审核通过";
+        displayStatusEn = "Approved";
+        break;
+      case "rejected_lab":
+        displayStatus = "实验室管理员拒绝";
+        displayStatusEn = "Rejected by Lab Admin";
+        break;
+      case "rejected_teacher":
+        displayStatus = "导师拒绝";
+        displayStatusEn = "Rejected by Supervisor";
+        break;
+      case "rejected_asset":
+        displayStatus = "资产分管领导拒绝";
+        displayStatusEn = "Rejected by Asset Leader";
+        break;
+      default:
+        displayStatus = req.status;
+        displayStatusEn = req.status;
+    }
+
+    return {
+      id: req.id,
+      studentId: req.studentId,
+      studentName: req.studentName,
+      studentClass: req.studentClass,
+      studentNo: req.studentNo,
+      totalAmount: req.totalAmount,
+      reason: req.reason,
+      fileUrl: req.fileUrl,
+      fileKey: req.fileKey,
+      fileName: req.fileName,
+      applyTime: req.applyTime,
+      status: req.status,
+      isOverBudget: req.isOverBudget,
+      approvedTime,
+      labReviewedAt: req.labReviewedAt,
+      teacherReviewedAt: req.teacherReviewedAt,
+      assetReviewedAt: req.assetReviewedAt,
+      displayStatus,
+      displayStatusEn,
+    };
+  });
+}
+
+
+/**
+ * 删除采购申请记录
+ */
+export async function deletePurchaseRequest(requestId: number): Promise<void> {
+  const db = await getDb();
+  if (!db) return;
+
+  await db.delete(purchaseRequests).where(eq(purchaseRequests.id, requestId));
+}
+
+
+// 获取所有管理员用户
+export async function getAdminUsers(): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const admins = await db.select({
+    id: users.id,
+    email: users.email,
+    name: users.name,
+    role: users.role,
+    createdAt: users.createdAt,
+    initialPassword: users.initialPassword,
+  }).from(users).where(eq(users.role, "admin"));
+
+  return admins;
+}
+
+
+// ==================== 管理员操作日志相关操作 ====================
+
+// 记录管理员操作日志
+export async function createAdminLog(logData: {
+  adminId: number;
+  adminName?: string;
+  action: string;
+  module: string;
+  targetType?: string;
+  targetId?: number;
+  targetName?: string;
+  description?: string;
+  beforeData?: any;
+  afterData?: any;
+  ipAddress?: string;
+  userAgent?: string;
+}): Promise<void> {
+  const db = await getDb();
+  if (!db) return;
+
+  await db.insert(adminLogs).values({
+    adminId: logData.adminId,
+    adminName: logData.adminName,
+    action: logData.action,
+    module: logData.module,
+    targetType: logData.targetType,
+    targetId: logData.targetId,
+    targetName: logData.targetName,
+    description: logData.description,
+    beforeData: logData.beforeData ? JSON.stringify(logData.beforeData) : null,
+    afterData: logData.afterData ? JSON.stringify(logData.afterData) : null,
+    ipAddress: logData.ipAddress,
+    userAgent: logData.userAgent,
+  });
+}
+
+// 获取管理员操作日志列表
+export async function getAdminLogs(options?: {
+  adminId?: number;
+  action?: string;
+  module?: string;
+  startDate?: string;
+  endDate?: string;
+  limit?: number;
+  offset?: number;
+}): Promise<{ logs: AdminLog[]; total: number }> {
+  const db = await getDb();
+  if (!db) return { logs: [], total: 0 };
+
+  const conditions = [];
+  
+  if (options?.adminId) {
+    conditions.push(eq(adminLogs.adminId, options.adminId));
+  }
+  if (options?.action) {
+    conditions.push(eq(adminLogs.action, options.action));
+  }
+  if (options?.module) {
+    conditions.push(eq(adminLogs.module, options.module));
+  }
+  if (options?.startDate) {
+    conditions.push(gte(adminLogs.createdAt, new Date(options.startDate)));
+  }
+  if (options?.endDate) {
+    conditions.push(lte(adminLogs.createdAt, new Date(options.endDate)));
+  }
+
+  const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
+
+  // 获取总数
+  const countResult = await db.select({ count: sql<number>`count(*)` })
+    .from(adminLogs)
+    .where(whereClause);
+  const total = countResult[0]?.count || 0;
+
+  // 获取日志列表
+  let query = db.select().from(adminLogs);
+  if (whereClause) {
+    query = query.where(whereClause) as any;
+  }
+  const logs = await query
+    .orderBy(desc(adminLogs.createdAt))
+    .limit(options?.limit || 50)
+    .offset(options?.offset || 0);
+
+  return { logs, total };
+}
+
+// 获取操作日志统计
+export async function getAdminLogStats(): Promise<{
+  totalLogs: number;
+  todayLogs: number;
+  moduleStats: { module: string; count: number }[];
+  actionStats: { action: string; count: number }[];
+}> {
+  const db = await getDb();
+  if (!db) return { totalLogs: 0, todayLogs: 0, moduleStats: [], actionStats: [] };
+
+  // 总日志数
+  const totalResult = await db.select({ count: sql<number>`count(*)` }).from(adminLogs);
+  const totalLogs = totalResult[0]?.count || 0;
+
+  // 今日日志数
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const todayResult = await db.select({ count: sql<number>`count(*)` })
+    .from(adminLogs)
+    .where(gte(adminLogs.createdAt, today));
+  const todayLogs = todayResult[0]?.count || 0;
+
+  // 按模块统计
+  const moduleStats = await db.select({
+    module: adminLogs.module,
+    count: sql<number>`count(*)`,
+  })
+    .from(adminLogs)
+    .groupBy(adminLogs.module)
+    .orderBy(desc(sql`count(*)`))
+    .limit(10);
+
+  // 按操作类型统计
+  const actionStats = await db.select({
+    action: adminLogs.action,
+    count: sql<number>`count(*)`,
+  })
+    .from(adminLogs)
+    .groupBy(adminLogs.action)
+    .orderBy(desc(sql`count(*)`))
+    .limit(10);
+
+  return { totalLogs, todayLogs, moduleStats, actionStats };
+}
+
+// 修改管理员初始密码
+export async function updateAdminInitialPassword(
+  adminId: number,
+  newPassword: string
+): Promise<{ success: boolean; message: string }> {
+  const db = await getDb();
+  if (!db) return { success: false, message: "数据库连接失败" };
+
+  try {
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    await db.update(users).set({
+      password: hashedPassword,
+      initialPassword: newPassword,
+    }).where(eq(users.id, adminId));
+
+    return { success: true, message: "初始密码修改成功" };
+  } catch (error: any) {
+    console.error("[Database] Failed to update admin password:", error);
+    return { success: false, message: `修改失败: ${error.message}` };
+  }
+}
+
+
+// ==================== 用户活动日志操作 ====================
+
+/**
+ * 记录用户活动日志
+ * 这是一个通用的日志记录函数，可在任何路由中调用
+ */
+export async function logUserActivity(logData: {
+  userId: number;
+  userName?: string;
+  userRole: string;
+  action: string;
+  module: string;
+  targetType?: string;
+  targetId?: number;
+  targetName?: string;
+  description?: string;
+  result?: string;
+  ipAddress?: string;
+  userAgent?: string;
+}): Promise<void> {
+  const db = await getDb();
+  if (!db) return;
+
+  try {
+    await db.insert(userActivityLogs).values({
+      userId: logData.userId,
+      userName: logData.userName || null,
+      userRole: logData.userRole,
+      action: logData.action,
+      module: logData.module,
+      targetType: logData.targetType || null,
+      targetId: logData.targetId || null,
+      targetName: logData.targetName || null,
+      description: logData.description || null,
+      result: logData.result || "success",
+      ipAddress: logData.ipAddress || null,
+      userAgent: logData.userAgent || null,
+    });
+  } catch (error: any) {
+    // 日志记录失败不应影响主业务流程
+    console.error("[UserActivityLog] Failed to log activity:", error.message);
+  }
+}
+
+/**
+ * 查询用户活动日志列表（分页+筛选）
+ */
+export async function getUserActivityLogs(options?: {
+  userId?: number;
+  userRole?: string;
+  action?: string;
+  module?: string;
+  keyword?: string;
+  startDate?: string;
+  endDate?: string;
+  result?: string;
+  limit?: number;
+  offset?: number;
+}): Promise<{ logs: UserActivityLog[]; total: number }> {
+  const db = await getDb();
+  if (!db) return { logs: [], total: 0 };
+
+  const conditions = [];
+
+  if (options?.userId) {
+    conditions.push(eq(userActivityLogs.userId, options.userId));
+  }
+  if (options?.userRole) {
+    conditions.push(eq(userActivityLogs.userRole, options.userRole));
+  }
+  if (options?.action) {
+    conditions.push(eq(userActivityLogs.action, options.action));
+  }
+  if (options?.module) {
+    conditions.push(eq(userActivityLogs.module, options.module));
+  }
+  if (options?.result) {
+    conditions.push(eq(userActivityLogs.result, options.result));
+  }
+  if (options?.startDate) {
+    conditions.push(gte(userActivityLogs.createdAt, new Date(options.startDate)));
+  }
+  if (options?.endDate) {
+    conditions.push(lte(userActivityLogs.createdAt, new Date(options.endDate)));
+  }
+  if (options?.keyword) {
+    const keyword = `%${options.keyword}%`;
+    conditions.push(
+      or(
+        like(userActivityLogs.userName, keyword),
+        like(userActivityLogs.description, keyword),
+        like(userActivityLogs.targetName, keyword),
+      )!
+    );
+  }
+
+  const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
+
+  // 获取总数
+  const countResult = await db.select({ count: sql<number>`count(*)` })
+    .from(userActivityLogs)
+    .where(whereClause);
+  const total = countResult[0]?.count || 0;
+
+  // 获取日志列表
+  let query = db.select().from(userActivityLogs);
+  if (whereClause) {
+    query = query.where(whereClause) as any;
+  }
+  const logs = await query
+    .orderBy(desc(userActivityLogs.createdAt))
+    .limit(options?.limit || 50)
+    .offset(options?.offset || 0);
+
+  return { logs, total };
+}
+
+/**
+ * 获取用户活动日志统计数据
+ */
+export async function getUserActivityLogStats(): Promise<{
+  totalLogs: number;
+  todayLogs: number;
+  last7DaysLogs: number;
+  roleStats: { role: string; count: number }[];
+  moduleStats: { module: string; count: number }[];
+  actionStats: { action: string; count: number }[];
+  dailyTrend: { date: string; count: number }[];
+}> {
+  const db = await getDb();
+  if (!db) return { totalLogs: 0, todayLogs: 0, last7DaysLogs: 0, roleStats: [], moduleStats: [], actionStats: [], dailyTrend: [] };
+
+  // 总日志数
+  const totalResult = await db.select({ count: sql<number>`count(*)` }).from(userActivityLogs);
+  const totalLogs = totalResult[0]?.count || 0;
+
+  // 今日日志数
+  const todayResult = await db.select({ count: sql<number>`count(*)` })
+    .from(userActivityLogs)
+    .where(gte(userActivityLogs.createdAt, sql`CURDATE()`));
+  const todayLogs = todayResult[0]?.count || 0;
+
+  // 近7天日志数
+  const last7DaysResult = await db.select({ count: sql<number>`count(*)` })
+    .from(userActivityLogs)
+    .where(gte(userActivityLogs.createdAt, sql`DATE_SUB(CURDATE(), INTERVAL 7 DAY)`));
+  const last7DaysLogs = last7DaysResult[0]?.count || 0;
+
+  // 按角色统计
+  const roleStats = await db.select({
+    role: userActivityLogs.userRole,
+    count: sql<number>`count(*)`,
+  })
+    .from(userActivityLogs)
+    .groupBy(userActivityLogs.userRole)
+    .orderBy(desc(sql`count(*)`));
+
+  // 按模块统计
+  const moduleStats = await db.select({
+    module: userActivityLogs.module,
+    count: sql<number>`count(*)`,
+  })
+    .from(userActivityLogs)
+    .groupBy(userActivityLogs.module)
+    .orderBy(desc(sql`count(*)`))
+    .limit(10);
+
+  // 按操作类型统计
+  const actionStats = await db.select({
+    action: userActivityLogs.action,
+    count: sql<number>`count(*)`,
+  })
+    .from(userActivityLogs)
+    .groupBy(userActivityLogs.action)
+    .orderBy(desc(sql`count(*)`))
+    .limit(15);
+
+  // 近7天每日趋势
+  const dailyTrend = await db.select({
+    date: sql<string>`DATE(createdAt)`,
+    count: sql<number>`count(*)`,
+  })
+    .from(userActivityLogs)
+    .where(gte(userActivityLogs.createdAt, sql`DATE_SUB(CURDATE(), INTERVAL 7 DAY)`))
+    .groupBy(sql`DATE(createdAt)`)
+    .orderBy(sql`DATE(createdAt)`);
+
+  return { totalLogs, todayLogs, last7DaysLogs, roleStats, moduleStats, actionStats, dailyTrend };
+}
+
+
+// ==================== 匹配结果导入 ====================
+
+/**
+ * 通过中方学号查找学生
+ */
+export async function findStudentByStudentId(studentId: string): Promise<User | null> {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.select().from(users).where(
+    and(eq(users.studentId, studentId), eq(users.role, "student"))
+  ).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+/**
+ * 通过姓名查找导师
+ */
+export async function findTeacherByName(name: string): Promise<User | null> {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.select().from(users).where(
+    and(eq(users.name, name), eq(users.role, "teacher"))
+  ).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+/**
+ * 通过教师工号查找导师
+ */
+export async function findTeacherByTeacherNo(teacherNo: string): Promise<User | null> {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.select().from(users).where(
+    and(eq(users.teacherNo, teacherNo), eq(users.role, "teacher"))
+  ).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+/**
+ * 检查题库中是否存在同名课题（精确匹配，三年内）
+ */
+export async function checkTopicTitleExactInLibrary(title: string): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+  
+  const threeYearsAgo = new Date();
+  threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3);
+  
+  const results = await db.select({ id: topicLibrary.id })
+    .from(topicLibrary)
+    .where(and(
+      eq(topicLibrary.title, title),
+      sql`${topicLibrary.publishedAt} >= ${threeYearsAgo}`
+    ))
+    .limit(1);
+  
+  return results.length > 0;
+}
+
+/**
+ * 单个添加匹配结果
+ * 验证导师/学生账号存在性、题目重名，成功后同步课题、题库、匹配记录
+ */
+export async function importSingleMatch(data: {
+  studentId: string;       // 中方学号
+  studentName: string;     // 学生姓名
+  sussexId?: string;       // 英方学号
+  teacherName: string;     // 导师姓名
+  topicTitle: string;      // 课题标题（中文）
+  topicTitleEn?: string;   // 课题标题（英文）
+  remarks?: string;        // 备注
+  academicYear: string;    // 学年
+}): Promise<{ success: boolean; message: string; matchId?: number }> {
+  const db = await getDb();
+  if (!db) return { success: false, message: "数据库连接失败" };
+
+  // 1. 验证学生账号存在
+  const student = await findStudentByStudentId(data.studentId);
+  if (!student) {
+    return { success: false, message: `学生账号不存在：中方学号 ${data.studentId}（${data.studentName}）` };
+  }
+
+  // 2. 验证导师账号存在
+  const teacher = await findTeacherByName(data.teacherName);
+  if (!teacher) {
+    return { success: false, message: `导师账号不存在：${data.teacherName}` };
+  }
+
+  // 3. 检查学生是否已有匹配记录
+  const existingMatch = await getMatchByStudent(student.id, data.academicYear);
+  if (existingMatch) {
+    return { success: false, message: `学生 ${data.studentName}（${data.studentId}）在该学年已有匹配记录` };
+  }
+
+  // 4. 检查题库中是否存在同名课题（三年内）
+  const titleExists = await checkTopicTitleExactInLibrary(data.topicTitle);
+  if (titleExists) {
+    return { success: false, message: `题库中已存在同名课题：${data.topicTitle}（三年内重复）` };
+  }
+
+  // 5. 创建课题
+  const topic = await createTopic({
+    teacherId: teacher.id,
+    title: data.topicTitle,
+    titleEn: data.topicTitleEn || data.topicTitle, // 当没有英文标题时，用论文题目填充 titleEn
+    description: data.topicTitle, // 使用标题作为描述
+    status: "used",
+    isCurrentYear: 1,
+    academicYear: data.academicYear,
+  });
+  if (!topic) {
+    return { success: false, message: `创建课题失败：${data.topicTitle}` };
+  }
+
+  // 6. 创建匹配记录
+  const match = await createMatch({
+    studentId: student.id,
+    topicId: topic.id,
+    teacherId: teacher.id,
+    matchRound: 0,
+    isAdjustment: 0,
+    academicYear: data.academicYear,
+    remarks: data.remarks || "历史导入",
+  });
+  if (!match) {
+    return { success: false, message: `创建匹配记录失败：${data.studentName} - ${data.topicTitle}` };
+  }
+
+  // 7. 添加到题库
+  await addToTopicLibrary(topic, teacher.name || data.teacherName);
+
+  // 8. 更新学生英方学号（如果提供了且学生记录中没有）
+  if (data.sussexId && !student.sussexId) {
+    await updateUser(student.id, { sussexId: data.sussexId });
+  }
+
+  return { success: true, message: "导入成功", matchId: match.id };
+}
+
+/**
+ * 批量导入匹配结果
+ * 先验证所有数据，再批量执行导入
+ */
+export async function batchImportMatches(items: Array<{
+  studentId: string;
+  studentName: string;
+  sussexId?: string;
+  teacherName: string;
+  topicTitle: string;
+  topicTitleEn?: string;
+  remarks?: string;
+}>, academicYear: string): Promise<{
+  success: boolean;
+  totalCount: number;
+  successCount: number;
+  failedCount: number;
+  errors: Array<{ row: number; studentName: string; studentId: string; reason: string }>;
+}> {
+  const errors: Array<{ row: number; studentName: string; studentId: string; reason: string }> = [];
+  
+  // 第一遍：验证所有数据
+  const validatedItems: Array<{
+    index: number;
+    student: User;
+    teacher: User;
+    topicTitle: string;
+    topicTitleEn?: string;
+    sussexId?: string;
+    remarks?: string;
+  }> = [];
+
+  // 收集所有待导入的题目名，检查批次内是否有重复
+  const titleSet = new Map<string, number>();
+  
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    const rowNum = i + 2; // Excel 第2行开始（第1行是表头）
+
+    // 检查必填字段
+    if (!item.studentId || !item.studentName || !item.teacherName || !item.topicTitle) {
+      errors.push({ row: rowNum, studentName: item.studentName || "未知", studentId: item.studentId || "未知", reason: "缺少必填字段（学号、姓名、导师、题目）" });
+      continue;
+    }
+
+    // 检查批次内题目重复
+    if (titleSet.has(item.topicTitle)) {
+      errors.push({ row: rowNum, studentName: item.studentName, studentId: item.studentId, reason: `批次内题目重复，与第${titleSet.get(item.topicTitle)}行相同：${item.topicTitle}` });
+      continue;
+    }
+    titleSet.set(item.topicTitle, rowNum);
+
+    // 验证学生账号
+    const student = await findStudentByStudentId(item.studentId);
+    if (!student) {
+      errors.push({ row: rowNum, studentName: item.studentName, studentId: item.studentId, reason: `学生账号不存在：中方学号 ${item.studentId}` });
+      continue;
+    }
+
+    // 验证导师账号
+    const teacher = await findTeacherByName(item.teacherName);
+    if (!teacher) {
+      errors.push({ row: rowNum, studentName: item.studentName, studentId: item.studentId, reason: `导师账号不存在：${item.teacherName}` });
+      continue;
+    }
+
+    // 检查学生是否已有匹配
+    const existingMatch = await getMatchByStudent(student.id, academicYear);
+    if (existingMatch) {
+      errors.push({ row: rowNum, studentName: item.studentName, studentId: item.studentId, reason: `该学年已有匹配记录` });
+      continue;
+    }
+
+    // 检查题库重名（三年内）
+    const titleExists = await checkTopicTitleExactInLibrary(item.topicTitle);
+    if (titleExists) {
+      errors.push({ row: rowNum, studentName: item.studentName, studentId: item.studentId, reason: `题库中已存在同名课题（三年内）：${item.topicTitle}` });
+      continue;
+    }
+
+    validatedItems.push({
+      index: i,
+      student,
+      teacher,
+      topicTitle: item.topicTitle,
+      topicTitleEn: item.topicTitleEn,
+      sussexId: item.sussexId,
+      remarks: item.remarks,
+    });
+  }
+
+  // 如果有验证错误，直接返回（不执行任何导入）
+  if (errors.length > 0) {
+    return {
+      success: false,
+      totalCount: items.length,
+      successCount: 0,
+      failedCount: errors.length,
+      errors,
+    };
+  }
+
+  // 第二遍：执行导入
+  let successCount = 0;
+  for (const item of validatedItems) {
+    // 创建课题
+    const topic = await createTopic({
+      teacherId: item.teacher.id,
+      title: item.topicTitle,
+      titleEn: item.topicTitleEn || item.topicTitle, // 当没有英文标题时，用论文题目填充 titleEn
+      description: item.topicTitle,
+      status: "used",
+      isCurrentYear: 1,
+      academicYear: academicYear,
+    });
+
+    if (!topic) {
+      errors.push({ row: item.index + 2, studentName: items[item.index].studentName, studentId: items[item.index].studentId, reason: "创建课题失败" });
+      continue;
+    }
+
+    // 创建匹配记录
+    const match = await createMatch({
+      studentId: item.student.id,
+      topicId: topic.id,
+      teacherId: item.teacher.id,
+      matchRound: 0,
+      isAdjustment: 0,
+      academicYear: academicYear,
+      remarks: item.remarks || "历史批量导入",
+    });
+
+    if (!match) {
+      errors.push({ row: item.index + 2, studentName: items[item.index].studentName, studentId: items[item.index].studentId, reason: "创建匹配记录失败" });
+      continue;
+    }
+
+    // 添加到题库
+    await addToTopicLibrary(topic, item.teacher.name || items[item.index].teacherName);
+
+    // 更新学生英方学号
+    if (item.sussexId && !item.student.sussexId) {
+      await updateUser(item.student.id, { sussexId: item.sussexId });
+    }
+
+    successCount++;
+  }
+
+  return {
+    success: errors.length === 0,
+    totalCount: items.length,
+    successCount,
+    failedCount: errors.length,
+    errors,
+  };
+}
+
+
+// ============================================================
+// 中方导师确认名额限制功能 - 新增函数
+// ============================================================
+
+/**
+ * 获取中方导师确认名额统计信息
+ */
+export async function getChineseTeacherQuotaStats(): Promise<{
+  totalQuota: number;
+  confirmedCount: number;
+  remainingQuota: number;
+  isQuotaFull: boolean;
+  totalTransferStudents: number;
+  confirmedTransferStudents: number;
+  pendingTransferStudents: number;
+  shouldEnableTransferPriority: boolean;
+  quotaEnabled: boolean;
+}> {
+  const db = await getDb();
+  if (!db) {
+    return {
+      totalQuota: 0, confirmedCount: 0, remainingQuota: 0, isQuotaFull: false,
+      totalTransferStudents: 0, confirmedTransferStudents: 0, pendingTransferStudents: 0,
+      shouldEnableTransferPriority: false, quotaEnabled: false,
+    };
+  }
+
+  const quotaStr = await getConfig("chineseTeacherTotalQuota");
+  const quotaEnabled = quotaStr !== null && quotaStr !== "" && quotaStr !== "0";
+  const totalQuota = quotaEnabled ? parseInt(quotaStr!, 10) : 0;
+
+  const currentAcademicYear = await getConfig("currentAcademicYear") || "";
+
+  const chineseTeachers = await db.select({ id: users.id })
+    .from(users)
+    .where(and(
+      eq(users.role, "teacher"),
+      eq(users.teacherType, "chinese")
+    ));
+  const chineseTeacherIds = chineseTeachers.map(t => t.id);
+
+  let confirmedCount = 0;
+  if (chineseTeacherIds.length > 0 && currentAcademicYear) {
+    const confirmedResult = await db.select({ count: sql<number>`COUNT(*)` })
+      .from(matches)
+      .where(and(
+        inArray(matches.teacherId, chineseTeacherIds),
+        eq(matches.academicYear, currentAcademicYear)
+      ));
+    confirmedCount = Number(confirmedResult[0]?.count || 0);
+  }
+
+  const allTransferStudents = await db.select({ id: users.id })
+    .from(users)
+    .where(and(
+      eq(users.role, "student"),
+      eq(users.studentType, "transfer")
+    ));
+  const transferStudentIds = allTransferStudents.map(s => s.id);
+  const totalTransferStudents = transferStudentIds.length;
+
+  let confirmedTransferStudents = 0;
+  if (transferStudentIds.length > 0 && currentAcademicYear) {
+    const confirmedTransferResult = await db.select({ count: sql<number>`COUNT(*)` })
+      .from(matches)
+      .where(and(
+        inArray(matches.studentId, transferStudentIds),
+        eq(matches.academicYear, currentAcademicYear)
+      ));
+    confirmedTransferStudents = Number(confirmedTransferResult[0]?.count || 0);
+  }
+
+  const pendingTransferStudents = totalTransferStudents - confirmedTransferStudents;
+  const remainingQuota = quotaEnabled ? Math.max(0, totalQuota - confirmedCount) : 999;
+  const isQuotaFull = quotaEnabled && confirmedCount >= totalQuota;
+  const shouldEnableTransferPriority = quotaEnabled && !isQuotaFull && remainingQuota <= pendingTransferStudents;
+
+  return {
+    totalQuota,
+    confirmedCount,
+    remainingQuota,
+    isQuotaFull,
+    totalTransferStudents,
+    confirmedTransferStudents,
+    pendingTransferStudents,
+    shouldEnableTransferPriority,
+    quotaEnabled,
+  };
+}
+
+/**
+ * 处理中方导师名额满额后的自动操作
+ * 1. 拒绝所有中方导师名下的待审核志愿
+ * 2. 将中方导师未匹配的课题从"已发布"退回"草稿"
+ * 3. 删除题库中对应的课题记录
+ */
+export async function handleChineseTeacherQuotaFull(): Promise<{
+  success: boolean;
+  rejectedWishesCount: number;
+  retractedTopicsCount: number;
+  removedFromLibraryCount: number;
+  message: string;
+}> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not connected");
+
+  const currentAcademicYear = await getConfig("currentAcademicYear") || "2024-2025";
+
+  const chineseTeachers = await db.select({ id: users.id })
+    .from(users)
+    .where(and(
+      eq(users.role, "teacher"),
+      eq(users.teacherType, "chinese")
+    ));
+  const chineseTeacherIds = chineseTeachers.map(t => t.id);
+
+  if (chineseTeacherIds.length === 0) {
+    return { success: true, rejectedWishesCount: 0, retractedTopicsCount: 0, removedFromLibraryCount: 0, message: "没有中方导师" };
+  }
+
+  // 获取中方导师所有课题
+  const chineseTeacherTopicList = await db.select({ id: topics.id, status: topics.status })
+    .from(topics)
+    .where(and(
+      inArray(topics.teacherId, chineseTeacherIds),
+      eq(topics.academicYear, currentAcademicYear)
+    ));
+  const allTopicIds = chineseTeacherTopicList.map(t => t.id);
+  const publishedTopicIds = chineseTeacherTopicList.filter(t => t.status === "published").map(t => t.id);
+
+  // 1. 拒绝所有中方导师课题下的待审核志愿并触发下一志愿流转
+  let rejectedWishesCount = 0;
+  if (allTopicIds.length > 0) {
+    const pendingWishList = await db.select().from(wishes).where(and(
+      inArray(wishes.topicId, allTopicIds),
+      eq(wishes.academicYear, currentAcademicYear),
+      or(eq(wishes.status, "pending"), eq(wishes.status, "selected"))
+    ));
+
+    for (const wish of pendingWishList) {
+      const existingMatch = await getMatchByStudent(wish.studentId, currentAcademicYear);
+      if (existingMatch) continue;
+
+      await db.update(wishes).set({
+        status: "rejected",
+        teacherDecision: "rejected",
+        decisionAt: toMySQLTimestamp(),
+      }).where(eq(wishes.id, wish.id));
+      rejectedWishesCount++;
+
+      // 触发下一志愿流转（仅对 pending 状态）
+      if (wish.status === "pending") {
+        const nextWishes = await db.select().from(wishes).where(and(
+          eq(wishes.studentId, wish.studentId),
+          eq(wishes.academicYear, currentAcademicYear),
+          eq(wishes.status, "selected"),
+          sql`${wishes.priority} > ${wish.priority}`
+        )).orderBy(wishes.priority).limit(1);
+
+        if (nextWishes.length > 0) {
+          await db.update(wishes).set({
+            status: "pending"
+          }).where(eq(wishes.id, nextWishes[0].id));
+        }
+      }
+    }
+  }
+
+  // 2. 将中方导师未匹配的课题从"已发布"退回"草稿"
+  let retractedTopicsCount = 0;
+  let removedFromLibraryCount = 0;
+  if (publishedTopicIds.length > 0) {
+    for (const topicId of publishedTopicIds) {
+      await updateTopic(topicId, { status: "draft" });
+      retractedTopicsCount++;
+
+      // 3. 删除题库中对应的课题记录
+      const removed = await removeFromTopicLibrary(topicId);
+      if (removed) {
+        removedFromLibraryCount++;
+      }
+    }
+  }
+
+  return {
+    success: true,
+    rejectedWishesCount,
+    retractedTopicsCount,
+    removedFromLibraryCount,
+    message: `名额已满，自动处理完成：拒绝了 ${rejectedWishesCount} 个待审核志愿，退回了 ${retractedTopicsCount} 个课题为草稿状态，清理了 ${removedFromLibraryCount} 个题库记录`,
+  };
+}

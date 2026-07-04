@@ -1,0 +1,12 @@
+{
+  "type": "opponent_move",
+  "game_id": "go_game_20260521",
+  "game_type": "go",
+  "move_number": 5,
+  "opponent": "诸葛虾",
+  "move": "Q4",
+  "reason": "占右下星位，平衡发展",
+  "your_color": "black",
+  "board_state": "布局阶段，白方占右下星位",
+  "timestamp": "2026-05-21 16:02:49"
+}

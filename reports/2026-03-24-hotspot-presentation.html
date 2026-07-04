@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 年 3 月 24 日 热点事件分析报告</title>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/blood.min.css" id="theme">
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #d93025;
+            --accent-color: #fbbc04;
+            --bg-dark: #1a1a2e;
+            --bg-light: #16213e;
+        }
+        .reveal { font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif; }
+        .reveal h1, .reveal h2, .reveal h3 { 
+            text-transform: none; 
+            font-weight: bold;
+        }
+        .reveal h1 { 
+            color: var(--primary-color);
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .reveal h2 { 
+            color: var(--primary-color);
+            font-size: 1.8em;
+        }
+        .reveal h3 { color: var(--accent-color); }
+        .reveal p { font-size: 0.9em; line-height: 1.8; }
+        .reveal strong { color: var(--secondary-color); }
+        .reveal a { color: var(--primary-color); }
+        .reveal ul { 
+            font-size: 0.85em; 
+            line-height: 2;
+            margin-left: 1.5em;
+        }
+        .reveal .highlight { 
+            background: linear-gradient(transparent 60%, rgba(251, 188, 4, 0.3) 60%);
+            padding: 2px 5px;
+        }
+        .reveal .card {
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-dark) 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(26, 115, 232, 0.3);
+        }
+        .reveal .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .reveal .stat-box {
+            background: linear-gradient(135deg, rgba(26, 115, 232, 0.2) 0%, rgba(22, 33, 62, 0.8) 100%);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(26, 115, 232, 0.3);
+        }
+        .reveal .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+        }
+        .reveal .stat-label {
+            font-size: 0.8em;
+            color: #aaa;
+            margin-top: 10px;
+            display: block;
+        }
+        .reveal .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 30px 0;
+        }
+        .reveal .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+        .reveal .timeline-item {
+            position: relative;
+            margin: 20px 0;
+            padding: 15px 20px;
+            background: rgba(26, 115, 232, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+        }
+        .reveal .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 2px solid var(--bg-dark);
+        }
+        .reveal .hot-tag {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.7em;
+            font-weight: bold;
+            margin: 5px;
+        }
+        .reveal .hot-1 { background: linear-gradient(135deg, #ff4757, #ff6b81); color: white; }
+        .reveal .hot-2 { background: linear-gradient(135deg, #ffa502, #ffcc00); color: black; }
+        .reveal .hot-3 { background: linear-gradient(135deg, #3742fa, #5352ed); color: white; }
+        .reveal table {
+            font-size: 0.75em;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        .reveal th {
+            background: linear-gradient(135deg, var(--primary-color), var(--bg-light));
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .reveal td {
+            padding: 12px 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .reveal tr:nth-child(even) {
+            background: rgba(255,255,255,0.05);
+        }
+        .reveal .progress { color: var(--primary-color); }
+        .reveal .controls { color: var(--primary-color); }
+        .emoji { font-size: 1.5em; margin-right: 10px; }
+        .warning-box {
+            background: linear-gradient(135deg, rgba(217, 48, 37, 0.2) 0%, rgba(22, 33, 62, 0.8) 100%);
+            border: 2px solid var(--secondary-color);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            right: 20px;
+            font-size: 0.6em;
+            color: #666;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="footer">OpenClaw 智能分析 | 2026-03-24</div>
+    
+    <div class="reveal">
+        <div class="slides">
+            <!-- 封面 -->
+            <section>
+                <h1>📊 2026 年 3 月 24 日</h1>
+                <h2 style="color: #fff; margin-top: 30px;">热点事件分析报告</h2>
+                <div class="card" style="margin-top: 50px;">
+                    <p style="font-size: 1.2em; color: #aaa;">每日舆情监测与深度解读</p>
+                    <p style="color: var(--primary-color); margin-top: 20px;">OpenClaw 智能分析系统</p>
+                    <p style="color: #666; font-size: 0.8em;">2026 年 3 月 24 日 23:40</p>
+                </div>
+            </section>
+
+            <!-- 今日热点概览 -->
+            <section>
+                <h2>🔥 今日热点概览</h2>
+                <div class="card">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>排名</th>
+                                <th>事件</th>
+                                <th>热度</th>
+                                <th>类别</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="hot-tag hot-1">🔥 1</span></td>
+                                <td>张雪峰心源性猝死离世</td>
+                                <td>101 万 + 播放</td>
+                                <td>社会</td>
+                            </tr>
+                            <tr>
+                                <td><span class="hot-tag hot-2">🏛️ 2</span></td>
+                                <td>习近平第四次考察雄安</td>
+                                <td>央视头条</td>
+                                <td>时政</td>
+                            </tr>
+                            <tr>
+                                <td><span class="hot-tag hot-3">🌏 3</span></td>
+                                <td>黎巴嫩撤销伊朗大使任命</td>
+                                <td>新华社</td>
+                                <td>国际</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>金正恩定义韩国为"头号敌国"</td>
+                                <td>中新网</td>
+                                <td>国际</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>金融监管总局副局长周亮被查</td>
+                                <td>长安街知事</td>
+                                <td>反腐</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 事件一：张雪峰 -->
+            <section>
+                <h2>🔥 热点事件一：张雪峰心源性猝死</h2>
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <span class="stat-number">41 岁</span>
+                        <span class="stat-label">年龄</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">101 万+</span>
+                        <span class="stat-label">视频播放量</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>📋 事件概述</h3>
+                    <ul>
+                        <li><strong>时间</strong>：2026 年 3 月 24 日</li>
+                        <li><strong>人物</strong>：张雪峰（知名教育博主、考研名师）</li>
+                        <li><strong>死因</strong>：心源性猝死</li>
+                        <li><strong>生前愿望</strong>："希望能成为一代人的回忆"</li>
+                    </ul>
+                </div>
+                <div class="warning-box">
+                    <h3>⚠️ 社会影响</h3>
+                    <p>引发公众对<strong>心源性猝死</strong>健康警示的广泛关注</p>
+                </div>
+            </section>
+
+            <!-- 心源性猝死科普 -->
+            <section>
+                <h2>💔 心源性猝死科普</h2>
+                <div class="card">
+                    <h3>📖 医学定义</h3>
+                    <p style="font-size: 1.1em; border-left: 4px solid var(--secondary-color); padding-left: 20px;">
+                        心源性猝死指因心脏原因导致的非外伤性自然死亡，发病急骤且多在症状出现<strong>1 小时内</strong>死亡。
+                    </p>
+                </div>
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <span class="stat-number">54.4 万</span>
+                        <span class="stat-label">我国年发病数（全球首位）</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">41.84/10 万</span>
+                        <span class="stat-label">年发病率</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>🎯 常见诱因</h3>
+                    <ul>
+                        <li>心肌梗死</li>
+                        <li>室速室颤等心律失常</li>
+                        <li>过度劳累、压力过大</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 预防建议 -->
+            <section>
+                <h2>🛡️ 心源性猝死预防指南</h2>
+                <div class="card">
+                    <h3>⚠️ 高危人群</h3>
+                    <ul>
+                        <li>长期熬夜、过度劳累者</li>
+                        <li>有心脏病家族史者</li>
+                        <li>高血压、高血脂患者</li>
+                        <li>长期精神压力大人群</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>✅ 预防建议</h3>
+                    <ol style="font-size: 0.9em; line-height: 2;">
+                        <li><strong>定期体检</strong>：关注心脏健康指标</li>
+                        <li><strong>规律作息</strong>：避免长期熬夜</li>
+                        <li><strong>适度运动</strong>：增强心肺功能</li>
+                        <li><strong>学会减压</strong>：保持心理健康</li>
+                        <li><strong>警惕信号</strong>：胸痛、心悸及时就医</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- 事件二：雄安考察 -->
+            <section>
+                <h2>🏛️ 热点事件二：习近平第四次考察雄安</h2>
+                <div class="card">
+                    <h3>📋 行程概况</h3>
+                    <ul>
+                        <li><strong>时间</strong>：2026 年 3 月 23 日</li>
+                        <li><strong>地点</strong>：河北雄安新区</li>
+                        <li><strong>活动</strong>：主持召开深入推进雄安新区高质量建设和发展座谈会</li>
+                    </ul>
+                </div>
+                <div class="warning-box" style="border-color: var(--primary-color); background: linear-gradient(135deg, rgba(26, 115, 232, 0.2) 0%, rgba(22, 33, 62, 0.8) 100%);">
+                    <h3>🌟 重要意义</h3>
+                    <ul>
+                        <li>"十五五"开局之年全国两会后<strong>首次地方考察</strong></li>
+                        <li>9 年间<strong>第四次</strong>踏上雄安热土</li>
+                        <li>体现对"千年大计、国家大事"的高度重视</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 雄安发展历程 -->
+            <section>
+                <h2>🏗️ 雄安新区 9 年发展历程</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <strong>2017 年 2 月</strong><br>
+                        总书记首次考察，雄安新区消息发布<br>
+                        <small>"千年大计、国家大事"写入史册</small>
+                    </div>
+                    <div class="timeline-item">
+                        <strong>2019 年 1 月</strong><br>
+                        第二次考察，转向实质性建设阶段<br>
+                        <small>从顶层设计转向实际建设</small>
+                    </div>
+                    <div class="timeline-item">
+                        <strong>2023 年 5 月</strong><br>
+                        第三次考察，进入大规模建设阶段<br>
+                        <small>大规模建设与承接疏解并重</small>
+                    </div>
+                    <div class="timeline-item" style="border-left-color: var(--accent-color); background: rgba(251, 188, 4, 0.1);">
+                        <strong>2026 年 3 月</strong> <span class="hot-tag hot-1">今日</span><br>
+                        <strong>第四次考察</strong>，深入推进高质量发展<br>
+                        <small>"十五五"开局后首次地方考察</small>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 雄安建设成果 -->
+            <section>
+                <h2>📈 雄安建设成果</h2>
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <span class="stat-number">8 家</span>
+                        <span class="stat-label">央企总部落户</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">400+ 家</span>
+                        <span class="stat-label">央企机构集聚</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">5300+ 栋</span>
+                        <span class="stat-label">楼宇拔地而起</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">华能员工迁驻</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>🎯 四点部署</h3>
+                    <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <li>📍 <strong>把握一个定位</strong>：疏解北京非首都功能</li>
+                        <li>🏗️ <strong>抓好两件大事</strong>：高质量建设 + 高效能治理</li>
+                        <li>💡 <strong>培育一份动力</strong>：改革创新，发展新质生产力</li>
+                        <li>🛡️ <strong>筑牢一份保障</strong>：加强党的领导</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 国际热点 -->
+            <section>
+                <h2>🌏 国际热点事件</h2>
+                <div class="card">
+                    <h3>🇱🇧 黎巴嫩撤销伊朗大使任命</h3>
+                    <ul>
+                        <li><strong>时间</strong>：2026 年 3 月 24 日</li>
+                        <li><strong>来源</strong>：新华社</li>
+                        <li><strong>背景</strong>：黎巴嫩真主党是伊朗革命输出典型代表</li>
+                        <li><strong>影响</strong>：中东地区局势持续紧张</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>🇰🇵 金正恩定义韩国为"头号敌国"</h3>
+                    <ul>
+                        <li><strong>时间</strong>：2026 年 3 月 24 日</li>
+                        <li><strong>来源</strong>：中国新闻网</li>
+                        <li><strong>内容</strong>：正式将韩国定义为"头号敌国"</li>
+                        <li><strong>影响</strong>：朝韩关系持续紧张，军事对峙态势升级</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 反腐动态 -->
+            <section>
+                <h2>🐯 反腐动态：周亮被查</h2>
+                <div class="card" style="border-color: var(--secondary-color);">
+                    <h3>📋 事件详情</h3>
+                    <ul>
+                        <li><strong>时间</strong>：2026 年 3 月 24 日</li>
+                        <li><strong>来源</strong>：长安街知事</li>
+                        <li><strong>人物</strong>：国家金融监管总局副局长 周亮</li>
+                        <li><strong>状态</strong>：接受调查</li>
+                    </ul>
+                </div>
+                <div class="warning-box" style="border-color: var(--secondary-color);">
+                    <h3>⚖️ 反腐意义</h3>
+                    <ul>
+                        <li>金融领域反腐持续深入</li>
+                        <li>彰显全面从严治党决心</li>
+                        <li>维护金融系统健康发展</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 舆情分析 -->
+            <section>
+                <h2>📊 舆情热度分析</h2>
+                <div class="card">
+                    <h3>📱 传播渠道分布</h3>
+                    <div style="margin: 30px 0;">
+                        <div style="margin: 15px 0;">
+                            <span style="color: #aaa;">腾讯新闻</span>
+                            <div style="background: rgba(255,255,255,0.1); height: 20px; border-radius: 10px; margin-top: 5px;">
+                                <div style="background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); width: 45%; height: 100%; border-radius: 10px;"></div>
+                            </div>
+                            <span style="font-size: 0.8em; color: #666;">45%</span>
+                        </div>
+                        <div style="margin: 15px 0;">
+                            <span style="color: #aaa;">微博热搜</span>
+                            <div style="background: rgba(255,255,255,0.1); height: 20px; border-radius: 10px; margin-top: 5px;">
+                                <div style="background: linear-gradient(90deg, #ff4757, #ffa502); width: 30%; height: 100%; border-radius: 10px;"></div>
+                            </div>
+                            <span style="font-size: 0.8em; color: #666;">30%</span>
+                        </div>
+                        <div style="margin: 15px 0;">
+                            <span style="color: #aaa;">抖音</span>
+                            <div style="background: rgba(255,255,255,0.1); height: 20px; border-radius: 10px; margin-top: 5px;">
+                                <div style="background: linear-gradient(90deg, #3742fa, #5352ed); width: 15%; height: 100%; border-radius: 10px;"></div>
+                            </div>
+                            <span style="font-size: 0.8em; color: #666;">15%</span>
+                        </div>
+                        <div style="margin: 15px 0;">
+                            <span style="color: #aaa;">其他平台</span>
+                            <div style="background: rgba(255,255,255,0.1); height: 20px; border-radius: 10px; margin-top: 5px;">
+                                <div style="background: linear-gradient(90deg, #666, #999); width: 10%; height: 100%; border-radius: 10px;"></div>
+                            </div>
+                            <span style="font-size: 0.8em; color: #666;">10%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 用户关注焦点 -->
+            <section>
+                <h2>🎯 用户关注焦点</h2>
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <span class="stat-number">42%</span>
+                        <span class="stat-label">健康警示（张雪峰事件）</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">28%</span>
+                        <span class="stat-label">国家发展（雄安考察）</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">20%</span>
+                        <span class="stat-label">国际局势（中东/半岛）</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">10%</span>
+                        <span class="stat-label">反腐动态</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 舆情总结 -->
+            <section>
+                <h2>📝 今日舆情总结</h2>
+                <div class="card">
+                    <h3>🔑 核心特点</h3>
+                    <ol style="font-size: 0.9em; line-height: 2.2;">
+                        <li><strong>社会事件引发健康反思</strong><br><small>张雪峰事件触发公众对心源性猝死的关注</small></li>
+                        <li><strong>时政新闻彰显国家决心</strong><br><small>雄安考察体现"千年大计"战略定力</small></li>
+                        <li><strong>国际局势复杂多变</strong><br><small>中东、半岛局势需持续关注</small></li>
+                        <li><strong>反腐工作持续推进</strong><br><small>金融领域反腐不放松</small></li>
+                    </ol>
+                </div>
+                <div class="warning-box" style="border-color: var(--accent-color);">
+                    <h3>💡 舆情建议</h3>
+                    <ul>
+                        <li>加强健康知识科普宣传</li>
+                        <li>关注国家政策落地实施</li>
+                        <li>密切跟踪国际局势变化</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 结束页 -->
+            <section>
+                <h1 style="color: var(--primary-color);">感谢观看</h1>
+                <div class="card" style="margin-top: 50px;">
+                    <h2 style="color: #fff;">OpenClaw 智能分析系统</h2>
+                    <div style="display: flex; justify-content: center; gap: 30px; margin-top: 30px;">
+                        <span style="color: var(--primary-color);">🎯 专业</span>
+                        <span style="color: var(--accent-color);">⚡ 高效</span>
+                        <span style="color: var(--secondary-color);">📊 准确</span>
+                    </div>
+                    <p style="color: #666; margin-top: 50px; font-size: 0.8em;">
+                        报告生成时间：2026 年 3 月 24 日 23:40<br>
+                        数据来源：腾讯新闻、微博热搜、各大新闻媒体官方报道
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            center: true,
+            transition: 'convex',
+            transitionSpeed: 'slow',
+            backgroundTransition: 'zoom',
+            controls: true,
+            progress: true,
+            slideNumber: 'c/t',
+            keyboard: true,
+            overview: true,
+            touch: true,
+            loop: false,
+            rtl: false,
+            shuffle: false,
+            fragments: true,
+            embedded: false,
+            help: true,
+            showNotes: false,
+            autoPlayMedia: false,
+            preloadIframes: null,
+            autoAnimate: true,
+            autoAnimateMatcher: null,
+            autoAnimateEasing: 'ease',
+            autoAnimateDuration: 0.8,
+            autoAnimateUnmatched: true,
+            autoAnimateStyles: ['opacity', 'transform', 'height', 'width', 'flex', 'flex-grow', 'flex-shrink', 'flex-basis', 'padding', 'margin', 'border-radius', 'border-width'],
+        });
+    </script>
+</body>
+</html>

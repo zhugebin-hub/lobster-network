@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智慧座位预约系统 — FunSkills 决赛作品</title>
+<meta name="description" content="学院公共区域学习座位预约系统，预约、候补、信用与通知一体化智慧管理。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#04050d;
+  --bg2:#080b1c;
+  --ink:#eaf0ff;
+  --muted:#9aa6cf;
+  --faint:#5a6590;
+  --gold:#f5d27a;
+  --cyan:#6fd3ff;
+  --violet:#b18cff;
+  --line:rgba(150,170,255,.14);
+  --card:rgba(18,24,52,.55);
+  --serif:"Noto Serif SC",serif;
+  --sans:"Noto Sans SC",system-ui,sans-serif;
+  --display:"Orbitron","Noto Sans SC",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 800px at 75% -10%, rgba(80,60,160,.32), transparent 60%),
+    radial-gradient(1000px 700px at 10% 20%, rgba(20,80,150,.22), transparent 55%),
+    linear-gradient(180deg,#05060f 0%, #070a1a 40%, #04050d 100%);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ===== 背景层 ===== */
+.bg-layer{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+#starfield{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.nebula{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;z-index:0;pointer-events:none;mix-blend-mode:screen;animation:drift 28s ease-in-out infinite}
+.nebula-a{width:46vw;height:46vw;left:-8vw;top:6vh;background:radial-gradient(circle,rgba(120,90,255,.55),transparent 65%)}
+.nebula-b{width:50vw;height:50vw;right:-12vw;top:34vh;background:radial-gradient(circle,rgba(60,180,255,.45),transparent 65%);animation-delay:-9s}
+.nebula-c{width:40vw;height:40vw;left:24vw;bottom:-12vh;background:radial-gradient(circle,rgba(255,160,120,.30),transparent 65%);animation-delay:-16s}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(3vw,-3vh) scale(1.12)}}
+.grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ===== 导航 ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:18px clamp(18px,5vw,64px);transition:.4s;backdrop-filter:blur(0px)}
+.nav.scrolled{background:rgba(6,8,20,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{color:var(--gold);font-size:18px;filter:drop-shadow(0 0 8px var(--gold));animation:spin 12s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.brand-text{font-family:var(--serif);font-weight:900;font-size:20px;letter-spacing:2px;display:flex;align-items:baseline;gap:8px}
+.brand-text small{font-family:var(--display);font-size:10px;letter-spacing:3px;color:var(--cyan);font-weight:700}
+.nav-links{display:flex;gap:clamp(14px,3vw,34px)}
+.nav-links a{font-size:14px;color:var(--muted);letter-spacing:1px;position:relative;padding:4px 0;transition:.3s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--gold);transition:.3s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{width:100%}
+
+/* ===== Hero ===== */
+.hero{position:relative;z-index:2;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 20px 80px}
+.hero-rings{position:absolute;top:50%;left:50%;transform:translate(-50%,-58%);z-index:-1;pointer-events:none}
+.hero-rings span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:1px solid var(--line);border-radius:50%}
+.hero-rings span:nth-child(1){width:380px;height:380px;animation:pulse 6s ease-in-out infinite}
+.hero-rings span:nth-child(2){width:620px;height:620px;border-color:rgba(150,170,255,.08);animation:pulse 6s ease-in-out infinite .6s}
+.hero-rings span:nth-child(3){width:920px;height:920px;border-color:rgba(150,170,255,.05);animation:pulse 6s ease-in-out infinite 1.2s}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+.hero-eyebrow{font-family:var(--display);letter-spacing:6px;font-size:12px;color:var(--cyan);margin-bottom:24px;opacity:0;animation:rise .9s .1s forwards}
+.hero-title{font-family:var(--serif);font-weight:900;font-size:clamp(64px,13vw,180px);line-height:.95;letter-spacing:6px;
+  background:linear-gradient(180deg,#fff 0%,#dfe7ff 40%,#9fb0ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 60px rgba(140,160,255,.35);opacity:0;animation:rise 1s .25s forwards}
+.hero-sub{font-family:var(--serif);font-size:clamp(16px,2.4vw,24px);letter-spacing:3px;color:var(--gold);margin-top:18px;opacity:0;animation:rise 1s .45s forwards}
+.hero-desc{margin-top:22px;color:var(--muted);line-height:2;font-size:clamp(14px,1.6vw,17px);opacity:0;animation:rise 1s .6s forwards}
+.hero-stats{display:flex;gap:clamp(20px,5vw,56px);margin-top:48px;flex-wrap:wrap;justify-content:center;opacity:0;animation:rise 1s .8s forwards}
+.stat{display:flex;flex-direction:column;align-items:center;gap:6px}
+.stat b{font-family:var(--display);font-size:clamp(30px,4vw,46px);font-weight:900;color:#fff;text-shadow:0 0 22px rgba(120,200,255,.6)}
+.stat span{font-size:11px;letter-spacing:3px;color:var(--faint)}
+.hero-cta{margin-top:52px;display:inline-flex;align-items:center;gap:10px;padding:14px 34px;border:1px solid var(--gold);border-radius:40px;
+  color:var(--gold);font-size:15px;letter-spacing:3px;transition:.35s;opacity:0;animation:rise 1s 1s forwards}
+.hero-cta span{transition:.35s}
+.hero-cta:hover{background:var(--gold);color:#1a1405;box-shadow:0 0 40px rgba(245,210,122,.5)}
+.hero-cta:hover span{transform:translateY(4px)}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.scroll-cue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);width:24px;height:40px;border:1px solid var(--line);border-radius:14px;display:flex;justify-content:center;padding-top:7px}
+.scroll-cue span{width:3px;height:8px;border-radius:3px;background:var(--cyan);animation:scroll 1.6s infinite}
+@keyframes scroll{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+
+/* ===== 通用区块 ===== */
+.section{position:relative;z-index:2;padding:130px 0 90px}
+.section-head{text-align:center;max-width:760px;margin:0 auto;padding:0 20px}
+.kicker{font-family:var(--display);letter-spacing:6px;font-size:11px;color:var(--cyan);margin-bottom:16px}
+.section-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(34px,6vw,68px);letter-spacing:4px;
+  background:linear-gradient(180deg,#fff,#a9b8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);margin-top:16px;line-height:1.9;font-size:clamp(13px,1.5vw,16px)}
+
+/* ===== 痛点卡片 ===== */
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px;max-width:1100px;margin:50px auto 0;padding:0 clamp(18px,5vw,40px)}
+.pain-card{position:relative;border-radius:16px;overflow:hidden;cursor:default;
+  background:var(--card);border:1px solid var(--line);
+  padding:30px 24px;
+  opacity:0;transform:translateY(40px);transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .7s,box-shadow .4s,border-color .4s}
+.pain-card.in{opacity:1;transform:none}
+.pain-card:hover{transform:translateY(-8px) scale(1.015);border-color:var(--cyan);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 40px rgba(111,211,255,.2)}
+.pain-num{font-family:var(--display);font-size:42px;font-weight:900;color:rgba(111,211,255,.12);margin-bottom:10px}
+.pain-card h3{font-family:var(--serif);font-weight:700;font-size:18px;line-height:1.4;color:var(--ink);margin-bottom:10px}
+.pain-card p{color:var(--muted);font-size:13px;line-height:1.8}
+
+/* ===== 流程 ===== */
+.flow-container{max-width:800px;margin:60px auto 0;padding:0 24px}
+.flow-step{position:relative;padding-left:48px;margin-bottom:40px;
+  opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.flow-step.in{opacity:1;transform:translateY(0)}
+.flow-step::before{content:'';position:absolute;left:14px;top:6px;bottom:-34px;width:2px;
+  background:linear-gradient(180deg, var(--cyan), rgba(111,211,255,.1))}
+.flow-step:last-child::before{display:none}
+.flow-step::after{content:'';position:absolute;left:8px;top:6px;width:14px;height:14px;border-radius:50%;
+  background:var(--cyan);box-shadow:0 0 16px rgba(111,211,255,.5)}
+.flow-label{font-family:var(--display);font-size:11px;letter-spacing:3px;color:var(--cyan);margin-bottom:6px}
+.flow-step h3{font-family:var(--serif);font-weight:700;font-size:17px;color:var(--ink);margin-bottom:6px}
+.flow-step p{color:var(--muted);font-size:14px;line-height:1.8}
+
+/* ===== 效果卡片 ===== */
+.effect-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px;max-width:1060px;margin:50px auto 0;padding:0 clamp(18px,5vw,40px)}
+.effect-card{position:relative;border-radius:16px;overflow:hidden;
+  background:linear-gradient(145deg,rgba(245,210,122,.06),var(--card));
+  border:1px solid rgba(245,210,122,.18);padding:30px 24px;text-align:center;
+  opacity:0;transform:translateY(40px);transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .7s,box-shadow .4s,border-color .4s}
+.effect-card.in{opacity:1;transform:none}
+.effect-card:hover{transform:translateY(-8px) scale(1.015);border-color:var(--gold);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 40px rgba(245,210,122,.15)}
+.effect-icon{font-size:36px;margin-bottom:14px}
+.effect-card h3{font-family:var(--serif);font-weight:700;font-size:17px;color:var(--gold);margin-bottom:10px}
+.effect-card p{color:var(--muted);font-size:13px;line-height:1.8}
+
+/* ===== 技术栈 ===== */
+.tech-tags{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:50px auto 0;padding:0 20px}
+.tech-tag{font-size:13px;letter-spacing:2px;padding:9px 20px;border-radius:30px;border:1px solid var(--line);
+  background:rgba(15,20,44,.5);color:var(--muted);transition:.3s;cursor:default}
+.tech-tag:hover{color:var(--ink);border-color:var(--cyan);box-shadow:0 0 18px rgba(111,211,255,.2)}
+
+/* ===== 体验入口 ===== */
+.access{text-align:center;padding:120px 20px 100px}
+.access-card{max-width:420px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:24px;
+  padding:clamp(30px,5vw,50px);backdrop-filter:blur(10px);
+  box-shadow:0 30px 90px rgba(0,0,0,.4)}
+.access-qr{width:220px;height:220px;margin:0 auto 20px;background:#1a1a3e;border-radius:14px;display:flex;align-items:center;justify-content:center}
+.access-qr canvas{width:200px;height:200px}
+.access-card h3{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--ink);margin-bottom:8px}
+.access-card p{color:var(--muted);font-size:14px;margin-bottom:20px}
+.access-link{display:inline-flex;align-items:center;gap:10px;padding:14px 34px;border:1px solid var(--gold);border-radius:40px;
+  color:var(--gold);font-size:15px;letter-spacing:3px;transition:.35s}
+.access-link:hover{background:var(--gold);color:#1a1405;box-shadow:0 0 40px rgba(245,210,122,.5)}
+
+/* ===== 关于 ===== */
+.about{padding:110px 20px 90px;display:flex;justify-content:center}
+.about-card{max-width:840px;text-align:center;background:var(--card);border:1px solid var(--line);
+  border-radius:24px;padding:clamp(36px,6vw,72px);backdrop-filter:blur(10px);
+  box-shadow:0 30px 90px rgba(0,0,0,.4)}
+.about-card h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,4.5vw,46px);letter-spacing:2px;margin-bottom:24px;
+  background:linear-gradient(180deg,#fff,#a9b8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.about-card p{color:var(--muted);line-height:2.05;font-size:clamp(14px,1.6vw,17px);margin-bottom:18px}
+.about-card b{color:var(--gold);font-weight:700}
+.about-card i{color:var(--cyan);font-style:italic}
+.about-sign{margin-top:14px;color:var(--gold)!important;font-family:var(--serif);letter-spacing:3px}
+
+/* ===== 页脚 ===== */
+.foot{text-align:center;padding:60px 20px 70px;border-top:1px solid var(--line);position:relative;z-index:2}
+.foot-logo{font-family:var(--serif);font-weight:900;font-size:24px;letter-spacing:4px;
+  background:linear-gradient(180deg,#fff,#9fb0ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.foot-sub{font-family:var(--display);font-size:11px;letter-spacing:3px;color:var(--faint);margin-top:12px}
+
+/* ===== 响应式 ===== */
+@media(max-width:720px){
+  .nav{padding:14px 18px}
+  .nav.scrolled{padding-top:10px;padding-bottom:10px}
+  .brand-text{font-size:18px}
+  .brand-text small{display:none}
+  .nav-links{gap:16px}
+  .nav-links a{font-size:13px}
+  .hero{padding:104px 18px 70px}
+  .hero-eyebrow{letter-spacing:3px;font-size:10px}
+  .hero-rings span:nth-child(1){width:300px;height:300px}
+  .hero-rings span:nth-child(2){width:480px;height:480px}
+  .hero-rings span:nth-child(3){width:680px;height:680px}
+  .hero-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 34px;width:100%;max-width:360px}
+  .section{padding:90px 0 60px}
+  .pain-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+  .effect-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+  .flow-step{padding-left:36px;margin-bottom:30px}
+  .about{padding:80px 16px 70px}
+}
+@media(max-width:400px){
+  .nav-links{gap:12px}
+  .nav-links a{font-size:12px}
+  .hero-title{letter-spacing:2px}
+  .stat b{font-size:34px}
+  .pain-grid{grid-template-columns:1fr}
+  .effect-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- 背景层 -->
+<div class="bg-layer">
+  <canvas id="starfield"></canvas>
+  <div class="nebula nebula-a"></div>
+  <div class="nebula nebula-b"></div>
+  <div class="nebula nebula-c"></div>
+  <div class="grain"></div>
+</div>
+
+<!-- 导航 -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top">
+    <span class="brand-mark">✦</span>
+    <span class="brand-text">繁星之夜<small>FunSkills</small></span>
+  </a>
+  <nav class="nav-links">
+    <a href="#pain">痛点</a>
+    <a href="#flow">流程</a>
+    <a href="#effects">效果</a>
+    <a href="#access">体验</a>
+    <a href="#about">关于</a>
+  </nav>
+</header>
+
+<!-- 首屏 -->
+<section class="hero" id="top">
+  <div class="hero-rings"><span></span><span></span><span></span></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">✧ STARLIGHT NIGHT · 繁星点灯 ✧</p>
+    <h1 class="hero-title">智慧座位<br/>预约系统</h1>
+    <p class="hero-sub">让每一寸学习空间都被智慧点亮</p>
+    <p class="hero-desc">学院公共区域学习座位预约平台。<br/>预约、候补、信用、通知 —— 一体化智慧管理，<br/>告别「到了才发现没座」的困扰。</p>
+    <div class="hero-stats">
+      <div class="stat"><b data-count="3">0</b><span>自习室</span></div>
+      <div class="stat"><b data-count="108">0</b><span>总座位</span></div>
+      <div class="stat"><b data-count="10">0</b><span>核心功能</span></div>
+      <div class="stat"><b>24h</b><span>自动管理</span></div>
+    </div>
+    <a class="hero-cta" href="#access">立即体验 <span>↓</span></a>
+  </div>
+  <div class="scroll-cue"><span></span></div>
+</section>
+
+<!-- 痛点 -->
+<section class="section" id="pain">
+  <div class="section-head">
+    <p class="kicker">✦ PAIN POINTS ✦</p>
+    <h2>为什么做这个系统</h2>
+    <p>每一个被解决的痛点，都是一颗被点亮的星。</p>
+  </div>
+  <div class="pain-grid">
+    <div class="pain-card" data-anim>
+      <div class="pain-num">01</div>
+      <h3>到了才发现没座</h3>
+      <p>学院自习室座位有限，学生到现场才发现无座可用，浪费时间反复寻找空位。</p>
+    </div>
+    <div class="pain-card" data-anim>
+      <div class="pain-num">02</div>
+      <h3>人走座空物品占位</h3>
+      <p>座位使用信息不透明，"人走座空但物品占位"现象普遍，实际利用率低。</p>
+    </div>
+    <div class="pain-card" data-anim>
+      <div class="pain-num">03</div>
+      <h3>先到先得全靠运气</h3>
+      <p>缺乏统一预约机制，高峰期易引发抢座纠纷，资源分配不公平。</p>
+    </div>
+    <div class="pain-card" data-anim>
+      <div class="pain-num">04</div>
+      <h3>管理员无法掌控全局</h3>
+      <p>管理员无法掌握实时使用状态，难以调控资源，全靠人工巡查。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 流程 -->
+<section class="section" id="flow">
+  <div class="section-head">
+    <p class="kicker">✦ CORE FLOW ✦</p>
+    <h2>核心流程</h2>
+    <p>从发布资源到释放座位，每一步都清晰可控。</p>
+  </div>
+  <div class="flow-container">
+    <div class="flow-step" data-anim>
+      <div class="flow-label">STEP 01</div>
+      <h3>管理员发布资源</h3>
+      <p>配置自习室、区域、座位号、开放时段与预约规则，一键生成座位图。</p>
+    </div>
+    <div class="flow-step" data-anim>
+      <div class="flow-label">STEP 02</div>
+      <h3>学生查看座位实况</h3>
+      <p>在线可视化座位表，实时了解每个座位状态——空闲、已预约、使用中。</p>
+    </div>
+    <div class="flow-step" data-anim>
+      <div class="flow-label">STEP 03</div>
+      <h3>选择时段提交预约</h3>
+      <p>选择空闲座位和时段，提交预约申请，系统按规则自动确认。</p>
+    </div>
+    <div class="flow-step" data-anim>
+      <div class="flow-label">STEP 04</div>
+      <h3>满座自动候补</h3>
+      <p>预约满时自动进入候补队列，前序取消后系统自动补位，无需手动刷新。</p>
+    </div>
+    <div class="flow-step" data-anim>
+      <div class="flow-label">STEP 05</div>
+      <h3>扫码签到入场</h3>
+      <p>预约成功生成签到凭证，到场扫码签到，座位状态变更为"使用中"。</p>
+    </div>
+    <div class="flow-step" data-anim>
+      <div class="flow-label">STEP 06</div>
+      <h3>签退释放 / 超时自动释放</h3>
+      <p>使用结束主动签退释放座位；超时未签到系统自动释放，座位自动回流。</p>
+    </div>
+    <div class="flow-step" data-anim>
+      <div class="flow-label">STEP 07</div>
+      <h3>管理员全局掌控</h3>
+      <p>一屏查看全貌，手动释放异常占用，违规举报审核，统计分析导出。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 效果 -->
+<section class="section" id="effects">
+  <div class="section-head">
+    <p class="kicker">✦ EXPECTED IMPACT ✦</p>
+    <h2>预期效果</h2>
+    <p>每一个改变，都是向着更好的方向。</p>
+  </div>
+  <div class="effect-grid">
+    <div class="effect-card" data-anim>
+      <div class="effect-icon">📱</div>
+      <h3>学生不再白跑一趟</h3>
+      <p>在线即可查看座位实况、提前预约，告别"到了才发现没座"的困扰。</p>
+    </div>
+    <div class="effect-card" data-anim>
+      <div class="effect-icon">👁️</div>
+      <h3>座位状态透明可视</h3>
+      <p>实时展示占用情况，有效减少"占座不用"的浪费现象。</p>
+    </div>
+    <div class="effect-card" data-anim>
+      <div class="effect-icon">🛡️</div>
+      <h3>公平有序的预约机制</h3>
+      <p>信用积分体系 + 违规举报审核，让资源分配更公平、更可持续。</p>
+    </div>
+    <div class="effect-card" data-anim>
+      <div class="effect-icon">📊</div>
+      <h3>一屏掌握全貌</h3>
+      <p>实时座位总览、统计分析、CSV 导出，灵活调控资源，提升管理效率。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 技术栈 -->
+<section class="section" id="tech">
+  <div class="section-head">
+    <p class="kicker">✦ TECH STACK ✦</p>
+    <h2>技术栈</h2>
+  </div>
+  <div class="tech-tags">
+    <span class="tech-tag">Python 3.13</span>
+    <span class="tech-tag">Flask</span>
+    <span class="tech-tag">SQLAlchemy</span>
+    <span class="tech-tag">SQLite / MySQL</span>
+    <span class="tech-tag">Flask-SocketIO</span>
+    <span class="tech-tag">WebSocket</span>
+    <span class="tech-tag">APScheduler</span>
+    <span class="tech-tag">qrcode</span>
+    <span class="tech-tag">HTML / CSS / JS</span>
+  </div>
+</section>
+
+<!-- 体验入口 -->
+<section class="access" id="access">
+  <div class="section-head" style="margin-bottom:50px">
+    <p class="kicker">✦ TRY IT NOW ✦</p>
+    <h2>立即体验</h2>
+    <p>扫码或点击链接，进入完整的预约系统。</p>
+  </div>
+  <div class="access-card">
+    <div class="access-qr"><canvas id="qrCanvas"></canvas></div>
+    <h3>扫码进入 · 座位预约系统</h3>
+    <p>体验完整的预约、候补与管理功能</p>
+  </div>
+  <br/>
+  <a class="access-link" href="http://43.133.22.250:8088" target="_blank">在线体验 → http://43.133.22.250:8088</a>
+</section>
+
+<!-- 关于 -->
+<section class="about" id="about">
+  <div class="about-card">
+    <p class="kicker">✦ ABOUT ✦</p>
+    <h2>关于这个作品</h2>
+    <p>「智慧座位预约系统」是 <b>繁星计划 · FunSkills 大赛</b> 决赛入围作品。针对学院自习室座位管理的真实痛点，从需求分析到全栈开发，独立完成了一个完整的预约管理平台。从 <i>到了没座</i> 到 <i>在线预约</i>，从 <i>占座不用</i> 到 <i>信用约束</i>，每一步都在回答同一个问题：技术如何让校园生活更便利？</p>
+    <p class="about-sign">✦ 一星一世界，都值得被点亮 ✦</p>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="foot">
+  <p class="foot-logo">繁星之夜 · FunSkills</p>
+  <p class="foot-sub">STARLIGHT NIGHT · 决赛作品星河长廊 · 2026</p>
+</footer>
+
+<script>
+// ===== 星空 =====
+(function(){
+  const c=document.getElementById('starfield');
+  const ctx=c.getContext('2d');
+  let stars=[],W,H;
+  const N=250;
+  function resize(){W=c.width=innerWidth;H=c.height=innerHeight;}
+  function init(){
+    stars=[];
+    for(let i=0;i<N;i++){
+      stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.3,a:Math.random(),s:Math.random()*.008+.003});
+    }
+  }
+  function draw(){
+    const g=ctx.createLinearGradient(0,0,0,H);
+    g.addColorStop(0,'#05060f');g.addColorStop(1,'#04050d');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    stars.forEach(s=>{s.a+=s.s;if(s.a>1||s.a<.05)s.s*=-1;
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(200,210,255,${s.a})`;ctx.fill();});
+    requestAnimationFrame(draw);
+  }
+  resize();init();draw();
+  addEventListener('resize',()=>{resize();init();});
+})();
+
+// ===== QR 装饰图案 =====
+(function(){
+  const c=document.getElementById('qrCanvas');
+  const sz=200;c.width=sz;c.height=sz;
+  const ctx=c.getContext('2d');
+  const m=21,ms=sz/m;
+  const pat=[];
+  for(let i=0;i<m;i++){
+    const row=[];
+    for(let j=0;j<m;j++){
+      let v=0;
+      const t=(i<7&&j<7)||(i<7&&j>=m-7)||(i>=m-7&&j<7);
+      if(t){
+        const o1=(i<=0||i>=6||j<=0||j>=6)&&(i<7&&j<7);
+        const o2=(i<=0||i>=m-1||j<=m-7||j>=m-1)&&(i<7&&j>=m-7);
+        const o3=(i<=0||i>=6||j<=0||j>=6)&&(i>=m-7&&j<7);
+        const inner=(i>=2&&i<=4&&j>=2&&j<=4);
+        const inner2=(i>=m-5&&i<=m-3&&j>=m-5&&j<=m-3);
+        const inner3=(i>=2&&i<=4&&j>=m-5&&j<=m-3);
+        v=o1||o2||o3||inner||inner2||inner3?1:0;
+      }else{v=Math.random()>.45?1:0;}
+      row.push(v);
+    }
+    pat.push(row);
+  }
+  pat.forEach((row,i)=>row.forEach((v,j)=>{
+    ctx.fillStyle=v?'#1a1a3e':'#fffdf0';
+    ctx.fillRect(j*ms,i*ms,ms+.5,ms+.5);
+  }));
+})();
+
+// ===== 导航滚动 =====
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>80);},{passive:true});
+
+// ===== 数字滚动 =====
+document.querySelectorAll('.stat b[data-count]').forEach(el=>{
+  const target=+el.dataset.count;
+  let current=0;
+  const step=Math.max(1,Math.floor(target/40));
+  const iv=setInterval(()=>{current+=step;if(current>=target){current=target;clearInterval(iv);}el.textContent=current;},30);
+});
+
+// ===== 滚动渐入 =====
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

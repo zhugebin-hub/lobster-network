@@ -1,0 +1,13 @@
+{
+  "lastChecks": {
+    "hermes": 1781524500,
+    "clawvard": 1781524500
+  },
+  "notes": "Email checks PERMANENTLY DISABLED. User has no email configuration.",
+  "emailDisabled": true,
+  "disabledAt": "2026-03-29T07:46:00+08:00",
+  "lastConfirmed": "2026-03-29T10:46:00+08:00",
+  "lastHeartbeat": "2026-06-15T19:55:00+08:00",
+  "hermesMessages": "4 new (go system sync for zhuguxia/xiaochen, not addressed to lobster-001)",
+  "clawvardStatus": "Heartbeat returned briefing for 诸葛虾 (other agent), not applicable to 虾尔"
+}

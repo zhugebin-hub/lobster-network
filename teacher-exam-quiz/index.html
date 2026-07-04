@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>江苏省苏州市吴江区 - 教师资格考试（高中信息技术）题库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .stats-bar {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .category-filter {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .category-filter h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .search-box {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: #667eea;
+        }
+
+        .search-box button {
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .search-box button:hover {
+            background: #764ba2;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .question-id {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .question-category {
+            background: #f0f0f0;
+            color: #666;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .question-difficulty {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .difficulty-easy {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .difficulty-medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .difficulty-hard {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            margin-bottom: 20px;
+        }
+
+        .option {
+            padding: 12px 15px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f0ff;
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        .option.correct {
+            border-color: #28a745;
+            background: #28a745;
+            color: white;
+        }
+
+        .option.incorrect {
+            border-color: #dc3545;
+            background: #dc3545;
+            color: white;
+        }
+
+        .question-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn-submit {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background: #764ba2;
+        }
+
+        .btn-explain {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .btn-explain:hover {
+            background: #138496;
+        }
+
+        .btn-bookmark {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .btn-bookmark:hover {
+            background: #e0a800;
+        }
+
+        .explanation {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            display: none;
+        }
+
+        .explanation.show {
+            display: block;
+        }
+
+        .explanation h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .explanation p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .pagination {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .pagination button {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pagination button:hover,
+        .pagination button.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .pagination button:disabled {
+            border-color: #ddd;
+            color: #ddd;
+            cursor: not-allowed;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px 20px;
+            opacity: 0.8;
+        }
+
+        /* 答题模式 */
+        .quiz-mode .option {
+            cursor: pointer;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+            }
+
+            .filter-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 教师资格考试题库</h1>
+            <p>江苏省苏州市吴江区 · 高中信息技术学科</p>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number" id="total-questions">0</div>
+                <div class="stat-label">总题数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="answered-questions">0</div>
+                <div class="stat-label">已答题</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="correct-rate">0%</div>
+                <div class="stat-label">正确率</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="bookmarked-questions">0</div>
+                <div class="stat-label">收藏题</div>
+            </div>
+        </div>
+
+        <div class="category-filter">
+            <h3>📋 筛选题目</h3>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">全部</button>
+                <button class="filter-btn" data-category="基础知识">信息技术基础</button>
+                <button class="filter-btn" data-category="编程算法">编程与算法</button>
+                <button class="filter-btn" data-category="网络数据库">网络与数据库</button>
+                <button class="filter-btn" data-category="教学设计">教学设计</button>
+                <button class="filter-btn" data-category="案例分析">案例分析</button>
+            </div>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="搜索题目关键词...">
+                <button onclick="searchQuestions()">🔍 搜索</button>
+            </div>
+        </div>
+
+        <div id="questions-container">
+            <!-- 题目将通过 JavaScript 动态加载 -->
+        </div>
+
+        <div class="pagination" id="pagination">
+            <!-- 分页将通过 JavaScript 动态加载 -->
+        </div>
+
+        <footer>
+            <p>© 2026 江苏省苏州市吴江区教师资格考试题库 | 高中信息技术学科</p>
+            <p>祝各位考生考试顺利！✨</p>
+        </footer>
+    </div>
+
+    <script>
+        // 题库数据
+        const questions = [
+            {
+                id: 1,
+                category: "基础知识",
+                difficulty: "easy",
+                difficultyText: "简单",
+                text: "下列关于信息技术的描述，不正确的是（ ）",
+                options: [
+                    "A. 信息技术是指获取、处理、存储、传输和使用信息的技术",
+                    "B. 信息技术的核心是计算机技术和通信技术",
+                    "C. 信息技术只包括硬件技术，不包括软件技术",
+                    "D. 信息技术在现代社会中应用广泛"
+                ],
+                answer: "C",
+                explanation: "信息技术包括硬件技术和软件技术两大部分，选项 C 的说法是错误的。信息技术是一个综合性的技术领域，既包括计算机硬件、通信设备等硬件技术，也包括操作系统、应用软件等软件技术。"
+            },
+            {
+                id: 2,
+                category: "编程算法",
+                difficulty: "medium",
+                difficultyText: "中等",
+                text: "在 Python 中，下列代码的输出结果是（ ）<br><code>print(len('Hello World'))</code>",
+                options: [
+                    "A. 10",
+                    "B. 11",
+                    "C. 12",
+                    "D. 9"
+                ],
+                answer: "B",
+                explanation: "字符串 'Hello World' 包含 11 个字符（包括空格），len() 函数返回字符串的长度，因此输出结果为 11。"
+            },
+            {
+                id: 3,
+                category: "网络数据库",
+                difficulty: "medium",
+                difficultyText: "中等",
+                text: "下列关于 TCP/IP 协议的说法，正确的是（ ）",
+                options: [
+                    "A. TCP 协议是无连接的协议",
+                    "B. IP 协议负责数据的可靠传输",
+                    "C. TCP 协议提供面向连接的可靠传输服务",
+                    "D. UDP 协议比 TCP 协议更可靠"
+                ],
+                answer: "C",
+                explanation: "TCP（传输控制协议）是面向连接的、可靠的传输层协议，它通过三次握手建立连接，确保数据的可靠传输。IP 协议负责寻址和路由，不保证可靠性。UDP 是无连接的、不可靠的协议。"
+            },
+            {
+                id: 4,
+                category: "教学设计",
+                difficulty: "hard",
+                difficultyText: "困难",
+                text: "在高中信息技术课程中，关于'算法与程序设计'模块的教学目标，下列表述最恰当的是（ ）",
+                options: [
+                    "A. 让学生掌握所有编程语言的基本语法",
+                    "B. 培养学生运用计算思维解决问题的能力",
+                    "C. 要求学生能够独立开发大型软件项目",
+                    "D. 重点训练学生的代码记忆能力"
+                ],
+                answer: "B",
+                explanation: "高中信息技术课程的核心目标是培养学生的信息素养和计算思维，而不是单纯的语言语法记忆或大型项目开发。选项 B 最符合课程标准的要求，强调运用计算思维解决实际问题。"
+            },
+            {
+                id: 5,
+                category: "案例分析",
+                difficulty: "hard",
+                difficultyText: "困难",
+                text: "某教师在讲授'数据处理'时，让学生用 Excel 分析班级成绩。下列教学行为中，最能体现'以学生为中心'理念的是（ ）",
+                options: [
+                    "A. 教师演示所有操作步骤，学生跟随练习",
+                    "B. 教师提供任务单，学生自主探究完成",
+                    "C. 教师布置作业，学生课后完成",
+                    "D. 教师讲解理论，学生做笔记"
+                ],
+                answer: "B",
+                explanation: "'以学生为中心'的教学理念强调学生的主动参与和自主探究。选项 B 中，教师提供任务单引导学生，学生通过自主探究完成任务，最能体现这一理念。其他选项都偏向于传统的'以教师为中心'的教学模式。"
+            },
+            {
+                id: 6,
+                category: "基础知识",
+                difficulty: "easy",
+                difficultyText: "简单",
+                text: "二进制数 1011 转换为十进制数是（ ）",
+                options: [
+                    "A. 9",
+                    "B. 10",
+                    "C. 11",
+                    "D. 12"
+                ],
+                answer: "C",
+                explanation: "二进制转十进制：1×2³ + 0×2² + 1×2¹ + 1×2⁰ = 8 + 0 + 2 + 1 = 11"
+            },
+            {
+                id: 7,
+                category: "编程算法",
+                difficulty: "hard",
+                difficultyText: "困难",
+                text: "下列关于算法时间复杂度的说法，正确的是（ ）",
+                options: [
+                    "A. 时间复杂度越低，算法执行时间一定越短",
+                    "B. O(n²) 的算法一定比 O(n) 的算法慢",
+                    "C. 时间复杂度描述的是算法执行时间随输入规模增长的趋势",
+                    "D. 常数时间复杂度 O(1) 表示算法不需要执行时间"
+                ],
+                answer: "C",
+                explanation: "时间复杂度描述的是算法执行时间随输入规模增长的变化趋势，是渐进分析的概念。选项 A 错误，因为实际执行时间还受常数因子影响；选项 B 错误，在小规模输入时 O(n²) 可能更快；选项 D 错误，O(1) 表示执行时间与输入规模无关，但仍需要执行时间。"
+            },
+            {
+                id: 8,
+                category: "网络数据库",
+                difficulty: "easy",
+                difficultyText: "简单",
+                text: "在 SQL 中，用于查询数据的关键字是（ ）",
+                options: [
+                    "A. INSERT",
+                    "B. UPDATE",
+                    "C. SELECT",
+                    "D. DELETE"
+                ],
+                answer: "C",
+                explanation: "SELECT 是 SQL 中用于查询数据的关键字。INSERT 用于插入数据，UPDATE 用于更新数据，DELETE 用于删除数据。"
+            },
+            {
+                id: 9,
+                category: "教学设计",
+                difficulty: "medium",
+                difficultyText: "中等",
+                text: "根据《普通高中信息技术课程标准》，信息技术学科核心素养不包括（ ）",
+                options: [
+                    "A. 信息意识",
+                    "B. 计算思维",
+                    "C. 编程能力",
+                    "D. 数字化学习与创新"
+                ],
+                answer: "C",
+                explanation: "信息技术学科核心素养包括：信息意识、计算思维、数字化学习与创新、信息社会责任。编程能力是计算思维的一部分，但不是独立的核心素养。"
+            },
+            {
+                id: 10,
+                category: "案例分析",
+                difficulty: "medium",
+                difficultyText: "中等",
+                text: "某学校计划建设智慧教室，下列设备中，不是必须配置的是（ ）",
+                options: [
+                    "A. 交互式电子白板",
+                    "B. 学生平板电脑",
+                    "C. 高速网络接入",
+                    "D. 3D 打印机"
+                ],
+                answer: "D",
+                explanation: "智慧教室的核心配置包括交互式教学设备（如电子白板）、学生终端（如平板电脑）和网络基础设施。3D 打印机属于创客空间或专用实验室设备，不是智慧教室的必需配置。"
+            },
+            {
+                id: 11,
+                category: "基础知识",
+                difficulty: "medium",
+                difficultyText: "中等",
+                text: "下列关于计算机存储单位的换算，正确的是（ ）",
+                options: [
+                    "A. 1KB = 1000B",
+                    "B. 1MB = 1024KB",
+                    "C. 1GB = 1000MB",
+                    "D. 1TB = 1024GB"
+                ],
+                answer: "B",
+                explanation: "计算机存储单位采用二进制换算：1KB = 1024B，1MB = 1024KB，1GB = 1024MB，1TB = 1024GB。选项 B 正确。"
+            },
+            {
+                id: 12,
+                category: "编程算法",
+                difficulty: "medium",
+                difficultyText: "中等",
+                text: "在 Python 中，下列哪个方法可以向列表末尾添加元素（ ）",
+                options: [
+                    "A. insert()",
+                    "B. append()",
+                    "C. extend()",
+                    "D. add()"
+                ],
+                answer: "B",
+                explanation: "append() 方法用于在列表末尾添加一个元素。insert() 用于在指定位置插入元素，extend() 用于扩展列表（添加多个元素），add() 不是列表的方法。"
+            }
+        ];
+
+        // 状态管理
+        let currentPage = 1;
+        const questionsPerPage = 5;
+        let currentCategory = 'all';
+        let answeredQuestions = new Set();
+        let correctAnswers = new Set();
+        let bookmarkedQuestions = new Set();
+
+        // 初始化
+        function init() {
+            updateStats();
+            filterQuestions();
+        }
+
+        // 更新统计
+        function updateStats() {
+            document.getElementById('total-questions').textContent = questions.length;
+            document.getElementById('answered-questions').textContent = answeredQuestions.size;
+            const rate = answeredQuestions.size > 0 
+                ? Math.round((correctAnswers.size / answeredQuestions.size) * 100) 
+                : 0;
+            document.getElementById('correct-rate').textContent = rate + '%';
+            document.getElementById('bookmarked-questions').textContent = bookmarkedQuestions.size;
+        }
+
+        // 筛选题目
+        function filterQuestions() {
+            let filtered = currentCategory === 'all' 
+                ? questions 
+                : questions.filter(q => q.category === currentCategory);
+            
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            if (searchTerm) {
+                filtered = filtered.filter(q => 
+                    q.text.toLowerCase().includes(searchTerm) ||
+                    q.explanation.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            renderQuestions(filtered);
+            renderPagination(filtered);
+        }
+
+        // 渲染题目
+        function renderQuestions(filteredQuestions) {
+            const container = document.getElementById('questions-container');
+            const start = (currentPage - 1) * questionsPerPage;
+            const end = start + questionsPerPage;
+            const pageQuestions = filteredQuestions.slice(start, end);
+
+            container.innerHTML = pageQuestions.map(q => `
+                <div class="question-card" data-id="${q.id}">
+                    <div class="question-header">
+                        <span class="question-id">题目 #${q.id}</span>
+                        <span class="question-category">${q.category}</span>
+                        <span class="question-difficulty difficulty-${q.difficulty}">${q.difficultyText}</span>
+                    </div>
+                    <div class="question-text">${q.text}</div>
+                    <div class="options">
+                        ${q.options.map((opt, i) => `
+                            <div class="option" onclick="selectOption(${q.id}, ${i}, '${q.answer}')">
+                                ${opt}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="question-actions">
+                        <button class="action-btn btn-submit" onclick="submitAnswer(${q.id})">提交答案</button>
+                        <button class="action-btn btn-explain" onclick="toggleExplanation(${q.id})">查看解析</button>
+                        <button class="action-btn btn-bookmark" onclick="toggleBookmark(${q.id})">
+                            ${bookmarkedQuestions.has(q.id) ? '★ 已收藏' : '☆ 收藏'}
+                        </button>
+                    </div>
+                    <div class="explanation" id="explanation-${q.id}">
+                        <h4>📖 答案解析</h4>
+                        <p>正确答案：${q.answer}</p>
+                        <p>${q.explanation}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 渲染分页
+        function renderPagination(filteredQuestions) {
+            const totalPages = Math.ceil(filteredQuestions.length / questionsPerPage);
+            const pagination = document.getElementById('pagination');
+            
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+
+            let html = `
+                <button ${currentPage === 1 ? 'disabled' : ''} onclick="changePage(${currentPage - 1})">上一页</button>
+            `;
+
+            for (let i = 1; i <= totalPages; i++) {
+                html += `<button class="${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+            }
+
+            html += `
+                <button ${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(${currentPage + 1})">下一页</button>
+            `;
+
+            pagination.innerHTML = html;
+        }
+
+        // 切换页面
+        function changePage(page) {
+            currentPage = page;
+            filterQuestions();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 选择选项
+        let selectedAnswers = {};
+        function selectOption(questionId, optionIndex, correctAnswer) {
+            const card = document.querySelector(`.question-card[data-id="${questionId}"]`);
+            const options = card.querySelectorAll('.option');
+            
+            options.forEach((opt, i) => {
+                opt.classList.remove('selected', 'correct', 'incorrect');
+                if (i === optionIndex) {
+                    opt.classList.add('selected');
+                }
+            });
+            
+            selectedAnswers[questionId] = String.fromCharCode(65 + optionIndex);
+        }
+
+        // 提交答案
+        function submitAnswer(questionId) {
+            if (!selectedAnswers[questionId]) {
+                alert('请先选择一个答案！');
+                return;
+            }
+
+            const question = questions.find(q => q.id === questionId);
+            const card = document.querySelector(`.question-card[data-id="${questionId}"]`);
+            const options = card.querySelectorAll('.option');
+
+            options.forEach((opt, i) => {
+                opt.classList.remove('selected', 'correct', 'incorrect');
+                const optionLetter = String.fromCharCode(65 + i);
+                if (optionLetter === question.answer) {
+                    opt.classList.add('correct');
+                } else if (optionLetter === selectedAnswers[questionId]) {
+                    opt.classList.add('incorrect');
+                }
+            });
+
+            answeredQuestions.add(questionId);
+            if (selectedAnswers[questionId] === question.answer) {
+                correctAnswers.add(questionId);
+            }
+
+            updateStats();
+        }
+
+        // 切换解析显示
+        function toggleExplanation(questionId) {
+            const explanation = document.getElementById(`explanation-${questionId}`);
+            explanation.classList.toggle('show');
+        }
+
+        // 切换收藏
+        function toggleBookmark(questionId) {
+            if (bookmarkedQuestions.has(questionId)) {
+                bookmarkedQuestions.delete(questionId);
+            } else {
+                bookmarkedQuestions.add(questionId);
+            }
+            updateStats();
+            filterQuestions();
+        }
+
+        // 搜索题目
+        function searchQuestions() {
+            currentPage = 1;
+            filterQuestions();
+        }
+
+        // 分类筛选
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentCategory = this.dataset.category;
+                currentPage = 1;
+                filterQuestions();
+            });
+        });
+
+        // 回车搜索
+        document.getElementById('search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchQuestions();
+            }
+        });
+
+        // 初始化
+        init();
+    </script>
+</body>
+</html>

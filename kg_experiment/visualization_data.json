@@ -1,0 +1,236 @@
+{
+  "nodes": [
+    {
+      "id": "D001",
+      "name": "糖尿病",
+      "type": "疾病",
+      "color": "#ff6b6b",
+      "description": "一种慢性代谢性疾病"
+    },
+    {
+      "id": "D002",
+      "name": "高血压",
+      "type": "疾病",
+      "color": "#ff6b6b",
+      "description": "血压持续升高的慢性疾病"
+    },
+    {
+      "id": "D003",
+      "name": "冠心病",
+      "type": "疾病",
+      "color": "#ff6b6b",
+      "description": "冠状动脉粥样硬化性心脏病"
+    },
+    {
+      "id": "S001",
+      "name": "多饮",
+      "type": "症状",
+      "color": "#4ecdc4",
+      "description": "饮水量异常增多"
+    },
+    {
+      "id": "S002",
+      "name": "多食",
+      "type": "症状",
+      "color": "#4ecdc4",
+      "description": "食欲亢进"
+    },
+    {
+      "id": "S003",
+      "name": "多尿",
+      "type": "症状",
+      "color": "#4ecdc4",
+      "description": "排尿次数和尿量增多"
+    },
+    {
+      "id": "S004",
+      "name": "头痛",
+      "type": "症状",
+      "color": "#4ecdc4",
+      "description": "头部疼痛感"
+    },
+    {
+      "id": "S005",
+      "name": "胸痛",
+      "type": "症状",
+      "color": "#4ecdc4",
+      "description": "胸部疼痛或不适"
+    },
+    {
+      "id": "M001",
+      "name": "二甲双胍",
+      "type": "药品",
+      "color": "#45b7d1",
+      "description": "治疗 2 型糖尿病的一线药物"
+    },
+    {
+      "id": "M002",
+      "name": "胰岛素",
+      "type": "药品",
+      "color": "#45b7d1",
+      "description": "调节血糖的激素类药物"
+    },
+    {
+      "id": "M003",
+      "name": "硝苯地平",
+      "type": "药品",
+      "color": "#45b7d1",
+      "description": "钙通道阻滞剂，用于治疗高血压"
+    },
+    {
+      "id": "M004",
+      "name": "阿司匹林",
+      "type": "药品",
+      "color": "#45b7d1",
+      "description": "抗血小板药物"
+    },
+    {
+      "id": "T001",
+      "name": "空腹血糖",
+      "type": "检查",
+      "color": "#96ceb4",
+      "description": "测量空腹状态下的血糖水平"
+    },
+    {
+      "id": "T002",
+      "name": "糖化血红蛋白",
+      "type": "检查",
+      "color": "#96ceb4",
+      "description": "反映 2-3 个月平均血糖水平"
+    },
+    {
+      "id": "T003",
+      "name": "血压测量",
+      "type": "检查",
+      "color": "#96ceb4",
+      "description": "测量收缩压和舒张压"
+    },
+    {
+      "id": "T004",
+      "name": "心电图",
+      "type": "检查",
+      "color": "#96ceb4",
+      "description": "记录心脏电活动"
+    },
+    {
+      "id": "DEPT001",
+      "name": "内分泌科",
+      "type": "科室",
+      "color": "#ffeaa7",
+      "description": "诊治内分泌系统疾病"
+    },
+    {
+      "id": "DEPT002",
+      "name": "心血管科",
+      "type": "科室",
+      "color": "#ffeaa7",
+      "description": "诊治心血管疾病"
+    },
+    {
+      "id": "DOC001",
+      "name": "张医生",
+      "type": "医生",
+      "color": "#dfe6e9",
+      "description": "内分泌科主任医师"
+    },
+    {
+      "id": "DOC002",
+      "name": "李医生",
+      "type": "医生",
+      "color": "#dfe6e9",
+      "description": "心血管科副主任医师"
+    }
+  ],
+  "links": [
+    {
+      "source": "D001",
+      "target": "S001",
+      "type": "has_symptom"
+    },
+    {
+      "source": "D001",
+      "target": "S002",
+      "type": "has_symptom"
+    },
+    {
+      "source": "D001",
+      "target": "S003",
+      "type": "has_symptom"
+    },
+    {
+      "source": "D002",
+      "target": "S004",
+      "type": "has_symptom"
+    },
+    {
+      "source": "D003",
+      "target": "S005",
+      "type": "has_symptom"
+    },
+    {
+      "source": "D001",
+      "target": "M001",
+      "type": "treated_by"
+    },
+    {
+      "source": "D001",
+      "target": "M002",
+      "type": "treated_by"
+    },
+    {
+      "source": "D002",
+      "target": "M003",
+      "type": "treated_by"
+    },
+    {
+      "source": "D003",
+      "target": "M004",
+      "type": "treated_by"
+    },
+    {
+      "source": "D001",
+      "target": "T001",
+      "type": "requires_test"
+    },
+    {
+      "source": "D001",
+      "target": "T002",
+      "type": "requires_test"
+    },
+    {
+      "source": "D002",
+      "target": "T003",
+      "type": "requires_test"
+    },
+    {
+      "source": "D003",
+      "target": "T004",
+      "type": "requires_test"
+    },
+    {
+      "source": "D001",
+      "target": "DEPT001",
+      "type": "belongs_to_dept"
+    },
+    {
+      "source": "D002",
+      "target": "DEPT002",
+      "type": "belongs_to_dept"
+    },
+    {
+      "source": "D003",
+      "target": "DEPT002",
+      "type": "belongs_to_dept"
+    },
+    {
+      "source": "DEPT001",
+      "target": "DOC001",
+      "type": "has_doctor"
+    },
+    {
+      "source": "DEPT002",
+      "target": "DOC002",
+      "type": "has_doctor"
+    }
+  ]
+}

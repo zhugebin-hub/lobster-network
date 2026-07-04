@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电力调度与电价期货交易分析平台 - 数据驱动版</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #0f3460 0%, #16213e 100%);
+            padding: 20px 40px;
+            border-bottom: 2px solid #e94560;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #e94560;
+            text-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+        }
+        
+        .header .time {
+            font-size: 14px;
+            color: #a0a0a0;
+        }
+        
+        .container {
+            padding: 20px;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+        
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .kpi-card {
+            background: linear-gradient(145deg, #1f4068 0%, #162447 100%);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .kpi-card h3 {
+            font-size: 14px;
+            color: #a0a0a0;
+            margin-bottom: 10px;
+        }
+        
+        .kpi-card .value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #e94560;
+        }
+        
+        .kpi-card .change {
+            font-size: 12px;
+            margin-top: 8px;
+        }
+        
+        .kpi-card .change.up {
+            color: #00d26a;
+        }
+        
+        .kpi-card .change.down {
+            color: #ff6b6b;
+        }
+        
+        .chart-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .chart-card {
+            background: linear-gradient(145deg, #1f4068 0%, #162447 100%);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .chart-card h3 {
+            font-size: 16px;
+            color: #e94560;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(233, 69, 96, 0.3);
+        }
+        
+        .chart-container {
+            height: 350px;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .trading-panel {
+            background: linear-gradient(145deg, #1f4068 0%, #162447 100%);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+            margin-bottom: 20px;
+        }
+        
+        .trading-panel h3 {
+            font-size: 16px;
+            color: #e94560;
+            margin-bottom: 15px;
+        }
+        
+        .trading-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+        
+        .contract-item {
+            background: rgba(233, 69, 96, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        
+        .contract-item:hover {
+            background: rgba(233, 69, 96, 0.2);
+            border-color: #e94560;
+        }
+        
+        .contract-item.active {
+            background: rgba(233, 69, 96, 0.3);
+            border-color: #e94560;
+        }
+        
+        .contract-item .name {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .contract-item .price {
+            font-size: 20px;
+            color: #00d26a;
+        }
+        
+        .contract-item .change {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .contract-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(233, 69, 96, 0.3);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-item .label {
+            font-size: 12px;
+            color: #a0a0a0;
+        }
+        
+        .stat-item .value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            margin-top: 5px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-buy {
+            background: linear-gradient(135deg, #00d26a 0%, #00a862 100%);
+            color: #fff;
+        }
+        
+        .btn-sell {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            color: #fff;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .data-table th {
+            background: rgba(233, 69, 96, 0.2);
+            color: #e94560;
+            font-weight: bold;
+        }
+        
+        .data-table tr:hover {
+            background: rgba(233, 69, 96, 0.1);
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .status-badge.normal {
+            background: rgba(0, 210, 106, 0.2);
+            color: #00d26a;
+        }
+        
+        .status-badge.warning {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+        
+        .status-badge.critical {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 18px;
+            color: #a0a0a0;
+        }
+        
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+        
+        .data-source {
+            font-size: 12px;
+            color: #a0a0a0;
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>⚡ 电力调度与电价期货交易分析平台</h1>
+        <div class="time" id="currentTime"></div>
+    </div>
+    
+    <div class="container">
+        <div id="loading" class="loading">正在加载数据</div>
+        
+        <div id="content" style="display: none;">
+            <!-- KPI 指标 -->
+            <div class="kpi-row">
+                <div class="kpi-card">
+                    <h3>实时负荷 (MW)</h3>
+                    <div class="value" id="loadValue">--</div>
+                    <div class="change" id="loadChange">--</div>
+                </div>
+                <div class="kpi-card">
+                    <h3>电价指数 (元/MWh)</h3>
+                    <div class="value" id="priceValue">--</div>
+                    <div class="change" id="priceChange">--</div>
+                </div>
+                <div class="kpi-card">
+                    <h3>期货持仓量 (手)</h3>
+                    <div class="value" id="positionValue">--</div>
+                    <div class="change" id="positionChange">--</div>
+                </div>
+                <div class="kpi-card">
+                    <h3>日交易量 (亿元)</h3>
+                    <div class="value" id="volumeValue">--</div>
+                    <div class="change" id="volumeChange">--</div>
+                </div>
+            </div>
+            
+            <!-- 交易面板 -->
+            <div class="trading-panel">
+                <h3>📊 电价期货合约</h3>
+                <div class="trading-grid" id="contractGrid">
+                    <!-- 动态生成合约 -->
+                </div>
+                <div class="contract-stats" id="contractStats">
+                    <!-- 合约统计 -->
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-buy" onclick="executeTrade('buy')">买入做多</button>
+                    <button class="btn btn-sell" onclick="executeTrade('sell')">卖出做空</button>
+                </div>
+            </div>
+            
+            <!-- 图表第一行 -->
+            <div class="chart-row">
+                <div class="chart-card">
+                    <h3>📈 24 小时电力负荷与电价趋势</h3>
+                    <div class="chart-container" id="loadPriceChart"></div>
+                </div>
+                <div class="chart-card">
+                    <h3>📊 期货合约成交量分布</h3>
+                    <div class="chart-container" id="volumeChart"></div>
+                </div>
+            </div>
+            
+            <!-- 图表第二行 -->
+            <div class="chart-row">
+                <div class="chart-card">
+                    <h3>🌡️ 区域电力供需热力图</h3>
+                    <div class="chart-container" id="heatmapChart"></div>
+                </div>
+                <div class="chart-card">
+                    <h3>📉 电价波动率分析</h3>
+                    <div class="chart-container" id="volatilityChart"></div>
+                </div>
+            </div>
+            
+            <!-- 图表第三行 - 全宽 -->
+            <div class="chart-row">
+                <div class="chart-card full-width">
+                    <h3>📋 实时交易记录</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>时间</th>
+                                <th>合约</th>
+                                <th>方向</th>
+                                <th>价格 (元/MWh)</th>
+                                <th>数量 (手)</th>
+                                <th>金额 (万元)</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tradeTable">
+                            <!-- 动态生成交易记录 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="data-source">
+                📊 数据来源：sample_data.json | 更新时间：<span id="dataUpdateTime"></span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let appData = null;
+        let selectedContractIndex = 0;
+        
+        // 更新时间
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('currentTime').textContent = now.toLocaleString('zh-CN', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+        
+        // 加载数据
+        async function loadData() {
+            try {
+                const response = await fetch('sample_data.json');
+                appData = await response.json();
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                document.getElementById('dataUpdateTime').textContent = appData.generated_at;
+                
+                initDashboard();
+            } catch (error) {
+                document.getElementById('loading').textContent = '数据加载失败：' + error.message;
+                console.error('数据加载失败:', error);
+            }
+        }
+        
+        // 初始化仪表板
+        function initDashboard() {
+            initKPIs();
+            initContracts();
+            initCharts();
+            initTradeTable();
+        }
+        
+        // 初始化 KPI
+        function initKPIs() {
+            const contractStats = appData.contract_stats;
+            const load = appData.load_data;
+            const trades = appData.trade_records;
+            
+            // 实时负荷（最新数据）
+            const latestLoad = load[load.length - 1].load_mw;
+            const prevLoad = load[load.length - 2]?.load_mw || latestLoad * 0.95;
+            const loadChange = ((latestLoad - prevLoad) / prevLoad * 100).toFixed(1);
+            
+            document.getElementById('loadValue').textContent = latestLoad.toLocaleString();
+            document.getElementById('loadChange').innerHTML = `${loadChange >= 0 ? '↑' : '↓'} ${Math.abs(loadChange)}% 较上小时`;
+            document.getElementById('loadChange').className = `change ${loadChange >= 0 ? 'up' : 'down'}`;
+            
+            // 电价指数
+            const latestPrice = load[load.length - 1].price_yuan_mwh;
+            const prevPrice = load[load.length - 2]?.price_yuan_mwh || latestPrice * 1.02;
+            const priceChange = ((latestPrice - prevPrice) / prevPrice * 100).toFixed(1);
+            
+            document.getElementById('priceValue').textContent = latestPrice.toFixed(2);
+            document.getElementById('priceChange').innerHTML = `${priceChange >= 0 ? '↑' : '↓'} ${Math.abs(priceChange)}% 较上小时`;
+            document.getElementById('priceChange').className = `change ${priceChange >= 0 ? 'up' : 'down'}`;
+            
+            // 期货持仓量
+            const totalPosition = contractStats.reduce((sum, c) => sum + c.position, 0);
+            const avgPosition = totalPosition / contractStats.length;
+            const positionChange = ((totalPosition - avgPosition * contractStats.length * 0.95) / (avgPosition * contractStats.length * 0.95) * 100).toFixed(1);
+            
+            document.getElementById('positionValue').textContent = totalPosition.toLocaleString();
+            document.getElementById('positionChange').innerHTML = `${positionChange >= 0 ? '↑' : '↓'} ${Math.abs(positionChange)}% 较昨日`;
+            document.getElementById('positionChange').className = `change ${positionChange >= 0 ? 'up' : 'down'}`;
+            
+            // 日交易量
+            const totalTurnover = contractStats.reduce((sum, c) => sum + c.turnover, 0);
+            const prevTurnover = totalTurnover * 0.92;
+            const volumeChange = ((totalTurnover - prevTurnover) / prevTurnover * 100).toFixed(1);
+            
+            document.getElementById('volumeValue').textContent = totalTurnover.toFixed(1);
+            document.getElementById('volumeChange').innerHTML = `${volumeChange >= 0 ? '↑' : '↓'} ${Math.abs(volumeChange)}% 较昨日`;
+            document.getElementById('volumeChange').className = `change ${volumeChange >= 0 ? 'up' : 'down'}`;
+        }
+        
+        // 初始化合约
+        function initContracts() {
+            const grid = document.getElementById('contractGrid');
+            const stats = appData.contract_stats;
+            
+            grid.innerHTML = stats.map((c, i) => `
+                <div class="contract-item ${i === 0 ? 'active' : ''}" onclick="selectContract(${i})">
+                    <div class="name">${c.contract}</div>
+                    <div class="price">${c.close.toFixed(2)}</div>
+                    <div class="change ${c.change_percent >= 0 ? 'up' : 'down'}">
+                        ${c.change_percent >= 0 ? '↑' : '↓'} ${Math.abs(c.change_percent)}%
+                    </div>
+                </div>
+            `).join('');
+            
+            // 显示选中合约的详细统计
+            updateContractStats(0);
+        }
+        
+        // 更新合约统计
+        function updateContractStats(index) {
+            const stats = appData.contract_stats[index];
+            const container = document.getElementById('contractStats');
+            
+            container.innerHTML = `
+                <div class="stat-item">
+                    <div class="label">开盘价</div>
+                    <div class="value">${stats.open.toFixed(2)}</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">最高价</div>
+                    <div class="value" style="color: #00d26a">${stats.high.toFixed(2)}</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">最低价</div>
+                    <div class="value" style="color: #ff6b6b">${stats.low.toFixed(2)}</div>
+                </div>
+                <div class="stat-item">
+                    <div class="label">成交量</div>
+                    <div class="value">${stats.volume.toLocaleString()}</div>
+                </div>
+            `;
+        }
+        
+        // 选择合约
+        function selectContract(index) {
+            selectedContractIndex = index;
+            document.querySelectorAll('.contract-item').forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
+            updateContractStats(index);
+        }
+        
+        // 执行交易
+        function executeTrade(type) {
+            const contract = appData.contract_stats[selectedContractIndex];
+            alert(`${type === 'buy' ? '买入' : '卖出'}订单已提交！\n合约：${contract.contract}\n价格：${contract.close.toFixed(2)} 元/MWh`);
+        }
+        
+        // 初始化图表
+        function initCharts() {
+            const loadPriceChart = echarts.init(document.getElementById('loadPriceChart'));
+            const volumeChart = echarts.init(document.getElementById('volumeChart'));
+            const heatmapChart = echarts.init(document.getElementById('heatmapChart'));
+            const volatilityChart = echarts.init(document.getElementById('volatilityChart'));
+            
+            // 24 小时负荷与电价趋势
+            const load = appData.load_data.slice(-24);
+            const loadPriceOption = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { type: 'cross' }
+                },
+                legend: {
+                    data: ['电力负荷 (MW)', '电价 (元/MWh)'],
+                    textStyle: { color: '#a0a0a0' }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data: load.map(d => new Date(d.timestamp).getHours() + ':00'),
+                    axisLine: { lineStyle: { color: '#a0a0a0' } }
+                },
+                yAxis: [
+                    {
+                        type: 'value',
+                        name: '负荷 (MW)',
+                        axisLine: { lineStyle: { color: '#e94560' } },
+                        axisLabel: { color: '#a0a0a0' }
+                    },
+                    {
+                        type: 'value',
+                        name: '电价 (元/MWh)',
+                        axisLine: { lineStyle: { color: '#00d26a' } },
+                        axisLabel: { color: '#a0a0a0' }
+                    }
+                ],
+                series: [
+                    {
+                        name: '电力负荷 (MW)',
+                        type: 'line',
+                        data: load.map(d => d.load_mw),
+                        smooth: true,
+                        itemStyle: { color: '#e94560' },
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: 'rgba(233, 69, 96, 0.5)' },
+                                { offset: 1, color: 'rgba(233, 69, 96, 0.1)' }
+                            ])
+                        }
+                    },
+                    {
+                        name: '电价 (元/MWh)',
+                        type: 'line',
+                        yAxisIndex: 1,
+                        data: load.map(d => d.price_yuan_mwh),
+                        smooth: true,
+                        itemStyle: { color: '#00d26a' }
+                    }
+                ]
+            };
+            loadPriceChart.setOption(loadPriceOption);
+            
+            // 成交量分布
+            const volumeOption = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b}: {c} ({d}%)'
+                },
+                legend: {
+                    orient: 'vertical',
+                    right: '10%',
+                    top: 'center',
+                    textStyle: { color: '#a0a0a0' }
+                },
+                series: [
+                    {
+                        name: '成交量',
+                        type: 'pie',
+                        radius: ['40%', '70%'],
+                        center: ['35%', '50%'],
+                        itemStyle: {
+                            borderRadius: 10,
+                            borderColor: '#162447',
+                            borderWidth: 2
+                        },
+                        label: {
+                            color: '#fff'
+                        },
+                        data: appData.contract_stats.map((c, i) => ({
+                            value: c.volume,
+                            name: c.contract,
+                            itemStyle: {
+                                color: ['#e94560', '#00d26a', '#ffc107', '#00bcd4', '#9c27b0'][i]
+                            }
+                        }))
+                    }
+                ]
+            };
+            volumeChart.setOption(volumeOption);
+            
+            // 区域供需热力图
+            const regionalData = appData.regional_data.map(d => [
+                d.side_idx,
+                d.city_idx,
+                d.supply_demand_index,
+                d.load_mw,
+                d.gap_mw
+            ]);
+            
+            const heatmapOption = {
+                tooltip: {
+                    position: 'top',
+                    formatter: function(params) {
+                        const city = ['杭州', '宁波', '温州', '嘉兴', '湖州', '绍兴', '金华', '台州'][params.data[1]];
+                        const side = ['发电侧', '电网侧', '用户侧'][params.data[0]];
+                        return `${city} - ${side}<br/>供需指数：${params.data[2]}<br/>负荷：${params.data[3]} MW<br/>缺口：${params.data[4]} MW`;
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ['杭州', '宁波', '温州', '嘉兴', '湖州', '绍兴', '金华', '台州'],
+                    axisLine: { lineStyle: { color: '#a0a0a0' } },
+                    axisLabel: { color: '#a0a0a0' }
+                },
+                yAxis: {
+                    type: 'category',
+                    data: ['发电侧', '电网侧', '用户侧'],
+                    axisLine: { lineStyle: { color: '#a0a0a0' } },
+                    axisLabel: { color: '#a0a0a0' }
+                },
+                visualMap: {
+                    min: 0,
+                    max: 100,
+                    calculable: true,
+                    orient: 'horizontal',
+                    left: 'center',
+                    bottom: '0%',
+                    inRange: {
+                        color: ['#00d26a', '#ffc107', '#ff6b6b']
+                    },
+                    textStyle: { color: '#a0a0a0' }
+                },
+                series: [{
+                    name: '供需指数',
+                    type: 'heatmap',
+                    data: regionalData,
+                    label: {
+                        show: true,
+                        color: '#fff'
+                    }
+                }]
+            };
+            heatmapChart.setOption(heatmapOption);
+            
+            // 波动率分析
+            const volData = appData.volatility_data;
+            const volatilityOption = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { type: 'cross' }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data: volData.map(d => d.weekday),
+                    axisLine: { lineStyle: { color: '#a0a0a0' } },
+                    axisLabel: { color: '#a0a0a0' }
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '波动率 (%)',
+                    axisLine: { lineStyle: { color: '#a0a0a0' } },
+                    axisLabel: { color: '#a0a0a0' },
+                    splitLine: {
+                        lineStyle: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    }
+                },
+                series: [
+                    {
+                        name: '日内波动率',
+                        type: 'bar',
+                        data: volData.map(d => d.intraday_volatility),
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: '#e94560' },
+                                { offset: 1, color: 'rgba(233, 69, 96, 0.3)' }
+                            ])
+                        }
+                    },
+                    {
+                        name: '历史波动率',
+                        type: 'line',
+                        data: volData.map(d => d.historical_volatility),
+                        smooth: true,
+                        itemStyle: { color: '#00d26a' },
+                        lineStyle: { width: 3 }
+                    }
+                ]
+            };
+            volatilityChart.setOption(volatilityOption);
+            
+            // 响应式调整
+            window.addEventListener('resize', () => {
+                loadPriceChart.resize();
+                volumeChart.resize();
+                heatmapChart.resize();
+                volatilityChart.resize();
+            });
+        }
+        
+        // 初始化交易表
+        function initTradeTable() {
+            const tbody = document.getElementById('tradeTable');
+            const trades = appData.trade_records.slice(0, 20);
+            
+            tbody.innerHTML = trades.map(t => {
+                const time = new Date(t.timestamp).toLocaleString('zh-CN', {
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                return `
+                <tr>
+                    <td>${time}</td>
+                    <td>${t.contract}</td>
+                    <td style="color: ${t.direction === '买入' ? '#00d26a' : '#ff6b6b'}">${t.direction}</td>
+                    <td>${t.price.toFixed(2)}</td>
+                    <td>${t.volume}</td>
+                    <td>${t.amount.toFixed(2)}</td>
+                    <td><span class="status-badge ${t.status === '成交' ? 'normal' : 'warning'}">${t.status}</span></td>
+                </tr>
+            `}).join('');
+        }
+        
+        // 启动
+        loadData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .slide {
+    width: 1280px;
+    height: 720px;
+    position: relative;
+    overflow: hidden;
+    background: #FAF8F0;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', 'SimSun', serif;
+    color: #2D2D2D;
+  }
+
+  .brush-font { font-family: 'STXingkai', 'KaiTi', '楷体', cursive; }
+
+  /* Ink wash background elements */
+  .ink-wash-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to top, rgba(45,45,45,0.06) 0%, transparent 100%);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  }
+
+  .ink-mountain {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+  }
+
+  .ink-mountain svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .watercolor-wash {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: 0.3;
+  }
+
+  .lotus-icon {
+    position: absolute;
+    opacity: 0.4;
+  }
+
+  /* Cover slide */
+  .cover .main-title {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'KaiTi', 'STXingkai', '楷体', cursive;
+    font-size: 72px;
+    color: #2D2D2D;
+    text-align: center;
+    letter-spacing: 8px;
+    text-shadow: 2px 2px 4px rgba(45,45,45,0.1);
+  }
+
+  .cover .subtitle {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    color: #5D5D5D;
+    letter-spacing: 6px;
+    font-weight: 300;
+  }
+
+  .cover .bottom-text {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    color: #9D9D9D;
+    letter-spacing: 4px;
+  }
+
+  /* Content slides */
+  .content .slide-title {
+    position: absolute;
+    top: 8%;
+    left: 8%;
+    font-size: 18px;
+    color: #9D9D9D;
+    letter-spacing: 3px;
+    font-weight: 300;
+  }
+
+  .content .headline {
+    position: absolute;
+    top: 14%;
+    left: 8%;
+    font-family: 'KaiTi', 'STXingkai', '楷体', cursive;
+    font-size: 42px;
+    color: #2D2D2D;
+    letter-spacing: 4px;
+  }
+
+  .content .body-text {
+    position: absolute;
+    left: 8%;
+    font-size: 22px;
+    color: #4D4D4D;
+    line-height: 2;
+    letter-spacing: 1px;
+  }
+
+  .content .quote {
+    font-family: 'KaiTi', 'STXingkai', '楷体', cursive;
+    font-size: 36px;
+    color: #2D2D2D;
+    letter-spacing: 3px;
+    padding: 20px 30px;
+    border-left: 3px solid #D4A84B;
+    background: linear-gradient(to right, rgba(212,168,75,0.08), transparent);
+    margin: 15px 0;
+  }
+
+  .content .section-label {
+    font-size: 16px;
+    color: #F4A261;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  /* Brush stroke decorative elements */
+  .brush-stroke {
+    position: absolute;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #2D2D2D, transparent);
+    opacity: 0.15;
+  }
+
+  .zen-circle {
+    position: absolute;
+    border: 2px solid rgba(45,45,45,0.1);
+    border-radius: 50%;
+  }
+
+  /* Cards */
+  .card {
+    position: absolute;
+    border-radius: 8px;
+    padding: 20px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(2px);
+  }
+
+  .card-title {
+    font-family: 'KaiTi', 'STXingkai', '楷体', cursive;
+    font-size: 24px;
+    color: #2D2D2D;
+    margin-bottom: 8px;
+  }
+
+  .card-body {
+    font-size: 18px;
+    color: #5D5D5D;
+    line-height: 1.6;
+  }
+
+  /* Highlight slide */
+  .highlight .verse {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'KaiTi', 'STXingkai', '楷体', cursive;
+    font-size: 52px;
+    color: #2D2D2D;
+    text-align: center;
+    line-height: 1.8;
+    letter-spacing: 6px;
+  }
+
+  /* Back cover */
+  .back-cover .main-text {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'KaiTi', 'STXingkai', '楷体', cursive;
+    font-size: 80px;
+    color: #2D2D2D;
+    letter-spacing: 12px;
+  }
+
+  .back-cover .sub-text {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+    color: #7D7D7D;
+    letter-spacing: 4px;
+  }
+
+  .back-cover .bottom-text {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #BDBDBD;
+    letter-spacing: 3px;
+  }
+
+  .horizontal-stroke {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(45,45,45,0.2), transparent);
+  }
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Cover -->
+<div class="slide cover" id="slide-1">
+  <div class="ink-wash-bg"></div>
+  <div class="ink-mountain">
+    <svg viewBox="0 0 1280 120" preserveAspectRatio="none">
+      <path d="M0,120 Q100,60 200,90 Q350,30 500,70 Q600,20 700,50 Q850,10 1000,40 Q1100,25 1200,60 Q1250,80 1280,90 L1280,120 Z" fill="rgba(45,45,45,0.04)"/>
+      <path d="M0,120 Q150,80 300,100 Q450,50 600,85 Q750,35 900,65 Q1050,30 1200,75 L1280,100 L1280,120 Z" fill="rgba(45,45,45,0.03)"/>
+    </svg>
+  </div>
+  <div class="watercolor-wash" style="width:300px;height:300px;background:#87A96B;bottom:5%;right:5%;"></div>
+  <div class="main-title">金刚般若波罗蜜经</div>
+  <div class="subtitle">三十二品整体脉络</div>
+  <div class="bottom-text">水墨禅风讲义</div>
+  <!-- Lotus decoration -->
+  <svg class="lotus-icon" style="bottom:15%;right:10%;width:80px;height:80px;" viewBox="0 0 80 80">
+    <ellipse cx="40" cy="50" rx="12" ry="25" fill="rgba(232,160,160,0.3)" transform="rotate(-20 40 50)"/>
+    <ellipse cx="40" cy="50" rx="12" ry="25" fill="rgba(232,160,160,0.25)" transform="rotate(20 40 50)"/>
+    <ellipse cx="40" cy="50" rx="10" ry="22" fill="rgba(232,160,160,0.35)" transform="rotate(0 40 50)"/>
+    <ellipse cx="40" cy="50" rx="10" ry="20" fill="rgba(232,160,160,0.2)" transform="rotate(-40 40 50)"/>
+    <ellipse cx="40" cy="50" rx="10" ry="20" fill="rgba(232,160,160,0.2)" transform="rotate(40 40 50)"/>
+  </svg>
+</div>
+
+<!-- Slide 2: 缘起 -->
+<div class="slide content" id="slide-2">
+  <div class="watercolor-wash" style="width:200px;height:200px;background:#87A96B;top:10%;left:50%;"></div>
+  <div class="slide-title">第一品 · 法会因由分</div>
+  <div class="headline">讲经缘起：日常生活中的般若</div>
+  <div class="brush-stroke" style="top:30%;left:8%;width:60%;"></div>
+  <div class="body-text" style="top:35%;">
+    <div class="quote">佛陀日常乞食、洗足、敷座而坐</div>
+    <p style="margin-top:25px;">行住坐卧皆是般若道场</p>
+    <p>以平常心示现，于日常中见佛法</p>
+  </div>
+  <!-- Alms bowl illustration -->
+  <svg style="position:absolute;bottom:15%;right:10%;width:180px;height:180px;opacity:0.25;" viewBox="0 0 180 180">
+    <ellipse cx="90" cy="100" rx="60" ry="40" fill="none" stroke="#2D2D2D" stroke-width="2"/>
+    <ellipse cx="90" cy="95" rx="55" ry="35" fill="rgba(212,168,75,0.1)"/>
+    <path d="M35,95 Q90,50 145,95" fill="none" stroke="#2D2D2D" stroke-width="1.5"/>
+    <!-- Zen circle behind -->
+    <circle cx="90" cy="90" r="70" fill="none" stroke="#2D2D2D" stroke-width="1" opacity="0.15"/>
+  </svg>
+</div>
+
+<!-- Slide 3: 发问 -->
+<div class="slide content" id="slide-3">
+  <div class="watercolor-wash" style="width:400px;height:300px;background:#D4A84B;top:15%;left:30%;opacity:0.15;"></div>
+  <div class="slide-title">第二品 · 善现启请分</div>
+  <div class="headline">须菩提发问</div>
+  <div style="position:absolute;top:30%;left:8%;right:8%;">
+    <div class="quote" style="border-left-color:#D4A84B;font-size:38px;padding:30px 40px;">
+      善男子善女人，发菩提心者<br/>
+      应云何住？云何降伏其心？
+    </div>
+  </div>
+  <div class="body-text" style="top:70%;left:8%;font-size:20px;color:#7D7D7D;">
+    全经问答，由此一问展开
+  </div>
+  <!-- Question marks as brush strokes -->
+  <svg style="position:absolute;bottom:10%;right:8%;width:120px;height:120px;opacity:0.15;" viewBox="0 0 120 120">
+    <text x="20" y="80" font-family="'KaiTi', 'STXingkai', '楷体', cursive" font-size="100" fill="#2D2D2D">？？</text>
+  </svg>
+</div>
+
+<!-- Slide 4: 总纲 -->
+<div class="slide content" id="slide-4">
+  <div class="watercolor-wash" style="width:500px;height:400px;background:#2D2D2D;top:10%;left:20%;opacity:0.03;"></div>
+  <div class="slide-title">第三品 · 大乘正宗分</div>
+  <div style="position:absolute;top:18%;left:50%;transform:translateX(-50%);">
+    <div style="font-family:'Ma Shan Zheng',cursive;font-size:56px;color:#2D2D2D;letter-spacing:6px;text-align:center;">
+      应无所住而生其心
+    </div>
+  </div>
+  <div class="brush-stroke" style="top:45%;left:20%;width:60%;height:4px;background:linear-gradient(to right,transparent,#D4A84B,transparent);opacity:0.3;"></div>
+  <div class="body-text" style="top:52%;left:15%;right:15%;font-size:24px;text-align:center;">
+    <p>度一切众生，而实无众生可度</p>
+    <p style="margin-top:15px;">破除我相、人相、众生相、寿者相</p>
+  </div>
+  <!-- Sweeping brush stroke -->
+  <svg style="position:absolute;top:20%;left:5%;width:1270px;height:200px;opacity:0.04;" viewBox="0 0 1270 200">
+    <path d="M0,100 Q200,20 400,80 Q600,140 800,60 Q1000,20 1270,100" fill="none" stroke="#2D2D2D" stroke-width="30"/>
+  </svg>
+</div>
+
+<!-- Slide 5: 破相 -->
+<div class="slide content" id="slide-5">
+  <div class="slide-title">第五品 · 如理实见分 / 第六品 · 正信希有分</div>
+  <div class="headline">破相：凡所有相，皆是虚妄</div>
+  <div style="position:absolute;top:30%;left:5%;width:55%;">
+    <div class="quote" style="font-size:32px;">
+      凡所有相，皆是虚妄。<br/>若见诸相非相，即见如来。
+    </div>
+    <div class="body-text" style="position:relative;top:30px;">
+      <p>一切外在形相，都非真实本体</p>
+      <p>不执着四相：我相、人相、众生相、寿者相</p>
+      <p>般若空义难信稀有，受持此经消无量业障</p>
+    </div>
+  </div>
+  <!-- Dissolving ink illustration -->
+  <svg style="position:absolute;top:25%;right:5%;width:45%;height:60%;opacity:0.3;" viewBox="0 0 500 400">
+    <!-- Solid circle that fades -->
+    <circle cx="200" cy="200" r="80" fill="rgba(45,45,45,0.15)"/>
+    <circle cx="200" cy="200" r="100" fill="rgba(45,45,45,0.08)"/>
+    <circle cx="200" cy="200" r="120" fill="rgba(45,45,45,0.04)"/>
+    <!-- Dissolving particles -->
+    <circle cx="300" cy="150" r="5" fill="rgba(45,45,45,0.1)"/>
+    <circle cx="330" cy="180" r="3" fill="rgba(45,45,45,0.08)"/>
+    <circle cx="350" cy="210" r="4" fill="rgba(45,45,45,0.06)"/>
+    <circle cx="370" cy="250" r="2" fill="rgba(45,45,45,0.04)"/>
+    <circle cx="390" cy="280" r="3" fill="rgba(45,45,45,0.03)"/>
+    <circle cx="410" cy="300" r="2" fill="rgba(45,45,45,0.02)"/>
+  </svg>
+</div>
+
+<!-- Slide 6: 无得无说 -->
+<div class="slide content" id="slide-6">
+  <div class="slide-title">第七品 · 无得无说分 / 第八品 · 依法出生分</div>
+  <div class="headline">无得无说 · 依法出生</div>
+  <div class="brush-stroke" style="top:28%;left:8%;width:84%;height:1px;"></div>
+  <!-- Left section -->
+  <div class="card" style="top:35%;left:5%;width:42%;height:55%;background:linear-gradient(135deg,rgba(244,162,97,0.08),rgba(255,255,255,0.7));">
+    <div class="card-title" style="color:#F4A261;">无得无说</div>
+    <div class="card-body">没有固定不变的"无上菩提法"<br/>如来也无固定法可说<br/>一切圣贤依无为法修行，深浅有别</div>
+  </div>
+  <!-- Right section -->
+  <div class="card" style="top:35%;right:5%;width:42%;height:55%;background:linear-gradient(135deg,rgba(212,168,75,0.08),rgba(255,255,255,0.7));">
+    <div class="card-title" style="color:#D4A84B;">依法出生</div>
+    <div class="card-body">一切诸佛、一切菩提法<br/>皆从般若生出<br/>持诵四句偈，福德远超七宝布施</div>
+  </div>
+  <!-- Zen circle between -->
+  <svg style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;opacity:0.15;" viewBox="0 0 60 60">
+    <circle cx="30" cy="30" r="25" fill="none" stroke="#2D2D2D" stroke-width="2"/>
+  </svg>
+</div>
+
+<!-- Slide 7: 果位无相 -->
+<div class="slide content" id="slide-7">
+  <div class="slide-title">第九品 · 一相无相分 / 第十品 · 庄严净土分</div>
+  <div class="headline">果位无相 · 庄严净土</div>
+  <!-- 2x2 Cards -->
+  <div class="card" style="top:28%;left:5%;width:42%;height:30%;background:linear-gradient(135deg,rgba(244,162,97,0.12),rgba(255,255,255,0.7));">
+    <div class="card-title" style="font-size:22px;">四果假名</div>
+    <div class="card-body" style="font-size:17px;">须陀洹至阿罗汉，皆无实有可得</div>
+  </div>
+  <div class="card" style="top:28%;right:5%;width:42%;height:30%;background:linear-gradient(135deg,rgba(135,169,107,0.12),rgba(255,255,255,0.7));">
+    <div class="card-title" style="font-size:22px;color:#87A96B;">果位只是假名</div>
+    <div class="card-body" style="font-size:17px;">不可执着修行果位之相</div>
+  </div>
+  <div class="card" style="top:63%;left:5%;width:42%;height:30%;background:linear-gradient(135deg,rgba(212,168,75,0.12),rgba(255,255,255,0.7));">
+    <div class="card-title" style="font-size:22px;color:#D4A84B;">庄严佛土</div>
+    <div class="card-body" style="font-size:17px;">心净则国土净，非外求可得</div>
+  </div>
+  <div class="card" style="top:63%;right:5%;width:42%;height:30%;background:linear-gradient(135deg,rgba(126,200,227,0.12),rgba(255,255,255,0.7));">
+    <div class="card-title" style="font-size:22px;color:#7EC8E3;">即非庄严</div>
+    <div class="card-body" style="font-size:17px;">庄严佛土者，即非庄严，是名庄严</div>
+  </div>
+</div>
+
+<!-- Slide 8: 福德对比 -->
+<div class="slide content" id="slide-8">
+  <div class="slide-title">第十一品 · 无为福胜分 / 第十二品 · 尊重正教分</div>
+  <div class="headline">无为福胜 · 尊重正教</div>
+  <div class="brush-stroke" style="top:28%;left:8%;width:84%;height:1px;"></div>
+  <!-- Left: Worldly merit -->
+  <div style="position:absolute;top:33%;left:5%;width:40%;text-align:center;">
+    <div style="font-family:'Ma Shan Zheng',cursive;font-size:32px;color:#F4A261;margin-bottom:15px;">有为福报</div>
+    <div style="font-size:20px;color:#5D5D5D;line-height:1.8;">
+      七宝布施<br/>短暂有漏，终有尽时
+    </div>
+    <!-- Fading arrow down -->
+    <svg style="margin-top:15px;opacity:0.3;" width="40" height="60" viewBox="0 0 40 60">
+      <line x1="20" y1="0" x2="20" y2="45" stroke="#F4A261" stroke-width="2" stroke-dasharray="4,4"/>
+      <polygon points="10,40 20,55 30,40" fill="#F4A261" opacity="0.4"/>
+    </svg>
+  </div>
+  <!-- Right: Dharma merit -->
+  <div style="position:absolute;top:33%;right:5%;width:40%;text-align:center;">
+    <div style="font-family:'Ma Shan Zheng',cursive;font-size:32px;color:#87A96B;margin-bottom:15px;">无为福报</div>
+    <div style="font-size:20px;color:#5D5D5D;line-height:1.8;">
+      受持般若、悟无住无相<br/>无漏大福，无量倍胜
+    </div>
+    <!-- Rising arrow up -->
+    <svg style="margin-top:15px;opacity:0.3;" width="40" height="60" viewBox="0 0 40 60">
+      <line x1="20" y1="60" x2="20" y2="15" stroke="#87A96B" stroke-width="2" stroke-dasharray="4,4"/>
+      <polygon points="10,20 20,5 30,20" fill="#87A96B" opacity="0.4"/>
+    </svg>
+  </div>
+  <!-- Bottom note -->
+  <div style="position:absolute;bottom:10%;left:10%;right:10%;text-align:center;font-size:18px;color:#9D9D9D;letter-spacing:2px;">
+    无论在家出家，受持此经，一切天人皆应供养
+  </div>
+</div>
+
+<!-- Slide 9: 离相寂灭 -->
+<div class="slide content" id="slide-9">
+  <div class="slide-title">第十四品 · 离相寂灭分 / 第十五品 · 持经功德分</div>
+  <div class="headline">离相寂灭 · 持经功德</div>
+  <div style="position:absolute;top:28%;left:5%;width:55%;">
+    <div class="body-text" style="position:relative;">
+      <div class="quote" style="font-size:28px;">离一切诸相，即名诸佛</div>
+      <p style="margin-top:20px;">发菩提心须远离四相：我、人、众生、寿者</p>
+      <p>诸法无实亦无虚</p>
+      <p>恒河沙数身命布施，不及受持四句偈之功德</p>
+    </div>
+  </div>
+  <!-- Calm water reflection -->
+  <svg style="position:absolute;top:25%;right:3%;width:42%;height:65%;opacity:0.2;" viewBox="0 0 500 450">
+    <!-- Mountains -->
+    <path d="M50,200 Q150,80 250,150 Q350,50 450,120 L450,300 Q350,250 250,280 Q150,250 50,300 Z" fill="rgba(45,45,45,0.08)"/>
+    <!-- Water surface -->
+    <rect x="0" y="300" width="500" height="150" fill="rgba(126,200,227,0.05)"/>
+    <!-- Reflection lines -->
+    <line x1="50" y1="320" x2="200" y2="320" stroke="rgba(45,45,45,0.05)" stroke-width="1"/>
+    <line x1="100" y1="340" x2="250" y2="340" stroke="rgba(45,45,45,0.04)" stroke-width="1"/>
+    <line x1="80" y1="360" x2="220" y2="360" stroke="rgba(45,45,45,0.03)" stroke-width="1"/>
+    <line x1="120" y1="380" x2="280" y2="380" stroke="rgba(45,45,45,0.02)" stroke-width="1"/>
+    <line x1="60" y1="400" x2="240" y2="400" stroke="rgba(45,45,45,0.02)" stroke-width="1"/>
+    <!-- Wave at bottom -->
+    <path d="M0,430 Q125,420 250,435 Q375,450 500,430" fill="none" stroke="rgba(45,45,45,0.06)" stroke-width="1.5"/>
+  </svg>
+</div>
+
+<!-- Slide 10: 究竟无我 -->
+<div class="slide content" id="slide-10">
+  <div class="slide-title">第十七品 · 究竟无我分 / 第十八品 · 一体同观分</div>
+  <div class="headline">究竟无我 · 一体同观</div>
+  <div class="brush-stroke" style="top:28%;left:8%;width:84%;height:1px;"></div>
+  <!-- Left: No-self -->
+  <div style="position:absolute;top:33%;left:5%;width:35%;">
+    <div style="font-family:'Ma Shan Zheng',cursive;font-size:28px;color:#2D2D2D;margin-bottom:12px;">通达无我法</div>
+    <div style="font-size:19px;color:#5D5D5D;line-height:1.8;">
+      菩萨度生、成佛<br/>皆不可执"我能度<br/>众生可度"
+    </div>
+    <!-- Zen circle -->
+    <svg style="margin-top:10px;opacity:0.12;" width="80" height="80" viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="35" fill="none" stroke="#2D2D2D" stroke-width="2.5"/>
+    </svg>
+  </div>
+  <!-- Center: Five eyes -->
+  <div style="position:absolute;top:33%;left:42%;width:25%;text-align:center;">
+    <div style="font-family:'Ma Shan Zheng',cursive;font-size:28px;color:#87A96B;margin-bottom:15px;">如来五眼</div>
+    <div style="display:flex;flex-direction:column;gap:8px;align-items:center;">
+      <div style="width:50px;height:50px;border-radius:50%;background:rgba(135,169,107,0.15);display:flex;align-items:center;justify-content:center;font-size:16px;color:#87A96B;">肉眼</div>
+      <div style="width:60px;height:60px;border-radius:50%;background:rgba(126,200,227,0.15);display:flex;align-items:center;justify-content:center;font-size:16px;color:#7EC8E3;">天眼</div>
+      <div style="width:70px;height:70px;border-radius:50%;background:rgba(212,168,75,0.15);display:flex;align-items:center;justify-content:center;font-size:16px;color:#D4A84B;">慧眼</div>
+      <div style="width:80px;height:80px;border-radius:50%;background:rgba(197,180,227,0.15);display:flex;align-items:center;justify-content:center;font-size:16px;color:#C5B4E3;">法眼</div>
+      <div style="width:90px;height:90px;border-radius:50%;background:rgba(244,162,97,0.15);display:flex;align-items:center;justify-content:center;font-size:16px;color:#F4A261;">佛眼</div>
+    </div>
+  </div>
+  <!-- Right: Three minds -->
+  <div style="position:absolute;top:33%;right:5%;width:30%;">
+    <div style="font-family:'Ma Shan Zheng',cursive;font-size:28px;color:#D4A84B;margin-bottom:12px;">三心皆空</div>
+    <div style="font-size:19px;color:#5D5D5D;line-height:2;">
+      过去心不可得<br/>现在心不可得<br/>未来心不可得
+    </div>
+    <!-- Dissolving hearts -->
+    <svg style="margin-top:10px;opacity:0.15;" width="80" height="40" viewBox="0 0 80 40">
+      <circle cx="15" cy="20" r="12" fill="rgba(232,160,160,0.5)"/>
+      <circle cx="40" cy="20" r="8" fill="rgba(232,160,160,0.3)"/>
+      <circle cx="65" cy="20" r="4" fill="rgba(232,160,160,0.15)"/>
+    </svg>
+  </div>
+</div>
+
+<!-- Slide 11: 核心偈颂 -->
+<div class="slide highlight" id="slide-11">
+  <!-- Full background landscape -->
+  <svg style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.06;" viewBox="0 0 1280 720">
+    <path d="M0,500 Q100,350 300,420 Q500,250 700,380 Q900,200 1100,350 Q1200,300 1280,380 L1280,720 L0,720 Z" fill="#2D2D2D"/>
+    <path d="M0,550 Q200,450 400,500 Q600,380 800,480 Q1000,350 1280,450 L1280,720 L0,720 Z" fill="#2D2D2D" opacity="0.5"/>
+  </svg>
+  <div class="watercolor-wash" style="width:600px;height:500px;background:#87A96B;top:10%;left:20%;opacity:0.08;"></div>
+  <div class="watercolor-wash" style="width:400px;height:400px;background:#D4A84B;top:20%;right:10%;opacity:0.06;"></div>
+  <div style="position:absolute;top:8%;left:50%;transform:translateX(-50%);font-size:18px;color:#BDBDBD;letter-spacing:4px;">第三十二品 · 应化非真分</div>
+  <div class="verse">
+    一切有为法<br/>
+    如梦幻泡影<br/>
+    如露亦如电<br/>
+    应作如是观
+  </div>
+  <!-- Bubbles and dewdrops -->
+  <svg style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.2;" viewBox="0 0 1280 720">
+    <circle cx="100" cy="100" r="15" fill="none" stroke="#7EC8E3" stroke-width="1"/>
+    <circle cx="200" cy="150" r="8" fill="none" stroke="#D4A84B" stroke-width="1"/>
+    <circle cx="1100" cy="200" r="12" fill="none" stroke="#87A96B" stroke-width="1"/>
+    <circle cx="1050" cy="600" r="10" fill="none" stroke="#E8A0A0" stroke-width="1"/>
+    <circle cx="150" cy="650" r="6" fill="none" stroke="#D4A84B" stroke-width="1"/>
+    <circle cx="1150" cy="100" r="18" fill="none" stroke="#7EC8E3" stroke-width="1"/>
+    <circle cx="80" cy="500" r="5" fill="rgba(212,168,75,0.3)"/>
+    <circle cx="1200" cy="400" r="7" fill="rgba(135,169,107,0.3)"/>
+  </svg>
+  <div style="position:absolute;bottom:8%;left:50%;transform:translateX(-50%);font-size:16px;color:#9D9D9D;letter-spacing:3px;">说法不取诸相，如如不动</div>
+</div>
+
+<!-- Slide 12: Back Cover -->
+<div class="slide back-cover" id="slide-12">
+  <div class="ink-wash-bg" style="height:100px;"></div>
+  <div class="main-text">信受奉行</div>
+  <div class="horizontal-stroke" style="top:50%;width:200px;"></div>
+  <div class="sub-text">大众闻法开悟，信受奉行</div>
+  <div class="bottom-text">金刚般若波罗蜜经 · 三十二品脉络讲义</div>
+  <!-- Lotus petal bottom left -->
+  <svg style="position:absolute;bottom:12%;left:8%;width:60px;height:60px;opacity:0.15;" viewBox="0 0 60 60">
+    <ellipse cx="30" cy="35" rx="8" ry="20" fill="rgba(232,160,160,0.5)" transform="rotate(-10 30 35)"/>
+  </svg>
+  <!-- Ink wash mountain at bottom -->
+  <svg style="position:absolute;bottom:0;left:0;width:100%;height:80px;opacity:0.03;" viewBox="0 0 1280 80">
+    <path d="M0,80 Q200,30 400,50 Q600,20 800,45 Q1000,15 1280,40 L1280,80 Z" fill="#2D2D2D"/>
+  </svg>
+</div>
+
+</body>
+</html>

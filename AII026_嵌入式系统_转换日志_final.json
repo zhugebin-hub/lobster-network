@@ -1,0 +1,42 @@
+{
+  "mode": "redraw_single_file_no_template",
+  "source_file": "AII026-嵌入式系统_v4.xlsx",
+  "output": "AII026_嵌入式系统_英方课表_final.xls",
+  "courses": [
+    {
+      "file": "AII026-嵌入式系统_v4.xlsx",
+      "course_code": "AII026",
+      "course_name": "嵌入式系统",
+      "event_count": 45,
+      "sheet": "H7061Z 嵌入式系统",
+      "token_estimate": {
+        "note": "估算值，不是精确 API 计费；脚本本身不调用大模型。用于判断上传一门中方课表给 Agent 转换时的大致 token 消耗。",
+        "method": "mixed_zh_en_chars_estimate_plus_skill_overhead",
+        "source_file_size_bytes": 6085,
+        "source_text_chars": 4296,
+        "generated_cell_text_chars": 2426,
+        "event_count": 45,
+        "warning_count": 0,
+        "estimated_input_tokens": 2769,
+        "estimated_output_tokens": 834,
+        "estimated_total_tokens": 3603,
+        "human_readable": "约 3,603 tokens / 门课"
+      },
+      "status": "redrawn_converted"
+    }
+  ],
+  "warnings": [],
+  "token_estimate": {
+    "note": "估算值，不是精确 API 计费；脚本本身不调用大模型。用于判断上传一门中方课表给 Agent 转换时的大致 token 消耗。",
+    "method": "mixed_zh_en_chars_estimate_plus_skill_overhead",
+    "source_file_size_bytes": 6085,
+    "source_text_chars": 4296,
+    "generated_cell_text_chars": 2426,
+    "event_count": 45,
+    "warning_count": 0,
+    "estimated_input_tokens": 2769,
+    "estimated_output_tokens": 834,
+    "estimated_total_tokens": 3603,
+    "human_readable": "约 3,603 tokens / 门课"
+  }
+}

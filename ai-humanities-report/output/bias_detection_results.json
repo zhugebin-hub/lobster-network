@@ -1,0 +1,50 @@
+{
+  "医生": {
+    "male_sim": 0.9945,
+    "female_sim": 0.6848,
+    "bias_score": 0.3097,
+    "direction": "偏男性"
+  },
+  "护士": {
+    "male_sim": 0.6811,
+    "female_sim": 0.9953,
+    "bias_score": -0.3142,
+    "direction": "偏女性"
+  },
+  "工程师": {
+    "male_sim": 0.9994,
+    "female_sim": 0.6366,
+    "bias_score": 0.3628,
+    "direction": "偏男性"
+  },
+  "教师": {
+    "male_sim": 0.7448,
+    "female_sim": 0.9827,
+    "bias_score": -0.2378,
+    "direction": "偏女性"
+  },
+  "科学家": {
+    "male_sim": 0.9983,
+    "female_sim": 0.6557,
+    "bias_score": 0.3426,
+    "direction": "偏男性"
+  },
+  "秘书": {
+    "male_sim": 0.6351,
+    "female_sim": 0.9994,
+    "bias_score": -0.3642,
+    "direction": "偏女性"
+  },
+  "律师": {
+    "male_sim": 0.9896,
+    "female_sim": 0.7119,
+    "bias_score": 0.2777,
+    "direction": "偏男性"
+  },
+  "社工": {
+    "male_sim": 0.7144,
+    "female_sim": 0.9901,
+    "bias_score": -0.2757,
+    "direction": "偏女性"
+  }
+}

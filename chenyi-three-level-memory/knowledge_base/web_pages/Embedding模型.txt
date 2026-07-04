@@ -1,0 +1,43 @@
+【知识文档】
+类别：自然语言处理 | 可信度：高 | 日期：2026-03-15
+
+Embedding（嵌入）是将文本转换为高维向量的技术，使语义相似的文本在向量空间中距离更近。
+
+主流Embedding模型：
+
+1. OpenAI text-embedding-3
+   - 维度：1536/3072
+   - 性能：业界领先
+   - 支持多语言
+   - 价格：$0.02/百万tokens
+
+2. BGE（BAAI General Embedding）
+   - 开发者：智源研究院
+   - 中文表现优秀
+   - 开源可本地部署
+   - 版本：bge-large、bge-base、bge-small
+
+3. Cohere Embed
+   - 维度：1024
+   - 多语言支持
+   - 商业API
+   - 免费额度
+
+4. Sentence Transformers
+   - 开源框架
+   - 预训练模型丰富
+   - 支持自定义训练
+   - 社区活跃
+
+Embedding的应用：
+- 语义搜索
+- 文档相似度计算
+- 推荐系统
+- 聚类分析
+- RAG知识库
+
+选择建议：
+- 中文场景：BGE系列
+- 多语言：OpenAI、Cohere
+- 本地部署：Sentence Transformers、BGE
+- 快速原型：OpenAI API

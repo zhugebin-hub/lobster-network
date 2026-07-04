@@ -1,0 +1,73 @@
+# skill.yaml - OpenClaw Skill Manifest
+# 技能元数据文件
+
+name: dingtalk-case-export
+version: 1.1.0
+description: 钉钉聊天记录导出为教学案例技能。支持按主题模块整理对话、自动生成案例文档、打包附件，使用相对路径确保跨平台兼容。
+author: 诸葛斌
+license: MIT
+
+# 技能分类
+category: education
+tags:
+  - 钉钉
+  - 教学案例
+  - 文档生成
+  - 教育工具
+  - openclaw-skill
+
+# 依赖项
+dependencies:
+  - name: pandoc
+    version: ">=2.0"
+    required: true
+    description: 文档格式转换工具
+  - name: python3
+    version: ">=3.8"
+    required: true
+    description: Python 运行环境
+  - name: zip
+    version: ">=3.0"
+    required: true
+    description: ZIP 打包工具
+
+# Python 依赖（requirements.txt）
+python_requirements:
+  - python-pptx>=0.6.21
+  - markdown>=3.4.0
+
+# 入口点（如果有主脚本）
+# entry: scripts/main.py
+
+# 技能配置项
+config:
+  # 案例库根目录
+  case_library_path: ~/.openclaw/workspace/teaching_cases
+  # 默认案例编号前缀
+  case_number_prefix: DH-LLM
+  # 是否自动打包
+  auto_zip: true
+
+# 权限声明
+permissions:
+  - read:workspace     # 读取工作区文件
+  - write:workspace    # 写入工作区文件
+  - exec:shell         # 执行 shell 命令（pandoc, zip 等）
+  - message:send       # 发送消息给用户
+
+# 触发关键词
+triggers:
+  - 整理钉钉聊天记录
+  - 导出教学案例
+  - 生成案例文档
+  - 整理案例
+  - 案例导出
+
+# 变更日志
+changelog:
+  v1.1.0: 优化文件路径为相对路径，确保打包后链接有效，支持跨平台使用
+  v1.0.0: 初始版本，支持单次对话整理、基础模板和脚本
+
+# 相关链接
+repository: https://github.com/openclaw/workspace
+documentation: ~/.openclaw/workspace/skills/dingtalk-case-export/SKILL.md

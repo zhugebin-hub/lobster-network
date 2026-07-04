@@ -1,0 +1,19 @@
+[Unit]
+Description=新生选寝系统 - 业务小龙虾
+After=network.target
+
+[Service]
+Type=simple
+User=admin
+WorkingDirectory=/home/admin/.openclaw/workspace/dormitory_system
+Environment=HOST=0.0.0.0
+Environment=PORT=8765
+Environment=DORM_API_TOKEN=
+ExecStart=/usr/bin/python3 server.py
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:/home/admin/.openclaw/workspace/dormitory_system/logs/server.log
+StandardError=append:/home/admin/.openclaw/workspace/dormitory_system/logs/server.error.log
+
+[Install]
+WantedBy=multi-user.target

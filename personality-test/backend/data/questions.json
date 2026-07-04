@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "content": "在社交聚会中，你通常会主动认识新朋友",
+    "dimension": "EI",
+    "direction": 1
+  },
+  {
+    "id": 2,
+    "content": "独处时你感到精力充沛",
+    "dimension": "EI",
+    "direction": -1
+  },
+  {
+    "id": 3,
+    "content": "你更喜欢小组讨论而不是一对一交流",
+    "dimension": "EI",
+    "direction": 1
+  },
+  {
+    "id": 4,
+    "content": "在人群中你经常保持沉默观察",
+    "dimension": "EI",
+    "direction": -1
+  },
+  {
+    "id": 5,
+    "content": "你享受成为关注的焦点",
+    "dimension": "EI",
+    "direction": 1
+  },
+  {
+    "id": 6,
+    "content": "你更喜欢深度的一对一对话",
+    "dimension": "EI",
+    "direction": -1
+  },
+  {
+    "id": 7,
+    "content": "参加大型活动后你需要独处恢复精力",
+    "dimension": "EI",
+    "direction": -1
+  },
+  {
+    "id": 8,
+    "content": "你乐于在会议上第一个发言",
+    "dimension": "EI",
+    "direction": 1
+  },
+  {
+    "id": 9,
+    "content": "你有很多泛泛之交的朋友",
+    "dimension": "EI",
+    "direction": 1
+  },
+  {
+    "id": 10,
+    "content": "你更喜欢安静的工作环境",
+    "dimension": "EI",
+    "direction": -1
+  },
+  {
+    "id": 11,
+    "content": "你更关注未来的可能性而非现实细节",
+    "dimension": "NS",
+    "direction": 1
+  },
+  {
+    "id": 12,
+    "content": "你相信具体的经验和事实",
+    "dimension": "NS",
+    "direction": -1
+  },
+  {
+    "id": 13,
+    "content": "你喜欢抽象的概念和理论",
+    "dimension": "NS",
+    "direction": 1
+  },
+  {
+    "id": 14,
+    "content": "你注重实际和实用的解决方案",
+    "dimension": "NS",
+    "direction": -1
+  },
+  {
+    "id": 15,
+    "content": "你经常思考事物的深层含义",
+    "dimension": "NS",
+    "direction": 1
+  },
+  {
+    "id": 16,
+    "content": "你更相信已经验证过的方法",
+    "dimension": "NS",
+    "direction": -1
+  },
+  {
+    "id": 17,
+    "content": "你喜欢想象和创新",
+    "dimension": "NS",
+    "direction": 1
+  },
+  {
+    "id": 18,
+    "content": "你关注当下的具体体验",
+    "dimension": "NS",
+    "direction": -1
+  },
+  {
+    "id": 19,
+    "content": "你擅长看到事物之间的关联",
+    "dimension": "NS",
+    "direction": 1
+  },
+  {
+    "id": 20,
+    "content": "你更喜欢按部就班地做事",
+    "dimension": "NS",
+    "direction": -1
+  },
+  {
+    "id": 21,
+    "content": "做决定时你更依赖逻辑分析",
+    "dimension": "TF",
+    "direction": 1
+  },
+  {
+    "id": 22,
+    "content": "做决定时你会考虑他人的感受",
+    "dimension": "TF",
+    "direction": -1
+  },
+  {
+    "id": 23,
+    "content": "你认为诚实比和谐更重要",
+    "dimension": "TF",
+    "direction": 1
+  },
+  {
+    "id": 24,
+    "content": "你尽量避免冲突和矛盾",
+    "dimension": "TF",
+    "direction": -1
+  },
+  {
+    "id": 25,
+    "content": "你更看重公平而非人情",
+    "dimension": "TF",
+    "direction": 1
+  },
+  {
+    "id": 26,
+    "content": "你容易对他人的情绪产生共鸣",
+    "dimension": "TF",
+    "direction": -1
+  },
+  {
+    "id": 27,
+    "content": "你习惯客观分析问题",
+    "dimension": "TF",
+    "direction": 1
+  },
+  {
+    "id": 28,
+    "content": "你重视人际关系的和谐",
+    "dimension": "TF",
+    "direction": -1
+  },
+  {
+    "id": 29,
+    "content": "你认为规则应该被严格执行",
+    "dimension": "TF",
+    "direction": 1
+  },
+  {
+    "id": 30,
+    "content": "你愿意为他人破例",
+    "dimension": "TF",
+    "direction": -1
+  },
+  {
+    "id": 31,
+    "content": "你喜欢提前制定详细的计划",
+    "dimension": "JP",
+    "direction": 1
+  },
+  {
+    "id": 32,
+    "content": "你更喜欢随性而为",
+    "dimension": "JP",
+    "direction": -1
+  },
+  {
+    "id": 33,
+    "content": "截止日期前你习惯提前完成",
+    "dimension": "JP",
+    "direction": 1
+  },
+  {
+    "id": 34,
+    "content": "你在压力下工作效率更高",
+    "dimension": "JP",
+    "direction": -1
+  },
+  {
+    "id": 35,
+    "content": "你讨厌计划被打乱",
+    "dimension": "JP",
+    "direction": 1
+  },
+  {
+    "id": 36,
+    "content": "你享受即兴和意外",
+    "dimension": "JP",
+    "direction": -1
+  },
+  {
+    "id": 37,
+    "content": "你的工作和生活很有条理",
+    "dimension": "JP",
+    "direction": 1
+  },
+  {
+    "id": 38,
+    "content": "你经常同时处理多件事",
+    "dimension": "JP",
+    "direction": -1
+  },
+  {
+    "id": 39,
+    "content": "你喜欢把事情决定下来",
+    "dimension": "JP",
+    "direction": 1
+  },
+  {
+    "id": 40,
+    "content": "你愿意保持选择的开放性",
+    "dimension": "JP",
+    "direction": -1
+  }
+]

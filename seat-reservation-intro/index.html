@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学院公共区域学习座位预约系统 · 智座星河</title>
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    background: #06060f;
+    color: #e8e6f0;
+    overflow-x: hidden;
+    line-height: 1.8;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== STAR FIELD ===== */
+  #starfield {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: #fff;
+    animation: twinkle var(--dur, 3s) ease-in-out infinite alternate;
+  }
+  @keyframes twinkle {
+    0% { opacity: var(--min-o, 0.2); transform: scale(0.8); }
+    100% { opacity: var(--max-o, 1); transform: scale(1.2); }
+  }
+
+  /* ===== FLOATING ORB ===== */
+  .floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+    padding: 16px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(6,6,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(139,92,246,0.15);
+  }
+  .nav-logo {
+    font-size: 18px; font-weight: 700;
+    background: linear-gradient(135deg, #a78bfa, #60a5fa);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 14px; color: #a09cb0;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a:hover { color: #c4b5fd; }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: #a78bfa;
+    transition: width 0.3s;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+  }
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 20px;
+    border: 1px solid rgba(139,92,246,0.4);
+    border-radius: 20px;
+    font-size: 13px; color: #a78bfa;
+    margin-bottom: 32px;
+    letter-spacing: 2px;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+  .hero h1 .gradient {
+    background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #34d399 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px);
+    color: #8b86a0;
+    max-width: 600px;
+    margin-bottom: 48px;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 36px;
+    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    border: none; border-radius: 12px;
+    color: #fff; font-size: 16px; font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeUp 1s ease 0.8s both;
+  }
+  .hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(124,58,237,0.4);
+  }
+  .hero-cta .arrow { transition: transform 0.3s; }
+  .hero-cta:hover .arrow { transform: translateX(4px); }
+
+  /* ===== SECTION COMMON ===== */
+  .section {
+    position: relative; z-index: 1;
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-tag {
+    display: inline-block;
+    font-size: 12px; letter-spacing: 3px;
+    color: #a78bfa;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  .section-desc {
+    font-size: 16px; color: #8b86a0;
+    max-width: 640px;
+    margin-bottom: 60px;
+  }
+
+  /* ===== FEATURE CARDS SLIDER ===== */
+  .card-slider-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  .card-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 20px 0 40px;
+    cursor: grab;
+  }
+  .card-slider::-webkit-scrollbar { display: none; }
+  .card-slider.dragging { cursor: grabbing; }
+
+  .feature-card {
+    flex: 0 0 220px;
+    height: 180px;
+    scroll-snap-align: center;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(139,92,246,0.15);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.22,1,0.36,1),
+                border-color 0.3s,
+                box-shadow 0.3s,
+                flex-basis 0.6s cubic-bezier(0.22,1,0.36,1),
+                height 0.6s cubic-bezier(0.22,1,0.36,1),
+                background 0.3s;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at center, rgba(124,58,237,0.08) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .feature-card:hover {
+    border-color: rgba(139,92,246,0.35);
+    box-shadow: 0 8px 40px rgba(124,58,237,0.15);
+    transform: translateY(-4px);
+  }
+  .feature-card:hover::before { opacity: 1; }
+
+  .feature-icon {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    background: rgba(139,92,246,0.1);
+    transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+    position: relative;
+    z-index: 1;
+  }
+  .feature-card:hover .feature-icon { transform: scale(1.15); }
+
+  .feature-name {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .feature-desc {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.6s cubic-bezier(0.22,1,0.36,1),
+                opacity 0.4s ease,
+                margin 0.4s ease;
+    margin-top: 0;
+    font-size: 13px;
+    color: #a09cb0;
+    line-height: 1.7;
+    text-align: center;
+    padding: 0 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== ACTIVE / EXPANDED CARD ===== */
+  .feature-card.active {
+    flex: 0 0 min(520px, calc(100vw - 60px));
+    height: 260px;
+    border-color: rgba(139,92,246,0.5);
+    background: rgba(139,92,246,0.06);
+    box-shadow: 0 20px 80px rgba(124,58,237,0.25);
+    cursor: default;
+    transform: none;
+  }
+  .feature-card.active::before { opacity: 1; }
+  .feature-card.active .feature-icon {
+    width: 64px; height: 64px;
+    font-size: 32px;
+    background: rgba(139,92,246,0.15);
+  }
+  .feature-card.active .feature-name { font-size: 20px; }
+  .feature-card.active .feature-desc {
+    max-height: 120px;
+    opacity: 1;
+    margin-top: 12px;
+  }
+
+  /* ===== CARD CLOSE BTN ===== */
+  .card-close {
+    position: absolute;
+    top: 12px; right: 14px;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: #a09cb0;
+    font-size: 14px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+    z-index: 2;
+    line-height: 1;
+  }
+  .card-close:hover { background: rgba(255,255,255,0.2); color: #fff; }
+  .feature-card.active .card-close { display: flex; }
+
+  /* ===== SLIDER NAV ARROWS ===== */
+  .slider-nav {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .slider-btn {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(139,92,246,0.25);
+    background: rgba(255,255,255,0.03);
+    color: #a09cb0;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+  }
+  .slider-btn:hover {
+    background: rgba(139,92,246,0.15);
+    border-color: rgba(139,92,246,0.5);
+    color: #fff;
+  }
+
+  /* ===== DOT INDICATOR ===== */
+  .dot-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(139,92,246,0.2);
+    transition: background 0.3s, transform 0.3s;
+    cursor: pointer;
+  }
+  .dot.active {
+    background: #a78bfa;
+    transform: scale(1.3);
+  }
+
+  /* ===== HINT TEXT ===== */
+  .slider-hint {
+    text-align: center;
+    font-size: 13px;
+    color: #4a4560;
+    margin-top: 12px;
+  }
+
+  /* ===== ARCHITECTURE ===== */
+  .arch-flow {
+    display: flex; flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+    margin-top: 48px;
+  }
+  .arch-node {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(139,92,246,0.15);
+    border-radius: 12px;
+    padding: 20px 28px;
+    text-align: center;
+    min-width: 140px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .arch-node:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(124,58,237,0.2);
+  }
+  .arch-node .icon { font-size: 28px; margin-bottom: 8px; }
+  .arch-node .label { font-size: 13px; color: #a09cb0; }
+  .arch-node .name { font-size: 15px; font-weight: 700; margin-top: 4px; }
+  .arch-arrow {
+    font-size: 20px; color: #4a4560;
+  }
+
+  /* ===== TECH STACK ===== */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .tech-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(139,92,246,0.1);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .tech-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(139,92,246,0.3);
+  }
+  .tech-item .tech-icon { font-size: 32px; margin-bottom: 10px; }
+  .tech-item .tech-name { font-size: 14px; font-weight: 600; }
+  .tech-item .tech-desc { font-size: 12px; color: #6b6780; margin-top: 4px; }
+
+  /* ===== FLOW TIMELINE ===== */
+  .timeline {
+    position: relative;
+    margin-top: 60px;
+    padding-left: 40px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 16px; top: 0;
+    width: 2px; height: 100%;
+    background: linear-gradient(180deg, #7c3aed, #3b82f6, #34d399, transparent);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    padding: 24px 28px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(139,92,246,0.1);
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .timeline-item:hover {
+    transform: translateX(6px);
+    box-shadow: 0 8px 30px rgba(124,58,237,0.15);
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -32px; top: 30px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #7c3aed;
+    border: 3px solid #06060f;
+    box-shadow: 0 0 12px rgba(124,58,237,0.6);
+  }
+  .timeline-item h4 {
+    font-size: 16px; font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .timeline-item p {
+    font-size: 14px; color: #8b86a0;
+  }
+  .timeline-step {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 11px; font-weight: 700;
+    background: rgba(124,58,237,0.2);
+    color: #a78bfa;
+    margin-bottom: 8px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 60px 20px;
+    border-top: 1px solid rgba(139,92,246,0.1);
+    font-size: 13px; color: #4a4560;
+  }
+
+  /* ===== SCROLL ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .slide-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .slide-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .slide-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .slide-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .stagger-1 { transition-delay: 0.05s; }
+  .stagger-2 { transition-delay: 0.12s; }
+  .stagger-3 { transition-delay: 0.19s; }
+  .stagger-4 { transition-delay: 0.26s; }
+  .stagger-5 { transition-delay: 0.33s; }
+  .stagger-6 { transition-delay: 0.40s; }
+  .stagger-7 { transition-delay: 0.48s; }
+  .stagger-8 { transition-delay: 0.56s; }
+  .stagger-9 { transition-delay: 0.64s; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    nav { padding: 12px 20px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 12px; }
+    .section { padding: 60px 16px; }
+    .arch-flow { flex-direction: column; }
+    .arch-arrow { transform: rotate(90deg); }
+    .timeline { padding-left: 32px; }
+    .feature-card { flex: 0 0 170px; height: 160px; }
+    .feature-card.active { flex: 0 0 min(340px, calc(100vw - 40px)); height: 280px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- STAR FIELD -->
+<div id="starfield"></div>
+
+<!-- GLOW ORBS -->
+<div class="floating-orb" style="width:400px;height:400px;background:#7c3aed;top:10%;left:-10%;opacity:0.08;"></div>
+<div class="floating-orb" style="width:300px;height:300px;background:#3b82f6;top:50%;right:-8%;opacity:0.06;"></div>
+<div class="floating-orb" style="width:350px;height:350px;background:#34d399;top:80%;left:20%;opacity:0.05;"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">✦ 智座</div>
+  <ul class="nav-links">
+    <li><a href="#features">核心功能</a></li>
+    <li><a href="#architecture">系统架构</a></li>
+    <li><a href="#tech">技术栈</a></li>
+    <li><a href="#flow">预约流程</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">✧ FLASK · SOCKET.IO · 实时预约 ✧</div>
+  <h1>学院公共区域<br><span class="gradient">学习座位预约系统</span></h1>
+  <p class="hero-sub">
+    从抢座焦虑到有序预约——把公共空间的管理，交给智能系统。<br>
+    预约、候补、信用、监督，一站式闭环。
+  </p>
+  <a href="#features" class="hero-cta">
+    探索系统 <span class="arrow">→</span>
+  </a>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="fade-in">
+    <span class="section-tag">✦ FEATURES ✦</span>
+    <h2 class="section-title">六大核心能力</h2>
+    <p class="section-desc">点击卡片，展开每个能力背后的完整设计。</p>
+  </div>
+
+  <div class="card-slider-wrapper fade-in">
+    <div class="card-slider" id="cardSlider">
+      <div class="feature-card" data-index="0">
+        <button class="card-close" onclick="closeCard(event, this.parentElement)">✕</button>
+        <div class="feature-icon">📋</div>
+        <div class="feature-name">智能预约</div>
+        <div class="feature-desc">学生端实时查看自习室和座位状态，一键创建预约、签到签退，系统自动检测时间冲突，避免重复占用。</div>
+      </div>
+      <div class="feature-card" data-index="1">
+        <button class="card-close" onclick="closeCard(event, this.parentElement)">✕</button>
+        <div class="feature-icon">🔄</div>
+        <div class="feature-name">候补机制</div>
+        <div class="feature-desc">满座时自动加入候补队列，有人取消预约或超时未签到时，系统自动为候补第一名补位并发送通知。</div>
+      </div>
+      <div class="feature-card" data-index="2">
+        <button class="card-close" onclick="closeCard(event, this.parentElement)">✕</button>
+        <div class="feature-icon">⭐</div>
+        <div class="feature-name">信用积分</div>
+        <div class="feature-desc">违约扣分、守约加分，信用分低于阈值自动限制预约权限，建立公平使用的长效激励机制。</div>
+      </div>
+      <div class="feature-card" data-index="3">
+        <button class="card-close" onclick="closeCard(event, this.parentElement)">✕</button>
+        <div class="feature-icon">🚨</div>
+        <div class="feature-name">违规举报</div>
+        <div class="feature-desc">支持举报异常占座行为，管理员审核通过后自动释放座位并对违规者扣分，维护公共资源公平使用。</div>
+      </div>
+      <div class="feature-card" data-index="4">
+        <button class="card-close" onclick="closeCard(event, this.parentElement)">✕</button>
+        <div class="feature-icon">📊</div>
+        <div class="feature-name">管理统计</div>
+        <div class="feature-desc">管理员实时总览座位状态，按自习室/区域/状态筛选，操作日志全记录，支持预约数据 CSV 导出。</div>
+      </div>
+      <div class="feature-card" data-index="5">
+        <button class="card-close" onclick="closeCard(event, this.parentElement)">✕</button>
+        <div class="feature-icon">⚡</div>
+        <div class="feature-name">实时推送</div>
+        <div class="feature-desc">基于 WebSocket 的实时状态推送——座位状态变更、新通知到达，前端自动刷新无需手动操作。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slider Controls -->
+  <div class="slider-nav fade-in">
+    <button class="slider-btn" id="prevBtn" title="上一张">◀</button>
+    <button class="slider-btn" id="nextBtn" title="下一张">▶</button>
+  </div>
+  <div class="dot-indicators fade-in" id="dotIndicators"></div>
+  <div class="slider-hint fade-in">← 左右滑动或点击箭头浏览 →</div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="section" id="architecture">
+  <div class="fade-in">
+    <span class="section-tag">✦ ARCHITECTURE ✦</span>
+    <h2 class="section-title">系统架构</h2>
+    <p class="section-desc">多层架构，清晰分离，模块化设计。</p>
+  </div>
+  <div class="arch-flow">
+    <div class="arch-node scale-in stagger-1">
+      <div class="icon">🖥️</div>
+      <div class="label">前端</div>
+      <div class="name">HTML / CSS / JS</div>
+    </div>
+    <div class="arch-arrow fade-in stagger-2">⟶</div>
+    <div class="arch-node scale-in stagger-3">
+      <div class="icon">🔌</div>
+      <div class="label">通信层</div>
+      <div class="name">REST API + WebSocket</div>
+    </div>
+    <div class="arch-arrow fade-in stagger-4">⟶</div>
+    <div class="arch-node scale-in stagger-5">
+      <div class="icon">⚙️</div>
+      <div class="label">后端服务</div>
+      <div class="name">Flask + Socket.IO</div>
+    </div>
+    <div class="arch-arrow fade-in stagger-6">⟶</div>
+    <div class="arch-node scale-in stagger-7" style="transition-delay:0.52s">
+      <div class="icon">🗄️</div>
+      <div class="label">数据层</div>
+      <div class="name">SQLite / MySQL</div>
+    </div>
+    <div class="arch-arrow fade-in stagger-8" style="transition-delay:0.64s">⟶</div>
+    <div class="arch-node scale-in stagger-9" style="transition-delay:0.76s">
+      <div class="icon">⏰</div>
+      <div class="label">定时任务</div>
+      <div class="name">APScheduler</div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="section" id="tech">
+  <div class="fade-in">
+    <span class="section-tag">✦ TECH STACK ✦</span>
+    <h2 class="section-title">技术选型</h2>
+    <p class="section-desc">轻量、成熟、可扩展——用最适合的工具做最适合的事。</p>
+  </div>
+  <div class="tech-grid">
+    <div class="tech-item slide-left stagger-1">
+      <div class="tech-icon">🐍</div>
+      <div class="tech-name">Flask</div>
+      <div class="tech-desc">轻量 Web 框架</div>
+    </div>
+    <div class="tech-item slide-right stagger-2">
+      <div class="tech-icon">🗃️</div>
+      <div class="tech-name">SQLAlchemy</div>
+      <div class="tech-desc">ORM 数据映射</div>
+    </div>
+    <div class="tech-item slide-left stagger-3">
+      <div class="tech-icon">📡</div>
+      <div class="tech-name">Flask-SocketIO</div>
+      <div class="tech-desc">WebSocket 实时推送</div>
+    </div>
+    <div class="tech-item slide-right stagger-4">
+      <div class="tech-icon">⏰</div>
+      <div class="tech-name">APScheduler</div>
+      <div class="tech-desc">定时任务调度</div>
+    </div>
+    <div class="tech-item slide-left stagger-5">
+      <div class="tech-icon">🗜️</div>
+      <div class="tech-name">SQLite / MySQL</div>
+      <div class="tech-desc">灵活数据库方案</div>
+    </div>
+    <div class="tech-item slide-right stagger-6">
+      <div class="tech-icon">🎨</div>
+      <div class="tech-name">原生前端</div>
+      <div class="tech-desc">HTML + CSS + JS</div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="section" id="flow">
+  <div class="fade-in">
+    <span class="section-tag">✦ USER FLOW ✦</span>
+    <h2 class="section-title">预约全流程</h2>
+    <p class="section-desc">从注册到签到，从候补到信用，每个环节都被精心设计。</p>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item slide-left stagger-1">
+      <span class="timeline-step">STEP 01</span>
+      <h4>注册登录</h4>
+      <p>学生注册账号，登录系统。密码采用 Werkzeug 安全哈希存储。</p>
+    </div>
+    <div class="timeline-item slide-right stagger-2">
+      <span class="timeline-step">STEP 02</span>
+      <h4>浏览座位 · 创建预约</h4>
+      <p>查看自习室和座位实时状态，选择时间段创建预约。系统自动检测冲突。</p>
+    </div>
+    <div class="timeline-item slide-left stagger-3">
+      <span class="timeline-step">STEP 03</span>
+      <h4>满座？加入候补</h4>
+      <p>当前座位已满时自动进入候补队列，有人取消或超时自动补位。</p>
+    </div>
+    <div class="timeline-item slide-right stagger-4">
+      <span class="timeline-step">STEP 04</span>
+      <h4>签到 · 使用 · 签退</h4>
+      <p>在宽限时间内完成签到，超时未签到系统自动释放座位并扣信用分。</p>
+    </div>
+    <div class="timeline-item slide-left stagger-5">
+      <span class="timeline-step">STEP 05</span>
+      <h4>监督 · 举报 · 信用</h4>
+      <p>发现异常占座可举报，管理员审核后释放座位。信用分影响后续预约权限。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>学院公共区域学习座位预约系统 · 让每一个座位都被合理使用 ✦</p>
+</footer>
+
+<script>
+// ===== STAR FIELD =====
+(function() {
+  const sf = document.getElementById('starfield');
+  const count = 180;
+  for (let i = 0; i < count; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `
+      width: ${size}px; height: ${size}px;
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      --dur: ${Math.random() * 4 + 2}s;
+      --min-o: ${Math.random() * 0.3 + 0.1};
+      --max-o: ${Math.random() * 0.5 + 0.5};
+      animation-delay: ${Math.random() * 4}s;
+    `;
+    sf.appendChild(s);
+  }
+})();
+
+// ===== SCROLL ANIMATION OBSERVER =====
+const animObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-in').forEach(el => {
+  animObserver.observe(el);
+});
+
+// ===== CARD SLIDER =====
+const slider = document.getElementById('cardSlider');
+const cards = slider.querySelectorAll('.feature-card');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const dotContainer = document.getElementById('dotIndicators');
+let activeIndex = -1;
+let isDragging = false;
+let startX = 0;
+let scrollStart = 0;
+
+// Create dot indicators
+cards.forEach((_, i) => {
+  const dot = document.createElement('div');
+  dot.className = 'dot';
+  dot.addEventListener('click', () => scrollToCard(i));
+  dotContainer.appendChild(dot);
+});
+
+function updateDots() {
+  const dots = dotContainer.querySelectorAll('.dot');
+  dots.forEach((d, i) => {
+    d.classList.toggle('active', i === activeIndex);
+  });
+}
+
+function scrollToCard(index) {
+  // Close active card first
+  closeAllCards();
+  activeIndex = index;
+  const card = cards[index];
+  card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  updateDots();
+}
+
+function closeCard(event, card) {
+  event.stopPropagation();
+  card.classList.remove('active');
+  activeIndex = -1;
+  updateDots();
+}
+
+function closeAllCards() {
+  cards.forEach(c => c.classList.remove('active'));
+}
+
+// Click to expand
+cards.forEach((card, i) => {
+  card.addEventListener('click', (e) => {
+    if (e.target.closest('.card-close')) return;
+    if (card.classList.contains('active')) return;
+
+    closeAllCards();
+    card.classList.add('active');
+    activeIndex = i;
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    updateDots();
+  });
+});
+
+// Arrow navigation
+prevBtn.addEventListener('click', () => {
+  if (activeIndex > 0) {
+    scrollToCard(activeIndex - 1);
+  } else {
+    const first = cards[0];
+    first.classList.add('active');
+    activeIndex = 0;
+    first.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    updateDots();
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  if (activeIndex < cards.length - 1) {
+    scrollToCard(activeIndex + 1);
+  } else {
+    const last = cards[cards.length - 1];
+    last.classList.add('active');
+    activeIndex = cards.length - 1;
+    last.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    updateDots();
+  }
+});
+
+// Drag to scroll
+slider.addEventListener('mousedown', (e) => {
+  if (e.target.closest('.card-close')) return;
+  isDragging = true;
+  slider.classList.add('dragging');
+  startX = e.pageX;
+  scrollStart = slider.scrollLeft;
+});
+
+slider.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const diff = e.pageX - startX;
+  slider.scrollLeft = scrollStart - diff;
+});
+
+slider.addEventListener('mouseup', () => {
+  isDragging = false;
+  slider.classList.remove('dragging');
+});
+
+slider.addEventListener('mouseleave', () => {
+  isDragging = false;
+  slider.classList.remove('dragging');
+});
+
+// Touch support
+slider.addEventListener('touchstart', (e) => {
+  if (e.target.closest('.card-close')) return;
+  isDragging = true;
+  startX = e.touches[0].pageX;
+  scrollStart = slider.scrollLeft;
+}, { passive: true });
+
+slider.addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+  const diff = e.touches[0].pageX - startX;
+  slider.scrollLeft = scrollStart - diff;
+}, { passive: true });
+
+slider.addEventListener('touchend', () => {
+  isDragging = false;
+});
+
+// Close card on outside click
+document.addEventListener('click', (e) => {
+  if (activeIndex >= 0 && !e.target.closest('.feature-card') && !e.target.closest('.slider-btn') && !e.target.closest('.dot')) {
+    closeAllCards();
+    activeIndex = -1;
+    updateDots();
+  }
+});
+
+// Escape key closes card
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && activeIndex >= 0) {
+    closeAllCards();
+    activeIndex = -1;
+    updateDots();
+  }
+});
+
+// Scroll-based dot update
+slider.addEventListener('scroll', () => {
+  if (activeIndex < 0) {
+    const scrollCenter = slider.scrollLeft + slider.clientWidth / 2;
+    let closest = 0;
+    let minDist = Infinity;
+    cards.forEach((card, i) => {
+      const cardCenter = card.offsetLeft + card.clientWidth / 2;
+      const dist = Math.abs(scrollCenter - cardCenter);
+      if (dist < minDist) {
+        minDist = dist;
+        closest = i;
+      }
+    });
+    const dots = dotContainer.querySelectorAll('.dot');
+    dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+  }
+});
+</script>
+</body>
+</html>

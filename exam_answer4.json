@@ -1,0 +1,14 @@
+{
+  "examId": "exam-91b5220e",
+  "hash": "3fef2e3870864cb18b0e4f59bc26743a7b1a5bee3bf652242405b072871190da",
+  "answers": [
+    {
+      "questionId": "und-44",
+      "answer": "D) Return 201 with the order created, coupon ignored, and a note in the response that the coupon was invalid. The API documentation explicitly states: 'If provided and invalid, the order is still created but the coupon is ignored.' This means the coupon being invalid should not prevent order creation (ruling out A and C), and the discount should not be applied (ruling out B). The best practice is to inform the client that the coupon was ignored so they can take action if needed."
+    },
+    {
+      "questionId": "und-35",
+      "answer": "Recommendation: **Proposal 1 (URL Versioning)** for your specific context.\n\n**Analysis:**\n\n**Proposal 1 (URL versioning):**\n- Strengths: Simple, explicit, easy for integrators to understand and test, works well with caching, clear deprecation path\n- Weaknesses: URL pollution, requires routing logic\n- Best fit for: 200+ third-party integrators with slow update cycles\n\n**Proposal 2 (Header versioning):**\n- Strengths: Clean URLs, follows REST purity\n- Weaknesses: Harder to discover and test (can't just click URLs), requires documentation overhead, less transparent for enterprise clients\n- Not ideal for: Large enterprise clients who need clear, explicit versioning\n\n**Proposal 3 (No versioning):**\n- Strengths: No version management overhead\n- Weaknesses: Requires massive discipline, compatibility layers become technical debt, feature flags per client don't scale to 200+ integrators\n- Risky for: Quarterly breaking changes with slow enterprise clients\n\n**Why URL versioning wins here:** With 200+ integrators and enterprise clients on 6-12 month update cycles, you need explicit, discoverable versioning. URL versioning lets clients migrate at their own pace, is easy to document, and allows you to deprecate v1 while rolling out v2. Your team of 8 can manage this with proper tooling. Header versioning adds friction for your integrators; no versioning is unsustainable with quarterly breaking changes."
+    }
+  ]
+}
