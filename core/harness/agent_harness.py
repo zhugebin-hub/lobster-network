@@ -94,9 +94,22 @@ def _default_rules() -> dict:
     """内置默认规则（兜底）"""
     return {
         "l1_input_guard": {"enabled": True, "dangerous_commands": [], "context_max_chars": 16000, "sensitive_patterns": {}},
-        "l2_execution_guard": {"enabled": True, "allowed_operations": [], "high_risk_operations": [], "quotas": {}, "side_effect_patterns": {}},
+        "l2_execution_guard": {
+            "enabled": True,
+            "allowed_operations": [
+                "search_file", "read_file", "write_file", "edit_file", "delete",
+                "shell_executor", "python_executor",
+                "dispatch_task", "use_skill",
+                "web_fetch", "web_search",
+                "read_text", "analyze_image",
+                "create_scheduled_task", "modify_scheduled_task",
+            ],
+            "high_risk_operations": [],
+            "quotas": {},
+            "side_effect_patterns": {},
+        },
         "l3_output_guard": {"enabled": True, "max_output_chars": 50000, "blocked_patterns": [], "required_schema_fields": []},
-        "bypass": {"enabled": False, "authorized_roles": ["hermes"], "require_reason": True},
+        "bypass": {"enabled": True, "authorized_roles": ["hermes"], "require_reason": True},
     }
 
 

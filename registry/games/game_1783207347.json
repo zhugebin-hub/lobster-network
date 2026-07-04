@@ -1,0 +1,467 @@
+{
+  "game_id": "go_1783207347",
+  "date": "2026-07-05T07:22:27.197131",
+  "players": [
+    "小陈",
+    "诸葛虾"
+  ],
+  "protocol": "v3.0",
+  "total_moves": 50,
+  "duration_seconds": 5.20190167427063,
+  "captured_stones": {
+    "●": 0,
+    "○": 0
+  },
+  "moves": [
+    {
+      "move": 1,
+      "player": "小陈",
+      "position": [
+        4,
+        4
+      ],
+      "color": "●"
+    },
+    {
+      "move": 2,
+      "player": "诸葛虾",
+      "position": [
+        3,
+        4
+      ],
+      "color": "○"
+    },
+    {
+      "move": 3,
+      "player": "小陈",
+      "position": [
+        4,
+        3
+      ],
+      "color": "●"
+    },
+    {
+      "move": 4,
+      "player": "诸葛虾",
+      "position": [
+        4,
+        5
+      ],
+      "color": "○"
+    },
+    {
+      "move": 5,
+      "player": "小陈",
+      "position": [
+        5,
+        4
+      ],
+      "color": "●"
+    },
+    {
+      "move": 6,
+      "player": "诸葛虾",
+      "position": [
+        2,
+        4
+      ],
+      "color": "○"
+    },
+    {
+      "move": 7,
+      "player": "小陈",
+      "position": [
+        3,
+        3
+      ],
+      "color": "●"
+    },
+    {
+      "move": 8,
+      "player": "诸葛虾",
+      "position": [
+        3,
+        5
+      ],
+      "color": "○"
+    },
+    {
+      "move": 9,
+      "player": "小陈",
+      "position": [
+        4,
+        2
+      ],
+      "color": "●"
+    },
+    {
+      "move": 10,
+      "player": "诸葛虾",
+      "position": [
+        4,
+        6
+      ],
+      "color": "○"
+    },
+    {
+      "move": 11,
+      "player": "小陈",
+      "position": [
+        5,
+        3
+      ],
+      "color": "●"
+    },
+    {
+      "move": 12,
+      "player": "诸葛虾",
+      "position": [
+        5,
+        5
+      ],
+      "color": "○"
+    },
+    {
+      "move": 13,
+      "player": "小陈",
+      "position": [
+        6,
+        4
+      ],
+      "color": "●"
+    },
+    {
+      "move": 14,
+      "player": "诸葛虾",
+      "position": [
+        1,
+        4
+      ],
+      "color": "○"
+    },
+    {
+      "move": 15,
+      "player": "小陈",
+      "position": [
+        2,
+        3
+      ],
+      "color": "●"
+    },
+    {
+      "move": 16,
+      "player": "诸葛虾",
+      "position": [
+        2,
+        5
+      ],
+      "color": "○"
+    },
+    {
+      "move": 17,
+      "player": "小陈",
+      "position": [
+        3,
+        2
+      ],
+      "color": "●"
+    },
+    {
+      "move": 18,
+      "player": "诸葛虾",
+      "position": [
+        3,
+        6
+      ],
+      "color": "○"
+    },
+    {
+      "move": 19,
+      "player": "小陈",
+      "position": [
+        4,
+        1
+      ],
+      "color": "●"
+    },
+    {
+      "move": 20,
+      "player": "诸葛虾",
+      "position": [
+        4,
+        7
+      ],
+      "color": "○"
+    },
+    {
+      "move": 21,
+      "player": "小陈",
+      "position": [
+        5,
+        2
+      ],
+      "color": "●"
+    },
+    {
+      "move": 22,
+      "player": "诸葛虾",
+      "position": [
+        5,
+        6
+      ],
+      "color": "○"
+    },
+    {
+      "move": 23,
+      "player": "小陈",
+      "position": [
+        6,
+        3
+      ],
+      "color": "●"
+    },
+    {
+      "move": 24,
+      "player": "诸葛虾",
+      "position": [
+        6,
+        5
+      ],
+      "color": "○"
+    },
+    {
+      "move": 25,
+      "player": "小陈",
+      "position": [
+        7,
+        4
+      ],
+      "color": "●"
+    },
+    {
+      "move": 26,
+      "player": "诸葛虾",
+      "position": [
+        0,
+        4
+      ],
+      "color": "○"
+    },
+    {
+      "move": 27,
+      "player": "小陈",
+      "position": [
+        1,
+        3
+      ],
+      "color": "●"
+    },
+    {
+      "move": 28,
+      "player": "诸葛虾",
+      "position": [
+        1,
+        5
+      ],
+      "color": "○"
+    },
+    {
+      "move": 29,
+      "player": "小陈",
+      "position": [
+        2,
+        2
+      ],
+      "color": "●"
+    },
+    {
+      "move": 30,
+      "player": "诸葛虾",
+      "position": [
+        2,
+        6
+      ],
+      "color": "○"
+    },
+    {
+      "move": 31,
+      "player": "小陈",
+      "position": [
+        3,
+        1
+      ],
+      "color": "●"
+    },
+    {
+      "move": 32,
+      "player": "诸葛虾",
+      "position": [
+        3,
+        7
+      ],
+      "color": "○"
+    },
+    {
+      "move": 33,
+      "player": "小陈",
+      "position": [
+        4,
+        0
+      ],
+      "color": "●"
+    },
+    {
+      "move": 34,
+      "player": "诸葛虾",
+      "position": [
+        4,
+        8
+      ],
+      "color": "○"
+    },
+    {
+      "move": 35,
+      "player": "小陈",
+      "position": [
+        5,
+        1
+      ],
+      "color": "●"
+    },
+    {
+      "move": 36,
+      "player": "诸葛虾",
+      "position": [
+        5,
+        7
+      ],
+      "color": "○"
+    },
+    {
+      "move": 37,
+      "player": "小陈",
+      "position": [
+        6,
+        2
+      ],
+      "color": "●"
+    },
+    {
+      "move": 38,
+      "player": "诸葛虾",
+      "position": [
+        6,
+        6
+      ],
+      "color": "○"
+    },
+    {
+      "move": 39,
+      "player": "小陈",
+      "position": [
+        7,
+        3
+      ],
+      "color": "●"
+    },
+    {
+      "move": 40,
+      "player": "诸葛虾",
+      "position": [
+        7,
+        5
+      ],
+      "color": "○"
+    },
+    {
+      "move": 41,
+      "player": "小陈",
+      "position": [
+        8,
+        4
+      ],
+      "color": "●"
+    },
+    {
+      "move": 42,
+      "player": "诸葛虾",
+      "position": [
+        0,
+        3
+      ],
+      "color": "○"
+    },
+    {
+      "move": 43,
+      "player": "小陈",
+      "position": [
+        0,
+        5
+      ],
+      "color": "●"
+    },
+    {
+      "move": 44,
+      "player": "诸葛虾",
+      "position": [
+        1,
+        2
+      ],
+      "color": "○"
+    },
+    {
+      "move": 45,
+      "player": "小陈",
+      "position": [
+        1,
+        6
+      ],
+      "color": "●"
+    },
+    {
+      "move": 46,
+      "player": "诸葛虾",
+      "position": [
+        2,
+        1
+      ],
+      "color": "○"
+    },
+    {
+      "move": 47,
+      "player": "小陈",
+      "position": [
+        2,
+        7
+      ],
+      "color": "●"
+    },
+    {
+      "move": 48,
+      "player": "诸葛虾",
+      "position": [
+        3,
+        0
+      ],
+      "color": "○"
+    },
+    {
+      "move": 49,
+      "player": "小陈",
+      "position": [
+        3,
+        8
+      ],
+      "color": "●"
+    },
+    {
+      "move": 50,
+      "player": "诸葛虾",
+      "position": [
+        5,
+        0
+      ],
+      "color": "○"
+    }
+  ]
+}

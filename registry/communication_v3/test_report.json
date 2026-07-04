@@ -1,5 +1,5 @@
 {
-  "test_date": "2026-06-25T23:39:50.928553",
+  "test_date": "2026-07-05T07:22:22.404431",
   "protocol_version": "v3.0",
   "total_nodes": 6,
   "total_tests": 5,
@@ -7,9 +7,9 @@
   "pass_rate": "100.0%",
   "results": {
     "latency_test": {
-      "avg_latency_ms": 1.1223554611206055,
-      "min_latency_ms": 1.096487045288086,
-      "max_latency_ms": 1.2238025665283203,
+      "avg_latency_ms": 1.1798858642578125,
+      "min_latency_ms": 1.1141300201416016,
+      "max_latency_ms": 1.2669563293457031,
       "samples": 20,
       "pass": true
     },

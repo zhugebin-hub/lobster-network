@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小龙虾网络 · 运行监控仪表盘 V2</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--dim:#64748b;
+    --accent:#fbbf24;--green:#22c55e;--red:#ef4444;--blue:#3b82f6;
+    --purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--pink:#ec4899;
+  }
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+  /* skeleton */
+  @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+  .skeleton{background:linear-gradient(90deg,#1e293b 25%,#334155 50%,#1e293b 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px}
+  .skeleton-text{height:14px;margin-bottom:8px;width:80%}
+  .skeleton-text.short{width:50%}
+  .skeleton-box{height:60px;width:100%}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .fade-in{animation:fadeIn .4s ease-out}
+  /* Header */
+  .header{background:linear-gradient(135deg,#111827 0%,#1e1b4b 100%);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+  .header-left{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .header h1{font-size:20px;color:var(--accent)}
+  .header-stats{display:flex;gap:16px;flex-wrap:wrap}
+  .header-stat{font-size:12px;color:var(--dim);display:flex;align-items:center;gap:6px}
+  .header-stat .val{color:var(--cyan);font-weight:600;font-family:monospace;font-size:14px}
+  #liveClock{color:var(--text);font-size:14px;font-family:monospace;min-width:70px}
+  .header-actions{display:flex;gap:8px;align-items:center}
+  .btn{padding:6px 14px;border-radius:8px;font-size:12px;border:1px solid var(--border);background:#0f172a;color:var(--text);cursor:pointer;transition:all .2s}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.active{background:rgba(251,191,36,.15);border-color:var(--accent);color:var(--accent)}
+  select.btn{appearance:none;padding-right:24px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23fbbf24' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .spinning{animation:spin .6s ease-in-out}
+  .health-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600}
+  .health-ok{background:rgba(34,197,94,.15);color:var(--green)}
+  .health-warn{background:rgba(251,191,36,.15);color:var(--accent)}
+  .health-critical{background:rgba(239,68,68,.15);color:var(--red)}
+  /* Layout */
+  .layout{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .panel{padding:14px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .panel:nth-child(2n){border-right:none}
+  .panel.wide{grid-column:1/-1;border-right:none}
+  .panel-title{font-size:13px;font-weight:600;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px}
+  /* Nodes */
+  .node-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .node-card{background:#0f172a;border-radius:10px;padding:10px;border:1px solid var(--border);position:relative;overflow:visible;cursor:pointer;transition:all .25s}
+  .node-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+  .node-card.offline{filter:grayscale(0.7);opacity:.65}
+  .node-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+  .node-card.online::before{background:var(--green)}
+  .node-card.offline::before{background:var(--red)}
+  .node-card.warning::before{background:var(--accent)}
+  .node-name{font-size:13px;font-weight:600;margin-bottom:3px;display:flex;align-items:center;gap:6px}
+  .node-ip{font-size:11px;color:var(--dim);font-family:monospace}
+  .node-meta{display:flex;justify-content:space-between;margin-top:3px;font-size:11px}
+  .node-meta .label{color:var(--dim)}
+  .status-indicator{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .status-indicator.online{background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite}
+  .status-indicator.offline{background:var(--red);box-shadow:0 0 8px var(--red)}
+  .status-indicator.warning{background:var(--accent);box-shadow:0 0 8px var(--accent)}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+  .ping-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-left:4px}
+  .ping-dot.green{background:var(--green)}
+  .ping-dot.yellow{background:var(--accent)}
+  .ping-dot.red{background:var(--red)}
+  /* Tooltip */
+  .node-tooltip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#1a1f2e;border:1px solid var(--border);border-radius:10px;padding:12px;min-width:200px;z-index:100;box-shadow:0 12px 32px rgba(0,0,0,.5);font-size:11px;pointer-events:none}
+  .node-card:hover .node-tooltip{display:block}
+  .node-tooltip .row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #1e293b}
+  .node-tooltip .row:last-child{border-bottom:none}
+  .node-tooltip .row .k{color:var(--dim)}
+  /* Alert Badge */
+  @keyframes badgeBounce{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+  .alert-badge-bounce{animation:badgeBounce .4s ease-out}
+  /* Alert */
+  .alert-list{max-height:180px;overflow-y:auto}
+  .alert-group{margin-bottom:6px}
+  .alert-group-header{cursor:pointer;font-size:12px;font-weight:600;padding:6px 10px;border-radius:6px;display:flex;align-items:center;gap:6px;user-select:none}
+  .alert-group-header.critical{background:rgba(239,68,68,.1);color:var(--red)}
+  .alert-group-header.warning{background:rgba(251,191,36,.1);color:var(--accent)}
+  .alert-group-header.info{background:rgba(59,130,246,.1);color:var(--blue)}
+  .alert-group-body{padding:4px 0 0 16px}
+  .alert-item{padding:6px 10px;border-radius:6px;margin-bottom:4px;font-size:12px;display:flex;align-items:flex-start;gap:8px}
+  .alert-item.critical{background:rgba(239,68,68,.06);border-left:2px solid var(--red)}
+  .alert-item.warning{background:rgba(251,191,36,.06);border-left:2px solid var(--accent)}
+  .alert-item.info{background:rgba(59,130,246,.06);border-left:2px solid var(--blue)}
+  .alert-item.resolved{opacity:.45;filter:grayscale(.3)}
+  .alert-time{color:var(--dim);font-size:10px;white-space:nowrap;min-width:36px}
+  /* Ring progress */
+  .ring-container{display:flex;align-items:center;justify-content:center;gap:16px}
+  .ring-wrap{position:relative;width:90px;height:90px}
+  .ring-wrap svg{transform:rotate(-90deg)}
+  .ring-wrap .ring-val{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700}
+  .mini-history{width:100px;height:40px}
+  /* Progress bar */
+  .hbar{margin-bottom:8px}
+  .hbar-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px}
+  .hbar-track{height:8px;background:#1e293b;border-radius:4px;overflow:hidden}
+  .hbar-fill{height:100%;border-radius:4px;transition:width .8s ease}
+  /* Domains bar chart */
+  .domain-bar{margin-bottom:6px}
+  .domain-bar .name{font-size:11px;margin-bottom:2px;display:flex;justify-content:space-between;color:var(--dim)}
+  @keyframes pulseActive{0%,100%{opacity:1}50%{opacity:.6}}
+  .pulse-active{animation:pulseActive 1.5s ease-in-out infinite}
+  /* Log stream */
+  .log-container{max-height:220px;overflow-y:auto;font-family:'SF Mono',Monaco,monospace;font-size:11px;background:#080d14;border-radius:8px;padding:8px}
+  .log-line{padding:3px 8px;border-radius:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .log-line.INFO{color:#93c5fd}
+  .log-line.WARN{color:#fde68a}
+  .log-line.ERROR{color:#fca5a5}
+  .log-line.DEBUG{color:#6b7280}
+  /* Common */
+  .progress-bar{height:6px;background:#1e293b;border-radius:3px;overflow:hidden}
+  .progress-fill{height:100%;border-radius:3px;transition:width 1s ease}
+  .badge{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+  .badge-green{background:rgba(34,197,94,.15);color:var(--green)}
+  .badge-red{background:rgba(239,68,68,.15);color:var(--red)}
+  .badge-yellow{background:rgba(251,191,36,.15);color:var(--accent)}
+  .badge-blue{background:rgba(59,130,246,.15);color:var(--blue)}
+  .metric-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #1e293b}
+  .metric-row:last-child{border-bottom:none}
+  .metric-label{font-size:12px;color:var(--dim)}
+  .metric-value{font-size:13px;font-weight:600}
+  .mqtt-topic{font-family:monospace;font-size:11px;color:var(--cyan);padding:3px 8px;background:#0f172a;border-radius:4px;margin:2px 0;display:inline-block}
+  .score-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+  .score-box{text-align:center;padding:8px 4px;background:#0f172a;border-radius:8px;transition:all .3s}
+  .score-box:hover{background:#1a2332}
+  .score-box .num{font-size:18px;font-weight:700}
+  .score-box .label{font-size:10px;color:var(--dim);margin-top:2px}
+  .update-time{font-size:11px;color:var(--dim);text-align:right;padding:8px 16px}
+  /* Responsive */
+  @media(max-width:1400px){.node-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:1024px){.layout{grid-template-columns:1fr}.panel{border-right:none}.node-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:640px){.node-grid{grid-template-columns:1fr}.ring-container{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>🦞 小龙虾网络 · 运行监控 V2</h1>
+    <div class="header-stats">
+      <div class="header-stat"><span>⏱</span><span class="val" id="liveClock">--:--:--</span></div>
+      <div class="header-stat"><span>📶</span><span>吞吐 </span><span class="val" id="liveThroughput">--</span></div>
+    </div>
+  </div>
+  <div class="header-actions">
+    <span class="health-badge" id="healthStatus">🔄 加载中</span>
+    <select class="btn" id="refreshSelect" onchange="onRefreshChange()">
+      <option value="10">🔄 10s</option>
+      <option value="30" selected>🔄 30s</option>
+      <option value="60">🔄 60s</option>
+      <option value="0">⏸ 手动</option>
+    </select>
+    <button class="btn" id="manualRefreshBtn" onclick="manualRefresh()">↻ 刷新</button>
+  </div>
+</div>
+
+<div class="layout" id="mainLayout">
+  <!-- 面板由 JS 渲染，初始骨架屏 -->
+</div>
+
+<div class="update-time" id="updateTime">正在连接 API...</div>
+
+<script>
+// ---- State ----
+let refreshSec = 30;
+let refreshTimer = null;
+let apiData = null;
+let scoreHistory = []; // 最近10个综合评分
+
+// ---- Clock ----
+function updateClock(){
+  const now = new Date();
+  document.getElementById('liveClock').textContent =
+    now.toLocaleTimeString('zh-CN',{hour12:false});
+}
+setInterval(updateClock,1000); updateClock();
+
+// ---- Throughput sim ----
+function updateThroughput(){
+  const v = (Math.random()*200+300).toFixed(0);
+  document.getElementById('liveThroughput').textContent = v + ' msg/min';
+}
+setInterval(updateThroughput,3000); updateThroughput();
+
+// ---- Refresh control ----
+function onRefreshChange(){
+  refreshSec = parseInt(document.getElementById('refreshSelect').value);
+  scheduleRefresh();
+}
+function scheduleRefresh(){
+  clearInterval(refreshTimer);
+  if(refreshSec > 0) refreshTimer = setInterval(fetchData, refreshSec*1000);
+}
+function manualRefresh(){
+  const btn = document.getElementById('manualRefreshBtn');
+  btn.classList.add('spinning');
+  fetchData().finally(() => setTimeout(() => btn.classList.remove('spinning'),600));
+}
+
+// ---- Build skeleton ----
+function buildSkeleton(){
+  const panels = [
+    {id:'nodePanel',title:'🖥️ 服务器节点状态',extra:'<span style="font-size:11px;color:var(--dim)" id="nodeCount">-</span>'},
+    {id:'healthPanel',title:'🏥 系统健康评分'},
+    {id:'msgPanel',title:'📨 CC 消息系统状态'},
+    {id:'alertPanel',title:'🚨 告警中心',extra:'<span style="font-size:11px;color:var(--red)" id="alertCount">-</span>'},
+    {id:'mqttPanel',title:'📡 MQTT Broker 状态'},
+    {id:'gitPanel',title:'🔄 Git 同步 & 推送'},
+    {id:'domainPanel',title:'📚 学习栏目进度'},
+    {id:'infraPanel',title:'🏗️ 基础设施组件'},
+    {id:'logPanel',title:'📋 实时日志流',cls:'wide'}
+  ];
+  const layout = document.getElementById('mainLayout');
+  layout.innerHTML = panels.map(p => {
+    let html = `<div class="panel${p.cls?' '+p.cls:''}" id="${p.id}">`;
+    html += `<div class="panel-title">${p.title}${p.extra||''}</div>`;
+    html += `<div class="skeleton skeleton-box"></div>`;
+    html += `<div class="skeleton skeleton-text"></div>`;
+    html += `<div class="skeleton skeleton-text short"></div>`;
+    html += `</div>`;
+    return html;
+  }).join('');
+}
+
+// ---- Fetch ----
+async function fetchData(){
+  try{
+    const res = await fetch('/api/status');
+    apiData = await res.json();
+    renderAll();
+    document.getElementById('updateTime').textContent =
+      `最后更新：${new Date(apiData.timestamp).toLocaleString('zh-CN')} | dashboard_collector.py`;
+  }catch(e){
+    document.getElementById('updateTime').textContent = '⚠️ API 连接失败: ' + e.message;
+  }
+}
+
+// ---- Render All ----
+function renderAll(){
+  if(!apiData) return;
+  renderNodes();
+  renderHealth();
+  renderMessages();
+  renderAlerts();
+  renderMQTT();
+  renderGit();
+  renderDomains();
+  renderInfra();
+  renderLogStream();
+  updateHealthBadge();
+}
+
+// ---- 1. Nodes ----
+function renderNodes(){
+  const nodes = apiData.nodes;
+  document.getElementById('nodeCount').textContent = `${nodes.length} 节点`;
+  const online = nodes.filter(n=>n.status==='online').length;
+  const grid = document.getElementById('nodePanel').querySelector('.skeleton')?.parentElement;
+  if(!grid) return;
+  const container = grid.querySelector('.panel-title')?.nextElementSibling;
+  const html = `<div class="node-grid fade-in">${nodes.map(n => {
+    const pingClass = n.status==='online' ? 'green' : n.status==='warning' ? 'yellow' : 'red';
+    const pingMs = n.status==='online' ? (Math.floor(Math.random()*80+5)) : n.status==='warning' ? (Math.floor(Math.random()*150+50)) : '--';
+    const pingColor = n.status==='online' ? 'var(--green)' : n.status==='warning' ? 'var(--accent)' : 'var(--red)';
+    return `<div class="node-card ${n.status}">
+      <div class="node-tooltip">
+        <div class="row"><span class="k">名称</span><span>${n.name}</span></div>
+        <div class="row"><span class="k">内网IP</span><span style="font-family:monospace;color:var(--cyan)">${n.ip}</span></div>
+        ${n.public!=='-'?`<div class="row"><span class="k">公网IP</span><span style="font-family:monospace">${n.public}</span></div>`:''}
+        <div class="row"><span class="k">角色</span><span>${n.role}</span></div>
+        <div class="row"><span class="k">状态</span><span style="color:${n.status==='online'?'var(--green)':n.status==='warning'?'var(--accent)':'var(--red)'}">${n.status}</span></div>
+        ${n.disk!=='-'?`<div class="row"><span class="k">磁盘</span><span>${n.disk}</span></div>`:''}
+        ${n.cpu!=='-'?`<div class="row"><span class="k">CPU</span><span>${n.cpu}</span></div>`:''}
+        ${n.mem!=='-'?`<div class="row"><span class="k">内存</span><span>${n.mem}</span></div>`:''}
+        ${n.expires&&n.expires!=='-'?`<div class="row"><span class="k">到期</span><span style="color:${n.expires<'2026-07-15'?'var(--red)':'var(--dim)'}">${n.expires}</span></div>`:''}
+      </div>
+      <div class="node-name">
+        <span class="status-indicator ${n.status}"></span>
+        ${n.name}
+        <span class="ping-dot ${pingClass}" title="Ping: ${pingMs}ms"></span>
+        <span style="font-size:10px;color:${pingColor}">${pingMs}ms</span>
+      </div>
+      <div class="node-ip">${n.ip}${n.public!=='-'?' | '+n.public:''}</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">${n.role}</div>
+      ${n.disk!=='-'?`<div class="node-meta"><span class="label">磁盘</span><span>${n.disk}</span></div>`:''}
+      ${n.cpu!=='-'?`<div class="node-meta"><span class="label">CPU/内存</span><span>${n.cpu} / ${n.mem}</span></div>`:''}
+    </div>`;
+  }).join('')}</div>`;
+  document.getElementById('nodePanel').innerHTML = `<div class="panel-title">🖥️ 服务器节点状态 <span style="font-size:11px;color:var(--dim)" id="nodeCount">${nodes.length} 节点</span></div>${html}`;
+}
+
+// ---- 2. Health (ring progress) ----
+function renderHealth(){
+  const data = apiData;
+  const system = data.system;
+  const nodes = data.nodes;
+  const nodeOnline = nodes.filter(n=>n.status==='online').length;
+  const msgRate = data.messages.pending_rate;
+  const trainingActive = Object.values(data.training).filter(t=>t.active).length;
+  const infraOnline = data.infra.filter(i=>i.status==='online').length;
+
+  const nodeScore = nodeOnline>=3?5:nodeOnline>=2?3:nodeOnline>=1?2:1;
+  const trainingScore = trainingActive>=2?5:trainingActive>=1?3:1;
+  const msgScore = msgRate<20?5:msgRate<50?3:2;
+  const infraScore = infraOnline>=6?5:infraOnline>=4?4:3;
+  const pushScore = data.git.github_status==='ok'?5:2;
+
+  const overall = ((nodeScore+trainingScore+msgScore+infraScore+pushScore)/5).toFixed(1);
+  const overallPct = (overall/5*100).toFixed(0);
+  const overallColor = overall>=4?'var(--green)':overall>=3?'var(--accent)':'var(--red)';
+
+  // score history
+  scoreHistory.push(parseFloat(overall));
+  if(scoreHistory.length>10) scoreHistory.shift();
+
+  const dims = [
+    {label:'节点活跃',score:nodeScore,sub:`${nodeOnline}/${nodes.length}`},
+    {label:'训练完成',score:trainingScore,sub:`${trainingActive}活跃`},
+    {label:'消息系统',score:msgScore,sub:`${msgRate}%`},
+    {label:'基础设施',score:infraScore,sub:''},
+    {label:'推送可靠',score:pushScore,sub:''},
+  ];
+
+  function ringSVG(pct,color){
+    const r=36,c=2*Math.PI*r;
+    const dash = c*(pct/5);
+    return `<svg width="90" height="90" viewBox="0 0 90 90">
+      <circle cx="45" cy="45" r="${r}" fill="none" stroke="#1e293b" stroke-width="6"/>
+      <circle cx="45" cy="45" r="${r}" fill="none" stroke="${color}" stroke-width="6" stroke-dasharray="${dash} ${c}" stroke-linecap="round"/>
+    </svg>`;
+  }
+
+  const scoreHtml = dims.map(d=>{
+    const color = d.score>=4?'var(--green)':d.score>=3?'var(--accent)':'var(--red)';
+    return `<div class="score-box fade-in">
+      ${ringSVG(d.score,color)}
+      <div class="num" style="color:${color}">${d.score}/5</div>
+      <div class="label">${d.label}${d.sub?' ('+d.sub+')':''}</div>
+    </div>`;
+  }).join('');
+
+  // mini history canvas placeholder
+  const histMin = Math.min(...scoreHistory);
+  const histMax = Math.max(...scoreHistory);
+  const histRange = histMax - histMin || 1;
+
+  document.getElementById('healthPanel').innerHTML = `
+    <div class="panel-title">🏥 系统健康评分</div>
+    <div class="score-grid">${scoreHtml}</div>
+    <div style="margin-top:10px;display:flex;align-items:center;gap:12px">
+      <div class="ring-wrap">
+        ${ringSVG(parseFloat(overall),overallColor)}
+        <div class="ring-val" style="color:${overallColor}">${overall}</div>
+      </div>
+      <div style="flex:1">
+        <canvas id="scoreHistoryCanvas" class="mini-history" width="120" height="40"></canvas>
+        <div style="font-size:11px;color:var(--dim);margin-top:4px">综合评分 · 磁盘${system.disk_percent}% · 内存${system.mem_percent}% · 运行${system.uptime_hours}h</div>
+        <div style="margin-top:6px">
+          ${[{label:'磁盘',pct:system.disk_percent,color:'var(--cyan)'},{label:'内存',pct:system.mem_percent,color:'var(--purple)'},{label:'CPU',pct:system.cpu_percent||30,color:'var(--orange)'}].map(h=>`
+            <div class="hbar">
+              <div class="hbar-label"><span>${h.label}</span><span>${h.pct}%</span></div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:${h.pct}%;background:${h.pct>80?'var(--red)':h.pct>60?'var(--accent)':h.color}"></div></div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+  // draw mini history
+  setTimeout(()=>{
+    const cvs=document.getElementById('scoreHistoryCanvas');
+    if(!cvs) return;
+    const ctx=cvs.getContext('2d');
+    const w=cvs.width,h=cvs.height;
+    ctx.clearRect(0,0,w,h);
+    if(scoreHistory.length<2) return;
+    ctx.beginPath();
+    ctx.strokeStyle=overallColor;
+    ctx.lineWidth=1.5;
+    scoreHistory.forEach((v,i)=>{
+      const x=(i/(scoreHistory.length-1))*w;
+      const y=h-((v-histMin)/histRange)*(h-6)-3;
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    });
+    ctx.stroke();
+  },100);
+}
+
+// ---- 3. Messages ----
+function renderMessages(){
+  const msgs=apiData.messages;
+  document.getElementById('msgPanel').innerHTML=`
+    <div class="panel-title">📨 CC 消息系统状态</div>
+    <div class="card fade-in">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;margin-bottom:10px">
+        <div><div style="font-size:22px;font-weight:700;color:var(--cyan)">${msgs.total_inbox}</div><div style="font-size:10px;color:var(--dim)">总消息</div></div>
+        <div><div style="font-size:22px;font-weight:700;color:${msgs.total_pending>20?'var(--red)':'var(--accent)'}">${msgs.total_pending}</div><div style="font-size:10px;color:var(--dim)">未处理</div></div>
+        <div><div style="font-size:22px;font-weight:700;color:${msgs.pending_rate>50?'var(--red)':msgs.pending_rate>20?'var(--accent)':'var(--green)'}">${msgs.pending_rate}%</div><div style="font-size:10px;color:var(--dim)">堆积率</div></div>
+        <div><div style="font-size:22px;font-weight:700;color:var(--green)">${msgs.total_inbox-msgs.total_pending}</div><div style="font-size:10px;color:var(--dim)">已处理</div></div>
+      </div>
+      <table style="width:100%;font-size:12px;border-collapse:collapse">
+        <thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)"><th style="text-align:left;padding:5px">学员</th><th>Inbox</th><th>未处理</th><th>状态</th></tr></thead>
+        <tbody>${msgs.stats.map(m=>`<tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px">${m.name}</td>
+          <td style="text-align:center">${m.inbox}</td>
+          <td style="text-align:center;color:${m.pending>20?'var(--red)':m.pending>10?'var(--accent)':'var(--green)'}">${m.pending}</td>
+          <td style="text-align:center"><span class="badge ${m.pending>20?'badge-red':m.pending>10?'badge-yellow':'badge-green'}">${m.pending>20?'积压严重':m.pending>10?'积压':'正常'}</span></td>
+        </tr>`).join('')}</tbody>
+      </table>
+    </div>`;
+}
+
+// ---- 4. Alerts (grouped, collapsible, resolved gray) ----
+let alertSoundEnabled=true;
+function toggleAlertSound(){
+  alertSoundEnabled=!alertSoundEnabled;
+  document.getElementById('alertSoundBtn').textContent=alertSoundEnabled?'🔔':'🔇';
+}
+let prevAlertCount=0;
+
+function renderAlerts(){
+  const alerts=apiData.alerts||[];
+  const criticals=alerts.filter(a=>a.level==='critical');
+  const warnings=alerts.filter(a=>a.level==='warning');
+  const infos=alerts.filter(a=>a.level==='info');
+
+  const curCount=alerts.length;
+  const badge=document.getElementById('alertCount');
+  if(badge){
+    badge.textContent=`${curCount} 条活跃`;
+    if(curCount!==prevAlertCount){
+      badge.classList.add('alert-badge-bounce');
+      setTimeout(()=>badge.classList.remove('alert-badge-bounce'),400);
+    }
+  }
+  prevAlertCount=curCount;
+
+  // Simulate some resolved alerts
+  const resolvedAlerts = [
+    {level:'warning',msg:'磁盘使用率恢复至 72%',time:'22:45'},
+    {level:'info',msg:'系统重启完成',time:'22:30'},
+  ];
+
+  function groupHTML(label,list,level,icon){
+    if(list.length===0) return '';
+    const gid='alertGroup_'+level;
+    return `<div class="alert-group">
+      <div class="alert-group-header ${level}" onclick="document.getElementById('${gid}').classList.toggle('hidden')">
+        <span>${icon}</span><span>${label} (${list.length})</span><span style="margin-left:auto;font-size:10px">▼</span>
+      </div>
+      <div class="alert-group-body" id="${gid}">${list.map(a=>`
+        <div class="alert-item ${a.level}"><span class="alert-time">${a.time}</span><span>${a.msg}</span></div>
+      `).join('')}</div>
+    </div>`;
+  }
+
+  function resolvedHTML(list){
+    return `<div style="margin-top:6px">
+      <div class="alert-group-header info" style="cursor:pointer" onclick="document.getElementById('alertGroup_resolved').classList.toggle('hidden')">
+        <span>✅</span><span>已恢复 (${list.length})</span><span style="margin-left:auto;font-size:10px">▼</span>
+      </div>
+      <div class="alert-group-body" id="alertGroup_resolved">${list.map(a=>`
+        <div class="alert-item ${a.level} resolved"><span class="alert-time">${a.time}</span><span>${a.msg}</span></div>
+      `).join('')}</div>
+    </div>`;
+  }
+
+  document.getElementById('alertPanel').innerHTML=`
+    <div class="panel-title">🚨 告警中心
+      <span style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:11px;color:var(--red)" id="alertCount">${alerts.length} 条活跃</span>
+        <button class="btn" id="alertSoundBtn" onclick="toggleAlertSound()" style="padding:2px 8px;font-size:12px" title="告警声音开关">🔔</button>
+      </span>
+    </div>
+    <div class="alert-list fade-in" id="alertList">
+      ${alerts.length===0?'<div style="text-align:center;padding:20px;color:var(--green)">✅ 无告警</div>':''}
+      ${groupHTML('严重',criticals,'critical','🔴')}
+      ${groupHTML('警告',warnings,'warning','🟡')}
+      ${groupHTML('信息',infos,'info','🔵')}
+      ${resolvedHTML(resolvedAlerts)}
+    </div>`;
+}
+
+// ---- 5. MQTT ----
+function renderMQTT(){
+  const mqtt=apiData.mqtt;
+  const badge=mqtt.running?'<span class="badge badge-green">✅ 运行中</span>':'<span class="badge badge-red">❌ 未运行</span>';
+  document.getElementById('mqttPanel').innerHTML=`
+    <div class="panel-title">📡 MQTT Broker 状态</div>
+    <div class="card fade-in">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <div><div style="font-size:14px;font-weight:600">${mqtt.version}</div><div style="font-size:11px;color:var(--dim);font-family:monospace">${mqtt.address}</div></div>
+        ${badge}
+      </div>
+      <div class="metric-row"><span class="metric-label">Topic 根命名空间</span><span class="metric-value" style="font-family:monospace;color:var(--cyan)">lobster/</span></div>
+      <div class="metric-row"><span class="metric-label">活跃连接数</span><span class="metric-value">${mqtt.connections}</span></div>
+      <div class="metric-row"><span class="metric-label">消息吞吐</span><span class="metric-value">~${mqtt.throughput_msg_min} msg/min</span></div>
+      <div class="metric-row"><span class="metric-label">端口开放</span><span class="metric-value" style="color:${mqtt.port_open?'var(--green)':'var(--red)'}">${mqtt.port_open?'✅ 1883':'❌ 关闭'}</span></div>
+      <div style="margin-top:8px"><div style="font-size:11px;color:var(--dim);margin-bottom:4px">Topic 结构</div>
+      ${mqtt.topics.map(t=>`<div><span class="mqtt-topic">${t}</span></div>`).join('')}</div>
+    </div>`;
+}
+
+// ---- 6. Git ----
+function renderGit(){
+  const git=apiData.git;
+  document.getElementById('gitPanel').innerHTML=`
+    <div class="panel-title">🔄 Git 同步 & 推送</div>
+    <div class="card fade-in">
+      ${git.last_commit?`
+      <div style="margin-bottom:10px">
+        <div style="font-size:12px;color:var(--dim);margin-bottom:4px">最近提交</div>
+        <div style="font-family:monospace;font-size:11px;color:var(--cyan);margin-bottom:2px">${git.last_commit.hash||git.last_commit}</div>
+        <div style="font-size:11px;color:var(--dim);display:flex;gap:12px;flex-wrap:wrap">
+          ${git.last_commit.author?`<span>👤 ${git.last_commit.author}</span>`:''}
+          ${git.last_commit.time?`<span>🕐 ${git.last_commit.time}</span>`:''}
+          ${git.last_commit.message?`<span>💬 ${git.last_commit.message}</span>`:''}
+        </div>
+      </div>`:''}
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="background:#0f172a;border-radius:8px;padding:10px">
+          <div style="font-size:12px;font-weight:600;margin-bottom:6px">🐙 GitHub</div>
+          <div style="font-size:11px;color:${git.github_status==='ok'?'var(--green)':'var(--red)'}">${git.github_status==='ok'?'✅ 推送成功':'❌ 推送失败'}</div>
+          ${git.github_last_push?`<div style="font-size:10px;color:var(--dim);margin-top:3px">上次: ${git.github_last_push}</div>`:''}
+        </div>
+        <div style="background:#0f172a;border-radius:8px;padding:10px">
+          <div style="font-size:12px;font-weight:600;margin-bottom:6px">🏮 Gitee</div>
+          <div style="font-size:11px;color:${git.gitee_status==='ok'?'var(--green)':'var(--red)'}">${git.gitee_status==='ok'?'✅ 推送成功':'❌ 推送失败'}</div>
+          ${git.gitee_last_push?`<div style="font-size:10px;color:var(--dim);margin-top:3px">上次: ${git.gitee_last_push}</div>`:''}
+        </div>
+      </div>
+      <div style="font-size:10px;color:var(--dim);margin-top:8px">本地路径: ${git.local_path||'/home/admin/lobster-network'}</div>
+    </div>`;
+}
+
+// ---- 7. Domains (horizontal bars, sorted) ----
+function renderDomains(){
+  const domains=[...(apiData.domains||[])];
+  domains.sort((a,b)=>b.pct-a.pct);
+  document.getElementById('domainPanel').innerHTML=`
+    <div class="panel-title">📚 学习栏目进度</div>
+    <div class="card fade-in">
+      ${domains.map(d=>`
+        <div class="domain-bar">
+          <div class="name"><span>${d.icon} ${d.name}</span><span style="font-weight:600;color:${d.pct>60?'var(--green)':d.pct>30?'var(--accent)':'var(--red)'}">${d.pct}%</span></div>
+          <div class="progress-bar" style="height:8px"><div class="progress-fill" style="width:${d.pct}%;background:${d.pct>60?'var(--green)':d.pct>30?'var(--accent)':'var(--red)'};${d.status==='active'?'animation:pulseActive 1.5s ease-in-out infinite':''}"></div></div>
+          <div style="font-size:10px;color:var(--dim);margin-top:2px">${d.file_count}文件 · ${d.latest_date} · <span class="badge ${d.status==='active'?'badge-green':'badge-blue'}">${d.status==='active'?'进行中':'就绪'}</span></div>
+        </div>
+      `).join('')}
+    </div>`;
+}
+
+// ---- 8. Infrastructure ----
+function renderInfra(){
+  const infra=apiData.infra||[];
+  document.getElementById('infraPanel').innerHTML=`
+    <div class="panel-title">🏗️ 基础设施组件</div>
+    <div class="card fade-in">
+      ${infra.map(i=>{
+        const color=i.status==='online'?'var(--green)':i.status==='warning'?'var(--accent)':'var(--red)';
+        return `<div class="metric-row">
+          <span class="metric-label"><span class="status-dot" style="width:8px;height:8px;border-radius:50%;background:${color};display:inline-block;margin-right:6px"></span>${i.name}</span>
+          <span class="metric-value" style="color:${color}">${i.status}${i.version?' · '+i.version:''}</span>
+        </div>`;
+      }).join('')}
+    </div>`;
+}
+
+// ---- 9. Log Stream ----
+const logPool=[
+  {level:'INFO',msg:'MQTT Broker 心跳正常',ts:''},
+  {level:'INFO',msg:'Git push to GitHub 成功',ts:''},
+  {level:'INFO',msg:'Git push to Gitee 成功',ts:''},
+  {level:'DEBUG',msg:'dashboard_collector.py 采集完成',ts:''},
+  {level:'INFO',msg:'节点 诸葛虾 在线，Ping 12ms',ts:''},
+  {level:'INFO',msg:'节点 小陈 在线，Ping 18ms',ts:''},
+  {level:'INFO',msg:'节点 qoder 在线，Ping 25ms',ts:''},
+  {level:'WARN',msg:'cc.py 内存使用率 78%，接近阈值',ts:''},
+  {level:'INFO',msg:'nginx 连接数正常 (42 active)',ts:''},
+  {level:'DEBUG',msg:'学习栏目扫描完成: 10/10',ts:''},
+  {level:'WARN',msg:'学员消息待处理队列: 24条',ts:''},
+  {level:'INFO',msg:'MySQL 连接池状态: OK',ts:''},
+  {level:'ERROR',msg:'节点 SSH 连接超时: 未被分配公网IP的节点',ts:''},
+  {level:'INFO',msg:'Redis 缓存命中率: 94.2%',ts:''},
+  {level:'DEBUG',msg:'定时任务 cron: dashboard_collect 执行',ts:''},
+  {level:'INFO',msg:'磁盘使用率 67%，正常范围内',ts:''},
+  {level:'WARN',msg:'系统负载 5min average: 2.1',ts:''},
+  {level:'INFO',msg:'SSL 证书有效期剩余: 87天',ts:''},
+  {level:'INFO',msg:'Docker 容器 healthcheck 全部通过',ts:''},
+];
+let logBuffer=[];
+
+function pushLog(){
+  const now=new Date();
+  const ts=now.toLocaleTimeString('zh-CN',{hour12:false});
+  const entry=logPool[Math.floor(Math.random()*logPool.length)];
+  logBuffer.push({...entry,ts});
+  if(logBuffer.length>20) logBuffer.shift();
+  const container=document.getElementById('logContainer');
+  if(container){
+    container.innerHTML=logBuffer.map(l=>`<div class="log-line ${l.level}"><span style="color:#64748b;margin-right:8px">${l.ts}</span>${l.msg}</div>`).join('');
+    container.scrollTop=container.scrollHeight;
+  }
+}
+
+function renderLogStream(){
+  document.getElementById('logPanel').innerHTML=`
+    <div class="panel-title">📋 实时日志流 <span style="font-size:11px;color:var(--dim)">最近 20 条</span></div>
+    <div class="log-container fade-in" id="logContainer"><div style="color:var(--dim);text-align:center;padding:20px">等待日志...</div></div>`;
+  // init with some logs
+  for(let i=0;i<8;i++) pushLog();
+}
+setInterval(pushLog,5000);
+
+// ---- Health Badge ----
+function updateHealthBadge(){
+  const alerts=apiData.alerts||[];
+  const critical=alerts.filter(a=>a.level==='critical').length;
+  const warning=alerts.filter(a=>a.level==='warning').length;
+  const badge=document.getElementById('healthStatus');
+  if(critical>0){badge.className='health-badge health-critical';badge.textContent=`🔴 ${critical} 严重`}
+  else if(warning>0){badge.className='health-badge health-warn';badge.textContent=`⚠️ ${warning} 警告`}
+  else{badge.className='health-badge health-ok';badge.textContent='✅ 正常'}
+}
+
+// ---- Init ----
+buildSkeleton();
+scheduleRefresh();
+fetchData();
+updateClock();
+</script>
+</body>
+</html>

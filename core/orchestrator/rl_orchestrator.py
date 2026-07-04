@@ -619,12 +619,50 @@ class RLOrchestrator:
         return result
 
     def _estimate_urgency(self, dag: TaskDAG) -> float:
-        """估算任务紧急度（0-1）"""
-        pending = sum(1 for t in dag.subtasks.values() if t.status == TaskStatus.PENDING)
+        """
+        估算任务紧急度（0-1），基于三个维度的加权计算：
+        1. 未完成率：pending 子任务占比（权重 0.3）
+        2. 优先级：最高优先级的归一化贡献（权重 0.3）
+        3. 截止时间压力：最近截止时间距离现在的紧迫程度（权重 0.4）
+        """
         total = len(dag.subtasks)
         if total == 0:
             return 0.0
-        return pending / total
+
+        # 维度 1: 未完成率
+        pending = sum(1 for t in dag.subtasks.values() if t.status == TaskStatus.PENDING)
+        incomplete_ratio = pending / total
+
+        # 维度 2: 优先级紧急度（取最高优先级归一化，5 为最高）
+        max_priority = max((t.priority for t in dag.subtasks.values()), default=1)
+        priority_urgency = max_priority / 5.0
+
+        # 维度 3: 截止时间压力（无截止时间则返回 0）
+        # 遍历 RUNNING/PENDING 子任务，取最早截止时间；无 deadline 信息时默认 0
+        now_ts = datetime.now().timestamp()
+        earliest_deadline = None
+        for t in dag.subtasks.values():
+            if t.status in (TaskStatus.PENDING, TaskStatus.RUNNING):
+                # deadline 不在 SubTask 字段中，通过 result 字段可能携带
+                # 此处做防御性检查，若未来扩展 deadline 字段可直接生效
+                dl = getattr(t, 'deadline', None)
+                if dl:
+                    dl_ts = dl.timestamp() if isinstance(dl, datetime) else float(dl)
+                    if earliest_deadline is None or dl_ts < earliest_deadline:
+                        earliest_deadline = dl_ts
+
+        if earliest_deadline and earliest_deadline > now_ts:
+            remaining = earliest_deadline - now_ts
+            # 24h 内截止为最高紧急度 1.0，超过 7 天趋近于 0
+            deadline_urgency = max(0.0, 1.0 - (remaining / (7 * 86400)))
+        elif earliest_deadline and earliest_deadline <= now_ts:
+            deadline_urgency = 1.0  # 已超期
+        else:
+            deadline_urgency = 0.0
+
+        # 加权综合
+        urgency = 0.3 * incomplete_ratio + 0.3 * priority_urgency + 0.4 * deadline_urgency
+        return min(1.0, max(0.0, urgency))
 
     def update_reward(self, state: str, action: int, completion_time_s: float, quality: float, cost: float, next_state: str):
         """更新 Q-table（任务完成后调用）"""

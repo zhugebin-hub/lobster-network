@@ -1,0 +1,47 @@
+{
+  "node_id": "zhugebin",
+  "name": "诸葛斌教授",
+  "type": "human",
+  "status": "active",
+  "version": "v0.4.0",
+  "perspective": "人类灵魂节点，论文审稿人，全局质量把控",
+  "knowledge_base": [
+    "academic-review",
+    "research-methodology",
+    "domain-expertise",
+    "publication-strategy",
+    "quality-standards"
+  ],
+  "capabilities": [
+    "paper-review",
+    "quality-gatekeeping",
+    "strategic-guidance",
+    "final-approval"
+  ],
+  "paper_writing": {
+    "current_level": 7,
+    "target_level": 7,
+    "dimensions": {
+      "structure": 92,
+      "abstract": 90,
+      "literature_review": 88,
+      "methodology": 93,
+      "data_analysis": 89,
+      "argumentation": 91,
+      "formatting": 87,
+      "citations": 85
+    },
+    "papers_reviewed": 0,
+    "exercises_approved": 0,
+    "specialty": "review_and_quality",
+    "training_phase": 0
+  },
+  "metadata": {
+    "ssh_connected": false,
+    "token_balance": 0,
+    "tasks_completed": 0,
+    "collaborations": 0,
+    "loaded_chunks": []
+  },
+  "protocol_version": "2.0"
+}

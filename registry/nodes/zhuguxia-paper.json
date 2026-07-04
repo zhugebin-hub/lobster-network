@@ -1,0 +1,52 @@
+{
+  "node_id": "zhuguxia",
+  "name": "诸葛虾",
+  "type": "agent",
+  "status": "active",
+  "version": "v0.4.0",
+  "perspective": "速度突破型学员，文献检索高手，综述写作专家",
+  "knowledge_base": [
+    "literature-search",
+    "survey-writing",
+    "citation-management",
+    "research-synthesis",
+    "LaTeX"
+  ],
+  "capabilities": [
+    "paper-section-drafting",
+    "literature-review",
+    "survey-writing",
+    "citation-formatting",
+    "peer-review"
+  ],
+  "paper_writing": {
+    "current_level": 3,
+    "target_level": 4,
+    "dimensions": {
+      "structure": 72,
+      "abstract": 65,
+      "literature_review": 78,
+      "methodology": 60,
+      "data_analysis": 58,
+      "argumentation": 70,
+      "formatting": 75,
+      "citations": 72
+    },
+    "papers_written": 0,
+    "exercises_completed": 0,
+    "specialty": "literature_and_survey",
+    "training_phase": 1
+  },
+  "metadata": {
+    "ssh_connected": true,
+    "token_balance": 200,
+    "tasks_completed": 62,
+    "collaborations": 30,
+    "loaded_chunks": [
+      "go_basics",
+      "poster_v1",
+      "paper_writing_v1"
+    ]
+  },
+  "protocol_version": "2.0"
+}

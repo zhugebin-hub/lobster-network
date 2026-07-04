@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小龙虾网络 · 学习仪表盘 V2</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--dim:#64748b;
+    --accent:#fbbf24;--green:#22c55e;--red:#ef4444;--blue:#3b82f6;
+    --purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--pink:#ec4899;
+    --xiaochen:#3b82f6;--zhuguxia:#22c55e;--qoder:#a855f7;
+  }
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+  /* Header */
+  .header{background:linear-gradient(135deg,#111827 0%,#1e1b4b 100%);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+  .header h1{font-size:20px;color:var(--accent)}
+  .header-actions{display:flex;gap:8px;align-items:center}
+  .btn{padding:6px 14px;border-radius:8px;font-size:12px;border:1px solid var(--border);background:#0f172a;color:var(--text);cursor:pointer;transition:all .2s}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.active{background:rgba(251,191,36,.15);border-color:var(--accent);color:var(--accent)}
+  /* Student banner */
+  .student-banner{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:14px 24px}
+  .student-banner-card{background:var(--card);border:2px solid var(--border);border-radius:14px;padding:14px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .3s;position:relative}
+  .student-banner-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+  .student-banner-card.active{border-color:var(--accent);box-shadow:0 0 20px rgba(251,191,36,.15)}
+  .student-avatar{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;flex-shrink:0}
+  .student-info{flex:1;min-width:0}
+  .student-info .name{font-size:15px;font-weight:700}
+  .student-info .meta{font-size:11px;color:var(--dim);margin-top:2px}
+  .student-ring{width:52px;height:52px;flex-shrink:0;position:relative}
+  .student-ring svg{transform:rotate(-90deg)}
+  .student-ring .pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+  /* Layout */
+  .layout{display:grid;grid-template-columns:280px 1fr;gap:0;min-height:calc(100vh - 120px)}
+  .sidebar{background:var(--card);border-right:1px solid var(--border);padding:14px;overflow-y:auto}
+  .main{padding:14px 20px;overflow-y:auto}
+  .section{margin-bottom:18px}
+  .section-title{font-size:13px;font-weight:600;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px;transition:all .2s}
+  .card:hover{border-color:rgba(251,191,36,.2)}
+  /* Badge */
+  .badge{padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600}
+  .badge-green{background:rgba(34,197,94,.15);color:var(--green)}
+  .badge-red{background:rgba(239,68,68,.15);color:var(--red)}
+  .badge-yellow{background:rgba(251,191,36,.15);color:var(--accent)}
+  .badge-blue{background:rgba(59,130,246,.15);color:var(--blue)}
+  .badge-purple{background:rgba(168,85,247,.15);color:var(--purple)}
+  .badge-orange{background:rgba(249,115,22,.15);color:var(--orange)}
+  /* Domain table */
+  .domain-table{width:100%;border-collapse:collapse;font-size:12px}
+  .domain-table th{background:#0f172a;padding:8px 10px;text-align:left;color:var(--dim);border-bottom:1px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap}
+  .domain-table th:hover{color:var(--accent)}
+  .domain-table td{padding:7px 10px;border-bottom:1px solid var(--border);font-size:12px}
+  .domain-table tr:hover{background:rgba(251,191,36,.03)}
+  .domain-table .sort-arrow{font-size:10px;margin-left:2px}
+  .domain-detail{display:none;background:#0a0e17;padding:10px;font-size:11px;color:var(--dim)}
+  .domain-detail.open{display:table-row}
+  .domain-detail td{padding:8px 10px}
+  /* Progress bar */
+  .progress-bar{height:6px;background:#1e293b;border-radius:3px;overflow:hidden}
+  .progress-fill{height:100%;border-radius:3px;transition:width 1s ease}
+  /* Timeline */
+  .timeline{position:relative;padding-left:20px}
+  .timeline::before{content:'';position:absolute;left:8px;top:4px;bottom:4px;width:2px;background:var(--border)}
+  .tl-item{position:relative;margin-bottom:14px;padding-left:18px}
+  .tl-item::before{content:'';position:absolute;left:-16px;top:6px;width:10px;height:10px;border-radius:50%;border:2px solid var(--accent);background:var(--bg)}
+  .tl-item.puzzle::before{border-color:var(--blue);background:var(--blue)}
+  .tl-item.game::before{border-color:var(--green);background:var(--green)}
+  .tl-item.review::before{border-color:var(--purple);background:var(--purple)}
+  .tl-item.submit::before{border-color:var(--orange);background:var(--orange)}
+  .tl-time{font-size:10px;color:var(--dim)}
+  .tl-content{font-size:12px;margin-top:1px}
+  .tl-content .student-tag{padding:1px 6px;border-radius:4px;font-size:10px;margin-right:4px;font-weight:600}
+  /* Tag cloud */
+  .tag-cloud{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-size:11px;padding:4px 10px;border-radius:6px}
+  .tag.strength{background:rgba(34,197,94,.08);color:var(--green);border:1px solid rgba(34,197,94,.2)}
+  .tag.weakness{background:rgba(239,68,68,.08);color:var(--red);border:1px solid rgba(239,68,68,.2)}
+  /* Stats grid */
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+  .stat-box{background:#0f172a;border-radius:8px;padding:10px;text-align:center}
+  .stat-box .num{font-size:18px;font-weight:700}
+  .stat-box .txt{font-size:10px;color:var(--dim);margin-top:2px}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .update-time{font-size:11px;color:var(--dim);text-align:right;padding:8px 16px}
+  @media(max-width:1100px){.layout{grid-template-columns:1fr}.student-banner{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}}
+  .loading{text-align:center;padding:30px;color:var(--dim)}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🦞 小龙虾网络 · 学习仪表盘 V2</h1>
+  <div class="header-actions">
+    <button class="btn" onclick="fetchData()">↻ 刷新数据</button>
+  </div>
+</div>
+
+<!-- Student banner -->
+<div class="student-banner" id="studentBanner"></div>
+
+<div class="layout">
+  <div class="sidebar">
+    <div class="section">
+      <div class="section-title">📊 能力雷达图</div>
+      <div class="card" style="padding:10px">
+        <canvas id="radarCanvas" width="260" height="260" style="display:block;margin:0 auto"></canvas>
+        <div style="display:flex;justify-content:center;gap:12px;margin-top:8px;font-size:10px">
+          <span style="color:var(--xiaochen)">● 小陈</span>
+          <span style="color:var(--zhuguxia)">● 诸葛虾</span>
+          <span style="color:var(--qoder)">● qoder</span>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">📈 正确率趋势 (7天)</div>
+      <div class="card" style="padding:10px">
+        <canvas id="trendCanvas" width="260" height="180" style="display:block;margin:0 auto"></canvas>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">⏱ 学习时间线</div>
+      <div class="card" style="padding:10px;max-height:300px;overflow-y:auto" id="timelineCard">
+        <div class="loading">加载中...</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="section">
+      <div class="section-title">📚 学习栏目进度</div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="domain-table" id="domainTable">
+          <thead>
+            <tr>
+              <th onclick="sortDomains('name')">栏目 <span class="sort-arrow"></span></th>
+              <th onclick="sortDomains('pct')">进度 ▼<span class="sort-arrow"></span></th>
+              <th onclick="sortDomains('activity')">最近活动<span class="sort-arrow"></span></th>
+              <th onclick="sortDomains('commits')">提交数<span class="sort-arrow"></span></th>
+              <th>状态</th>
+            </tr>
+          </thead>
+          <tbody id="domainTbody"><tr><td colspan="5" style="text-align:center;padding:20px;color:var(--dim)">加载中...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section" id="studentDetail">
+      <div class="section-title">🎯 学员详情</div>
+      <div class="loading">请选择学员</div>
+    </div>
+  </div>
+</div>
+
+<div class="update-time" id="updateTime">正在连接 API...</div>
+
+<script>
+// ---- Student data ----
+const STUDENTS = {
+  xiaochen:{
+    id:'xiaochen',name:'小陈',fullName:'小陈 · 信电大虾',color:'#3b82f6',
+    type:'稳健型',level:'30级',phase:'Phase 2',week:5,day:28,
+    strengths:['死活基础','手筋基础','官子基础'],weaknesses:['定式变化','终盘计算'],
+    abilities:{calc:0.65,judge:0.60,layout:0.55,defense:0.70,memory:0.75},
+    commits:42,games:15,wins:9,recentOpponent:'诸葛虾'
+  },
+  zhuguxia:{
+    id:'zhuguxia',name:'诸葛虾',fullName:'诸葛虾',color:'#22c55e',
+    type:'加速型',level:'初段',phase:'Phase 2',week:5,day:28,
+    strengths:['计算速度','手筋应用','中盘战斗'],weaknesses:['布局理论','官子精度'],
+    abilities:{calc:0.70,judge:0.75,layout:0.65,defense:0.80,memory:0.80},
+    commits:56,games:22,wins:16,recentOpponent:'qoder'
+  },
+  qoder:{
+    id:'qoder',name:'qoder',fullName:'qoder · 实战工程师',color:'#a855f7',
+    type:'实战型',level:'1级',phase:'Phase 2',week:5,day:22,
+    strengths:['实战对局','中盘战斗','代码能力'],weaknesses:['定式记忆','布局理论'],
+    abilities:{calc:0.60,judge:0.70,layout:0.65,defense:0.80,memory:0.70},
+    commits:38,games:18,wins:10,recentOpponent:'小陈'
+  }
+};
+
+// Domains enriched
+let domainData = [];
+let domainSortKey = 'pct';
+let domainSortAsc = false;
+
+// Timeline
+const timelineData = [
+  {time:'2 小时前',student:'xiaochen',domain:'通用逻辑',type:'puzzle',desc:'完成 3 道逻辑推理题'},
+  {time:'4 小时前',student:'zhuguxia',domain:'围棋训练',type:'game',desc:'与 qoder 对局（中盘胜）'},
+  {time:'5 小时前',student:'qoder',domain:'网络安全',type:'submit',desc:'提交 problem_generator.py'},
+  {time:'8 小时前',student:'zhuguxia',domain:'AI/ML',type:'puzzle',desc:'完成 5 道机器学习题'},
+  {time:'12 小时前',student:'xiaochen',domain:'数据结构',type:'review',desc:'复盘昨日对局录像'},
+  {time:'18 小时前',student:'qoder',domain:'网络协议',type:'game',desc:'与小陈对局（2目负）'},
+  {time:'1 天前',student:'zhuguxia',domain:'通用逻辑',type:'submit',desc:'提交解题代码 7 文件'},
+  {time:'1 天前',student:'xiaochen',domain:'海报设计',type:'puzzle',desc:'完成构图练习题'},
+  {time:'2 天前',student:'qoder',domain:'炒股学习',type:'review',desc:'分析交易记录'},
+  {time:'2 天前',student:'zhuguxia',domain:'数据通讯',type:'game',desc:'与 AI 对局训练'},
+];
+
+// Accuracy trend (simulated)
+const trendDays = ['6/29','6/30','7/1','7/2','7/3','7/4','7/5'];
+const accuracyData = {
+  xiaochen: [62,58,65,70,68,72,65],
+  zhuguxia: [75,78,72,80,82,85,78],
+  qoder: [55,60,58,62,65,60,63]
+};
+
+// Wrong problems
+const wrongProblems = {
+  xiaochen: [
+    {domain:'围棋训练',problem:'官子计算 #42',date:'07/03'},
+    {domain:'围棋训练',problem:'复杂定式 #17',date:'07/02'},
+    {domain:'通用逻辑',problem:'三段论推理 #8',date:'07/01'},
+  ],
+  zhuguxia: [
+    {domain:'AI/ML',problem:'梯度下降推导',date:'07/04'},
+    {domain:'网络协议',problem:'TCP拥塞控制 #5',date:'07/02'},
+    {domain:'数据结构',problem:'红黑树删除 #3',date:'06/30'},
+  ],
+  qoder: [
+    {domain:'网络安全',problem:'SQL注入绕过 #11',date:'07/03'},
+    {domain:'通用逻辑',problem:'概率推理 #15',date:'07/02'},
+    {domain:'海报设计',problem:'色彩搭配 #6',date:'06/29'},
+  ]
+};
+
+let currentStudent = 'xiaochen';
+let apiData = null;
+
+// ---- Fetch API ----
+async function fetchData(){
+  try{
+    const res = await fetch('/api/status');
+    apiData = await res.json();
+    buildDomainData();
+    renderAll();
+    document.getElementById('updateTime').textContent =
+      `最后更新：${new Date(apiData.timestamp).toLocaleString('zh-CN')} | dashboard_collector.py`;
+  }catch(e){
+    document.getElementById('updateTime').textContent = '⚠️ API 连接失败: ' + e.message;
+    buildDomainData(); // fallback with defaults
+    renderAll();
+  }
+}
+
+function buildDomainData(){
+  const apiDomains = apiData?.domains || [
+    {name:'围棋训练',icon:'⚫',pct:40,status:'ready',file_count:4,latest_date:'06/30',latest_file:'trainers'},
+    {name:'AI/ML',icon:'🤖',pct:50,status:'ready',file_count:3,latest_date:'06/28',latest_file:'problems'},
+    {name:'网络安全',icon:'🔒',pct:50,status:'ready',file_count:3,latest_date:'06/28',latest_file:'problem_generator.py'},
+    {name:'数据结构',icon:'📊',pct:50,status:'ready',file_count:3,latest_date:'06/28',latest_file:'problem_generator.py'},
+    {name:'网络协议',icon:'🌐',pct:40,status:'ready',file_count:7,latest_date:'06/28',latest_file:'problems'},
+    {name:'海报设计',icon:'🎨',pct:40,status:'ready',file_count:2,latest_date:'06/28',latest_file:'problem_generator.py'},
+    {name:'通用逻辑',icon:'🧠',pct:55,status:'active',file_count:16,latest_date:'06/28',latest_file:'problems'},
+    {name:'炒股学习',icon:'📈',pct:50,status:'ready',file_count:6,latest_date:'06/28',latest_file:'problems'},
+    {name:'数据通讯',icon:'📡',pct:45,status:'ready',file_count:4,latest_date:'06/28',latest_file:'dashboard_collector.py'},
+    {name:'围甲记谱',icon:'📝',pct:35,status:'ready',file_count:3,latest_date:'06/25',latest_file:'game_records'},
+  ];
+  domainData = apiDomains.map((d,i) => ({
+    ...d,
+    activity: ['2小时前','4小时前','8小时前','12小时前','1天前','1天前','2天前','3天前','5天前','6天前'][i],
+    commits: [42,56,38,28,35,18,47,22,19,14][i],
+    recentFiles: d.latest_file ? [d.latest_file, 'solution.py', 'notes.md'].slice(0,2) : ['暂无提交']
+  }));
+}
+
+// ---- Render All ----
+function renderAll(){
+  renderBanner();
+  renderDomainTable();
+  renderRadar();
+  renderTrend();
+  renderTimeline();
+  renderStudentDetail();
+}
+
+// ---- Banner ----
+function renderBanner(){
+  document.getElementById('studentBanner').innerHTML = Object.values(STUDENTS).map(s => {
+    const overall = Object.values(s.abilities).reduce((a,b)=>a+b,0)/5;
+    const pct = Math.round(overall*100);
+    const color = s.color;
+    const active = s.id===currentStudent;
+    const isActive = apiData?.training?.[s.id]?.active ?? (s.id!=='xiaochen');
+
+    return `<div class="student-banner-card${active?' active':''}" onclick="selectStudent('${s.id}')" style="border-left:3px solid ${color}">
+      <div class="student-avatar" style="background:${color}22;color:${color}">${s.name[0]}</div>
+      <div class="student-info">
+        <div class="name" style="color:${color}">${s.fullName}</div>
+        <div class="meta">${s.type} · ${s.level} · ${s.phase} W${s.week}</div>
+        <div class="meta">
+          <span class="badge ${isActive?'badge-green':'badge-red'}">${isActive?'活跃':'停滞'}</span>
+          ${apiData?.training?.[s.id]?.hours_ago!==undefined?`<span style="margin-left:6px">${apiData.training[s.id].hours_ago}h前提交</span>`:''}
+        </div>
+      </div>
+      <div class="student-ring">
+        <svg width="52" height="52" viewBox="0 0 52 52">
+          <circle cx="26" cy="26" r="22" fill="none" stroke="#1e293b" stroke-width="4"/>
+          <circle cx="26" cy="26" r="22" fill="none" stroke="${color}" stroke-width="4"
+            stroke-dasharray="${2*Math.PI*22*pct/100} ${2*Math.PI*22}" stroke-linecap="round"/>
+        </svg>
+        <div class="pct" style="color:${color}">${pct}%</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function selectStudent(id){
+  currentStudent = id;
+  renderAll();
+}
+
+// ---- Domain Table ----
+function renderDomainTable(){
+  const sorted = [...domainData].sort((a,b) => {
+    let va = a[domainSortKey], vb = b[domainSortKey];
+    if(typeof va==='string') va=va.toLowerCase(),vb=vb.toLowerCase();
+    return domainSortAsc ? (va>vb?1:-1) : (va<vb?1:-1);
+  });
+  const tbody = document.getElementById('domainTbody');
+  tbody.innerHTML = sorted.map(d => `
+    <tr onclick="toggleDomainDetail(this,'${d.name}')" style="cursor:pointer">
+      <td>${d.icon||''} ${d.name}</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:6px">
+          <div class="progress-bar" style="flex:1;height:6px">
+            <div class="progress-fill" style="width:${d.pct}%;background:${d.pct>60?'var(--green)':d.pct>30?'var(--accent)':'var(--red)'}"></div>
+          </div>
+          <span style="font-size:11px;font-weight:600;color:${d.pct>60?'var(--green)':d.pct>30?'var(--accent)':'var(--red)'}">${d.pct}%</span>
+        </div>
+      </td>
+      <td style="color:var(--dim);font-size:11px">${d.activity||'-'}</td>
+      <td style="color:var(--cyan);font-weight:600">${d.commits||0}</td>
+      <td><span class="badge ${d.status==='active'?'badge-green':'badge-blue'}">${d.status==='active'?'进行中':'就绪'}</span></td>
+    </tr>
+    <tr class="domain-detail" id="detail_${d.name.replace(/\s/g,'')}">
+      <td colspan="5">
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <div><strong>路径:</strong> <code style="color:var(--cyan);font-size:11px">${d.path||'/'}</code></div>
+          <div><strong>文件数:</strong> ${d.file_count||0}</div>
+          <div><strong>最近:</strong> ${d.latest_date||'-'} / ${d.latest_file||'-'}</div>
+          <div><strong>最近提交:</strong> ${(d.recentFiles||[]).join(', ')}</div>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function toggleDomainDetail(tr,name){
+  const detail = document.getElementById('detail_'+name.replace(/\s/g,''));
+  if(detail) detail.classList.toggle('open');
+}
+
+function sortDomains(key){
+  if(domainSortKey===key) domainSortAsc=!domainSortAsc;
+  else {domainSortKey=key;domainSortAsc=false;}
+  renderDomainTable();
+}
+
+// ---- Radar ----
+function renderRadar(){
+  const canvas = document.getElementById('radarCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const w=canvas.width, h=canvas.height;
+  const cx=w/2, cy=h/2, r=100;
+  ctx.clearRect(0,0,w,h);
+
+  const labels=['计算力','判断力','布局力','防守力','记忆力'];
+  const keys=['calc','judge','layout','defense','memory'];
+  const n=labels.length;
+
+  // Grid
+  for(let level=1;level<=5;level++){
+    ctx.beginPath();
+    for(let i=0;i<n;i++){
+      const angle=Math.PI*2*i/n - Math.PI/2;
+      const x=cx+Math.cos(angle)*r*level/5;
+      const y=cy+Math.sin(angle)*r*level/5;
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle='#1e293b';
+    ctx.lineWidth=1;
+    ctx.stroke();
+  }
+
+  // Axes
+  for(let i=0;i<n;i++){
+    const angle=Math.PI*2*i/n - Math.PI/2;
+    ctx.beginPath();
+    ctx.moveTo(cx,cy);
+    ctx.lineTo(cx+Math.cos(angle)*r, cy+Math.sin(angle)*r);
+    ctx.strokeStyle='#1e293b';
+    ctx.stroke();
+    // Label
+    const lx=cx+Math.cos(angle)*(r+22), ly=cy+Math.sin(angle)*(r+22);
+    ctx.fillStyle='#94a3b8';
+    ctx.font='11px system-ui';
+    ctx.textAlign='center';
+    ctx.textBaseline='middle';
+    ctx.fillText(labels[i],lx,ly);
+  }
+
+  // Draw each student
+  const colors = {xiaochen:'#3b82f6',zhuguxia:'#22c55e',qoder:'#a855f7'};
+  Object.entries(STUDENTS).forEach(([id,s])=>{
+    const alpha = id===currentStudent?0.35:0.1;
+    ctx.beginPath();
+    keys.forEach((k,i)=>{
+      const angle=Math.PI*2*i/n - Math.PI/2;
+      const v=s.abilities[k];
+      const x=cx+Math.cos(angle)*r*v;
+      const y=cy+Math.sin(angle)*r*v;
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    });
+    ctx.closePath();
+    ctx.fillStyle=colors[id]+Math.round(alpha*255).toString(16).padStart(2,'0');
+    ctx.fill();
+    ctx.strokeStyle=colors[id];
+    ctx.lineWidth=id===currentStudent?2.5:1;
+    ctx.stroke();
+
+    // Dots for selected
+    if(id===currentStudent){
+      keys.forEach((k,i)=>{
+        const angle=Math.PI*2*i/n - Math.PI/2;
+        const v=s.abilities[k];
+        const x=cx+Math.cos(angle)*r*v;
+        const y=cy+Math.sin(angle)*r*v;
+        ctx.beginPath();
+        ctx.arc(x,y,4,0,Math.PI*2);
+        ctx.fillStyle=colors[id];
+        ctx.fill();
+        // value label
+        ctx.fillStyle='#e2e8f0';
+        ctx.font='10px system-ui';
+        ctx.fillText(Math.round(v*100)+'%',x,y-12);
+      });
+    }
+  });
+}
+
+// ---- Trend ----
+function renderTrend(){
+  const canvas=document.getElementById('trendCanvas');
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  const w=canvas.width,h=canvas.height;
+  ctx.clearRect(0,0,w,h);
+
+  const colors={xiaochen:'#3b82f6',zhuguxia:'#22c55e',qoder:'#a855f7'};
+  const pad={top:20,right:20,bottom:30,left:35};
+  const pw=w-pad.left-pad.right, ph=h-pad.top-pad.bottom;
+
+  // Grid
+  ctx.strokeStyle='#1e293b';
+  ctx.lineWidth=0.5;
+  for(let i=0;i<=4;i++){
+    const y=pad.top+ph*i/4;
+    ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(w-pad.right,y);ctx.stroke();
+    ctx.fillStyle='#64748b';ctx.font='9px system-ui';ctx.textAlign='right';
+    ctx.fillText((100-i*25)+'%',pad.left-6,y+3);
+  }
+  // X labels
+  trendDays.forEach((d,i)=>{
+    const x=pad.left+pw*i/(trendDays.length-1);
+    ctx.fillStyle='#64748b';ctx.font='9px system-ui';ctx.textAlign='center';
+    ctx.fillText(d,x,h-pad.bottom+16);
+  });
+
+  // Lines
+  Object.entries(accuracyData).forEach(([id,vals])=>{
+    const alpha=id===currentStudent?1:0.25;
+    ctx.beginPath();
+    ctx.strokeStyle=colors[id];
+    ctx.lineWidth=id===currentStudent?2:1;
+    ctx.globalAlpha=alpha;
+    vals.forEach((v,i)=>{
+      const x=pad.left+pw*i/(vals.length-1);
+      const y=pad.top+ph*(1-v/100);
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    });
+    ctx.stroke();
+    // Dots
+    vals.forEach((v,i)=>{
+      const x=pad.left+pw*i/(vals.length-1);
+      const y=pad.top+ph*(1-v/100);
+      ctx.beginPath();
+      ctx.arc(x,y,id===currentStudent?3:2,0,Math.PI*2);
+      ctx.fillStyle=colors[id];
+      ctx.fill();
+    });
+    ctx.globalAlpha=1;
+  });
+
+  // Legend
+  const legendY=h-8;
+  Object.entries(colors).forEach(([id,c],i)=>{
+    ctx.fillStyle=c;
+    ctx.fillRect(pad.left+i*70,legendY,10,10);
+    ctx.fillStyle='#94a3b8';
+    ctx.font='10px system-ui';
+    ctx.textAlign='left';
+    ctx.fillText(STUDENTS[id].name,pad.left+i*70+14,legendY+9);
+  });
+}
+
+// ---- Timeline ----
+function renderTimeline(){
+  const filtered = timelineData.filter(t => t.student === currentStudent);
+  if(filtered.length===0){
+    document.getElementById('timelineCard').innerHTML = '<div style="text-align:center;padding:20px;color:var(--dim)">暂无活动记录</div>';
+    return;
+  }
+  const icons = {puzzle:'🧩',game:'🎮',review:'🔍',submit:'📤'};
+  document.getElementById('timelineCard').innerHTML = `<div class="timeline">${filtered.map(t=>`
+    <div class="tl-item ${t.type}">
+      <div class="tl-time">${t.time}</div>
+      <div class="tl-content">
+        ${icons[t.type]||''} <span class="student-tag" style="background:${STUDENTS[currentStudent].color}22;color:${STUDENTS[currentStudent].color}">${STUDENTS[currentStudent].name}</span>
+        ${t.domain} · ${t.desc}
+      </div>
+    </div>
+  `).join('')}</div>`;
+}
+
+// ---- Student Detail ----
+function renderStudentDetail(){
+  const s = STUDENTS[currentStudent];
+  const t = apiData?.training?.[currentStudent];
+  const container = document.getElementById('studentDetail');
+  const isActive = t?.active ?? (currentStudent!=='xiaochen');
+
+  container.innerHTML = `
+    <div class="two-col">
+      <!-- Left: detail card -->
+      <div class="card" style="border-left:3px solid ${s.color}">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div style="font-size:15px;font-weight:700;color:${s.color}">${s.fullName}</div>
+          <div style="display:flex;gap:6px">
+            <span class="badge badge-${s.type==='加速型'?'green':s.type==='稳健型'?'blue':'purple'}">${s.type}</span>
+            <span class="badge badge-yellow">${s.level}</span>
+            <span class="badge ${isActive?'badge-green':'badge-red'}">${isActive?'活跃':'停滞'}</span>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-box"><div class="num" style="color:${s.color}">${s.commits}</div><div class="txt">提交文件</div></div>
+          <div class="stat-box"><div class="num" style="color:var(--green)">${s.games}</div><div class="txt">对局数</div></div>
+          <div class="stat-box"><div class="num" style="color:var(--accent)">${Math.round(s.wins/s.games*100)}%</div><div class="txt">胜率</div></div>
+        </div>
+        <div style="font-size:12px;color:var(--dim);margin-top:8px">${s.phase} · Week ${s.week} · Day ${s.day} · 最近对手: ${s.recentOpponent}</div>
+
+        <!-- Wrong problems -->
+        <div style="margin-top:14px">
+          <div style="font-size:12px;font-weight:600;color:var(--red);margin-bottom:6px">📛 最近错题</div>
+          ${(wrongProblems[currentStudent]||[]).map(w=>`
+            <div style="display:flex;justify-content:space-between;padding:4px 8px;background:rgba(239,68,68,.06);border-radius:6px;margin-bottom:4px;font-size:11px">
+              <span style="color:var(--text)">${w.problem}</span>
+              <span style="color:var(--dim)">${w.domain} · ${w.date}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Right: tags + abilities -->
+      <div>
+        <div class="card">
+          <div style="font-size:12px;font-weight:600;color:var(--accent);margin-bottom:8px">💪 优势与劣势</div>
+          <div class="tag-cloud">
+            ${s.strengths.map(t=>`<span class="tag strength">✅ ${t}</span>`).join('')}
+            ${s.weaknesses.map(t=>`<span class="tag weakness">⚠️ ${t}</span>`).join('')}
+          </div>
+        </div>
+        <div class="card">
+          <div style="font-size:12px;font-weight:600;color:var(--accent);margin-bottom:8px">🎯 五维能力</div>
+          ${[['计算力','calc'],['判断力','judge'],['布局力','layout'],['防守力','defense'],['记忆力','memory']].map(([label,key])=>{
+            const v=s.abilities[key];
+            return `<div style="margin-bottom:8px">
+              <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span>${label}</span><span style="font-weight:600;color:${v>0.7?'var(--green)':v>0.5?'var(--accent)':'var(--red)'}">${Math.round(v*100)}%</span></div>
+              <div class="progress-bar" style="height:7px"><div class="progress-fill" style="width:${v*100}%;background:${v>0.7?'var(--green)':v>0.5?'var(--accent)':'var(--red)'}"></div></div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ---- Init ----
+buildDomainData();
+fetchData();
+</script>
+</body>
+</html>

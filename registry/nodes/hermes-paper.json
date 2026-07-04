@@ -1,0 +1,46 @@
+{
+  "node_id": "hermes",
+  "name": "诸葛马 (Hermes)",
+  "type": "coach",
+  "status": "inactive",
+  "version": "v0.4.0",
+  "perspective": "论文撰写教练，制定训练策略，协调多学员协同",
+  "knowledge_base": [
+    "paper-coaching",
+    "training-strategy",
+    "quality-assessment",
+    "cross-domain-pedagogy"
+  ],
+  "capabilities": [
+    "paper-coaching",
+    "strategy-planning",
+    "quality-assessment",
+    "cross-domain-transfer"
+  ],
+  "paper_writing": {
+    "current_level": 6,
+    "target_level": 7,
+    "dimensions": {
+      "structure": 88,
+      "abstract": 85,
+      "literature_review": 82,
+      "methodology": 86,
+      "data_analysis": 80,
+      "argumentation": 87,
+      "formatting": 84,
+      "citations": 83
+    },
+    "papers_coached": 0,
+    "exercises_designed": 0,
+    "specialty": "coaching_and_strategy",
+    "training_phase": 0
+  },
+  "metadata": {
+    "ssh_connected": false,
+    "token_balance": 0,
+    "tasks_completed": 0,
+    "collaborations": 0,
+    "loaded_chunks": []
+  },
+  "protocol_version": "2.0"
+}

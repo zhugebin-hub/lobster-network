@@ -1,0 +1,52 @@
+{
+  "node_id": "qoder",
+  "name": "小龙虾 (QoderWork)",
+  "type": "agent",
+  "status": "active",
+  "version": "v0.4.0",
+  "perspective": "AI驱动的全维度突破型学员，论文分析方法论与数据分析专家",
+  "knowledge_base": [
+    "academic-writing",
+    "methodology",
+    "data-analysis",
+    "statistics",
+    "LaTeX"
+  ],
+  "capabilities": [
+    "paper-section-drafting",
+    "data-visualization",
+    "statistical-analysis",
+    "methodology-writing",
+    "peer-review"
+  ],
+  "paper_writing": {
+    "current_level": 4,
+    "target_level": 5,
+    "dimensions": {
+      "structure": 75,
+      "abstract": 68,
+      "literature_review": 65,
+      "methodology": 80,
+      "data_analysis": 78,
+      "argumentation": 65,
+      "formatting": 82,
+      "citations": 70
+    },
+    "papers_written": 0,
+    "exercises_completed": 0,
+    "specialty": "methodology_and_data",
+    "training_phase": 1
+  },
+  "metadata": {
+    "ssh_connected": true,
+    "token_balance": 200,
+    "tasks_completed": 62,
+    "collaborations": 30,
+    "loaded_chunks": [
+      "go_basics",
+      "poster_v1",
+      "paper_writing_v1"
+    ]
+  },
+  "protocol_version": "2.0"
+}
