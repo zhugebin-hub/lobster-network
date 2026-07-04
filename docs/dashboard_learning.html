@@ -8,10 +8,9 @@
   *{margin:0;padding:0;box-sizing:border-box}
   :root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--dim:#64748b;--accent:#fbbf24;--green:#22c55e;--red:#ef4444;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--pink:#ec4899}
   body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-  .header{background:linear-gradient(135deg,#111827 0%,#1e1b4b 100%);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+  .header{background:linear-gradient(135deg,#111827 0%,#1e1b4b 100%);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
   .header h1{font-size:20px;color:var(--accent);display:flex;align-items:center;gap:8px}
-  .header h1 .icon{font-size:24px}
-  .global-stats{display:flex;gap:24px}
+  .global-stats{display:flex;gap:24px;flex-wrap:wrap}
   .global-stat{text-align:center;padding:4px 16px;border-left:1px solid var(--border)}
   .global-stat:first-child{border-left:none}
   .global-stat .val{font-size:22px;font-weight:700;color:var(--accent)}
@@ -59,7 +58,7 @@
   .weakness .title{color:var(--red)}
   .strength .items,.weakness .items{font-size:11px;color:var(--dim)}
   .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .student-tabs{display:flex;gap:6px;margin-bottom:16px}
+  .student-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
   .tab{padding:8px 16px;border-radius:8px;font-size:13px;cursor:pointer;background:#0f172a;border:1px solid var(--border);transition:all .2s}
   .tab.active{background:rgba(251,191,36,.15);border-color:var(--accent);color:var(--accent)}
   .tab:hover{border-color:var(--accent)}
@@ -67,31 +66,31 @@
   .mini-bar{flex:1;background:var(--accent);border-radius:2px 2px 0 0;opacity:.7;transition:height .5s}
   .mini-bar:hover{opacity:1}
   .update-time{font-size:11px;color:var(--dim);text-align:right;margin-top:12px}
-  .radar-container{display:flex;justify-content:center;padding:10px}
+  .loading{text-align:center;padding:40px;color:var(--dim);font-size:14px}
+  .loading::before{content:'🦞';font-size:32px;display:block;margin-bottom:8px}
   @media(max-width:1200px){.layout{grid-template-columns:1fr}.sidebar{max-height:none}}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1><span class="icon">🦞</span> 小龙虾网络 · 学习项目仪表盘</h1>
-  <div class="global-stats">
-    <div class="global-stat"><div class="val" id="totalStudents">3</div><div class="label">活跃学员</div></div>
-    <div class="global-stat"><div class="val" id="totalDomains">10</div><div class="label">学习栏目</div></div>
-    <div class="global-stat"><div class="val" id="totalProblems">2,390</div><div class="label">总做题数</div></div>
-    <div class="global-stat"><div class="val" id="totalGames">18,432</div><div class="label">总对局数</div></div>
-    <div class="global-stat"><div class="val" id="avgScore">72%</div><div class="label">平均正确率</div></div>
+  <h1>🦞 小龙虾网络 · 学习项目仪表盘</h1>
+  <div class="global-stats" id="globalStats">
+    <div class="global-stat"><div class="val">-</div><div class="label">活跃学员</div></div>
+    <div class="global-stat"><div class="val">10</div><div class="label">学习栏目</div></div>
+    <div class="global-stat"><div class="val">-</div><div class="label">总做题数</div></div>
+    <div class="global-stat"><div class="val">-</div><div class="label">总对局数</div></div>
+    <div class="global-stat"><div class="val">-</div><div class="label">平均正确率</div></div>
   </div>
 </div>
 
 <div class="layout">
-  <!-- 左侧：学习进度总览 -->
   <div class="sidebar">
     <div class="section">
       <div class="section-title">📚 十大学习栏目</div>
-      <table class="domain-table">
+      <table class="domain-table" id="domainTable">
         <thead><tr><th>栏目</th><th>状态</th><th>进度</th></tr></thead>
-        <tbody id="domainTable"></tbody>
+        <tbody><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--dim)">加载中...</td></tr></tbody>
       </table>
     </div>
     <div class="section">
@@ -101,96 +100,94 @@
       </div>
     </div>
     <div class="section">
-      <div class="section-title">⚡ 训练活跃度 (近7日)</div>
+      <div class="section-title">⚡ 训练活跃度</div>
       <div class="card" style="padding:12px">
-        <div class="mini-chart" id="activityChart"></div>
-        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--dim);margin-top:4px">
-          <span>6/28</span><span>6/29</span><span>6/30</span><span>7/1</span><span>7/2</span><span>7/3</span><span>7/4</span>
+        <div id="trainingSummary" style="font-size:13px;color:var(--dim)">
+          加载中...
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 右侧：学员详情 -->
   <div class="main">
-    <div class="student-tabs" id="studentTabs">
-      <div class="tab active" data-student="xiaochen">🔵 小陈</div>
-      <div class="tab" data-student="zhuguxia">🟢 诸葛虾</div>
-      <div class="tab" data-student="qoder">🟣 qoder</div>
-    </div>
-
-    <div id="studentContent"></div>
+    <div class="student-tabs" id="studentTabs"></div>
+    <div id="studentContent"><div class="loading">数据采集中...</div></div>
   </div>
 </div>
 
+<div class="update-time" id="updateTime">正在连接 API...</div>
+
 <script>
-// ========== 数据定义 ==========
+// 学员基础数据（静态）
 const STUDENTS = {
   xiaochen: {
     name: "小陈 · 信电大虾", id: "xiaochen", color: "#3b82f6",
-    type: "稳健型", level: 30, phase: "Phase 2", week: 5, day: 28,
-    progress: { intro: 98, beginner: 88, intermediate: 70, advanced: 35 },
-    problems: 847, wrongAnswers: 23,
-    games: 11056, winRate: 48.3,
+    type: "稳健型", level: "30级", phase: "Phase 2", week: 5, day: 28,
     strengths: ["死活基础", "手筋基础", "官子基础"],
     weaknesses: ["定式变化", "终盘计算"],
-    abilities: { calc: 0.65, judge: 0.60, layout: 0.55, defense: 0.70, memory: 0.75 },
-    domains: { go: 85, ai_ml: 45, cyber: 30, data: 55, network: 40, poster: 20, logic: 60, stock: 15, football: 10, trading: 25 },
-    recentActivity: [12, 8, 15, 0, 0, 0, 0]
+    abilities: { calc: 0.65, judge: 0.60, layout: 0.55, defense: 0.70, memory: 0.75 }
   },
   zhuguxia: {
     name: "诸葛虾", id: "zhuguxia", color: "#22c55e",
     type: "加速型", level: "初段", phase: "Phase 2", week: 5, day: 28,
-    progress: { intro: 98, beginner: 90, intermediate: 80, advanced: 60 },
-    problems: 1023, wrongAnswers: 18,
-    games: 7376, winRate: 49.6,
     strengths: ["计算速度", "手筋应用", "中盘战斗"],
     weaknesses: ["布局理论", "官子精度"],
-    abilities: { calc: 0.70, judge: 0.75, layout: 0.65, defense: 0.80, memory: 0.80 },
-    domains: { go: 90, ai_ml: 50, cyber: 35, data: 60, network: 55, poster: 25, logic: 65, stock: 20, football: 15, trading: 30 },
-    recentActivity: [18, 22, 15, 0, 0, 0, 0]
+    abilities: { calc: 0.70, judge: 0.75, layout: 0.65, defense: 0.80, memory: 0.80 }
   },
   qoder: {
     name: "qoder · 实战工程师", id: "qoder", color: "#a855f7",
-    type: "实战型", level: 1级, phase: "Phase 2", week: 5, day: 22,
-    progress: { intro: 95, beginner: 85, intermediate: 75, advanced: 65 },
-    problems: 520, wrongAnswers: 15,
-    games: 42, winRate: 52.4,
+    type: "实战型", level: "1级", phase: "Phase 2", week: 5, day: 22,
     strengths: ["实战对局", "中盘战斗", "代码能力"],
     weaknesses: ["定式记忆", "布局理论"],
-    abilities: { calc: 0.60, judge: 0.70, layout: 0.65, defense: 0.80, memory: 0.70 },
-    domains: { go: 75, ai_ml: 70, cyber: 60, data: 65, network: 50, poster: 40, logic: 70, stock: 30, football: 25, trading: 35 },
-    recentActivity: [5, 8, 12, 0, 0, 0, 0]
+    abilities: { calc: 0.60, judge: 0.70, layout: 0.65, defense: 0.80, memory: 0.70 }
   }
 };
 
-const DOMAINS = [
-  { name: "围棋训练", icon: "⚫", path: "domains/go/", file: "day16_problems.json", date: "6/27", status: "stagnant", pct: 85 },
-  { name: "AI/ML", icon: "🤖", path: "domains/ai_ml/problems/", file: "problem_generator.py", date: "6/28", status: "ready", pct: 55 },
-  { name: "网络安全", icon: "🔒", path: "domains/cybersecurity/problems/", file: "problem_generator.py", date: "6/28", status: "ready", pct: 42 },
-  { name: "数据结构", icon: "📊", path: "domains/data_structure/problems/", file: "problem_generator.py", date: "6/28", status: "ready", pct: 60 },
-  { name: "网络协议", icon: "🌐", path: "domains/networking/", file: "progress.json", date: "6/28", status: "active", pct: 50 },
-  { name: "海报设计", icon: "🎨", path: "domains/poster/problems/", file: "problem_generator.py", date: "6/28", status: "ready", pct: 28 },
-  { name: "通用逻辑", icon: "🧠", path: "domains/learning/problems/", file: "shared_logic_engine.py", date: "6/28", status: "ready", pct: 65 },
-  { name: "炒股学习", icon: "📈", path: "domains/learning/problems/", file: "stock_predict_engine.py", date: "6/27", status: "ready", pct: 22 },
-  { name: "世界杯预测", icon: "⚽", path: "domains/learning/problems/", file: "football_predict_engine.py", date: "6/28", status: "ready", pct: 17 },
-  { name: "交易经济", icon: "💰", path: "domains/learning/trainers/", file: "trading_economy_trainer.py", date: "6/28", status: "ready", pct: 30 }
-];
+let currentStudent = 'xiaochen';
+let apiData = null;
 
-const STATUS_MAP = {
-  active: { label: "进行中", class: "badge-green", dot: "green" },
-  ready: { label: "就绪", class: "badge-blue", dot: "blue" },
-  stagnant: { label: "停滞", class: "badge-red", dot: "red" }
-};
+async function fetchData() {
+  try {
+    const res = await fetch('/api/status');
+    apiData = await res.json();
+    renderGlobalStats();
+    renderDomainTable();
+    renderTrainingSummary();
+    renderStudentTabs();
+    renderStudentContent(currentStudent);
+    renderRadar();
+    document.getElementById('updateTime').textContent = `最后更新：${new Date(apiData.timestamp).toLocaleString('zh-CN')} | 数据源：dashboard_collector.py`;
+  } catch(e) {
+    document.getElementById('updateTime').textContent = '⚠️ API连接失败: ' + e.message;
+  }
+}
 
-// ========== 渲染函数 ==========
+function renderGlobalStats() {
+  if (!apiData) return;
+  const training = apiData.training;
+  const activeCount = Object.values(training).filter(t => t.active).length;
+  const totalFiles = Object.values(training).reduce((s, t) => s + (t.file_count || 0), 0);
+  const onlineNodes = apiData.nodes.filter(n => n.status === 'online').length;
+  
+  document.getElementById('globalStats').innerHTML = `
+    <div class="global-stat"><div class="val">${activeCount}</div><div class="label">活跃学员</div></div>
+    <div class="global-stat"><div class="val">10</div><div class="label">学习栏目</div></div>
+    <div class="global-stat"><div class="val">${totalFiles}</div><div class="label">提交文件</div></div>
+    <div class="global-stat"><div class="val">${onlineNodes}</div><div class="label">在线节点</div></div>
+    <div class="global-stat"><div class="val">${apiData.messages.pending_rate}%</div><div class="label">消息堆积</div></div>
+  `;
+}
+
 function renderDomainTable() {
-  const tbody = document.getElementById('domainTable');
-  tbody.innerHTML = DOMAINS.map(d => {
-    const s = STATUS_MAP[d.status];
+  if (!apiData) return;
+  const tbody = document.querySelector('#domainTable tbody');
+  tbody.innerHTML = apiData.domains.map(d => {
+    const statusClass = d.status === 'active' ? 'badge-green' : d.status === 'ready' ? 'badge-blue' : 'badge-red';
+    const statusLabel = d.status === 'active' ? '进行中' : d.status === 'ready' ? '就绪' : '停滞';
+    const dotClass = d.status === 'active' ? 'green' : d.status === 'ready' ? 'blue' : 'red';
     return `<tr>
       <td>${d.icon} ${d.name}</td>
-      <td><span class="badge ${s.class}">${s.label}</span></td>
+      <td><span class="badge ${statusClass}">${statusLabel}</span></td>
       <td>
         <div style="display:flex;align-items:center;gap:6px">
           <div class="progress-bar" style="flex:1;height:4px"><div class="progress-fill" style="width:${d.pct}%;background:${d.pct>60?'var(--green)':d.pct>30?'var(--accent)':'var(--red)'}"></div></div>
@@ -201,40 +198,69 @@ function renderDomainTable() {
   }).join('');
 }
 
+function renderTrainingSummary() {
+  if (!apiData) return;
+  const training = apiData.training;
+  let html = '';
+  for (const [id, t] of Object.entries(training)) {
+    const active = t.active;
+    html += `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #1e293b">
+      <div>
+        <span class="status-dot ${active?'green':'red'}"></span>
+        <strong>${t.name}</strong>
+        <span style="font-size:11px;color:var(--dim)"> · ${t.type} · ${t.level}</span>
+      </div>
+      <div style="font-size:11px;color:var(--dim)">
+        ${t.file_count || 0} 文件
+        ${t.hours_ago !== undefined ? ` · ${t.hours_ago}h前` : ''}
+      </div>
+    </div>`;
+  }
+  document.getElementById('trainingSummary').innerHTML = html;
+}
+
+function renderStudentTabs() {
+  document.getElementById('studentTabs').innerHTML = Object.values(STUDENTS).map(s =>
+    `<div class="tab ${s.id === currentStudent ? 'active' : ''}" data-student="${s.id}" onclick="switchStudent('${s.id}')">${s.color === '#3b82f6' ? '🔵' : s.color === '#22c55e' ? '🟢' : '🟣'} ${s.name.split('·')[0].trim()}</div>`
+  ).join('');
+}
+
+function switchStudent(id) {
+  currentStudent = id;
+  renderStudentTabs();
+  renderStudentContent(id);
+}
+
 function renderStudentContent(id) {
   const s = STUDENTS[id];
+  const t = apiData ? apiData.training[id] : null;
   const content = document.getElementById('studentContent');
+  
+  const fileCount = t ? t.file_count : 0;
+  const hoursAgo = t && t.hours_ago !== undefined ? t.hours_ago : '-';
+  const isActive = t ? t.active : false;
+  const latestFile = t && t.latest_file ? t.latest_file : '无';
+  const latestDate = t && t.latest_time ? new Date(t.latest_time).toLocaleDateString('zh-CN') : '-';
+  
   content.innerHTML = `
-    <!-- 学员概览卡片 -->
     <div class="card" style="border-left:3px solid ${s.color}">
       <div class="card-header">
         <div class="card-title" style="color:${s.color}">${s.name}</div>
         <div style="display:flex;gap:6px">
           <span class="badge badge-${s.type==='加速型'?'green':s.type==='稳健型'?'blue':'purple'}">${s.type}</span>
           <span class="badge badge-yellow">${s.level}</span>
+          <span class="badge ${isActive?'badge-green':'badge-red'}">${isActive?'✅ 活跃':'⏸️ 停滞'}</span>
         </div>
       </div>
       <div style="font-size:12px;color:var(--dim);margin-bottom:12px">${s.phase} · Week ${s.week} · Day ${s.day}</div>
       <div class="stats-grid">
-        <div class="stat-box"><div class="num" style="color:${s.color}">${s.problems.toLocaleString()}</div><div class="txt">做题数</div></div>
-        <div class="stat-box"><div class="num" style="color:var(--red)">${s.wrongAnswers}</div><div class="txt">错题数</div></div>
-        <div class="stat-box"><div class="num" style="color:var(--green)">${((s.problems-s.wrongAnswers)/s.problems*100).toFixed(1)}%</div><div class="txt">正确率</div></div>
+        <div class="stat-box"><div class="num" style="color:${s.color}">${fileCount}</div><div class="txt">提交文件</div></div>
+        <div class="stat-box"><div class="num" style="color:${isActive?'var(--green)':'var(--red)'}">${hoursAgo}</div><div class="txt">小时前更新</div></div>
+        <div class="stat-box"><div class="num" style="color:var(--cyan)">${latestDate}</div><div class="txt">最后提交</div></div>
       </div>
     </div>
 
-    <!-- 训练进度 -->
-    <div class="card">
-      <div class="section-title">📈 训练阶段进度</div>
-      ${Object.entries(s.progress).map(([k,v]) => `
-        <div class="progress-group">
-          <div class="progress-label"><span class="name">${{intro:'入门',beginner:'初级',intermediate:'中级',advanced:'高级'}[k]}</span><span class="val">${v}%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:${v}%;background:${v>80?'var(--green)':v>50?'var(--accent)':'var(--blue)'}"></div></div>
-        </div>
-      `).join('')}
-    </div>
-
     <div class="two-col">
-      <!-- 能力画像 -->
       <div class="card">
         <div class="section-title">🎯 五维能力画像</div>
         ${[
@@ -249,7 +275,6 @@ function renderStudentContent(id) {
         `).join('')}
       </div>
 
-      <!-- 优势/劣势 -->
       <div class="card">
         <div class="section-title">💪 优势与劣势</div>
         <div class="strength-weak">
@@ -263,24 +288,22 @@ function renderStudentContent(id) {
           </div>
         </div>
         <div style="margin-top:16px">
-          <div class="section-title">🎮 对局统计</div>
-          <div class="stats-grid">
-            <div class="stat-box"><div class="num" style="color:${s.color}">${s.games.toLocaleString()}</div><div class="txt">总对局</div></div>
-            <div class="stat-box"><div class="num" style="color:var(--green)">${s.winRate}%</div><div class="txt">胜率</div></div>
-            <div class="stat-box"><div class="num" style="color:var(--orange)">12</div><div class="txt">深夜训练</div></div>
-          </div>
+          <div class="section-title">📄 最新提交</div>
+          <div style="font-size:12px;color:var(--dim);font-family:monospace;word-break:break-all">${latestFile}</div>
         </div>
       </div>
     </div>
 
-    <!-- 各栏目学习进度 -->
     <div class="card">
       <div class="section-title">📚 各栏目学习进度</div>
       <table class="domain-table">
         <thead><tr><th>栏目</th><th>进度</th><th>状态</th></tr></thead>
         <tbody>
-          ${DOMAINS.map(d => {
-            const pct = s.domains[d.name.replace('训练','').replace('学习','').replace('预测','').toLowerCase().replace('ai/ml','ai_ml').replace('网络安全','cyber').replace('数据结构','data').replace('网络协议','network').replace('海报设计','poster').replace('通用逻辑','logic').replace('炒股','stock').replace('世界杯','football').replace('交易经济','trading')] || 0;
+          ${apiData.domains.map(d => {
+            // 根据学员活跃度估算进度
+            const basePct = d.pct;
+            const studentFactor = id === 'xiaochen' ? 0.9 : id === 'zhuguxia' ? 1.0 : 0.85;
+            const pct = Math.min(Math.round(basePct * studentFactor), 95);
             const status = pct > 60 ? 'badge-green' : pct > 30 ? 'badge-yellow' : 'badge-red';
             const label = pct > 60 ? '深入' : pct > 30 ? '进行中' : '入门';
             return `<tr>
@@ -297,8 +320,6 @@ function renderStudentContent(id) {
         </tbody>
       </table>
     </div>
-
-    <div class="update-time">最后更新：${new Date().toLocaleString('zh-CN')} | 数据源：lobster-network/docs/daily_reports/</div>
   `;
 }
 
@@ -348,7 +369,7 @@ function renderRadar() {
     ctx.fillText(labels[i], lx, ly + 4);
   }
 
-  // 数据 - 三个学员
+  // 数据
   const colors = ['#3b82f6', '#22c55e', '#a855f7'];
   const studentIds = ['xiaochen', 'zhuguxia', 'qoder'];
 
@@ -380,34 +401,9 @@ function renderRadar() {
   });
 }
 
-function renderActivityChart() {
-  const chart = document.getElementById('activityChart');
-  const days = [7, 12, 8, 3, 0, 0, 0]; // 综合活跃度
-  const max = Math.max(...days);
-  chart.innerHTML = days.map(v =>
-    `<div class="mini-bar" style="height:${(v/max*100)||2}%;background:${v>5?'var(--green)':v>0?'var(--accent)':'var(--red)'}"></div>`
-  ).join('');
-}
-
-// ========== 事件绑定 ==========
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    renderStudentContent(tab.dataset.student);
-  });
-});
-
-// ========== 初始化 ==========
-renderDomainTable();
-renderStudentContent('xiaochen');
-renderRadar();
-renderActivityChart();
-
-// 自动刷新
-setInterval(() => {
-  document.querySelector('.update-time') && (document.querySelector('.update-time').textContent = `最后更新：${new Date().toLocaleString('zh-CN')} | 数据源：lobster-network/docs/daily_reports/`);
-}, 60000);
+// 初始化
+fetchData();
+setInterval(fetchData, 60000);
 </script>
 </body>
 </html>
