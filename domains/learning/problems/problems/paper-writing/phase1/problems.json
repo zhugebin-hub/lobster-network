@@ -1,0 +1,223 @@
+{
+  "phase": 1,
+  "name": "论文写作基础（入门篇）",
+  "description": "学术论文基本结构、选题方法、摘要撰写、引用规范、学术道德",
+  "problems": [
+    {
+      "id": "pw1-001",
+      "type": "concept_choice",
+      "difficulty": "入门",
+      "question": "一篇标准实证研究论文通常包含以下哪个基本结构？",
+      "context": {"domain": "论文结构", "paper_type": "实证研究"},
+      "options": ["引言-方法-结果-讨论-结论", "背景-分析-总结", "摘要-正文-附录", "前言-主体-后记"],
+      "answer": "引言-方法-结果-讨论-结论",
+      "confidence": 0.95,
+      "reasoning": "IMRaD结构（Introduction, Methods, Results, and Discussion）是实证研究论文的标准结构，最后通常加上Conclusion"
+    },
+    {
+      "id": "pw1-002",
+      "type": "concept_choice",
+      "difficulty": "入门",
+      "question": "学术论文摘要通常应包含哪四个核心要素？",
+      "context": {"domain": "摘要", "elements": "四要素"},
+      "options": ["目的-方法-结果-结论", "背景-分析-建议-展望", "问题-理论-数据-模型", "选题-文献-方法-创新"],
+      "answer": "目的-方法-结果-结论",
+      "confidence": 0.95,
+      "reasoning": "摘要四要素：研究目的(Purpose)、研究方法(Methods)、主要结果(Results)、结论(Conclusions)，这是学术论文摘要的规范要求"
+    },
+    {
+      "id": "pw1-003",
+      "type": "concept_choice",
+      "difficulty": "入门",
+      "question": "GB/T 7714参考文献著录格式中，期刊论文的标准格式是？",
+      "context": {"domain": "引用规范", "standard": "GB/T 7714"},
+      "options": ["作者. 题名[J]. 刊名, 年, 卷(期): 页码.", "作者(年). 题名. 刊名, 卷, 页码.", "作者. 题名. 刊名, 年, 卷(期), 页码.", "作者, 年, 题名, 刊名"],
+      "answer": "作者. 题名[J]. 刊名, 年, 卷(期): 页码.",
+      "confidence": 0.95,
+      "reasoning": "GB/T 7714标准中，[J]表示期刊论文类型，格式为：作者. 题名[J]. 刊名, 年, 卷(期): 页码."
+    },
+    {
+      "id": "pw1-004",
+      "type": "concept_choice",
+      "difficulty": "入门",
+      "question": "以下哪种行为属于学术不端？",
+      "context": {"domain": "学术道德", "type": "学术不端"},
+      "options": ["引用他人观点并标注出处", "对自己已发表的数据进行重新分析", "将他人未发表的论文思路据为己有", "在致谢中感谢提供数据的机构"],
+      "answer": "将他人未发表的论文思路据为己有",
+      "confidence": 0.95,
+      "reasoning": "剽窃他人未发表的学术思路属于学术不端行为，包括侵占他人知识产权、违反学术伦理"
+    },
+    {
+      "id": "pw1-005",
+      "type": "concept_choice",
+      "difficulty": "入门",
+      "question": "论文关键词一般设置几个为宜？",
+      "context": {"domain": "关键词", "standard": "数量规范"},
+      "options": ["1-2个", "3-8个", "10-15个", "越多越好"],
+      "answer": "3-8个",
+      "confidence": 0.95,
+      "reasoning": "学术论文关键词一般3-8个，过多或过少都会影响检索效果和论文规范性"
+    },
+    {
+      "id": "pw1-006",
+      "type": "concept_choice",
+      "difficulty": "入门",
+      "question": "文献综述的主要目的是什么？",
+      "context": {"domain": "文献综述", "purpose": "目的"},
+      "options": ["凑字数", "展示阅读量", "梳理研究现状并识别研究空白", "引用更多参考文献"],
+      "answer": "梳理研究现状并识别研究空白",
+      "confidence": 0.95,
+      "reasoning": "文献综述的核心目的在于系统梳理已有研究、发现研究空白(Gap)、确立本文的研究定位和贡献"
+    },
+    {
+      "id": "pw1-007",
+      "type": "concept_choice",
+      "difficulty": "入门",
+      "question": "学术论文中'引言'部分通常不包含以下哪项内容？",
+      "context": {"domain": "引言", "structure": "内容要素"},
+      "options": ["研究背景", "研究问题", "实验数据分析", "研究意义"],
+      "answer": "实验数据分析",
+      "confidence": 0.90,
+      "reasoning": "引言包含研究背景、研究问题、研究意义和论文结构概述；实验数据分析属于'结果'或'数据分析'章节"
+    },
+    {
+      "id": "pw1-008",
+      "type": "concept_choice",
+      "difficulty": "入门",
+      "question": "以下哪个是好的论文选题特征？",
+      "context": {"domain": "选题", "criteria": "选题标准"},
+      "options": ["题目越大越好", "已有大量相同研究", "具有创新性和可行性", "不需要数据支撑"],
+      "answer": "具有创新性和可行性",
+      "confidence": 0.95,
+      "reasoning": "好的选题应兼具创新性(无人做过或视角新颖)和可行性(数据可获取、方法可实现)"
+    },
+    {
+      "id": "pw1-009",
+      "type": "concept_judge",
+      "difficulty": "入门",
+      "question": "判断：论文摘要中可以引用参考文献。",
+      "context": {"domain": "摘要", "rule": "引用规范"},
+      "answer": "错误",
+      "confidence": 0.90,
+      "reasoning": "摘要作为独立自包含的文本，一般不引用参考文献、不使用缩写和图表，应能脱离正文独立理解"
+    },
+    {
+      "id": "pw1-010",
+      "type": "concept_judge",
+      "difficulty": "入门",
+      "question": "判断：综述论文不需要提出原创性研究贡献。",
+      "context": {"domain": "综述论文", "contribution": "原创性"},
+      "answer": "错误",
+      "confidence": 0.85,
+      "reasoning": "综述论文同样需要原创性贡献，体现在对文献的批判性分析、研究趋势的提炼、研究空白的识别和未来方向的展望"
+    },
+    {
+      "id": "pw1-011",
+      "type": "concept_judge",
+      "difficulty": "入门",
+      "question": "判断：参考文献的数量越多，论文质量越高。",
+      "context": {"domain": "参考文献", "quality_vs_quantity": "数量与质量"},
+      "answer": "错误",
+      "confidence": 0.95,
+      "reasoning": "参考文献的质量（权威性、时效性、相关性）比数量更重要，堆砌无关参考文献反而降低论文质量"
+    },
+    {
+      "id": "pw1-012",
+      "type": "concept_judge",
+      "difficulty": "入门",
+      "question": "判断：论文的讨论部分应简单重复结果部分的内容。",
+      "context": {"domain": "讨论", "vs_results": "讨论与结果的区别"},
+      "answer": "错误",
+      "confidence": 0.95,
+      "reasoning": "讨论部分不是结果的简单重复，而应解释结果背后的原因、与已有研究对比、阐述理论贡献和实践启示"
+    },
+    {
+      "id": "pw1-013",
+      "type": "structure_analysis",
+      "difficulty": "初级",
+      "question": "以下论文结构属于哪种类型？'引言→概念界定→理论框架→命题推演→理论验证→讨论→结论'",
+      "context": {"domain": "论文结构", "type": "识别"},
+      "options": ["实证研究型", "理论研究型", "综述研究型", "案例研究型"],
+      "answer": "理论研究型",
+      "confidence": 0.90,
+      "reasoning": "包含概念界定、理论框架、命题推演等章节，属于理论研究型论文的典型结构"
+    },
+    {
+      "id": "pw1-014",
+      "type": "structure_analysis",
+      "difficulty": "初级",
+      "question": "综述论文中'检索策略'章节应包含以下哪些内容？",
+      "context": {"domain": "综述论文", "section": "检索策略"},
+      "options": ["数据库选择、检索词、筛选标准", "作者简介和研究经历", "实验设备和材料", "数据分析软件版本"],
+      "answer": "数据库选择、检索词、筛选标准",
+      "confidence": 0.90,
+      "reasoning": "检索策略章节应说明数据库选择、检索关键词、纳入/排除标准，建议遵循PRISMA流程"
+    },
+    {
+      "id": "pw1-015",
+      "type": "structure_analysis",
+      "difficulty": "初级",
+      "question": "案例研究型论文中'案例描述'章节的权重通常约占全文的多少？",
+      "context": {"domain": "案例研究", "section": "案例描述", "weight": "篇幅权重"},
+      "options": ["5%", "20%", "50%", "80%"],
+      "answer": "20%",
+      "confidence": 0.85,
+      "reasoning": "案例描述是案例研究论文的核心章节之一，权重约20%，需要详细描述案例背景、事件过程和关键决策"
+    },
+    {
+      "id": "pw1-016",
+      "type": "topic_eval",
+      "difficulty": "初级",
+      "question": "以下哪个选题更适合作为本科毕业论文题目？",
+      "context": {"domain": "选题", "level": "本科毕业论文"},
+      "options": ["人工智能对人类社会的影响研究", "基于CNN的MNIST手写数字识别系统设计与实现", "量子计算在密码学中的应用", "全球气候变化的多因素分析"],
+      "answer": "基于CNN的MNIST手写数字识别系统设计与实现",
+      "confidence": 0.85,
+      "reasoning": "本科毕业论文选题应具体、可行、范围适中。CNN+MNIST是经典入门项目，数据公开、方法成熟、工作量可控"
+    },
+    {
+      "id": "pw1-017",
+      "type": "topic_eval",
+      "difficulty": "初级",
+      "question": "选题时'已有相关论文500篇以上'对选题质量的影响是？",
+      "context": {"domain": "选题", "factor": "竞争度"},
+      "options": ["提升选题质量", "降低选题质量（红海领域）", "没有影响", "取决于具体方向"],
+      "answer": "降低选题质量（红海领域）",
+      "confidence": 0.85,
+      "reasoning": "已有论文过多说明该领域过度饱和，很难找到新的研究空白，选题评分应扣分"
+    },
+    {
+      "id": "pw1-018",
+      "type": "abstract_eval",
+      "difficulty": "初级",
+      "question": "以下摘要缺少哪个要素？'本文采用问卷调查法，收集了500份有效问卷。研究发现用户满意度与界面美观度显著正相关(r=0.65)。建议设计师重视界面美学。'",
+      "context": {"domain": "摘要", "missing": "缺失要素"},
+      "options": ["目的", "方法", "结果", "结论"],
+      "answer": "目的",
+      "confidence": 0.85,
+      "reasoning": "该摘要包含方法（问卷调查法）、结果（显著正相关）和结论（建议重视界面美学），但缺少研究目的（为什么做这个研究）"
+    },
+    {
+      "id": "pw1-019",
+      "type": "abstract_eval",
+      "difficulty": "初级",
+      "question": "如果一篇论文摘要字数为目标字数的2倍，其简洁性评分应为？",
+      "context": {"domain": "摘要", "conciseness": "简洁性"},
+      "options": ["1.0（优秀）", "0.7（中等）", "0.4（较差）", "0.0（不合格）"],
+      "answer": "0.4（较差）",
+      "confidence": 0.85,
+      "reasoning": "字数超过目标的1.5倍时，简洁性评分降至0.4，表示摘要过长需要精简"
+    },
+    {
+      "id": "pw1-020",
+      "type": "citation_check",
+      "difficulty": "初级",
+      "question": "以下哪条引用符合GB/T 7714期刊论文格式？",
+      "context": {"domain": "引用规范", "standard": "GB/T 7714"},
+      "options": ["张三(2024).深度学习研究.计算机学报", "[1] 张三. 深度学习研究[J]. 计算机学报, 2024, 47(3): 1-15.", "张三, 2024, 深度学习研究, 计算机学报", "Zhang S. 2024. Deep Learning. Journal"],
+      "answer": "[1] 张三. 深度学习研究[J]. 计算机学报, 2024, 47(3): 1-15.",
+      "confidence": 0.95,
+      "reasoning": "GB/T 7714格式：[序号] 作者. 题名[J]. 刊名, 年, 卷(期): 页码. [J]标识期刊论文类型"
+    }
+  ]
+}

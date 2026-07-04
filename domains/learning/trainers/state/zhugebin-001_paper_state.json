@@ -1,0 +1,111 @@
+{
+  "student": "zhugebin-001",
+  "total_trainings": 1,
+  "total_problems": 23,
+  "total_correct": 14,
+  "by_phase": {
+    "phase1": {
+      "total": 9,
+      "correct": 8
+    },
+    "phase2": {
+      "total": 5,
+      "correct": 4
+    },
+    "phase3": {
+      "total": 9,
+      "correct": 2
+    }
+  },
+  "by_type": {
+    "concept_choice": {
+      "total": 1,
+      "correct": 1
+    },
+    "concept_judge": {
+      "total": 1,
+      "correct": 1
+    },
+    "structure_analysis": {
+      "total": 2,
+      "correct": 2
+    },
+    "topic_eval": {
+      "total": 2,
+      "correct": 2
+    },
+    "abstract_eval": {
+      "total": 2,
+      "correct": 1
+    },
+    "citation_check": {
+      "total": 1,
+      "correct": 1
+    },
+    "literature_review": {
+      "total": 2,
+      "correct": 1
+    },
+    "methodology": {
+      "total": 2,
+      "correct": 2
+    },
+    "data_analysis": {
+      "total": 1,
+      "correct": 1
+    },
+    "paper_eval": {
+      "total": 2,
+      "correct": 1
+    },
+    "peer_review": {
+      "total": 2,
+      "correct": 0
+    },
+    "similarity_check": {
+      "total": 1,
+      "correct": 1
+    },
+    "paper_revision": {
+      "total": 1,
+      "correct": 0
+    },
+    "cross_disciplinary": {
+      "total": 1,
+      "correct": 0
+    },
+    "ai_writing": {
+      "total": 2,
+      "correct": 0
+    }
+  },
+  "by_difficulty": {
+    "入门": {
+      "total": 2,
+      "correct": 2
+    },
+    "初级": {
+      "total": 7,
+      "correct": 6
+    },
+    "中级": {
+      "total": 5,
+      "correct": 4
+    },
+    "高级": {
+      "total": 9,
+      "correct": 2
+    }
+  },
+  "streak": 1,
+  "last_training": "2026-07-05T06:31:05.557869",
+  "history": [
+    {
+      "date": "2026-07-05T06:31:05.557024",
+      "total": 23,
+      "correct": 14,
+      "accuracy": 0.6086956521739131
+    }
+  ],
+  "last_training_date": "2026-07-05"
+}

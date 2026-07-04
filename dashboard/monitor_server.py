@@ -219,6 +219,10 @@ def scan_network():
         ("agent_economy", BASE_DIR / "agent_economy"),
         ("mcp_server", BASE_DIR / "mcp_server"),
         ("a2a_protocol", BASE_DIR / "a2a_protocol"),
+        ("paper_writing", BASE_DIR / "domains" / "learning" / "problems" / "paper_writing_engine.py"),
+        ("stock_predict", BASE_DIR / "domains" / "learning" / "problems" / "stock_predict_engine.py"),
+        ("football_predict", BASE_DIR / "domains" / "learning" / "problems" / "football_predict_engine.py"),
+        ("sync_manager", BASE_DIR / ".shared" / "messages" / "sync_manager.py"),
     ]:
         modules[mod_name] = "installed" if mod_path.exists() else "missing"
     data["modules"] = modules
