@@ -1,6 +1,6 @@
 {
-  "scan_time": "2026-07-04T01:33:05.935678+08:00",
-  "scan_timestamp": 1783099985,
+  "scan_time": "2026-07-05T07:31:31.062562+08:00",
+  "scan_timestamp": 1783207891,
   "version": "v4.0",
   "nodes": [
     {
@@ -112,7 +112,7 @@
         "中级": 0.8,
         "高级": 0.6
       },
-      "inbox_count": 12,
+      "inbox_count": 13,
       "sent_count": 0,
       "outbox_count": 0
     },
@@ -262,11 +262,29 @@
     }
   ],
   "cc_tracking": {
-    "pending": 0,
+    "pending": 1,
     "completed": 13,
     "escalated": 0,
-    "total": 13,
-    "pending_details": [],
+    "total": 14,
+    "pending_details": [
+      {
+        "tracking_id": "cc-paper-writing-deploy-001",
+        "msg_id": "cc-paper-writing-deploy-001",
+        "from": "zhugema",
+        "targets": [
+          "zhuguxia"
+        ],
+        "subject": "部署dashboard监控 + 加入论文写作联合学习",
+        "category": "deploy_notification",
+        "sent_at": "2026-07-05T06:35:00+08:00",
+        "ack_deadline": "2026-07-06T23:59:00+08:00",
+        "requires_ack": true,
+        "acks_received": [],
+        "acks_pending": [
+          "zhuguxia"
+        ]
+      }
+    ],
     "completed_details": [
       {
         "id": "track-9f14080a",
@@ -422,9 +440,9 @@
     "escalated_details": []
   },
   "message_stats": {
-    "total_inbox": 89,
+    "total_inbox": 90,
     "total_sent": 4,
-    "total": 93,
+    "total": 94,
     "per_node": {
       "zhugema": {
         "inbox": 27,
@@ -435,7 +453,7 @@
         "sent": 0
       },
       "zhuguxia": {
-        "inbox": 12,
+        "inbox": 13,
         "sent": 0
       },
       "qoder": {
@@ -454,13 +472,22 @@
   },
   "recent_messages": [
     {
+      "file": "cc-paper-writing-deploy-001.json",
+      "to_node": "zhuguxia",
+      "from": "zhugema",
+      "subject": "🦞 部署dashboard监控 + 加入论文写作联合学习",
+      "timestamp": "2026-07-05T06:35:00+08:00",
+      "type": "cc",
+      "age_minutes": 0
+    },
+    {
       "file": "ack-zhuguxia-cc-zhugema-20260629144249-1.json",
       "to_node": "zhugema",
       "from": "zhuguxia",
       "subject": "zhuguxia已确认收到: 🎯 围棋对局验证赛 - 消息通道测试",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 4945
+      "age_minutes": 6744
     },
     {
       "file": "ack-xiaowei-cc-zhugema-20260629144249-3.json",
@@ -469,7 +496,7 @@
       "subject": "xiaowei已确认收到: 🎯 围棋对局验证赛 - 消息通道测试",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 4945
+      "age_minutes": 6744
     },
     {
       "file": "ack-xiaochen-cc-zhugema-20260629144249-0.json",
@@ -478,7 +505,7 @@
       "subject": "xiaochen已确认收到: 🎯 围棋对局验证赛 - 消息通道测试",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 4945
+      "age_minutes": 6744
     },
     {
       "file": "ack-qoder-track-030dea86.json",
@@ -487,7 +514,7 @@
       "subject": "ACK回执",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 4945
+      "age_minutes": 6744
     },
     {
       "file": "ack-qoder-cc-zhugema-20260629144249-2.json",
@@ -496,7 +523,7 @@
       "subject": "qoder已收到围棋对局验证赛通知(track-030dea86)。qoder非参赛方，已知悉对局安排。",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 4945
+      "age_minutes": 6744
     },
     {
       "file": "ack-zhuguxia-cc-qoder-20260629223426-1.json",
@@ -505,7 +532,7 @@
       "subject": "zhuguxia已确认收到: Day4训练结果提交通知",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 4945
+      "age_minutes": 6744
     },
     {
       "file": "ack-zhuguxia-cc-qoder-20260629144039-1.json",
@@ -514,7 +541,7 @@
       "subject": "zhuguxia已确认收到: 🎯 围棋对局验证赛 - 消息通道测试",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 4945
+      "age_minutes": 6744
     },
     {
       "file": "ack-zhuguxia-cc-qoder-20260629140439-1.json",
@@ -523,7 +550,7 @@
       "subject": "zhuguxia已确认收到: Day3/Day4训练结果提交通知",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 4945
+      "age_minutes": 6744
     },
     {
       "file": "ack-xiaowei-cc-qoder-20260629144039-2.json",
@@ -532,7 +559,7 @@
       "subject": "xiaowei已确认收到: 🎯 围棋对局验证赛 - 消息通道测试",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 4945
+      "age_minutes": 6744
     },
     {
       "file": "ack-xiaochen-cc-qoder-20260629223426-0.json",
@@ -541,7 +568,7 @@
       "subject": "xiaochen已确认收到: Day4训练结果提交通知",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 4945
+      "age_minutes": 6744
     },
     {
       "file": "ack-xiaochen-cc-qoder-20260629144039-0.json",
@@ -550,7 +577,7 @@
       "subject": "xiaochen已确认收到: 🎯 围棋对局验证赛 - 消息通道测试",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 4945
+      "age_minutes": 6744
     },
     {
       "file": "ack-xiaochen-cc-qoder-20260629140439-0.json",
@@ -559,7 +586,7 @@
       "subject": "xiaochen已确认收到: Day3/Day4训练结果提交通知",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 4945
+      "age_minutes": 6744
     },
     {
       "file": "ack-zhugebin-track-030dea86.json",
@@ -568,7 +595,7 @@
       "subject": "诸葛斌已收到并确认消息: cc-zhugema-20260629144249",
       "timestamp": "2026-06-29T14:55:00.054048+08:00",
       "type": "ack",
-      "age_minutes": 6398
+      "age_minutes": 8196
     },
     {
       "file": "ack-zhugebin-track-625c07ad.json",
@@ -577,7 +604,7 @@
       "subject": "诸葛斌已收到并确认消息: cc-qoder-20260629144039",
       "timestamp": "2026-06-29T14:55:00.052537+08:00",
       "type": "ack",
-      "age_minutes": 6398
+      "age_minutes": 8196
     },
     {
       "file": "ack-zhugebin-track-6bb4c21c.json",
@@ -586,7 +613,7 @@
       "subject": "诸葛斌已收到并确认消息: cc-qoder-20260629140439",
       "timestamp": "2026-06-29T14:55:00.051402+08:00",
       "type": "ack",
-      "age_minutes": 6398
+      "age_minutes": 8196
     },
     {
       "file": "ack-zhugebin-track-7b17c84d.json",
@@ -595,7 +622,7 @@
       "subject": "诸葛斌已收到并确认消息: cc-zhugema-20260629003802",
       "timestamp": "2026-06-29T14:55:00.050152+08:00",
       "type": "ack",
-      "age_minutes": 6398
+      "age_minutes": 8196
     },
     {
       "file": "ack-qoder-track-7b17c84d.json",
@@ -604,7 +631,7 @@
       "subject": "ACK回执",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 6399
+      "age_minutes": 8197
     },
     {
       "file": "ack-xiaowei-sync-77330744.json",
@@ -613,7 +640,7 @@
       "subject": "ACK回执",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 6836
+      "age_minutes": 8635
     },
     {
       "file": "ack-xiaowei-sync-52912362.json",
@@ -622,16 +649,7 @@
       "subject": "ACK回执",
       "timestamp": "",
       "type": "ack",
-      "age_minutes": 6836
-    },
-    {
-      "file": "ack-xiaowei-sync-20227e61.json",
-      "to_node": "zhuguxia",
-      "from": "zhugema",
-      "subject": "ACK回执",
-      "timestamp": "",
-      "type": "ack",
-      "age_minutes": 6836
+      "age_minutes": 8635
     }
   ],
   "training_overview": {
@@ -707,18 +725,18 @@
   },
   "git_info": {
     "recent_commits": [
-      "2d02ad5 Merge origin/main: 解决冲突，保留本地版本",
-      "f562f92 📊 训练巡检报告 2026-07-01 07:30 - Day6任务全部失败，无新提交",
-      "b492e4c 📊 每日进展报告 2026-07-01",
-      "4fda895 📊 训练结果更新 - 2026-07-01 巡检报告 (Day6任务全部失败，无新提交)",
-      "905c5df 📊 训练结果更新 - 2026-07-01 04:00 巡检报告 - Day6任务全部失败，无新提交",
-      "526df09 Merge remote-tracking branch 'gitee/main'",
-      "af71144 📊 训练结果更新 - 2026-07-01 巡检报告 (含推送状态)",
-      "5b9eb62 📊 训练结果更新 - 2026-07-01 巡检报告",
-      "db9ab54 📊 训练巡检报告 2026-07-01 03:00 - Day6任务全部失败，无新提交",
-      "18faee8 📊 训练结果更新 (2026-07-01 01:30) - 巡检: Day6任务全部执行失败(技能未找到), 三学员提交目录为空"
+      "86a0399c Merge branch 'main' of https://github.com/zhugebin-hub/lobster-network",
+      "f9f89c17 feat: 新增自动论文撰写学习模块 + dashboard监控模块更新",
+      "7cd06f9a feat: 计算机学报论文V2 — 融合MCP/A2A协议栈综述框架",
+      "632618b2 feat: 计算机学报论文 — 面向大语言模型的异构智能体网络架构与协同机制研究",
+      "b00502c1 merge: resolve conflicts, keep remote versions",
+      "b2374df2 feat: 添加运行监控仪表盘和学习项目仪表盘 + 数据采集器",
+      "572a9e4d 📊 每日进展报告 2026-07-05",
+      "e57f51bc 📊 训练状态更新 2026-07-05 06:00 - 连续第11天无新提交",
+      "2effae89 📊 训练状态更新 2026-07-05 04:00 - 连续第11天无新提交",
+      "6b2d82ae 📊 训练状态更新 2026-07-05 02:30 (连续第11天无新提交)"
     ],
-    "last_change": ".clawdhub/lock.json                                |      9 +\n .clawhub/lock.json                                 |    117 +\n .learnings/LEARNINGS.md                            |    173 +\n .lobster-pr"
+    "last_change": ".gitignore                                         |   19 +\n .shared/messages/cc_tracking.json                  |   20 +-\n config/brain.json                                  |   49 +-\n config/lobster_"
   },
   "modules": {
     "harness": "installed",
@@ -728,6 +746,10 @@
     "federated_learning": "installed",
     "agent_economy": "installed",
     "mcp_server": "missing",
-    "a2a_protocol": "missing"
+    "a2a_protocol": "missing",
+    "paper_writing": "installed",
+    "stock_predict": "installed",
+    "football_predict": "installed",
+    "sync_manager": "installed"
   }
 }
