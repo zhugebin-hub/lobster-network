@@ -1,0 +1,6 @@
+{"timestamp": 1783269123.6819165, "event": "register", "node_id": "test-node-1", "details": {}}
+{"timestamp": 1783269123.6824386, "event": "register", "node_id": "test-node-2", "details": {}}
+{"timestamp": 1783269123.682931, "event": "heartbeat", "node_id": "test-node-1", "details": {}}
+{"timestamp": 1783269123.6833227, "event": "heartbeat", "node_id": "test-node-2", "details": {}}
+{"timestamp": 1783269129.1589787, "event": "register", "node_id": "test_agent_1", "details": {}}
+{"timestamp": 1783269129.1602695, "event": "register", "node_id": "test_agent_2", "details": {}}

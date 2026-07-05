@@ -1,0 +1,16 @@
+{
+  "agent_id": "test_agent_1",
+  "training_round": 1,
+  "accuracy": 0.85,
+  "estimated_duration": 2.0,
+  "resource_requirements": {
+    "cpu": 0.5,
+    "memory": 0.3
+  },
+  "metadata": {
+    "agent_id": "test_agent_1",
+    "timestamp": 1783269129.160913,
+    "datetime": "2026-07-06T00:32:09.160913",
+    "file_hash": "b3a0fd09015cf9d807e296c2920a84c6"
+  }
+}

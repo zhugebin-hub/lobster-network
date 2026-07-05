@@ -1,0 +1,74 @@
+{
+  "test-node-1": {
+    "node_id": "test-node-1",
+    "name": "测试节点 1",
+    "node_type": "agent",
+    "capabilities": [
+      "test",
+      "analysis"
+    ],
+    "transports": [],
+    "metadata": {},
+    "ttl_seconds": 300,
+    "status": "active",
+    "registered_at": 1783269123.6816425,
+    "last_heartbeat": 1783269123.6824982,
+    "heartbeat_count": 1,
+    "consecutive_missed": 0,
+    "failed_transports": []
+  },
+  "test-node-2": {
+    "node_id": "test-node-2",
+    "name": "测试节点 2",
+    "node_type": "agent",
+    "capabilities": [
+      "test",
+      "generation"
+    ],
+    "transports": [],
+    "metadata": {},
+    "ttl_seconds": 300,
+    "status": "busy",
+    "registered_at": 1783269123.6821647,
+    "last_heartbeat": 1783269123.6830018,
+    "heartbeat_count": 1,
+    "consecutive_missed": 0,
+    "failed_transports": []
+  },
+  "test_agent_1": {
+    "node_id": "test_agent_1",
+    "name": "测试智能体 1",
+    "node_type": "agent",
+    "capabilities": [
+      "training",
+      "analysis"
+    ],
+    "transports": [],
+    "metadata": {},
+    "ttl_seconds": 300,
+    "status": "active",
+    "registered_at": 1783269129.1582663,
+    "last_heartbeat": 1783269129.158268,
+    "heartbeat_count": 0,
+    "consecutive_missed": 0,
+    "failed_transports": []
+  },
+  "test_agent_2": {
+    "node_id": "test_agent_2",
+    "name": "测试智能体 2",
+    "node_type": "agent",
+    "capabilities": [
+      "training",
+      "generation"
+    ],
+    "transports": [],
+    "metadata": {},
+    "ttl_seconds": 300,
+    "status": "active",
+    "registered_at": 1783269129.1593845,
+    "last_heartbeat": 1783269129.1593847,
+    "heartbeat_count": 0,
+    "consecutive_missed": 0,
+    "failed_transports": []
+  }
+}

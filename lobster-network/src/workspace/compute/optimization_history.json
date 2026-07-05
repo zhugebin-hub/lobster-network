@@ -1,0 +1,15 @@
+{
+  "history": [
+    {
+      "timestamp": 1783269129.153231,
+      "datetime": "2026-07-06T00:32:09.153238",
+      "current_usage": {
+        "cpu": 0.0,
+        "memory": 0.0,
+        "gpu": 0.0
+      },
+      "optimizations": []
+    }
+  ],
+  "last_update": 1783269129.1535823
+}
