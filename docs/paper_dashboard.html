@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📝 论文写作指挥中心</title>
+<title>📝 小龙虾网络 · 论文写作指挥中心</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--dim:#64748b;--accent:#fbbf24;--green:#22c55e;--red:#ef4444;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--pink:#ec4899}
@@ -17,96 +17,92 @@
   .status-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600}
   .status-ok{background:rgba(34,197,94,.15);color:var(--green)}
   .status-warn{background:rgba(251,191,36,.15);color:var(--accent)}
-  .status-critical{background:rgba(239,68,68,.15);color:var(--red)}
+  .status-error{background:rgba(239,68,68,.15);color:var(--red)}
   .layout{display:grid;grid-template-columns:1fr 1fr;gap:0}
   .panel{padding:16px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
   .panel:nth-child(2n){border-right:none}
+  .panel-full{grid-column:1/-1}
   .panel-title{font-size:14px;font-weight:600;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
   .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px}
   .student-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-  .student-card{background:#0f172a;border-radius:10px;padding:12px;border:1px solid var(--border);position:relative;overflow:hidden}
+  .student-card{background:#0f172a;border-radius:10px;padding:12px;border:1px solid var(--border);position:relative;overflow:hidden;transition:all .2s}
+  .student-card:hover{border-color:var(--accent);box-shadow:0 0 20px rgba(251,191,36,.1)}
   .student-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-  .student-name{font-size:13px;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+  .student-name{font-size:14px;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:6px}
   .student-role{font-size:11px;color:var(--dim)}
-  .student-meta{display:flex;justify-content:space-between;margin-top:8px;font-size:11px}
-  .student-meta .label{color:var(--dim)}
-  .progress-bar{height:6px;background:#1e293b;border-radius:3px;overflow:hidden;margin-top:4px}
+  .student-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+  .stat-box{background:#1e293b;border-radius:6px;padding:6px;text-align:center}
+  .stat-box .num{font-size:16px;font-weight:700}
+  .stat-box .label{font-size:9px;color:var(--dim)}
+  .progress-bar{height:6px;background:#1e293b;border-radius:3px;overflow:hidden;margin-top:6px}
   .progress-fill{height:100%;border-radius:3px;transition:width 1s ease}
+  .section-list{max-height:300px;overflow-y:auto}
+  .section-item{padding:8px 10px;border-bottom:1px solid #1e293b;display:flex;justify-content:space-between;align-items:center}
+  .section-item:last-child{border-bottom:none}
+  .section-name{font-size:13px;font-weight:600}
+  .section-owner{font-size:11px;color:var(--dim)}
   .badge{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
   .badge-green{background:rgba(34,197,94,.15);color:var(--green)}
   .badge-red{background:rgba(239,68,68,.15);color:var(--red)}
   .badge-yellow{background:rgba(251,191,36,.15);color:var(--accent)}
   .badge-blue{background:rgba(59,130,246,.15);color:var(--blue)}
   .badge-purple{background:rgba(168,85,247,.15);color:var(--purple)}
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;margin-bottom:12px}
-  .stat-box{background:#0f172a;border-radius:8px;padding:10px}
-  .stat-box .num{font-size:20px;font-weight:700}
-  .stat-box .label{font-size:10px;color:var(--dim);margin-top:2px}
-  .section-list{max-height:300px;overflow-y:auto}
-  .section-item{padding:8px 10px;border-bottom:1px solid #1e293b;display:flex;justify-content:space-between;align-items:center}
-  .section-item:last-child{border-bottom:none}
-  .section-name{font-size:13px;font-weight:600}
-  .section-owner{font-size:11px;color:var(--dim)}
   .task-list{max-height:250px;overflow-y:auto}
-  .task-item{padding:8px 10px;border-bottom:1px solid #1e293b;font-size:12px;display:flex;justify-content:space-between;align-items:center}
+  .task-item{padding:8px 10px;border-bottom:1px solid #1e293b;display:flex;justify-content:space-between;align-items:center}
   .task-item:last-child{border-bottom:none}
-  .task-type{padding:2px 8px;border-radius:12px;font-size:10px;font-weight:600}
-  .task-reading{background:rgba(59,130,246,.15);color:var(--blue)}
-  .task-writing{background:rgba(168,85,247,.15);color:var(--purple)}
-  .task-review{background:rgba(251,191,36,.15);color:var(--accent)}
-  .task-guide{background:rgba(6,182,212,.15);color:var(--cyan)}
-  .seminar-item{padding:10px;background:#0f172a;border-radius:8px;margin-bottom:8px}
-  .seminar-title{font-size:13px;font-weight:600;margin-bottom:4px}
-  .seminar-meta{font-size:11px;color:var(--dim)}
-  .ability-bar{display:flex;gap:4px;margin-top:4px}
-  .ability-segment{flex:1;height:4px;background:#1e293b;border-radius:2px;overflow:hidden}
-  .ability-fill{height:100%;border-radius:2px}
+  .task-title{font-size:13px}
+  .task-meta{font-size:11px;color:var(--dim)}
+  .doc-list{max-height:200px;overflow-y:auto}
+  .doc-item{padding:8px 10px;border-bottom:1px solid #1e293b;display:flex;justify-content:space-between;align-items:center}
+  .doc-item:last-child{border-bottom:none}
+  .doc-name{font-size:13px;font-weight:600}
+  .doc-desc{font-size:11px;color:var(--dim)}
+  .schedule-list{max-height:200px;overflow-y:auto}
+  .schedule-item{padding:8px 10px;border-bottom:1px solid #1e293b;display:flex;justify-content:space-between;align-items:center}
+  .schedule-item:last-child{border-bottom:none}
+  .schedule-time{font-size:12px;color:var(--cyan);font-weight:600}
+  .schedule-event{font-size:13px}
+  .update-time{font-size:11px;color:var(--dim);text-align:right;padding:8px 16px}
   .loading{text-align:center;padding:40px;color:var(--dim);font-size:14px}
   .loading::before{content:'📝';font-size:32px;display:block;margin-bottom:8px}
-  .update-time{font-size:11px;color:var(--dim);text-align:right;padding:8px 16px}
-  .tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+  .tab-bar{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
   .tab{padding:8px 16px;border-radius:8px;font-size:13px;cursor:pointer;background:#0f172a;border:1px solid var(--border);transition:all .2s}
   .tab.active{background:rgba(251,191,36,.15);border-color:var(--accent);color:var(--accent)}
   .tab:hover{border-color:var(--accent)}
-  .action-btn{padding:4px 10px;border-radius:6px;font-size:11px;border:1px solid var(--border);background:#0f172a;color:var(--text);cursor:pointer;transition:all .2s}
-  .action-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .mini-chart{display:flex;align-items:flex-end;gap:2px;height:30px;margin-top:6px}
+  .mini-bar{flex:1;border-radius:2px 2px 0 0;transition:height .5s}
   @media(max-width:1200px){.layout{grid-template-columns:1fr}.panel{border-right:none}}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>📝 论文写作指挥中心</h1>
+  <h1>📝 小龙虾网络 · 论文写作指挥中心</h1>
   <div class="header-actions">
-    <span class="status-badge" id="paperStatus">🔄 加载中</span>
+    <span class="status-badge" id="statusBadge">🔄 加载中</span>
     <button class="btn active" id="autoRefreshBtn" onclick="toggleAutoRefresh()">🔄 自动刷新 30s</button>
     <button class="btn" onclick="fetchData()">↻ 立即刷新</button>
+    <button class="btn" onclick="window.location.href='/'">📊 返回总仪表盘</button>
   </div>
 </div>
 
 <div class="layout">
-  <!-- 1. 学员进度 -->
+  <!-- 学员概览 -->
   <div class="panel">
-    <div class="panel-title">👥 学员进度 <span style="font-size:11px;color:var(--dim)" id="studentCount">4 学员</span></div>
+    <div class="panel-title">👥 学员概览 <span style="font-size:11px;color:var(--dim)" id="studentCount">4 人</span></div>
     <div class="student-grid" id="studentGrid"><div class="loading">数据采集中...</div></div>
   </div>
 
-  <!-- 2. 合著论文进度 -->
+  <!-- 合著论文进度 -->
   <div class="panel">
     <div class="panel-title">📄 合著论文进度</div>
     <div id="paperSection"><div class="loading">数据采集中...</div></div>
   </div>
 
-  <!-- 3. 整体统计 -->
+  <!-- 训练任务 -->
   <div class="panel">
-    <div class="panel-title">📊 整体统计</div>
-    <div id="statsSection"><div class="loading">数据采集中...</div></div>
-  </div>
-
-  <!-- 4. 训练任务 -->
-  <div class="panel">
-    <div class="panel-title">📋 训练任务 <span style="font-size:11px;color:var(--dim)" id="taskCount">0 任务</span></div>
-    <div class="tabs" id="taskTabs">
+    <div class="panel-title">📚 训练任务 <span style="font-size:11px;color:var(--dim)" id="taskCount">8 任务</span></div>
+    <div class="tab-bar" id="taskTabs">
       <div class="tab active" data-student="all">全部</div>
       <div class="tab" data-student="qoder">qoder</div>
       <div class="tab" data-student="xiaochen">小陈</div>
@@ -116,16 +112,22 @@
     <div class="task-list" id="taskList"><div class="loading">数据采集中...</div></div>
   </div>
 
-  <!-- 5. 研讨会 -->
+  <!-- 文档状态 -->
   <div class="panel">
-    <div class="panel-title">🎓 研讨会</div>
-    <div id="seminarSection"><div class="loading">数据采集中...</div></div>
+    <div class="panel-title">📁 文档状态</div>
+    <div class="doc-list" id="docList"><div class="loading">数据采集中...</div></div>
   </div>
 
-  <!-- 6. 教练推荐 -->
+  <!-- 日程安排 -->
   <div class="panel">
-    <div class="panel-title">💡 教练推荐</div>
-    <div id="recommendationSection"><div class="loading">数据采集中...</div></div>
+    <div class="panel-title">📅 日程安排</div>
+    <div class="schedule-list" id="scheduleList"><div class="loading">数据采集中...</div></div>
+  </div>
+
+  <!-- 练习题库 -->
+  <div class="panel">
+    <div class="panel-title">🏋️ 练习题库</div>
+    <div id="problemBankSection"><div class="loading">数据采集中...</div></div>
   </div>
 </div>
 
@@ -134,6 +136,14 @@
 <script>
 let autoRefresh = true;
 let refreshInterval = null;
+let apiData = null;
+
+const STUDENT_COLORS = {
+  qoder: "#a855f7",
+  xiaochen: "#3b82f6",
+  zhuguxia: "#22c55e",
+  hermes: "#fbbf24"
+};
 
 function toggleAutoRefresh() {
   autoRefresh = !autoRefresh;
@@ -153,181 +163,96 @@ function stopRefresh() {
 
 async function fetchData() {
   try {
-    const [studentsRes, paperRes, statsRes, tasksRes, seminarsRes, recRes] = await Promise.all([
-      fetch('/api/paper/students'),
-      fetch('/api/paper/paper'),
-      fetch('/api/paper/stats'),
-      fetch('/api/paper/tasks'),
-      fetch('/api/paper/seminars'),
-      fetch('/api/paper/recommendations')
-    ]);
-    
-    const students = await studentsRes.json();
-    const paper = await paperRes.json();
-    const stats = await statsRes.json();
-    const tasks = await tasksRes.json();
-    const seminars = await seminarsRes.json();
-    const recommendations = await recRes.json();
-    
-    renderAll(students, paper, stats, tasks, seminars, recommendations);
+    const res = await fetch('/api/paper/status');
+    apiData = await res.json();
+    renderAll(apiData);
+    document.getElementById('updateTime').textContent = `最后更新：${new Date(apiData.timestamp).toLocaleString('zh-CN')} | 数据源：paper_dashboard_collector.py`;
+    document.getElementById('statusBadge').className = 'status-badge status-ok';
+    document.getElementById('statusBadge').textContent = '✅ 正常';
   } catch(e) {
     document.getElementById('updateTime').textContent = '⚠️ API连接失败: ' + e.message;
+    document.getElementById('statusBadge').className = 'status-badge status-error';
+    document.getElementById('statusBadge').textContent = '❌ 错误';
   }
 }
 
-function renderAll(students, paper, stats, tasks, seminars, recommendations) {
-  renderStudents(students);
-  renderPaper(paper);
-  renderStats(stats);
-  renderTasks(tasks);
-  renderSeminars(seminars);
-  renderRecommendations(recommendations);
-  
-  // 论文状态徽章
-  const status = paper.status;
-  const badge = document.getElementById('paperStatus');
-  if (status === 'submitted') {
-    badge.className = 'status-badge status-ok';
-    badge.textContent = '✅ 已投稿';
-  } else if (status === 'reviewing') {
-    badge.className = 'status-badge status-warn';
-    badge.textContent = '⚠️ 审稿中';
-  } else if (status === 'writing') {
-    badge.className = 'status-badge status-warn';
-    badge.textContent = '✍️ 写作中';
-  } else {
-    badge.className = 'status-badge status-ok';
-    badge.textContent = '📋 规划中';
-  }
-  
-  document.getElementById('updateTime').textContent = `最后更新：${new Date().toLocaleString('zh-CN')} | 论文写作指挥中心`;
+function renderAll(data) {
+  renderStudents(data.students);
+  renderPaper(data.paper);
+  renderTasks(data.tasks);
+  renderDocuments(data.documents);
+  renderSchedule(data.schedule);
+  renderProblemBank(data.problem_bank);
 }
 
 function renderStudents(students) {
-  document.getElementById('studentCount').textContent = `${Object.keys(students).length} 学员`;
-  document.getElementById('studentGrid').innerHTML = Object.values(students).map(s => {
-    const paperPct = s.stats.papers_target > 0 ? (s.stats.papers_read / s.stats.papers_target * 100) : 0;
-    const wordPct = s.stats.words_target > 0 ? (s.stats.words_written / s.stats.words_target * 100) : 0;
-    const color = s.color;
-    
-    return `
-    <div class="student-card" style="border-left:3px solid ${color}">
+  document.getElementById('studentCount').textContent = `${Object.keys(students).length} 人`;
+  document.getElementById('studentGrid').innerHTML = Object.values(students).map(s => `
+    <div class="student-card" style="border-left:3px solid ${STUDENT_COLORS[s.id] || '#666'}">
       <div class="student-name">
-        <span style="color:${color}">●</span>
+        <span style="color:${STUDENT_COLORS[s.id] || '#666'}">●</span>
         ${s.name}
       </div>
-      <div class="student-role">${s.role} · ${s.level} → ${s.target_level}</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">${s.collaborative_role}</div>
-      <div style="margin-top:8px">
-        <div style="font-size:11px;color:var(--dim)">论文阅读: ${s.stats.papers_read}/${s.stats.papers_target}</div>
-        <div class="progress-bar"><div class="progress-fill" style="width:${paperPct}%;background:${color}"></div></div>
-      </div>
-      <div style="margin-top:6px">
-        <div style="font-size:11px;color:var(--dim)">写作字数: ${s.stats.words_written.toLocaleString()}/${s.stats.words_target.toLocaleString()}</div>
-        <div class="progress-bar"><div class="progress-fill" style="width:${wordPct}%;background:${color}"></div></div>
-      </div>
-      <div style="margin-top:8px">
-        <div style="font-size:11px;color:var(--dim);margin-bottom:4px">能力画像</div>
-        <div class="ability-bar">
-          ${Object.entries(s.abilities).map(([key, val]) => `
-            <div class="ability-segment">
-              <div class="ability-fill" style="width:${val*100}%;background:${val>0.7?'var(--green)':val>0.5?'var(--accent)':'var(--red)'}" title="${key}: ${(val*100).toFixed(0)}%"></div>
-            </div>
-          `).join('')}
+      <div class="student-role">${s.role} · ${s.level}→${s.target_level}</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">合著: ${s.collaborative_role}</div>
+      <div class="student-stats">
+        <div class="stat-box">
+          <div class="num" style="color:${STUDENT_COLORS[s.id] || '#666'}">${s.papers_read}/${s.papers_target}</div>
+          <div class="label">论文阅读</div>
+        </div>
+        <div class="stat-box">
+          <div class="num" style="color:var(--green)">${s.notes_completed}</div>
+          <div class="label">笔记完成</div>
+        </div>
+        <div class="stat-box">
+          <div class="num" style="color:var(--cyan)">${s.exercises_done}</div>
+          <div class="label">练习完成</div>
         </div>
       </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:${s.progress_pct}%;background:${STUDENT_COLORS[s.id] || '#666'}"></div>
+      </div>
+      <div style="font-size:10px;color:var(--dim);margin-top:2px">进度: ${s.progress_pct}% · Day ${s.current_day}</div>
     </div>
-    `;
-  }).join('');
+  `).join('');
 }
 
 function renderPaper(paper) {
-  const overallProgress = Object.values(paper.sections).reduce((sum, s) => sum + s.progress, 0) / Object.keys(paper.sections).length;
+  const sections = Object.values(paper.sections);
+  const avgProgress = Math.round(paper.overall_progress);
   
   document.getElementById('paperSection').innerHTML = `
     <div class="card" style="padding:12px">
-      <div style="font-size:14px;font-weight:600;margin-bottom:8px">${paper.title}</div>
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-        <div style="font-size:28px;font-weight:700;color:${overallProgress>60?'var(--green)':overallProgress>30?'var(--accent)':'var(--blue)'}">${overallProgress.toFixed(1)}%</div>
-        <div style="flex:1">
-          <div class="progress-bar" style="height:10px;background:#1e293b;border-radius:5px;overflow:hidden">
-            <div class="progress-fill" style="width:${overallProgress}%;height:100%;background:${overallProgress>60?'var(--green)':overallProgress>30?'var(--accent)':'var(--blue)'};border-radius:5px"></div>
-          </div>
-          <div style="font-size:11px;color:var(--dim);margin-top:4px">内部审稿: ${paper.review_status.internal_reviews}/${paper.review_status.target_reviews} 轮</div>
-        </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-size:14px;font-weight:600">${paper.title}</div>
+        <span class="badge badge-blue">${paper.current_phase}</span>
+      </div>
+      <div style="font-size:11px;color:var(--dim);margin-bottom:10px">Day ${paper.day}/${paper.total_days} · 总体进度 ${avgProgress}%</div>
+      <div class="progress-bar" style="height:8px;margin-bottom:12px">
+        <div class="progress-fill" style="width:${avgProgress}%;background:linear-gradient(90deg,var(--blue),var(--accent))"></div>
       </div>
       <div class="section-list">
-        ${Object.entries(paper.sections).map(([id, section]) => {
-          const statusClass = section.status === 'completed' ? 'badge-green' : section.status === 'in_progress' ? 'badge-yellow' : 'badge-blue';
-          const statusLabel = section.status === 'completed' ? '已完成' : section.status === 'in_progress' ? '进行中' : '未开始';
-          return `
+        ${sections.map(s => `
           <div class="section-item">
             <div>
-              <div class="section-name">${section.title}</div>
-              <div class="section-owner">${section.owner} · ${section.word_count}/${section.target_words} 字</div>
+              <div class="section-name">${s.name}</div>
+              <div class="section-owner">${s.owner}</div>
             </div>
-            <div style="display:flex;align-items:center;gap:8px">
-              <div class="progress-bar" style="width:80px"><div class="progress-fill" style="width:${section.progress}%;background:${section.progress>60?'var(--green)':section.progress>30?'var(--accent)':'var(--dim)'}"></div></div>
-              <span style="font-size:11px;color:var(--dim)">${section.progress}%</span>
-              <span class="badge ${statusClass}">${statusLabel}</span>
+            <div style="text-align:right">
+              <span class="badge ${s.status==='completed'?'badge-green':s.status==='in_progress'?'badge-yellow':'badge-blue'}">${s.status==='completed'?'已完成':s.status==='in_progress'?'进行中':'待开始'}</span>
+              <div style="font-size:10px;color:var(--dim);margin-top:2px">${s.word_count}/${s.target_words}字</div>
             </div>
           </div>
-          `;
-        }).join('')}
-      </div>
-    </div>
-  `;
-}
-
-function renderStats(stats) {
-  document.getElementById('statsSection').innerHTML = `
-    <div class="card" style="padding:12px">
-      <div class="stats-grid">
-        <div class="stat-box">
-          <div class="num" style="color:var(--cyan)">${stats.read_papers}/${stats.total_papers}</div>
-          <div class="label">论文阅读</div>
-          <div class="progress-bar" style="margin-top:4px"><div class="progress-fill" style="width:${stats.paper_reading_progress}%;background:var(--cyan)"></div></div>
-        </div>
-        <div class="stat-box">
-          <div class="num" style="color:var(--purple)">${stats.written_words.toLocaleString()}/${stats.total_words.toLocaleString()}</div>
-          <div class="label">写作字数</div>
-          <div class="progress-bar" style="margin-top:4px"><div class="progress-fill" style="width:${stats.writing_progress}%;background:var(--purple)"></div></div>
-        </div>
-        <div class="stat-box">
-          <div class="num" style="color:var(--green)">${stats.completed_tasks}/${stats.total_tasks}</div>
-          <div class="label">完成任务</div>
-          <div class="progress-bar" style="margin-top:4px"><div class="progress-fill" style="width:${stats.total_tasks>0?stats.completed_tasks/stats.total_tasks*100:0}%;background:var(--green)"></div></div>
-        </div>
-        <div class="stat-box">
-          <div class="num" style="color:var(--accent)">${stats.paper_progress}%</div>
-          <div class="label">论文进度</div>
-          <div class="progress-bar" style="margin-top:4px"><div class="progress-fill" style="width:${stats.paper_progress}%;background:var(--accent)"></div></div>
-        </div>
+        `).join('')}
       </div>
       <div style="margin-top:12px">
-        <div style="font-size:12px;color:var(--dim);margin-bottom:8px">训练模式分布</div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center">
-          <div style="background:#0f172a;padding:8px;border-radius:6px">
-            <div style="font-size:16px">🚀</div>
-            <div style="font-size:11px">sprint</div>
-            <div style="font-size:10px;color:var(--dim)">qoder</div>
+        <div style="font-size:12px;color:var(--dim);margin-bottom:6px">里程碑</div>
+        ${paper.milestones.map(m => `
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:12px">
+            <span>${m.day} - ${m.name}</span>
+            <span class="badge ${m.status==='completed'?'badge-green':'badge-blue'}">${m.description}</span>
           </div>
-          <div style="background:#0f172a;padding:8px;border-radius:6px">
-            <div style="font-size:16px">📊</div>
-            <div style="font-size:11px">steady</div>
-            <div style="font-size:10px;color:var(--dim)">小陈</div>
-          </div>
-          <div style="background:#0f172a;padding:8px;border-radius:6px">
-            <div style="font-size:16px">⚖️</div>
-            <div style="font-size:11px">balanced</div>
-            <div style="font-size:10px;color:var(--dim)">诸葛虾</div>
-          </div>
-          <div style="background:#0f172a;padding:8px;border-radius:6px">
-            <div style="font-size:16px">🎓</div>
-            <div style="font-size:11px">mentor</div>
-            <div style="font-size:10px;color:var(--dim)">诸葛马</div>
-          </div>
-        </div>
+        `).join('')}
       </div>
     </div>
   `;
@@ -335,120 +260,90 @@ function renderStats(stats) {
 
 function renderTasks(tasks) {
   let allTasks = [];
-  for (const [studentId, studentTasks] of Object.entries(tasks)) {
-    for (const task of studentTasks) {
-      allTasks.push({...task, student_id: studentId});
-    }
+  for (const [sid, taskList] of Object.entries(tasks)) {
+    allTasks = allTasks.concat(taskList.map(t => ({...t, student_id: sid})));
   }
-  
   document.getElementById('taskCount').textContent = `${allTasks.length} 任务`;
   
-  // 存储所有任务供标签切换使用
-  window.allTasks = allTasks;
-  renderTaskList('all');
-}
-
-function renderTaskList(filter) {
-  const allTasks = window.allTasks || [];
-  const filtered = filter === 'all' ? allTasks : allTasks.filter(t => t.student_id === filter);
+  // 默认显示全部
+  renderTaskList(allTasks);
   
-  const typeClass = {
-    '阅读': 'task-reading',
-    '写作': 'task-writing',
-    '评审': 'task-review',
-    '指导': 'task-guide'
-  };
-  
-  const statusClass = {
-    'completed': 'badge-green',
-    'in_progress': 'badge-yellow',
-    'pending': 'badge-blue'
-  };
-  
-  const statusLabel = {
-    'completed': '已完成',
-    'in_progress': '进行中',
-    'pending': '待开始'
-  };
-  
-  document.getElementById('taskList').innerHTML = filtered.length > 0 ? filtered.map(t => `
-    <div class="task-item">
-      <div>
-        <span class="task-type ${typeClass[t.type] || 'task-reading'}">${t.type}</span>
-        <span style="margin-left:6px;font-weight:600">${t.title}</span>
-        <span style="margin-left:4px;font-size:10px;color:var(--dim)">[${t.difficulty}]</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:6px">
-        <span style="font-size:10px;color:var(--dim)">Day ${t.assigned_day}</span>
-        <span class="badge ${statusClass[t.status] || 'badge-blue'}">${statusLabel[t.status] || t.status}</span>
-      </div>
-    </div>
-  `).join('') : '<div style="text-align:center;padding:20px;color:var(--dim)">暂无任务</div>';
-}
-
-function renderSeminars(seminars) {
-  document.getElementById('seminarSection').innerHTML = `
-    <div class="card" style="padding:12px">
-      ${seminars.map(s => {
-        const date = new Date(s.date);
-        const statusClass = s.status === 'completed' ? 'badge-green' : s.status === 'in_progress' ? 'badge-yellow' : 'badge-blue';
-        const statusLabel = s.status === 'completed' ? '已完成' : s.status === 'in_progress' ? '进行中' : '已安排';
-        const typeIcon = s.type === 'paper_discussion' ? '📚' : '🔍';
-        
-        return `
-        <div class="seminar-item">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-            <div class="seminar-title">${typeIcon} ${s.title}</div>
-            <span class="badge ${statusClass}">${statusLabel}</span>
-          </div>
-          <div class="seminar-meta">
-            📅 ${date.toLocaleDateString('zh-CN')} ${date.toLocaleTimeString('zh-CN', {hour:'2-digit',minute:'2-digit'})}
-            · 👥 ${s.attendees.length} 人
-          </div>
-          <div style="margin-top:6px;font-size:11px;color:var(--dim)">
-            议程: ${s.agenda.join(' → ')}
-          </div>
-        </div>
-        `;
-      }).join('')}
-    </div>
-  `;
-}
-
-function renderRecommendations(recommendations) {
-  if (recommendations.length === 0) {
-    document.getElementById('recommendationSection').innerHTML = '<div class="card" style="padding:12px;text-align:center;color:var(--green)">✅ 暂无推荐</div>';
-    return;
-  }
-  
-  document.getElementById('recommendationSection').innerHTML = `
-    <div class="card" style="padding:12px">
-      ${recommendations.map(r => {
-        const priorityClass = r.priority === '高' ? 'badge-red' : r.priority === '中' ? 'badge-yellow' : 'badge-blue';
-        const typeIcon = r.type === '训练' ? '📚' : r.type === '任务' ? '📋' : '💡';
-        
-        return `
-        <div style="padding:8px 10px;border-bottom:1px solid #1e293b;display:flex;justify-content:space-between;align-items:center">
-          <div>
-            <div style="font-size:12px;font-weight:600">${typeIcon} ${r.student_name}</div>
-            <div style="font-size:11px;color:var(--dim);margin-top:2px">${r.content}</div>
-          </div>
-          <span class="badge ${priorityClass}">${r.priority}</span>
-        </div>
-        `;
-      }).join('')}
-    </div>
-  `;
-}
-
-// 任务标签切换
-document.querySelectorAll('#taskTabs .tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('#taskTabs .tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    renderTaskList(tab.dataset.student);
+  // 绑定tab事件
+  document.querySelectorAll('#taskTabs .tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('#taskTabs .tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const sid = tab.dataset.student;
+      if (sid === 'all') {
+        renderTaskList(allTasks);
+      } else {
+        renderTaskList(tasks[sid] || []);
+      }
+    });
   });
-});
+}
+
+function renderTaskList(taskList) {
+  document.getElementById('taskList').innerHTML = taskList.length === 0 ? 
+    '<div style="text-align:center;padding:20px;color:var(--dim)">暂无任务</div>' :
+    taskList.map(t => `
+      <div class="task-item">
+        <div>
+          <div class="task-title">${t.title}</div>
+          <div class="task-meta">${t.type} · ${t.difficulty} · ${t.time_limit}分钟</div>
+        </div>
+        <span class="badge ${t.status==='completed'?'badge-green':t.status==='in_progress'?'badge-yellow':'badge-blue'}">${t.status==='completed'?'已完成':t.status==='in_progress'?'进行中':'待开始'}</span>
+      </div>
+    `).join('');
+}
+
+function renderDocuments(docs) {
+  document.getElementById('docList').innerHTML = docs.map(d => `
+    <div class="doc-item">
+      <div>
+        <div class="doc-name">${d.exists ? '📄' : '❌'} ${d.filename}</div>
+        <div class="doc-desc">${d.description}</div>
+      </div>
+      <div style="text-align:right">
+        <span class="badge ${d.exists?'badge-green':'badge-red'}">${d.exists?'已创建':'缺失'}</span>
+        <div style="font-size:10px;color:var(--dim);margin-top:2px">${d.size_kb} KB</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderSchedule(schedule) {
+  document.getElementById('scheduleList').innerHTML = schedule.map(s => `
+    <div class="schedule-item">
+      <div>
+        <div class="schedule-time">${s.time}</div>
+        <div class="schedule-event">${s.event}</div>
+      </div>
+      <span class="badge ${s.type==='milestone'?'badge-purple':s.type==='seminar'?'badge-blue':'badge-yellow'}">${s.type==='milestone'?'里程碑':s.type==='seminar'?'研讨会':'日常'}</span>
+    </div>
+  `).join('');
+}
+
+function renderProblemBank(pb) {
+  document.getElementById('problemBankSection').innerHTML = `
+    <div class="card" style="padding:12px">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;text-align:center;margin-bottom:12px">
+        <div style="background:#0f172a;padding:10px;border-radius:8px">
+          <div style="font-size:24px;font-weight:700;color:var(--cyan)">${pb.reading.count}</div>
+          <div style="font-size:11px;color:var(--dim)">阅读练习</div>
+        </div>
+        <div style="background:#0f172a;padding:10px;border-radius:8px">
+          <div style="font-size:24px;font-weight:700;color:var(--purple)">${pb.writing.count}</div>
+          <div style="font-size:11px;color:var(--dim)">写作练习</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--dim)">
+        <div>📖 阅读练习覆盖: 摘要提取 → 方法论复述 → 实验评估 → 批判性分析 → 文献综述</div>
+        <div style="margin-top:4px">✍️ 写作练习覆盖: 摘要撰写 → 引言写作 → 算法描述 → 完整短论文 → 审稿回复</div>
+      </div>
+    </div>
+  `;
+}
 
 // 初始化
 fetchData();
