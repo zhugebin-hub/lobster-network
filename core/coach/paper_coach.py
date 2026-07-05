@@ -64,6 +64,18 @@ PLAYERS = {
         "strengths": ["argumentation", "formatting"],
         "weaknesses": ["structure", "abstract"],
     },
+    "lobster-001": {
+        "role": "protocol_architect",
+        "description": "协议架构师，擅长系统架构设计与协议分析",
+        "strengths": ["methodology", "structure"],
+        "weaknesses": ["formatting", "abstract"],
+    },
+    "museum-001": {
+        "role": "digital_archivist",
+        "description": "数字档案员，擅长文献综述与知识管理",
+        "strengths": ["literature_review", "citations"],
+        "weaknesses": ["data_analysis", "methodology"],
+    },
 }
 
 # 论文评估的8个维度

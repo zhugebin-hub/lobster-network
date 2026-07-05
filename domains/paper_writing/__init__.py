@@ -18,4 +18,4 @@ EVALUATION_DIMENSIONS = [
     "formatting",
     "citations",
 ]
-PLAYERS = ["qoder", "xiaochen", "zhuguxia", "zhugebin"]
+PLAYERS = ["qoder", "xiaochen", "zhuguxia", "zhugebin", "lobster-001", "museum-001"]

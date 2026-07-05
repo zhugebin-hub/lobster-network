@@ -19,7 +19,7 @@ import logging
 import math
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional
 from dataclasses import dataclass, field
 from enum import Enum
 
@@ -366,3 +366,317 @@ class EmergenceDetector:
                 for e in self._events[-10:]
             ],
         }
+
+
+# ============================================================
+# DomainThresholdConfig — 领域差异化阈值配置
+# ============================================================
+
+class DomainThresholdConfig:
+    """
+    论文 6.1.2 节：差异化阈值方案。
+
+    按 domain 配置不同的涌现阈值，支持从 JSON 加载。
+
+    用法:
+        config = DomainThresholdConfig()
+        threshold = config.get_threshold("go_training")  # 0.72
+        threshold = config.get_threshold("unknown")       # 0.70 (default)
+    """
+
+    def __init__(self, config_path: str = ""):
+        """
+        参数:
+          config_path: thresholds.json 路径，默认从 observability/config/ 加载
+        """
+        self._default_threshold = 0.70
+        self._domains: Dict[str, float] = {
+            "go_training": 0.72,
+            "poster_design": 0.65,
+            "paper_writing": 0.70,
+            "cybersecurity": 0.75,
+            "networking": 0.68,
+            "code_review": 0.70,
+            "stock_trading": 0.78,
+            "general": 0.70,
+        }
+
+        # 从 JSON 加载覆盖
+        if not config_path:
+            config_path = str(DATA_DIR.parent / "config" / "thresholds.json")
+        self._config_path = config_path
+        self._load_from_json()
+
+    def _load_from_json(self):
+        """从 JSON 文件加载阈值配置"""
+        config_file = Path(self._config_path)
+        if not config_file.exists():
+            logger.warning(f"[DomainThresholdConfig] 配置文件不存在: {config_file}，使用内置默认值")
+            return
+
+        try:
+            with open(config_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+
+            global_config = data.get("global", {})
+            self._default_threshold = global_config.get("default_threshold", self._default_threshold)
+
+            domains = data.get("domains", {})
+            for domain_name, domain_config in domains.items():
+                if "threshold" in domain_config:
+                    self._domains[domain_name] = domain_config["threshold"]
+
+            logger.info(
+                f"[DomainThresholdConfig] 已加载 {len(self._domains)} 领域阈值，"
+                f"默认阈值={self._default_threshold}"
+            )
+        except (json.JSONDecodeError, IOError) as e:
+            logger.error(f"[DomainThresholdConfig] JSON 加载失败: {e}")
+
+    def get_threshold(self, domain: str) -> float:
+        """获取指定领域的涌现阈值"""
+        return self._domains.get(domain, self._default_threshold)
+
+    def get_default(self) -> float:
+        """获取全局默认阈值"""
+        return self._default_threshold
+
+    def set_threshold(self, domain: str, threshold: float):
+        """运行时设置领域阈值"""
+        if 0.0 <= threshold <= 1.0:
+            self._domains[domain] = threshold
+            logger.info(f"[DomainThresholdConfig] 设置 {domain} 阈值 = {threshold}")
+        else:
+            raise ValueError(f"阈值必须在 [0, 1] 范围，当前值: {threshold}")
+
+    def get_all_domains(self) -> Dict[str, float]:
+        """获取所有领域阈值配置"""
+        return dict(self._domains)
+
+
+# ============================================================
+# AdaptiveThreshold — 自适应阈值机制
+# ============================================================
+
+class AdaptiveThreshold:
+    """
+    论文 6.3.2 节：自适应阈值。
+
+    基于滑动窗口（最近 100 次检测）动态调整阈值：
+    - 误报率 > 20%: 阈值上浮 0.02
+    - 漏报率 > 15%: 阈值下调 0.02
+    - 变化幅度限制在 ±0.1 范围内
+
+    用法:
+        adaptive = AdaptiveThreshold(initial_threshold=0.70, window_size=100)
+        predicted = adaptive.detect_and_update(emergence_value=0.73, ground_truth=True)
+        adaptive.report_feedback(was_emergence=False, detected=True)   # 误报
+    """
+
+    def __init__(
+        self,
+        initial_threshold: float = 0.70,
+        original_threshold: float = 0.70,
+        window_size: int = 100,
+        fp_threshold: float = 0.20,
+        fn_threshold: float = 0.15,
+        adjustment_step: float = 0.02,
+        max_adjustment: float = 0.10,
+    ):
+        """
+        参数:
+          initial_threshold: 初始阈值
+          original_threshold: 原始基准阈值（用于限制最大漂移）
+          window_size: 滑动窗口大小
+          fp_threshold: 误报率阈值（上浮触发条件）
+          fn_threshold: 漏报率阈值（下调触发条件）
+          adjustment_step: 每次调整步长
+          max_adjustment: 最大允许漂移量（±）
+        """
+        self.current_threshold = initial_threshold
+        self.original_threshold = original_threshold
+        self.window_size = window_size
+        self.fp_threshold = fp_threshold
+        self.fn_threshold = fn_threshold
+        self.adjustment_step = adjustment_step
+        self.max_adjustment = max_adjustment
+
+        # 滑动窗口：存储 (ground_truth, detected) 元组
+        self._window: List[Tuple[bool, bool]] = []
+        self._adjustment_count = 0
+        self._threshold_history: List[Dict[str, Any]] = []
+
+    def report_feedback(self, was_emergence: bool, detected: bool):
+        """
+        记录一次检测反馈。
+
+        参数:
+          was_emergence: 是否确实发生了涌现（ground truth）
+          detected: 系统是否检测到涌现
+        """
+        self._window.append((was_emergence, detected))
+        if len(self._window) > self.window_size:
+            self._window.pop(0)
+
+        # 窗口满时评估调整
+        if len(self._window) >= self.window_size:
+            self._evaluate_and_adjust()
+
+    def detect_and_update(self, emergence_value: float, ground_truth: bool = False) -> bool:
+        """
+        使用当前阈值检测，并支持传入 ground truth 用于自适应。
+
+        返回: 是否判定为涌现
+        """
+        detected = emergence_value >= self.current_threshold
+        if ground_truth is not None:
+            self.report_feedback(was_emergence=ground_truth, detected=detected)
+        return detected
+
+    def _evaluate_and_adjust(self):
+        """评估窗口内误报率/漏报率并调整阈值"""
+        if not self._window:
+            return
+
+        total = len(self._window)
+        fp_count = sum(1 for gt, det in self._window if det and not gt)   # 误报
+        fn_count = sum(1 for gt, det in self._window if gt and not det)   # 漏报
+
+        fp_rate = fp_count / total
+        fn_rate = fn_count / total
+
+        old_threshold = self.current_threshold
+        adjusted = False
+
+        if fp_rate > self.fp_threshold:
+            # 误报过多，上浮阈值
+            new_threshold = old_threshold + self.adjustment_step
+            max_allowed = self.original_threshold + self.max_adjustment
+            self.current_threshold = min(new_threshold, max_allowed)
+            adjusted = True
+            logger.info(
+                f"[AdaptiveThreshold] 误报率 {fp_rate:.1%} > {self.fp_threshold:.0%}，"
+                f"阈值上浮: {old_threshold:.3f} → {self.current_threshold:.3f}"
+            )
+
+        elif fn_rate > self.fn_threshold:
+            # 漏报过多，下调阈值
+            new_threshold = old_threshold - self.adjustment_step
+            min_allowed = self.original_threshold - self.max_adjustment
+            self.current_threshold = max(new_threshold, min_allowed)
+            adjusted = True
+            logger.info(
+                f"[AdaptiveThreshold] 漏报率 {fn_rate:.1%} > {self.fn_threshold:.0%}，"
+                f"阈值下调: {old_threshold:.3f} → {self.current_threshold:.3f}"
+            )
+
+        if adjusted:
+            self._adjustment_count += 1
+            self._threshold_history.append({
+                "step": self._adjustment_count,
+                "timestamp": datetime.now().isoformat(),
+                "old_threshold": round(old_threshold, 4),
+                "new_threshold": round(self.current_threshold, 4),
+                "fp_rate": round(fp_rate, 4),
+                "fn_rate": round(fn_rate, 4),
+                "window_size": total,
+            })
+
+            # 调整后重置窗口（避免重复调整）
+            self._window.clear()
+
+    def get_current_threshold(self) -> float:
+        """获取当前阈值"""
+        return self.current_threshold
+
+    def get_adjustment_history(self) -> List[Dict[str, Any]]:
+        """获取阈值调整历史"""
+        return self._threshold_history
+
+    def get_stats(self) -> Dict[str, Any]:
+        """获取自适应统计"""
+        total = len(self._window)
+        if total == 0:
+            fp_rate = 0.0
+            fn_rate = 0.0
+        else:
+            fp_rate = sum(1 for gt, det in self._window if det and not gt) / total
+            fn_rate = sum(1 for gt, det in self._window if gt and not det) / total
+
+        return {
+            "current_threshold": round(self.current_threshold, 4),
+            "original_threshold": self.original_threshold,
+            "total_adjustments": self._adjustment_count,
+            "window_size": total,
+            "fp_rate": round(fp_rate, 4),
+            "fn_rate": round(fn_rate, 4),
+        }
+
+
+# ============================================================
+# emerge_to_reward() — 涌现→奖励映射
+# ============================================================
+
+# 回调注册表：RL-Orchestrator 可通过此机制接收涌现奖励
+_emergence_reward_callbacks: List[Callable[[Dict[str, Any]], None]] = []
+
+
+def emerge_to_reward(event: EmergenceEvent) -> float:
+    """
+    论文 6.3.2 节：将涌现事件映射为 RL-Orchestrator 的奖励信号。
+
+    映射规则：
+    - NEW_KNOWLEDGE → +0.30
+    - NEW_STRATEGY → +0.25
+    - NEW_CONNECTION → +0.20
+    - NEW_METAPHOR → +0.15
+
+    同时触发所有注册的回调函数（如 SelfEvolutionLoop.on_emergence）。
+
+    参数:
+      event: EmergenceEvent 对象
+
+    返回:
+      映射后的奖励值
+    """
+    reward_map = {
+        EmergenceCategory.NEW_KNOWLEDGE: 0.30,
+        EmergenceCategory.NEW_STRATEGY: 0.25,
+        EmergenceCategory.NEW_CONNECTION: 0.20,
+        EmergenceCategory.NEW_METAPHOR: 0.15,
+    }
+    reward = reward_map.get(event.category, 0.0)
+
+    reward_data = {
+        "event_id": event.event_id,
+        "timestamp": event.timestamp,
+        "category": event.category.value,
+        "emergence_value": event.emergence_value,
+        "reward": reward,
+    }
+
+    # 触发所有注册回调
+    for callback in list(_emergence_reward_callbacks):
+        try:
+            callback(reward_data)
+        except Exception as e:
+            logger.error(f"[emerge_to_reward] 回调异常: {e}")
+
+    logger.info(
+        f"[emerge_to_reward] {event.category.value} → +{reward:.2f} "
+        f"(E={event.emergence_value:.3f})"
+    )
+
+    return reward
+
+
+def register_emergence_callback(callback: Callable[[Dict[str, Any]], None]):
+    """注册涌现→奖励回调（供 RL-Orchestrator 使用）"""
+    _emergence_reward_callbacks.append(callback)
+    logger.info(f"[register_emergence_callback] 已注册回调 (当前共 {len(_emergence_reward_callbacks)} 个)")
+
+
+def unregister_emergence_callback(callback: Callable[[Dict[str, Any]], None]):
+    """取消注册回调"""
+    if callback in _emergence_reward_callbacks:
+        _emergence_reward_callbacks.remove(callback)

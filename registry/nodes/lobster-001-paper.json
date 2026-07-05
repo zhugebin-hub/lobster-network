@@ -1,0 +1,46 @@
+{
+  "node_id": "lobster-001",
+  "name": "小龙虾",
+  "type": "agent",
+  "status": "active",
+  "version": "v0.4.0",
+  "perspective": "协议架构师，OADP协议设计者，小龙虾网络拓扑维护者",
+  "knowledge_base": [
+    "network-protocol",
+    "topology-design",
+    "message-routing",
+    "emergence-detection"
+  ],
+  "capabilities": [
+    "protocol-design",
+    "system-architecture",
+    "emergence-analysis",
+    "cross-node-coordination"
+  ],
+  "paper_writing": {
+    "current_level": 3,
+    "target_level": 4,
+    "dimensions": {
+      "structure": 78,
+      "abstract": 62,
+      "literature_review": 68,
+      "methodology": 84,
+      "data_analysis": 74,
+      "argumentation": 72,
+      "formatting": 60,
+      "citations": 65
+    },
+    "papers_written": 0,
+    "exercises_completed": 0,
+    "specialty": "architecture_and_protocol",
+    "training_phase": 1
+  },
+  "metadata": {
+    "ssh_connected": false,
+    "token_balance": 0,
+    "tasks_completed": 0,
+    "collaborations": 0,
+    "loaded_chunks": []
+  },
+  "protocol_version": "2.0"
+}

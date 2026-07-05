@@ -110,6 +110,42 @@ PLAYERS = {
             "revision_polish": "editorial_feedback",
         },
     },
+    "lobster-001": {
+        "name_zh": "小龙虾（协议架构师）",
+        "role": "protocol_architect",
+        "description": "擅长系统架构设计与协议分析，负责论文的系统设计章节",
+        "profile_path": os.path.join(PAPER_TRAINING_DIR, "lobster-001", "profile.json"),
+        "inbox_path": os.path.join(PAPER_TRAINING_DIR, "lobster-001", "inbox"),
+        "outbox_path": os.path.join(PAPER_TRAINING_DIR, "lobster-001", "outbox"),
+        "primary_dimensions": ["methodology", "structure"],
+        "secondary_dimensions": ["argumentation", "data_analysis"],
+        "weak_dimensions": ["formatting", "abstract"],
+        "task_preferences": {
+            "literature_mining": "protocol_papers",
+            "outline_writing": "system_design",
+            "section_drafting": "architecture_section",
+            "peer_review": "architecture_review",
+            "revision_polish": "design_clarity",
+        },
+    },
+    "museum-001": {
+        "name_zh": "院史馆小龙虾（数字档案员）",
+        "role": "digital_archivist",
+        "description": "擅长文献综述与知识管理，负责论文的文献综述与引用整理",
+        "profile_path": os.path.join(PAPER_TRAINING_DIR, "museum-001", "profile.json"),
+        "inbox_path": os.path.join(PAPER_TRAINING_DIR, "museum-001", "inbox"),
+        "outbox_path": os.path.join(PAPER_TRAINING_DIR, "museum-001", "outbox"),
+        "primary_dimensions": ["literature_review", "citations"],
+        "secondary_dimensions": ["structure", "formatting"],
+        "weak_dimensions": ["data_analysis", "methodology"],
+        "task_preferences": {
+            "literature_mining": "systematic_review",
+            "outline_writing": "thematic_mapping",
+            "section_drafting": "literature_section",
+            "peer_review": "citation_accuracy_review",
+            "revision_polish": "reference_consistency",
+        },
+    },
 }
 
 # 每日训练时间表

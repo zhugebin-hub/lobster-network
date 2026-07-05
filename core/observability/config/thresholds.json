@@ -1,0 +1,52 @@
+{
+  "version": "1.0.0",
+  "description": "领域差异化涌现阈值配置 — 基于论文6.1.2节差异化阈值方案",
+  "global": {
+    "default_threshold": 0.7,
+    "adaptive_window_size": 100,
+    "false_positive_threshold": 0.20,
+    "false_negative_threshold": 0.15,
+    "adjustment_step": 0.02,
+    "max_adjustment": 0.10
+  },
+  "domains": {
+    "go_training": {
+      "threshold": 0.72,
+      "description": "围棋训练 — 棋盘策略类涌现需要较高阈值以减少噪音"
+    },
+    "poster_design": {
+      "threshold": 0.65,
+      "description": "海报设计 — 创意类任务涌现阈值较低以鼓励创新"
+    },
+    "paper_writing": {
+      "threshold": 0.70,
+      "description": "论文写作 — 学术类任务使用默认阈值"
+    },
+    "cybersecurity": {
+      "threshold": 0.75,
+      "description": "网络安全 — 高可靠性要求，阈值更高以减少误报"
+    },
+    "networking": {
+      "threshold": 0.68,
+      "description": "网络架构 — 协议创新场景"
+    },
+    "code_review": {
+      "threshold": 0.70,
+      "description": "代码审查 — 工程实践场景"
+    },
+    "stock_trading": {
+      "threshold": 0.78,
+      "description": "股票交易 — 金融类任务要求最高阈值以控制风险"
+    },
+    "general": {
+      "threshold": 0.70,
+      "description": "通用场景默认阈值"
+    }
+  },
+  "reward_mapping": {
+    "NEW_KNOWLEDGE": 0.30,
+    "NEW_STRATEGY": 0.25,
+    "NEW_CONNECTION": 0.20,
+    "NEW_METAPHOR": 0.15
+  }
+}

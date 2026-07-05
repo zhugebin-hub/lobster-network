@@ -56,6 +56,16 @@ ROLES = {
         "specialty": "学术指导与论文架构",
         "strengths": ["选题把关", "论证逻辑", "学术规范"],
     },
+    "lobster-001": {
+        "display_name": "小龙虾",
+        "specialty": "系统架构与协议设计",
+        "strengths": ["协议设计", "系统架构", "涌现分析"],
+    },
+    "museum-001": {
+        "display_name": "院史馆小龙虾",
+        "specialty": "文献综述与知识管理",
+        "strengths": ["文献检索", "知识图谱", "档案管理"],
+    },
 }
 
 # 共享根路径（容器内挂载点或本地模拟路径）

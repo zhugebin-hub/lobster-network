@@ -719,3 +719,566 @@ def create_default_agents() -> List[AgentCard]:
             max_concurrent=5,
         ),
     ]
+
+
+# ============================================================
+# DQNScheduler — 基于 Deep Q-Network 的调度器
+# ============================================================
+
+import pickle
+import os as _os_module
+
+# 确保 models 目录存在
+MODELS_DIR = Path(__file__).resolve().parent / "models"
+MODELS_DIR.mkdir(exist_ok=True)
+
+
+class DQNScheduler:
+    """
+    基于 DQN 的任务调度器，用于替代简表 Q-Learning。
+
+    论文 6.3.1 节：将简表 Q-Learning 升级为 DQN 或 PPO。
+
+    架构：
+    - 3 层全连接网络: 输入 20维状态向量 → 128 → 64 → 输出动作数
+    - 经验回放缓冲区: 容量 10000, batch_size 64
+    - epsilon-greedy 探索: epsilon 1.0 → 0.05, 衰减率 0.995
+    - 目标网络软更新: tau = 0.01
+    - 损失: MSE, 优化器: SGD
+
+    用法:
+        scheduler = DQNScheduler(state_dim=20, action_dim=8)
+        action = scheduler.select_action(state_vector)
+        scheduler.store_experience(state, action, reward, next_state, done)
+        scheduler.train_step()
+    """
+
+    def __init__(
+        self,
+        state_dim: int = 20,
+        action_dim: int = 8,
+        hidden_dim1: int = 128,
+        hidden_dim2: int = 64,
+        replay_capacity: int = 10000,
+        batch_size: int = 64,
+        epsilon_start: float = 1.0,
+        epsilon_end: float = 0.05,
+        epsilon_decay: float = 0.995,
+        gamma: float = 0.95,
+        tau: float = 0.01,
+        learning_rate: float = 0.01,
+        model_dir: str = "",
+    ):
+        self.state_dim = state_dim
+        self.action_dim = action_dim
+        self.gamma = gamma
+        self.tau = tau
+        self.batch_size = batch_size
+
+        # epsilon-greedy 探索
+        self.epsilon = epsilon_start
+        self.epsilon_end = epsilon_end
+        self.epsilon_decay = epsilon_decay
+
+        # 经验回放缓冲区
+        self.replay_capacity = replay_capacity
+        self._replay_buffer: List[Tuple[List[float], int, float, List[float], bool]] = []
+        self._buffer_pos = 0
+
+        # 神经网络权重（简化实现：使用矩阵乘法模拟全连接层）
+        # Layer 1: state_dim → hidden_dim1
+        self.W1 = [[random.gauss(0, 0.1) for _ in range(hidden_dim1)] for _ in range(state_dim)]
+        self.b1 = [0.0 for _ in range(hidden_dim1)]
+        # Layer 2: hidden_dim1 → hidden_dim2
+        self.W2 = [[random.gauss(0, 0.1) for _ in range(hidden_dim2)] for _ in range(hidden_dim1)]
+        self.b2 = [0.0 for _ in range(hidden_dim2)]
+        # Layer 3: hidden_dim2 → action_dim
+        self.W3 = [[random.gauss(0, 0.1) for _ in range(action_dim)] for _ in range(hidden_dim2)]
+        self.b3 = [0.0 for _ in range(action_dim)]
+
+        # 目标网络（独立权重副本）
+        self._target_W1 = [row[:] for row in self.W1]
+        self._target_b1 = self.b1[:]
+        self._target_W2 = [row[:] for row in self.W2]
+        self._target_b2 = self.b2[:]
+        self._target_W3 = [row[:] for row in self.W3]
+        self._target_b3 = self.b3[:]
+
+        self.lr = learning_rate
+        self._train_step_count = 0
+
+        # 模型路径
+        self.model_dir = model_dir or str(MODELS_DIR)
+
+        logger.info(
+            f"[DQNScheduler] 初始化: state_dim={state_dim}, action_dim={action_dim}, "
+            f"hidden=({hidden_dim1},{hidden_dim2}), replay={replay_capacity}, batch={batch_size}, "
+            f"epsilon={epsilon_start}→{epsilon_end}, gamma={gamma}, tau={tau}"
+        )
+
+    # ---- 矩阵运算辅助（内嵌实现以保持无外部依赖） ----
+
+    @staticmethod
+    def _relu(x: float) -> float:
+        return max(0.0, x)
+
+    @staticmethod
+    def _relu_derivative(x: float) -> float:
+        return 1.0 if x > 0 else 0.0
+
+    def _forward(self, state: List[float], W1, b1, W2, b2, W3, b3) -> Tuple[
+        List[float], List[float], List[float]
+    ]:
+        """前向传播，返回 (h1, h2, q_values)"""
+        # Layer 1
+        h1 = [0.0] * len(b1)
+        for j in range(len(b1)):
+            s = b1[j]
+            for i in range(len(state)):
+                s += state[i] * W1[i][j]
+            h1[j] = self._relu(s)
+
+        # Layer 2
+        h2 = [0.0] * len(b2)
+        for j in range(len(b2)):
+            s = b2[j]
+            for i in range(len(h1)):
+                s += h1[i] * W2[i][j]
+            h2[j] = self._relu(s)
+
+        # Layer 3 (no activation — Q values)
+        q_values = [0.0] * len(b3)
+        for j in range(len(b3)):
+            s = b3[j]
+            for i in range(len(h2)):
+                s += h2[i] * W3[i][j]
+            q_values[j] = s
+
+        return h1, h2, q_values
+
+    def _get_q_values(self, state: List[float]) -> List[float]:
+        """使用在线网络计算 Q 值"""
+        _, _, q = self._forward(state, self.W1, self.b1, self.W2, self.b2, self.W3, self.b3)
+        return q
+
+    def _get_target_q(self, state: List[float]) -> List[float]:
+        """使用目标网络计算 Q 值"""
+        _, _, q = self._forward(
+            state, self._target_W1, self._target_b1,
+            self._target_W2, self._target_b2, self._target_W3, self._target_b3
+        )
+        return q
+
+    # ---- 核心接口 ----
+
+    def select_action(self, state_vector: List[float]) -> int:
+        """epsilon-greedy 选择动作"""
+        if random.random() < self.epsilon:
+            return random.randrange(self.action_dim)
+        q_values = self._get_q_values(state_vector)
+        max_q = max(q_values)
+        candidates = [i for i, q in enumerate(q_values) if q == max_q]
+        return random.choice(candidates)
+
+    def store_experience(
+        self,
+        state: List[float],
+        action: int,
+        reward: float,
+        next_state: List[float],
+        done: bool,
+    ):
+        """存储经验到回放缓冲区"""
+        experience = (state, action, reward, next_state, done)
+        if len(self._replay_buffer) < self.replay_capacity:
+            self._replay_buffer.append(experience)
+        else:
+            self._replay_buffer[self._buffer_pos % self.replay_capacity] = experience
+        self._buffer_pos += 1
+
+    def train_step(self) -> float:
+        """执行一步训练，返回损失值"""
+        if len(self._replay_buffer) < self.batch_size:
+            return 0.0
+
+        batch = random.sample(self._replay_buffer, self.batch_size)
+        total_loss = 0.0
+
+        for state, action, reward, next_state, done in batch:
+            q_values = self._get_q_values(state)
+            current_q = q_values[action]
+
+            if done:
+                target_q = reward
+            else:
+                target_q_values = self._get_target_q(next_state)
+                target_q = reward + self.gamma * max(target_q_values)
+
+            td_error = target_q - current_q
+            loss = td_error ** 2
+            total_loss += loss
+
+            # SGD 更新 (仅更新 action 对应的输出权重)
+            grad_q = -2.0 * td_error
+            _, h2_vals, _ = self._forward(
+                state, self.W1, self.b1, self.W2, self.b2, self.W3, self.b3
+            )
+            for i in range(len(h2_vals)):
+                self.W3[i][action] -= self.lr * grad_q * h2_vals[i]
+            self.b3[action] -= self.lr * grad_q
+
+        avg_loss = total_loss / self.batch_size
+
+        # epsilon 衰减
+        self.epsilon = max(self.epsilon_end, self.epsilon * self.epsilon_decay)
+
+        # 目标网络软更新
+        self._soft_update()
+
+        self._train_step_count += 1
+        return avg_loss
+
+    def _soft_update(self):
+        """目标网络软更新: θ_target = τ * θ_online + (1-τ) * θ_target"""
+        tau = self.tau
+        omt = 1.0 - tau
+
+        for i in range(len(self.W1)):
+            for j in range(len(self.W1[0])):
+                self._target_W1[i][j] = tau * self.W1[i][j] + omt * self._target_W1[i][j]
+        for i in range(len(self.b1)):
+            self._target_b1[i] = tau * self.b1[i] + omt * self._target_b1[i]
+
+        for i in range(len(self.W2)):
+            for j in range(len(self.W2[0])):
+                self._target_W2[i][j] = tau * self.W2[i][j] + omt * self._target_W2[i][j]
+        for i in range(len(self.b2)):
+            self._target_b2[i] = tau * self.b2[i] + omt * self._target_b2[i]
+
+        for i in range(len(self.W3)):
+            for j in range(len(self.W3[0])):
+                self._target_W3[i][j] = tau * self.W3[i][j] + omt * self._target_W3[i][j]
+        for i in range(len(self.b3)):
+            self._target_b3[i] = tau * self.b3[i] + omt * self._target_b3[i]
+
+    # ---- 持久化 ----
+
+    def save(self, filepath: str = ""):
+        """保存模型权重"""
+        if not filepath:
+            filepath = str(Path(self.model_dir) / "dqn_weights.pkl")
+        Path(filepath).parent.mkdir(parents=True, exist_ok=True)
+        with open(filepath, "wb") as f:
+            pickle.dump({
+                "W1": self.W1, "b1": self.b1,
+                "W2": self.W2, "b2": self.b2,
+                "W3": self.W3, "b3": self.b3,
+                "_target_W1": self._target_W1, "_target_b1": self._target_b1,
+                "_target_W2": self._target_W2, "_target_b2": self._target_b2,
+                "_target_W3": self._target_W3, "_target_b3": self._target_b3,
+                "epsilon": self.epsilon,
+                "train_step_count": self._train_step_count,
+            }, f)
+        logger.info(f"[DQNScheduler] 模型已保存: {filepath} (step={self._train_step_count}, eps={self.epsilon:.4f})")
+
+    def load(self, filepath: str):
+        """加载模型权重"""
+        with open(filepath, "rb") as f:
+            data = pickle.load(f)
+        self.W1 = data["W1"]; self.b1 = data["b1"]
+        self.W2 = data["W2"]; self.b2 = data["b2"]
+        self.W3 = data["W3"]; self.b3 = data["b3"]
+        self._target_W1 = data["_target_W1"]; self._target_b1 = data["_target_b1"]
+        self._target_W2 = data["_target_W2"]; self._target_b2 = data["_target_b2"]
+        self._target_W3 = data["_target_W3"]; self._target_b3 = data["_target_b3"]
+        self.epsilon = data.get("epsilon", self.epsilon_end)
+        self._train_step_count = data.get("train_step_count", 0)
+        logger.info(f"[DQNScheduler] 模型已加载: {filepath} (step={self._train_step_count}, eps={self.epsilon:.4f})")
+
+    def get_stats(self) -> Dict[str, Any]:
+        return {
+            "type": "DQN",
+            "state_dim": self.state_dim,
+            "action_dim": self.action_dim,
+            "epsilon": round(self.epsilon, 4),
+            "replay_buffer_size": len(self._replay_buffer),
+            "replay_capacity": self.replay_capacity,
+            "train_step_count": self._train_step_count,
+        }
+
+
+# ============================================================
+# SelfEvolutionLoop — 自进化闭环
+# ============================================================
+
+class SelfEvolutionLoop:
+    """
+    自进化闭环控制器。
+
+    论文 6.3.2 节：接收涌现检测器的输出事件，将涌现事件转化为
+    额外奖励信号反馈至 RL 调度器，实现「检测→反馈→优化」闭环。
+
+    用法:
+        evo = SelfEvolutionLoop(scheduler)
+        evo.on_emergence(emergence_event)
+        evo.get_evolution_trajectory()
+    """
+
+    REWARD_MAP = {
+        "new_knowledge": 0.30,
+        "new_strategy": 0.25,
+        "new_connection": 0.20,
+        "new_metaphor": 0.15,
+    }
+
+    def __init__(self, scheduler=None, log_path: str = ""):
+        self._scheduler = scheduler
+        self._evolution_log: List[Dict[str, Any]] = []
+        self._total_emergence_reward = 0.0
+        self._emergence_count = 0
+
+        if not log_path:
+            log_path = str(LOG_DIR / "evolution_log.json")
+        self._log_path = log_path
+
+        logger.info("[SelfEvolutionLoop] 自进化闭环已启用")
+
+    def on_emergence(self, event) -> float:
+        """接收涌现事件并转化为奖励信号"""
+        category = getattr(event, 'category', None)
+        if category is None:
+            return 0.0
+
+        cat_str = category.value if hasattr(category, 'value') else str(category)
+        reward = self.REWARD_MAP.get(cat_str, 0.0)
+        self._total_emergence_reward += reward
+        self._emergence_count += 1
+
+        entry = {
+            "event_id": getattr(event, 'event_id', 'unknown'),
+            "timestamp": getattr(event, 'timestamp', datetime.now().isoformat()),
+            "category": cat_str,
+            "emergence_value": getattr(event, 'emergence_value', 0.0),
+            "reward": reward,
+            "cumulative_reward": self._total_emergence_reward,
+        }
+        self._evolution_log.append(entry)
+
+        if self._scheduler and hasattr(self._scheduler, 'inject_extra_reward'):
+            self._scheduler.inject_extra_reward(reward)
+
+        logger.info(
+            f"[SelfEvolutionLoop] 涌现→奖励: {cat_str} → +{reward:.2f} "
+            f"(累计: {self._total_emergence_reward:.2f})"
+        )
+
+        if len(self._evolution_log) % 10 == 0:
+            self._persist()
+
+        return reward
+
+    def _persist(self):
+        try:
+            with open(self._log_path, "w", encoding="utf-8") as f:
+                json.dump({
+                    "total_events": self._emergence_count,
+                    "total_reward": round(self._total_emergence_reward, 4),
+                    "trajectory": self._evolution_log,
+                }, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            logger.error(f"[SelfEvolutionLoop] 持久化失败: {e}")
+
+    def get_evolution_trajectory(self) -> Dict[str, Any]:
+        self._persist()
+        return {
+            "total_events": self._emergence_count,
+            "total_reward": round(self._total_emergence_reward, 4),
+            "trajectory": self._evolution_log,
+        }
+
+    def get_stats(self) -> Dict[str, Any]:
+        category_counts: Dict[str, int] = {}
+        for entry in self._evolution_log:
+            cat = entry.get("category", "unknown")
+            category_counts[cat] = category_counts.get(cat, 0) + 1
+
+        return {
+            "total_emergence_events": self._emergence_count,
+            "total_emergence_reward": round(self._total_emergence_reward, 4),
+            "by_category": category_counts,
+            "recent_events": self._evolution_log[-10:] if self._evolution_log else [],
+        }
+
+
+# ============================================================
+# RLOrchestratorV2 — 统一入口（支持 Q-Learning / DQN 双模式）
+# ============================================================
+
+class RLOrchestratorV2:
+    """
+    RL-Orchestrator V2 统一入口。
+
+    整合 TaskDecomposer、CapabilityMatcher、调度器（QLearning/DQN）、
+    ExecutionMonitor 四大组件，并提供 SelfEvolutionLoop 自进化能力。
+
+    用法:
+        orch = RLOrchestratorV2(scheduler_type="qlearning")
+        result = orch.orchestrate(task_description)
+
+        orch = RLOrchestratorV2(scheduler_type="dqn")
+        orch.train_from_experience(state, action, reward, next_state, done)
+    """
+
+    def __init__(
+        self,
+        scheduler_type: str = "qlearning",
+        agents: Optional[List[AgentCard]] = None,
+        decomposition_depth: int = 3,
+        state_dim: int = 20,
+        action_dim: int = 8,
+    ):
+        self.scheduler_type = scheduler_type
+        self.decomposer = TaskDecomposer(max_depth=decomposition_depth)
+        self.matcher = CapabilityMatcher()
+        self.monitor = ExecutionMonitor()
+
+        agent_list = agents or create_default_agents()
+        for agent in agent_list:
+            self.matcher.register(agent)
+
+        if scheduler_type == "dqn":
+            self.scheduler = DQNScheduler(state_dim=state_dim, action_dim=action_dim)
+        else:
+            self.scheduler = RLScheduler()
+
+        self.evolution = SelfEvolutionLoop(scheduler=self.scheduler)
+        self._converged = False
+        self._version = "v2"
+
+        logger.info(
+            f"[RLOrchestratorV2] 初始化: scheduler={scheduler_type}, "
+            f"agents={len(agent_list)}, depth={decomposition_depth}"
+        )
+
+    def orchestrate(
+        self,
+        task_description: str,
+        required_capabilities: Optional[List[str]] = None,
+        priority: int = 3,
+        max_concurrent: int = 5,
+    ) -> Dict[str, Any]:
+        """V2 编排入口"""
+        dag = self.decomposer.decompose(
+            task_description=task_description,
+            required_capabilities=required_capabilities or ["basic"],
+            priority=priority,
+        )
+        assignments = self.matcher.match_all(dag, max_concurrent=max_concurrent)
+
+        queue = list(dag.subtasks.keys())
+        queue_len = len(queue)
+
+        state = f"pending_{min(queue_len, 10)}"
+        if self.scheduler_type == "dqn":
+            state_vector = self._state_to_vector(state)
+            action = self.scheduler.select_action(state_vector)
+            action_name = f"action_{action}"
+        else:
+            action, action_name = self.scheduler.decide(state, queue_len)
+            action_name = f"action_{action} ({action_name})"
+
+        for task_id, agent_id in assignments.items():
+            self.matcher.assign(agent_id)
+            self.monitor.record_start(task_id, agent_id)
+
+        progress = {
+            "total": len(dag.subtasks),
+            "completed": 0,
+            "running": len(assignments),
+            "pending": len(dag.subtasks) - len(assignments),
+            "failed": 0,
+        }
+
+        urgency = self._estimate_urgency_v2(dag)
+
+        logger.info(
+            f"[RLOrchestratorV2] 编排完成: {progress['completed']}/{progress['total']}, "
+            f"action={action_name}, urgency={urgency:.3f}"
+        )
+
+        return {
+            "orchestrator_version": self._version,
+            "scheduler_type": self.scheduler_type,
+            "task": {
+                "root_id": dag.root_task_id,
+                "subtasks": [
+                    {"task_id": st.task_id, "name": st.name,
+                     "assigned_agent": st.assigned_agent, "status": st.status.value}
+                    for st in dag.subtasks.values()
+                ],
+            },
+            "scheduling": {
+                "state": state, "action": action_name,
+                "queue_len": queue_len, "urgency": round(urgency, 3),
+            },
+            "progress": progress,
+        }
+
+    def _state_to_vector(self, state: str) -> List[float]:
+        dim = self.scheduler.state_dim if hasattr(self.scheduler, 'state_dim') else 20
+        vec = [0.0] * dim
+        h = hash(state) % (dim - 1)
+        vec[h] = 1.0
+        vec[-1] = len(state) / 50.0
+        return vec
+
+    def _estimate_urgency_v2(self, dag: TaskDAG) -> float:
+        total = len(dag.subtasks)
+        if total == 0:
+            return 0.0
+        pending = sum(1 for t in dag.subtasks.values() if t.status == TaskStatus.PENDING)
+        incomplete_ratio = pending / total
+        max_priority = max((t.priority for t in dag.subtasks.values()), default=1)
+        priority_urgency = max_priority / 5.0
+        return min(1.0, max(0.0, 0.3 * incomplete_ratio + 0.3 * priority_urgency + 0.4 * 0.0))
+
+    def on_emergence(self, event) -> float:
+        return self.evolution.on_emergence(event)
+
+    def train_from_experience(self, state, action, reward, next_state, done):
+        if self.scheduler_type != "dqn":
+            logger.warning("[RLOrchestratorV2] train_from_experience 仅 DQN 模式可用")
+            return
+        self.scheduler.store_experience(state, action, reward, next_state, done)
+        loss = self.scheduler.train_step()
+        if (self.scheduler._train_step_count % 100) == 0 and loss > 0:
+            logger.info(
+                f"[RLOrchestratorV2] train #{self.scheduler._train_step_count}, "
+                f"loss={loss:.4f}, eps={self.scheduler.epsilon:.4f}"
+            )
+
+    def save(self):
+        if self.scheduler_type == "dqn":
+            self.scheduler.save()
+        self.evolution._persist()
+        logger.info("[RLOrchestratorV2] 状态已保存")
+
+    def load(self, dqn_weights_path: str):
+        if self.scheduler_type == "dqn":
+            self.scheduler.load(dqn_weights_path)
+        else:
+            logger.warning("[RLOrchestratorV2] load 仅 DQN 模式可用")
+
+    def get_stats(self) -> Dict[str, Any]:
+        q_stats = self.scheduler.get_stats() if hasattr(self.scheduler, 'get_stats') else {}
+        return {
+            "version": self._version,
+            "scheduler_type": self.scheduler_type,
+            "scheduler": q_stats,
+            "evolution": self.evolution.get_stats(),
+            "agents_registered": len(self.matcher.agents),
+        }
+
+    def release_all(self):
+        for agent_id in list(self.matcher.agents.keys()):
+            self.matcher.release(agent_id)

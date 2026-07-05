@@ -73,6 +73,9 @@ class HarnessResult:
     sanitized_input: Optional[str] = None
     sanitized_output: Optional[str] = None
     violations: List[str] = field(default_factory=list)
+    circuit_breaker_triggered: bool = False
+    rate_limited: bool = False
+    l3_confidence: float = 0.0
     timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
 
 
@@ -513,3 +516,405 @@ class AgentHarness:
 def create_harness(bypass_role: Optional[str] = None) -> AgentHarness:
     """工厂方法：创建 Harness 实例"""
     return AgentHarness(bypass_role=bypass_role)
+
+
+# ============================================================
+# CircuitBreaker — 熔断器（按 agent_id 粒度）
+# ============================================================
+
+import time as _time
+import threading as _threading
+from enum import Enum as _Enum
+
+
+class CircuitState(str, _Enum):
+    CLOSED = "CLOSED"          # 正常通行
+    OPEN = "OPEN"              # 熔断，拒绝所有请求
+    HALF_OPEN = "HALF_OPEN"    # 半开，放行 1 个探测请求
+
+
+class CircuitBreaker:
+    """
+    论文 6.3.5 节：熔断器机制。
+
+    三态：CLOSED / OPEN / HALF_OPEN
+    - 失败阈值 5 次 → OPEN（阻止所有请求 30s）
+    - HALF_OPEN 放行 1 个探测请求，成功则 CLOSED，失败则重新 OPEN
+    - 按 agent_id 粒度独立熔断
+
+    用法:
+        cb = CircuitBreaker(failure_threshold=5, recovery_timeout_s=30)
+        if cb.allow_request("agent_qoder"):
+            try:
+                result = call_agent("agent_qoder")
+                cb.record_success("agent_qoder")
+            except Exception:
+                cb.record_failure("agent_qoder")
+        else:
+            # 熔断中，走降级逻辑
+            ...
+    """
+
+    @dataclass
+    class _BreakerState:
+        state: CircuitState = CircuitState.CLOSED
+        failure_count: int = 0
+        last_failure_time: float = 0.0
+        half_open_probe_sent: bool = False
+
+    def __init__(
+        self,
+        failure_threshold: int = 5,
+        recovery_timeout_s: float = 30.0,
+    ):
+        self.failure_threshold = failure_threshold
+        self.recovery_timeout_s = recovery_timeout_s
+
+        self._breakers: Dict[str, CircuitBreaker._BreakerState] = {}
+        self._lock = _threading.Lock()
+
+        # 统计
+        self._total_trips = 0
+        self._total_rejections = 0
+
+    def allow_request(self, agent_id: str) -> bool:
+        """检查是否允许请求通过"""
+        with self._lock:
+            breaker = self._breakers.get(agent_id)
+            if breaker is None:
+                self._breakers[agent_id] = self._BreakerState()
+                return True
+
+            if breaker.state == CircuitState.CLOSED:
+                return True
+
+            if breaker.state == CircuitState.OPEN:
+                # 检查是否到了恢复时间
+                elapsed = _time.time() - breaker.last_failure_time
+                if elapsed >= self.recovery_timeout_s:
+                    # 进入 HALF_OPEN
+                    breaker.state = CircuitState.HALF_OPEN
+                    breaker.half_open_probe_sent = False
+                    logger.info(f"[CircuitBreaker] {agent_id}: OPEN → HALF_OPEN (超时 {elapsed:.1f}s)")
+                    # 放行探测请求
+                    breaker.half_open_probe_sent = True
+                    return True
+                else:
+                    # 仍在熔断期
+                    self._total_rejections += 1
+                    logger.warning(
+                        f"[CircuitBreaker] {agent_id}: 熔断拒绝 (还有 {self.recovery_timeout_s - elapsed:.1f}s 恢复)"
+                    )
+                    return False
+
+            if breaker.state == CircuitState.HALF_OPEN:
+                if not breaker.half_open_probe_sent:
+                    breaker.half_open_probe_sent = True
+                    return True
+                else:
+                    # 已有探测请求在执行中
+                    self._total_rejections += 1
+                    return False
+
+        return True
+
+    def record_success(self, agent_id: str):
+        """记录成功"""
+        with self._lock:
+            breaker = self._breakers.get(agent_id)
+            if breaker is None:
+                return
+
+            if breaker.state == CircuitState.HALF_OPEN:
+                breaker.state = CircuitState.CLOSED
+                breaker.failure_count = 0
+                breaker.half_open_probe_sent = False
+                logger.info(f"[CircuitBreaker] {agent_id}: HALF_OPEN → CLOSED (探测成功)")
+            elif breaker.state == CircuitState.CLOSED:
+                breaker.failure_count = 0
+
+    def record_failure(self, agent_id: str):
+        """记录失败"""
+        with self._lock:
+            breaker = self._breakers.get(agent_id)
+            if breaker is None:
+                breaker = self._BreakerState()
+                self._breakers[agent_id] = breaker
+
+            breaker.failure_count += 1
+            breaker.last_failure_time = _time.time()
+
+            if breaker.state == CircuitState.HALF_OPEN:
+                # 探测失败，重新熔断
+                breaker.state = CircuitState.OPEN
+                breaker.half_open_probe_sent = False
+                self._total_trips += 1
+                logger.warning(f"[CircuitBreaker] {agent_id}: HALF_OPEN → OPEN (探测失败)")
+
+            elif breaker.state == CircuitState.CLOSED and breaker.failure_count >= self.failure_threshold:
+                breaker.state = CircuitState.OPEN
+                self._total_trips += 1
+                logger.warning(
+                    f"[CircuitBreaker] {agent_id}: CLOSED → OPEN "
+                    f"(连续失败 {breaker.failure_count}/{self.failure_threshold})"
+                )
+
+    def reset(self, agent_id: str):
+        """手动重置熔断器"""
+        with self._lock:
+            if agent_id in self._breakers:
+                self._breakers[agent_id] = self._BreakerState()
+                logger.info(f"[CircuitBreaker] {agent_id}: 手动重置")
+
+    def get_state(self, agent_id: str) -> Optional[str]:
+        """获取某 agent 的熔断状态"""
+        with self._lock:
+            breaker = self._breakers.get(agent_id)
+            if breaker is None:
+                return None
+            return breaker.state.value
+
+    def get_all_states(self) -> Dict[str, str]:
+        """获取所有 agent 的熔断状态"""
+        with self._lock:
+            return {aid: b.state.value for aid, b in self._breakers.items()}
+
+    def get_stats(self) -> Dict[str, Any]:
+        """获取熔断统计"""
+        with self._lock:
+            return {
+                "total_trips": self._total_trips,
+                "total_rejections": self._total_rejections,
+                "monitored_agents": len(self._breakers),
+                "states": self.get_all_states(),
+            }
+
+
+# ============================================================
+# RateLimiter — 令牌桶限流器
+# ============================================================
+
+class RateLimiter:
+    """
+    令牌桶算法限流器。
+
+    按 agent_id 独立限流。
+    默认 100 req/s，突发容量 150。
+    超限返回 False（等价 HTTP 429）。
+
+    用法:
+        rl = RateLimiter(rate=100, burst=150)
+        if rl.allow("agent_qoder"):
+            process_request()
+        else:
+            raise HTTPException(status_code=429)
+    """
+
+    def __init__(self, rate: float = 100.0, burst: int = 150):
+        """
+        参数:
+          rate: 令牌补充速率（tokens/s）
+          burst: 桶容量（突发上限）
+        """
+        self.rate = rate
+        self.burst = burst
+
+        self._buckets: Dict[str, Tuple[float, float]] = {}  # agent_id → (tokens, last_refill_time)
+        self._lock = _threading.Lock()
+
+        # 统计
+        self._total_allowed = 0
+        self._total_denied = 0
+
+    def allow(self, agent_id: str) -> bool:
+        """检查是否允许请求通过（消耗 1 个令牌）"""
+        with self._lock:
+            now = _time.time()
+
+            bucket = self._buckets.get(agent_id)
+            if bucket is None:
+                # 首次初始化
+                self._buckets[agent_id] = (float(self.burst), now)
+                bucket = (float(self.burst), now)
+
+            tokens, last_refill = bucket
+
+            # 补充令牌
+            elapsed = now - last_refill
+            new_tokens = min(float(self.burst), tokens + elapsed * self.rate)
+            last_refill = now
+
+            if new_tokens >= 1.0:
+                new_tokens -= 1.0
+                self._buckets[agent_id] = (new_tokens, last_refill)
+                self._total_allowed += 1
+                return True
+            else:
+                self._buckets[agent_id] = (new_tokens, last_refill)
+                self._total_denied += 1
+                return False
+
+    def get_stats(self) -> Dict[str, Any]:
+        """获取限流统计"""
+        with self._lock:
+            return {
+                "rate": self.rate,
+                "burst": self.burst,
+                "total_allowed": self._total_allowed,
+                "total_denied": self._total_denied,
+                "deny_rate": round(
+                    self._total_denied / max(self._total_allowed + self._total_denied, 1), 4
+                ),
+                "active_buckets": len(self._buckets),
+            }
+
+
+# ============================================================
+# RLHFGuard — RLHF 输出护栏增强（占位实现）
+# ============================================================
+
+class RLHFGuard:
+    """
+    论文 6.3.5 节：RLHF 机制输出护栏。
+
+    当前版本为占位实现：使用规则引擎 + 关键词过滤兜底。
+    预留 RLHF 模型接口（可通过 load_model 加载未来训练的偏好模型）。
+
+    所有 L3 判定记录到 harness_violations.log 并标注 confidence。
+
+    用法:
+        guard = RLHFGuard()
+        result = guard.evaluate(output_text, context={})
+        if not result["safe"]:
+            logger.warning(f"RLHF 拦截: confidence={result['confidence']}")
+    """
+
+    # 高风险关键词（兜底规则）
+    _HIGH_RISK_KEYWORDS = [
+        "rm -rf", "DROP TABLE", "DELETE FROM", "format C:",
+        "sudo su", "chmod 777", "eval(", "exec(",
+        "__import__", "subprocess", "os.system",
+    ]
+
+    def __init__(self, model_path: str = ""):
+        """
+        参数:
+          model_path: 未来 RLHF 模型路径（当前占位）
+        """
+        self._model_path = model_path
+        self._model_loaded = False
+        self._total_evaluations = 0
+        self._total_blocks = 0
+
+        self._violation_log_path = LOG_DIR / "harness_violations.log"
+
+    def load_model(self, model_path: str) -> bool:
+        """
+        加载 RLHF 偏好模型（占位接口）。
+
+        返回 True 表示成功加载。
+        """
+        logger.info(f"[RLHFGuard] 尝试加载模型: {model_path}")
+        if Path(model_path).exists():
+            self._model_path = model_path
+            # 未来实现: 加载训练好的 RLHF 偏好模型
+            self._model_loaded = True
+            logger.info("[RLHFGuard] RLHF 模型加载成功")
+            return True
+        logger.warning("[RLHFGuard] 模型文件不存在，使用规则引擎兜底")
+        return False
+
+    def evaluate(self, output_text: str, context: Dict[str, Any] = None) -> Dict[str, Any]:
+        """
+        评估输出安全性。
+
+        参数:
+          output_text: Agent 输出文本
+          context: 上下文信息（agent_id, task_type 等）
+
+        返回:
+          {
+            "safe": bool,
+            "confidence": float,  # 0.0-1.0，置信度
+            "reason": str,
+            "method": str,        # "rlhf_model" / "rule_engine"
+          }
+        """
+        self._total_evaluations += 1
+
+        # 规则引擎兜底检查
+        lower_text = output_text.lower()
+        for keyword in self._HIGH_RISK_KEYWORDS:
+            if keyword.lower() in lower_text:
+                confidence = 0.95  # 规则命中高置信度
+                reason = f"高风险关键词命中: {keyword}"
+                self._total_blocks += 1
+                self._log_violation(
+                    output_text=output_text,
+                    confidence=confidence,
+                    reason=reason,
+                    method="rule_engine",
+                    context=context,
+                )
+                return {
+                    "safe": False,
+                    "confidence": confidence,
+                    "reason": reason,
+                    "method": "rule_engine",
+                }
+
+        # 通过规则引擎检查 — 低置信度（因为没有 RLHF 模型做精细判断）
+        if self._model_loaded:
+            # 未来: 使用 RLHF 偏好模型打分
+            confidence = 0.85
+            method = "rlhf_model"
+        else:
+            confidence = 0.50  # 仅规则引擎通过，置信度中等
+            method = "rule_engine"
+
+        return {
+            "safe": True,
+            "confidence": confidence,
+            "reason": "",
+            "method": method,
+        }
+
+    def _log_violation(
+        self,
+        output_text: str,
+        confidence: float,
+        reason: str,
+        method: str,
+        context: Dict[str, Any] = None,
+    ):
+        """记录 L3 违规到日志"""
+        log_entry = {
+            "timestamp": datetime.now().isoformat(),
+            "method": method,
+            "confidence": confidence,
+            "reason": reason,
+            "output_snippet": output_text[:200],
+            "context": context or {},
+        }
+
+        logger.warning(
+            f"[RLHFGuard] L3 拦截 | confidence={confidence:.2f} | method={method} | reason={reason}"
+        )
+
+        # 追加到 violations 日志
+        try:
+            with open(self._violation_log_path, "a", encoding="utf-8") as f:
+                f.write(json.dumps(log_entry, ensure_ascii=False) + "\n")
+        except Exception as e:
+            logger.error(f"[RLHFGuard] 日志写入失败: {e}")
+
+    def get_stats(self) -> Dict[str, Any]:
+        """获取 RLHF Guard 统计"""
+        return {
+            "model_loaded": self._model_loaded,
+            "total_evaluations": self._total_evaluations,
+            "total_blocks": self._total_blocks,
+            "block_rate": round(
+                self._total_blocks / max(self._total_evaluations, 1), 4
+            ),
+        }

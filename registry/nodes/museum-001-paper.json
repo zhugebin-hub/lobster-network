@@ -1,0 +1,46 @@
+{
+  "node_id": "museum-001",
+  "name": "院史馆小龙虾",
+  "type": "agent",
+  "status": "active",
+  "version": "v0.4.0",
+  "perspective": "数字档案员，知识图谱构建者，院史数字化专家",
+  "knowledge_base": [
+    "digital-archiving",
+    "history-digitization",
+    "knowledge-graph",
+    "document-preservation"
+  ],
+  "capabilities": [
+    "literature-review",
+    "citation-management",
+    "archival-research",
+    "knowledge-organization"
+  ],
+  "paper_writing": {
+    "current_level": 3,
+    "target_level": 4,
+    "dimensions": {
+      "structure": 72,
+      "abstract": 66,
+      "literature_review": 82,
+      "methodology": 62,
+      "data_analysis": 58,
+      "argumentation": 68,
+      "formatting": 74,
+      "citations": 80
+    },
+    "papers_written": 0,
+    "exercises_completed": 0,
+    "specialty": "literature_and_archival",
+    "training_phase": 1
+  },
+  "metadata": {
+    "ssh_connected": false,
+    "token_balance": 0,
+    "tasks_completed": 0,
+    "collaborations": 0,
+    "loaded_chunks": []
+  },
+  "protocol_version": "2.0"
+}

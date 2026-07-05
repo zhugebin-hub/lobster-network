@@ -306,3 +306,117 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# ============================================================
+# system_health() — 系统健康检查与降级策略
+# ============================================================
+
+def system_health(config_path: Optional[str] = None) -> Dict[str, Any]:
+    """
+    系统健康检查报告。
+
+    论文 6.3.4 节：启动时打印系统健康报告。
+    - 调用 HealthChecker 检查所有节点
+    - 调用 GracefulDegradation 注册降级策略
+    - 返回完整健康报告
+
+    用法:
+        report = system_health()
+        print(json.dumps(report, indent=2))
+    """
+    from .utils.fault_tolerance import HealthChecker, GracefulDegradation
+
+    # 加载配置
+    config = load_config(config_path)
+
+    report = {
+        "timestamp": datetime.now().isoformat(),
+        "version": "V5.0",
+        "node_id": config.get("node_id", "unknown"),
+        "components": {},
+        "overall_status": "healthy",
+    }
+
+    # ── 1. 节点心跳检测 ──
+    checker = HealthChecker(
+        heartbeat_interval=config.get("heartbeat_interval", 30),
+        heartbeat_timeout=config.get("heartbeat_timeout", 90),
+    )
+
+    node_health = checker.check_all_nodes()
+    report["components"]["nodes"] = node_health
+
+    # ── 2. 降级策略注册 ──
+    degradation = GracefulDegradation()
+
+    # 注册核心模块降级策略
+    degradation.register(
+        "rl_orchestrator",
+        fallback=lambda task: {"status": "degraded", "method": "round_robin", "task": task},
+        description="RL-Orchestrator 不可用时回退到轮询调度"
+    )
+    degradation.register(
+        "cc_broadcast",
+        fallback=lambda msg: {"status": "queued", "msg": msg},
+        description="CC 消息总线不可用时消息入队等待恢复"
+    )
+    degradation.register(
+        "emergence_detector",
+        fallback=lambda data: {"emergence": False, "fallback": True},
+        description="涌现检测器不可用时保守返回无涌现"
+    )
+    degradation.register(
+        "agent_harness",
+        fallback=lambda content: {"passed": False, "reason": "harness_unavailable"},
+        description="Agent Harness 不可用时拒绝所有请求（安全优先）"
+    )
+    degradation.register(
+        "paper_coach",
+        fallback=lambda prompt: {"status": "offline", "message": "论文教练模块暂不可用"},
+        description="论文教练不可用时返回离线占位"
+    )
+
+    report["components"]["degradation"] = {
+        "strategies_registered": len(degradation.list_strategies()),
+        "strategies": degradation.list_strategies(),
+    }
+
+    # ── 3. 综合状态判定 ──
+    node_statuses = [n.get("status", "unknown") for n in node_health.get("nodes", [])]
+    offline_count = node_statuses.count("offline")
+    if offline_count > 0:
+        report["overall_status"] = "degraded"
+        report["warnings"] = [f"{offline_count} 个节点离线"]
+    else:
+        report["overall_status"] = "healthy"
+
+    logger.info(
+        f"[system_health] 健康报告: overall={report['overall_status']}, "
+        f"nodes={len(node_statuses)}, degradations={len(degradation.list_strategies())}"
+    )
+
+    return report
+
+
+def print_health_report():
+    """启动时打印系统健康报告"""
+    try:
+        report = system_health()
+        print("\n" + "=" * 60)
+        print("  小龙虾网络 V5.0 — 系统健康报告")
+        print("=" * 60)
+        print(f"  节点 ID : {report['node_id']}")
+        print(f"  整体状态: {report['overall_status'].upper()}")
+
+        nodes_comp = report["components"]["nodes"]
+        for node in nodes_comp.get("nodes", []):
+            status_icon = "OK" if node["status"] == "online" else "!!"
+            print(f"  [{status_icon}] {node['node_id']}: {node['status']}")
+
+        deg_comp = report["components"]["degradation"]
+        print(f"  降级策略: {deg_comp['strategies_registered']} 条已注册")
+        print("=" * 60 + "\n")
+    except Exception as e:
+        logger.error(f"[print_health_report] 健康报告生成失败: {e}")
+        print(f"[WARNING] 健康报告生成失败: {e}")

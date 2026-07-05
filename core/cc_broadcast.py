@@ -37,8 +37,35 @@ TRACKING_FILE = SHARED_DIR / "messages" / "cc_tracking.json"
 # 时区
 CST = timezone(timedelta(hours=8))
 
-# 活跃节点(有inbox的)
-ACTIVE_NODES = ["qoder", "xiaochen", "xiaowei", "zhugema", "zhuguxia"]
+# 活跃节点(有inbox的) — 动态加载策略
+def _load_active_nodes() -> List[str]:
+    """优先级: nodes.json > 环境变量 LOBSTER_NODES > 默认值"""
+    # 1. 尝试从 registry/nodes.json 加载
+    nodes_file = REPO_ROOT / "registry" / "nodes.json"
+    if nodes_file.exists():
+        try:
+            with open(nodes_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            nodes = data.get("nodes", [])
+            active = [
+                n["node_id"] for n in nodes
+                if n.get("status") == "active" and n.get("type") == "agent"
+            ]
+            if active:
+                return active
+        except (json.JSONDecodeError, IOError):
+            pass
+
+    # 2. 尝试从环境变量加载
+    env_nodes = os.environ.get("LOBSTER_NODES", "")
+    if env_nodes:
+        return [n.strip() for n in env_nodes.split(",") if n.strip()]
+
+    # 3. 默认值
+    return ["qoder", "xiaochen", "xiaowei", "zhugema", "zhuguxia"]
+
+
+ACTIVE_NODES = _load_active_nodes()
 
 # ACK超时配置(小时)
 ACK_TIMEOUTS = {
@@ -570,3 +597,267 @@ if __name__ == "__main__":
     
     else:
         parser.print_help()
+
+
+# ============================================================
+# RetryManager — 指数退避重试
+# ============================================================
+
+import random as _random
+import time as _time_module
+import logging as _logging
+
+_retry_logger = _logging.getLogger("cc_retry")
+_retry_handler = _logging.FileHandler(
+    SHARED_DIR / "messages" / "cc_retry.log", encoding="utf-8"
+)
+_retry_handler.setFormatter(_logging.Formatter("%(asctime)s | %(levelname)s | %(message)s"))
+_retry_logger.addHandler(_retry_handler)
+_retry_logger.setLevel(_logging.INFO)
+
+
+class RetryManager:
+    """
+    指数退避重试管理器。
+
+    论文 6.3 节 CC Broadcast 可靠性增强：
+    - 指数退避: 初始 1s, 最大 60s, 乘数 2.0
+    - 最大重试 3 次
+    - jitter: ±25% 随机抖动防止惊群
+    - 重试日志记录到 cc_retry.log
+
+    用法:
+        rm = RetryManager()
+        result = rm.execute(
+            lambda: send_cc(...),
+            operation_name="send_cc",
+            target="zhugema"
+        )
+    """
+
+    def __init__(
+        self,
+        initial_delay: float = 1.0,
+        max_delay: float = 60.0,
+        backoff_multiplier: float = 2.0,
+        max_retries: int = 3,
+        jitter_pct: float = 0.25,
+    ):
+        self.initial_delay = initial_delay
+        self.max_delay = max_delay
+        self.backoff_multiplier = backoff_multiplier
+        self.max_retries = max_retries
+        self.jitter_pct = jitter_pct
+
+        self._total_retries = 0
+        self._total_failures = 0
+
+    def execute(self, func: Callable, operation_name: str = "", target: str = "") -> Any:
+        """
+        带重试的执行。
+
+        参数:
+          func: 要执行的函数（无参 callable）
+          operation_name: 操作名称（用于日志）
+          target: 目标标识（用于日志）
+
+        返回:
+          func 的返回值
+
+        异常:
+          重试耗尽后抛出最后一次异常
+        """
+        delay = self.initial_delay
+        last_exception = None
+
+        for attempt in range(self.max_retries + 1):
+            try:
+                result = func()
+                if attempt > 0:
+                    _retry_logger.info(
+                        f"[RetryManager] {operation_name}(→{target}) 第 {attempt} 次重试成功"
+                    )
+                return result
+            except Exception as e:
+                last_exception = e
+                self._total_retries += 1
+
+                if attempt >= self.max_retries:
+                    self._total_failures += 1
+                    _retry_logger.error(
+                        f"[RetryManager] {operation_name}(→{target}) "
+                        f"已达最大重试 {self.max_retries} 次: {e}"
+                    )
+                    raise
+
+                # 计算退避延迟（含 jitter）
+                current_delay = min(delay, self.max_delay)
+                if self.jitter_pct > 0:
+                    jitter = _random.uniform(-self.jitter_pct, self.jitter_pct)
+                    current_delay *= (1.0 + jitter)
+
+                _retry_logger.warning(
+                    f"[RetryManager] {operation_name}(→{target}) "
+                    f"失败 (第 {attempt + 1}/{self.max_retries} 次), "
+                    f"{current_delay:.1f}s 后重试: {e}"
+                )
+                _time_module.sleep(current_delay)
+                delay *= self.backoff_multiplier
+
+        if last_exception:
+            raise last_exception
+
+    def get_stats(self) -> dict:
+        return {
+            "total_retries": self._total_retries,
+            "total_failures": self._total_failures,
+            "max_retries": self.max_retries,
+            "initial_delay": self.initial_delay,
+            "max_delay": self.max_delay,
+        }
+
+
+# ============================================================
+# BatchDispatcher — 批量 CC 消息分发器
+# ============================================================
+
+class BatchDispatcher:
+    """
+    批量 CC 消息分发器。
+
+    减少 MQTT 连接开销：
+    - 批量发送: 默认 20 条/批
+    - 批量 ACK: 默认 10 条/批
+
+    用法:
+        bd = BatchDispatcher(batch_size=20, ack_batch_size=10)
+
+        # 添加消息
+        bd.add_message(targets=["qoder"], subject="训练完成", body="...", category="training_report")
+
+        # 批量发送
+        bd.flush_send()
+
+        # 批量 ACK
+        bd.add_ack(tracking_id="track-xxx", status="received", response="已收到")
+        bd.flush_ack()
+    """
+
+    def __init__(
+        self,
+        batch_size: int = 20,
+        ack_batch_size: int = 10,
+        sender: str = "qoder",
+    ):
+        self.batch_size = batch_size
+        self.ack_batch_size = ack_batch_size
+        self.sender = sender
+
+        self._send_batch: List[Dict[str, Any]] = []
+        self._ack_batch: List[Dict[str, str]] = []
+
+        # 统计
+        self._total_sent = 0
+        self._total_acked = 0
+        self._total_batches = 0
+
+    def add_message(
+        self,
+        targets: List[str],
+        subject: str,
+        body: str,
+        category: str = "general",
+    ):
+        """添加一条 CC 消息到发送批次"""
+        self._send_batch.append({
+            "targets": targets,
+            "subject": subject,
+            "body": body,
+            "category": category,
+            "sender": self.sender,
+        })
+
+        if len(self._send_batch) >= self.batch_size:
+            self.flush_send()
+
+    def add_ack(self, tracking_id: str, status: str = "received", response: str = ""):
+        """添加一条 ACK 到确认批次"""
+        self._ack_batch.append({
+            "tracking_id": tracking_id,
+            "status": status,
+            "response": response,
+            "sender": self.sender,
+        })
+
+        if len(self._ack_batch) >= self.ack_batch_size:
+            self.flush_ack()
+
+    def flush_send(self) -> List[Dict[str, Any]]:
+        """批量发送所有待发消息"""
+        if not self._send_batch:
+            return []
+
+        results = []
+        for msg in self._send_batch:
+            try:
+                result = send_cc(
+                    targets=msg["targets"],
+                    subject=msg["subject"],
+                    body=msg["body"],
+                    category=msg["category"],
+                    sender=msg["sender"],
+                )
+                results.append({"status": "ok", "tracking_id": result.get("tracking_id", ""), "targets": msg["targets"]})
+                self._total_sent += 1
+            except Exception as e:
+                results.append({"status": "error", "error": str(e), "targets": msg["targets"]})
+
+        batch_size = len(self._send_batch)
+        self._send_batch.clear()
+        self._total_batches += 1
+
+        _retry_logger.info(
+            f"[BatchDispatcher] 批量发送 {batch_size} 条 CC 消息 "
+            f"(批次 #{self._total_batches}, 累计: {self._total_sent})"
+        )
+
+        return results
+
+    def flush_ack(self) -> List[Dict[str, Any]]:
+        """批量发送所有待确认 ACK"""
+        if not self._ack_batch:
+            return []
+
+        results = []
+        for ack in self._ack_batch:
+            try:
+                result = send_ack(
+                    tracking_id=ack["tracking_id"],
+                    status=ack["status"],
+                    response=ack["response"],
+                    sender=ack["sender"],
+                )
+                results.append(result)
+                self._total_acked += 1
+            except Exception as e:
+                results.append({"status": "error", "tracking_id": ack["tracking_id"], "error": str(e)})
+
+        ack_batch_size = len(self._ack_batch)
+        self._ack_batch.clear()
+
+        _retry_logger.info(
+            f"[BatchDispatcher] 批量确认 {ack_batch_size} 条 ACK (累计: {self._total_acked})"
+        )
+
+        return results
+
+    def get_stats(self) -> dict:
+        return {
+            "pending_send": len(self._send_batch),
+            "pending_ack": len(self._ack_batch),
+            "total_sent": self._total_sent,
+            "total_acked": self._total_acked,
+            "total_batches": self._total_batches,
+            "batch_size": self.batch_size,
+            "ack_batch_size": self.ack_batch_size,
+        }
