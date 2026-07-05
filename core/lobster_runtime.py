@@ -46,15 +46,20 @@ logger.addHandler(_ch)
 def load_config() -> Dict[str, Any]:
     """加载运行时配置，缺失则使用默认值"""
     default = {
-        "version": "5.0.0",
+        "version": "5.1.0",
         "node_id": "qoder",
         "modules": {
             "harness": {"enabled": True, "risk_threshold": "medium"},
             "orchestrator": {"enabled": True, "q_learning_rate": 0.1},
             "observability": {"enabled": True, "collect_interval_sec": 60},
             "economy": {"enabled": True, "currency": "LBC"},
-            "emergence": {"enabled": True, "sensitivity": 0.7}
+            "emergence": {"enabled": True, "sensitivity": 0.7},
+            "fault_tolerance": {"enabled": True},
+            "resource_manager": {"enabled": True},
+            "cost_optimizer": {"enabled": True},
+            "mutual_learning": {"enabled": True},
         },
+        "budget": {"daily_limit_lbc": 100.0, "alert_pct": 80.0},
         "nodes": ["qoder", "xiaochen", "zhuguxia", "hermes", "xiaowei"],
         "server": {"host": "121.43.80.231", "user": "admin", "shared_path": "/shared"},
         "training": {"plan_version": "V6", "auto_resume": True}
@@ -82,7 +87,7 @@ class LobsterRuntime:
         self._init_modules()
 
     def _init_modules(self):
-        """按依赖顺序初始化四大模块"""
+        """按依赖顺序初始化八大模块"""
         mods = self.config["modules"]
 
         # 1) Harness 安全护栏
@@ -90,14 +95,14 @@ class LobsterRuntime:
             from core.harness import AgentHarness
             h = AgentHarness()
             self.modules["harness"] = h
-            logger.info("[1/4] Harness 安全护栏已加载")
+            logger.info("[1/8] Harness 安全护栏已加载")
 
         # 2) Orchestrator 编排引擎
         if mods.get("orchestrator", {}).get("enabled", True):
             from core.orchestrator import RLOrchestrator
             orch = RLOrchestrator()
             self.modules["orchestrator"] = orch
-            logger.info("[2/4] RL-Orchestrator 编排引擎已加载")
+            logger.info("[2/8] RL-Orchestrator 编排引擎已加载")
 
         # 3) Observability 可观测性
         if mods.get("observability", {}).get("enabled", True):
@@ -106,7 +111,7 @@ class LobsterRuntime:
             ed = EmergenceDetector()
             self.modules["metrics"] = mc
             self.modules["emergence"] = ed
-            logger.info("[3/4] Observability 可观测性已加载（采集器+涌现检测）")
+            logger.info("[3/8] Observability 可观测性已加载（采集器+涌现检测）")
 
         # 4) Economy 经济系统
         if mods.get("economy", {}).get("enabled", True):
@@ -114,7 +119,40 @@ class LobsterRuntime:
             eco = LBCEconomy()
             eco.initialize()
             self.modules["economy"] = eco
-            logger.info("[4/4] LBC 经济系统已加载")
+            logger.info("[4/8] LBC 经济系统已加载")
+
+        # 5) Fault Tolerance 故障容错 (V5.1)
+        if mods.get("fault_tolerance", {}).get("enabled", True):
+            from core.utils.fault_tolerance import get_fault_tolerance
+            ft = get_fault_tolerance()
+            self.modules["fault_tolerance"] = ft
+            logger.info("[5/8] FaultTolerance 故障容错已加载")
+
+        # 6) Resource Manager 资源管理 (V5.1)
+        if mods.get("resource_manager", {}).get("enabled", True):
+            from core.utils.resource_manager import get_resource_manager
+            rm = get_resource_manager()
+            self.modules["resource_manager"] = rm
+            logger.info("[6/8] ResourceManager 资源管理已加载")
+
+        # 7) Cost Optimizer 成本优化 (V5.1)
+        if mods.get("cost_optimizer", {}).get("enabled", True):
+            from core.utils.cost_optimizer import get_cost_optimizer
+            co = get_cost_optimizer(
+                budget_limit_lbc=self.config.get("budget", {}).get("daily_limit_lbc", 100.0),
+                alert_threshold_pct=self.config.get("budget", {}).get("alert_pct", 80.0),
+            )
+            self.modules["cost_optimizer"] = co
+            logger.info("[7/8] CostOptimizer 成本优化已加载")
+
+        # 8) Mutual Learning 互相学习 (V5.1)
+        if mods.get("mutual_learning", {}).get("enabled", True):
+            from core.coach.paper_mutual_learning import MutualLearningEngine
+            from core.coach.paper_mutual_learning import load_learners_from_profiles
+            learners = load_learners_from_profiles()
+            ml = MutualLearningEngine(learners)
+            self.modules["mutual_learning"] = ml
+            logger.info("[8/8] MutualLearning 互相学习引擎已加载")
 
     # ── 管线处理 ──────────────────────────────────
 

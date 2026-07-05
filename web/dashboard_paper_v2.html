@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小龙虾网络 — 论文写作指挥中心 V2</title>
+<style>
+  :root {
+    --bg: #0a0e17;
+    --panel: #111827;
+    --border: #1e293b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #3b82f6;
+    --accent2: #8b5cf6;
+    --green: #22c55e;
+    --yellow: #f59e0b;
+    --red: #ef4444;
+    --pink: #ec4899;
+    --cyan: #06b6d4;
+    --gold: #fbbf24;
+    --radius: 12px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+  a { color: var(--accent); text-decoration: none; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .header-left { display: flex; align-items: center; gap: 14px; }
+  .logo { font-size: 22px; font-weight: 700; letter-spacing: 0.5px; }
+  .logo span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .badge { background: var(--accent2); padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .header-right { display: flex; gap: 16px; align-items: center; font-size: 13px; color: var(--muted); }
+  .header-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .header-dot.online { background: var(--green); box-shadow: 0 0 8px var(--green); }
+
+  /* Stats Row */
+  .stats-row {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px; padding: 20px 24px;
+  }
+  .stat-card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px 20px;
+  }
+  .stat-card .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .stat-card .value { font-size: 28px; font-weight: 700; }
+  .stat-card .sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .value.green { color: var(--green); }
+  .value.yellow { color: var(--yellow); }
+  .value.blue { color: var(--accent); }
+  .value.purple { color: var(--accent2); }
+  .value.gold { color: var(--gold); }
+
+  /* Main Grid */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding: 0 24px 24px;
+  }
+  @media (max-width: 1100px) { .main-grid { grid-template-columns: 1fr; } }
+  .panel {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+  }
+  .panel-header {
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    font-size: 14px; font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .panel-body { padding: 16px 20px; }
+
+  /* Learner Cards */
+  .learner-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px; padding: 0 24px 24px;
+  }
+  .learner-card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px;
+    position: relative; overflow: hidden;
+  }
+  .learner-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+    border-radius: 4px 0 0 4px;
+  }
+  .learner-card.professor::before { background: linear-gradient(180deg, var(--gold), var(--yellow)); }
+  .learner-card.qoder::before { background: linear-gradient(180deg, var(--accent2), var(--pink)); }
+  .learner-card.zhuguxia::before { background: linear-gradient(180deg, var(--green), var(--cyan)); }
+  .learner-card.xiaochen::before { background: linear-gradient(180deg, var(--accent), var(--cyan)); }
+  .learner-card.lobster::before { background: linear-gradient(180deg, var(--red), var(--yellow)); }
+  .learner-card.museum::before { background: linear-gradient(180deg, var(--pink), var(--accent2)); }
+  .learner-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .learner-name { font-weight: 700; font-size: 16px; }
+  .learner-role { font-size: 11px; color: var(--muted); padding: 2px 8px; background: rgba(255,255,255,0.05); border-radius: 10px; }
+  .learner-score { font-size: 32px; font-weight: 700; margin: 6px 0; }
+  .learner-gain { font-size: 12px; }
+  .learner-gain.up { color: var(--green); }
+  .learner-bars { display: flex; gap: 2px; height: 6px; margin: 10px 0; border-radius: 3px; overflow: hidden; }
+  .learner-bar { height: 100%; border-radius: 1px; }
+  .learner-bar.hi { background: var(--green); }
+  .learner-bar.mid { background: var(--yellow); }
+  .learner-bar.lo { background: var(--red); }
+  .learner-dims { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 8px; font-size: 11px; color: var(--muted); }
+  .learner-dims strong { color: var(--text); }
+
+  /* Mutual Learning */
+  .pairing-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .pairing-row:last-child { border-bottom: none; }
+  .pair-arrow { color: var(--accent); font-size: 18px; }
+  .pair-comp { font-size: 12px; color: var(--muted); margin-left: auto; }
+
+  /* Radar mini */
+  .radar-mini {
+    width: 100%; height: 300px;
+  }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 10px 12px; color: var(--muted); font-weight: 500; border-bottom: 1px solid var(--border); font-size: 11px; text-transform: uppercase; }
+  td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+  .bar-cell { display: flex; align-items: center; gap: 8px; }
+  .bar-bg { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; }
+
+  /* Transfer feed */
+  .transfer-entry {
+    padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 12px;
+  }
+  .transfer-entry .from { color: var(--accent2); }
+  .transfer-entry .to { color: var(--accent); }
+  .transfer-entry .ts { color: var(--muted); font-size: 10px; float: right; }
+
+  /* Progress */
+  .progress-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; }
+  .progress-bar { height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
+  .progress-fill { height: 100%; border-radius: 4px; transition: width 0.8s ease; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .timeline-item { position: relative; padding: 6px 0 16px; }
+  .timeline-dot { position: absolute; left: -20px; top: 8px; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--accent); background: var(--bg); }
+  .timeline-dot.done { background: var(--green); border-color: var(--green); }
+  .timeline-dot.active { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 8px var(--accent); }
+  .timeline-dot.pending { border-color: var(--muted); }
+  .timeline-time { font-size: 11px; color: var(--muted); }
+  .timeline-text { font-size: 13px; margin-top: 2px; }
+
+  /* Pulse */
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+  .pulse { animation: pulse 2s ease-in-out infinite; }
+
+  /* Footer */
+  .footer { padding: 20px 24px; text-align: center; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <div class="logo">Lobster <span>Paper Command</span></div>
+    <span class="badge">V2.0</span>
+  </div>
+  <div class="header-right">
+    <span><span class="header-dot online"></span> 系统运行中</span>
+    <span>节点: 6 学员</span>
+    <span>版本: V5.1</span>
+    <span id="clock">00:00:00</span>
+  </div>
+</div>
+
+<!-- Top Stats -->
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="label">论文评分 (平均)</div>
+    <div class="value blue" id="avg-score">76.8</div>
+    <div class="sub">六学员加权平均</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">本周知识迁移</div>
+    <div class="value purple" id="transfers">48</div>
+    <div class="sub">方法论条目共享</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">学习增益总计</div>
+    <div class="value green" id="total-gain">+34.2</div>
+    <div class="sub">六学员累计提升分</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">日预算消耗</div>
+    <div class="value yellow" id="budget-used">34.5%</div>
+    <div class="sub">LBC 经济系统</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">交叉审稿</div>
+    <div class="value gold" id="reviews">18</div>
+    <div class="sub">本周互评完成</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">涌现检测 F1</div>
+    <div class="value green">0.87</div>
+    <div class="sub">四因子模型</div>
+  </div>
+</div>
+
+<!-- Learner Cards -->
+<div class="learner-grid">
+  <!-- Professor -->
+  <div class="learner-card professor">
+    <div class="learner-header">
+      <span class="learner-name" style="color:var(--gold)">诸葛斌 教授</span>
+      <span class="learner-role">审稿人 · 七段</span>
+    </div>
+    <div class="learner-score" style="color:var(--gold)">89.2</div>
+    <div class="learner-gain up">+1.4 本周</div>
+    <div class="learner-bars">
+      <div class="learner-bar hi" style="flex:95"></div>
+      <div class="learner-bar hi" style="flex:88"></div>
+      <div class="learner-bar hi" style="flex:92"></div>
+      <div class="learner-bar hi" style="flex:82"></div>
+      <div class="learner-bar hi" style="flex:90"></div>
+      <div class="learner-bar mid" style="flex:78"></div>
+      <div class="learner-bar mid" style="flex:80"></div>
+      <div class="learner-bar hi" style="flex:93"></div>
+    </div>
+    <div class="learner-dims">
+      <div>文献综述 <strong>95</strong></div><div>引用规范 <strong>93</strong></div>
+      <div>论证推理 <strong>92</strong></div><div>格式规范 <strong>90</strong></div>
+      <div>研究方法 <strong>88</strong></div><div>数据分析 <strong>82</strong></div>
+      <div>结构组织 <strong>80</strong></div><div>摘要撰写 <strong>78</strong></div>
+    </div>
+  </div>
+  <!-- Qoder -->
+  <div class="learner-card qoder">
+    <div class="learner-header">
+      <span class="learner-name" style="color:var(--accent2)">Qoder</span>
+      <span class="learner-role">四段 · 分析专家</span>
+    </div>
+    <div class="learner-score" style="color:var(--accent2)">75.0</div>
+    <div class="learner-gain up">+2.8 本周</div>
+    <div class="learner-bars">
+      <div class="learner-bar hi" style="flex:84"></div>
+      <div class="learner-bar mid" style="flex:78"></div>
+      <div class="learner-bar mid" style="flex:75"></div>
+      <div class="learner-bar hi" style="flex:82"></div>
+      <div class="learner-bar mid" style="flex:73"></div>
+      <div class="learner-bar lo" style="flex:68"></div>
+      <div class="learner-bar lo" style="flex:62"></div>
+      <div class="learner-bar lo" style="flex:60"></div>
+    </div>
+    <div class="learner-dims">
+      <div>研究方法 <strong>84</strong></div><div>结构组织 <strong>82</strong></div>
+      <div>数据分析 <strong>78</strong></div><div>文献综述 <strong>75</strong></div>
+      <div>引用规范 <strong>73</strong></div><div>论证推理 <strong>68</strong></div>
+      <div>摘要撰写 <strong>62</strong></div><div>格式规范 <strong>60</strong></div>
+    </div>
+  </div>
+  <!-- 诸葛虾 -->
+  <div class="learner-card zhuguxia">
+    <div class="learner-header">
+      <span class="learner-name" style="color:var(--green)">诸葛虾</span>
+      <span class="learner-role">三段 · 文献专家</span>
+    </div>
+    <div class="learner-score" style="color:var(--green)">71.5</div>
+    <div class="learner-gain up">+3.1 本周</div>
+    <div class="learner-bars">
+      <div class="learner-bar hi" style="flex:88"></div>
+      <div class="learner-bar hi" style="flex:85"></div>
+      <div class="learner-bar mid" style="flex:75"></div>
+      <div class="learner-bar mid" style="flex:70"></div>
+      <div class="learner-bar mid" style="flex:68"></div>
+      <div class="learner-bar mid" style="flex:65"></div>
+      <div class="learner-bar lo" style="flex:58"></div>
+      <div class="learner-bar lo" style="flex:55"></div>
+    </div>
+    <div class="learner-dims">
+      <div>文献综述 <strong>88</strong></div><div>引用规范 <strong>85</strong></div>
+      <div>摘要撰写 <strong>75</strong></div><div>论证推理 <strong>70</strong></div>
+      <div>结构组织 <strong>68</strong></div><div>格式规范 <strong>65</strong></div>
+      <div>研究方法 <strong>58</strong></div><div>数据分析 <strong>55</strong></div>
+    </div>
+  </div>
+  <!-- 小陈 -->
+  <div class="learner-card xiaochen">
+    <div class="learner-header">
+      <span class="learner-name" style="color:var(--accent)">小陈</span>
+      <span class="learner-role">三段 · 实证专家</span>
+    </div>
+    <div class="learner-score" style="color:var(--accent)">68.3</div>
+    <div class="learner-gain up">+4.5 本周</div>
+    <div class="learner-bars">
+      <div class="learner-bar hi" style="flex:85"></div>
+      <div class="learner-bar mid" style="flex:78"></div>
+      <div class="learner-bar mid" style="flex:72"></div>
+      <div class="learner-bar mid" style="flex:68"></div>
+      <div class="learner-bar mid" style="flex:65"></div>
+      <div class="learner-bar lo" style="flex:60"></div>
+      <div class="learner-bar lo" style="flex:55"></div>
+      <div class="learner-bar lo" style="flex:52"></div>
+    </div>
+    <div class="learner-dims">
+      <div>数据分析 <strong>85</strong></div><div>研究方法 <strong>78</strong></div>
+      <div>论证推理 <strong>72</strong></div><div>摘要撰写 <strong>68</strong></div>
+      <div>结构组织 <strong>65</strong></div><div>引用规范 <strong>60</strong></div>
+      <div>文献综述 <strong>55</strong></div><div>格式规范 <strong>52</strong></div>
+    </div>
+  </div>
+  <!-- Lobster-001 -->
+  <div class="learner-card lobster">
+    <div class="learner-header">
+      <span class="learner-name" style="color:var(--red)">龙虾-001</span>
+      <span class="learner-role">三段 · 架构师</span>
+    </div>
+    <div class="learner-score" style="color:var(--red)">71.9</div>
+    <div class="learner-gain up">+3.6 本周</div>
+    <div class="learner-bars">
+      <div class="learner-bar hi" style="flex:84"></div>
+      <div class="learner-bar mid" style="flex:78"></div>
+      <div class="learner-bar mid" style="flex:72"></div>
+      <div class="learner-bar mid" style="flex:70"></div>
+      <div class="learner-bar mid" style="flex:70"></div>
+      <div class="learner-bar lo" style="flex:65"></div>
+      <div class="learner-bar lo" style="flex:62"></div>
+      <div class="learner-bar lo" style="flex:60"></div>
+    </div>
+    <div class="learner-dims">
+      <div>研究方法 <strong>84</strong></div><div>结构组织 <strong>78</strong></div>
+      <div>论证推理 <strong>72</strong></div><div>文献综述 <strong>70</strong></div>
+      <div>引用规范 <strong>70</strong></div><div>数据分析 <strong>65</strong></div>
+      <div>摘要撰写 <strong>62</strong></div><div>格式规范 <strong>60</strong></div>
+    </div>
+  </div>
+  <!-- Museum-001 -->
+  <div class="learner-card museum">
+    <div class="learner-header">
+      <span class="learner-name" style="color:var(--pink)">院史馆-001</span>
+      <span class="learner-role">三段 · 档案员</span>
+    </div>
+    <div class="learner-score" style="color:var(--pink)">72.4</div>
+    <div class="learner-gain up">+2.7 本周</div>
+    <div class="learner-bars">
+      <div class="learner-bar hi" style="flex:82"></div>
+      <div class="learner-bar hi" style="flex:80"></div>
+      <div class="learner-bar mid" style="flex:75"></div>
+      <div class="learner-bar mid" style="flex:72"></div>
+      <div class="learner-bar mid" style="flex:70"></div>
+      <div class="learner-bar mid" style="flex:68"></div>
+      <div class="learner-bar lo" style="flex:62"></div>
+      <div class="learner-bar lo" style="flex:58"></div>
+    </div>
+    <div class="learner-dims">
+      <div>文献综述 <strong>82</strong></div><div>引用规范 <strong>80</strong></div>
+      <div>格式规范 <strong>75</strong></div><div>结构组织 <strong>72</strong></div>
+      <div>论证推理 <strong>70</strong></div><div>摘要撰写 <strong>68</strong></div>
+      <div>研究方法 <strong>62</strong></div><div>数据分析 <strong>58</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Grid -->
+<div class="main-grid">
+  <!-- Left: Radar Chart -->
+  <div class="panel">
+    <div class="panel-header">📡 八维能力雷达图</div>
+    <div class="panel-body">
+      <canvas id="radarChart" class="radar-mini"></canvas>
+    </div>
+  </div>
+
+  <!-- Right: Mutual Learning Pairings -->
+  <div class="panel">
+    <div class="panel-header">🤝 本周互学配对 &amp; 知识迁移</div>
+    <div class="panel-body">
+      <div class="pairing-row">
+        <strong style="color:var(--gold)">诸葛斌教授</strong>
+        <span class="pair-arrow">↔</span>
+        <strong style="color:var(--accent)">小陈</strong>
+        <span class="pair-comp" title="互补度">互补度 0.82</span>
+      </div>
+      <div class="pairing-row">
+        <strong style="color:var(--accent2)">Qoder</strong>
+        <span class="pair-arrow">↔</span>
+        <strong style="color:var(--green)">诸葛虾</strong>
+        <span class="pair-comp" title="互补度">互补度 0.76</span>
+      </div>
+      <div class="pairing-row">
+        <strong style="color:var(--red)">龙虾-001</strong>
+        <span class="pair-arrow">↔</span>
+        <strong style="color:var(--pink)">院史馆-001</strong>
+        <span class="pair-comp" title="互补度">互补度 0.73</span>
+      </div>
+      <div style="margin-top:14px; font-size:12px; color:var(--muted);">最近知识迁移记录</div>
+      <div class="transfer-entry">
+        <span class="from">诸葛虾</span> → <span class="to">小陈</span>
+        文献综述三步法
+        <span class="ts">10:24</span>
+      </div>
+      <div class="transfer-entry">
+        <span class="from">Qoder</span> → <span class="to">龙虾-001</span>
+        公式排版最佳实践
+        <span class="ts">10:18</span>
+      </div>
+      <div class="transfer-entry">
+        <span class="from">诸葛斌教授</span> → <span class="to">小陈</span>
+        表格三线表规范
+        <span class="ts">10:12</span>
+      </div>
+      <div class="transfer-entry">
+        <span class="from">院史馆-001</span> → <span class="to">诸葛虾</span>
+        引用溯源技巧
+        <span class="ts">10:08</span>
+      </div>
+      <div class="transfer-entry">
+        <span class="from">龙虾-001</span> → <span class="to">Qoder</span>
+        LaTeX结构模板化
+        <span class="ts">10:02</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Left: Cross Review -->
+  <div class="panel">
+    <div class="panel-header">📝 交叉审稿轮转</div>
+    <div class="panel-body">
+      <table>
+        <tr><th>审稿人</th><th>审阅对象</th><th>评分</th><th>主要反馈</th><th>状态</th></tr>
+        <tr>
+          <td style="color:var(--gold)">诸葛斌教授</td>
+          <td>小陈</td>
+          <td style="color:var(--green)">78/100</td>
+          <td>数据分析充分，文献综述需加强</td>
+          <td style="color:var(--green)">✓</td>
+        </tr>
+        <tr>
+          <td style="color:var(--accent2)">Qoder</td>
+          <td>诸葛虾</td>
+          <td style="color:var(--yellow)">72/100</td>
+          <td>方法阐述清晰，案例分析不足</td>
+          <td style="color:var(--green)">✓</td>
+        </tr>
+        <tr>
+          <td style="color:var(--green)">诸葛虾</td>
+          <td>龙虾-001</td>
+          <td style="color:var(--yellow)">70/100</td>
+          <td>文献部分优秀，格式有进步空间</td>
+          <td style="color:var(--green)">✓</td>
+        </tr>
+        <tr>
+          <td style="color:var(--accent)">小陈</td>
+          <td>院史馆-001</td>
+          <td style="color:var(--green)">75/100</td>
+          <td>论据充分，引用格式待统一</td>
+          <td style="color:var(--green)">✓</td>
+        </tr>
+        <tr>
+          <td style="color:var(--red)">龙虾-001</td>
+          <td>Qoder</td>
+          <td style="color:var(--yellow)">71/100</td>
+          <td>架构部分突出，摘要需精炼</td>
+          <td style="color:var(--accent); animation: pulse 2s infinite">审稿中...</td>
+        </tr>
+        <tr>
+          <td style="color:var(--pink)">院史馆-001</td>
+          <td>诸葛斌教授</td>
+          <td>—</td>
+          <td>—</td>
+          <td style="color:var(--muted)">待开始</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Right: Cost & Budget -->
+  <div class="panel">
+    <div class="panel-header">💰 成本优化 &amp; 预算监控</div>
+    <div class="panel-body">
+      <div class="progress-label"><span>今日预算 (100 LBC/日)</span><span style="color:var(--yellow)">34.5 / 100</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:34.5%;background:linear-gradient(90deg,var(--green),var(--yellow));"></div></div>
+      <table>
+        <tr><th>类别</th><th>消耗 (LBC)</th><th>占比</th></tr>
+        <tr><td>🖥️ 计算成本</td><td style="color:var(--red)">18.2</td><td>52.8%</td></tr>
+        <tr><td>🌐 网络通信</td><td style="color:var(--yellow)">8.5</td><td>24.6%</td></tr>
+        <tr><td>🤖 API调用</td><td style="color:var(--accent)">7.8</td><td>22.6%</td></tr>
+      </table>
+      <div style="margin-top:14px; font-size:12px; color:var(--muted);">优化策略状态</div>
+      <div style="font-size:12px; margin-top:4px;" class="transfer-entry">
+        <span style="color:var(--green);">●</span> 闲时缩容 <span style="float:right;color:var(--muted)">活跃 · 已节省 1.24 LBC</span>
+      </div>
+      <div style="font-size:12px;" class="transfer-entry">
+        <span style="color:var(--green);">●</span> 批处理合并 <span style="float:right;color:var(--muted)">活跃 · 已节省 0.68 LBC</span>
+      </div>
+      <div style="font-size:12px;" class="transfer-entry">
+        <span style="color:var(--green);">●</span> 连接池回收 <span style="float:right;color:var(--muted)">活跃 · 已节省 0.35 LBC</span>
+      </div>
+      <div style="margin-top:14px; font-size:12px; color:var(--muted);">7天成本预测</div>
+      <canvas id="costChart" style="width:100%;height:120px;margin-top:6px;"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Timeline -->
+<div class="panel" style="margin:0 24px 24px;">
+  <div class="panel-header">⏰ 今日论文写作调度</div>
+  <div class="panel-body">
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-time">06:00 — 08:00</div>
+        <div class="timeline-text">文献挖掘时段 · 诸葛虾主导，院史馆-001辅助 · 新发现 12 篇相关文献</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-time">08:00 — 10:00</div>
+        <div class="timeline-text">大纲撰写时段 · Qoder主导，龙虾-001辅助 · 第3章架构设计完成</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot active pulse"></div>
+        <div class="timeline-time">10:00 — 12:00</div>
+        <div class="timeline-text">章节起草时段 · 小陈主笔实验评估 · 进度 65%</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot pending"></div>
+        <div class="timeline-time">13:00 — 15:00</div>
+        <div class="timeline-text">同伴互评时段 · 交叉审稿轮转 · 6 篇待审</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot pending"></div>
+        <div class="timeline-time">15:00 — 18:00</div>
+        <div class="timeline-text">修改润色时段 · 全员参与 · 根据审稿意见修订</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Methodology Pool -->
+<div class="panel" style="margin:0 24px 24px;">
+  <div class="panel-header">📚 共享方法论池 (Shared Methodology Pool)</div>
+  <div class="panel-body">
+    <table>
+      <tr><th>标题</th><th>贡献者</th><th>维度</th><th>质量</th><th>使用</th></tr>
+      <tr><td>文献综述三步法（搜集-聚类-批判）</td><td>诸葛虾</td><td>文献综述</td><td style="color:var(--green)">4.5</td><td>12</td></tr>
+      <tr><td>LaTeX 公式排版最佳实践</td><td>Qoder</td><td>格式规范</td><td style="color:var(--green)">4.3</td><td>9</td></tr>
+      <tr><td>实验数据可视化六原则</td><td>小陈</td><td>数据分析</td><td style="color:var(--green)">4.2</td><td>8</td></tr>
+      <tr><td>中文论文三线表制作指南</td><td>诸葛斌教授</td><td>格式规范</td><td style="color:var(--green)">4.7</td><td>15</td></tr>
+      <tr><td>系统架构图分层绘制技巧</td><td>龙虾-001</td><td>结构组织</td><td style="color:var(--green)">4.1</td><td>7</td></tr>
+      <tr><td>学术引用溯源方法论</td><td>院史馆-001</td><td>引用规范</td><td style="color:var(--green)">4.4</td><td>10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="footer">
+  小龙虾网络 V5.1 · 论文写作指挥中心 V2 · Powered by Mutual Learning Engine &amp; Cost Optimizer · 2026-07-05
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+// Clock
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clock').textContent = now.toLocaleTimeString('zh-CN', {hour12: false});
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+// Radar Chart
+const radarCtx = document.getElementById('radarChart').getContext('2d');
+const labels = ['摘要', '文献综述', '方法', '数据分析', '论证', '结构', '格式', '引用'];
+new Chart(radarCtx, {
+  type: 'radar',
+  data: {
+    labels: labels,
+    datasets: [
+      {
+        label: '诸葛斌教授',
+        data: [78, 95, 88, 82, 92, 80, 90, 93],
+        borderColor: '#fbbf24', backgroundColor: 'rgba(251,191,36,0.08)',
+        borderWidth: 2,
+      },
+      {
+        label: 'Qoder',
+        data: [62, 75, 84, 78, 68, 82, 60, 73],
+        borderColor: '#8b5cf6', backgroundColor: 'rgba(139,92,246,0.08)',
+        borderWidth: 2,
+      },
+      {
+        label: '诸葛虾',
+        data: [75, 88, 58, 55, 70, 68, 65, 85],
+        borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.08)',
+        borderWidth: 2,
+      },
+      {
+        label: '小陈',
+        data: [68, 55, 78, 85, 72, 65, 52, 60],
+        borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.08)',
+        borderWidth: 2,
+      },
+      {
+        label: '龙虾-001',
+        data: [62, 70, 84, 65, 72, 78, 60, 70],
+        borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.08)',
+        borderWidth: 2,
+      },
+      {
+        label: '院史馆-001',
+        data: [68, 82, 62, 58, 70, 72, 75, 80],
+        borderColor: '#ec4899', backgroundColor: 'rgba(236,72,153,0.08)',
+        borderWidth: 2,
+      },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: { r: { beginAtZero: false, min: 40, max: 100, ticks: { stepSize: 10, color: '#94a3b8', backdropColor: 'transparent' }, grid: { color: 'rgba(148,163,184,0.1)' }, pointLabels: { color: '#e2e8f0', font: { size: 11 } } } },
+    plugins: { legend: { position: 'bottom', labels: { color: '#94a3b8', padding: 12, usePointStyle: true, font: { size: 11 } } } }
+  }
+});
+
+// Cost Chart
+const costCtx = document.getElementById('costChart').getContext('2d');
+new Chart(costCtx, {
+  type: 'line',
+  data: {
+    labels: ['7/6', '7/7', '7/8', '7/9', '7/10', '7/11', '7/12'],
+    datasets: [{
+      label: '预测日成本 (LBC)',
+      data: [32, 33, 38, 42, 40, 35, 31],
+      borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.1)',
+      fill: true, tension: 0.4,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: { x: { ticks: { color: '#94a3b8' }, grid: { display: false } }, y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(148,163,184,0.06)' }, max: 60 } },
+    plugins: { legend: { display: false } }
+  }
+});
+
+// Simulate live updates
+setInterval(() => {
+  const reviewEl = document.getElementById('reviews');
+  if (reviewEl) {
+    const current = parseInt(reviewEl.textContent);
+    if (Math.random() < 0.15) reviewEl.textContent = current + 1;
+  }
+  const transferEl = document.getElementById('transfers');
+  if (transferEl) {
+    const current = parseInt(transferEl.textContent);
+    if (Math.random() < 0.1) transferEl.textContent = current + 1;
+  }
+  const budgetEl = document.getElementById('budget-used');
+  if (budgetEl) {
+    budgetEl.textContent = (34.5 + (Date.now() % 100) / 200).toFixed(1) + '%';
+  }
+}, 8000);
+</script>
+</body>
+</html>
