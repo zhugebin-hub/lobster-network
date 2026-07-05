@@ -1,0 +1,26 @@
+{
+  "session_id": "stock_joint_1782434351",
+  "domain": "stock-predict",
+  "type": "joint_learning",
+  "created_at": "2026-06-26T08:39:11.823048",
+  "organizer": "hermes",
+  "participants": [
+    "hermes",
+    "xiaochen",
+    "zhuguxia",
+    "zhugebin-001"
+  ],
+  "topic": "炒股预测联合学习",
+  "phases": [
+    "phase1",
+    "phase2",
+    "phase3"
+  ],
+  "rules": {
+    "daily_min_problems": 8,
+    "weekly_review": true,
+    "cross_check": true,
+    "share_predictions": true
+  },
+  "history": []
+}

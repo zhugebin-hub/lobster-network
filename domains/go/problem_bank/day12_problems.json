@@ -1,0 +1,98 @@
+[
+  {
+    "problem_id": "cut-adv-001",
+    "type": "分断",
+    "difficulty": "初级",
+    "title": "断的威力",
+    "description": "围棋中「棋从断处生」的意思是什么？",
+    "options": ["切断对方后会产生各种变化", "断了就要输", "只有断才能赢", "是一种礼仪"],
+    "answer": "切断对方后会产生各种变化",
+    "solution": "「棋从断处生」是说切断对方棋子的联络后，攻防变化会非常丰富。断是制造战机的核心手段。",
+    "board_situation": "断的战术意义",
+    "estimated_time": 90
+  },
+  {
+    "problem_id": "cut-adv-002",
+    "type": "分断",
+    "difficulty": "初级",
+    "title": "扳断",
+    "description": "什么是「扳断」？",
+    "options": ["扳住对方棋子使其无法连接", "用手扳断棋子（物理）", "一种弃子战术", "收官手法"],
+    "answer": "扳住对方棋子使其无法连接",
+    "solution": "扳断是用扳的手法阻止对方棋子的连接。扳住后对方如果强行连接，通常会被整体包围或吃掉。",
+    "board_situation": "扳断技巧",
+    "estimated_time": 90
+  },
+  {
+    "problem_id": "cut-adv-003",
+    "type": "分断",
+    "difficulty": "初级",
+    "title": "挖的切断",
+    "description": "「挖」可以切断对方的什么棋形？",
+    "options": ["对方的跳（一间跳）", "对方的飞", "对方的尖", "对方的接"],
+    "answer": "对方的跳（一间跳）",
+    "solution": "挖是专门对付「跳」（一间跳，日字形中间空一格）的切断手段。在跳的中间落子，迫使对方只能保一边。",
+    "board_situation": "挖断技巧",
+    "estimated_time": 120
+  },
+  {
+    "problem_id": "cut-adv-004",
+    "type": "分断",
+    "difficulty": "中级",
+    "title": "靠断",
+    "description": "「靠断」的战术含义是？",
+    "options": ["靠住对方棋子同时制造断点", "靠在棋盘边上", "一种防守手段", "收官手法"],
+    "answer": "靠住对方棋子同时制造断点",
+    "solution": "靠断是靠在对方棋子上，同时制造多个断点威胁。对方防得了一处防不了另一处。这是高级的分断技巧。",
+    "board_situation": "靠断技巧",
+    "estimated_time": 150
+  },
+  {
+    "problem_id": "cut-adv-005",
+    "type": "分断",
+    "difficulty": "中级",
+    "title": "分断后的攻杀",
+    "description": "成功分断对方后，下一步最应该做什么？",
+    "options": ["分而治之（分别攻击）", "立刻收气", "放弃继续攻击", "做自己的眼"],
+    "answer": "分而治之（分别攻击）",
+    "solution": "分断后应该采取「分而治之」的策略：分别攻击两块被断开的棋，让对方左右为难。这是中盘战斗的核心战术。",
+    "board_situation": "分断后攻杀",
+    "estimated_time": 120
+  },
+  {
+    "problem_id": "cut-adv-006",
+    "type": "分断",
+    "difficulty": "中级",
+    "title": "断点的识别",
+    "description": "如何快速判断对方的连接是否有断点？",
+    "options": ["检查是否有间隔（跳、飞、大飞等）", "用AI分析", "试下几手", "靠感觉"],
+    "answer": "检查是否有间隔（跳、飞、大飞等）",
+    "solution": "最简单的判断方法：看对方的连接方式。如果是跳（日字形）、飞（日字对角），就有机会用挖、跨等方式切断。紧挨着的子（粘/接）无法切断。",
+    "board_situation": "断点识别",
+    "estimated_time": 90
+  },
+  {
+    "problem_id": "cut-adv-007",
+    "type": "分断",
+    "difficulty": "中级",
+    "title": "征子断",
+    "description": "如果对方用征子来连接，你如何应对？",
+    "options": ["找到引征点提前破坏", "接受征子", "放弃", "用AI征子"],
+    "answer": "找到引征点提前破坏",
+    "solution": "对付征子不能硬征，要提前找到「引征点」——在将来看似无关的位置落子，如果对方不收兵继续征，引征子就会发生作用破坏征子线路。",
+    "board_situation": "征子反制",
+    "estimated_time": 150
+  },
+  {
+    "problem_id": "cut-adv-008",
+    "type": "分断",
+    "difficulty": "中级",
+    "title": "综合: 分断的时机",
+    "description": "什么时候是分断对方的最佳时机？",
+    "options": ["对方棋形有缺陷（薄味）时", "任何时候都可以", "收官阶段", "布局阶段"],
+    "answer": "对方棋形有缺陷（薄味）时",
+    "solution": "最佳分断时机是对方棋形露出破绽（薄味）时。不要强行去断一个坚固的棋形——那往往会让自己陷入被动。",
+    "board_situation": "分断时机判断",
+    "estimated_time": 120
+  }
+]

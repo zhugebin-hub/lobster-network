@@ -1,0 +1,2312 @@
+{
+  "domain": "networking",
+  "phase": "phase1",
+  "total": 120,
+  "generated_at": "2026-06-25T20:41:13.514236",
+  "problems": [
+    {
+      "problem_id": "net-phase1-ch1-网络演进4阶段-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "网络演进4阶段",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "绪论 - 网络演进4阶段 #1",
+      "description": "网络技术演进的四个阶段按顺序是{传统网络→SDN→云计算→AI云}",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "网络演进4阶段"
+      ],
+      "created_at": "2026-06-25T20:41:13.511595"
+    },
+    {
+      "problem_id": "net-phase1-ch1-网络演进4阶段-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "网络演进4阶段",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "绪论 - 网络演进4阶段 #2",
+      "description": "AI云相比云计算具有更高的智能程度（对/错）",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "网络演进4阶段"
+      ],
+      "created_at": "2026-06-25T20:41:13.511612"
+    },
+    {
+      "problem_id": "net-phase1-ch1-网络演进4阶段-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "网络演进4阶段",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "绪论 - 网络演进4阶段 #3",
+      "description": "SDN的核心思想是控制面与_面分离",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "网络演进4阶段"
+      ],
+      "created_at": "2026-06-25T20:41:13.511616"
+    },
+    {
+      "problem_id": "net-phase1-ch1-传统网络-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "传统网络",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "绪论 - 传统网络 #1",
+      "description": "传统网络基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "传统网络"
+      ],
+      "created_at": "2026-06-25T20:41:13.511622"
+    },
+    {
+      "problem_id": "net-phase1-ch1-传统网络-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "传统网络",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "绪论 - 传统网络 #2",
+      "description": "传统网络判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "传统网络"
+      ],
+      "created_at": "2026-06-25T20:41:13.511625"
+    },
+    {
+      "problem_id": "net-phase1-ch1-传统网络-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "传统网络",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "绪论 - 传统网络 #3",
+      "description": "传统网络填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "传统网络"
+      ],
+      "created_at": "2026-06-25T20:41:13.511629"
+    },
+    {
+      "problem_id": "net-phase1-ch1-SDN-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "SDN",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "绪论 - SDN #1",
+      "description": "SDN基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "SDN"
+      ],
+      "created_at": "2026-06-25T20:41:13.511635"
+    },
+    {
+      "problem_id": "net-phase1-ch1-SDN-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "SDN",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "绪论 - SDN #2",
+      "description": "SDN判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "SDN"
+      ],
+      "created_at": "2026-06-25T20:41:13.511641"
+    },
+    {
+      "problem_id": "net-phase1-ch1-SDN-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "SDN",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "绪论 - SDN #3",
+      "description": "SDN填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "SDN"
+      ],
+      "created_at": "2026-06-25T20:41:13.511645"
+    },
+    {
+      "problem_id": "net-phase1-ch1-云计算-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "云计算",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "绪论 - 云计算 #1",
+      "description": "云计算基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "云计算"
+      ],
+      "created_at": "2026-06-25T20:41:13.511650"
+    },
+    {
+      "problem_id": "net-phase1-ch1-云计算-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "云计算",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "绪论 - 云计算 #2",
+      "description": "云计算判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "云计算"
+      ],
+      "created_at": "2026-06-25T20:41:13.511653"
+    },
+    {
+      "problem_id": "net-phase1-ch1-云计算-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "云计算",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "绪论 - 云计算 #3",
+      "description": "云计算填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "云计算"
+      ],
+      "created_at": "2026-06-25T20:41:13.511656"
+    },
+    {
+      "problem_id": "net-phase1-ch1-AI云-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI云",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "绪论 - AI云 #1",
+      "description": "AI云基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "AI云"
+      ],
+      "created_at": "2026-06-25T20:41:13.511660"
+    },
+    {
+      "problem_id": "net-phase1-ch1-AI云-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI云",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "绪论 - AI云 #2",
+      "description": "AI云判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "AI云"
+      ],
+      "created_at": "2026-06-25T20:41:13.511663"
+    },
+    {
+      "problem_id": "net-phase1-ch1-AI云-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "AI云",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "绪论 - AI云 #3",
+      "description": "AI云填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "AI云"
+      ],
+      "created_at": "2026-06-25T20:41:13.511666"
+    },
+    {
+      "problem_id": "net-phase1-ch1-架构对比-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "架构对比",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "绪论 - 架构对比 #1",
+      "description": "架构对比基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "架构对比"
+      ],
+      "created_at": "2026-06-25T20:41:13.511678"
+    },
+    {
+      "problem_id": "net-phase1-ch1-架构对比-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "架构对比",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "绪论 - 架构对比 #2",
+      "description": "架构对比判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "架构对比"
+      ],
+      "created_at": "2026-06-25T20:41:13.511684"
+    },
+    {
+      "problem_id": "net-phase1-ch1-架构对比-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "架构对比",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "绪论 - 架构对比 #3",
+      "description": "架构对比填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "架构对比"
+      ],
+      "created_at": "2026-06-25T20:41:13.511692"
+    },
+    {
+      "problem_id": "net-phase1-ch1-网络虚拟化-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "网络虚拟化",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "绪论 - 网络虚拟化 #1",
+      "description": "网络虚拟化基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "网络虚拟化"
+      ],
+      "created_at": "2026-06-25T20:41:13.511701"
+    },
+    {
+      "problem_id": "net-phase1-ch1-网络虚拟化-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "网络虚拟化",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "绪论 - 网络虚拟化 #2",
+      "description": "网络虚拟化判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "网络虚拟化"
+      ],
+      "created_at": "2026-06-25T20:41:13.511708"
+    },
+    {
+      "problem_id": "net-phase1-ch1-网络虚拟化-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "网络虚拟化",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "绪论 - 网络虚拟化 #3",
+      "description": "网络虚拟化填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "网络虚拟化"
+      ],
+      "created_at": "2026-06-25T20:41:13.511713"
+    },
+    {
+      "problem_id": "net-phase1-ch1-网络自动化-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "网络自动化",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "绪论 - 网络自动化 #1",
+      "description": "网络自动化基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "网络自动化"
+      ],
+      "created_at": "2026-06-25T20:41:13.511727"
+    },
+    {
+      "problem_id": "net-phase1-ch1-网络自动化-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "网络自动化",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "绪论 - 网络自动化 #2",
+      "description": "网络自动化判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "网络自动化"
+      ],
+      "created_at": "2026-06-25T20:41:13.511733"
+    },
+    {
+      "problem_id": "net-phase1-ch1-网络自动化-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch1",
+      "topic": "网络自动化",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "绪论 - 网络自动化 #3",
+      "description": "网络自动化填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://netanimat-etqrydu8.manus.space",
+        "replay": "https://manus.im/share/eOYk8rGG3isVMtkWTzubEb?replay=1"
+      },
+      "knowledge_points": [
+        "网络自动化"
+      ],
+      "created_at": "2026-06-25T20:41:13.511737"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-MAC地址学习-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "MAC地址学习",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "交换机原理与STP算法 - MAC地址学习 #1",
+      "description": "交换机学习MAC地址的方式是{查看数据帧源MAC}",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "MAC地址学习"
+      ],
+      "created_at": "2026-06-25T20:41:13.511743"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-MAC地址学习-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "MAC地址学习",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "交换机原理与STP算法 - MAC地址学习 #2",
+      "description": "交换机通过查看数据帧的目的MAC来学习（错）",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "MAC地址学习"
+      ],
+      "created_at": "2026-06-25T20:41:13.511746"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-MAC地址学习-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "MAC地址学习",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "交换机原理与STP算法 - MAC地址学习 #3",
+      "description": "交换机建立的表称为_MAC地址表_",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "MAC地址学习"
+      ],
+      "created_at": "2026-06-25T20:41:13.511749"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-数据帧转发-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "数据帧转发",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "交换机原理与STP算法 - 数据帧转发 #1",
+      "description": "数据帧转发基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "数据帧转发"
+      ],
+      "created_at": "2026-06-25T20:41:13.511754"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-数据帧转发-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "数据帧转发",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "交换机原理与STP算法 - 数据帧转发 #2",
+      "description": "数据帧转发判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "数据帧转发"
+      ],
+      "created_at": "2026-06-25T20:41:13.511757"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-数据帧转发-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "数据帧转发",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "交换机原理与STP算法 - 数据帧转发 #3",
+      "description": "数据帧转发填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "数据帧转发"
+      ],
+      "created_at": "2026-06-25T20:41:13.511760"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-STP根桥选举-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "STP根桥选举",
+      "type": "选择",
+      "difficulty": "初级",
+      "title": "交换机原理与STP算法 - STP根桥选举 #1",
+      "description": "STP根桥选举的依据是{最小的Bridge ID}",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "STP根桥选举"
+      ],
+      "created_at": "2026-06-25T20:41:13.511765"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-STP根桥选举-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "STP根桥选举",
+      "type": "判断",
+      "difficulty": "初级",
+      "title": "交换机原理与STP算法 - STP根桥选举 #2",
+      "description": "优先级值越大越可能成为根桥（错）",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "STP根桥选举"
+      ],
+      "created_at": "2026-06-25T20:41:13.511768"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-STP根桥选举-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "STP根桥选举",
+      "type": "填空",
+      "difficulty": "中级",
+      "title": "交换机原理与STP算法 - STP根桥选举 #3",
+      "description": "STP中端口角色包括根端口、_端口和阻塞端口",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "STP根桥选举"
+      ],
+      "created_at": "2026-06-25T20:41:13.511771"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-端口角色-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "端口角色",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "交换机原理与STP算法 - 端口角色 #1",
+      "description": "端口角色基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "端口角色"
+      ],
+      "created_at": "2026-06-25T20:41:13.511776"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-端口角色-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "端口角色",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "交换机原理与STP算法 - 端口角色 #2",
+      "description": "端口角色判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "端口角色"
+      ],
+      "created_at": "2026-06-25T20:41:13.511782"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-端口角色-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "端口角色",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "交换机原理与STP算法 - 端口角色 #3",
+      "description": "端口角色填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "端口角色"
+      ],
+      "created_at": "2026-06-25T20:41:13.511786"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-BPDU-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "BPDU",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "交换机原理与STP算法 - BPDU #1",
+      "description": "BPDU基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "BPDU"
+      ],
+      "created_at": "2026-06-25T20:41:13.511790"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-BPDU-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "BPDU",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "交换机原理与STP算法 - BPDU #2",
+      "description": "BPDU判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "BPDU"
+      ],
+      "created_at": "2026-06-25T20:41:13.511793"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-BPDU-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "BPDU",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "交换机原理与STP算法 - BPDU #3",
+      "description": "BPDU填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "BPDU"
+      ],
+      "created_at": "2026-06-25T20:41:13.511797"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-环路防止-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "环路防止",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "交换机原理与STP算法 - 环路防止 #1",
+      "description": "环路防止基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "环路防止"
+      ],
+      "created_at": "2026-06-25T20:41:13.511802"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-环路防止-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "环路防止",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "交换机原理与STP算法 - 环路防止 #2",
+      "description": "环路防止判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "环路防止"
+      ],
+      "created_at": "2026-06-25T20:41:13.511811"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-环路防止-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "环路防止",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "交换机原理与STP算法 - 环路防止 #3",
+      "description": "环路防止填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "环路防止"
+      ],
+      "created_at": "2026-06-25T20:41:13.511814"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-VLAN基础-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "VLAN基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "交换机原理与STP算法 - VLAN基础 #1",
+      "description": "VLAN基础基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "VLAN基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.511821"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-VLAN基础-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "VLAN基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "交换机原理与STP算法 - VLAN基础 #2",
+      "description": "VLAN基础判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "VLAN基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.511827"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-VLAN基础-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "VLAN基础",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "交换机原理与STP算法 - VLAN基础 #3",
+      "description": "VLAN基础填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "VLAN基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.511830"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-端口安全-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "端口安全",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "交换机原理与STP算法 - 端口安全 #1",
+      "description": "端口安全基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "端口安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.511834"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-端口安全-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "端口安全",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "交换机原理与STP算法 - 端口安全 #2",
+      "description": "端口安全判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "端口安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.511837"
+    },
+    {
+      "problem_id": "net-phase1-ch2_3-端口安全-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch2_3",
+      "topic": "端口安全",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "交换机原理与STP算法 - 端口安全 #3",
+      "description": "端口安全填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {
+        "demo": "https://switchanim-vpufrziz.manus.space",
+        "replay": "https://manus.im/share/3RvE1nL9y5G0BIt1tEoGww?replay=1"
+      },
+      "knowledge_points": [
+        "端口安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.511841"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-数据包转发-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "数据包转发",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - 数据包转发 #1",
+      "description": "数据包转发基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "数据包转发"
+      ],
+      "created_at": "2026-06-25T20:41:13.511845"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-数据包转发-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "数据包转发",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - 数据包转发 #2",
+      "description": "数据包转发判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "数据包转发"
+      ],
+      "created_at": "2026-06-25T20:41:13.511848"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-数据包转发-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "数据包转发",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "路由器原理与路由协议 - 数据包转发 #3",
+      "description": "数据包转发填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "数据包转发"
+      ],
+      "created_at": "2026-06-25T20:41:13.511858"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-静态路由-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "静态路由",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - 静态路由 #1",
+      "description": "静态路由基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "静态路由"
+      ],
+      "created_at": "2026-06-25T20:41:13.511863"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-静态路由-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "静态路由",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - 静态路由 #2",
+      "description": "静态路由判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "静态路由"
+      ],
+      "created_at": "2026-06-25T20:41:13.511866"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-静态路由-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "静态路由",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "路由器原理与路由协议 - 静态路由 #3",
+      "description": "静态路由填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "静态路由"
+      ],
+      "created_at": "2026-06-25T20:41:13.511869"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-动态路由-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "动态路由",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - 动态路由 #1",
+      "description": "动态路由基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "动态路由"
+      ],
+      "created_at": "2026-06-25T20:41:13.511873"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-动态路由-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "动态路由",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - 动态路由 #2",
+      "description": "动态路由判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "动态路由"
+      ],
+      "created_at": "2026-06-25T20:41:13.511879"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-动态路由-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "动态路由",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "路由器原理与路由协议 - 动态路由 #3",
+      "description": "动态路由填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "动态路由"
+      ],
+      "created_at": "2026-06-25T20:41:13.511882"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-OSPF-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "OSPF",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - OSPF #1",
+      "description": "OSPF基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "OSPF"
+      ],
+      "created_at": "2026-06-25T20:41:13.511886"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-OSPF-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "OSPF",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - OSPF #2",
+      "description": "OSPF判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "OSPF"
+      ],
+      "created_at": "2026-06-25T20:41:13.511889"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-OSPF-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "OSPF",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "路由器原理与路由协议 - OSPF #3",
+      "description": "OSPF填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "OSPF"
+      ],
+      "created_at": "2026-06-25T20:41:13.511893"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-路由表-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "路由表",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - 路由表 #1",
+      "description": "路由表基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "路由表"
+      ],
+      "created_at": "2026-06-25T20:41:13.511897"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-路由表-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "路由表",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - 路由表 #2",
+      "description": "路由表判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "路由表"
+      ],
+      "created_at": "2026-06-25T20:41:13.511900"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-路由表-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "路由表",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "路由器原理与路由协议 - 路由表 #3",
+      "description": "路由表填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "路由表"
+      ],
+      "created_at": "2026-06-25T20:41:13.511903"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-BGP基础-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "BGP基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - BGP基础 #1",
+      "description": "BGP基础基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "BGP基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.511907"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-BGP基础-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "BGP基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - BGP基础 #2",
+      "description": "BGP基础判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "BGP基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.511911"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-BGP基础-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "BGP基础",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "路由器原理与路由协议 - BGP基础 #3",
+      "description": "BGP基础填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "BGP基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.511914"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-路由策略-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "路由策略",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - 路由策略 #1",
+      "description": "路由策略基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "路由策略"
+      ],
+      "created_at": "2026-06-25T20:41:13.511918"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-路由策略-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "路由策略",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - 路由策略 #2",
+      "description": "路由策略判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "路由策略"
+      ],
+      "created_at": "2026-06-25T20:41:13.511921"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-路由策略-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "路由策略",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "路由器原理与路由协议 - 路由策略 #3",
+      "description": "路由策略填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "路由策略"
+      ],
+      "created_at": "2026-06-25T20:41:13.511924"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-路由过滤-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "路由过滤",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - 路由过滤 #1",
+      "description": "路由过滤基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "路由过滤"
+      ],
+      "created_at": "2026-06-25T20:41:13.511931"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-路由过滤-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "路由过滤",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "路由器原理与路由协议 - 路由过滤 #2",
+      "description": "路由过滤判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "路由过滤"
+      ],
+      "created_at": "2026-06-25T20:41:13.511934"
+    },
+    {
+      "problem_id": "net-phase1-ch4_5-路由过滤-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch4_5",
+      "topic": "路由过滤",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "路由器原理与路由协议 - 路由过滤 #3",
+      "description": "路由过滤填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "路由过滤"
+      ],
+      "created_at": "2026-06-25T20:41:13.511940"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-访问控制-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "访问控制",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络安全基础 - 访问控制 #1",
+      "description": "访问控制基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "访问控制"
+      ],
+      "created_at": "2026-06-25T20:41:13.511945"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-访问控制-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "访问控制",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络安全基础 - 访问控制 #2",
+      "description": "访问控制判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "访问控制"
+      ],
+      "created_at": "2026-06-25T20:41:13.511949"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-访问控制-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "访问控制",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络安全基础 - 访问控制 #3",
+      "description": "访问控制填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "访问控制"
+      ],
+      "created_at": "2026-06-25T20:41:13.511952"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-防火墙-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "防火墙",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络安全基础 - 防火墙 #1",
+      "description": "防火墙基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "防火墙"
+      ],
+      "created_at": "2026-06-25T20:41:13.511956"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-防火墙-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "防火墙",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络安全基础 - 防火墙 #2",
+      "description": "防火墙判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "防火墙"
+      ],
+      "created_at": "2026-06-25T20:41:13.511959"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-防火墙-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "防火墙",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络安全基础 - 防火墙 #3",
+      "description": "防火墙填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "防火墙"
+      ],
+      "created_at": "2026-06-25T20:41:13.511962"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-IPS/IDS-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "IPS/IDS",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络安全基础 - IPS/IDS #1",
+      "description": "IPS/IDS基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "IPS/IDS"
+      ],
+      "created_at": "2026-06-25T20:41:13.511969"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-IPS/IDS-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "IPS/IDS",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络安全基础 - IPS/IDS #2",
+      "description": "IPS/IDS判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "IPS/IDS"
+      ],
+      "created_at": "2026-06-25T20:41:13.511972"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-IPS/IDS-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "IPS/IDS",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络安全基础 - IPS/IDS #3",
+      "description": "IPS/IDS填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "IPS/IDS"
+      ],
+      "created_at": "2026-06-25T20:41:13.511975"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-加密技术-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "加密技术",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络安全基础 - 加密技术 #1",
+      "description": "加密技术基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "加密技术"
+      ],
+      "created_at": "2026-06-25T20:41:13.511979"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-加密技术-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "加密技术",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络安全基础 - 加密技术 #2",
+      "description": "加密技术判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "加密技术"
+      ],
+      "created_at": "2026-06-25T20:41:13.511982"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-加密技术-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "加密技术",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络安全基础 - 加密技术 #3",
+      "description": "加密技术填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "加密技术"
+      ],
+      "created_at": "2026-06-25T20:41:13.511985"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-认证授权-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "认证授权",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络安全基础 - 认证授权 #1",
+      "description": "认证授权基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "认证授权"
+      ],
+      "created_at": "2026-06-25T20:41:13.511990"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-认证授权-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "认证授权",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络安全基础 - 认证授权 #2",
+      "description": "认证授权判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "认证授权"
+      ],
+      "created_at": "2026-06-25T20:41:13.511993"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-认证授权-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "认证授权",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络安全基础 - 认证授权 #3",
+      "description": "认证授权填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "认证授权"
+      ],
+      "created_at": "2026-06-25T20:41:13.511996"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-安全策略-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "安全策略",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络安全基础 - 安全策略 #1",
+      "description": "安全策略基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "安全策略"
+      ],
+      "created_at": "2026-06-25T20:41:13.512089"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-安全策略-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "安全策略",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络安全基础 - 安全策略 #2",
+      "description": "安全策略判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "安全策略"
+      ],
+      "created_at": "2026-06-25T20:41:13.512093"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-安全策略-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "安全策略",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络安全基础 - 安全策略 #3",
+      "description": "安全策略填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "安全策略"
+      ],
+      "created_at": "2026-06-25T20:41:13.512097"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-漏洞扫描-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "漏洞扫描",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络安全基础 - 漏洞扫描 #1",
+      "description": "漏洞扫描基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "漏洞扫描"
+      ],
+      "created_at": "2026-06-25T20:41:13.512137"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-漏洞扫描-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "漏洞扫描",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络安全基础 - 漏洞扫描 #2",
+      "description": "漏洞扫描判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "漏洞扫描"
+      ],
+      "created_at": "2026-06-25T20:41:13.512144"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-漏洞扫描-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "漏洞扫描",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络安全基础 - 漏洞扫描 #3",
+      "description": "漏洞扫描填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "漏洞扫描"
+      ],
+      "created_at": "2026-06-25T20:41:13.512150"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-安全审计-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "安全审计",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "网络安全基础 - 安全审计 #1",
+      "description": "安全审计基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "安全审计"
+      ],
+      "created_at": "2026-06-25T20:41:13.512165"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-安全审计-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "安全审计",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "网络安全基础 - 安全审计 #2",
+      "description": "安全审计判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "安全审计"
+      ],
+      "created_at": "2026-06-25T20:41:13.512171"
+    },
+    {
+      "problem_id": "net-phase1-ch6_7-安全审计-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch6_7",
+      "topic": "安全审计",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "网络安全基础 - 安全审计 #3",
+      "description": "安全审计填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "安全审计"
+      ],
+      "created_at": "2026-06-25T20:41:13.512174"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-WiFi基础-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "WiFi基础",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "无线网络 - WiFi基础 #1",
+      "description": "WiFi基础基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "WiFi基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.512179"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-WiFi基础-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "WiFi基础",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "无线网络 - WiFi基础 #2",
+      "description": "WiFi基础判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "WiFi基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.512185"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-WiFi基础-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "WiFi基础",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "无线网络 - WiFi基础 #3",
+      "description": "WiFi基础填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "WiFi基础"
+      ],
+      "created_at": "2026-06-25T20:41:13.512188"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-802.11标准-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "802.11标准",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "无线网络 - 802.11标准 #1",
+      "description": "802.11标准基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "802.11标准"
+      ],
+      "created_at": "2026-06-25T20:41:13.512196"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-802.11标准-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "802.11标准",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "无线网络 - 802.11标准 #2",
+      "description": "802.11标准判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "802.11标准"
+      ],
+      "created_at": "2026-06-25T20:41:13.512200"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-802.11标准-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "802.11标准",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "无线网络 - 802.11标准 #3",
+      "description": "802.11标准填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "802.11标准"
+      ],
+      "created_at": "2026-06-25T20:41:13.512203"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线安全-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线安全",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "无线网络 - 无线安全 #1",
+      "description": "无线安全基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.512207"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线安全-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线安全",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "无线网络 - 无线安全 #2",
+      "description": "无线安全判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.512213"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线安全-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线安全",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "无线网络 - 无线安全 #3",
+      "description": "无线安全填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线安全"
+      ],
+      "created_at": "2026-06-25T20:41:13.512216"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线漫游-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线漫游",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "无线网络 - 无线漫游 #1",
+      "description": "无线漫游基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线漫游"
+      ],
+      "created_at": "2026-06-25T20:41:13.512223"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线漫游-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线漫游",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "无线网络 - 无线漫游 #2",
+      "description": "无线漫游判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线漫游"
+      ],
+      "created_at": "2026-06-25T20:41:13.512226"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线漫游-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线漫游",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "无线网络 - 无线漫游 #3",
+      "description": "无线漫游填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线漫游"
+      ],
+      "created_at": "2026-06-25T20:41:13.512229"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线规划-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线规划",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "无线网络 - 无线规划 #1",
+      "description": "无线规划基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线规划"
+      ],
+      "created_at": "2026-06-25T20:41:13.512255"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线规划-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线规划",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "无线网络 - 无线规划 #2",
+      "description": "无线规划判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线规划"
+      ],
+      "created_at": "2026-06-25T20:41:13.512259"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线规划-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线规划",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "无线网络 - 无线规划 #3",
+      "description": "无线规划填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线规划"
+      ],
+      "created_at": "2026-06-25T20:41:13.512262"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线优化-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线优化",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "无线网络 - 无线优化 #1",
+      "description": "无线优化基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.512266"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线优化-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线优化",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "无线网络 - 无线优化 #2",
+      "description": "无线优化判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.512270"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线优化-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线优化",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "无线网络 - 无线优化 #3",
+      "description": "无线优化填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线优化"
+      ],
+      "created_at": "2026-06-25T20:41:13.512273"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线故障-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线故障",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "无线网络 - 无线故障 #1",
+      "description": "无线故障基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线故障"
+      ],
+      "created_at": "2026-06-25T20:41:13.512277"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线故障-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线故障",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "无线网络 - 无线故障 #2",
+      "description": "无线故障判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线故障"
+      ],
+      "created_at": "2026-06-25T20:41:13.512284"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线故障-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线故障",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "无线网络 - 无线故障 #3",
+      "description": "无线故障填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线故障"
+      ],
+      "created_at": "2026-06-25T20:41:13.512287"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线管理-001",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线管理",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "无线网络 - 无线管理 #1",
+      "description": "无线管理基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线管理"
+      ],
+      "created_at": "2026-06-25T20:41:13.512294"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线管理-002",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线管理",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "无线网络 - 无线管理 #2",
+      "description": "无线管理判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线管理"
+      ],
+      "created_at": "2026-06-25T20:41:13.512298"
+    },
+    {
+      "problem_id": "net-phase1-ch8_9-无线管理-003",
+      "domain": "networking",
+      "phase": "phase1",
+      "chapter": "ch8_9",
+      "topic": "无线管理",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "无线网络 - 无线管理 #3",
+      "description": "无线管理填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "manus_link": {},
+      "knowledge_points": [
+        "无线管理"
+      ],
+      "created_at": "2026-06-25T20:41:13.512301"
+    }
+  ]
+}

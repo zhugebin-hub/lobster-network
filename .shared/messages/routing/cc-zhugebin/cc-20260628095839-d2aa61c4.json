@@ -1,0 +1,15 @@
+{
+  "msg_id": "cc-20260628095839-d2aa61c4",
+  "from": "zhugema",
+  "to": "xiaochen",
+  "msg_type": "general_notice",
+  "timestamp": "2026-06-28T09:58:39.974784",
+  "priority": "normal",
+  "action_required": true,
+  "deadline": "2026-06-28T17:58:39.974770",
+  "deadline_hours": 8,
+  "content": "诸葛马教练核实通知：V3.1部署报告已核实，CC路由系统已部署(commit 4e16936)。请确认收到并部署到本地服务器。部署步骤：1.git pull 2.运行routing.py测试 3.回复ACK",
+  "status": "sent",
+  "ack_received": false,
+  "ack_timestamp": null
+}

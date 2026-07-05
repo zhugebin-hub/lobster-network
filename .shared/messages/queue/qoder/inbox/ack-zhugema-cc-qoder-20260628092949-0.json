@@ -1,0 +1,17 @@
+{
+  "msg_id": "ack-zhugema-cc-qoder-20260628092949-0",
+  "msg_type": "cc_ack",
+  "protocol_version": "1.0",
+  "from": "zhugema",
+  "to": [
+    "qoder"
+  ],
+  "cc_to_human": true,
+  "subject": "ACK: qoder全局进度同步(2026-06-28)",
+  "body": "诸葛马已确认收到消息: qoder全局进度同步(2026-06-28)\n消息ID: cc-qoder-20260628092949-0\n确认时间: 2026-06-29T00:35:51.205616+08:00\n状态: acknowledged",
+  "category": "ack",
+  "requires_ack": false,
+  "sent_at": "2026-06-29T00:35:51.205616+08:00",
+  "original_msg_id": "cc-qoder-20260628092949-0",
+  "original_tracking_id": "track-b6aa7a42"
+}

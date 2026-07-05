@@ -1,0 +1,30 @@
+{
+  "id": "day3-xiaowei-20260627",
+  "type": "training_task",
+  "day": 3,
+  "student_id": "xiaowei",
+  "version": "3.0",
+  "focus": "连接与实战强化",
+  "problems": 100,
+  "games": 8,
+  "target_accuracy": 0.80,
+  "custom_module": "基础强化",
+  "focus_area": {
+    "topic": "连接与实战",
+    "problems": 30,
+    "expected_improvement": "15%"
+  },
+  "v3_features": [
+    "使用向量记忆系统搜索相似基础题",
+    "完成任务获得代币奖励"
+  ],
+  "problems_breakdown": [
+    {"type": "连接", "difficulty": "初级", "count": 30},
+    {"type": "实战", "difficulty": "初级", "count": 30},
+    {"type": "死活", "difficulty": "初级", "count": 40}
+  ],
+  "games_breakdown": [
+    {"opponent": "教练", "count": 8, "type": "标准对局"}
+  ],
+  "deadline": "2026-06-27 22:00:00"
+}

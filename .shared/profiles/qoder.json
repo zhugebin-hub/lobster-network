@@ -1,0 +1,27 @@
+{
+  "student_id": "qoder",
+  "display_name": "qoder小龙虾",
+  "type": "实战型",
+  "domains": {
+    "go": {
+      "days_completed": 4,
+      "total_problems": 1000,
+      "accuracy": "87.0%",
+      "total_games": 91,
+      "win_rate": "65.9%"
+    },
+    "networking": {
+      "chapters_completed": 3,
+      "total": 7,
+      "progress": "42.9%",
+      "accuracy": "94.4%"
+    },
+    "stock": {
+      "problems": 0,
+      "accuracy": "N/A"
+    }
+  },
+  "composite_score": 47.7,
+  "ranking": 1,
+  "updated_at": "2026-06-28T03:40:44.904917+00:00"
+}

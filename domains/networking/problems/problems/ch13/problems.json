@@ -1,0 +1,108 @@
+{
+  "domain": "networking",
+  "chapter": "ch13",
+  "total": 6,
+  "generated_at": "2026-06-28T13:35:20.760381",
+  "problems": [
+    {
+      "problem_id": "net-ch13-流表结构-001",
+      "domain": "networking",
+      "chapter": "ch13",
+      "topic": "流表结构",
+      "type": "选择",
+      "difficulty": "初级",
+      "title": "第十三章 OpenFlow流表实战 - 流表结构",
+      "description": "OpenFlow流表中的流表项（Flow Entry）由哪三部分组成？",
+      "answer": "A. 匹配域、指令集、统计信息",
+      "options": [
+        "A. 匹配域、指令集、统计信息",
+        "B. 源IP、目的IP、端口号",
+        "C. 表ID、优先级、超时时间",
+        "D. 匹配域、动作队列、优先级"
+      ],
+      "knowledge": "OpenFlow流表项由匹配域(Match Fields)、指令集(Instructions)和统计信息(Counters)三部分组成",
+      "solution": "OpenFlow规范定义每个流表项包含三部分：(1) 匹配域(Match Fields)——用于匹配数据包的头部字段，如入端口、源/目的MAC、源/目的IP、TCP端口等；(2) 指令集(Instructions)——匹配后执行的动作，如转发到指定端口、修改字段、跳转到下一张流表等；(3) 统计信息(Counters)——记录该流表项匹配的数据包数量和字节数，用于网络监控。选项B只是匹配域中可能用到的字段子集；选项C中的表ID和优先级是流表项的管理属性而非核心组成；选项D中'动作队列'并非OpenFlow标准术语。",
+      "created_at": "2026-06-28T13:35:20.760283"
+    },
+    {
+      "problem_id": "net-ch13-远程流表配置-002",
+      "domain": "networking",
+      "chapter": "ch13",
+      "topic": "远程流表配置",
+      "type": "选择",
+      "difficulty": "中级",
+      "title": "第十三章 OpenFlow流表实战 - 远程流表配置",
+      "description": "在ODL（OpenDaylight）控制器环境下，使用ovs-vsctl命令将Open vSwitch连接到控制器的正确命令是？",
+      "answer": "B. ovs-vsctl set-controller br0 tcp:192.168.1.100:6653",
+      "options": [
+        "A. ovs-vsctl add-controller br0 udp:192.168.1.100:6653",
+        "B. ovs-vsctl set-controller br0 tcp:192.168.1.100:6653",
+        "C. ovs-vsctl connect br0 tcp:192.168.1.100:6633",
+        "D. ovs-vsctl set-bridge br0 controller=tcp:192.168.1.100:6653"
+      ],
+      "knowledge": "ovs-vsctl set-controller命令用于设置OVS连接远程OpenFlow控制器，默认端口为6653（IANA标准）",
+      "solution": "Open vSwitch使用`ovs-vsctl set-controller <bridge> <target>`命令指定远程控制器。OpenFlow协议基于TCP传输，标准端口号为6653（早期版本使用6633，后由IANA正式分配6653）。选项A错误在于使用UDP协议；选项C的connect不是ovs-vsctl的合法子命令，且6633是旧端口；选项D的set-bridge语法不正确。正确格式为`ovs-vsctl set-controller <bridge> tcp:<controller_ip>:<port>`。",
+      "created_at": "2026-06-28T13:35:20.760294"
+    },
+    {
+      "problem_id": "net-ch13-Mininet环境-003",
+      "domain": "networking",
+      "chapter": "ch13",
+      "topic": "Mininet环境",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "第十三章 OpenFlow流表实战 - Mininet环境",
+      "description": "Mininet中的'2s4h'拓扑表示2台交换机连接4台主机",
+      "answer": "对",
+      "options": [],
+      "knowledge": "Mininet拓扑命名中，2s4h表示2台Switch和4台Host的拓扑结构",
+      "solution": "Mininet中使用简写方式描述拓扑结构，其中s代表Switch（交换机），h代表Host（主机）。因此2s4h表示网络中包含2台交换机和4台主机。这是一种常见的实验拓扑，可以用于验证跨交换机的流表下发和连通性测试。",
+      "created_at": "2026-06-28T13:35:20.760296"
+    },
+    {
+      "problem_id": "net-ch13-本地流表配置-004",
+      "domain": "networking",
+      "chapter": "ch13",
+      "topic": "本地流表配置",
+      "type": "判断",
+      "difficulty": "初级",
+      "title": "第十三章 OpenFlow流表实战 - 本地流表配置",
+      "description": "使用ovs-ofctl add-flow命令添加流表项时，priority值越大，该流表项的优先级越低",
+      "answer": "错",
+      "options": [],
+      "knowledge": "OpenFlow中priority值越大优先级越高，匹配时优先使用高优先级的流表项",
+      "solution": "在OpenFlow协议中，priority（优先级）字段取值范围通常为0~65535，数值越大表示优先级越高。当一个数据包同时匹配多条流表项时，交换机会选择priority值最大的那条来执行。例如priority=100的流表项会优先于priority=10的流表项被匹配。默认流表项（Table-Miss）通常设置为priority=0，作为最低优先级的兜底规则。",
+      "created_at": "2026-06-28T13:35:20.760298"
+    },
+    {
+      "problem_id": "net-ch13-ODL控制器-005",
+      "domain": "networking",
+      "chapter": "ch13",
+      "topic": "ODL控制器",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "第十三章 OpenFlow流表实战 - ODL控制器",
+      "description": "OpenFlow协议中，交换机与控制器之间的通信通道称为____通道",
+      "answer": "安全",
+      "options": [],
+      "knowledge": "OpenFlow定义了安全通道(Secure Channel)作为控制器与交换机之间的通信接口",
+      "solution": "OpenFlow架构中，安全通道（Secure Channel）是控制器与OpenFlow交换机之间通信的接口。虽然名称中带有'安全'，但实际使用中可以是TLS加密通道，也可以是普通TCP连接。安全通道负责传输OpenFlow协议消息，包括控制器下发的流表项（Flow-Mod消息）、交换机上报的数据包（Packet-In消息）等。在OpenFlow 1.0中，安全通道使用TCP端口6633；从1.3版本起，IANA正式分配了端口6653。",
+      "created_at": "2026-06-28T13:35:20.760300"
+    },
+    {
+      "problem_id": "net-ch13-2s4h拓扑-006",
+      "domain": "networking",
+      "chapter": "ch13",
+      "topic": "2s4h拓扑",
+      "type": "填空",
+      "difficulty": "中级",
+      "title": "第十三章 OpenFlow流表实战 - 2s4h拓扑",
+      "description": "在Mininet中查看OVS交换机上所有流表项的命令是ovs-ofctl ____-flows <bridge_name>",
+      "answer": "dump",
+      "options": [],
+      "knowledge": "ovs-ofctl dump-flows命令用于显示OVS交换机上当前安装的所有流表项",
+      "solution": "ovs-ofctl是管理OpenFlow交换机的命令行工具。`dump-flows`子命令用于导出（dump）交换机上当前所有的流表项。执行后会显示每条流表项的匹配条件、优先级、统计计数器和动作指令。例如`ovs-ofctl dump-flows s1`会显示交换机s1上所有的流表项。这是OpenFlow实验中最常用的调试命令之一，可以验证控制器下发的流表项是否正确安装到了交换机中。",
+      "created_at": "2026-06-28T13:35:20.760302"
+    }
+  ]
+}

@@ -330,6 +330,3 @@ if __name__ == "__main__":
     
     result = scheduler.schedule(training_task)
     print(f"\n执行结果: {json.dumps(result, ensure_ascii=False, indent=2)}")
-EOF
-
-echo "双阶段调度器已创建"

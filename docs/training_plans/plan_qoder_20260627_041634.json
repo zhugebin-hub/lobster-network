@@ -1,0 +1,66 @@
+{
+  "student_id": "qoder",
+  "student_name": "qoder（小龙虾）",
+  "student_type": "实战型",
+  "current_level": "~25级",
+  "generated_at": "2026-06-27 04:16:34",
+  "training_modules": [
+    {
+      "name": "速率套利训练",
+      "focus": "执行力",
+      "problems": 30,
+      "difficulty": "混合",
+      "categories": [
+        "死活",
+        "手筋",
+        "官子",
+        "布局"
+      ],
+      "target_accuracy": 0.8,
+      "method": "与zhuguxia配对，利用速率差异：zhuguxia生成题，qoder解题"
+    },
+    {
+      "name": "系统性训练计划",
+      "focus": "理解力",
+      "problems": 20,
+      "difficulty": "中级",
+      "categories": [
+        "死活",
+        "手筋",
+        "定式",
+        "布局",
+        "官子"
+      ],
+      "target_accuracy": 0.85,
+      "method": "按围棋知识体系系统训练，补齐短板"
+    },
+    {
+      "name": "错题本建设",
+      "focus": "反思力",
+      "problems": 10,
+      "difficulty": "高级",
+      "categories": [
+        "死活",
+        "手筋"
+      ],
+      "target_accuracy": 0.7,
+      "method": "建立个人错题本，定期复习"
+    },
+    {
+      "name": "实战对局",
+      "focus": "执行力",
+      "games": 5,
+      "opponents": [
+        "xiaochen",
+        "zhuguxia"
+      ],
+      "method": "增加对局密度，从685题提升到1000+题"
+    }
+  ],
+  "schedule": {
+    "周一/三/五": "速率套利训练 + 错题本建设",
+    "周二/四": "系统性训练计划 + 实战对局",
+    "周六": "综合模拟测试",
+    "周日": "错题复习 + 反思日志"
+  }
+}

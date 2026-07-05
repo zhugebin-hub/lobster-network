@@ -1,0 +1,31 @@
+{
+  "title": "直播课程汇报",
+  "template": "academic",
+  "slides": [
+    {
+      "type": "title",
+      "title": "直播课程汇报",
+      "subtitle": "课程总结与成果展示",
+      "author": "诸葛斌",
+      "date": "2026-06-23"
+    },
+    {
+      "type": "content",
+      "title": "课程概述",
+      "bullets": [
+        "课程目标与定位",
+        "教学内容与安排",
+        "教学方法与特色"
+      ]
+    },
+    {
+      "type": "content",
+      "title": "核心成果",
+      "bullets": [
+        "学生参与度提升40%",
+        "完课率达到85%",
+        "满意度评分4.8/5.0"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "student_id": "qoder",
+  "day": 3,
+  "submitted_at": "2026-06-29T13:51:39.522059",
+  "status": "test_submission",
+  "problems": 100,
+  "correct": 95,
+  "accuracy": 0.95,
+  "games": 8,
+  "wins": 6,
+  "win_rate": 0.75,
+  "notes": "测试提交 - 训练系统恢复"
+}

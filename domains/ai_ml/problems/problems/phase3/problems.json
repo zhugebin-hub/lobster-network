@@ -1,0 +1,824 @@
+{
+  "domain": "ai_ml",
+  "phase": "phase3",
+  "total": 48,
+  "generated_at": "2026-06-25T20:54:58.381057",
+  "problems": [
+    {
+      "problem_id": "ai-phase3-ch7-AI偏见-001",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI偏见",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI伦理 - AI偏见 #1",
+      "description": "AI偏见基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI偏见"
+      ],
+      "created_at": "2026-06-25T20:54:58.375564"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI偏见-002",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI偏见",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI伦理 - AI偏见 #2",
+      "description": "AI偏见判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI偏见"
+      ],
+      "created_at": "2026-06-25T20:54:58.375567"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI偏见-003",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI偏见",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI伦理 - AI偏见 #3",
+      "description": "AI偏见填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI偏见"
+      ],
+      "created_at": "2026-06-25T20:54:58.375570"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI偏见-004",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI偏见",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI伦理 - AI偏见 #4",
+      "description": "AI偏见实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI偏见"
+      ],
+      "created_at": "2026-06-25T20:54:58.375573"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI隐私-001",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI隐私",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI伦理 - AI隐私 #1",
+      "description": "AI隐私基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI隐私"
+      ],
+      "created_at": "2026-06-25T20:54:58.375579"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI隐私-002",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI隐私",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI伦理 - AI隐私 #2",
+      "description": "AI隐私判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI隐私"
+      ],
+      "created_at": "2026-06-25T20:54:58.375587"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI隐私-003",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI隐私",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI伦理 - AI隐私 #3",
+      "description": "AI隐私填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI隐私"
+      ],
+      "created_at": "2026-06-25T20:54:58.375590"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI隐私-004",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI隐私",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI伦理 - AI隐私 #4",
+      "description": "AI隐私实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI隐私"
+      ],
+      "created_at": "2026-06-25T20:54:58.375593"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI安全-001",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI安全",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI伦理 - AI安全 #1",
+      "description": "AI安全基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI安全"
+      ],
+      "created_at": "2026-06-25T20:54:58.375597"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI安全-002",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI安全",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI伦理 - AI安全 #2",
+      "description": "AI安全判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI安全"
+      ],
+      "created_at": "2026-06-25T20:54:58.375600"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI安全-003",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI安全",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI伦理 - AI安全 #3",
+      "description": "AI安全填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI安全"
+      ],
+      "created_at": "2026-06-25T20:54:58.375603"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI安全-004",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI安全",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI伦理 - AI安全 #4",
+      "description": "AI安全实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI安全"
+      ],
+      "created_at": "2026-06-25T20:54:58.375606"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI治理-001",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI治理",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI伦理 - AI治理 #1",
+      "description": "AI治理基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI治理"
+      ],
+      "created_at": "2026-06-25T20:54:58.375610"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI治理-002",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI治理",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI伦理 - AI治理 #2",
+      "description": "AI治理判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI治理"
+      ],
+      "created_at": "2026-06-25T20:54:58.375618"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI治理-003",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI治理",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI伦理 - AI治理 #3",
+      "description": "AI治理填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI治理"
+      ],
+      "created_at": "2026-06-25T20:54:58.375621"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI治理-004",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI治理",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI伦理 - AI治理 #4",
+      "description": "AI治理实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI治理"
+      ],
+      "created_at": "2026-06-25T20:54:58.375624"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI法规-001",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI法规",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI伦理 - AI法规 #1",
+      "description": "AI法规基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI法规"
+      ],
+      "created_at": "2026-06-25T20:54:58.375628"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI法规-002",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI法规",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI伦理 - AI法规 #2",
+      "description": "AI法规判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI法规"
+      ],
+      "created_at": "2026-06-25T20:54:58.375630"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI法规-003",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI法规",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI伦理 - AI法规 #3",
+      "description": "AI法规填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI法规"
+      ],
+      "created_at": "2026-06-25T20:54:58.375633"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI法规-004",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI法规",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI伦理 - AI法规 #4",
+      "description": "AI法规实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI法规"
+      ],
+      "created_at": "2026-06-25T20:54:58.375636"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI责任-001",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI责任",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI伦理 - AI责任 #1",
+      "description": "AI责任基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI责任"
+      ],
+      "created_at": "2026-06-25T20:54:58.375642"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI责任-002",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI责任",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI伦理 - AI责任 #2",
+      "description": "AI责任判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI责任"
+      ],
+      "created_at": "2026-06-25T20:54:58.375645"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI责任-003",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI责任",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI伦理 - AI责任 #3",
+      "description": "AI责任填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI责任"
+      ],
+      "created_at": "2026-06-25T20:54:58.375648"
+    },
+    {
+      "problem_id": "ai-phase3-ch7-AI责任-004",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "AI责任",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI伦理 - AI责任 #4",
+      "description": "AI责任实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI责任"
+      ],
+      "created_at": "2026-06-25T20:54:58.375651"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI医疗-001",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI医疗",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI应用 - AI医疗 #1",
+      "description": "AI医疗基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI医疗"
+      ],
+      "created_at": "2026-06-25T20:54:58.375658"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI医疗-002",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI医疗",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI应用 - AI医疗 #2",
+      "description": "AI医疗判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI医疗"
+      ],
+      "created_at": "2026-06-25T20:54:58.375661"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI医疗-003",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI医疗",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI应用 - AI医疗 #3",
+      "description": "AI医疗填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI医疗"
+      ],
+      "created_at": "2026-06-25T20:54:58.375664"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI医疗-004",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI医疗",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI应用 - AI医疗 #4",
+      "description": "AI医疗实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI医疗"
+      ],
+      "created_at": "2026-06-25T20:54:58.375669"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI金融-001",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI金融",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI应用 - AI金融 #1",
+      "description": "AI金融基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI金融"
+      ],
+      "created_at": "2026-06-25T20:54:58.375674"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI金融-002",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI金融",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI应用 - AI金融 #2",
+      "description": "AI金融判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI金融"
+      ],
+      "created_at": "2026-06-25T20:54:58.375677"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI金融-003",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI金融",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI应用 - AI金融 #3",
+      "description": "AI金融填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI金融"
+      ],
+      "created_at": "2026-06-25T20:54:58.375680"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI金融-004",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI金融",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI应用 - AI金融 #4",
+      "description": "AI金融实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI金融"
+      ],
+      "created_at": "2026-06-25T20:54:58.375683"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI教育-001",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI教育",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI应用 - AI教育 #1",
+      "description": "AI教育基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI教育"
+      ],
+      "created_at": "2026-06-25T20:54:58.375711"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI教育-002",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI教育",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI应用 - AI教育 #2",
+      "description": "AI教育判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI教育"
+      ],
+      "created_at": "2026-06-25T20:54:58.375723"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI教育-003",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI教育",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI应用 - AI教育 #3",
+      "description": "AI教育填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI教育"
+      ],
+      "created_at": "2026-06-25T20:54:58.375726"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI教育-004",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI教育",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI应用 - AI教育 #4",
+      "description": "AI教育实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI教育"
+      ],
+      "created_at": "2026-06-25T20:54:58.375729"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI制造-001",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI制造",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI应用 - AI制造 #1",
+      "description": "AI制造基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI制造"
+      ],
+      "created_at": "2026-06-25T20:54:58.375733"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI制造-002",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI制造",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI应用 - AI制造 #2",
+      "description": "AI制造判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI制造"
+      ],
+      "created_at": "2026-06-25T20:54:58.375736"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI制造-003",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI制造",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI应用 - AI制造 #3",
+      "description": "AI制造填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI制造"
+      ],
+      "created_at": "2026-06-25T20:54:58.375739"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI制造-004",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI制造",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI应用 - AI制造 #4",
+      "description": "AI制造实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI制造"
+      ],
+      "created_at": "2026-06-25T20:54:58.375742"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI交通-001",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI交通",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI应用 - AI交通 #1",
+      "description": "AI交通基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI交通"
+      ],
+      "created_at": "2026-06-25T20:54:58.375751"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI交通-002",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI交通",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI应用 - AI交通 #2",
+      "description": "AI交通判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI交通"
+      ],
+      "created_at": "2026-06-25T20:54:58.375754"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI交通-003",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI交通",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI应用 - AI交通 #3",
+      "description": "AI交通填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI交通"
+      ],
+      "created_at": "2026-06-25T20:54:58.375757"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI交通-004",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI交通",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI应用 - AI交通 #4",
+      "description": "AI交通实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI交通"
+      ],
+      "created_at": "2026-06-25T20:54:58.375759"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI创意-001",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI创意",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "AI应用 - AI创意 #1",
+      "description": "AI创意基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI创意"
+      ],
+      "created_at": "2026-06-25T20:54:58.375764"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI创意-002",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI创意",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "AI应用 - AI创意 #2",
+      "description": "AI创意判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI创意"
+      ],
+      "created_at": "2026-06-25T20:54:58.375766"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI创意-003",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI创意",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "AI应用 - AI创意 #3",
+      "description": "AI创意填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI创意"
+      ],
+      "created_at": "2026-06-25T20:54:58.375769"
+    },
+    {
+      "problem_id": "ai-phase3-ch8-AI创意-004",
+      "domain": "ai_ml",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "AI创意",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "AI应用 - AI创意 #4",
+      "description": "AI创意实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "AI创意"
+      ],
+      "created_at": "2026-06-25T20:54:58.375775"
+    }
+  ]
+}

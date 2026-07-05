@@ -1,0 +1,81 @@
+{
+  "day": 3,
+  "topic": "吃子技巧综合实战",
+  "description": "综合运用扑、倒扑、征子、枷吃、双打吃等吃子技巧",
+  "target_level": "30k→25k",
+  "student": "xiaowei",
+  "problems": [
+    {
+      "problem_id": "capture-adv-001",
+      "type": "吃子",
+      "title": "扑与接不归",
+      "description": "黑先，如何利用扑制造白棋接不归？",
+      "answer": "扑后打吃",
+      "solution": "黑1扑入白棋虎口，白2提后气紧，黑3再打吃，白棋因连接困难而被吃。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "capture-adv-002",
+      "type": "吃子",
+      "title": "倒扑变式",
+      "description": "黑先，白棋看似已成活形，黑如何用倒扑手段破眼吃棋？",
+      "answer": "倒扑",
+      "solution": "黑1直接扑入白棋要点，白2若提，黑3回提吃掉更多白子。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "capture-adv-003",
+      "type": "吃子",
+      "title": "征子路线",
+      "description": "黑先，从左上角到右下角，能否用征子吃掉3颗白子？",
+      "answer": "可以征吃",
+      "solution": "黑1打吃方向正确，沿棋盘对角线方向连续打吃，白棋无法逃脱。注意检查征子路线上有无引征子。",
+      "difficulty": "初级"
+    },
+    {
+      "problem_id": "capture-adv-004",
+      "type": "吃子",
+      "title": "枷吃与跳枷",
+      "description": "黑先，白棋试图从黑棋包围中逃出，黑如何用跳枷封锁？",
+      "answer": "跳枷",
+      "solution": "黑1跳枷（在白棋逃跑方向上隔一格落子），白棋无论从哪边逃都被封锁。",
+      "difficulty": "初级"
+    },
+    {
+      "problem_id": "capture-adv-005",
+      "type": "吃子",
+      "title": "双打吃识别",
+      "description": "棋盘上有两块未连接的白棋，黑一手打吃两边的位置在哪里？",
+      "answer": "双打吃点",
+      "solution": "找到能同时紧住两块白棋气的交叉点，一子落下同时打吃两边，白只能救一边。",
+      "difficulty": "初级"
+    },
+    {
+      "problem_id": "capture-adv-006",
+      "type": "吃子",
+      "title": "门吃（抱吃）",
+      "description": "黑先，白棋试图从窄口逃跑，黑如何用门吃封锁？",
+      "answer": "门吃",
+      "solution": "黑1在窄口封堵，白棋无论向哪个方向逃都会被黑棋子力阻挡并被吃。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "capture-adv-007",
+      "type": "吃子",
+      "title": "龟不出头",
+      "description": "黑先，白棋的形状像乌龟伸头，黑如何利用此形状吃棋？",
+      "answer": "扳住两头",
+      "solution": "龟不出头是一种经典的吃棋手筋。黑1扳住白棋一头，白2逃则黑3扳住另一头，白棋两头被封无处可逃。",
+      "difficulty": "初级"
+    },
+    {
+      "problem_id": "capture-adv-008",
+      "type": "吃子",
+      "title": "综合吃子判断",
+      "description": "局面中白棋有两处薄弱：一处可征吃、一处可枷吃。黑应该先走哪个？",
+      "answer": "先枷吃",
+      "solution": "优先选择枷吃，因为枷吃成功率高且不依赖征子路线；征子需要先确认路线上没有白棋引征子。",
+      "difficulty": "初级"
+    }
+  ]
+}

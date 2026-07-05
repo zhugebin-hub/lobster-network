@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Node modules
 node_modules/
 ppt-opening/node_modules/
@@ -22,3 +23,21 @@ __pycache__/
 # Temp files
 *.tmp
 /tmp/
+=======
+node_modules/
+package-lock.json
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.env
+
+# 轮询器状态文件
+.poller_state_*.json
+poller_*.log
+
+# 临时结果
+results/*/match_*.json
+>>>>>>> a552ed0

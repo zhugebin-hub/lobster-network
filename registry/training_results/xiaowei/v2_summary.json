@@ -1,0 +1,810 @@
+{
+  "version": "V2",
+  "date": "2026-06-27",
+  "student": "xiaowei",
+  "name": "小薇",
+  "start_level": "25k",
+  "end_level": "23k",
+  "v1_accuracy": 0.817,
+  "v2_accuracy": 0.5892857142857143,
+  "total_problems": 56,
+  "total_correct": 33,
+  "total_problems_cumulative": 116,
+  "total_correct_cumulative": 82,
+  "overall_accuracy_cumulative": 0.7068965517241379,
+  "daily_results": [
+    {
+      "day": 8,
+      "topic": "死活进阶 — 刀五/梅花五/葡萄六/扳六",
+      "total": 8,
+      "correct": 5,
+      "accuracy": 0.625,
+      "wrong_ids": [
+        "life-adv-001",
+        "life-adv-002",
+        "life-adv-008"
+      ],
+      "details": [
+        {
+          "problem_id": "life-adv-001",
+          "type": "死活",
+          "difficulty": "初级",
+          "title": "刀五的死活判断",
+          "correct": false,
+          "solve_time": 2.0,
+          "answer": "净死",
+          "solution": "刀五（丁四的变体，5子排成L形）在角上没有外气时是净死。白棋点入要点即可杀死。"
+        },
+        {
+          "problem_id": "life-adv-002",
+          "type": "死活",
+          "difficulty": "初级",
+          "title": "梅花五的死活",
+          "correct": false,
+          "solve_time": 3.9,
+          "answer": "劫活",
+          "solution": "梅花五中央有1口外气时是劫活。白棋点入中心，黑棋收气后形成打劫。多1口外气则净活。"
+        },
+        {
+          "problem_id": "life-adv-003",
+          "type": "死活",
+          "difficulty": "初级",
+          "title": "葡萄六的判断",
+          "correct": true,
+          "solve_time": 1.6,
+          "answer": "净死",
+          "solution": "葡萄六（6子簇状）无外气时净死。白棋连续点入2手即可杀。围棋格言：葡萄六死。"
+        },
+        {
+          "problem_id": "life-adv-004",
+          "type": "死活",
+          "difficulty": "初级",
+          "title": "扳六的死活",
+          "correct": true,
+          "solve_time": 2.3,
+          "answer": "劫活",
+          "solution": "角上扳六有1口外气时是劫活。白棋先手点入，黑棋做劫。中央扳六多1口气则净活。"
+        },
+        {
+          "problem_id": "life-adv-005",
+          "type": "死活",
+          "difficulty": "初级",
+          "title": "直四与方四的区别",
+          "correct": true,
+          "solve_time": 3.5,
+          "answer": "方四",
+          "solution": "方四（4子正方形排列）是死形，无论谁先手都是净死。直四和曲四是活形，丁四需要看外气。"
+        },
+        {
+          "problem_id": "life-adv-006",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "角部大猪嘴",
+          "correct": true,
+          "solve_time": 1.9,
+          "answer": "白棋净杀黑棋",
+          "solution": "大猪嘴是经典死形。白棋扳后点入，黑棋无论如何应对都是净死。格言：大猪嘴，扳点死。"
+        },
+        {
+          "problem_id": "life-adv-007",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "小猪嘴的劫活",
+          "correct": true,
+          "solve_time": 3.2,
+          "answer": "打劫",
+          "solution": "小猪嘴是经典劫活形状。白棋扑后黑棋做劫，双方争夺。格言：小猪嘴，打劫活。"
+        },
+        {
+          "problem_id": "life-adv-008",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "盘角曲四",
+          "correct": false,
+          "solve_time": 3.5,
+          "answer": "净死（终局判定死）",
+          "solution": "盘角曲四在现行规则下，终局时直接判定为死棋（白棋可以补净所有劫材后动手）。这是围棋规则中少有的「无需下完」的棋形。"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "day": 9,
+      "topic": "死活实战 — 角上边上中央死活",
+      "total": 8,
+      "correct": 6,
+      "accuracy": 0.75,
+      "wrong_ids": [
+        "life-prac-005",
+        "life-prac-008"
+      ],
+      "details": [
+        {
+          "problem_id": "life-prac-001",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "角上二线爬活",
+          "correct": true,
+          "solve_time": 2.0,
+          "answer": "能做活",
+          "solution": "角上二线3子在大多数情况下可以做出两眼。黑棋利用二线弹性，走到关键要点即可。"
+        },
+        {
+          "problem_id": "life-prac-002",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "边上三线爬活",
+          "correct": true,
+          "solve_time": 2.0,
+          "answer": "不能，空间不够",
+          "solution": "边上三线4子空间太小，无法做出两眼。围棋格言：边上三线需5子才可能活。"
+        },
+        {
+          "problem_id": "life-prac-003",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "中央做活要点",
+          "correct": true,
+          "solve_time": 2.2,
+          "answer": "做两只真眼",
+          "solution": "中央做活的核心是做出两只真眼。需要先判断空间是否足够，再找眼位要点。中央做活比边上和角上更难。"
+        },
+        {
+          "problem_id": "life-prac-004",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "金鸡独立杀法",
+          "correct": true,
+          "solve_time": 2.6,
+          "answer": "两边不入气",
+          "solution": "金鸡独立是指一方走在一线和二线的交汇处，使对方两边都无法紧气，从而达到杀棋目的。"
+        },
+        {
+          "problem_id": "life-prac-005",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "倒脱靴",
+          "correct": false,
+          "solve_time": 3.3,
+          "answer": "先死子再反吃",
+          "solution": "倒脱靴是先送死几个子被对方吃掉，然后利用吃掉后形成的特殊形状反吃更多子的高级手段。常用于角上死活。"
+        },
+        {
+          "problem_id": "life-prac-006",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "角上二一路要点",
+          "correct": true,
+          "solve_time": 2.9,
+          "answer": "死活要点经常在此",
+          "solution": "角上「二一路」（即靠近角顶的位置）常常是死活题的要点。因为这个位置容易制造真眼或破坏对方的眼位。"
+        },
+        {
+          "problem_id": "life-prac-007",
+          "type": "死活",
+          "difficulty": "高级",
+          "title": "角部万年劫",
+          "correct": true,
+          "solve_time": 3.4,
+          "answer": "双活或一方主动放弃",
+          "solution": "万年劫是一种特殊的劫争，双方都不愿意先开劫。往往拖到终局变成双活，或者一方在有利时机主动解决。"
+        },
+        {
+          "problem_id": "life-prac-008",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "对杀中的气数计算",
+          "correct": false,
+          "solve_time": 3.6,
+          "answer": "黑棋被杀",
+          "solution": "在没有特殊手段（扑、点、扳等）的情况下，气少的一方对杀会输。3气对4气，黑棋少1气。"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "day": 10,
+      "topic": "死活综合 — 对杀/双活/劫活",
+      "total": 8,
+      "correct": 4,
+      "accuracy": 0.5,
+      "wrong_ids": [
+        "life-comp-001",
+        "life-comp-002",
+        "life-comp-004",
+        "life-comp-006"
+      ],
+      "details": [
+        {
+          "problem_id": "life-comp-001",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "双活的判断",
+          "correct": false,
+          "solve_time": 3.7,
+          "answer": "双活",
+          "solution": "双活是指双方都没有两只眼，但又都无法吃掉对方的状态。双活区域在终局时双方都不计目。"
+        },
+        {
+          "problem_id": "life-comp-002",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "劫活的条件",
+          "correct": false,
+          "solve_time": 3.5,
+          "answer": "至少1个本身劫材",
+          "solution": "劫活需要至少1个可靠的本身劫材。如果对方全盘劫材比你多，劫活可能变成净死。"
+        },
+        {
+          "problem_id": "life-comp-003",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "综合: 角部破眼",
+          "correct": true,
+          "solve_time": 3.0,
+          "answer": "先缩小眼位再点",
+          "solution": "破眼的经典手法是「先缩再点」——先用扳/尖等手段缩小对方眼位空间，再点入要害位置。这是最稳健的杀棋方法。"
+        },
+        {
+          "problem_id": "life-comp-004",
+          "type": "死活",
+          "difficulty": "高级",
+          "title": "综合对杀：有眼杀无眼",
+          "correct": false,
+          "solve_time": 3.6,
+          "answer": "黑棋胜",
+          "solution": "「有眼杀无眼」是围棋对杀的基本原则。有眼的一方在收气时占优，因为对方需要填眼才能紧气。"
+        },
+        {
+          "problem_id": "life-comp-005",
+          "type": "死活",
+          "difficulty": "高级",
+          "title": "综合: 大眼杀小眼",
+          "correct": true,
+          "solve_time": 2.7,
+          "answer": "黑棋胜",
+          "solution": "对杀中，大眼（3目以上）内气更多。白棋需要先填大眼内部才能紧黑棋的气，这给了黑棋优势。「大眼杀小眼」是进阶对杀的核心知识。"
+        },
+        {
+          "problem_id": "life-comp-006",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "死活题的解题思路",
+          "correct": false,
+          "solve_time": 3.2,
+          "answer": "由外向内缩小→找要点→验证",
+          "solution": "推荐解题思路：1）判断空间大小是否足够做活；2）由外向内缩小眼位范围；3）找到要点（通常在一二路交叉处）；4）验证所有变化。"
+        },
+        {
+          "problem_id": "life-comp-007",
+          "type": "死活",
+          "difficulty": "高级",
+          "title": "三眼两做",
+          "correct": true,
+          "solve_time": 2.8,
+          "answer": "一手棋同时制造两个眼位的威胁",
+          "solution": "「三眼两做」是指走一手棋，同时在两个位置威胁要做眼（或破眼），对方只能防一处，另一处必然做成（或破掉）。也叫「一子两用」。"
+        },
+        {
+          "problem_id": "life-comp-008",
+          "type": "死活",
+          "difficulty": "中级",
+          "title": "V2死活综合测评",
+          "correct": true,
+          "solve_time": 2.1,
+          "answer": "眼位和气的理解",
+          "solution": "死活题的根本是对「眼位」和「气」的深刻理解。所有杀棋/做活的手段都建立在对这两者的精确计算之上。"
+        }
+      ],
+      "passed": false
+    },
+    {
+      "day": 11,
+      "topic": "连接进阶 — 尖/飞/双/虎口连接",
+      "total": 8,
+      "correct": 4,
+      "accuracy": 0.5,
+      "wrong_ids": [
+        "conn-adv-001",
+        "conn-adv-006",
+        "conn-adv-007",
+        "conn-adv-008"
+      ],
+      "details": [
+        {
+          "problem_id": "conn-adv-001",
+          "type": "连接",
+          "difficulty": "初级",
+          "title": "尖的连接",
+          "correct": false,
+          "solve_time": 3.6,
+          "answer": "间接连接（对方无法切断）",
+          "solution": "尖是一种间接但坚固的连接方式。两颗棋子形成对角关系，对方直接冲断时会因气不够而被吃。这就是「尖无断点」的含义。"
+        },
+        {
+          "problem_id": "conn-adv-002",
+          "type": "连接",
+          "difficulty": "初级",
+          "title": "飞的连接性",
+          "correct": true,
+          "solve_time": 2.3,
+          "answer": "对方跨断",
+          "solution": "小飞（日字形移动）的连接不够紧密。对方可以通过「跨」（在飞的两子之间落子）来尝试切断。需要周围有足够的接应才能保证连接。"
+        },
+        {
+          "problem_id": "conn-adv-003",
+          "type": "连接",
+          "difficulty": "初级",
+          "title": "虎口的保护",
+          "correct": true,
+          "solve_time": 3.5,
+          "answer": "威胁吃子+保护断点",
+          "solution": "虎口是一举两得的好棋：一方面保护了断点（对方断则被吃），另一方面形成了对周围的威胁。虎是补断的首选手段。"
+        },
+        {
+          "problem_id": "conn-adv-004",
+          "type": "连接",
+          "difficulty": "中级",
+          "title": "双板凳连接",
+          "correct": true,
+          "solve_time": 2.9,
+          "answer": "两个虎口互相照应",
+          "solution": "双（双板凳）由两个虎口互相照应组成。无论对方断哪边，都可以用另一边吃子。这是最坚固的连接方式之一。"
+        },
+        {
+          "problem_id": "conn-adv-005",
+          "type": "连接",
+          "difficulty": "中级",
+          "title": "补断的选择",
+          "correct": true,
+          "solve_time": 2.5,
+          "answer": "直接接（粘）",
+          "solution": "直接粘是最稳健的补断方法，100%保证连接。但有时过于保守会损失效率。虎补在稳健和效率之间取得平衡。"
+        },
+        {
+          "problem_id": "conn-adv-006",
+          "type": "连接",
+          "difficulty": "中级",
+          "title": "联络与出头",
+          "correct": false,
+          "solve_time": 2.3,
+          "answer": "联络自己的活棋",
+          "solution": "中盘战斗中，孤棋的首要任务是联络到自己的活棋。有了根据地才有安全感。「孤棋需连根」是围棋的黄金法则。"
+        },
+        {
+          "problem_id": "conn-adv-007",
+          "type": "连接",
+          "difficulty": "中级",
+          "title": "渡过的条件",
+          "correct": false,
+          "solve_time": 1.7,
+          "answer": "一线或二线",
+          "solution": "渡过通常发生在一线（底线）和二线。利用边线的特性，棋子可以沿着边线安全地连接到另一块棋。三线以上很难渡过了。"
+        },
+        {
+          "problem_id": "conn-adv-008",
+          "type": "连接",
+          "difficulty": "中级",
+          "title": "实战连接判断",
+          "correct": false,
+          "solve_time": 2.1,
+          "answer": "飞过去（利用周围势力）",
+          "solution": "距离3格时，可以利用小飞或大飞尝试连接。关键看周围己方子力分布。有足够接应时，飞是安全的选择。"
+        }
+      ],
+      "passed": false
+    },
+    {
+      "day": 12,
+      "topic": "分断实战 — 断/扳/挖/靠断",
+      "total": 8,
+      "correct": 6,
+      "accuracy": 0.75,
+      "wrong_ids": [
+        "cut-adv-002",
+        "cut-adv-007"
+      ],
+      "details": [
+        {
+          "problem_id": "cut-adv-001",
+          "type": "分断",
+          "difficulty": "初级",
+          "title": "断的威力",
+          "correct": true,
+          "solve_time": 3.9,
+          "answer": "切断对方后会产生各种变化",
+          "solution": "「棋从断处生」是说切断对方棋子的联络后，攻防变化会非常丰富。断是制造战机的核心手段。"
+        },
+        {
+          "problem_id": "cut-adv-002",
+          "type": "分断",
+          "difficulty": "初级",
+          "title": "扳断",
+          "correct": false,
+          "solve_time": 1.9,
+          "answer": "扳住对方棋子使其无法连接",
+          "solution": "扳断是用扳的手法阻止对方棋子的连接。扳住后对方如果强行连接，通常会被整体包围或吃掉。"
+        },
+        {
+          "problem_id": "cut-adv-003",
+          "type": "分断",
+          "difficulty": "初级",
+          "title": "挖的切断",
+          "correct": true,
+          "solve_time": 3.5,
+          "answer": "对方的跳（一间跳）",
+          "solution": "挖是专门对付「跳」（一间跳，日字形中间空一格）的切断手段。在跳的中间落子，迫使对方只能保一边。"
+        },
+        {
+          "problem_id": "cut-adv-004",
+          "type": "分断",
+          "difficulty": "中级",
+          "title": "靠断",
+          "correct": true,
+          "solve_time": 2.3,
+          "answer": "靠住对方棋子同时制造断点",
+          "solution": "靠断是靠在对方棋子上，同时制造多个断点威胁。对方防得了一处防不了另一处。这是高级的分断技巧。"
+        },
+        {
+          "problem_id": "cut-adv-005",
+          "type": "分断",
+          "difficulty": "中级",
+          "title": "分断后的攻杀",
+          "correct": true,
+          "solve_time": 3.9,
+          "answer": "分而治之（分别攻击）",
+          "solution": "分断后应该采取「分而治之」的策略：分别攻击两块被断开的棋，让对方左右为难。这是中盘战斗的核心战术。"
+        },
+        {
+          "problem_id": "cut-adv-006",
+          "type": "分断",
+          "difficulty": "中级",
+          "title": "断点的识别",
+          "correct": true,
+          "solve_time": 3.5,
+          "answer": "检查是否有间隔（跳、飞、大飞等）",
+          "solution": "最简单的判断方法：看对方的连接方式。如果是跳（日字形）、飞（日字对角），就有机会用挖、跨等方式切断。紧挨着的子（粘/接）无法切断。"
+        },
+        {
+          "problem_id": "cut-adv-007",
+          "type": "分断",
+          "difficulty": "中级",
+          "title": "征子断",
+          "correct": false,
+          "solve_time": 1.6,
+          "answer": "找到引征点提前破坏",
+          "solution": "对付征子不能硬征，要提前找到「引征点」——在将来看似无关的位置落子，如果对方不收兵继续征，引征子就会发生作用破坏征子线路。"
+        },
+        {
+          "problem_id": "cut-adv-008",
+          "type": "分断",
+          "difficulty": "中级",
+          "title": "综合: 分断的时机",
+          "correct": true,
+          "solve_time": 3.8,
+          "answer": "对方棋形有缺陷（薄味）时",
+          "solution": "最佳分断时机是对方棋形露出破绽（薄味）时。不要强行去断一个坚固的棋形——那往往会让自己陷入被动。"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "day": 13,
+      "topic": "13x13棋盘实战 — 布局/中盘/收官",
+      "total": 8,
+      "correct": 4,
+      "accuracy": 0.5,
+      "wrong_ids": [
+        "prac13-002",
+        "prac13-006",
+        "prac13-007",
+        "prac13-008"
+      ],
+      "details": [
+        {
+          "problem_id": "prac13-001",
+          "type": "实战",
+          "difficulty": "中级",
+          "title": "13x13棋盘布局原则",
+          "correct": true,
+          "solve_time": 4.0,
+          "answer": "占角",
+          "solution": "即使是13x13小棋盘，「金角银边草肚皮」的原则依然适用。先占角是最高效的围地方式。13x13通常占2-3个角即可。"
+        },
+        {
+          "problem_id": "prac13-002",
+          "type": "实战",
+          "difficulty": "中级",
+          "title": "13x13开局常用位置",
+          "correct": false,
+          "solve_time": 3.1,
+          "answer": "星位（4-4）",
+          "solution": "13x13棋盘空间有限，星位（四四）是最高效的占角方式，兼顾实地和外势。三三偏保守，小目适合偏好实地的风格。"
+        },
+        {
+          "problem_id": "prac13-003",
+          "type": "实战",
+          "difficulty": "中级",
+          "title": "中盘转换时机",
+          "correct": true,
+          "solve_time": 3.1,
+          "answer": "双方棋子开始接触战斗",
+          "solution": "当布局阶段的棋子开始互相接触、产生战斗时，就进入了中盘。不需要等待固定的手数。13x13棋盘这个过渡会更快。"
+        },
+        {
+          "problem_id": "prac13-004",
+          "type": "实战",
+          "difficulty": "中级",
+          "title": "13x13的围地效率",
+          "correct": true,
+          "solve_time": 3.1,
+          "answer": "80-120手",
+          "solution": "13x13棋盘比19x19小很多，通常80-120手就会收官结束。对局节奏更快，每一步的争夺更直接。"
+        },
+        {
+          "problem_id": "prac13-005",
+          "type": "实战",
+          "difficulty": "中级",
+          "title": "中盘死活意识",
+          "correct": true,
+          "solve_time": 2.7,
+          "answer": "每一步都检查自己棋的死活",
+          "solution": "中盘战斗中，每走一步都要问自己：我的棋有两只眼吗？对方的棋能被我杀死吗？这是从初学者到中级棋手的关键转变。"
+        },
+        {
+          "problem_id": "prac13-006",
+          "type": "实战",
+          "difficulty": "中级",
+          "title": "收官要点",
+          "correct": false,
+          "solve_time": 3.8,
+          "answer": "先手官子 > 逆收官子 > 后手官子",
+          "solution": "收官顺序：先手官子（收完还能抢下一个）、逆收官子（抢对方的先手）、后手官子。先手官子价值是后手官子的2倍。"
+        },
+        {
+          "problem_id": "prac13-007",
+          "type": "实战",
+          "difficulty": "中级",
+          "title": "实战心理",
+          "correct": false,
+          "solve_time": 3.8,
+          "answer": "冷静分析局面，寻找补救办法",
+          "solution": "每个人都会下坏棋。关键是不要被情绪影响，冷静分析：损失多少？还能赢吗？如果能赢就继续，不能赢就当作学习机会。"
+        },
+        {
+          "problem_id": "prac13-008",
+          "type": "实战",
+          "difficulty": "中级",
+          "title": "赛后复盘",
+          "correct": false,
+          "solve_time": 3.4,
+          "answer": "复盘（分析每一步的得失）",
+          "solution": "复盘是围棋学习中最重要的环节。找出关键败着或妙手，理解背后的原因。一盘棋的复盘价值可能是下十盘棋的总和。"
+        }
+      ],
+      "passed": false
+    },
+    {
+      "day": 14,
+      "topic": "综合测评 — V2毕业考",
+      "total": 8,
+      "correct": 4,
+      "accuracy": 0.5,
+      "wrong_ids": [
+        "comp14-001",
+        "comp14-004",
+        "comp14-006",
+        "comp14-007"
+      ],
+      "details": [
+        {
+          "problem_id": "comp14-001",
+          "type": "综合",
+          "difficulty": "中级",
+          "title": "V2综合: 死活回顾",
+          "correct": false,
+          "solve_time": 2.5,
+          "answer": "直四",
+          "solution": "直四（4子直线）是必定净活的眼形。无论谁先手，直四都可以做出两只眼。方四是净死，刀五和葡萄六需要看条件。"
+        },
+        {
+          "problem_id": "comp14-002",
+          "type": "综合",
+          "difficulty": "中级",
+          "title": "V2综合: 连接回顾",
+          "correct": true,
+          "solve_time": 3.9,
+          "answer": "接（粘）",
+          "solution": "接（粘）是100%保证连接的补法，对方无论如何都无法切断。但接有时过于保守，虎和双可以在稳健和效率之间取得更好平衡。"
+        },
+        {
+          "problem_id": "comp14-003",
+          "type": "综合",
+          "difficulty": "中级",
+          "title": "V2综合: 分断回顾",
+          "correct": true,
+          "solve_time": 2.2,
+          "answer": "接",
+          "solution": "接是用来连接自己的，不是分断手段。挖、跨、扳、靠都是常用的分断技巧。"
+        },
+        {
+          "problem_id": "comp14-004",
+          "type": "综合",
+          "difficulty": "中级",
+          "title": "V2综合: 对杀原则",
+          "correct": false,
+          "solve_time": 1.9,
+          "answer": "气多的一方必胜",
+          "solution": "气多的一方「通常」会赢，但不是「必胜」。因为有特殊手段如扑、点、扳等可以改变气数。另外有眼的一方即使气少也可能赢。"
+        },
+        {
+          "problem_id": "comp14-005",
+          "type": "综合",
+          "difficulty": "中级",
+          "title": "V2综合: 定式回顾",
+          "correct": true,
+          "solve_time": 1.7,
+          "answer": "小飞应（一间跳应）",
+          "solution": "星位被挂角后，小飞应是最常见、最稳妥的应法。既保护了角部实地，又保持了对边上的影响力。"
+        },
+        {
+          "problem_id": "comp14-006",
+          "type": "综合",
+          "difficulty": "高级",
+          "title": "V2综合: 全局判断",
+          "correct": false,
+          "solve_time": 2.5,
+          "answer": "攻击对方不活的棋来逆转",
+          "solution": "落后时最好的逆转方式是利用对方弱点。如果对方有不活的棋，攻击它！在攻击中自然围出目数，往往能一举翻盘。"
+        },
+        {
+          "problem_id": "comp14-007",
+          "type": "综合",
+          "difficulty": "中级",
+          "title": "V2综合: 学习路径规划",
+          "correct": false,
+          "solve_time": 2.0,
+          "answer": "官子基础 + 13x13实战 + 简单手筋",
+          "solution": "20k左右的水平，应该加强官子基础（至少会数官子大小）、多下13x13实战、学习简单手筋（枷、扑、点、靠等技巧）。不要过早涉足19x19和高级定式。"
+        },
+        {
+          "problem_id": "comp14-008",
+          "type": "综合",
+          "difficulty": "中级",
+          "title": "V2毕业考: 围棋的核心精神",
+          "correct": true,
+          "solve_time": 2.7,
+          "answer": "围地效率的博弈",
+          "solution": "围棋的核心是比谁围地更高效。杀棋、做活、布局、收官……所有战术都服务于「如何用最少的子围更多的地」。理解了这一点，就理解了围棋。"
+        }
+      ],
+      "passed": false
+    }
+  ],
+  "skill_scores_v2": {
+    "死活": 6.2,
+    "连接": 5.0,
+    "分断": 7.5,
+    "实战": 5.0,
+    "综合": 5.0
+  },
+  "wrong_book_v2": {
+    "life-adv-001": {
+      "count": 1,
+      "first_day": 8,
+      "last_day": 8
+    },
+    "life-adv-002": {
+      "count": 1,
+      "first_day": 8,
+      "last_day": 8
+    },
+    "life-adv-008": {
+      "count": 1,
+      "first_day": 8,
+      "last_day": 8
+    },
+    "life-prac-005": {
+      "count": 1,
+      "first_day": 9,
+      "last_day": 9
+    },
+    "life-prac-008": {
+      "count": 1,
+      "first_day": 9,
+      "last_day": 9
+    },
+    "life-comp-001": {
+      "count": 1,
+      "first_day": 10,
+      "last_day": 10
+    },
+    "life-comp-002": {
+      "count": 1,
+      "first_day": 10,
+      "last_day": 10
+    },
+    "life-comp-004": {
+      "count": 1,
+      "first_day": 10,
+      "last_day": 10
+    },
+    "life-comp-006": {
+      "count": 1,
+      "first_day": 10,
+      "last_day": 10
+    },
+    "conn-adv-001": {
+      "count": 1,
+      "first_day": 11,
+      "last_day": 11
+    },
+    "conn-adv-006": {
+      "count": 1,
+      "first_day": 11,
+      "last_day": 11
+    },
+    "conn-adv-007": {
+      "count": 1,
+      "first_day": 11,
+      "last_day": 11
+    },
+    "conn-adv-008": {
+      "count": 1,
+      "first_day": 11,
+      "last_day": 11
+    },
+    "cut-adv-002": {
+      "count": 1,
+      "first_day": 12,
+      "last_day": 12
+    },
+    "cut-adv-007": {
+      "count": 1,
+      "first_day": 12,
+      "last_day": 12
+    },
+    "prac13-002": {
+      "count": 1,
+      "first_day": 13,
+      "last_day": 13
+    },
+    "prac13-006": {
+      "count": 1,
+      "first_day": 13,
+      "last_day": 13
+    },
+    "prac13-007": {
+      "count": 1,
+      "first_day": 13,
+      "last_day": 13
+    },
+    "prac13-008": {
+      "count": 1,
+      "first_day": 13,
+      "last_day": 13
+    },
+    "comp14-001": {
+      "count": 1,
+      "first_day": 14,
+      "last_day": 14
+    },
+    "comp14-004": {
+      "count": 1,
+      "first_day": 14,
+      "last_day": 14
+    },
+    "comp14-006": {
+      "count": 1,
+      "first_day": 14,
+      "last_day": 14
+    },
+    "comp14-007": {
+      "count": 1,
+      "first_day": 14,
+      "last_day": 14
+    }
+  },
+  "v2_passed": false,
+  "focus_next": "继续死活+连接+分断"
+}

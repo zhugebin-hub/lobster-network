@@ -1,0 +1,47 @@
+{
+  "id": "accelerated-day2-zhuguxia",
+  "type": "accelerated_training_task",
+  "day": 2,
+  "date": "2026-06-27",
+  "student_id": "zhuguxia",
+  "mode": "加速模式",
+  "focus": "手筋训练 + 反思日志",
+  "skills": ["双打吃", "倒扑", "接不归", "征子路线"],
+  "problem_count": 120,
+  "game_count": 10,
+  "target_accuracy": 0.9,
+  "custom_module": "反思日志训练",
+  "focus_area": {
+    "topic": "征子路线判断",
+    "reason": "Day1评估中征子路线题目错误，需要专项突破",
+    "problems": 30,
+    "expected_improvement": "20%"
+  },
+  "pairing": {
+    "partner": "qoder",
+    "type": "速率套利",
+    "description": "与qoder配对，利用速度差异互相促进"
+  },
+  "problems": [
+    {"id": "tesuji-001", "type": "手筋", "difficulty": "初级", "title": "双打吃技巧", "count": 20},
+    {"id": "tesuji-002", "type": "手筋", "difficulty": "初级", "title": "倒扑应用", "count": 20},
+    {"id": "tesuji-003", "type": "手筋", "difficulty": "初级", "title": "接不归变化", "count": 20},
+    {"id": "tesuji-004", "type": "专项", "difficulty": "中级", "title": "征子路线判断", "count": 30},
+    {"id": "tesuji-005", "type": "手筋", "difficulty": "中级", "title": "跨断组合", "count": 15},
+    {"id": "tesuji-006", "type": "手筋", "difficulty": "中级", "title": "挖的妙用", "count": 15}
+  ],
+  "games": [
+    {"id": "game-001", "opponent": "qoder", "color": "black", "handicap": 0},
+    {"id": "game-002", "opponent": "qoder", "color": "white", "handicap": 0},
+    {"id": "game-003", "opponent": "教练", "color": "black", "handicap": 0},
+    {"id": "game-004", "opponent": "教练", "color": "white", "handicap": 0},
+    {"id": "game-005", "opponent": "qoder", "color": "black", "handicap": 0},
+    {"id": "game-006", "opponent": "qoder", "color": "white", "handicap": 0},
+    {"id": "game-007", "opponent": "教练", "color": "black", "handicap": 0},
+    {"id": "game-008", "opponent": "教练", "color": "white", "handicap": 0},
+    {"id": "game-009", "opponent": "qoder", "color": "black", "handicap": 0},
+    {"id": "game-010", "opponent": "qoder", "color": "white", "handicap": 0}
+  ],
+  "instructions": "加速模式：完成120道手筋题目和10局对局（含5局vs qoder速率套利），重点突破征子路线判断，将结果保存到from-zhuguxia/目录",
+  "deadline": "2026-06-27 22:00:00"
+}

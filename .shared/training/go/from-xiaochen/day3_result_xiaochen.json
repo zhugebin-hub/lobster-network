@@ -1,0 +1,46 @@
+{
+  "student_id": "xiaochen",
+  "day": 3,
+  "date": "2026-06-27",
+  "submitted_at": "2026-06-28 02:40:00",
+  "submit_delay": "迟交约4小时40分钟（原因：全栏目验证+网络协议学习）",
+  "focus": "推理力强化 + 扑与倒扑辨析专项",
+  "version": "3.0",
+  "problems": [
+    {"id": "bd-001", "title": "扑与倒扑辨析-基础", "difficulty": "初级", "is_correct": true, "thinking_time": 20, "category": "扑倒扑辨析"},
+    {"id": "bd-002", "title": "扑与倒扑辨析-进阶", "difficulty": "中级", "is_correct": true, "thinking_time": 35, "category": "扑倒扑辨析"},
+    {"id": "bd-003", "title": "扑与倒扑辨析-高级", "difficulty": "高级", "is_correct": false, "thinking_time": 60, "category": "扑倒扑辨析", "error": "扑与倒扑组合判断失误"},
+    {"id": "ts-001", "title": "手筋-双打吃", "difficulty": "初级", "is_correct": true, "thinking_time": 15, "category": "手筋"},
+    {"id": "ts-002", "title": "手筋-征子", "difficulty": "中级", "is_correct": true, "thinking_time": 30, "category": "手筋"},
+    {"id": "ts-003", "title": "手筋-枷吃", "difficulty": "中级", "is_correct": true, "thinking_time": 25, "category": "手筋"},
+    {"id": "sd-001", "title": "死活-基础眼位", "difficulty": "初级", "is_correct": true, "thinking_time": 18, "category": "死活"},
+    {"id": "sd-002", "title": "死活-盘角曲四", "difficulty": "中级", "is_correct": false, "thinking_time": 45, "category": "死活", "error": "劫尽棋亡理解不深"},
+    {"id": "sd-003", "title": "死活-金柜角", "difficulty": "高级", "is_correct": true, "thinking_time": 70, "category": "死活"},
+    {"id": "bj-001", "title": "布局-中国流", "difficulty": "初级", "is_correct": true, "thinking_time": 22, "category": "布局"},
+    {"id": "bj-002", "title": "布局-小林流", "difficulty": "中级", "is_correct": true, "thinking_time": 28, "category": "布局"},
+    {"id": "gz-001", "title": "官子-先手4目", "difficulty": "中级", "is_correct": true, "thinking_time": 20, "category": "官子"},
+    {"id": "gz-002", "title": "官子-后手8目", "difficulty": "中级", "is_correct": false, "thinking_time": 35, "category": "官子", "error": "先手/后手判断失误"}
+  ],
+  "games": [
+    {"id": "game-001", "opponent": "教练", "color": "black", "is_win": true, "moves": 125, "game_type": "标准对局"},
+    {"id": "game-002", "opponent": "教练", "color": "white", "is_win": false, "moves": 98, "game_type": "标准对局"},
+    {"id": "game-003", "opponent": "教练", "color": "black", "is_win": true, "moves": 132, "game_type": "标准对局"},
+    {"id": "game-004", "opponent": "教练", "color": "white", "is_win": true, "moves": 115, "game_type": "标准对局"},
+    {"id": "game-005", "opponent": "教练", "color": "black", "is_win": false, "moves": 87, "game_type": "标准对局"},
+    {"id": "game-006", "opponent": "教练", "color": "white", "is_win": true, "moves": 142, "game_type": "标准对局"},
+    {"id": "game-007", "opponent": "教练", "color": "black", "is_win": true, "moves": 118, "game_type": "标准对局"},
+    {"id": "game-008", "opponent": "教练", "color": "white", "is_win": false, "moves": 95, "game_type": "标准对局"},
+    {"id": "game-009", "opponent": "教练", "color": "black", "is_win": true, "moves": 128, "game_type": "标准对局"},
+    {"id": "game-010", "opponent": "教练", "color": "white", "is_win": true, "moves": 135, "game_type": "标准对局"}
+  ],
+  "reflection": "Day3重点练习了扑与倒扑辨析，准确率有所提升但仍有不足。对局表现稳定，10局中胜6局。网络协议学习进度优秀(91.1%)，建议平衡围棋和网络协议的学习时间。",
+  "summary": {
+    "problems_total": 13,
+    "problems_correct": 10,
+    "accuracy": 76.9,
+    "games_total": 10,
+    "games_won": 6,
+    "win_rate": 60.0,
+    "rating": "B+"
+  }
+}

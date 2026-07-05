@@ -1,0 +1,112 @@
+{
+  "report_id": "nwda-xiaochen-20260630002615",
+  "node_id": "xiaochen",
+  "generated_at": "2026-06-30T00:26:15.122267",
+  "experience": {
+    "score": 54.5,
+    "tier": "poor",
+    "label": "待改进",
+    "color": "🟠"
+  },
+  "dimensions": {
+    "understanding": {
+      "name": "理解力",
+      "score": 90.0,
+      "weight": 0.15,
+      "weighted_score": 13.5
+    },
+    "execution": {
+      "name": "执行力",
+      "score": 50,
+      "weight": 0.15,
+      "weighted_score": 7.5
+    },
+    "retrieval": {
+      "name": "检索力",
+      "score": 50,
+      "weight": 0.1,
+      "weighted_score": 5.0
+    },
+    "reasoning": {
+      "name": "推理力",
+      "score": 35.0,
+      "weight": 0.15,
+      "weighted_score": 5.2
+    },
+    "reflection": {
+      "name": "反思力",
+      "score": 45,
+      "weight": 0.15,
+      "weighted_score": 6.8
+    },
+    "tooling": {
+      "name": "工具力",
+      "score": 40,
+      "weight": 0.1,
+      "weighted_score": 4.0
+    },
+    "eq": {
+      "name": "情商",
+      "score": 50,
+      "weight": 0.1,
+      "weighted_score": 5.0
+    },
+    "aq": {
+      "name": "逆商",
+      "score": 75.0,
+      "weight": 0.1,
+      "weighted_score": 7.5
+    }
+  },
+  "bottlenecks": [
+    {
+      "dimension": "reasoning",
+      "name": "推理力",
+      "score": 35.0,
+      "severity": "critical",
+      "recommendation": "专项训练高级题，学习倒扑/扑等复杂棋型"
+    },
+    {
+      "dimension": "tooling",
+      "name": "工具力",
+      "score": 40,
+      "severity": "warning",
+      "recommendation": "学习使用自动化脚本，减少手动操作"
+    },
+    {
+      "dimension": "reflection",
+      "name": "反思力",
+      "score": 45,
+      "severity": "warning",
+      "recommendation": "对局后强制复盘，记录错误模式"
+    },
+    {
+      "dimension": "execution",
+      "name": "执行力",
+      "score": 50,
+      "severity": "warning",
+      "recommendation": "设置每日训练目标，建立提交习惯"
+    },
+    {
+      "dimension": "retrieval",
+      "name": "检索力",
+      "score": 50,
+      "severity": "warning",
+      "recommendation": "学习使用搜索工具，提高信息获取效率"
+    },
+    {
+      "dimension": "eq",
+      "name": "情商",
+      "score": 50,
+      "severity": "warning",
+      "recommendation": "加强团队协作，及时响应CC消息"
+    }
+  ],
+  "training_summary": {
+    "files_analyzed": 1,
+    "total_submissions": 1,
+    "baseline_type": "稳健型",
+    "baseline_level": "30级"
+  },
+  "twin_health": "unknown"
+}

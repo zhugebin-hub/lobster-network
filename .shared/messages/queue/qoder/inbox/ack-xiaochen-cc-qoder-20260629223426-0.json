@@ -1,0 +1,12 @@
+{
+  "msg_id": "ack-xiaochen-cc-qoder-20260629223426-0",
+  "msg_type": "ack_receipt",
+  "protocol_version": "1.0",
+  "from": "xiaochen",
+  "to": "qoder",
+  "ack_for": "cc-qoder-20260629223426-0",
+  "tracking_id": "track-b859d15e",
+  "status": "acknowledged",
+  "message": "xiaochen已确认收到: Day4训练结果提交通知",
+  "acked_at": "2026-06-30T10:02:48+08:00"
+}

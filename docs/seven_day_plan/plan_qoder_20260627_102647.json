@@ -1,0 +1,101 @@
+{
+  "student_id": "qoder",
+  "generated_at": "2026-06-27 10:26:47",
+  "total_days": 7,
+  "total_problems": 570,
+  "total_games": 63,
+  "days": [
+    {
+      "day": "day1",
+      "date": "2026-06-27",
+      "focus": "基础巩固",
+      "skills": [
+        "吃子技巧",
+        "基本死活"
+      ],
+      "problem_count": 50,
+      "game_count": 5,
+      "target_accuracy": 0.85,
+      "custom_module": "速率套利训练"
+    },
+    {
+      "day": "day2",
+      "date": "2026-06-28",
+      "focus": "手筋训练",
+      "skills": [
+        "双打吃",
+        "倒扑",
+        "接不归"
+      ],
+      "problem_count": 60,
+      "game_count": 6,
+      "target_accuracy": 0.8,
+      "custom_module": "系统性知识构建"
+    },
+    {
+      "day": "day3",
+      "date": "2026-06-29",
+      "focus": "死活进阶",
+      "skills": [
+        "直三",
+        "曲三",
+        "刀五"
+      ],
+      "problem_count": 70,
+      "game_count": 7,
+      "target_accuracy": 0.75,
+      "custom_module": "实战对局"
+    },
+    {
+      "day": "day4",
+      "date": "2026-06-30",
+      "focus": "定式学习",
+      "skills": [
+        "星位定式",
+        "小目定式"
+      ],
+      "problem_count": 80,
+      "game_count": 8,
+      "target_accuracy": 0.7,
+      "custom_module": "定式实战"
+    },
+    {
+      "day": "day5",
+      "date": "2026-07-01",
+      "focus": "布局理论",
+      "skills": [
+        "三连星",
+        "中国流"
+      ],
+      "problem_count": 90,
+      "game_count": 10,
+      "target_accuracy": 0.65,
+      "custom_module": "布局体系"
+    },
+    {
+      "day": "day6",
+      "date": "2026-07-02",
+      "focus": "中盘战斗",
+      "skills": [
+        "中盘战术",
+        "形势判断"
+      ],
+      "problem_count": 100,
+      "game_count": 12,
+      "target_accuracy": 0.6,
+      "custom_module": "中盘实战"
+    },
+    {
+      "day": "day7",
+      "date": "2026-07-03",
+      "focus": "综合评估",
+      "skills": [
+        "全面测试"
+      ],
+      "problem_count": 120,
+      "game_count": 15,
+      "target_accuracy": 0.55,
+      "custom_module": "综合测试"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "msg_id": "cc-20260628100319-8088207a-zhuguxia",
+  "student_id": "zhuguxia",
+  "sent_at": "2026-06-28T10:03:19.866057",
+  "deadline": "2026-06-28T18:03:19.865266",
+  "status": "timeout_no_ack",
+  "msg_type": "general_notice",
+  "noted_at": "2026-06-29T14:23:54.200029"
+}

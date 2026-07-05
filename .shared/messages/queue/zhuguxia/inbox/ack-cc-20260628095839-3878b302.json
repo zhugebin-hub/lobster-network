@@ -1,0 +1,9 @@
+{
+  "msg_id": "ack-cc-20260628095839-3878b302",
+  "original_msg_id": "cc-20260628095839-3878b302",
+  "from": "zhugema",
+  "to": "zhugema",
+  "status": "acknowledged",
+  "acknowledged_at": "2026-06-29T07:35:48.735763",
+  "notes": "批量ACK处理 - 消息已过期或已处理"
+}

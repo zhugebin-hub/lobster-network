@@ -1,0 +1,96 @@
+{
+  "domain_pair": "stock_protocol",
+  "nodes": [
+    {
+      "id": "金融预测_domain",
+      "label": "金融预测",
+      "type": "domain",
+      "color": "#4CAF50"
+    },
+    {
+      "id": "网络协议_domain",
+      "label": "网络协议",
+      "type": "domain",
+      "color": "#2196F3"
+    },
+    {
+      "id": "金融预测_数据清洗",
+      "label": "数据清洗",
+      "type": "concept",
+      "domain": "金融预测"
+    },
+    {
+      "id": "网络协议_数据清洗",
+      "label": "数据清洗",
+      "type": "concept",
+      "domain": "网络协议"
+    },
+    {
+      "id": "skill_数据处理能力",
+      "label": "数据处理能力",
+      "type": "skill",
+      "color": "#FF9800"
+    },
+    {
+      "id": "金融预测_趋势预测",
+      "label": "趋势预测",
+      "type": "concept",
+      "domain": "金融预测"
+    },
+    {
+      "id": "网络协议_趋势预测",
+      "label": "趋势预测",
+      "type": "concept",
+      "domain": "网络协议"
+    },
+    {
+      "id": "skill_时间序列分析",
+      "label": "时间序列分析",
+      "type": "skill",
+      "color": "#FF9800"
+    }
+  ],
+  "edges": [
+    {
+      "source": "金融预测_数据清洗",
+      "target": "skill_数据处理能力",
+      "label": "培养"
+    },
+    {
+      "source": "skill_数据处理能力",
+      "target": "网络协议_数据清洗",
+      "label": "迁移"
+    },
+    {
+      "source": "金融预测_domain",
+      "target": "金融预测_数据清洗",
+      "label": "包含"
+    },
+    {
+      "source": "网络协议_domain",
+      "target": "网络协议_数据清洗",
+      "label": "包含"
+    },
+    {
+      "source": "金融预测_趋势预测",
+      "target": "skill_时间序列分析",
+      "label": "培养"
+    },
+    {
+      "source": "skill_时间序列分析",
+      "target": "网络协议_趋势预测",
+      "label": "迁移"
+    },
+    {
+      "source": "金融预测_domain",
+      "target": "金融预测_趋势预测",
+      "label": "包含"
+    },
+    {
+      "source": "网络协议_domain",
+      "target": "网络协议_趋势预测",
+      "label": "包含"
+    }
+  ],
+  "generated_at": "2026-06-30T00:26:16.308454"
+}

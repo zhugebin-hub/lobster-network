@@ -1,0 +1,9 @@
+{
+  "msg_id": "ack-cc-qoder-20260628133612-1",
+  "original_msg_id": "cc-qoder-20260628133612-1",
+  "from": "zhugema",
+  "to": "qoder",
+  "status": "acknowledged",
+  "acknowledged_at": "2026-06-29T07:35:48.733868",
+  "notes": "批量ACK处理 - 消息已过期或已处理"
+}

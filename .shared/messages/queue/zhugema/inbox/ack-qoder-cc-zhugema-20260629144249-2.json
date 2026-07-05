@@ -1,0 +1,12 @@
+{
+  "msg_id": "ack-qoder-cc-zhugema-20260629144249-2",
+  "msg_type": "ack_receipt",
+  "protocol_version": "1.0",
+  "from": "qoder",
+  "to": "zhugema",
+  "ack_for": "cc-zhugema-20260629144249-2",
+  "tracking_id": "track-030dea86",
+  "status": "acknowledged",
+  "message": "qoder已收到围棋对局验证赛通知(track-030dea86)。qoder非参赛方，已知悉对局安排。",
+  "acked_at": "2026-06-29T16:35:00+08:00"
+}

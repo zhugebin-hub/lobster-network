@@ -1,0 +1,92 @@
+{
+  "phase": 3,
+  "name": "Signal Arena 炒股高级",
+  "description": "量化策略、机器学习、组合优化",
+  "problems": [
+    {
+      "id": "sa3-001",
+      "type": "quantitative_strategy",
+      "difficulty": "高级",
+      "question": "设计一个趋势跟随策略",
+      "context": {
+        "strategy": "趋势跟随",
+        "indicators": ["SMA", "RSI", "MACD"],
+        "markets": ["A股", "港股", "美股"]
+      },
+      "options": ["SMA金叉买入+RSI过滤+止损止盈", "随机买入卖出", "只买不卖", "无法判断"],
+      "answer": "SMA金叉买入+RSI过滤+止损止盈",
+      "confidence": 0.80,
+      "reasoning": "趋势跟随策略：SMA金叉确认趋势，RSI过滤超买，止损止盈控制风险"
+    },
+    {
+      "id": "sa3-002",
+      "type": "portfolio_optimization",
+      "difficulty": "高级",
+      "question": "马科维茨有效前沿的核心思想是？",
+      "context": {
+        "theory": "马科维茨现代投资组合理论",
+        "goal": "最优配置"
+      },
+      "options": ["给定风险下最大化收益", "只买低风险资产", "只买高收益资产", "无法判断"],
+      "answer": "给定风险下最大化收益",
+      "confidence": 0.85,
+      "reasoning": "有效前沿：在给定风险水平下选择预期收益最高的组合"
+    },
+    {
+      "id": "sa3-003",
+      "type": "ml_model",
+      "difficulty": "高级",
+      "question": "用LSTM预测股票价格的输入特征包括？",
+      "context": {
+        "model": "LSTM",
+        "task": "股价预测",
+        "data": "历史数据"
+      },
+      "options": ["收盘价、成交量、RSI、SMA", "只收盘价", "只成交量", "无法判断"],
+      "answer": "收盘价、成交量、RSI、SMA",
+      "confidence": 0.80,
+      "reasoning": "多特征输入提高预测准确性：价格+成交量+技术指标"
+    },
+    {
+      "id": "sa3-004",
+      "type": "risk_management",
+      "difficulty": "高级",
+      "question": "凯利公式在炒股中的应用是？",
+      "context": {
+        "formula": "凯利公式",
+        "scenario": "仓位优化"
+      },
+      "options": ["计算最优仓位比例", "预测股价", "选择股票", "无法判断"],
+      "answer": "计算最优仓位比例",
+      "confidence": 0.85,
+      "reasoning": "凯利公式：f* = (bp - q) / b，计算最优投注比例"
+    },
+    {
+      "id": "sa3-005",
+      "type": "backtesting",
+      "difficulty": "高级",
+      "question": "回测策略时最常见的陷阱是？",
+      "context": {
+        "method": "回测",
+        "issue": "过拟合"
+      },
+      "options": ["过拟合历史数据", "数据不足", "计算太慢", "无法判断"],
+      "answer": "过拟合历史数据",
+      "confidence": 0.90,
+      "reasoning": "过拟合是回测最大陷阱，历史表现好不代表未来表现好"
+    },
+    {
+      "id": "sa3-006",
+      "type": "cross_asset",
+      "difficulty": "高级",
+      "question": "A股、港股、美股的相关性如何？",
+      "context": {
+        "markets": ["A股", "港股", "美股"],
+        "metric": "相关性"
+      },
+      "options": "低相关性，适合分散配置",
+      "confidence": 0.80,
+      "reasoning": "三市场受不同因素影响，相关性低，分散配置可降低风险"
+    }
+  ]
+}

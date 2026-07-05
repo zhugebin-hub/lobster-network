@@ -1,0 +1,27 @@
+{
+  "id": "day4-xiaochen-20260628",
+  "type": "training_task",
+  "day": 4,
+  "student_id": "xiaochen",
+  "version": "3.0",
+  "focus": "推理力强化 + 官子专项",
+  "problems": 120,
+  "games": 12,
+  "target_accuracy": 0.85,
+  "custom_module": "推理力强化",
+  "special": "扑倒扑辨析进阶(30题)",
+  "v3_features": [
+    "使用向量记忆系统搜索相似辨析题",
+    "完成任务获得代币奖励"
+  ],
+  "problems_breakdown": [
+    {"type": "扑与倒扑辨析", "difficulty": "中级", "count": 30},
+    {"type": "官子", "difficulty": "中级", "count": 30},
+    {"type": "手筋", "difficulty": "初级", "count": 30},
+    {"type": "手筋", "difficulty": "中级", "count": 30}
+  ],
+  "games_breakdown": [
+    {"opponent": "教练", "count": 12, "type": "标准对局"}
+  ],
+  "deadline": "2026-06-29 22:00:00"
+}

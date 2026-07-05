@@ -1,0 +1,137 @@
+{
+  "version": "1.0.0",
+  "player": "xiaowei",
+  "level": "23k",
+  "board_size": 13,
+  "games": [
+    {
+      "game_id": "xw-13x13-001",
+      "date": "2026-06-27",
+      "opponent": "xiaochen",
+      "opponent_level": "25k",
+      "color": "black",
+      "result": "W+3.5",
+      "winner": "white",
+      "moves": 145,
+      "duration_minutes": 28,
+      "key_moments": [
+        {"move": 23, "type": "mistake", "description": "忽视白棋拆二，导致左边被压"},
+        {"move": 67, "type": "good", "description": "成功分断白棋两块，取得优势"},
+        {"move": 112, "type": "mistake", "description": "官子阶段连续失误，被逆转"}
+      ],
+      "accuracy": 0.68,
+      "skill_breakdown": {
+        "opening": 0.75,
+        "middle_game": 0.70,
+        "endgame": 0.45
+      },
+      "notes": "中盘战斗不错，但官子严重短板暴露。需要专项训练。"
+    },
+    {
+      "game_id": "xw-13x13-002",
+      "date": "2026-06-27",
+      "opponent": "zhuguxia",
+      "opponent_level": "25k",
+      "color": "white",
+      "result": "B+7.5",
+      "winner": "black",
+      "moves": 158,
+      "duration_minutes": 32,
+      "key_moments": [
+        {"move": 12, "type": "mistake", "description": "定式选择错误，一间跳应对不当"},
+        {"move": 45, "type": "mistake", "description": "死活判断失误，可活棋走死"},
+        {"move": 98, "type": "good", "description": "成功做劫，拖延时间"}
+      ],
+      "accuracy": 0.55,
+      "skill_breakdown": {
+        "opening": 0.50,
+        "middle_game": 0.55,
+        "endgame": 0.40
+      },
+      "notes": "死活能力仍然薄弱（V3最大短板），定式理解不足。"
+    },
+    {
+      "game_id": "xw-13x13-003",
+      "date": "2026-06-27",
+      "opponent": "qoder",
+      "opponent_level": "25k",
+      "color": "black",
+      "result": "B+2.5",
+      "winner": "black",
+      "moves": 132,
+      "duration_minutes": 25,
+      "key_moments": [
+        {"move": 8, "type": "good", "description": "正确选择小目，布局方向正确"},
+        {"move": 56, "type": "good", "description": "成功联络，避免被分断"},
+        {"move": 89, "type": "good", "description": "官子阶段准确计算，守住优势"}
+      ],
+      "accuracy": 0.72,
+      "skill_breakdown": {
+        "opening": 0.78,
+        "middle_game": 0.70,
+        "endgame": 0.65
+      },
+      "notes": "本局官子明显进步！准确率0.65，是V3以来最好的一局。"
+    },
+    {
+      "game_id": "xw-13x13-004",
+      "date": "2026-06-27",
+      "opponent": "xiaochen",
+      "opponent_level": "25k",
+      "color": "white",
+      "result": "W+1.5",
+      "winner": "white",
+      "moves": 161,
+      "duration_minutes": 35,
+      "key_moments": [
+        {"move": 34, "type": "good", "description": "巧妙做眼，死活题训练见效"},
+        {"move": 78, "type": "mistake", "description": "中盘战斗判断失误，应退让而非硬杀"},
+        {"move": 130, "type": "good", "description": "收官阶段准确，小胜"}
+      ],
+      "accuracy": 0.70,
+      "skill_breakdown": {
+        "opening": 0.72,
+        "middle_game": 0.68,
+        "endgame": 0.62
+      },
+      "notes": "死活有进步，但中盘战斗判断仍需加强。"
+    },
+    {
+      "game_id": "xw-13x13-005",
+      "date": "2026-06-27",
+      "opponent": "zhuguxia",
+      "opponent_level": "25k",
+      "color": "black",
+      "result": "B+5.5",
+      "winner": "black",
+      "moves": 148,
+      "duration_minutes": 30,
+      "key_moments": [
+        {"move": 18, "type": "good", "description": "布局方向正确，抢占要点"},
+        {"move": 52, "type": "good", "description": "成功分断，中盘取得优势"},
+        {"move": 115, "type": "good", "description": "官子阶段无失误，稳守胜果"}
+      ],
+      "accuracy": 0.78,
+      "skill_breakdown": {
+        "opening": 0.80,
+        "middle_game": 0.78,
+        "endgame": 0.72
+      },
+      "notes": "本局全面发挥！官子准确率0.72，是V3最大突破。小薇官子瓶颈正在被打破。"
+    }
+  ],
+  "summary": {
+    "total_games": 5,
+    "wins": 3,
+    "losses": 2,
+    "win_rate": 0.60,
+    "avg_accuracy": 0.686,
+    "skill_improvement": {
+      "opening": "+8% (V3 0.65 → 0.75)",
+      "middle_game": "+10% (V3 0.50 → 0.68)",
+      "endgame": "+25% (V3 0.10 → 0.59)"
+    },
+    "bottleneck": "中盘战斗判断（对杀/弃子/转换）仍需实战积累",
+    "next_target": "再下5盘，官子准确率稳定到0.70+，可升20k"
+  }
+}

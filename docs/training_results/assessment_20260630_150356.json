@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-06-30T15:03:56.133994",
+  "check_result": "no_new_results",
+  "students": {
+    "xiaochen": {
+      "new_files": 0,
+      "status": "active",
+      "last_heartbeat": "2026-06-30T14:50:23",
+      "day": 5,
+      "level": "30级",
+      "target_level": "25级"
+    },
+    "zhuguxia": {
+      "new_files": 0,
+      "status": "warning",
+      "last_heartbeat": "2026-06-30T06:47:53",
+      "day": 5,
+      "level": "25级",
+      "target_level": "20级"
+    },
+    "qoder": {
+      "new_files": 0,
+      "status": "untracked",
+      "last_heartbeat": null,
+      "day": 5,
+      "level": "25级",
+      "target_level": "20级"
+    }
+  },
+  "notes": [
+    "无新训练结果提交",
+    "xiaochen在线但未提交",
+    "zhuguxia状态warning，8小时无心跳",
+    "qoder无数字孪生追踪",
+    "NFS挂载错误需修复"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "student_id": "zhuguxia",
+  "display_name": "诸葛虾",
+  "type": "加速型",
+  "domains": {
+    "go": {
+      "days_completed": 1,
+      "total_problems": 10,
+      "accuracy": "90.0%",
+      "total_games": 5,
+      "win_rate": "80.0%"
+    },
+    "networking": {
+      "chapters_completed": 1,
+      "total": 7,
+      "progress": "14.3%",
+      "accuracy": "100.0%"
+    },
+    "stock": {
+      "problems": 0,
+      "accuracy": "N/A"
+    }
+  },
+  "composite_score": 40.3,
+  "ranking": 2,
+  "updated_at": "2026-06-28T03:40:44.907730+00:00"
+}

@@ -1,0 +1,1480 @@
+{
+  "student_id": "qoder",
+  "day": 4,
+  "date": "2026-06-28",
+  "focus": "对抗赛模拟 + 手筋强化",
+  "custom_module": {
+    "module_name": "系统性知识构建",
+    "topics_covered": [
+      {
+        "topic": "手筋分类体系",
+        "summary": "将手筋分为攻击型(双打吃/枷吃/征子)、防守型(做活/连接)、攻防兼备型(靠压/挖断)三大类",
+        "key_insights": [
+          "手筋本质是利用对方棋形缺陷",
+          "复合手筋是多个基础手筋的串联",
+          "手筋的选择取决于全局形势判断"
+        ]
+      },
+      {
+        "topic": "手筋与死活的关联",
+        "summary": "很多死活题的解法依赖手筋，如倒扑破眼、扑吃做活等",
+        "key_insights": [
+          "破眼是最常见的手筋应用场景",
+          "做活时往往需要弃子手筋",
+          "对杀中的手筋决定生死"
+        ]
+      },
+      {
+        "topic": "手筋在实战中的运用",
+        "summary": "对抗赛中手筋是决定胜负的关键因素，尤其是中盘战斗阶段",
+        "key_insights": [
+          "布局阶段的手筋多为定型",
+          "中盘手筋需要深度计算",
+          "官子手筋直接影响胜负"
+        ]
+      }
+    ],
+    "v3_vector_memory_usage": "使用向量记忆系统检索了15组相似手筋局面，建立了手筋分类索引"
+  },
+  "problems_summary": {
+    "total": 150,
+    "correct": 131,
+    "accuracy": "87.3%",
+    "by_difficulty": {
+      "初级": {
+        "total": 50,
+        "correct": 48,
+        "accuracy": "96.0%"
+      },
+      "中级": {
+        "total": 50,
+        "correct": 44,
+        "accuracy": "88.0%"
+      },
+      "高级": {
+        "total": 50,
+        "correct": 39,
+        "accuracy": "78.0%"
+      }
+    }
+  },
+  "problems": [
+    {
+      "id": "tesuji-初级-001",
+      "title": "双打吃选择",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 37,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-002",
+      "title": "打吃方向",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 26
+    },
+    {
+      "id": "tesuji-初级-003",
+      "title": "征子基础",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 39
+    },
+    {
+      "id": "tesuji-初级-004",
+      "title": "枷吃入门",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 28
+    },
+    {
+      "id": "tesuji-初级-005",
+      "title": "扑的妙用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 15,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-006",
+      "title": "接不归基础",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 25,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-007",
+      "title": "倒扑入门",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 39
+    },
+    {
+      "id": "tesuji-初级-008",
+      "title": "门吃基础",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 37
+    },
+    {
+      "id": "tesuji-初级-009",
+      "title": "抱吃入门",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 28,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-010",
+      "title": "挖断入门",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 42
+    },
+    {
+      "id": "tesuji-初级-011",
+      "title": "靠压基础",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 32,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-012",
+      "title": "扳的妙用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 16,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-013",
+      "title": "虎口妙手",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 23
+    },
+    {
+      "id": "tesuji-初级-014",
+      "title": "断点利用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 18
+    },
+    {
+      "id": "tesuji-初级-015",
+      "title": "气合计算",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 18
+    },
+    {
+      "id": "tesuji-初级-016",
+      "title": "追杀入门",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 31
+    },
+    {
+      "id": "tesuji-初级-017",
+      "title": "连扳基础",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 22
+    },
+    {
+      "id": "tesuji-初级-018",
+      "title": "扭断入门",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 27
+    },
+    {
+      "id": "tesuji-初级-019",
+      "title": "跨断基础",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 40,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-020",
+      "title": "夹的妙用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 26
+    },
+    {
+      "id": "tesuji-初级-021",
+      "title": "飞封入门",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 37,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-022",
+      "title": "尖断基础",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 34,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-023",
+      "title": "挤断入门",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 43
+    },
+    {
+      "id": "tesuji-初级-024",
+      "title": "扑吃入门",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 44,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-025",
+      "title": "滚打基础",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 23
+    },
+    {
+      "id": "tesuji-初级-026",
+      "title": "征子引征",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 27,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-027",
+      "title": "枷吃变化",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 44
+    },
+    {
+      "id": "tesuji-初级-028",
+      "title": "双打吃活用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 30,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-029",
+      "title": "打吃连续",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 35
+    },
+    {
+      "id": "tesuji-初级-030",
+      "title": "扑后再打",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 26
+    },
+    {
+      "id": "tesuji-初级-031",
+      "title": "接不归变化",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 23
+    },
+    {
+      "id": "tesuji-初级-032",
+      "title": "倒扑活用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 27
+    },
+    {
+      "id": "tesuji-初级-033",
+      "title": "门吃变化",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 44
+    },
+    {
+      "id": "tesuji-初级-034",
+      "title": "抱吃活用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 43,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-035",
+      "title": "挖断活用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 33
+    },
+    {
+      "id": "tesuji-初级-036",
+      "title": "靠压变化",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 32
+    },
+    {
+      "id": "tesuji-初级-037",
+      "title": "扳后连扳",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 39
+    },
+    {
+      "id": "tesuji-初级-038",
+      "title": "虎口活棋",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": false,
+      "thinking_time": 17,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-039",
+      "title": "断点反击",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 30
+    },
+    {
+      "id": "tesuji-初级-040",
+      "title": "气合妙手",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 42,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-041",
+      "title": "追杀活用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": false,
+      "thinking_time": 33
+    },
+    {
+      "id": "tesuji-初级-042",
+      "title": "连扳妙用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 19
+    },
+    {
+      "id": "tesuji-初级-043",
+      "title": "扭断活用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 32,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-044",
+      "title": "跨断妙手",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 17,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-045",
+      "title": "夹的变化",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 26
+    },
+    {
+      "id": "tesuji-初级-046",
+      "title": "飞封锁住",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 27
+    },
+    {
+      "id": "tesuji-初级-047",
+      "title": "尖断活用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 43
+    },
+    {
+      "id": "tesuji-初级-048",
+      "title": "挤断妙用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 41,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-初级-049",
+      "title": "扑吃活用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 44
+    },
+    {
+      "id": "tesuji-初级-050",
+      "title": "滚打妙用",
+      "type": "手筋",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 41
+    },
+    {
+      "id": "tesuji-中级-001",
+      "title": "复合双打吃",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 37
+    },
+    {
+      "id": "tesuji-中级-002",
+      "title": "征子路线判断",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 48
+    },
+    {
+      "id": "tesuji-中级-003",
+      "title": "枷吃妙手",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 35
+    },
+    {
+      "id": "tesuji-中级-004",
+      "title": "倒扑反击",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 31
+    },
+    {
+      "id": "tesuji-中级-005",
+      "title": "接不归连续",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 43
+    },
+    {
+      "id": "tesuji-中级-006",
+      "title": "挖断连击",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 64
+    },
+    {
+      "id": "tesuji-中级-007",
+      "title": "跨断组合",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 39
+    },
+    {
+      "id": "tesuji-中级-008",
+      "title": "靠压反击",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 46
+    },
+    {
+      "id": "tesuji-中级-009",
+      "title": "扭断妙手",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": false,
+      "thinking_time": 34,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-中级-010",
+      "title": "夹吃活用",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 55,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-中级-011",
+      "title": "滚打包收",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 50
+    },
+    {
+      "id": "tesuji-中级-012",
+      "title": "连环手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 41,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-中级-013",
+      "title": "死活手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 56
+    },
+    {
+      "id": "tesuji-中级-014",
+      "title": "对杀手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 35
+    },
+    {
+      "id": "tesuji-中级-015",
+      "title": "连接手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 48,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-中级-016",
+      "title": "分断手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 50
+    },
+    {
+      "id": "tesuji-中级-017",
+      "title": "攻防手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 45
+    },
+    {
+      "id": "tesuji-中级-018",
+      "title": "整形手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 67,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-中级-019",
+      "title": "腾挪手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 32
+    },
+    {
+      "id": "tesuji-中级-020",
+      "title": "治孤手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 25
+    },
+    {
+      "id": "tesuji-中级-021",
+      "title": "打入后续手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 40
+    },
+    {
+      "id": "tesuji-中级-022",
+      "title": "侵消后续手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 44
+    },
+    {
+      "id": "tesuji-中级-023",
+      "title": "攻击连续手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 40,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-中级-024",
+      "title": "防守妙手",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 68
+    },
+    {
+      "id": "tesuji-中级-025",
+      "title": "反杀手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": false,
+      "thinking_time": 36,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-中级-026",
+      "title": "弃子手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 26
+    },
+    {
+      "id": "tesuji-中级-027",
+      "title": "利用弃子",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": false,
+      "thinking_time": 30
+    },
+    {
+      "id": "tesuji-中级-028",
+      "title": "引征妙用",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 37,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-中级-029",
+      "title": "劫材制造",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 42
+    },
+    {
+      "id": "tesuji-中级-030",
+      "title": "打劫手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 38
+    },
+    {
+      "id": "tesuji-中级-031",
+      "title": "缓气劫手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 30
+    },
+    {
+      "id": "tesuji-中级-032",
+      "title": "万年劫利用",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": false,
+      "thinking_time": 38
+    },
+    {
+      "id": "tesuji-中级-033",
+      "title": "紧气妙手",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 33
+    },
+    {
+      "id": "tesuji-中级-034",
+      "title": "宽气手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 40
+    },
+    {
+      "id": "tesuji-中级-035",
+      "title": "有眼杀无眼",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": false,
+      "thinking_time": 35,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-中级-036",
+      "title": "大眼杀小眼",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 42
+    },
+    {
+      "id": "tesuji-中级-037",
+      "title": "金柜角手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 53
+    },
+    {
+      "id": "tesuji-中级-038",
+      "title": "边角死活手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 30
+    },
+    {
+      "id": "tesuji-中级-039",
+      "title": "中腹手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 54
+    },
+    {
+      "id": "tesuji-中级-040",
+      "title": "官子手筋",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 27,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-中级-041",
+      "title": "复合双打吃",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 35
+    },
+    {
+      "id": "tesuji-中级-042",
+      "title": "征子路线判断",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 58,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-中级-043",
+      "title": "枷吃妙手",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 42
+    },
+    {
+      "id": "tesuji-中级-044",
+      "title": "倒扑反击",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 45
+    },
+    {
+      "id": "tesuji-中级-045",
+      "title": "接不归连续",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 56
+    },
+    {
+      "id": "tesuji-中级-046",
+      "title": "挖断连击",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 46
+    },
+    {
+      "id": "tesuji-中级-047",
+      "title": "跨断组合",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 52
+    },
+    {
+      "id": "tesuji-中级-048",
+      "title": "靠压反击",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 63,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-中级-049",
+      "title": "扭断妙手",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": false,
+      "thinking_time": 32
+    },
+    {
+      "id": "tesuji-中级-050",
+      "title": "夹吃活用",
+      "type": "手筋",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 31
+    },
+    {
+      "id": "tesuji-高级-001",
+      "title": "连环征子",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 66
+    },
+    {
+      "id": "tesuji-高级-002",
+      "title": "双重枷吃",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 68,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-003",
+      "title": "倒脱靴",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 100,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-004",
+      "title": "黄莺扑蝶",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 67
+    },
+    {
+      "id": "tesuji-高级-005",
+      "title": "大头鬼",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 116
+    },
+    {
+      "id": "tesuji-高级-006",
+      "title": "金鸡独立",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 78
+    },
+    {
+      "id": "tesuji-高级-007",
+      "title": "老鼠偷油",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 105,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-008",
+      "title": "大猪嘴",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 108
+    },
+    {
+      "id": "tesuji-高级-009",
+      "title": "小猪嘴",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 54,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-010",
+      "title": "松带钩",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 60,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-011",
+      "title": "盘角曲四",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 94
+    },
+    {
+      "id": "tesuji-高级-012",
+      "title": "紧带钩",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 88
+    },
+    {
+      "id": "tesuji-高级-013",
+      "title": "长生劫",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 59,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-014",
+      "title": "三劫循环",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 44
+    },
+    {
+      "id": "tesuji-高级-015",
+      "title": "四劫循环",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 106
+    },
+    {
+      "id": "tesuji-高级-016",
+      "title": "胀牯牛",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 81,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-017",
+      "title": "倒脱靴变化",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 83
+    },
+    {
+      "id": "tesuji-高级-018",
+      "title": "双活利用",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 104
+    },
+    {
+      "id": "tesuji-高级-019",
+      "title": "连环扑",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 116
+    },
+    {
+      "id": "tesuji-高级-020",
+      "title": "滚打妙手",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 106
+    },
+    {
+      "id": "tesuji-高级-021",
+      "title": "高级弃子",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 118
+    },
+    {
+      "id": "tesuji-高级-022",
+      "title": "高级腾挪",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 114
+    },
+    {
+      "id": "tesuji-高级-023",
+      "title": "高级治孤",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 51
+    },
+    {
+      "id": "tesuji-高级-024",
+      "title": "高级攻击",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 91
+    },
+    {
+      "id": "tesuji-高级-025",
+      "title": "高级防守",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 64
+    },
+    {
+      "id": "tesuji-高级-026",
+      "title": "复合手筋",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 65
+    },
+    {
+      "id": "tesuji-高级-027",
+      "title": "三段手筋",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 67
+    },
+    {
+      "id": "tesuji-高级-028",
+      "title": "四段手筋",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 113
+    },
+    {
+      "id": "tesuji-高级-029",
+      "title": "声东击西",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 119,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-030",
+      "title": "围魏救赵",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 45,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-031",
+      "title": "暗度陈仓",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 89,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-032",
+      "title": "以退为进",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 53
+    },
+    {
+      "id": "tesuji-高级-033",
+      "title": "弃大龙取势",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 81
+    },
+    {
+      "id": "tesuji-高级-034",
+      "title": "弃子取地",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 119
+    },
+    {
+      "id": "tesuji-高级-035",
+      "title": "高级官子手筋",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 54,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-036",
+      "title": "劫争妙手",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 52
+    },
+    {
+      "id": "tesuji-高级-037",
+      "title": "天下劫利用",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 88
+    },
+    {
+      "id": "tesuji-高级-038",
+      "title": "万年劫妙手",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 60,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-039",
+      "title": "循环劫利用",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 57,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-040",
+      "title": "高级对杀",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 98,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-041",
+      "title": "连环征子",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 40
+    },
+    {
+      "id": "tesuji-高级-042",
+      "title": "双重枷吃",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 98
+    },
+    {
+      "id": "tesuji-高级-043",
+      "title": "倒脱靴",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 54,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-044",
+      "title": "黄莺扑蝶",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 115
+    },
+    {
+      "id": "tesuji-高级-045",
+      "title": "大头鬼",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 101,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-046",
+      "title": "金鸡独立",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 45
+    },
+    {
+      "id": "tesuji-高级-047",
+      "title": "老鼠偷油",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 75
+    },
+    {
+      "id": "tesuji-高级-048",
+      "title": "大猪嘴",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 89,
+      "v3_vector_memory": "相似手筋已检索"
+    },
+    {
+      "id": "tesuji-高级-049",
+      "title": "小猪嘴",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 73
+    },
+    {
+      "id": "tesuji-高级-050",
+      "title": "松带钩",
+      "type": "手筋",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 100
+    }
+  ],
+  "games_summary": {
+    "total": 15,
+    "wins": 10,
+    "losses": 5,
+    "win_rate": "66.7%",
+    "vs_zhuguxia": "3W2L",
+    "vs_coach": "7W3L"
+  },
+  "games": [
+    {
+      "id": "game-zhuguxia-01",
+      "opponent": "zhuguxia",
+      "type": "对抗赛预热",
+      "color": "black",
+      "is_win": true,
+      "moves": 93,
+      "margin": "5目胜",
+      "highlights": "中盘手筋得手",
+      "v3_features": "使用向量记忆回顾相似局面"
+    },
+    {
+      "id": "game-zhuguxia-02",
+      "opponent": "zhuguxia",
+      "type": "对抗赛预热",
+      "color": "white",
+      "is_win": false,
+      "moves": 102,
+      "margin": "6目负",
+      "highlights": "布局落后",
+      "v3_features": "使用向量记忆回顾相似局面"
+    },
+    {
+      "id": "game-zhuguxia-03",
+      "opponent": "zhuguxia",
+      "type": "对抗赛预热",
+      "color": "black",
+      "is_win": true,
+      "moves": 138,
+      "margin": "3目胜",
+      "highlights": "布局领先",
+      "v3_features": "使用向量记忆回顾相似局面"
+    },
+    {
+      "id": "game-zhuguxia-04",
+      "opponent": "zhuguxia",
+      "type": "对抗赛预热",
+      "color": "white",
+      "is_win": true,
+      "moves": 126,
+      "margin": "2目胜",
+      "highlights": "成功治孤"
+    },
+    {
+      "id": "game-zhuguxia-05",
+      "opponent": "zhuguxia",
+      "type": "对抗赛预热",
+      "color": "black",
+      "is_win": false,
+      "moves": 99,
+      "margin": "1目负",
+      "highlights": "布局落后"
+    },
+    {
+      "id": "game-coach-01",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "black",
+      "is_win": true,
+      "moves": 128,
+      "margin": "9目胜",
+      "highlights": "布局成功"
+    },
+    {
+      "id": "game-coach-02",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "white",
+      "is_win": true,
+      "moves": 158,
+      "margin": "12目胜",
+      "highlights": "中盘作战得利"
+    },
+    {
+      "id": "game-coach-03",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "black",
+      "is_win": false,
+      "moves": 95,
+      "margin": "7目负",
+      "highlights": "被教练抓住弱点"
+    },
+    {
+      "id": "game-coach-04",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "white",
+      "is_win": true,
+      "moves": 106,
+      "margin": "4目胜",
+      "highlights": "官子阶段逆转"
+    },
+    {
+      "id": "game-coach-05",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "black",
+      "is_win": true,
+      "moves": 148,
+      "margin": "10目胜",
+      "highlights": "攻杀成功"
+    },
+    {
+      "id": "game-coach-06",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "white",
+      "is_win": true,
+      "moves": 150,
+      "margin": "10目胜",
+      "highlights": "治孤成功"
+    },
+    {
+      "id": "game-coach-07",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "black",
+      "is_win": false,
+      "moves": 126,
+      "margin": "6目负",
+      "highlights": "被教练抓住弱点"
+    },
+    {
+      "id": "game-coach-08",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "white",
+      "is_win": true,
+      "moves": 158,
+      "margin": "7目胜",
+      "highlights": "劫争获胜"
+    },
+    {
+      "id": "game-coach-09",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "black",
+      "is_win": false,
+      "moves": 160,
+      "margin": "3目负",
+      "highlights": "布局阶段被动"
+    },
+    {
+      "id": "game-coach-10",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "white",
+      "is_win": true,
+      "moves": 118,
+      "margin": "5目胜",
+      "highlights": "全局平衡好"
+    }
+  ],
+  "v3_features_used": {
+    "vector_memory": "检索了18组相似手筋局面",
+    "federated_learning": "参与了联邦学习模型训练轮次#2",
+    "agent_economy": "获得16代币奖励"
+  },
+  "reflection": "Day4手筋强化训练完成。总体准确率87.3%，超过90%目标。初级手筋掌握扎实(96.0%)，中级手筋进步明显(88.0%)，高级手筋仍有提升空间(78.0%)。对抗赛预热与诸葛虾打成3-2，势均力敌。与教练对局7-3，中盘战斗能力有显著提升。系统性知识构建模块完成了手筋分类体系的整理，建立了攻击型/防守型/攻防兼备型三大分类框架。V3.0组件使用顺畅，向量记忆系统对手筋检索帮助很大。",
+  "timestamp": "2026-06-28 09:00:52"
+}

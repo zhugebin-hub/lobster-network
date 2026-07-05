@@ -1,0 +1,108 @@
+{
+  "student_id": "xiaowei",
+  "student_name": "小薇",
+  "student_type": "基础型",
+  "current_level": "30k (零基础)",
+  "target_level": "25k",
+  "generated_at": "2026-06-27 11:45:35",
+  "total_days": 7,
+  "total_problems": 60,
+  "total_games": 21,
+  "days": [
+    {
+      "day": "Day1",
+      "date": "2026-06-27",
+      "focus": "基本规则",
+      "skills": [
+        "气",
+        "提子",
+        "禁着点"
+      ],
+      "problem_count": 10,
+      "game_count": 3,
+      "target_accuracy": 0.5,
+      "custom_module": "零基础入门"
+    },
+    {
+      "day": "Day2",
+      "date": "2026-06-28",
+      "focus": "吃子技巧",
+      "skills": [
+        "征子",
+        "枷吃",
+        "扑",
+        "倒扑"
+      ],
+      "problem_count": 10,
+      "game_count": 3,
+      "target_accuracy": 0.5,
+      "custom_module": "吃子专项"
+    },
+    {
+      "day": "Day3",
+      "date": "2026-06-29",
+      "focus": "基本死活",
+      "skills": [
+        "两眼活棋",
+        "直三",
+        "曲三"
+      ],
+      "problem_count": 10,
+      "game_count": 3,
+      "target_accuracy": 0.5,
+      "custom_module": "死活基础"
+    },
+    {
+      "day": "Day4",
+      "date": "2026-06-30",
+      "focus": "简单手筋",
+      "skills": [
+        "双打吃",
+        "倒扑",
+        "接不归"
+      ],
+      "problem_count": 10,
+      "game_count": 3,
+      "target_accuracy": 0.5,
+      "custom_module": "手筋入门"
+    },
+    {
+      "day": "Day5",
+      "date": "2026-07-01",
+      "focus": "基础定式",
+      "skills": [
+        "星位定式",
+        "小目定式"
+      ],
+      "problem_count": 10,
+      "game_count": 3,
+      "target_accuracy": 0.5,
+      "custom_module": "定式基础"
+    },
+    {
+      "day": "Day6",
+      "date": "2026-07-02",
+      "focus": "简单布局",
+      "skills": [
+        "三连星",
+        "中国流"
+      ],
+      "problem_count": 10,
+      "game_count": 3,
+      "target_accuracy": 0.5,
+      "custom_module": "布局入门"
+    },
+    {
+      "day": "Day7",
+      "date": "2026-07-03",
+      "focus": "综合测试",
+      "skills": [
+        "全面测试"
+      ],
+      "problem_count": 10,
+      "game_count": 3,
+      "target_accuracy": 0.5,
+      "custom_module": "综合评估"
+    }
+  ]
+}

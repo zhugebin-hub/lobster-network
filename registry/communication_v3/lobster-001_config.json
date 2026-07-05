@@ -1,0 +1,31 @@
+{
+  "node_id": "lobster-001",
+  "name": "小龙虾",
+  "type": "agent",
+  "protocol_version": "v3.0",
+  "server_uri": "ws://47.93.6.57:8765",
+  "secret_key": "lobster-network-v3-secret-key",
+  "capabilities": [
+    "world-map-rendering",
+    "dialogue-engine",
+    "protocol-design",
+    "oadp",
+    "drp"
+  ],
+  "learning_rate": "high",
+  "perspective": "协议架构师，OADP协议设计者，世界地图引擎核心开发者",
+  "communication": {
+    "transport": "WebSocket",
+    "latency": "<100ms",
+    "reliability": "99.9%",
+    "security": "HMAC-SHA256签名",
+    "heartbeat": "30秒间隔",
+    "reconnect": "指数退避自动重连",
+    "message_size": "1MB",
+    "compression": "gzip",
+    "acknowledgment": "ACK/NACK",
+    "priority": "0-2三级优先级"
+  },
+  "upgrade_date": "2026-06-25T23:36:37.667707",
+  "status": "upgraded"
+}

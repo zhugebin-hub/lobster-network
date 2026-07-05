@@ -1,0 +1,400 @@
+{
+  "report_id": "progress_report_20260627_124113",
+  "timestamp": "2026-06-27 12:41:13",
+  "students": {
+    "xiaochen": {
+      "name": "xiaochen（信电大虾）",
+      "type": "稳健型",
+      "level": "30级",
+      "status": "未知",
+      "last_activity": "无",
+      "day1_completed": true,
+      "day2_completed": true,
+      "day1_results": {
+        "student_id": "xiaochen",
+        "day": 1,
+        "date": "2026-06-27",
+        "problems": [
+          {
+            "id": "capture-001",
+            "title": "征子路线判断",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 45
+          },
+          {
+            "id": "capture-002",
+            "title": "枷吃封锁",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 60
+          },
+          {
+            "id": "capture-003",
+            "title": "扑的妙用",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 30
+          },
+          {
+            "id": "capture-004",
+            "title": "倒扑反杀",
+            "difficulty": "入门",
+            "is_correct": false,
+            "thinking_time": 90
+          },
+          {
+            "id": "capture-005",
+            "title": "双打吃选择",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 25
+          },
+          {
+            "id": "life-001",
+            "title": "两眼活棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 20
+          },
+          {
+            "id": "life-002",
+            "title": "直三死棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 35
+          },
+          {
+            "id": "life-003",
+            "title": "曲三死棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 40
+          },
+          {
+            "id": "life-004",
+            "title": "直四活棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 15
+          },
+          {
+            "id": "life-005",
+            "title": "曲四活棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 20
+          }
+        ],
+        "games": [
+          {
+            "id": "game-001",
+            "opponent": "教练",
+            "color": "black",
+            "is_win": true,
+            "moves": 120
+          },
+          {
+            "id": "game-002",
+            "opponent": "教练",
+            "color": "white",
+            "is_win": false,
+            "moves": 95
+          },
+          {
+            "id": "game-003",
+            "opponent": "教练",
+            "color": "black",
+            "is_win": true,
+            "moves": 110
+          },
+          {
+            "id": "game-004",
+            "opponent": "教练",
+            "color": "white",
+            "is_win": true,
+            "moves": 105
+          },
+          {
+            "id": "game-005",
+            "opponent": "教练",
+            "color": "black",
+            "is_win": false,
+            "moves": 88
+          }
+        ],
+        "reflection": "倒扑和扑的区分还需要加强，其他题目表现良好。",
+        "timestamp": "2026-06-27 10:34:36"
+      },
+      "day2_results": null
+    },
+    "zhuguxia": {
+      "name": "zhuguxia（诸葛虾）",
+      "type": "加速型",
+      "level": "25级",
+      "status": "未知",
+      "last_activity": "无",
+      "day1_completed": true,
+      "day2_completed": true,
+      "day1_results": {
+        "student_id": "zhuguxia",
+        "day": 1,
+        "date": "2026-06-27",
+        "problems": [
+          {
+            "id": "capture-001",
+            "title": "征子路线判断",
+            "difficulty": "入门",
+            "is_correct": false,
+            "thinking_time": 60
+          },
+          {
+            "id": "capture-002",
+            "title": "枷吃封锁",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 45
+          },
+          {
+            "id": "capture-003",
+            "title": "扑的妙用",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 20
+          },
+          {
+            "id": "capture-004",
+            "title": "倒扑反杀",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 35
+          },
+          {
+            "id": "capture-005",
+            "title": "双打吃选择",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 15
+          },
+          {
+            "id": "life-001",
+            "title": "两眼活棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 10
+          },
+          {
+            "id": "life-002",
+            "title": "直三死棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 25
+          },
+          {
+            "id": "life-003",
+            "title": "曲三死棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 30
+          },
+          {
+            "id": "life-004",
+            "title": "直四活棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 10
+          },
+          {
+            "id": "life-005",
+            "title": "曲四活棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 15
+          }
+        ],
+        "games": [
+          {
+            "id": "game-001",
+            "opponent": "教练",
+            "color": "black",
+            "is_win": true,
+            "moves": 100
+          },
+          {
+            "id": "game-002",
+            "opponent": "教练",
+            "color": "white",
+            "is_win": true,
+            "moves": 90
+          },
+          {
+            "id": "game-003",
+            "opponent": "教练",
+            "color": "black",
+            "is_win": true,
+            "moves": 95
+          },
+          {
+            "id": "game-004",
+            "opponent": "教练",
+            "color": "white",
+            "is_win": false,
+            "moves": 110
+          },
+          {
+            "id": "game-005",
+            "opponent": "教练",
+            "color": "black",
+            "is_win": true,
+            "moves": 85
+          }
+        ],
+        "reflection": "征子路线判断需要加强，其他题目表现良好。",
+        "timestamp": "2026-06-27 10:34:36"
+      },
+      "day2_results": null
+    },
+    "qoder": {
+      "name": "qoder（小龙虾）",
+      "type": "实战型",
+      "level": "~25级",
+      "status": "未知",
+      "last_activity": "无",
+      "day1_completed": true,
+      "day2_completed": true,
+      "day1_results": {
+        "student_id": "qoder",
+        "day": 1,
+        "date": "2026-06-27",
+        "problems": [
+          {
+            "id": "capture-001",
+            "title": "征子路线判断",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 50
+          },
+          {
+            "id": "capture-002",
+            "title": "枷吃封锁",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 55
+          },
+          {
+            "id": "capture-003",
+            "title": "扑的妙用",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 30
+          },
+          {
+            "id": "capture-004",
+            "title": "倒扑反杀",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 40
+          },
+          {
+            "id": "capture-005",
+            "title": "双打吃选择",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 20
+          },
+          {
+            "id": "life-001",
+            "title": "两眼活棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 15
+          },
+          {
+            "id": "life-002",
+            "title": "直三死棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 30
+          },
+          {
+            "id": "life-003",
+            "title": "曲三死棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 35
+          },
+          {
+            "id": "life-004",
+            "title": "直四活棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 10
+          },
+          {
+            "id": "life-005",
+            "title": "曲四活棋",
+            "difficulty": "入门",
+            "is_correct": true,
+            "thinking_time": 15
+          }
+        ],
+        "games": [
+          {
+            "id": "game-001",
+            "opponent": "教练",
+            "color": "black",
+            "is_win": true,
+            "moves": 115
+          },
+          {
+            "id": "game-002",
+            "opponent": "教练",
+            "color": "white",
+            "is_win": true,
+            "moves": 100
+          },
+          {
+            "id": "game-003",
+            "opponent": "教练",
+            "color": "black",
+            "is_win": false,
+            "moves": 95
+          },
+          {
+            "id": "game-004",
+            "opponent": "教练",
+            "color": "white",
+            "is_win": true,
+            "moves": 105
+          },
+          {
+            "id": "game-005",
+            "opponent": "教练",
+            "color": "black",
+            "is_win": true,
+            "moves": 90
+          }
+        ],
+        "reflection": "所有题目表现良好，对局胜率较高。",
+        "timestamp": "2026-06-27 10:34:36"
+      },
+      "day2_results": null
+    },
+    "xiaowei": {
+      "name": "小薇",
+      "type": "基础型",
+      "level": "30k",
+      "status": "未知",
+      "last_activity": "无",
+      "day1_completed": false,
+      "day2_completed": true,
+      "day1_results": null,
+      "day2_results": null
+    }
+  },
+  "overall_progress": {
+    "total_students": 4,
+    "active_students": 3,
+    "completed_days": {}
+  }
+}

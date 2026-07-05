@@ -1,0 +1,103 @@
+{
+  "day": 1,
+  "topic": "围棋基本规则与概念",
+  "description": "气、提子、眼、禁入点、打劫——围棋入门第一课",
+  "target_level": "30k→25k",
+  "student": "xiaowei",
+  "problems": [
+    {
+      "problem_id": "basic-001",
+      "type": "基本概念",
+      "title": "数气（中腹单子）",
+      "description": "棋盘中央一颗黑子有几口气？",
+      "answer": "4口气",
+      "solution": "棋盘中央的空交叉点有上下左右4个方向，所以一颗中腹棋子有4口气。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "basic-002",
+      "type": "基本概念",
+      "title": "数气（边线单子）",
+      "description": "棋盘边线上一颗白子有几口气？",
+      "answer": "3口气",
+      "solution": "边上只有三个方向（左、右、朝向中央），所以边上一子有3口气。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "basic-003",
+      "type": "基本概念",
+      "title": "数气（角上单子）",
+      "description": "棋盘角上一颗黑子有几口气？",
+      "answer": "2口气",
+      "solution": "角上只有两个方向（右和下，或对应方向），所以角上一子只有2口气。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "basic-004",
+      "type": "基本概念",
+      "title": "提子（打吃与提）",
+      "description": "白棋剩最后一口气被黑棋紧住后，白棋会怎样？",
+      "answer": "被提掉",
+      "solution": "当棋子的最后一口气被对方填上时，该棋子被提掉，从棋盘上移除。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "basic-005",
+      "type": "基本概念",
+      "title": "眼与活棋",
+      "description": "一块棋至少需要几个真眼才能活？",
+      "answer": "2个眼",
+      "solution": "围棋活棋的基本条件是有两只（或以上）真眼，对方无法同时填满所有眼。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "basic-006",
+      "type": "基本概念",
+      "title": "禁入点",
+      "description": "以下哪种情况是禁入点？A.下子后自己有气 B.下子后自己没气但能提对方 C.下子后自己没气且不能提对方",
+      "answer": "C",
+      "options": ["A", "B", "C"],
+      "solution": "如果落子后自己棋子没有气，且不能提掉对方棋子，则该点为禁入点，规则禁止落子。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "basic-007",
+      "type": "基本概念",
+      "title": "打劫规则",
+      "description": "打劫时，一方提劫后，另一方可以立刻提回吗？",
+      "answer": "不可以",
+      "options": ["可以", "不可以"],
+      "solution": "打劫规则：一方提劫后，另一方必须先在别处下一手（找劫材），才能回来提劫。不能立即提回。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "basic-008",
+      "type": "基本概念",
+      "title": "棋子的连接",
+      "description": "两颗同色棋子在横线或竖线上相邻，它们之间有多少口气？",
+      "answer": "6口气",
+      "solution": "两颗相连的棋子形成一个整体，共享气。中腹两颗相连棋子共有6口气（每颗独立4口，减去相连面各1口）。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "basic-009",
+      "type": "基本概念",
+      "title": "真眼vs假眼",
+      "description": "一个眼如果四个角点中有两个或以上被对方占据，这叫什么？",
+      "answer": "假眼",
+      "options": ["真眼", "假眼", "大眼", "小眼"],
+      "solution": "真眼需要四个角点中至少三个被己方棋子保护。如果两个或以上角被对方占据，则容易被破坏成假眼。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "basic-010",
+      "type": "基本概念",
+      "title": "胜负判定",
+      "description": "围棋的胜负主要依据什么？A.吃子数 B.围地面积 C.剩子数",
+      "answer": "B",
+      "options": ["A", "B", "C"],
+      "solution": "围棋的核心目标是围地（围住交叉点），最后比较双方围得的目数（地盘）来决定胜负。吃子是手段而非目的。",
+      "difficulty": "入门"
+    }
+  ]
+}

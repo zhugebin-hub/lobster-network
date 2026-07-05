@@ -1,0 +1,17 @@
+[
+  {
+    "id": "cb5701ca",
+    "type": "game_insight",
+    "category": "strategy",
+    "subcategory": "unknown",
+    "result": "unknown",
+    "opponent": "unknown",
+    "key_moves": [],
+    "mistakes": [],
+    "lessons": [],
+    "source_file": "match_unknown.json",
+    "extracted_at": "2026-06-30T00:26:15.798586",
+    "node_id": "xiaochen",
+    "source_node": "xiaochen"
+  }
+]

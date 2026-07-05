@@ -1,0 +1,41 @@
+{
+  "id": "accelerated-day2-qoder",
+  "type": "accelerated_training_task",
+  "day": 2,
+  "date": "2026-06-27",
+  "student_id": "qoder",
+  "mode": "加速模式",
+  "focus": "手筋训练 + 速率套利",
+  "skills": ["双打吃", "倒扑", "接不归", "跨断", "挖"],
+  "problem_count": 120,
+  "game_count": 10,
+  "target_accuracy": 0.85,
+  "custom_module": "系统性知识构建",
+  "pairing": {
+    "partner": "zhuguxia",
+    "type": "速率套利",
+    "description": "与zhuguxia配对，利用速度差异互相促进"
+  },
+  "problems": [
+    {"id": "tesuji-001", "type": "手筋", "difficulty": "初级", "title": "双打吃技巧", "count": 20},
+    {"id": "tesuji-002", "type": "手筋", "difficulty": "初级", "title": "倒扑应用", "count": 20},
+    {"id": "tesuji-003", "type": "手筋", "difficulty": "初级", "title": "接不归变化", "count": 20},
+    {"id": "tesuji-004", "type": "手筋", "difficulty": "中级", "title": "跨断组合", "count": 20},
+    {"id": "tesuji-005", "type": "手筋", "difficulty": "中级", "title": "挖的妙用", "count": 20},
+    {"id": "tesuji-006", "type": "手筋", "difficulty": "中级", "title": "靠压战术", "count": 20}
+  ],
+  "games": [
+    {"id": "game-001", "opponent": "zhuguxia", "color": "black", "handicap": 0},
+    {"id": "game-002", "opponent": "zhuguxia", "color": "white", "handicap": 0},
+    {"id": "game-003", "opponent": "教练", "color": "black", "handicap": 0},
+    {"id": "game-004", "opponent": "教练", "color": "white", "handicap": 0},
+    {"id": "game-005", "opponent": "zhuguxia", "color": "black", "handicap": 0},
+    {"id": "game-006", "opponent": "zhuguxia", "color": "white", "handicap": 0},
+    {"id": "game-007", "opponent": "教练", "color": "black", "handicap": 0},
+    {"id": "game-008", "opponent": "教练", "color": "white", "handicap": 0},
+    {"id": "game-009", "opponent": "zhuguxia", "color": "black", "handicap": 0},
+    {"id": "game-010", "opponent": "zhuguxia", "color": "white", "handicap": 0}
+  ],
+  "instructions": "加速模式：完成120道手筋题目和10局对局（含5局vs zhuguxia速率套利），将结果保存到from-qoder/目录",
+  "deadline": "2026-06-27 22:00:00"
+}

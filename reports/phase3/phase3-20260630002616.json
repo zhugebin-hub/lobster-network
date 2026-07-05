@@ -1,0 +1,95 @@
+{
+  "report_id": "phase3-20260630002616",
+  "generated_at": "2026-06-30T00:26:16.326393",
+  "phase": "Phase 3: 业务智能",
+  "steps_executed": 4,
+  "steps": [
+    {
+      "step": "nwda_analysis",
+      "results": {
+        "xiaochen": {
+          "status": "failed",
+          "output": "🔍 NWDAF分析: xiaochen",
+          "error": "Traceback (most recent call last):\n  File \"/home/admin/lobster-network/scripts/nwda_experience_analyzer.py\", line 373, in <module>\n    main()\n  File \"/home/admin/lobster-network/scripts/nwda_experience_analyzer.py\", line 369, in main\n    analyzer.run()\n  File \"/home/admin/lobster-network/scripts/nwda_experience_analyzer.py\", line 321, in run\n    md_content = self.generate_markdown(report)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/admin/lobster-network/scripts/nwda_experience_analyzer.py\", line 295, in generate_markdown\n    md += f\"### {b['name']} ({b['score']:.1f分}) {severity}\\n\"\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Invalid format specifier '.1f分' for object of type 'float'"
+        },
+        "zhuguxia": {
+          "status": "failed",
+          "output": "🔍 NWDAF分析: zhuguxia",
+          "error": "Traceback (most recent call last):\n  File \"/home/admin/lobster-network/scripts/nwda_experience_analyzer.py\", line 373, in <module>\n    main()\n  File \"/home/admin/lobster-network/scripts/nwda_experience_analyzer.py\", line 369, in main\n    analyzer.run()\n  File \"/home/admin/lobster-network/scripts/nwda_experience_analyzer.py\", line 321, in run\n    md_content = self.generate_markdown(report)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/admin/lobster-network/scripts/nwda_experience_analyzer.py\", line 295, in generate_markdown\n    md += f\"### {b['name']} ({b['score']:.1f分}) {severity}\\n\"\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Invalid format specifier '.1f分' for object of type 'int'"
+        },
+        "qoder": {
+          "status": "failed",
+          "output": "🔍 NWDAF分析: qoder",
+          "error": "Traceback (most recent call last):\n  File \"/home/admin/lobster-network/scripts/nwda_experience_analyzer.py\", line 373, in <module>\n    main()\n  File \"/home/admin/lobster-network/scripts/nwda_experience_analyzer.py\", line 369, in main\n    analyzer.run()\n  File \"/home/admin/lobster-network/scripts/nwda_experience_analyzer.py\", line 321, in run\n    md_content = self.generate_markdown(report)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/admin/lobster-network/scripts/nwda_experience_analyzer.py\", line 295, in generate_markdown\n    md += f\"### {b['name']} ({b['score']:.1f分}) {severity}\\n\"\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Invalid format specifier '.1f分' for object of type 'int'"
+        }
+      }
+    },
+    {
+      "step": "proactive_service",
+      "results": {
+        "xiaochen": {
+          "status": "success",
+          "output": "🔄 主动服务: xiaochen\n  📊 发现 6 个瓶颈维度\n  ✅ 已推送: 📚 推理力强化推送 -> xiaochen\n  ✅ 已推送: 📚 工具力培训推送 -> xiaochen\n  ✅ 已推送: 📚 反思力培养推送 -> xiaochen\n  ✅ 已推送: 📚 执行力提升推送 -> xiaochen\n  ⏸️ 检索力推送配额已满，跳过\n  ⏸️ 情商推送配额已满，跳过\n  📈 推送完成: 4/6 条",
+          "error": ""
+        },
+        "zhuguxia": {
+          "status": "success",
+          "output": "🔄 主动服务: zhuguxia\n  📊 发现 4 个瓶颈维度\n  ✅ 已推送: 📚 执行力提升推送 -> zhuguxia\n  ✅ 已推送: 📚 工具力培训推送 -> zhuguxia\n  ✅ 已推送: 📚 检索力提升推送 -> zhuguxia\n  ✅ 已推送: 📚 情商培养推送 -> zhuguxia\n  📈 推送完成: 4/4 条",
+          "error": ""
+        },
+        "qoder": {
+          "status": "success",
+          "output": "🔄 主动服务: qoder\n  📊 发现 2 个瓶颈维度\n  ✅ 已推送: 📚 执行力提升推送 -> qoder\n  ✅ 已推送: 📚 情商培养推送 -> qoder\n  📈 推送完成: 2/2 条",
+          "error": ""
+        }
+      }
+    },
+    {
+      "step": "knowledge_accumulation",
+      "results": {
+        "xiaochen": {
+          "status": "success",
+          "output": "📚 知识沉淀: xiaochen\n  📊 沉淀 1 条新知识\n    - 战略知识: 1条",
+          "error": ""
+        },
+        "zhuguxia": {
+          "status": "success",
+          "output": "📚 知识沉淀: zhuguxia\n  ✅ 无新知识需要沉淀",
+          "error": ""
+        },
+        "qoder": {
+          "status": "success",
+          "output": "📚 知识沉淀: qoder\n  ✅ 无新知识需要沉淀",
+          "error": ""
+        }
+      }
+    },
+    {
+      "step": "cross_domain_analysis",
+      "results": {
+        "go_stock": {
+          "status": "success",
+          "output": "🔄 跨领域联动: go_stock\n  📊 围棋→金融\n  📈 迁移映射: 5 个\n  🎯 可行性: 中\n  📊 难度分布: {'低': 1, '中': 2, '高': 2}\n  🗺️ 学习路径: 5 步\n    1. 官子计算 → 止盈止损 (低)\n    2. 棋型识别 → K线模式识别 (中)\n    3. 中盘战斗 → 短线交易 (中)\n    4. 布局战略 → 仓位管理 (高)\n    5. 厚薄判断 → 风险评估 (高)\n  ✅ 结果已保存: /home/admin/lobster-network/knowledge/cross_domain/go_stock_analysis.json",
+          "error": ""
+        },
+        "go_protocol": {
+          "status": "success",
+          "output": "🔄 跨领域联动: go_protocol\n  📊 围棋→协议\n  📈 迁移映射: 4 个\n  🎯 可行性: 中\n  📊 难度分布: {'低': 1, '中': 2, '高': 1}\n  🗺️ 学习路径: 4 步\n    1. 规则理解 → 协议规范 (低)\n    2. 定式记忆 → 标准流程 (中)\n    3. 对局复盘 → 日志分析 (中)\n    4. 变化图推演 → 异常处理 (高)\n  ✅ 结果已保存: /home/admin/lobster-network/knowledge/cross_domain/go_protocol_analysis.json",
+          "error": ""
+        },
+        "stock_protocol": {
+          "status": "success",
+          "output": "🔄 跨领域联动: stock_protocol\n  📊 金融→协议\n  📈 迁移映射: 2 个\n  🎯 可行性: 中\n  📊 难度分布: {'低': 0, '中': 1, '高': 1}\n  🗺️ 学习路径: 2 步\n    1. 数据清洗 → 数据清洗 (中)\n    2. 趋势预测 → 趋势预测 (高)\n  ✅ 结果已保存: /home/admin/lobster-network/knowledge/cross_domain/stock_protocol_analysis.json",
+          "error": ""
+        }
+      }
+    }
+  ],
+  "summary": {
+    "total_steps": 4,
+    "completed_steps": 3,
+    "nodes_processed": 3,
+    "domain_pairs_analyzed": 3
+  },
+  "duration_seconds": 1.27
+}

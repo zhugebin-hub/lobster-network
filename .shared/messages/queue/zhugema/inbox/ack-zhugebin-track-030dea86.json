@@ -1,0 +1,11 @@
+{
+  "type": "cc_ack",
+  "ack_id": "ack-zhugebin-track-030dea86",
+  "tracking_id": "track-030dea86",
+  "original_msg_id": "cc-zhugema-20260629144249",
+  "from": "zhugebin-001",
+  "to": "zhugema",
+  "status": "acknowledged",
+  "message": "诸葛斌已收到并确认消息: cc-zhugema-20260629144249",
+  "timestamp": "2026-06-29T14:55:00.054048+08:00"
+}

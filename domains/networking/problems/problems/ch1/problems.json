@@ -1,0 +1,102 @@
+{
+  "domain": "networking",
+  "chapter": "ch1",
+  "total": 6,
+  "generated_at": "2026-06-25T19:07:37.991339",
+  "problems": [
+    {
+      "problem_id": "net-ch1-网络演进4阶段-001",
+      "domain": "networking",
+      "chapter": "ch1",
+      "topic": "网络演进4阶段",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "第一章 绪论 - 网络演进4阶段",
+      "description": "网络技术演进的四个阶段按顺序是？",
+      "answer": "A. 传统网络→SDN→云计算→AI云",
+      "options": [
+        "A. 传统网络→SDN→云计算→AI云",
+        "B. SDN→传统网络→AI云→云计算",
+        "C. 云计算→AI云→SDN→传统网络",
+        "D. AI云→云计算→传统网络→SDN"
+      ],
+      "knowledge": "传统网络→SDN→云计算→AI云四阶段演进",
+      "created_at": "2026-06-25T19:07:37.990636"
+    },
+    {
+      "problem_id": "net-ch1-网络演进4阶段-002",
+      "domain": "networking",
+      "chapter": "ch1",
+      "topic": "网络演进4阶段",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "第一章 绪论 - 网络演进4阶段",
+      "description": "AI云相比云计算具有更高的智能程度",
+      "answer": "对",
+      "options": [],
+      "knowledge": "传统网络→SDN→云计算→AI云四阶段演进",
+      "created_at": "2026-06-25T19:07:37.990654"
+    },
+    {
+      "problem_id": "net-ch1-网络演进4阶段-003",
+      "domain": "networking",
+      "chapter": "ch1",
+      "topic": "网络演进4阶段",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "第一章 绪论 - 网络演进4阶段",
+      "description": "SDN的核心思想是控制面与____面分离",
+      "answer": "数据",
+      "options": [],
+      "knowledge": "传统网络→SDN→云计算→AI云四阶段演进",
+      "created_at": "2026-06-25T19:07:37.990659"
+    },
+    {
+      "problem_id": "net-ch1-架构对比-004",
+      "domain": "networking",
+      "chapter": "ch1",
+      "topic": "架构对比",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "第一章 绪论 - 架构对比",
+      "description": "以下哪个不是SDN的优势？",
+      "answer": "C. 控制器单点故障",
+      "options": [
+        "A. 可编程",
+        "B. 创新快",
+        "C. 控制器单点故障",
+        "D. 灵活调度"
+      ],
+      "knowledge": "传统网络/SDN/云计算/AI云在架构模式、管理方式、可扩展性等方面的差异",
+      "created_at": "2026-06-25T19:07:37.990663"
+    },
+    {
+      "problem_id": "net-ch1-架构对比-005",
+      "domain": "networking",
+      "chapter": "ch1",
+      "topic": "架构对比",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "第一章 绪论 - 架构对比",
+      "description": "传统网络的控制面与数据面是分离的",
+      "answer": "错",
+      "options": [],
+      "knowledge": "传统网络/SDN/云计算/AI云在架构模式、管理方式、可扩展性等方面的差异",
+      "created_at": "2026-06-25T19:07:37.990666"
+    },
+    {
+      "problem_id": "net-ch1-架构对比-006",
+      "domain": "networking",
+      "chapter": "ch1",
+      "topic": "架构对比",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "第一章 绪论 - 架构对比",
+      "description": "云计算的核心思想是资源____化，按需分配",
+      "answer": "池化",
+      "options": [],
+      "knowledge": "传统网络/SDN/云计算/AI云在架构模式、管理方式、可扩展性等方面的差异",
+      "created_at": "2026-06-25T19:07:37.990669"
+    }
+  ]
+}

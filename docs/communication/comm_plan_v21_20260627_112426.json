@@ -1,0 +1,45 @@
+{
+  "version": "v2.1",
+  "updated_at": "2026-06-27 11:24:26",
+  "status": "SSH双向通信已配置完成",
+  "nodes": {
+    "诸葛马": {
+      "host": "172.24.57.34",
+      "public_ip": "47.93.6.57",
+      "status": "✓ 在线",
+      "ssh_key": "~/.ssh/id_rsa_hermes"
+    },
+    "诸葛虾": {
+      "host": "172.24.56.3",
+      "public_ip": "183.134.108.26",
+      "status": "✓ 在线",
+      "ssh_key": "~/.ssh/id_rsa"
+    },
+    "小陈": {
+      "host": "121.43.80.231",
+      "public_ip": "121.43.80.231",
+      "status": "✓ 在线",
+      "ssh_key": "~/.ssh/id_rsa"
+    },
+    "qoder": {
+      "host": "192.168.1.161",
+      "public_ip": "N/A",
+      "status": "✓ 通过GitHub通信",
+      "ssh_key": "N/A"
+    }
+  },
+  "communication_matrix": {
+    "诸葛马→诸葛虾": "✓ SSH (172.24.56.3)",
+    "诸葛马→小陈": "✓ SSH (121.43.80.231)",
+    "诸葛马→qoder": "✓ GitHub",
+    "诸葛虾→诸葛马": "✓ SSH (172.24.57.34)",
+    "小陈→诸葛马": "✓ SSH (47.93.6.57 公网IP)",
+    "qoder→诸葛马": "✓ GitHub"
+  },
+  "shared_directory": "/home/admin/go-training/shared/",
+  "protocols": {
+    "short_term": "GitHub工作流",
+    "medium_term": "SSH双向通信",
+    "long_term": "v0.6.0 HTTP传输层"
+  }
+}

@@ -1,0 +1,824 @@
+{
+  "domain": "data_structure",
+  "phase": "phase3",
+  "total": 48,
+  "generated_at": "2026-06-25T20:54:58.436254",
+  "problems": [
+    {
+      "problem_id": "ds-phase3-ch7-跳表-001",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "跳表",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级数据结构 - 跳表 #1",
+      "description": "跳表基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "跳表"
+      ],
+      "created_at": "2026-06-25T20:54:58.430840"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-跳表-002",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "跳表",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级数据结构 - 跳表 #2",
+      "description": "跳表判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "跳表"
+      ],
+      "created_at": "2026-06-25T20:54:58.430843"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-跳表-003",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "跳表",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "高级数据结构 - 跳表 #3",
+      "description": "跳表填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "跳表"
+      ],
+      "created_at": "2026-06-25T20:54:58.430846"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-跳表-004",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "跳表",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "高级数据结构 - 跳表 #4",
+      "description": "跳表实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "跳表"
+      ],
+      "created_at": "2026-06-25T20:54:58.430849"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-红黑树-001",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "红黑树",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级数据结构 - 红黑树 #1",
+      "description": "红黑树基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "红黑树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430852"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-红黑树-002",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "红黑树",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级数据结构 - 红黑树 #2",
+      "description": "红黑树判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "红黑树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430858"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-红黑树-003",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "红黑树",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "高级数据结构 - 红黑树 #3",
+      "description": "红黑树填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "红黑树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430861"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-红黑树-004",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "红黑树",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "高级数据结构 - 红黑树 #4",
+      "description": "红黑树实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "红黑树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430864"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-并查集-001",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "并查集",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级数据结构 - 并查集 #1",
+      "description": "并查集基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "并查集"
+      ],
+      "created_at": "2026-06-25T20:54:58.430868"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-并查集-002",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "并查集",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级数据结构 - 并查集 #2",
+      "description": "并查集判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "并查集"
+      ],
+      "created_at": "2026-06-25T20:54:58.430871"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-并查集-003",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "并查集",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "高级数据结构 - 并查集 #3",
+      "description": "并查集填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "并查集"
+      ],
+      "created_at": "2026-06-25T20:54:58.430873"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-并查集-004",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "并查集",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "高级数据结构 - 并查集 #4",
+      "description": "并查集实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "并查集"
+      ],
+      "created_at": "2026-06-25T20:54:58.430876"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-字典树-001",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "字典树",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级数据结构 - 字典树 #1",
+      "description": "字典树基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "字典树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430887"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-字典树-002",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "字典树",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级数据结构 - 字典树 #2",
+      "description": "字典树判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "字典树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430890"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-字典树-003",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "字典树",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "高级数据结构 - 字典树 #3",
+      "description": "字典树填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "字典树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430892"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-字典树-004",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "字典树",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "高级数据结构 - 字典树 #4",
+      "description": "字典树实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "字典树"
+      ],
+      "created_at": "2026-06-25T20:54:58.430895"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-后缀数组-001",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "后缀数组",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级数据结构 - 后缀数组 #1",
+      "description": "后缀数组基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "后缀数组"
+      ],
+      "created_at": "2026-06-25T20:54:58.430899"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-后缀数组-002",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "后缀数组",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级数据结构 - 后缀数组 #2",
+      "description": "后缀数组判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "后缀数组"
+      ],
+      "created_at": "2026-06-25T20:54:58.430902"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-后缀数组-003",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "后缀数组",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "高级数据结构 - 后缀数组 #3",
+      "description": "后缀数组填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "后缀数组"
+      ],
+      "created_at": "2026-06-25T20:54:58.430905"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-后缀数组-004",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "后缀数组",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "高级数据结构 - 后缀数组 #4",
+      "description": "后缀数组实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "后缀数组"
+      ],
+      "created_at": "2026-06-25T20:54:58.430913"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-布隆过滤器-001",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "布隆过滤器",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "高级数据结构 - 布隆过滤器 #1",
+      "description": "布隆过滤器基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布隆过滤器"
+      ],
+      "created_at": "2026-06-25T20:54:58.430917"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-布隆过滤器-002",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "布隆过滤器",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "高级数据结构 - 布隆过滤器 #2",
+      "description": "布隆过滤器判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布隆过滤器"
+      ],
+      "created_at": "2026-06-25T20:54:58.430920"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-布隆过滤器-003",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "布隆过滤器",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "高级数据结构 - 布隆过滤器 #3",
+      "description": "布隆过滤器填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布隆过滤器"
+      ],
+      "created_at": "2026-06-25T20:54:58.430922"
+    },
+    {
+      "problem_id": "ds-phase3-ch7-布隆过滤器-004",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch7",
+      "topic": "布隆过滤器",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "高级数据结构 - 布隆过滤器 #4",
+      "description": "布隆过滤器实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "布隆过滤器"
+      ],
+      "created_at": "2026-06-25T20:54:58.430925"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-分治算法-001",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "分治算法",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "算法设计 - 分治算法 #1",
+      "description": "分治算法基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "分治算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.430929"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-分治算法-002",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "分治算法",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "算法设计 - 分治算法 #2",
+      "description": "分治算法判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "分治算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.430935"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-分治算法-003",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "分治算法",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "算法设计 - 分治算法 #3",
+      "description": "分治算法填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "分治算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.430940"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-分治算法-004",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "分治算法",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "算法设计 - 分治算法 #4",
+      "description": "分治算法实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "分治算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.430943"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-动态规划-001",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "动态规划",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "算法设计 - 动态规划 #1",
+      "description": "动态规划基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "动态规划"
+      ],
+      "created_at": "2026-06-25T20:54:58.430947"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-动态规划-002",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "动态规划",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "算法设计 - 动态规划 #2",
+      "description": "动态规划判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "动态规划"
+      ],
+      "created_at": "2026-06-25T20:54:58.430950"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-动态规划-003",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "动态规划",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "算法设计 - 动态规划 #3",
+      "description": "动态规划填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "动态规划"
+      ],
+      "created_at": "2026-06-25T20:54:58.430963"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-动态规划-004",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "动态规划",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "算法设计 - 动态规划 #4",
+      "description": "动态规划实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "动态规划"
+      ],
+      "created_at": "2026-06-25T20:54:58.430966"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-贪心算法-001",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "贪心算法",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "算法设计 - 贪心算法 #1",
+      "description": "贪心算法基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "贪心算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.430970"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-贪心算法-002",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "贪心算法",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "算法设计 - 贪心算法 #2",
+      "description": "贪心算法判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "贪心算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.430973"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-贪心算法-003",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "贪心算法",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "算法设计 - 贪心算法 #3",
+      "description": "贪心算法填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "贪心算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.430985"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-贪心算法-004",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "贪心算法",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "算法设计 - 贪心算法 #4",
+      "description": "贪心算法实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "贪心算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.430988"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-回溯算法-001",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "回溯算法",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "算法设计 - 回溯算法 #1",
+      "description": "回溯算法基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "回溯算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.430991"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-回溯算法-002",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "回溯算法",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "算法设计 - 回溯算法 #2",
+      "description": "回溯算法判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "回溯算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.430994"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-回溯算法-003",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "回溯算法",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "算法设计 - 回溯算法 #3",
+      "description": "回溯算法填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "回溯算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.430997"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-回溯算法-004",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "回溯算法",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "算法设计 - 回溯算法 #4",
+      "description": "回溯算法实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "回溯算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.431003"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-分支限界-001",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "分支限界",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "算法设计 - 分支限界 #1",
+      "description": "分支限界基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "分支限界"
+      ],
+      "created_at": "2026-06-25T20:54:58.431007"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-分支限界-002",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "分支限界",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "算法设计 - 分支限界 #2",
+      "description": "分支限界判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "分支限界"
+      ],
+      "created_at": "2026-06-25T20:54:58.431010"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-分支限界-003",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "分支限界",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "算法设计 - 分支限界 #3",
+      "description": "分支限界填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "分支限界"
+      ],
+      "created_at": "2026-06-25T20:54:58.431016"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-分支限界-004",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "分支限界",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "算法设计 - 分支限界 #4",
+      "description": "分支限界实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "分支限界"
+      ],
+      "created_at": "2026-06-25T20:54:58.431019"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-随机算法-001",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "随机算法",
+      "type": "选择",
+      "difficulty": "入门",
+      "title": "算法设计 - 随机算法 #1",
+      "description": "随机算法基础选择题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "随机算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.431025"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-随机算法-002",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "随机算法",
+      "type": "判断",
+      "difficulty": "入门",
+      "title": "算法设计 - 随机算法 #2",
+      "description": "随机算法判断题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "随机算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.431028"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-随机算法-003",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "随机算法",
+      "type": "填空",
+      "difficulty": "初级",
+      "title": "算法设计 - 随机算法 #3",
+      "description": "随机算法填空题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "随机算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.431033"
+    },
+    {
+      "problem_id": "ds-phase3-ch8-随机算法-004",
+      "domain": "data_structure",
+      "phase": "phase3",
+      "chapter": "ch8",
+      "topic": "随机算法",
+      "type": "实战",
+      "difficulty": "中级",
+      "title": "算法设计 - 随机算法 #4",
+      "description": "随机算法实战题",
+      "answer": "标准答案",
+      "solution": "详细解析",
+      "knowledge_points": [
+        "随机算法"
+      ],
+      "created_at": "2026-06-25T20:54:58.431036"
+    }
+  ]
+}

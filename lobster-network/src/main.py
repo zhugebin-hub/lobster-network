@@ -15,6 +15,7 @@ import json
 import os
 import sys
 from pathlib import Path
+from typing import Dict
 
 # 添加 src 目录到路径
 sys.path.insert(0, str(Path(__file__).parent))
@@ -180,6 +181,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-EOF
-
-echo "集成入口已创建"

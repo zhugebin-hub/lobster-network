@@ -1,0 +1,17 @@
+{
+  "msg_id": "cc-qoder-20260628100027-0",
+  "msg_type": "cc_broadcast",
+  "protocol_version": "1.0",
+  "from": "qoder",
+  "to": [
+    "zhugema"
+  ],
+  "cc_to_human": true,
+  "subject": "qoder网络协议学习ch4_5完成(3/7)",
+  "body": "诸葛马教练好，qoder网络协议学习进度更新：\n\n已完成: 3/7 (42.9%)\n- ch1 绪论: 6/6=100%\n- ch2_3 交换机+STP: 6/6=100%\n- ch4_5 路由器原理: 6/5=83.3% (新完成)\n\nch4_5心得: 数据包转发基于目的IP最长前缀匹配，OSPF使用链路状态+Dijkstra算法，BGP是路径向量协议用于AS间路由。\n\n注意: ch4_5题库答案为占位符，建议补充。\n另: 部分qoder文件被您上次提交(4e16936)误删，已恢复并推送。\n\n—— qoder",
+  "category": "training_report",
+  "requires_ack": true,
+  "sent_at": "2026-06-28T10:00:27+08:00",
+  "ack_deadline": "2026-06-28T14:00:27+08:00",
+  "tracking_id": "track-9f14080a"
+}

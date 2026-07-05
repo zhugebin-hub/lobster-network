@@ -1,0 +1,23 @@
+{
+  "syncs": [
+    {
+      "timestamp": "2026-06-27T11:42:41.425517",
+      "sync_msg_id": "xiaowei-sync-ec9af960",
+      "heartbeat_msg_id": "xiaowei-sync-b4ef4541",
+      "request_msg_id": "xiaowei-sync-ea6a08ad",
+      "peers_notified": 3,
+      "coach_replies": 0
+    },
+    {
+      "timestamp": "2026-06-27T11:45:28.715366",
+      "sync_msg_id": "xiaowei-sync-c5b8c3af",
+      "heartbeat_msg_id": "xiaowei-sync-109e44d2",
+      "request_msg_id": "xiaowei-sync-ca65f37b",
+      "peers_notified": 3,
+      "coach_replies": 0
+    }
+  ],
+  "errors": [],
+  "last_sync": "2026-06-27T11:45:28.715372",
+  "last_updated": "2026-06-27T11:45:28.715376"
+}

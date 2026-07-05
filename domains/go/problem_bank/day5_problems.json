@@ -1,0 +1,83 @@
+{
+  "day": 5,
+  "topic": "连接与分断",
+  "description": "虎、接、断、扳、尖等基本棋形，以及断点识别",
+  "target_level": "30k→25k",
+  "student": "xiaowei",
+  "problems": [
+    {
+      "problem_id": "connect-001",
+      "type": "连接",
+      "title": "虎口连接",
+      "description": "两颗黑子间隔一路，中间有白子威胁，黑如何用虎连接？",
+      "answer": "虎",
+      "solution": "黑1虎（在连接点旁边做一个虎口），白若断则黑提，白不敢断。虎是以威胁对方的方式间接保护连接。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "connect-002",
+      "type": "连接",
+      "title": "直接连接（接）",
+      "description": "两块黑棋之间有一个断点被白棋瞄准，黑最稳妥的连接方式是？",
+      "answer": "直接粘接",
+      "solution": "黑1直接在断点位置下子，将两块棋牢牢连接在一起。这是最稳固的连接方式。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "connect-003",
+      "type": "连接",
+      "title": "尖的妙用",
+      "description": "黑棋需要联络两处，中间隔着白子。尖（斜走一格）能实现连接吗？",
+      "answer": "可以",
+      "options": ["可以", "不可以", "看情况"],
+      "solution": "尖（小飞斜走）可以间接连接。白若切断，黑可以在另一处连接。尖比直接接更具弹性。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "connect-004",
+      "type": "分断",
+      "title": "断的威力",
+      "description": "两块白棋中间只有一个交叉点连接，黑应该走哪里？",
+      "answer": "断",
+      "solution": "黑1直接断！将两块白棋分开后，可以分别攻击，形成以多打少的有利局面。棋谚：棋逢断处生。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "connect-005",
+      "type": "分断",
+      "title": "扳断",
+      "description": "白棋呈二间跳形状，黑如何用扳来分断？",
+      "answer": "扳",
+      "solution": "黑1在白棋两子之间的侧面扳，迫使白棋应一手。如果白不应，黑可继续扳断。扳是分断的常用手段。",
+      "difficulty": "初级"
+    },
+    {
+      "problem_id": "connect-006",
+      "type": "连接",
+      "title": "双的连接",
+      "description": "两颗黑子并排（双），中间有断点吗？白能不能断？",
+      "answer": "没有断点",
+      "options": ["有断点", "没有断点", "看位置"],
+      "solution": "双（两子并排紧挨）是绝对连接，中间没有白棋可以插入的断点。是最稳固的棋形之一。",
+      "difficulty": "入门"
+    },
+    {
+      "problem_id": "connect-007",
+      "type": "分断",
+      "title": "挖断",
+      "description": "白棋呈跳的形状（间隔一路），黑如何用挖来分断？",
+      "answer": "挖",
+      "solution": "黑1在白棋跳的中间交叉点落子（挖），将白棋分为两段。要注意挖后自身安全。",
+      "difficulty": "初级"
+    },
+    {
+      "problem_id": "connect-008",
+      "type": "连接",
+      "title": "飞压连接",
+      "description": "黑棋需要联络远处的己方棋子，最快速的连接方式是？",
+      "answer": "飞",
+      "solution": "飞（小飞：日字形走法）是最有效率的连接方式之一，一步可以跨两路，比一步步接快一倍。",
+      "difficulty": "初级"
+    }
+  ]
+}

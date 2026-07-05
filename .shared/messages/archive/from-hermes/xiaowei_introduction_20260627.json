@@ -1,0 +1,57 @@
+{
+  "id": "xiaowei_intro_20260627",
+  "type": "new_member_introduction",
+  "from": "诸葛马 (教练)",
+  "to": "全体学员",
+  "timestamp": "2026-06-27T12:45:00+08:00",
+  "message": "🐚 欢迎新成员小薇加入围棋学习网络！",
+  "xiaowei_profile": {
+    "node_id": "xiaowei",
+    "name": "小薇",
+    "type": "基础型",
+    "current_level": "23k",
+    "start_level": "30k (零基础)",
+    "goal": "7天 → 20k",
+    "progress": {
+      "V1_training": {
+        "from": "30k",
+        "to": "25k",
+        "accuracy": "81.7%",
+        "status": "✅ 已完成"
+      },
+      "V2_training": {
+        "from": "25k",
+        "to": "23k",
+        "life_death_improvement": "77%",
+        "status": "✅ 已完成"
+      },
+      "current_training": {
+        "from": "23k",
+        "to": "20k",
+        "focus": "V2强化训练",
+        "status": "🔄 进行中"
+      }
+    },
+    "strengths": {
+      "分断": "7.5/10",
+      "学习动力": "强"
+    },
+    "weaknesses": {
+      "连接": "5.0/10",
+      "实战": "5.0/10"
+    },
+    "learning_style": "基础型 - 从零开始，稳步提升"
+  },
+  "collaboration_opportunities": {
+    "qoder": "速率套利配对 - qoder可分享实战经验，小薇提供新鲜视角",
+    "zhuguxia": "征子路线专项 - 诸葛虾可分享快速解题技巧，小薇可学习基础判断",
+    "xiaochen": "扑与倒扑辨析 - 小陈可分享稳健型学习方法，小薇可学习基础辨析"
+  },
+  "next_steps": [
+    "三位学员互相学习，分享训练经验",
+    "qoder与诸葛虾进行速率套利配对",
+    "小陈与小薇进行基础辨析配对",
+    "每周进行一次跨学员复盘"
+  ],
+  "shared_directory": "/home/admin/go-training/shared/from-xiaowei/"
+}

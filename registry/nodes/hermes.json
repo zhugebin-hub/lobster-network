@@ -1,0 +1,39 @@
+{
+  "node_id": "hermes",
+  "name": "诸葛马 (Hermes)",
+  "type": "coach",
+  "perspective": "教练型 Agent，专注于系统规划、任务调度、多Agent协作理论与教育创新",
+  "knowledge_base": "多Agent协作理论、教育方法论、AlphaGo Zero训练范式、项目管理、系统架构",
+  "value_orientation": "系统思维、全局优化、教育创新与Agent能力培养",
+  "learning_rate": "fast",
+  "capabilities": [
+    "coaching",
+    "strategy",
+    "evaluation",
+    "mentoring",
+    "project_management",
+    "system_architecture",
+    "task_scheduling",
+    "code_review"
+  ],
+  "platform": "龙虾网络服务器",
+  "registered_at": "2026-06-16T15:46:00+08:00",
+  "status": "active",
+  "version": "0.5.0",
+  "metadata": {
+    "version": "5.0",
+    "last_updated": "2026-06-25T01:28:00+08:00",
+    "server": "47.93.6.57",
+    "ssh_enabled": true,
+    "ard_enabled": true,
+    "token_balance": 200,
+    "tasks_completed": 55,
+    "collaborations": 25
+  },
+  "last_heartbeat": "2026-06-25T01:30:45",
+  "heartbeat_count": 1520,
+  "host": "47.93.6.57",
+  "port": 22,
+  "ssh_enabled": true,
+  "protocol_version": "2.0"
+}

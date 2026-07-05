@@ -1,0 +1,61 @@
+{
+  "student_id": "xiaochen",
+  "student_name": "xiaochen（信电大虾）",
+  "student_type": "稳健型",
+  "current_level": "30级",
+  "generated_at": "2026-06-27 04:16:34",
+  "training_modules": [
+    {
+      "name": "高级死活题强化",
+      "focus": "推理力",
+      "problems": 20,
+      "difficulty": "高级",
+      "categories": [
+        "死活",
+        "手筋"
+      ],
+      "target_accuracy": 0.5,
+      "method": "分步推理训练：先识别棋形→再计算变化→最后验证"
+    },
+    {
+      "name": "扑与倒扑辨析",
+      "focus": "理解力",
+      "problems": 15,
+      "difficulty": "中级",
+      "categories": [
+        "手筋"
+      ],
+      "target_accuracy": 0.8,
+      "method": "对比训练：扑 vs 倒扑 的典型棋形对比，建立模式识别"
+    },
+    {
+      "name": "错题深度分析",
+      "focus": "反思力",
+      "problems": 10,
+      "difficulty": "混合",
+      "categories": [
+        "死活",
+        "手筋",
+        "官子"
+      ],
+      "target_accuracy": null,
+      "method": "每道错题写300字分析：为什么错→正确思路→如何避免"
+    },
+    {
+      "name": "实战对局",
+      "focus": "执行力",
+      "games": 3,
+      "opponents": [
+        "zhuguxia",
+        "qoder"
+      ],
+      "method": "每局后强制复盘，记录关键决策点"
+    }
+  ],
+  "schedule": {
+    "周一/三/五": "高级死活题强化 + 错题深度分析",
+    "周二/四": "扑与倒扑辨析 + 实战对局",
+    "周六": "综合模拟测试",
+    "周日": "错题复习 + 反思日志"
+  }
+}

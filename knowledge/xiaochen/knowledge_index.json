@@ -1,0 +1,19 @@
+{
+  "node_id": "xiaochen",
+  "created_at": "2026-06-30T00:26:15.797460",
+  "entries": [
+    {
+      "id": "cb5701ca",
+      "type": "game_insight",
+      "category": "strategy",
+      "subcategory": "unknown",
+      "extracted_at": "2026-06-30T00:26:15.798586",
+      "file": "strategy_knowledge.json"
+    }
+  ],
+  "categories": {
+    "strategy": 1
+  },
+  "total_entries": 1,
+  "updated_at": "2026-06-30T00:26:15.799585"
+}

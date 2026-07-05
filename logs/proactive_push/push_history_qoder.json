@@ -1,0 +1,21 @@
+{
+  "pushes": [
+    {
+      "tracking_id": "push-qoder-execution-20260630002615",
+      "dimension": "execution",
+      "severity": "critical",
+      "date": "2026-06-30",
+      "timestamp": "2026-06-30T00:26:15.699015",
+      "file": "/home/admin/lobster-network/.shared/messages/from-hermes/push-qoder-execution-20260630002615.json"
+    },
+    {
+      "tracking_id": "push-qoder-eq-20260630002615",
+      "dimension": "eq",
+      "severity": "warning",
+      "date": "2026-06-30",
+      "timestamp": "2026-06-30T00:26:15.699860",
+      "file": "/home/admin/lobster-network/.shared/messages/from-hermes/push-qoder-eq-20260630002615.json"
+    }
+  ],
+  "total": 2
+}

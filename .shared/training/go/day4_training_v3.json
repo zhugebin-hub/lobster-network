@@ -1,0 +1,49 @@
+{
+  "id": "day4-training-20260628",
+  "type": "training_task",
+  "day": 4,
+  "date": "2026-06-28",
+  "focus": "对抗赛准备 + 专项突破",
+  "version": "3.0",
+  "students": {
+    "qoder": {
+      "problems": 150,
+      "games": 15,
+      "focus": "对抗赛模拟 + 手筋强化",
+      "custom_module": "系统性知识构建",
+      "special": "对抗赛预热(5局vs zhuguxia)",
+      "v3_features": ["vector_memory_search", "federated_learning"]
+    },
+    "xiaochen": {
+      "problems": 120,
+      "games": 12,
+      "focus": "推理力强化 + 官子专项",
+      "custom_module": "推理力强化",
+      "special": "扑倒扑辨析进阶(30题)",
+      "v3_features": ["vector_memory_search"]
+    },
+    "zhuguxia": {
+      "problems": 150,
+      "games": 15,
+      "focus": "征子路线 + 布局专项",
+      "custom_module": "反思日志训练",
+      "special": "对抗赛预热(5局vs qoder)",
+      "v3_features": ["vector_memory_search", "federated_learning"]
+    },
+    "xiaowei": {
+      "problems": 100,
+      "games": 10,
+      "focus": "连接与实战强化",
+      "custom_module": "基础强化",
+      "special": "死活基础巩固(40题)",
+      "v3_features": ["vector_memory_search"]
+    }
+  },
+  "v3_enhancements": {
+    "vector_memory": "使用向量记忆系统搜索相似题目",
+    "federated_learning": "多节点协同训练模型",
+    "a2a_protocol": "节点间实时通信",
+    "agent_economy": "完成任务获得代币奖励"
+  },
+  "deadline": "2026-06-29 22:00:00"
+}

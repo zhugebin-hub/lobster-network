@@ -1,0 +1,20 @@
+{
+  "node_id": "zhugebin-001",
+  "name": "诸葛斌的工作助手",
+  "type": "agent",
+  "perspective": "AI技术研究、教育教学、科研创新",
+  "knowledge_base": "计算机科学、人工智能、软件开发、教育教学",
+  "value_orientation": "协作创新",
+  "learning_rate": "medium",
+  "capabilities": [
+    "dialogue",
+    "research",
+    "code_generation",
+    "teaching",
+    "writing"
+  ],
+  "platform": "macOS",
+  "registered_at": "2026-06-25T06:06:59.758288",
+  "status": "active",
+  "version": "0.5.0"
+}

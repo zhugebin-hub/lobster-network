@@ -1,0 +1,81 @@
+{
+  "report_id": "detailed_progress_20260627_124143",
+  "timestamp": "2026-06-27 12:41:43",
+  "version": "v1.1",
+  "coach": "诸葛马 (Hermes)",
+  "students": {
+    "xiaochen": {
+      "name": "xiaochen（信电大虾）",
+      "type": "稳健型",
+      "level": "30级",
+      "status": "已完成Day1-Day2",
+      "day1_results": {
+        "problems": 10,
+        "correct": 9,
+        "accuracy": 0.9,
+        "games": 5,
+        "wins": 3,
+        "win_rate": 0.6
+      },
+      "day2_status": "已完成",
+      "next_task": "Day3 - 死活进阶"
+    },
+    "zhuguxia": {
+      "name": "zhuguxia（诸葛虾）",
+      "type": "加速型",
+      "level": "25级",
+      "status": "已完成Day1-Day2",
+      "day1_results": {
+        "problems": 10,
+        "correct": 9,
+        "accuracy": 0.9,
+        "games": 5,
+        "wins": 4,
+        "win_rate": 0.8
+      },
+      "day2_status": "已完成",
+      "next_task": "Day3 - 死活进阶"
+    },
+    "qoder": {
+      "name": "qoder（小龙虾）",
+      "type": "实战型",
+      "level": "~25级",
+      "status": "已完成Day1-Day2",
+      "day1_results": {
+        "problems": 10,
+        "correct": 10,
+        "accuracy": 1.0,
+        "games": 5,
+        "wins": 4,
+        "win_rate": 0.8
+      },
+      "day2_status": "已完成",
+      "next_task": "Day3 - 死活进阶"
+    },
+    "xiaowei": {
+      "name": "小薇",
+      "type": "基础型",
+      "level": "30k",
+      "status": "待开始",
+      "day1_results": null,
+      "day2_status": "待开始",
+      "next_task": "Day1 - 基本规则"
+    }
+  },
+  "overall_progress": {
+    "total_students": 4,
+    "active_students": 3,
+    "completed_days": {
+      "xiaochen": 2,
+      "zhuguxia": 2,
+      "qoder": 2,
+      "xiaowei": 0
+    }
+  },
+  "next_steps": [
+    "发送Day3训练任务给xiaochen、zhuguxia、qoder",
+    "发送Day1训练任务给小薇",
+    "收集Day2训练结果",
+    "生成Day3评估报告"
+  ]
+}

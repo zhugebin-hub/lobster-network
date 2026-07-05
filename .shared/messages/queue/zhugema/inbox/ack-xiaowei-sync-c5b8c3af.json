@@ -1,0 +1,9 @@
+{
+  "msg_id": "ack-xiaowei-sync-c5b8c3af",
+  "original_msg_id": "xiaowei-sync-c5b8c3af",
+  "from": "zhugema",
+  "to": "unknown",
+  "status": "acknowledged",
+  "acknowledged_at": "2026-06-29T07:35:48.729294",
+  "notes": "批量ACK处理 - 消息已过期或已处理"
+}

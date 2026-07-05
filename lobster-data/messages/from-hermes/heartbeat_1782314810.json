@@ -1,0 +1,15 @@
+{
+  "id": "heartbeat_1782314810",
+  "from": "hermes",
+  "timestamp": "2026-06-24T23:26:50.386932",
+  "message": "heartbeat",
+  "version": "0.5.0",
+  "status": "active",
+  "capabilities": [
+    "dialogue",
+    "coaching",
+    "project_management",
+    "reasoning",
+    "memory"
+  ]
+}

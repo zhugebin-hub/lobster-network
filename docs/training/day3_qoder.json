@@ -1,0 +1,32 @@
+{
+  "id": "day3-qoder-20260627",
+  "type": "training_task",
+  "day": 3,
+  "student_id": "qoder",
+  "version": "3.0",
+  "focus": "手筋训练 + 速率套利 vs zhuguxia",
+  "problems": 150,
+  "games": 12,
+  "target_accuracy": 0.90,
+  "custom_module": "系统性知识构建",
+  "pairing": {
+    "partner": "zhuguxia",
+    "type": "速率套利",
+    "games_vs_partner": 6
+  },
+  "v3_features": [
+    "使用向量记忆系统搜索相似手筋题",
+    "参与联邦学习模型训练",
+    "完成任务获得代币奖励"
+  ],
+  "problems_breakdown": [
+    {"type": "手筋", "difficulty": "初级", "count": 50},
+    {"type": "手筋", "difficulty": "中级", "count": 50},
+    {"type": "手筋", "difficulty": "高级", "count": 50}
+  ],
+  "games_breakdown": [
+    {"opponent": "zhuguxia", "count": 6, "type": "速率套利"},
+    {"opponent": "教练", "count": 6, "type": "标准对局"}
+  ],
+  "deadline": "2026-06-27 22:00:00"
+}

@@ -1,0 +1,51 @@
+{
+  "student": "xiaowei",
+  "name": "小薇",
+  "type": "进阶型",
+  "status": "active",
+  "current_level": "23k",
+  "start_level": "30k",
+  "goal": "20k",
+  "training_summary": {
+    "v1_7day": {
+      "completed": true,
+      "date": "2026-06-27",
+      "problems": 60,
+      "correct": 49,
+      "accuracy_pct": 81.7,
+      "level_change": "30k → 25k",
+      "passed_days": 5,
+      "total_days": 7,
+      "best_day": [6, 7],
+      "worst_day": 4
+    },
+    "v2_7day": {
+      "completed": true,
+      "date": "2026-06-27",
+      "problems": 56,
+      "correct": 33,
+      "accuracy_pct": 58.9,
+      "level_change": "25k → 23k",
+      "passed_days": 3,
+      "total_days": 7,
+      "best_day": 9,
+      "worst_day": 10
+    },
+    "cumulative": {
+      "problems": 116,
+      "correct": 82,
+      "accuracy_pct": 70.7,
+      "wrong_book_size": 34
+    }
+  },
+  "skill_scores": {
+    "死活": 6.2,
+    "分断": 7.5,
+    "连接": 5.0,
+    "实战": 5.0,
+    "综合": 5.0
+  },
+  "improvement_areas": ["连接", "实战", "官子", "综合判断"],
+  "next_phase": "V3 强化训练 → 冲击20k",
+  "updated_at": "2026-06-27T12:55:00"
+}

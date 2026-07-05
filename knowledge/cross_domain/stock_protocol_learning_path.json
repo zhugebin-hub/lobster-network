@@ -1,0 +1,22 @@
+[
+  {
+    "step": 1,
+    "source_skill": "数据清洗",
+    "target_skill": "数据清洗",
+    "transfer_skill": "数据处理能力",
+    "difficulty": "中",
+    "estimated_hours": 4,
+    "description": "金融数据清洗培养的规范化处理能力适用于报文解析",
+    "prerequisites": []
+  },
+  {
+    "step": 2,
+    "source_skill": "趋势预测",
+    "target_skill": "趋势预测",
+    "transfer_skill": "时间序列分析",
+    "difficulty": "高",
+    "estimated_hours": 8,
+    "description": "金融趋势预测的时间序列分析方法可迁移到网络流量预测",
+    "prerequisites": []
+  }
+]

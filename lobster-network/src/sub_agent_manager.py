@@ -301,6 +301,3 @@ if __name__ == "__main__":
         "message": "请提交 Day5 训练结果"
     })
     print(f"结果: {json.dumps(result, ensure_ascii=False, indent=2)}")
-EOF
-
-echo "Sub-Agent 管理器已创建"

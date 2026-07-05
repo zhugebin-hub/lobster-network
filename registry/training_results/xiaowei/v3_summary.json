@@ -1,0 +1,182 @@
+{
+  "version": "V3",
+  "date": "2026-06-27",
+  "student": "xiaowei",
+  "start_level": "23k",
+  "target_level": "20k",
+  "promoted": false,
+  "total_problems": 70,
+  "total_correct": 30,
+  "overall_accuracy": 0.4286,
+  "cumulative_total": 186,
+  "cumulative_correct": 112,
+  "cumulative_accuracy": 0.6022,
+  "daily_results": [
+    {
+      "day": 15,
+      "topic": "错题本回顾",
+      "total": 10,
+      "correct": 8,
+      "accuracy": 0.8,
+      "passed": true,
+      "wrong_ids": [
+        "review-006",
+        "review-010"
+      ]
+    },
+    {
+      "day": 16,
+      "topic": "连接强化 — 尖/飞/双/虎/渡的实战判断",
+      "total": 10,
+      "correct": 4,
+      "accuracy": 0.4,
+      "passed": false,
+      "wrong_ids": [
+        "conn-plus-001",
+        "conn-plus-003",
+        "conn-plus-004",
+        "conn-plus-006",
+        "conn-plus-008",
+        "conn-plus-009"
+      ]
+    },
+    {
+      "day": 17,
+      "topic": "连接分断综合 — 同时判断连接与分断",
+      "total": 10,
+      "correct": 5,
+      "accuracy": 0.5,
+      "passed": false,
+      "wrong_ids": [
+        "conncut-004",
+        "conncut-006",
+        "conncut-007",
+        "conncut-009",
+        "conncut-010"
+      ]
+    },
+    {
+      "day": 18,
+      "topic": "13x13中盘战斗",
+      "total": 10,
+      "correct": 3,
+      "accuracy": 0.3,
+      "passed": false,
+      "wrong_ids": [
+        "mid-001",
+        "mid-002",
+        "mid-004",
+        "mid-007",
+        "mid-008",
+        "mid-009",
+        "mid-010"
+      ]
+    },
+    {
+      "day": 19,
+      "topic": "官子基础 — 大小判断/先手后手/收束顺序",
+      "total": 10,
+      "correct": 1,
+      "accuracy": 0.1,
+      "passed": false,
+      "wrong_ids": [
+        "end-001",
+        "end-003",
+        "end-004",
+        "end-005",
+        "end-006",
+        "end-007",
+        "end-008",
+        "end-009",
+        "end-010"
+      ]
+    },
+    {
+      "day": 20,
+      "topic": "全局判断 — 形势判断/逆转时机/大局观",
+      "total": 10,
+      "correct": 4,
+      "accuracy": 0.4,
+      "passed": false,
+      "wrong_ids": [
+        "global-001",
+        "global-002",
+        "global-005",
+        "global-007",
+        "global-008",
+        "global-009"
+      ]
+    },
+    {
+      "day": 21,
+      "topic": "V3毕业考 — 综合测评",
+      "total": 10,
+      "correct": 5,
+      "accuracy": 0.5,
+      "passed": false,
+      "wrong_ids": [
+        "v3final-001",
+        "v3final-006",
+        "v3final-007",
+        "v3final-008",
+        "v3final-010"
+      ]
+    }
+  ],
+  "skill_scores_v3": {
+    "连接": 5.0,
+    "连接分断综合": 5.0,
+    "实战": 3.3,
+    "官子": 1.0,
+    "全局": 4.0,
+    "综合": 5.0
+  },
+  "promotion_checks": {
+    "all_days_passed": false,
+    "connection_score": 5.0,
+    "fight_score": 3.3,
+    "day21_passed": false
+  },
+  "wrong_book_v3": {
+    "review-006": 1,
+    "review-010": 1,
+    "conn-plus-001": 1,
+    "conn-plus-003": 1,
+    "conn-plus-004": 1,
+    "conn-plus-006": 1,
+    "conn-plus-008": 1,
+    "conn-plus-009": 1,
+    "conncut-004": 1,
+    "conncut-006": 1,
+    "conncut-007": 1,
+    "conncut-009": 1,
+    "conncut-010": 1,
+    "mid-001": 1,
+    "mid-002": 1,
+    "mid-004": 1,
+    "mid-007": 1,
+    "mid-008": 1,
+    "mid-009": 1,
+    "mid-010": 1,
+    "end-001": 1,
+    "end-003": 1,
+    "end-004": 1,
+    "end-005": 1,
+    "end-006": 1,
+    "end-007": 1,
+    "end-008": 1,
+    "end-009": 1,
+    "end-010": 1,
+    "global-001": 1,
+    "global-002": 1,
+    "global-005": 1,
+    "global-007": 1,
+    "global-008": 1,
+    "global-009": 1,
+    "v3final-001": 1,
+    "v3final-006": 1,
+    "v3final-007": 1,
+    "v3final-008": 1,
+    "v3final-010": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "msg_id": "ack-qoder-track-030dea86",
+  "msg_type": "cc_ack",
+  "protocol_version": "1.0",
+  "from": "qoder",
+  "to": "zhugema",
+  "tracking_id": "track-030dea86",
+  "ref_msg_id": "cc-zhugema-20260629144249-2",
+  "status": "received",
+  "response": "",
+  "acked_at": "2026-06-29T16:04:55+08:00"
+}

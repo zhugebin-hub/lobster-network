@@ -1,0 +1,98 @@
+[
+  {
+    "problem_id": "life-comp-001",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "双活的判断",
+    "description": "双方在局部都无法吃掉对方，但又没有两只眼，请问这叫？",
+    "options": ["死棋", "活棋", "双活", "打劫"],
+    "answer": "双活",
+    "solution": "双活是指双方都没有两只眼，但又都无法吃掉对方的状态。双活区域在终局时双方都不计目。",
+    "board_situation": "双活原理",
+    "estimated_time": 90
+  },
+  {
+    "problem_id": "life-comp-002",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "劫活的条件",
+    "description": "要形成劫活（通过打劫来活棋），通常需要什么条件？",
+    "options": ["至少1个本身劫材", "不需要条件", "必须对方没有劫材", "需要2个劫以上"],
+    "answer": "至少1个本身劫材",
+    "solution": "劫活需要至少1个可靠的本身劫材。如果对方全盘劫材比你多，劫活可能变成净死。",
+    "board_situation": "劫活条件",
+    "estimated_time": 120
+  },
+  {
+    "problem_id": "life-comp-003",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "综合: 角部破眼",
+    "description": "白棋在角部有一定空间，黑棋如何最有效地破眼？",
+    "options": ["直接点入要点", "先缩小眼位再点", "从外面破坏", "等待收气"],
+    "answer": "先缩小眼位再点",
+    "solution": "破眼的经典手法是「先缩再点」——先用扳/尖等手段缩小对方眼位空间，再点入要害位置。这是最稳健的杀棋方法。",
+    "board_situation": "角部破眼技巧",
+    "estimated_time": 150
+  },
+  {
+    "problem_id": "life-comp-004",
+    "type": "死活",
+    "difficulty": "高级",
+    "title": "综合对杀：有眼杀无眼",
+    "description": "对杀中，黑棋有一只眼，白棋没有眼。双方气数相同。结果如何？",
+    "options": ["黑棋胜", "白棋胜", "双活", "看谁先动手"],
+    "answer": "黑棋胜",
+    "solution": "「有眼杀无眼」是围棋对杀的基本原则。有眼的一方在收气时占优，因为对方需要填眼才能紧气。",
+    "board_situation": "有眼杀无眼",
+    "estimated_time": 120
+  },
+  {
+    "problem_id": "life-comp-005",
+    "type": "死活",
+    "difficulty": "高级",
+    "title": "综合: 大眼杀小眼",
+    "description": "对杀中，黑棋大眼（3目以上）vs 白棋小眼（1目），气数相等。结果？",
+    "options": ["黑棋胜", "白棋胜", "双活", "看空间大小"],
+    "answer": "黑棋胜",
+    "solution": "对杀中，大眼（3目以上）内气更多。白棋需要先填大眼内部才能紧黑棋的气，这给了黑棋优势。「大眼杀小眼」是进阶对杀的核心知识。",
+    "board_situation": "大眼杀小眼",
+    "estimated_time": 150
+  },
+  {
+    "problem_id": "life-comp-006",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "死活题的解题思路",
+    "description": "做死活题时，最推荐的解题顺序是？",
+    "options": ["由外向内缩小→找要点→验证", "直接猜答案", "从内部开始", "看答案"],
+    "answer": "由外向内缩小→找要点→验证",
+    "solution": "推荐解题思路：1）判断空间大小是否足够做活；2）由外向内缩小眼位范围；3）找到要点（通常在一二路交叉处）；4）验证所有变化。",
+    "board_situation": "死活题方法论",
+    "estimated_time": 90
+  },
+  {
+    "problem_id": "life-comp-007",
+    "type": "死活",
+    "difficulty": "高级",
+    "title": "三眼两做",
+    "description": "「三眼两做」是什么技巧？",
+    "options": ["一手棋同时制造两个眼位的威胁", "连续下三手做两只眼", "做三个眼", "一种布局战术"],
+    "answer": "一手棋同时制造两个眼位的威胁",
+    "solution": "「三眼两做」是指走一手棋，同时在两个位置威胁要做眼（或破眼），对方只能防一处，另一处必然做成（或破掉）。也叫「一子两用」。",
+    "board_situation": "三眼两做技巧",
+    "estimated_time": 180
+  },
+  {
+    "problem_id": "life-comp-008",
+    "type": "死活",
+    "difficulty": "中级",
+    "title": "V2死活综合测评",
+    "description": "经过8题死活专项训练，总结一下：死活题训练中最重要的基本功是什么？",
+    "options": ["眼位和气的理解", "计算速度", "记忆力", "布局感觉"],
+    "answer": "眼位和气的理解",
+    "solution": "死活题的根本是对「眼位」和「气」的深刻理解。所有杀棋/做活的手段都建立在对这两者的精确计算之上。",
+    "board_situation": "死活基本功",
+    "estimated_time": 90
+  }
+]

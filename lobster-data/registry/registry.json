@@ -1,0 +1,76 @@
+{
+  "zhugebin-001": {
+    "node_id": "zhugebin-001",
+    "name": "诸葛斌的工作助手",
+    "node_type": "agent",
+    "host": "pc-Air.lan",
+    "port": 0,
+    "capabilities": [
+      "dialogue",
+      "research",
+      "code_generation",
+      "teaching",
+      "writing"
+    ],
+    "registered_at": "2026-06-24T23:26:40.192100",
+    "last_heartbeat": "2026-06-24T23:26:40.192589",
+    "status": "active",
+    "version": "0.5.0",
+    "metadata": {
+      "perspective": "AI技术研究、教育教学、科研创新",
+      "knowledge_base": "计算机科学、人工智能、软件开发、教育教学",
+      "value_orientation": "协作创新",
+      "learning_rate": "medium",
+      "platform": "macOS"
+    }
+  },
+  "hermes": {
+    "node_id": "hermes",
+    "name": "Hermes(教练节点)",
+    "node_type": "hybrid",
+    "host": "pc-Air.lan",
+    "port": 0,
+    "capabilities": [
+      "dialogue",
+      "coaching",
+      "project_management",
+      "reasoning",
+      "memory"
+    ],
+    "registered_at": "2026-06-24T23:26:50.385762",
+    "last_heartbeat": "2026-06-24T23:26:50.386684",
+    "status": "active",
+    "version": "0.5.0",
+    "metadata": {
+      "perspective": "网络协调、任务分配、知识整合",
+      "knowledge_base": "系统架构、网络通信、分布式系统、AI协调",
+      "value_orientation": "协作创新",
+      "learning_rate": "medium",
+      "platform": "macOS"
+    }
+  },
+  "lobster-001": {
+    "node_id": "lobster-001",
+    "name": "Lobster-001(协作节点)",
+    "node_type": "agent",
+    "host": "pc-Air.lan",
+    "port": 0,
+    "capabilities": [
+      "dialogue",
+      "research",
+      "data_analysis",
+      "document_creation"
+    ],
+    "registered_at": "2026-06-24T23:26:57.972590",
+    "last_heartbeat": "2026-06-24T23:26:57.973383",
+    "status": "active",
+    "version": "0.5.0",
+    "metadata": {
+      "perspective": "数据处理、信息检索、协作支持",
+      "knowledge_base": "数据分析、信息检索、自然语言处理",
+      "value_orientation": "协作创新",
+      "learning_rate": "medium",
+      "platform": "macOS"
+    }
+  }
+}

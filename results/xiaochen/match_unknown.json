@@ -1,0 +1,22 @@
+{
+  "task_id": "go-match-20260629_144249",
+  "type": "go_match",
+  "title": "小龙虾网络围棋对局验证赛",
+  "description": "通过围棋对局验证消息通道是否正常工作",
+  "participants": [
+    "xiaochen",
+    "zhuguxia"
+  ],
+  "format": "9路棋盘",
+  "time_control": "每方10分钟，30秒3次",
+  "deadline": "2026-06-29T18:42:49+08:00",
+  "requirements": {
+    "problems": 20,
+    "games": 2,
+    "target_accuracy": 0.8
+  },
+  "message_channel_test": true,
+  "created_at": "2026-06-29T14:42:49.766208+08:00",
+  "created_by": "zhugema",
+  "cc_tracking_id": "track-030dea86"
+}
