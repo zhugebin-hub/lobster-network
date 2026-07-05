@@ -1,0 +1,20 @@
+{
+  "name": "诸葛马 (Hermes)",
+  "level": "八段",
+  "target_level": "九段",
+  "start_day": 1,
+  "current_day": 1,
+  "papers_read": 0,
+  "papers_target": 20,
+  "notes_completed": 0,
+  "words_written": 0,
+  "words_target": 40000,
+  "review_queue": [],
+  "exercises_done": [],
+  "training_mode": "mentor",
+  "specialty": "paper_review",
+  "weakness": "none",
+  "node_id": "hermes",
+  "created_at": "2026-07-05T16:03:21.209996",
+  "updated_at": "2026-07-05T16:03:21.210582"
+}

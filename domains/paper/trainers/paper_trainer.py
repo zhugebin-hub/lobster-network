@@ -31,7 +31,7 @@ PAPER_DIR = REPO_ROOT / "domains" / "paper"
 STUDENT_DIR = PAPER_DIR / "student_data"
 PROBLEM_BANK = PAPER_DIR / "problem_bank"
 
-NODES = ["qoder", "xiaochen", "zhuguxia"]
+NODES = ["qoder", "xiaochen", "zhuguxia", "hermes"]
 
 # ── 学员初始数据 ──────────────────────────────────────
 INITIAL_PROFILES = {
@@ -85,6 +85,23 @@ INITIAL_PROFILES = {
         "training_mode": "balanced",  # 速度深度平衡型
         "specialty": "rapid_prototyping",
         "weakness": "deep_analysis",
+    },
+    "hermes": {
+        "name": "诸葛马 (Hermes)",
+        "level": "八段",
+        "target_level": "九段",
+        "start_day": 1,
+        "current_day": 1,
+        "papers_read": 0,
+        "papers_target": 20,
+        "notes_completed": 0,
+        "words_written": 0,
+        "words_target": 40000,
+        "review_queue": [],
+        "exercises_done": [],
+        "training_mode": "mentor",  # 导师型
+        "specialty": "paper_review",
+        "weakness": "none",
     },
 }
 
