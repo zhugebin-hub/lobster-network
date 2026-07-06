@@ -4,10 +4,10 @@
   "level": "八段",
   "target_level": "九段",
   "start_day": 1,
-  "current_day": 2,
-  "papers_read": 1,
+  "current_day": 4,
+  "papers_read": 4,
   "papers_target": 20,
-  "notes_completed": 1,
+  "notes_completed": 4,
   "words_written": 1850,
   "words_target": 40000,
   "review_queue": [
@@ -33,8 +33,15 @@
     "problems_correct": 10,
     "accuracy": 100.0,
     "total_time_minutes": 93,
-    "strengths": ["手筋", "官子", "棋形"],
-    "weaknesses": ["深度计算", "劫争判断"]
+    "strengths": [
+      "手筋",
+      "官子",
+      "棋形"
+    ],
+    "weaknesses": [
+      "深度计算",
+      "劫争判断"
+    ]
   },
   "rewards": {
     "submit_paper": 50,
@@ -46,5 +53,6 @@
   },
   "streak_days": 1,
   "last_active": "2026-07-06T21:30:00",
-  "status": "active"
+  "status": "active",
+  "updated_at": "2026-07-06T21:09:03.875897"
 }

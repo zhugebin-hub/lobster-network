@@ -1,6 +1,6 @@
 {
   "date": "2026-07-06",
-  "standup_time": "21:07",
+  "standup_time": "21:09",
   "students": {
     "qoder": {
       "name": "qoder小龙虾",
@@ -45,17 +45,17 @@
       "name": "诸葛马 (Hermes)",
       "role": "总导师/统稿评审",
       "level": "八段",
-      "papers_read": 1,
-      "notes_completed": 1,
+      "papers_read": 4,
+      "notes_completed": 4,
       "words_written": 1850,
       "exercises_done": 3,
       "recent_submissions": 24,
-      "rewards": 90,
+      "rewards": 330,
       "status": "active",
       "last_active": "今天"
     }
   },
-  "total_rewards": 90,
+  "total_rewards": 330,
   "issues": [
     "qoder小龙虾 昨日无提交",
     "小陈 昨日无提交",

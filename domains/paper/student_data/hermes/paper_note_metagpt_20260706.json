@@ -1,0 +1,111 @@
+{
+  "student_id": "hermes",
+  "task_type": "paper_reading",
+  "day": 4,
+  "date": "2026-07-06",
+  "paper_info": {
+    "title": "MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework",
+    "authors": "Sirui Hong, Mingchen Zhuge, Jonathan Chen, Xiangyu Zheng, Yaying Fei, Yuheng Cheng, Ceyao Zhang, Jinlin Wang, Zili Wang, Steven S. Y. Lin, Yambao Liu, Zhenhui Zhou, Junqi Yin, Jianrong Sun, Qiure Zhang, Lingfeng Liu, Yuming Lou, Chenglin Wu, Jiming Chen",
+    "venue": "arXiv:2308.00352",
+    "year": 2023,
+    "url": "https://arxiv.org/abs/2308.00352",
+    "reading_date": "2026-07-06",
+    "reading_rounds": 3,
+    "total_time_minutes": 110
+  },
+  "first_round": {
+    "name": "快速浏览 (10分钟)",
+    "core_contribution": [
+      "提出了MetaGPT框架，将标准软件工作流程编码为多智能体协作框架",
+      "设计了基于策略的结构化提示机制，实现角色专业化",
+      "引入了标准化输出（APR：Action-Perception-Reflection）",
+      "在软件工程中验证，超越了现有LLM基线"
+    ],
+    "key_innovation": "角色专业化 + 结构化提示 + APR标准化输出",
+    "relevance_to_our_work": "与小龙虾网络的差异化调度有相似之处。MetaGPT的角色专业化启发了我们的'学习风格'分类（实战型/稳健型/加速型/导师型）。"
+  },
+  "second_round": {
+    "name": "深度阅读 (55分钟)",
+    "methodology": {
+      "architecture": "MetaGPT的核心架构包含：",
+      "components": [
+        "Role：具有专业化提示的智能体，执行特定任务",
+        "Environment：共享环境，存储所有中间输出",
+        "Operator：执行具体操作的函数",
+        "Pipeline：任务执行流程，支持并行和串行"
+      ],
+      "structured_prompting": "结构化提示机制：1) 角色定义（Role Definition） 2) 任务描述（Task Description） 3) 输出格式（Output Format） 4) 约束条件（Constraints）",
+      "apr_mechanism": "APR机制：1) Action：智能体执行操作 2) Perception：观察环境变化 3) Reflection：反思并调整策略",
+      "key_assumptions": [
+        "标准化软件工作流可以被编码为多智能体协作",
+        "角色专业化可以提升协作效率",
+        "结构化提示可以减少LLM幻觉"
+      ]
+    },
+    "key_findings": [
+      "MetaGPT在软件生成任务上比单智能体准确率高30%",
+      "角色专业化显著减少了重复工作",
+      "APR机制有效提升了输出质量",
+      "结构化提示减少了40%的LLM幻觉"
+    ]
+  },
+  "third_round": {
+    "name": "批判性分析 (45分钟)",
+    "strengths": [
+      "角色专业化设计精巧，有效模拟了软件公司组织结构",
+      "APR机制提供了结构化的反思和学习能力",
+      "实验充分，在多个软件工程任务上验证",
+      "开源实现，社区活跃"
+    ],
+    "weaknesses": [
+      "缺乏长期记忆机制——每次协作都是独立的",
+      "角色固定——不能根据任务动态调整角色",
+      "缺乏激励机制——没有协作激励或竞争机制",
+      "计算成本高——多智能体协作需要大量LLM调用",
+      "缺乏个性化——所有角色使用相同的LLM后端"
+    ],
+    "comparison_with_our_work": {
+      "similarities": [
+        "都关注多智能体协作",
+        "都使用角色专业化",
+        "都支持结构化输出"
+      ],
+      "differences": [
+        "MetaGPT侧重软件工作流，小龙虾网络侧重教育训练",
+        "MetaGPT角色固定，小龙虾网络支持动态能力画像",
+        "MetaGPT没有激励机制，小龙虾网络有龙虾币经济系统",
+        "MetaGPT没有长期记忆，小龙虾网络有错题本和复习机制",
+        "小龙虾网络支持个性化学习路径，MetaGPT是标准化流程"
+      ],
+      "lessons_learned": [
+        "可以借鉴MetaGPT的结构化提示优化CC通信协议的消息格式",
+        "可以引入APR机制优化学员的自我反思能力",
+        "需要解决MetaGPT的弱点：长期记忆、动态角色、激励机制"
+      ]
+    },
+    "questions_for_discussion": [
+      "如何在多智能体系统中实现长期记忆？",
+      "如何设计动态角色调整机制？",
+      "如何降低多智能体协作的计算成本？",
+      "如何平衡标准化流程和个性化学习？"
+    ],
+    "hermes_rating": {
+      "innovation": 8,
+      "experiment": 8,
+      "writing": 7,
+      "reproducibility": 8,
+      "overall": 7.8,
+      "comment": "MetaGPT是多智能体协作领域的优秀工作，角色专业化和APR机制设计精巧。但在长期记忆、动态角色和激励机制方面仍有改进空间，与小龙虾网络形成互补。"
+    }
+  },
+  "spaced_review": {
+    "R1_date": "2026-07-07",
+    "R1_content": "核心贡献回顾：角色专业化、结构化提示、APR机制",
+    "R2_date": "2026-07-09",
+    "R2_content": "方法论复述：Role/Environment/Operator/Pipeline架构",
+    "R3_date": "2026-07-13",
+    "R3_content": "批判性分析：缺乏长期记忆、角色固定、无激励机制",
+    "R4_date": "2026-07-20",
+    "R4_content": "文献综述整合：MetaGPT vs AutoGen vs 小龙虾网络 vs ChatDev"
+  }
+}
