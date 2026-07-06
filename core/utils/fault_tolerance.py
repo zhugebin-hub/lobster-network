@@ -16,7 +16,7 @@ import logging
 import threading
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Set, Type, Union
+from typing import Any, Callable, Dict, List, Optional, Set, Tuple, Type, Union
 from dataclasses import dataclass, field
 from functools import wraps
 
@@ -423,3 +423,31 @@ class GracefulDegradation:
             "total_strategies": len(self._strategies),
             "strategies": self.get_strategies(),
         }
+
+
+class FaultTolerance:
+    """故障容错聚合门面，统一暴露 HealthChecker + GracefulDegradation"""
+
+    def __init__(self):
+        self.health = HealthChecker()
+        self.degradation = GracefulDegradation()
+
+    def start(self):
+        self.health.start()
+
+    def stop(self):
+        self.health.stop()
+
+    def get_health_report(self):
+        return self.health.get_health_report()
+
+    def get_report(self):
+        return {
+            "health": self.health.get_health_report(),
+            "degradation": self.degradation.get_report(),
+        }
+
+
+def get_fault_tolerance() -> FaultTolerance:
+    """工厂函数：返回 FaultTolerance 聚合实例"""
+    return FaultTolerance()

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-小龙虾网络 V5.0 统一运行时入口
+小龙虾网络 V5.2 统一运行时入口
 
-将四大核心能力串联为完整的运行时管线：
+将十四大核心能力串联为完整的运行时管线：
   输入 → Harness 安全过滤 → Orchestrator 编排调度
        → Metrics 可观测采集 → Economy 经济结算
        → Emergence 涌现检测 → 输出
@@ -46,7 +46,7 @@ logger.addHandler(_ch)
 def load_config() -> Dict[str, Any]:
     """加载运行时配置，缺失则使用默认值"""
     default = {
-        "version": "5.1.0",
+        "version": "5.2.0",
         "node_id": "qoder",
         "modules": {
             "harness": {"enabled": True, "risk_threshold": "medium"},
@@ -58,6 +58,12 @@ def load_config() -> Dict[str, Any]:
             "resource_manager": {"enabled": True},
             "cost_optimizer": {"enabled": True},
             "mutual_learning": {"enabled": True},
+            "a2a_protocol": {"enabled": True},
+            "memory_manager": {"enabled": True},
+            "cognition_layer": {"enabled": True},
+            "compliance_guard": {"enabled": True},
+            "dynamic_team_selector": {"enabled": True},
+            "failure_attribution": {"enabled": True},
         },
         "budget": {"daily_limit_lbc": 100.0, "alert_pct": 80.0},
         "nodes": ["qoder", "xiaochen", "zhuguxia", "hermes", "xiaowei"],
@@ -87,7 +93,7 @@ class LobsterRuntime:
         self._init_modules()
 
     def _init_modules(self):
-        """按依赖顺序初始化八大模块"""
+        """按依赖顺序初始化十四大模块"""
         mods = self.config["modules"]
 
         # 1) Harness 安全护栏
@@ -95,14 +101,14 @@ class LobsterRuntime:
             from core.harness import AgentHarness
             h = AgentHarness()
             self.modules["harness"] = h
-            logger.info("[1/8] Harness 安全护栏已加载")
+            logger.info("[1/14] Harness 安全护栏已加载")
 
         # 2) Orchestrator 编排引擎
         if mods.get("orchestrator", {}).get("enabled", True):
             from core.orchestrator import RLOrchestrator
             orch = RLOrchestrator()
             self.modules["orchestrator"] = orch
-            logger.info("[2/8] RL-Orchestrator 编排引擎已加载")
+            logger.info("[2/14] RL-Orchestrator 编排引擎已加载")
 
         # 3) Observability 可观测性
         if mods.get("observability", {}).get("enabled", True):
@@ -111,7 +117,7 @@ class LobsterRuntime:
             ed = EmergenceDetector()
             self.modules["metrics"] = mc
             self.modules["emergence"] = ed
-            logger.info("[3/8] Observability 可观测性已加载（采集器+涌现检测）")
+            logger.info("[3/14] Observability 可观测性已加载（采集器+涌现检测）")
 
         # 4) Economy 经济系统
         if mods.get("economy", {}).get("enabled", True):
@@ -119,21 +125,21 @@ class LobsterRuntime:
             eco = LBCEconomy()
             eco.initialize()
             self.modules["economy"] = eco
-            logger.info("[4/8] LBC 经济系统已加载")
+            logger.info("[4/14] LBC 经济系统已加载")
 
         # 5) Fault Tolerance 故障容错 (V5.1)
         if mods.get("fault_tolerance", {}).get("enabled", True):
             from core.utils.fault_tolerance import get_fault_tolerance
             ft = get_fault_tolerance()
             self.modules["fault_tolerance"] = ft
-            logger.info("[5/8] FaultTolerance 故障容错已加载")
+            logger.info("[5/14] FaultTolerance 故障容错已加载")
 
         # 6) Resource Manager 资源管理 (V5.1)
         if mods.get("resource_manager", {}).get("enabled", True):
             from core.utils.resource_manager import get_resource_manager
             rm = get_resource_manager()
             self.modules["resource_manager"] = rm
-            logger.info("[6/8] ResourceManager 资源管理已加载")
+            logger.info("[6/14] ResourceManager 资源管理已加载")
 
         # 7) Cost Optimizer 成本优化 (V5.1)
         if mods.get("cost_optimizer", {}).get("enabled", True):
@@ -143,7 +149,7 @@ class LobsterRuntime:
                 alert_threshold_pct=self.config.get("budget", {}).get("alert_pct", 80.0),
             )
             self.modules["cost_optimizer"] = co
-            logger.info("[7/8] CostOptimizer 成本优化已加载")
+            logger.info("[7/14] CostOptimizer 成本优化已加载")
 
         # 8) Mutual Learning 互相学习 (V5.1)
         if mods.get("mutual_learning", {}).get("enabled", True):
@@ -152,7 +158,51 @@ class LobsterRuntime:
             learners = load_learners_from_profiles()
             ml = MutualLearningEngine(learners)
             self.modules["mutual_learning"] = ml
-            logger.info("[8/8] MutualLearning 互相学习引擎已加载")
+            logger.info("[8/14] MutualLearning 互相学习引擎已加载")
+
+        # ── V5.2 六大新模块 ──────────────────────────
+
+        # 9) A2A Protocol 智能体间通信 (V5.2)
+        if mods.get("a2a_protocol", {}).get("enabled", True):
+            from core.network.a2a_protocol import A2AProtocol
+            a2a = A2AProtocol()
+            self.modules["a2a_protocol"] = a2a
+            logger.info("[9/14] A2A Protocol 智能体通信协议已加载")
+
+        # 10) Memory Manager 三层记忆架构 (V5.2)
+        if mods.get("memory_manager", {}).get("enabled", True):
+            from core.agents.memory_manager import MemoryManager
+            mm = MemoryManager()
+            self.modules["memory_manager"] = mm
+            logger.info("[10/14] MemoryManager 三层记忆架构已加载 (MemAct+DCPO)")
+
+        # 11) Cognition Layer 认知-执行分离 (V5.2)
+        if mods.get("cognition_layer", {}).get("enabled", True):
+            from core.orchestrator.cognition_layer import CognitionLayer
+            cl = CognitionLayer()
+            self.modules["cognition_layer"] = cl
+            logger.info("[11/14] CognitionLayer 认知-执行分离已加载")
+
+        # 12) Compliance Guard 安全合规层 (V5.2)
+        if mods.get("compliance_guard", {}).get("enabled", True):
+            from core.harness.compliance_guard import ComplianceGuard
+            cg = ComplianceGuard()
+            self.modules["compliance_guard"] = cg
+            logger.info("[12/14] ComplianceGuard 安全合规层已加载 (EU AI Act + CuP)")
+
+        # 13) Dynamic Team Selector 动态团队架构搜索 (V5.2)
+        if mods.get("dynamic_team_selector", {}).get("enabled", True):
+            from core.orchestrator.dynamic_team_selector import DynamicTeamSelector
+            dts = DynamicTeamSelector()
+            self.modules["dynamic_team_selector"] = dts
+            logger.info("[13/14] DynamicTeamSelector 动态团队架构搜索已加载 (MaAS+性能+11%/成本-55%)")
+
+        # 14) Failure Attribution 失败自动归因 (V5.2)
+        if mods.get("failure_attribution", {}).get("enabled", True):
+            from core.harness.failure_attribution import FailureAttribution
+            fa = FailureAttribution(session_id=self.node_id)
+            self.modules["failure_attribution"] = fa
+            logger.info("[14/14] FailureAttribution 失败自动归因已加载 (Who&When)")
 
     # ── 管线处理 ──────────────────────────────────
 
@@ -232,7 +282,7 @@ class LobsterRuntime:
     def status(self) -> Dict[str, Any]:
         """返回运行时状态摘要"""
         info = {
-            "runtime": "Lobster Network V5.0",
+            "runtime": "Lobster Network V5.2",
             "node_id": self.node_id,
             "loaded_modules": list(self.modules.keys()),
             "config_version": self.config.get("version", "unknown"),
@@ -303,7 +353,7 @@ class LobsterRuntime:
     def start(self):
         """启动运行时（守护模式）"""
         self.started_at = datetime.now()
-        logger.info(f"小龙虾网络 V5.0 运行时启动 — 节点: {self.node_id}")
+        logger.info(f"小龙虾网络 V5.2 运行时启动 — 节点: {self.node_id}")
         logger.info(f"已加载模块: {list(self.modules.keys())}")
 
         status = self.status()
@@ -316,7 +366,7 @@ class LobsterRuntime:
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="小龙虾网络 V5.0 统一运行时")
+    parser = argparse.ArgumentParser(description="小龙虾网络 V5.2 统一运行时")
     parser.add_argument("--mode", choices=["start", "status", "train", "test"],
                         default="status", help="运行模式")
     parser.add_argument("--node", default=None, help="指定节点ID（覆盖配置）")
@@ -370,7 +420,7 @@ def system_health(config_path: Optional[str] = None) -> Dict[str, Any]:
 
     report = {
         "timestamp": datetime.now().isoformat(),
-        "version": "V5.0",
+        "version": "V5.2",
         "node_id": config.get("node_id", "unknown"),
         "components": {},
         "overall_status": "healthy",
@@ -442,7 +492,7 @@ def print_health_report():
     try:
         report = system_health()
         print("\n" + "=" * 60)
-        print("  小龙虾网络 V5.0 — 系统健康报告")
+        print("  小龙虾网络 V5.2 — 系统健康报告")
         print("=" * 60)
         print(f"  节点 ID : {report['node_id']}")
         print(f"  整体状态: {report['overall_status'].upper()}")

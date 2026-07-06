@@ -35,7 +35,7 @@ logger.setLevel(logging.INFO)
 # 常量与路径
 # ============================================================
 
-SHARED_ROOT = "/shared"
+SHARED_ROOT = os.environ.get("LOBSTER_SHARED_BASE", os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "shared"))
 PAPER_TRAINING_DIR = os.path.join(SHARED_ROOT, "training", "paper")
 SHARED_METHODOLOGY_POOL = os.path.join(PAPER_TRAINING_DIR, "shared_methodology_pool.json")
 MUTUAL_LEARNING_LOG = os.path.join(PAPER_TRAINING_DIR, "mutual_learning_log.json")

@@ -1,5 +1,5 @@
 {
-  "version": "5.0.0",
+  "version": "5.2.0",
   "node_id": "qoder",
   "modules": {
     "harness": {
@@ -39,6 +39,45 @@
       "enabled": true,
       "sensitivity": 0.7,
       "detection_window_min": 5
+    },
+    "a2a_protocol": {
+      "enabled": true,
+      "broker_type": "internal",
+      "discovery_interval_sec": 30,
+      "max_retry": 3
+    },
+    "memory_manager": {
+      "enabled": true,
+      "task_state_persistence": true,
+      "long_term_ttl_days": 90,
+      "context_curation_threshold": 0.6,
+      "dcpo_adaptive": true
+    },
+    "cognition_layer": {
+      "enabled": true,
+      "max_plan_depth": 6,
+      "confidence_threshold": 0.5,
+      "auto_rollback": true
+    },
+    "compliance_guard": {
+      "enabled": true,
+      "audit_trail_enabled": true,
+      "risk_level": "high",
+      "cup_filter_enabled": true,
+      "eu_ai_act_compliant": true
+    },
+    "dynamic_team_selector": {
+      "enabled": true,
+      "dqn_learning": true,
+      "performance_weight": 0.6,
+      "cost_weight": 0.4,
+      "max_team_size": 8
+    },
+    "failure_attribution": {
+      "enabled": true,
+      "attribution_dimensions": ["agent_selection", "tool_call", "parameter_passing", "timing_dependency", "environment_state"],
+      "auto_report": true,
+      "max_attribution_depth": 3
     }
   },
   "nodes": ["qoder", "xiaochen", "zhuguxia", "hermes", "xiaowei"],

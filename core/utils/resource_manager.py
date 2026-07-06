@@ -449,3 +449,29 @@ class LRUCache(Generic[T]):
                 "evictions": self._evictions,
                 "expirations": self._expirations,
             }
+
+
+class ResourceManager:
+    """资源管理聚合门面，统一暴露连接池 + 任务批处理 + LRU 缓存"""
+
+    def __init__(self):
+        self.pool = ConnectionPool(max_connections=10)
+        self.batcher = TaskBatcher(batch_size=50, time_window_s=5.0)
+        self.cache = LRUCache[str](capacity=1000, ttl_s=300)
+
+    def get_stats(self):
+        return {
+            "pool": self.pool.get_stats(),
+            "batcher": self.batcher.get_stats() if hasattr(self.batcher, 'get_stats') else {},
+            "cache": self.cache.stats(),
+        }
+
+    def shutdown(self):
+        self.pool.shutdown()
+        if hasattr(self.batcher, 'flush'):
+            self.batcher.flush()
+
+
+def get_resource_manager() -> ResourceManager:
+    """工厂函数：返回 ResourceManager 聚合实例"""
+    return ResourceManager()

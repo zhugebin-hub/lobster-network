@@ -27,7 +27,7 @@ import copy
 # ─────────────────────────────────────────────
 
 # 共享文件系统根路径
-SHARED_ROOT = "/shared"
+SHARED_ROOT = os.environ.get("LOBSTER_SHARED_BASE", "/shared")
 
 # 论文训练目录
 PAPER_TRAINING_DIR = os.path.join(SHARED_ROOT, "training", "paper")
