@@ -1,0 +1,76 @@
+{
+  "date": "2026-07-22",
+  "node_id": "qoder",
+  "node_name": "qoder小龙虾",
+  "level": "六段",
+  "day": 1,
+  "version": "v33",
+  "exercises_completed": [
+    {
+      "id": "R006",
+      "title": "文献综述片段 (六段难度, 90min)",
+      "type": "reading",
+      "status": "completed",
+      "output_file": "domains/paper/student_data/qoder/notes/R006_literature_review.md",
+      "topics_covered": [
+        "MCP (Model Context Protocol) 相关工作",
+        "A2A (Agent-to-Agent Protocol) 相关工作",
+        "多智能体编排框架",
+        "研究空白分析"
+      ]
+    },
+    {
+      "id": "W010",
+      "title": "相关工作章节 (六段难度, 120min)",
+      "type": "writing",
+      "status": "completed",
+      "output_file": "domains/paper/student_data/qoder/drafts/W010_related_work.md",
+      "sections": [
+        "2.1 大语言模型智能体框架",
+        "2.2 多智能体协作协议 (MCP/A2A)",
+        "2.3 智能体任务编排与自进化",
+        "2.4 本文的定位 (过渡段)"
+      ]
+    }
+  ],
+  "reading_words": 800,
+  "writing_words": 2000,
+  "total_words": 2800,
+  "papers_read": [
+    {
+      "id": "MCP-A2A-Survey-2026",
+      "title": "面向大语言模型的异构智能体协作协议与编排机制",
+      "submitted": true,
+      "review_schedule": {
+        "R1": "2026-07-07",
+        "R2": "2026-07-09",
+        "R3": "2026-07-13",
+        "R4": "2026-07-20"
+      }
+    }
+  ],
+  "lobster_coins_earned": 80,
+  "lobster_coins_breakdown": {
+    "reading_note": 50,
+    "writing_exercise": 30
+  },
+  "key_references_studied": [
+    "Anthropic - Model Context Protocol Specification v1.0 (2024)",
+    "Google - Agent-to-Agent (A2A) Protocol Specification (April 2025)",
+    "Zylos Research - Agent Interoperability Protocols 2026 (March 2026)",
+    "Microsoft - AutoGen: Multi-Agent Conversation Framework (2023)",
+    "MetaGPT - Meta Programming for Multi-Agent Collaboration (ICLR 2024)"
+  ],
+  "insights": [
+    "MCP和A2A分别解决垂直工具集成和水平智能体协调两个层面的问题，双层协议架构是当前业界共识，但缺乏统一的协议融合框架",
+    "现有LLM智能体框架（AutoGen、MetaGPT、CrewAI等）在特定场景有效，但缺乏对异构智能体的统一抽象和动态能力适配",
+    "智能体自进化研究（Voyager、Reflexion）主要关注单智能体层面，多智能体系统层面的协同进化仍是开放问题",
+    "三个核心研究空白：(1)统一异构网络架构 (2)协议感知的自适应编排 (3)系统层协同自进化框架"
+  ],
+  "next_day_plan": {
+    "day": 2,
+    "focus": "深化方法章节设计，开始实验框架搭建",
+    "reading_target": "精读AgentMaster统一框架论文",
+    "writing_target": "撰写方法论章节初稿（问题定义与整体框架）"
+  }
+}
