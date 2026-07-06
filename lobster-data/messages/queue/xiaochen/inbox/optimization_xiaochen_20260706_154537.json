@@ -1,0 +1,10 @@
+{
+  "id": "8428e4af-4496-464d-9937-86cc98c302c3",
+  "from": "hermes",
+  "to": "xiaochen",
+  "type": "node_offline_reminder",
+  "timestamp": "2026-07-06T15:45:37.013762",
+  "title": "🚨 节点离线提醒",
+  "content": "小陈，您的节点已离线超过72小时。请检查SSH连接并完成今日学习任务。",
+  "action_required": true
+}
