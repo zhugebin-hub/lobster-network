@@ -1,0 +1,227 @@
+{
+  "phase": 3,
+  "name": "论文写作高级（实战与评审）",
+  "description": "论文整体评估、同行评审模拟、查重预估、论文修改、跨学科写作、AI辅助写作",
+  "problems": [
+    {
+      "id": "pw3-001",
+      "type": "paper_eval",
+      "difficulty": "高级",
+      "question": "论文整体评分中权重最高的维度是？",
+      "context": {"domain": "论文评估", "weight": "维度权重"},
+      "options": ["选题质量(10%)", "方法论(20%)", "格式规范(8%)", "摘要质量(8%)"],
+      "answer": "方法论(20%)",
+      "confidence": 0.90,
+      "reasoning": "论文整体评分中方法论权重最高(20%)，其次为研究结果(17%)和文献综述(15%)"
+    },
+    {
+      "id": "pw3-002",
+      "type": "paper_eval",
+      "difficulty": "高级",
+      "question": "如果一篇论文各维度得分均为0.70，整体评分约为？",
+      "context": {"domain": "论文评估", "calculation": "加权计算"},
+      "options": ["0.70", "0.65", "0.80", "0.60"],
+      "answer": "0.70",
+      "confidence": 0.95,
+      "reasoning": "各维度得分相同(0.70)时，加权平均仍为0.70，因为权重和为1"
+    },
+    {
+      "id": "pw3-003",
+      "type": "paper_eval",
+      "difficulty": "高级",
+      "question": "论文整体评分0.78对应的等级和投稿建议是？",
+      "context": {"domain": "论文评估", "grade": "等级与建议"},
+      "options": ["A级-顶刊", "B级-核心期刊", "C级-普通期刊", "D级-需修改"],
+      "answer": "B级-核心期刊",
+      "confidence": 0.90,
+      "reasoning": "0.75≤score<0.85为B级（良好），达到核心期刊投稿水平"
+    },
+    {
+      "id": "pw3-004",
+      "type": "peer_review",
+      "difficulty": "高级",
+      "question": "同行评审中'Major Revision（大修）'通常对应论文评分的哪个区间？",
+      "context": {"domain": "同行评审", "decision": "评审决定"},
+      "options": ["0.85+", "0.70-0.85", "0.55-0.70", "低于0.55"],
+      "answer": "0.55-0.70",
+      "confidence": 0.85,
+      "reasoning": "大修(Major Revision)对应0.55≤score<0.70，表示论文有修改价值但需大幅改动"
+    },
+    {
+      "id": "pw3-005",
+      "type": "peer_review",
+      "difficulty": "高级",
+      "question": "审稿人在'Reject（拒稿）'意见中通常会指出什么？",
+      "context": {"domain": "同行评审", "reject": "拒稿原因"},
+      "options": ["排版细节", "研究问题和贡献不清晰", "参考文献格式", "图表配色"],
+      "answer": "研究问题和贡献不清晰",
+      "confidence": 0.85,
+      "reasoning": "拒稿意见通常聚焦根本问题：研究问题不清晰、贡献不足、方法严重缺陷等，而非排版等细节"
+    },
+    {
+      "id": "pw3-006",
+      "type": "peer_review",
+      "difficulty": "高级",
+      "question": "同行评审中'Minor Revision（小修）'的典型建议是？",
+      "context": {"domain": "同行评审", "minor_revision": "小修建议"},
+      "options": ["重新设计研究方案", "补充实验细节以提高可复现性", "更换研究主题", "重写文献综述"],
+      "answer": "补充实验细节以提高可复现性",
+      "confidence": 0.85,
+      "reasoning": "小修意见通常是细节性修改：补充实验细节、完善论述、检查排版等，不涉及根本性改动"
+    },
+    {
+      "id": "pw3-007",
+      "type": "similarity_check",
+      "difficulty": "高级",
+      "question": "论文查重率15%通常属于哪个风险等级？",
+      "context": {"domain": "查重", "risk_level": "风险等级"},
+      "options": ["低风险(<10%)", "中风险(10-20%)", "高风险(20-30%)", "极高风险(>30%)"],
+      "answer": "中风险(10-20%)",
+      "confidence": 0.90,
+      "reasoning": "查重率15%处于10-20%区间，属于中风险，建议适当改写高重复率段落"
+    },
+    {
+      "id": "pw3-008",
+      "type": "similarity_check",
+      "difficulty": "高级",
+      "question": "降低查重率的正确方法是？",
+      "context": {"domain": "查重", "strategy": "降重策略"},
+      "options": ["同义词替换+句式重组", "将文字转为图片", "调整语序", "大量引用自己已发表论文"],
+      "answer": "同义词替换+句式重组",
+      "confidence": 0.85,
+      "reasoning": "正确的降重方式是在理解原文基础上用自己语言重新表述（同义词替换+句式重组），不能使用图片替代或自我抄袭"
+    },
+    {
+      "id": "pw3-009",
+      "type": "similarity_check",
+      "difficulty": "高级",
+      "question": "查重系统中'最大相似度'与'平均相似度'的区别是？",
+      "context": {"domain": "查重", "metrics": "相似度指标"},
+      "options": ["最大相似度是单篇最高重合率，平均是所有参考的平均", "两者相同", "平均相似度更高", "无区别"],
+      "answer": "最大相似度是单篇最高重合率，平均是所有参考的平均",
+      "confidence": 0.85,
+      "reasoning": "最大相似度反映与单篇文献的最高重合率（是否存在抄袭某篇），平均相似度反映整体重合水平"
+    },
+    {
+      "id": "pw3-010",
+      "type": "paper_revision",
+      "difficulty": "高级",
+      "question": "收到'大修'意见后，修改说明(Response Letter)应包含哪些内容？",
+      "context": {"domain": "论文修改", "response_letter": "修改说明"},
+      "options": ["仅列出修改的部分", "逐条回应审稿意见+说明修改内容+标注修改位置", "感谢审稿人即可", "重新提交论文"],
+      "answer": "逐条回应审稿意见+说明修改内容+标注修改位置",
+      "confidence": 0.90,
+      "reasoning": "修改说明应逐条回应每位审稿人的每条意见，说明如何修改（或为何不修改），并在论文中标注修改位置"
+    },
+    {
+      "id": "pw3-011",
+      "type": "paper_revision",
+      "difficulty": "高级",
+      "question": "论文修改时如果不同意审稿人意见，应该怎么做？",
+      "context": {"domain": "论文修改", "disagreement": "意见分歧"},
+      "options": ["直接忽略该意见", "礼貌但明确地说明理由和数据支撑", "删除相关内容", "更换期刊投稿"],
+      "answer": "礼貌但明确地说明理由和数据支撑",
+      "confidence": 0.90,
+      "reasoning": "可以不同意审稿意见，但必须有理有据地回应，提供数据或文献支撑，语气应礼貌专业"
+    },
+    {
+      "id": "pw3-012",
+      "type": "paper_revision",
+      "difficulty": "高级",
+      "question": "论文'讨论'部分应如何回应文献综述中识别的研究空白？",
+      "context": {"domain": "论文修改", "discussion": "讨论与文献呼应"},
+      "options": ["不需要回应", "明确说明本研究如何填补了该空白", "重复文献综述内容", "提出新的研究空白"],
+      "answer": "明确说明本研究如何填补了该空白",
+      "confidence": 0.90,
+      "reasoning": "讨论部分应与文献综述呼应，明确说明本研究的结果如何回应了引言中提出的问题、填补了识别的空白"
+    },
+    {
+      "id": "pw3-013",
+      "type": "cross_disciplinary",
+      "difficulty": "高级",
+      "question": "跨学科论文写作的最大挑战是？",
+      "context": {"domain": "跨学科", "challenge": "写作挑战"},
+      "options": ["语言翻译", "不同学科范式和术语的融合", "参考文献格式", "选题难度"],
+      "answer": "不同学科范式和术语的融合",
+      "confidence": 0.85,
+      "reasoning": "跨学科写作需融合不同学科的研究范式、术语体系和评价标准，使不同背景的读者都能理解"
+    },
+    {
+      "id": "pw3-014",
+      "type": "cross_disciplinary",
+      "difficulty": "高级",
+      "question": "AI+人文学科论文写作时应注意什么？",
+      "context": {"domain": "跨学科", "ai_humanities": "AI+人文"},
+      "options": ["只关注技术细节", "平衡技术方法与人文关怀", "忽略人文理论", "弱化AI应用"],
+      "answer": "平衡技术方法与人文关怀",
+      "confidence": 0.85,
+      "reasoning": "AI+人文跨学科论文应既展示技术方法创新，又体现人文理论深度和社会关怀，避免偏废一方"
+    },
+    {
+      "id": "pw3-015",
+      "type": "ai_writing",
+      "difficulty": "高级",
+      "question": "使用AI辅助论文写作时，以下哪种做法是合适的？",
+      "context": {"domain": "AI写作", "ethics": "学术伦理"},
+      "options": ["让AI直接生成全文并署名", "用AI辅助文献检索和语言润色，核心内容自主完成", "不声明使用AI", "用AI生成虚假数据"],
+      "answer": "用AI辅助文献检索和语言润色，核心内容自主完成",
+      "confidence": 0.95,
+      "reasoning": "AI可辅助文献检索、语言润色、格式检查等，但核心研究内容（选题、方法、分析、结论）必须自主完成，且应声明AI使用情况"
+    },
+    {
+      "id": "pw3-016",
+      "type": "ai_writing",
+      "difficulty": "高级",
+      "question": "AI辅助论文写作中'递归任务分解'方法的优势是？",
+      "context": {"domain": "AI写作", "recursive_decomposition": "递归分解"},
+      "options": ["减少论文字数", "将复杂写作任务分解为可管理的子任务，提升质量和效率", "替代人类思考", "自动生成参考文献"],
+      "answer": "将复杂写作任务分解为可管理的子任务，提升质量和效率",
+      "confidence": 0.90,
+      "reasoning": "递归任务分解将论文写作拆解为选题→大纲→各章节→段落→句子等层级，逐层完成，提升写作质量和效率"
+    },
+    {
+      "id": "pw3-017",
+      "type": "ai_writing",
+      "difficulty": "高级",
+      "question": "智能体(Agent)在自动论文撰写中可以承担哪些角色？",
+      "context": {"domain": "AI写作", "agent_roles": "智能体角色"},
+      "options": ["选题顾问+大纲生成器+文献检索员+写作助手+审稿模拟器", "仅能生成文字", "仅能检查格式", "完全替代研究者"],
+      "answer": "选题顾问+大纲生成器+文献检索员+写作助手+审稿模拟器",
+      "confidence": 0.90,
+      "reasoning": "智能体可在论文撰写全流程中担任多种角色：选题评估、大纲生成、文献检索、写作辅助、质量评估和审稿模拟"
+    },
+    {
+      "id": "pw3-018",
+      "type": "paper_eval",
+      "difficulty": "高级",
+      "question": "论文投稿时选择期刊应考虑哪些因素？",
+      "context": {"domain": "论文评估", "journal_selection": "期刊选择"},
+      "options": ["影响因子和学科匹配度", "审稿周期和录用率", "开放获取政策", "以上全部"],
+      "answer": "以上全部",
+      "confidence": 0.90,
+      "reasoning": "期刊选择需综合考虑影响因子、学科匹配、审稿周期、录用率、OA政策、版面费等多重因素"
+    },
+    {
+      "id": "pw3-019",
+      "type": "peer_review",
+      "difficulty": "高级",
+      "question": "作为审稿人，发现论文与已发表文献高度相似时应该？",
+      "context": {"domain": "同行评审", "plagiarism": "剽窃处理"},
+      "options": ["直接接收", "向编辑报告疑似剽窃并提供对比证据", "私下联系作者", "忽略不计"],
+      "answer": "向编辑报告疑似剽窃并提供对比证据",
+      "confidence": 0.95,
+      "reasoning": "审稿人发现疑似剽窃应向编辑报告并提供详细对比证据，由编辑决定后续处理，不应自行决定"
+    },
+    {
+      "id": "pw3-020",
+      "type": "ai_writing",
+      "difficulty": "高级",
+      "question": "智能体互相学习提升论文写作能力的机制是？",
+      "context": {"domain": "AI写作", "mutual_learning": "互相学习"},
+      "options": ["共享题库和写作模板", "交叉评审彼此的论文草稿", "积累优秀写作模式和常见错误", "以上全部"],
+      "answer": "以上全部",
+      "confidence": 0.90,
+      "reasoning": "智能体互相学习包括：共享题库/模板、交叉评审、积累写作模式和错误案例，通过反馈回路持续优化写作能力"
+    }
+  ]
+}

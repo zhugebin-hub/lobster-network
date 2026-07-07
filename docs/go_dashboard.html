@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦞 围棋训练监控仪表盘 - 小龙虾网络</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--dim:#64748b;--accent:#fbbf24;--green:#22c55e;--red:#ef4444;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--pink:#ec4899}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+  .header{background:linear-gradient(135deg,#111827 0%,#1e1b4b 100%);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+  .header h1{font-size:18px;color:var(--accent);display:flex;align-items:center;gap:8px}
+  .header-actions{display:flex;gap:8px;align-items:center}
+  .btn{padding:6px 12px;border-radius:8px;font-size:11px;border:1px solid var(--border);background:#0f172a;color:var(--text);cursor:pointer;transition:all .2s}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.primary{background:rgba(251,191,36,.2);border-color:var(--accent);color:var(--accent)}
+  .btn.danger{background:rgba(239,68,68,.2);border-color:var(--red);color:var(--red)}
+  .btn.success{background:rgba(34,197,94,.2);border-color:var(--green);color:var(--green)}
+  .layout{display:grid;grid-template-columns:300px 1fr 320px;gap:0;min-height:calc(100vh - 50px)}
+  .sidebar{background:var(--card);border-right:1px solid var(--border);padding:12px;overflow-y:auto;max-height:calc(100vh - 50px)}
+  .sidebar-right{background:var(--card);border-left:1px solid var(--border);padding:12px;overflow-y:auto;max-height:calc(100vh - 50px)}
+  .main{padding:12px;overflow-y:auto;max-height:calc(100vh - 50px)}
+  .section{margin-bottom:16px}
+  .section-title{font-size:13px;font-weight:600;color:var(--accent);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:10px}
+  .card:hover{border-color:rgba(251,191,36,.3)}
+  .badge{padding:2px 8px;border-radius:12px;font-size:10px;font-weight:600}
+  .badge-green{background:rgba(34,197,94,.15);color:var(--green)}
+  .badge-red{background:rgba(239,68,68,.15);color:var(--red)}
+  .badge-yellow{background:rgba(251,191,36,.15);color:var(--accent)}
+  .badge-blue{background:rgba(59,130,246,.15);color:var(--blue)}
+  .badge-purple{background:rgba(168,85,247,.15);color:var(--purple)}
+  .progress-bar{height:4px;background:#1e293b;border-radius:2px;overflow:hidden}
+  .progress-fill{height:100%;border-radius:2px;transition:width .5s}
+  .student-list{display:flex;flex-direction:column;gap:6px}
+  .student-item{background:#0f172a;border-radius:8px;padding:10px;cursor:pointer;transition:all .2s;border:1px solid transparent}
+  .student-item:hover{border-color:var(--accent)}
+  .student-item.active{border-color:var(--accent);background:rgba(251,191,36,.05)}
+  .student-name{font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+  .student-meta{font-size:11px;color:var(--dim);margin-top:4px}
+  .student-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:6px}
+  .student-stat{text-align:center;font-size:10px}
+  .student-stat .num{font-size:14px;font-weight:700}
+  .student-stat .label{color:var(--dim)}
+  .status-dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+  .status-dot.online{background:var(--green);box-shadow:0 0 4px var(--green)}
+  .status-dot.offline{background:var(--red)}
+  .status-dot.warning{background:var(--accent)}
+  /* 围棋棋盘 */
+  .board-container{display:flex;flex-direction:column;align-items:center;gap:12px}
+  .board-wrapper{position:relative;display:inline-block}
+  .board-canvas{border-radius:4px;cursor:pointer}
+  .board-info{display:flex;justify-content:space-between;width:100%;font-size:12px}
+  .player-info{display:flex;align-items:center;gap:6px;padding:6px 10px;background:#0f172a;border-radius:6px}
+  .player-info.active-player{border:1px solid var(--accent)}
+  .stone-indicator{width:16px;height:16px;border-radius:50%}
+  .stone-black{background:radial-gradient(circle at 30% 30%,#444,#000)}
+  .stone-white{background:radial-gradient(circle at 30% 30%,#fff,#ccc);border:1px solid #999}
+  .move-history{max-height:200px;overflow-y:auto;font-family:monospace;font-size:11px}
+  .move-item{padding:3px 6px;border-bottom:1px solid #1e293b;display:flex;gap:6px}
+  .move-num{color:var(--dim);width:24px}
+  .move-color{width:8px;height:8px;border-radius:50%;margin-top:2px}
+  .move-color.black{background:#000}
+  .move-color.white{background:#fff;border:1px solid #999}
+  .move-coord{color:var(--cyan)}
+  .move-time{color:var(--dim);margin-left:auto;font-size:10px}
+  /* 训练任务 */
+  .task-item{background:#0f172a;border-radius:6px;padding:8px 10px;margin-bottom:6px}
+  .task-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+  .task-title{font-size:12px;font-weight:600}
+  .task-difficulty{font-size:10px;color:var(--dim)}
+  .task-progress{display:flex;align-items:center;gap:6px;margin-top:4px}
+  .task-progress .progress-bar{flex:1}
+  .task-progress .pct{font-size:10px;color:var(--dim);min-width:30px}
+  /* 教练引导 */
+  .guide-panel{background:#0f172a;border-radius:8px;padding:10px}
+  .guide-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+  .guide-btn{padding:8px;border-radius:6px;font-size:11px;cursor:pointer;text-align:center;border:1px solid var(--border);background:#111827;color:var(--text);transition:all .2s}
+  .guide-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .guide-btn .icon{font-size:16px;display:block;margin-bottom:2px}
+  /* 对局列表 */
+  .game-item{background:#0f172a;border-radius:8px;padding:10px;margin-bottom:6px}
+  .game-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .game-players{font-size:12px;font-weight:600}
+  .game-status{font-size:10px}
+  .game-moves{font-size:11px;color:var(--dim);margin-top:4px}
+  .game-actions{display:flex;gap:4px;margin-top:6px}
+  /* 推荐 */
+  .rec-item{background:#0f172a;border-radius:6px;padding:8px 10px;margin-bottom:6px;border-left:3px solid var(--accent)}
+  .rec-item.high{border-left-color:var(--red)}
+  .rec-item.medium{border-left-color:var(--orange)}
+  .rec-content{font-size:12px;margin-bottom:4px}
+  .rec-meta{display:flex;justify-content:space-between;font-size:10px;color:var(--dim)}
+  .rec-actions{margin-top:6px;display:flex;gap:4px}
+  /* 模态框 */
+  .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:100}
+  .modal-overlay.show{display:flex}
+  .modal{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto}
+  .modal-title{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:12px}
+  .modal-body{margin-bottom:16px}
+  .modal-actions{display:flex;justify-content:flex-end;gap:8px}
+  .form-group{margin-bottom:12px}
+  .form-label{font-size:12px;color:var(--dim);margin-bottom:4px;display:block}
+  .form-select,.form-input{width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:#0f172a;color:var(--text);font-size:13px}
+  .form-select:focus,.form-input:focus{outline:none;border-color:var(--accent)}
+  /* 能力条 */
+  .ability-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+  .ability-name{font-size:11px;color:var(--dim);width:50px}
+  .ability-bar{flex:1;height:6px;background:#1e293b;border-radius:3px;overflow:hidden}
+  .ability-fill{height:100%;border-radius:3px}
+  .ability-val{font-size:11px;font-weight:600;width:30px;text-align:right}
+  /* 响应式 */
+  @media(max-width:1200px){.layout{grid-template-columns:1fr}.sidebar,.sidebar-right{max-height:none;border-right:none;border-left:none}}
+  .loading{text-align:center;padding:30px;color:var(--dim);font-size:13px}
+  .loading::before{content:'🦞';font-size:28px;display:block;margin-bottom:6px}
+  .tab-bar{display:flex;gap:4px;margin-bottom:12px}
+  .tab{padding:6px 12px;border-radius:6px;font-size:12px;cursor:pointer;background:#0f172a;border:1px solid var(--border);transition:all .2s}
+  .tab.active{background:rgba(251,191,36,.15);border-color:var(--accent);color:var(--accent)}
+  .update-time{font-size:10px;color:var(--dim);text-align:right;padding:6px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🦞 围棋训练监控仪表盘 <span style="font-size:11px;color:var(--dim)">小龙虾网络</span></h1>
+  <div class="header-actions">
+    <span class="badge badge-green" id="apiStatus">🔄 连接中...</span>
+    <button class="btn" onclick="fetchData()">↻ 刷新</button>
+    <button class="btn primary" onclick="showNewGameModal()">⚔️ 发起对局</button>
+    <button class="btn success" onclick="showHumanPlayModal()">🤝 人类参与</button>
+  </div>
+</div>
+
+<div class="layout">
+  <!-- 左侧：学员列表 -->
+  <div class="sidebar">
+    <div class="section">
+      <div class="section-title">👤 学员列表</div>
+      <div class="student-list" id="studentList"><div class="loading">加载中...</div></div>
+    </div>
+    <div class="section">
+      <div class="section-title">📊 系统状态</div>
+      <div id="systemStatus"><div class="loading">加载中...</div></div>
+    </div>
+  </div>
+
+  <!-- 中间：主内容区 -->
+  <div class="main">
+    <div class="tab-bar">
+      <div class="tab active" data-tab="overview" onclick="switchTab('overview')">📊 总览</div>
+      <div class="tab" data-tab="games" onclick="switchTab('games')">⚔️ 对局</div>
+      <div class="tab" data-tab="training" onclick="switchTab('training')">📚 训练</div>
+      <div class="tab" data-tab="board" onclick="switchTab('board')">🎮 棋盘</div>
+    </div>
+
+    <!-- 总览 -->
+    <div id="tab-overview"></div>
+    <!-- 对局 -->
+    <div id="tab-games" style="display:none"></div>
+    <!-- 训练 -->
+    <div id="tab-training" style="display:none"></div>
+    <!-- 棋盘 -->
+    <div id="tab-board" style="display:none"></div>
+  </div>
+
+  <!-- 右侧：教练引导 -->
+  <div class="sidebar-right">
+    <div class="section">
+      <div class="section-title">🎯 教练推荐 <span id="recCount" style="font-size:11px;color:var(--dim)">0</span></div>
+      <div id="recommendations"><div class="loading">加载中...</div></div>
+    </div>
+    <div class="section">
+      <div class="section-title">📋 学员详情</div>
+      <div id="studentDetail"><div class="loading">选择学员...</div></div>
+    </div>
+    <div class="section">
+      <div class="section-title">🎮 教练引导</div>
+      <div class="guide-panel">
+        <div style="font-size:12px;color:var(--dim);margin-bottom:6px">选择操作：</div>
+        <div class="guide-actions">
+          <div class="guide-btn" onclick="coachAction('start_training')"><span class="icon">📚</span>开始训练</div>
+          <div class="guide-btn" onclick="coachAction('play_game')"><span class="icon">⚔️</span>发起对局</div>
+          <div class="guide-btn" onclick="coachAction('review')"><span class="icon">🔍</span>复盘分析</div>
+          <div class="guide-btn" onclick="coachAction('rest')"><span class="icon">☕</span>休息提醒</div>
+        </div>
+        <div class="form-group" style="margin-top:8px">
+          <label class="form-label">引导消息</label>
+          <input class="form-input" id="guideMessage" placeholder="输入引导消息..." value="">
+        </div>
+        <button class="btn primary" style="width:100%;margin-top:4px" onclick="sendGuide()">📤 发送引导</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 发起对局模态框 -->
+<div class="modal-overlay" id="newGameModal">
+  <div class="modal">
+    <div class="modal-title">⚔️ 发起新对局</div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">黑方</label>
+        <select class="form-select" id="gameBlack"></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">白方</label>
+        <select class="form-select" id="gameWhite"></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">棋盘大小</label>
+        <select class="form-select" id="gameSize">
+          <option value="9">9×9 (入门)</option>
+          <option value="13">13×13 (进阶)</option>
+          <option value="19" selected>19×19 (正式)</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('newGameModal')">取消</button>
+      <button class="btn primary" onclick="startGame()">开始对局</button>
+    </div>
+  </div>
+</div>
+
+<!-- 人类参与模态框 -->
+<div class="modal-overlay" id="humanPlayModal">
+  <div class="modal">
+    <div class="modal-title">🤝 人类学员参与</div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">你的身份</label>
+        <select class="form-select" id="humanRole">
+          <option value="xiaochen">小陈</option>
+          <option value="zhuguxia">诸葛虾</option>
+          <option value="qoder">qoder</option>
+          <option value="human">人类学员</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">执棋颜色</label>
+        <select class="form-select" id="humanColor">
+          <option value="black">黑棋 (先手)</option>
+          <option value="white">白棋 (后手)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">对手</label>
+        <select class="form-select" id="humanOpponent">
+          <option value="xiaochen_ai">小陈 AI</option>
+          <option value="zhuguxia_ai">诸葛虾 AI</option>
+          <option value="qoder_ai">qoder AI</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('humanPlayModal')">取消</button>
+      <button class="btn success" onclick="startHumanGame()">开始对局</button>
+    </div>
+  </div>
+</div>
+
+<div class="update-time" id="updateTime">正在连接 API...</div>
+
+<script>
+// ============================================================
+// 全局状态
+// ============================================================
+let API_BASE = '/api';
+let students = {};
+let games = { active: [], completed: [] };
+let trainingTasks = {};
+let recommendations = [];
+let currentStudent = null;
+let currentTab = 'overview';
+let goBoard = null;
+let currentGame = null;
+let humanPlayer = null;
+
+// ============================================================
+// API 调用
+// ============================================================
+async function api(path, method = 'GET', data = null) {
+  try {
+    const opts = {
+      method,
+      headers: { 'Content-Type': 'application/json' }
+    };
+    if (data) opts.body = JSON.stringify(data);
+    const res = await fetch(`${API_BASE}${path}`, opts);
+    return await res.json();
+  } catch(e) {
+    console.error('API Error:', e);
+    return { error: e.message };
+  }
+}
+
+async function fetchData() {
+  try {
+    const [studentsRes, gamesRes, trainingRes, recRes] = await Promise.all([
+      api('/students'),
+      api('/games'),
+      api('/training'),
+      api('/coach/recommendations')
+    ]);
+    
+    if (!studentsRes.error) students = studentsRes;
+    if (!gamesRes.error) games = gamesRes;
+    if (!trainingRes.error) trainingTasks = trainingRes;
+    if (!recRes.error) recommendations = recRes;
+    
+    document.getElementById('apiStatus').className = 'badge badge-green';
+    document.getElementById('apiStatus').textContent = '✅ 已连接';
+    
+    renderAll();
+    document.getElementById('updateTime').textContent = `最后更新：${new Date().toLocaleString('zh-CN')}`;
+  } catch(e) {
+    document.getElementById('apiStatus').className = 'badge badge-red';
+    document.getElementById('apiStatus').textContent = '❌ 连接失败';
+  }
+}
+
+// ============================================================
+// 渲染
+// ============================================================
+function renderAll() {
+  renderStudentList();
+  renderSystemStatus();
+  renderOverview();
+  renderGames();
+  renderTraining();
+  renderRecommendations();
+  if (currentStudent) renderStudentDetail(currentStudent);
+}
+
+function renderStudentList() {
+  const list = document.getElementById('studentList');
+  list.innerHTML = Object.values(students).map(s => {
+    const isActive = s.stats.hours_ago < 48;
+    return `
+      <div class="student-item ${currentStudent === s.id ? 'active' : ''}" onclick="selectStudent('${s.id}')">
+        <div class="student-name">
+          <span class="status-dot ${isActive ? 'online' : 'offline'}"></span>
+          <span style="color:${s.color}">${s.name}</span>
+        </div>
+        <div class="student-meta">${s.role} · ${s.level}</div>
+        <div class="student-stats">
+          <div class="student-stat"><div class="num" style="color:${s.color}">${s.stats.total_games}</div><div class="label">对局</div></div>
+          <div class="student-stat"><div class="num" style="color:var(--green)">${s.stats.win_rate}%</div><div class="label">胜率</div></div>
+          <div class="student-stat"><div class="num" style="color:var(--cyan)">${s.stats.problems_solved}</div><div class="label">做题</div></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderSystemStatus() {
+  const activeCount = Object.values(students).filter(s => s.stats.hours_ago < 48).length;
+  const totalGames = games.active.length + games.completed.length;
+  document.getElementById('systemStatus').innerHTML = `
+    <div class="card" style="padding:10px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;text-align:center">
+        <div><div style="font-size:18px;font-weight:700;color:var(--green)">${activeCount}/${Object.keys(students).length}</div><div style="font-size:10px;color:var(--dim)">活跃学员</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:var(--cyan)">${games.active.length}</div><div style="font-size:10px;color:var(--dim)">进行中</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:var(--accent)">${totalGames}</div><div style="font-size:10px;color:var(--dim)">总对局</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:var(--purple)">${Object.values(trainingTasks).flat().length}</div><div style="font-size:10px;color:var(--dim)">训练任务</div></div>
+      </div>
+    </div>
+  `;
+}
+
+function renderOverview() {
+  const el = document.getElementById('tab-overview');
+  el.innerHTML = `
+    <div class="card">
+      <div class="section-title">📊 学员综合状态</div>
+      <table style="width:100%;font-size:12px;border-collapse:collapse">
+        <thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)">
+          <th style="text-align:left;padding:6px">学员</th><th>等级</th><th>对局</th><th>胜率</th><th>做题</th><th>正确率</th><th>状态</th>
+        </tr></thead>
+        <tbody>
+          ${Object.values(students).map(s => `
+            <tr style="border-bottom:1px solid #1e293b">
+              <td style="padding:6px"><span style="color:${s.color};font-weight:600">${s.name}</span></td>
+              <td>${s.level}</td>
+              <td>${s.stats.total_games.toLocaleString()}</td>
+              <td style="color:${s.stats.win_rate>=50?'var(--green)':'var(--orange)'}">${s.stats.win_rate}%</td>
+              <td>${s.stats.problems_solved}</td>
+              <td style="color:var(--green)">${s.stats.accuracy}%</td>
+              <td><span class="badge ${s.stats.hours_ago<48?'badge-green':'badge-red'}">${s.stats.hours_ago<48?'活跃':'停滞'}</span></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="section-title">⚔️ 正在进行</div>
+      ${games.active.length === 0 ? '<div style="font-size:12px;color:var(--dim)">暂无进行中的对局</div>' :
+        games.active.map(g => {
+          const blackName = students[g.black]?.name || g.black;
+          const whiteName = students[g.white]?.name || g.white;
+          return `
+            <div class="game-item">
+              <div class="game-header">
+                <div class="game-players">⚫ ${blackName} vs ⚪ ${whiteName}</div>
+                <span class="badge badge-red" style="animation:pulse 1.5s infinite">🔴 进行中</span>
+              </div>
+              <div class="game-moves">第 ${g.moves.length} 手 · ${g.board_size}×${g.board_size} · 当前: ${g.current_turn === 'black' ? '黑方' : '白方'}</div>
+              <div class="game-actions">
+                <button class="btn" onclick="viewGame('${g.id}')">👁️ 观战</button>
+                <button class="btn" onclick="switchTab('board')">🎮 棋盘</button>
+              </div>
+            </div>
+          `;
+        }).join('')
+      }
+    </div>
+  `;
+}
+
+function renderGames() {
+  const el = document.getElementById('tab-games');
+  el.innerHTML = `
+    <div class="card">
+      <div class="section-title">🔴 进行中 (${games.active.length})</div>
+      ${games.active.length === 0 ? '<div style="font-size:12px;color:var(--dim)">暂无进行中的对局</div>' :
+        games.active.map(g => renderGameItem(g, true)).join('')
+      }
+    </div>
+    <div class="card">
+      <div class="section-title">✅ 已完成 (${games.completed.length})</div>
+      ${games.completed.slice(-10).reverse().map(g => renderGameItem(g, false)).join('')}
+    </div>
+  `;
+}
+
+function renderGameItem(g, isActive) {
+  const blackName = students[g.black]?.name || g.black;
+  const whiteName = students[g.white]?.name || g.white;
+  return `
+    <div class="game-item">
+      <div class="game-header">
+        <div class="game-players">⚫ ${blackName} vs ⚪ ${whiteName}</div>
+        ${isActive ? 
+          `<span class="badge badge-red" style="animation:pulse 1.5s infinite">🔴 第${g.moves.length}手</span>` :
+          `<span class="badge badge-green">✅ ${g.result || '已结束'}</span>`
+        }
+      </div>
+      <div class="game-moves">${g.board_size}×${g.board_size} · ${g.started_at ? new Date(g.started_at).toLocaleString('zh-CN') : g.date}</div>
+      ${g.score ? `<div class="game-moves">比分: ${g.score}</div>` : ''}
+      ${isActive ? `
+        <div class="game-actions">
+          <button class="btn" onclick="viewGame('${g.id}')">👁️ 观战</button>
+          <button class="btn" onclick="switchTab('board')">🎮 棋盘</button>
+          <button class="btn danger" onclick="resignGame('${g.id}')">🏳️ 认输</button>
+        </div>
+      ` : ''}
+    </div>
+  `;
+}
+
+function renderTraining() {
+  const el = document.getElementById('tab-training');
+  el.innerHTML = Object.entries(trainingTasks).map(([sid, tasks]) => {
+    const student = students[sid];
+    if (!student) return '';
+    return `
+      <div class="card">
+        <div class="section-title">
+          <span style="color:${student.color}">${student.name} · 训练任务</span>
+          <span class="badge badge-blue">${tasks.length} 个任务</span>
+        </div>
+        ${tasks.map(t => `
+          <div class="task-item">
+            <div class="task-header">
+              <span class="task-title">${t.type}</span>
+              <span class="badge ${t.status==='已完成'?'badge-green':t.status==='进行中'?'badge-yellow':'badge-red'}">${t.status}</span>
+            </div>
+            <div class="task-difficulty">${t.difficulty} · ${t.started_at ? new Date(t.started_at).toLocaleDateString('zh-CN') : '未开始'}</div>
+            <div class="task-progress">
+              <div class="progress-bar"><div class="progress-fill" style="width:${t.progress}%;background:${t.progress>80?'var(--green)':t.progress>40?'var(--accent)':'var(--red)'}"></div></div>
+              <span class="pct">${t.progress}%</span>
+            </div>
+          </div>
+        `).join('')}
+        <button class="btn primary" style="width:100%;margin-top:6px" onclick="startTrainingTask('${sid}')">➕ 新增训练</button>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderRecommendations() {
+  const el = document.getElementById('recommendations');
+  document.getElementById('recCount').textContent = recommendations.length;
+  if (recommendations.length === 0) {
+    el.innerHTML = '<div style="font-size:12px;color:var(--dim)">暂无推荐</div>';
+    return;
+  }
+  el.innerHTML = recommendations.map(r => `
+    <div class="rec-item ${r.priority === '高' ? 'high' : r.priority === '中' ? 'medium' : ''}">
+      <div class="rec-content">${r.content}</div>
+      <div class="rec-meta">
+        <span>${r.student_name} · ${r.type}</span>
+        <span class="badge ${r.priority==='高'?'badge-red':r.priority==='中'?'badge-yellow':'badge-blue'}">${r.priority}</span>
+      </div>
+      <div class="rec-actions">
+        ${r.action === 'start_training' ? `<button class="btn" onclick="executeRecommendation('${r.student_id}','${r.task_type}','${r.difficulty}')">📚 开始训练</button>` : ''}
+        ${r.action === 'play_game' ? `<button class="btn" onclick="showNewGameModal()">⚔️ 发起对局</button>` : ''}
+        ${r.action === 'remind' ? `<button class="btn" onclick="sendReminder('${r.student_id}')">📢 发送提醒</button>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderStudentDetail(studentId) {
+  const s = students[studentId];
+  if (!s) return;
+  currentStudent = studentId;
+  const tasks = trainingTasks[studentId] || [];
+  
+  document.getElementById('studentDetail').innerHTML = `
+    <div class="card" style="padding:10px">
+      <div style="font-size:14px;font-weight:600;color:${s.color};margin-bottom:8px">${s.name}</div>
+      <div style="font-size:11px;color:var(--dim);margin-bottom:8px">${s.role} · ${s.level} · ${s.training_plan.phase} Week ${s.training_plan.week}</div>
+      
+      <div style="font-size:11px;color:var(--dim);margin-bottom:4px">能力画像</div>
+      ${Object.entries(s.abilities).map(([key, val]) => {
+        const names = {calculation:'计算力',judgment:'判断力',layout:'布局力',defense:'防守力',memory:'记忆力'};
+        const colors = {calculation:'var(--red)',judgment:'var(--blue)',layout:'var(--green)',defense:'var(--cyan)',memory:'var(--purple)'};
+        return `
+          <div class="ability-row">
+            <span class="ability-name">${names[key]}</span>
+            <div class="ability-bar"><div class="ability-fill" style="width:${val*100}%;background:${colors[key]}"></div></div>
+            <span class="ability-val">${(val*100).toFixed(0)}%</span>
+          </div>
+        `;
+      }).join('')}
+      
+      <div style="margin-top:10px">
+        <div style="font-size:11px;color:var(--dim);margin-bottom:4px">优势</div>
+        <div style="font-size:11px;color:var(--green)">${s.strengths.join(' · ')}</div>
+      </div>
+      <div style="margin-top:6px">
+        <div style="font-size:11px;color:var(--dim);margin-bottom:4px">待提升</div>
+        <div style="font-size:11px;color:var(--orange)">${s.weaknesses.join(' · ')}</div>
+      </div>
+      
+      <div style="margin-top:10px">
+        <div style="font-size:11px;color:var(--dim);margin-bottom:4px">当前任务</div>
+        <div style="font-size:12px">${s.training_plan.current_task}</div>
+      </div>
+    </div>
+  `;
+  
+  // 更新学员列表高亮
+  document.querySelectorAll('.student-item').forEach((el, i) => {
+    el.classList.toggle('active', Object.keys(students)[i] === studentId);
+  });
+}
+
+// ============================================================
+// 交互操作
+// ============================================================
+function selectStudent(id) {
+  currentStudent = id;
+  renderStudentList();
+  renderStudentDetail(id);
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  ['overview', 'games', 'training', 'board'].forEach(t => {
+    document.getElementById(`tab-${t}`).style.display = t === tab ? 'block' : 'none';
+  });
+  if (tab === 'board') renderBoard();
+}
+
+function showNewGameModal() {
+  const blackSelect = document.getElementById('gameBlack');
+  const whiteSelect = document.getElementById('gameWhite');
+  blackSelect.innerHTML = Object.values(students).map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+  whiteSelect.innerHTML = Object.values(students).map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+  document.getElementById('newGameModal').classList.add('show');
+}
+
+function showHumanPlayModal() {
+  document.getElementById('humanPlayModal').classList.add('show');
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('show');
+}
+
+async function startGame() {
+  const black = document.getElementById('gameBlack').value;
+  const white = document.getElementById('gameWhite').value;
+  const boardSize = parseInt(document.getElementById('gameSize').value);
+  
+  if (black === white) {
+    alert('黑方和白方不能相同！');
+    return;
+  }
+  
+  const result = await api('/game/start', 'POST', { black, white, board_size: boardSize });
+  if (result.status === 'ok') {
+    closeModal('newGameModal');
+    currentGame = result.game;
+    fetchData();
+    switchTab('board');
+  } else {
+    alert('发起失败: ' + (result.error || '未知错误'));
+  }
+}
+
+async function startHumanGame() {
+  const role = document.getElementById('humanRole').value;
+  const color = document.getElementById('humanColor').value;
+  const opponent = document.getElementById('humanOpponent').value;
+  
+  const black = color === 'black' ? role : opponent.replace('_ai', '');
+  const white = color === 'white' ? role : opponent.replace('_ai', '');
+  
+  const result = await api('/game/start', 'POST', { black, white, board_size: 9 });
+  if (result.status === 'ok') {
+    closeModal('humanPlayModal');
+    currentGame = result.game;
+    humanPlayer = { role, color };
+    fetchData();
+    switchTab('board');
+  } else {
+    alert('发起失败: ' + (result.error || '未知错误'));
+  }
+}
+
+async function resignGame(gameId) {
+  if (!confirm('确定要认输吗？')) return;
+  const color = currentStudent === games.active.find(g => g.id === gameId)?.black ? 'black' : 'white';
+  const result = await api(`/game/${gameId}/resign`, 'POST', { color });
+  if (result.status === 'ok') {
+    fetchData();
+  }
+}
+
+async function coachAction(action) {
+  if (!currentStudent) {
+    alert('请先选择学员！');
+    return;
+  }
+  const message = document.getElementById('guideMessage').value;
+  const result = await api('/coach/guide', 'POST', {
+    student_id: currentStudent,
+    action,
+    message
+  });
+  if (result.status === 'ok') {
+    alert(`✅ 引导已发送：${action} → ${students[currentStudent].name}`);
+    document.getElementById('guideMessage').value = '';
+  }
+}
+
+async function sendGuide() {
+  await coachAction(currentTab === 'training' ? 'start_training' : 'play_game');
+}
+
+async function sendReminder(studentId) {
+  const result = await api('/coach/guide', 'POST', {
+    student_id: studentId,
+    action: 'remind',
+    message: '提醒：请继续你的训练任务！'
+  });
+  if (result.status === 'ok') {
+    alert(`✅ 提醒已发送 → ${students[studentId].name}`);
+  }
+}
+
+async function executeRecommendation(studentId, taskType, difficulty) {
+  const result = await api('/training/start', 'POST', {
+    student_id: studentId,
+    task_type: taskType,
+    difficulty
+  });
+  if (result.status === 'ok') {
+    alert(`✅ 训练任务已创建：${taskType} (${difficulty})`);
+    fetchData();
+  }
+}
+
+async function startTrainingTask(studentId) {
+  const taskType = prompt('训练类型（如：死活题/手筋/官子/布局）：');
+  if (!taskType) return;
+  const difficulty = prompt('难度（初级/中级/高级）：', '中级');
+  const result = await api('/training/start', 'POST', {
+    student_id: studentId,
+    task_type: taskType,
+    difficulty: difficulty || '中级'
+  });
+  if (result.status === 'ok') {
+    alert('✅ 训练任务已创建');
+    fetchData();
+  }
+}
+
+function viewGame(gameId) {
+  currentGame = games.active.find(g => g.id === gameId) || games.completed.find(g => g.id === gameId);
+  switchTab('board');
+}
+
+// ============================================================
+// 围棋棋盘
+// ============================================================
+function renderBoard() {
+  const el = document.getElementById('tab-board');
+  const game = currentGame || games.active[0];
+  
+  if (!game) {
+    el.innerHTML = '<div class="loading">暂无对局，点击"发起对局"开始</div>';
+    return;
+  }
+  
+  const blackName = students[game.black]?.name || game.black;
+  const whiteName = students[game.white]?.name || game.white;
+  const size = game.board_size || 9;
+  
+  el.innerHTML = `
+    <div class="board-container">
+      <div class="board-info">
+        <div class="player-info ${game.current_turn === 'black' ? 'active-player' : ''}">
+          <div class="stone-indicator stone-black"></div>
+          <span>${blackName}</span>
+        </div>
+        <div style="font-size:12px;color:var(--dim)">${size}×${size} · 第${game.moves.length}手</div>
+        <div class="player-info ${game.current_turn === 'white' ? 'active-player' : ''}">
+          <div class="stone-indicator stone-white"></div>
+          <span>${whiteName}</span>
+        </div>
+      </div>
+      <div class="board-wrapper">
+        <canvas id="goCanvas" class="board-canvas" width="${size * 30 + 30}" height="${size * 30 + 30}"></canvas>
+      </div>
+      <div style="display:flex;gap:6px">
+        <button class="btn" onclick="placeStone()">🖱️ 手动落子</button>
+        <button class="btn" onclick="aiMove()">🤖 AI落子</button>
+        <button class="btn danger" onclick="if(confirm('认输？'))resignGame('${game.id}')">🏳️ 认输</button>
+      </div>
+      <div style="width:100%">
+        <div class="section-title">📜 对局记录</div>
+        <div class="move-history" id="moveHistory">
+          ${game.moves.map(m => `
+            <div class="move-item">
+              <span class="move-num">${m.move}.</span>
+              <span class="move-color ${m.color}"></span>
+              <span class="move-coord">${m.coord}</span>
+              ${m.timestamp ? `<span class="move-time">${new Date(m.timestamp).toLocaleTimeString('zh-CN')}</span>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // 绘制棋盘
+  setTimeout(() => drawBoard(game), 100);
+}
+
+function drawBoard(game) {
+  const canvas = document.getElementById('goCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const size = game.board_size || 9;
+  const cellSize = 30;
+  const padding = 15;
+  
+  // 背景
+  ctx.fillStyle = '#d4a574';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  // 网格线
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 1;
+  for (let i = 0; i < size; i++) {
+    ctx.beginPath();
+    ctx.moveTo(padding + i * cellSize, padding);
+    ctx.lineTo(padding + i * cellSize, padding + (size - 1) * cellSize);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(padding, padding + i * cellSize);
+    ctx.lineTo(padding + (size - 1) * cellSize, padding + i * cellSize);
+    ctx.stroke();
+  }
+  
+  // 星位
+  if (size === 9) {
+    [[2,2],[2,6],[6,2],[6,6],[4,4]].forEach(([r,c]) => {
+      ctx.beginPath();
+      ctx.arc(padding + c * cellSize, padding + r * cellSize, 3, 0, Math.PI * 2);
+      ctx.fill();
+    });
+  }
+  
+  // 坐标标注
+  ctx.font = '10px sans-serif';
+  ctx.fillStyle = '#000';
+  ctx.textAlign = 'center';
+  const cols = 'ABCDEFGHJKLMNOPQRST';
+  for (let i = 0; i < size; i++) {
+    ctx.fillText(cols[i], padding + i * cellSize, padding - 4);
+    ctx.fillText(size - i, padding - 12, padding + i * cellSize + 4);
+  }
+  
+  // 绘制棋子
+  game.moves.forEach(m => {
+    const x = padding + m.col * cellSize;
+    const y = padding + m.row * cellSize;
+    const radius = cellSize * 0.4;
+    
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, Math.PI * 2);
+    
+    if (m.color === 'black') {
+      const grad = ctx.createRadialGradient(x - 3, y - 3, 0, x, y, radius);
+      grad.addColorStop(0, '#444');
+      grad.addColorStop(1, '#000');
+      ctx.fillStyle = grad;
+    } else {
+      const grad = ctx.createRadialGradient(x - 3, y - 3, 0, x, y, radius);
+      grad.addColorStop(0, '#fff');
+      grad.addColorStop(1, '#ccc');
+      ctx.fillStyle = grad;
+      ctx.strokeStyle = '#999';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+    ctx.fill();
+    
+    // 手数标记
+    ctx.font = 'bold 9px sans-serif';
+    ctx.fillStyle = m.color === 'black' ? '#fff' : '#000';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(m.move, x, y);
+  });
+  
+  // 最后一手标记
+  if (game.moves.length > 0) {
+    const last = game.moves[game.moves.length - 1];
+    const x = padding + last.col * cellSize;
+    const y = padding + last.row * cellSize;
+    ctx.beginPath();
+    ctx.arc(x, y, cellSize * 0.45, 0, Math.PI * 2);
+    ctx.strokeStyle = '#ff0';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+  
+  // 点击事件
+  canvas.onclick = function(e) {
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const col = Math.round((x - padding) / cellSize);
+    const row = Math.round((y - padding) / cellSize);
+    
+    if (row >= 0 && row < size && col >= 0 && col < size) {
+      makeMove(game.id, game.current_turn, row, col);
+    }
+  };
+}
+
+async function makeMove(gameId, color, row, col) {
+  const result = await api(`/game/${gameId}/move`, 'POST', { color, row, col });
+  if (result.status === 'ok') {
+    // 更新对局
+    const game = games.active.find(g => g.id === gameId);
+    if (game) {
+      game.moves.push(result.move);
+      game.current_turn = result.current_turn;
+      game.last_move_at = new Date().toISOString();
+    }
+    renderBoard();
+    
+    // AI自动应招
+    if (game && game.current_turn !== (humanPlayer?.color)) {
+      setTimeout(() => aiMove(gameId), 500);
+    }
+  }
+}
+
+async function aiMove(gameId) {
+  const game = games.active.find(g => g.id === (gameId || g.id));
+  if (!game) return;
+  
+  // 简单AI：随机落子
+  const size = game.board_size || 9;
+  const occupied = new Set(game.moves.map(m => `${m.row},${m.col}`));
+  let row, col;
+  do {
+    row = Math.floor(Math.random() * size);
+    col = Math.floor(Math.random() * size);
+  } while (occupied.has(`${row},${col}`));
+  
+  await makeMove(game.id, game.current_turn, row, col);
+}
+
+function placeStone() {
+  const game = currentGame || games.active[0];
+  if (!game) return;
+  alert('点击棋盘交叉点落子');
+}
+
+// ============================================================
+// 初始化
+// ============================================================
+fetchData();
+setInterval(fetchData, 30000);
+
+// 自动切换到棋盘tab如果有进行中的对局
+setTimeout(() => {
+  if (games.active.length > 0) {
+    currentGame = games.active[0];
+    switchTab('board');
+  }
+}, 1000);
+</script>
+</body>
+</html>

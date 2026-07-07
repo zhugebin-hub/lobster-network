@@ -20,7 +20,7 @@ from typing import Dict, List, Optional, Tuple
 ACTIVE_NODES = ["xiaochen", "zhuguxia", "qoder", "xiaowei"]
 
 # 训练目录配置
-TRAINING_DIR = "/shared/training/go/"
+TRAINING_DIR = "/home/admin/go-training/shared/"
 
 # from-目录前缀
 FROM_PREFIX = "from-"
@@ -42,18 +42,18 @@ class Config:
             "name": "小陈",
             "host": "121.43.80.231",
             "type": "稳健型",
-            "outbox_dir": "/shared/messages/queue/xiaochen/outbox/",
-            "from_dir": "/shared/training/go/from-xiaochen/",
-            "training_dir": "/shared/training/go/",
+            "outbox_dir": "/home/admin/go-training/shared/queue/xiaochen/outbox/",
+            "from_dir": "/home/admin/go-training/shared/from-xiaochen/",
+            "training_dir": "/home/admin/go-training/shared/",
             "wechat_id": "xiaochen_wechat"
         },
         "zhuguxia": {
             "name": "诸葛虾",
             "host": "60.205.139.51",
             "type": "加速型",
-            "outbox_dir": "/shared/messages/queue/zhuguxia/outbox/",
-            "from_dir": "/shared/training/go/from-zhuguxia/",
-            "training_dir": "/shared/training/go/",
+            "outbox_dir": "/home/admin/go-training/shared/queue/zhuguxia/outbox/",
+            "from_dir": "/home/admin/go-training/shared/from-zhuguxia/",
+            "training_dir": "/home/admin/go-training/shared/",
             "wechat_id": "zhuguxia_wechat"
         },
         "qoder": {
@@ -82,12 +82,12 @@ class Config:
     ]
     
     # 共享目录
-    SHARED_DIR = "/shared/training/go/"
+    SHARED_DIR = "/home/admin/go-training/shared/"
     FROM_HERMES_DIR = f"{SHARED_DIR}from-hermes/"
     RESULTS_DIR = f"{SHARED_DIR}results/"
     
     # 日志
-    LOG_FILE = "/shared/training/go/sync_reminder.log"
+    LOG_FILE = f"{SHARED_DIR}sync_reminder.log"
 
 
 # ============================================================

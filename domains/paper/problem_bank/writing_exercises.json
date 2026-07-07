@@ -1,0 +1,143 @@
+{
+  "version": "1.0",
+  "description": "学术写作练习题题库",
+  "total_exercises": 15,
+  "categories": ["abstract", "introduction", "methodology", "experiment_writing", "discussion", "full_paper"],
+  "exercises": [
+    {
+      "id": "W001",
+      "category": "abstract",
+      "difficulty": "初段",
+      "title": "中文摘要撰写",
+      "instruction": "给定一篇已完成的研究（提供标题、方法概述、核心结果），撰写符合GB/T 7714标准的中文摘要（150-200字）。要求：包含目的、方法、结果、结论四要素。",
+      "time_limit_min": 30,
+      "scoring": {"purpose": 25, "method": 25, "result": 25, "conclusion": 25}
+    },
+    {
+      "id": "W002",
+      "category": "abstract",
+      "difficulty": "二段",
+      "title": "英文摘要撰写",
+      "instruction": "基于W001的中文摘要，撰写200词以上的英文摘要。要求：语法正确，用词学术化，包含关键词。",
+      "time_limit_min": 45,
+      "scoring": {"accuracy": 30, "academic_tone": 25, "coverage": 25, "grammar": 20}
+    },
+    {
+      "id": "W003",
+      "category": "introduction",
+      "difficulty": "三段",
+      "title": "研究背景段落",
+      "instruction": "选择一个研究方向（如多Agent系统），撰写500字的研究背景段落。要求：从宏观到微观，自然过渡到研究问题。",
+      "time_limit_min": 40,
+      "scoring": {"scope_narrowing": 30, "logic_flow": 30, "citation_usage": 20, "writing_quality": 20}
+    },
+    {
+      "id": "W004",
+      "category": "introduction",
+      "difficulty": "四段",
+      "title": "贡献声明",
+      "instruction": "给定一个研究场景，撰写明确的贡献声明（3-4条）。要求：每条贡献具体可验证，用词精确。",
+      "time_limit_min": 30,
+      "scoring": {"specificity": 30, "verifiability": 30, "novelty_claim": 25, "format": 15}
+    },
+    {
+      "id": "W005",
+      "category": "methodology",
+      "difficulty": "三段",
+      "title": "问题形式化定义",
+      "instruction": "选择一个实际问题，用数学符号进行形式化定义。要求：明确输入输出、约束条件、优化目标。",
+      "time_limit_min": 45,
+      "scoring": {"notation": 30, "completeness": 25, "clarity": 25, "correctness": 20}
+    },
+    {
+      "id": "W006",
+      "category": "methodology",
+      "difficulty": "四段",
+      "title": "算法描述",
+      "instruction": "给定一个算法的核心逻辑，用学术写作风格描述：1) 自然语言描述 2) 伪代码 3) 复杂度分析",
+      "time_limit_min": 60,
+      "scoring": {"natural_language": 25, "pseudocode": 30, "complexity": 25, "consistency": 20}
+    },
+    {
+      "id": "W007",
+      "category": "experiment_writing",
+      "difficulty": "三段",
+      "title": "实验设置描述",
+      "instruction": "给定实验环境信息，撰写完整的实验设置段落：数据集、基线方法、评估指标、实现细节、运行环境。",
+      "time_limit_min": 40,
+      "scoring": {"completeness": 25, "reproducibility": 30, "clarity": 25, "detail_level": 20}
+    },
+    {
+      "id": "W008",
+      "category": "experiment_writing",
+      "difficulty": "四段",
+      "title": "实验结果分析",
+      "instruction": "给定实验数据表格，撰写800字的结果分析：1) 主要发现 2) 原因分析 3) 与预期是否一致 4) 异常值讨论",
+      "time_limit_min": 50,
+      "scoring": {"finding_accuracy": 25, "causal_analysis": 30, "expectation_comparison": 20, "anomaly_discussion": 25}
+    },
+    {
+      "id": "W009",
+      "category": "discussion",
+      "difficulty": "五段",
+      "title": "讨论章节",
+      "instruction": "基于实验结果，撰写1000字的讨论章节：1) 结果的含义 2) 与已有工作的比较 3) 局限性 4) 未来方向",
+      "time_limit_min": 60,
+      "scoring": {"interpretation": 25, "comparison": 25, "limitations": 25, "future_work": 25}
+    },
+    {
+      "id": "W010",
+      "category": "full_paper",
+      "difficulty": "六段",
+      "title": "相关工作章节",
+      "instruction": "选择一个研究方向，基于至少8篇论文撰写2000字的相关工作章节。要求：分2-3个子方向，每个方向有总结和过渡。",
+      "time_limit_min": 120,
+      "scoring": {"coverage": 20, "organization": 25, "critical_analysis": 25, "transitions": 15, "writing": 15}
+    },
+    {
+      "id": "W011",
+      "category": "full_paper",
+      "difficulty": "七段",
+      "title": "完整短论文",
+      "instruction": "选择一个简单研究问题，撰写5000字完整短论文：引言、相关工作、方法、实验、结论。",
+      "time_limit_min": 300,
+      "scoring": {"structure": 20, "logic": 20, "method": 20, "experiment": 20, "writing": 20}
+    },
+    {
+      "id": "W012",
+      "category": "experiment_writing",
+      "difficulty": "五段",
+      "title": "消融实验写作",
+      "instruction": "设计并撰写一个包含4个组件的系统的消融实验：实验设计表 + 结果描述 + 每个组件贡献分析。",
+      "time_limit_min": 60,
+      "scoring": {"experiment_design": 30, "result_description": 25, "component_analysis": 30, "presentation": 15}
+    },
+    {
+      "id": "W013",
+      "category": "discussion",
+      "difficulty": "四段",
+      "title": "威胁有效性",
+      "instruction": "为一篇假设的系统论文撰写Threats to Validity章节（500字），涵盖内部有效性、外部有效性、构念有效性。",
+      "time_limit_min": 40,
+      "scoring": {"internal": 30, "external": 30, "construct": 30, "mitigation": 10}
+    },
+    {
+      "id": "W014",
+      "category": "introduction",
+      "difficulty": "五段",
+      "title": "文献综述段落",
+      "instruction": "给定5篇相关论文的摘要，撰写一段600字的文献综述段落。要求：不是简单罗列，而是综合比较并引出研究空白。",
+      "time_limit_min": 50,
+      "scoring": {"synthesis": 30, "comparison": 25, "gap_identification": 25, "flow": 20}
+    },
+    {
+      "id": "W015",
+      "category": "full_paper",
+      "difficulty": "八段",
+      "title": "审稿回复信",
+      "instruction": "给定一份包含5条意见的审稿报告（2条major, 3条minor），撰写完整的Response Letter。要求：逐条回复，说明修改内容，补充实验。",
+      "time_limit_min": 120,
+      "scoring": {"completeness": 20, "tone": 15, "revision_quality": 30, "additional_evidence": 25, "format": 10}
+    }
+  ]
+}

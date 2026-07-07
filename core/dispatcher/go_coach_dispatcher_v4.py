@@ -50,8 +50,89 @@ PLAYERS = {
 }
 
 # === V4 自适应训练计划 ===
-# 基于当前进度（Day 16 完成）继续，增加错题复习日和动态难度
+# 基于当前进度（Day 3）继续，增加错题复习日和动态难度
+# 2026-06-30 补充 Day 3-16 计划
 DAILY_PLAN_V4 = {
+    # Day 3: 扑与倒扑辨析（小陈推理力专项）
+    3: {"topic": "扑与倒扑辨析", "tasks": [
+        {"category": "手筋", "difficulty": "初级", "count_steady": 5, "count_fast": 8},
+        {"category": "手筋", "difficulty": "中级", "count_steady": 3, "count_fast": 5},
+    ], "review_wrong_book": False, "xiaochen_extra": {"category": "手筋", "difficulty": "初级", "count": 5}},
+    
+    # Day 4: 对抗赛准备 + 专项突破
+    4: {"topic": "对抗赛准备 + 专项突破", "tasks": [
+        {"category": "手筋", "difficulty": "初级", "count_steady": 5, "count_fast": 8},
+        {"category": "手筋", "difficulty": "中级", "count_steady": 3, "count_fast": 5},
+        {"category": "死活", "difficulty": "初级", "count_steady": 3, "count_fast": 5},
+    ], "review_wrong_book": False, "match_day": True},
+    
+    # Day 5: 征子路线判断（推理力强化）
+    5: {"topic": "征子路线判断", "tasks": [
+        {"category": "手筋", "difficulty": "初级", "count_steady": 5, "count_fast": 8},
+        {"category": "手筋", "difficulty": "中级", "count_steady": 3, "count_fast": 5},
+    ], "review_wrong_book": False, "xiaochen_extra": {"category": "手筋", "difficulty": "中级", "count": 5}},
+    
+    # Day 6: 错题复习日（V4 新增）
+    6: {"topic": "错题复习 + 手筋巩固", "tasks": [
+        {"category": "手筋", "difficulty": "初级", "count_steady": 4, "count_fast": 6},
+    ], "review_wrong_book": True, "review_count_steady": 5, "review_count_fast": 4},
+    
+    # Day 7: 第 1 周考核（综合）
+    7: {"topic": "第 1 周考核", "tasks": [
+        {"category": "手筋", "difficulty": "初级", "count_steady": 5, "count_fast": 7},
+        {"category": "手筋", "difficulty": "中级", "count_steady": 5, "count_fast": 7},
+        {"category": "死活", "difficulty": "初级", "count_steady": 4, "count_fast": 6},
+    ], "review_wrong_book": False, "exam_day": True},
+    
+    # Day 8: 休息 + 阶段总结
+    8: {"topic": "休息 + 阶段总结", "tasks": [], "review_wrong_book": False},
+    
+    # Day 9: 第 2 周开始 - 死活专项
+    9: {"topic": "初级死活强化", "tasks": [
+        {"category": "死活", "difficulty": "初级", "count_steady": 5, "count_fast": 8},
+        {"category": "死活", "difficulty": "中级", "count_steady": 3, "count_fast": 5},
+    ], "review_wrong_book": False, "xiaochen_extra": {"category": "死活", "difficulty": "初级", "count": 5}},
+    
+    # Day 10: 中级死活进阶
+    10: {"topic": "中级死活进阶", "tasks": [
+        {"category": "死活", "difficulty": "初级", "count_steady": 4, "count_fast": 6},
+        {"category": "死活", "difficulty": "中级", "count_steady": 4, "count_fast": 6},
+    ], "review_wrong_book": False, "zhuguxia_extra": {"category": "死活", "difficulty": "中级", "count": 5}},
+    
+    # Day 11: 错题复习日
+    11: {"topic": "错题复习 + 死活实战", "tasks": [
+        {"category": "死活", "difficulty": "初级", "count_steady": 3, "count_fast": 5},
+    ], "review_wrong_book": True, "review_count_steady": 5, "review_count_fast": 4},
+    
+    # Day 12: 手筋与死活综合
+    12: {"topic": "手筋与死活综合", "tasks": [
+        {"category": "手筋", "difficulty": "初级", "count_steady": 4, "count_fast": 6},
+        {"category": "死活", "difficulty": "初级", "count_steady": 4, "count_fast": 6},
+        {"category": "手筋", "difficulty": "中级", "count_steady": 2, "count_fast": 3},
+    ], "review_wrong_book": False},
+    
+    # Day 13: 定式入门
+    13: {"topic": "定式入门", "tasks": [
+        {"category": "定式", "difficulty": "入门", "count_steady": 5, "count_fast": 8},
+        {"category": "定式", "difficulty": "初级", "count_steady": 3, "count_fast": 5},
+    ], "review_wrong_book": False},
+    
+    # Day 14: 定式进阶
+    14: {"topic": "定式进阶", "tasks": [
+        {"category": "定式", "difficulty": "入门", "count_steady": 4, "count_fast": 6},
+        {"category": "定式", "difficulty": "初级", "count_steady": 4, "count_fast": 6},
+    ], "review_wrong_book": False},
+    
+    # Day 15: 第 2 周考核（综合）
+    15: {"topic": "第 2 周考核", "tasks": [
+        {"category": "手筋", "difficulty": "初级", "count_steady": 5, "count_fast": 7},
+        {"category": "死活", "difficulty": "初级", "count_steady": 5, "count_fast": 7},
+        {"category": "定式", "difficulty": "入门", "count_steady": 4, "count_fast": 6},
+    ], "review_wrong_book": False, "exam_day": True},
+    
+    # Day 16: 休息 + 阶段总结
+    16: {"topic": "休息 + 阶段总结", "tasks": [], "review_wrong_book": False},
+    
     # Day 17: 挖与分断（原计划）
     17: {"topic": "挖与分断", "tasks": [
         {"category": "手筋", "difficulty": "初级", "count_steady": 5, "count_fast": 8},
@@ -225,20 +306,52 @@ def load_wrong_book(player_key):
     return []
 
 
+def load_brain_day(player_key: str) -> int:
+    """从 brain.json 读取指定学员的当前训练 day"""
+    brain_paths = [
+        os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "config", "brain.json"),
+        os.path.join(TRAINING_DIR, "brain.json"),
+    ]
+    for bp in brain_paths:
+        if os.path.exists(bp):
+            try:
+                with open(bp, 'r') as f:
+                    brain = json.load(f)
+                tp = brain.get("training_progress", {}).get(player_key, {})
+                day = tp.get("day")
+                if day is not None:
+                    return day
+            except Exception:
+                continue
+    return None
+
+
 def load_status():
+    # 优先从 STATUS_FILE 读取
     if os.path.exists(STATUS_FILE):
         try:
             with open(STATUS_FILE, 'r') as f:
                 return json.load(f)
         except:
             pass
+
+    # fallback: 从 brain.json 读取最新 day（取各学员最大值）
+    day_from_brain = None
+    for pk in ["xiaochen", "zhuguxia", "qoder"]:
+        d = load_brain_day(pk)
+        if d is not None:
+            day_from_brain = max(day_from_brain or 0, d)
+
+    default_day = day_from_brain if day_from_brain else 17
+
     return {
-        "phase": 1, "week": 3, "day": 17,
-        "topic": "挖与分断",
+        "phase": 1, "week": 3, "day": default_day,
+        "topic": DAILY_PLAN_V4.get(default_day, {}).get("topic", "挖与分断"),
         "started_at": None, "completed_at": None,
         "players": {}, "game_result": {},
-        "next_day_topic": "尖与跳的手筋",
+        "next_day_topic": DAILY_PLAN_V4.get(default_day + 1, {}).get("topic", "未知"),
         "v4_deployed": datetime.now().isoformat(),
+        "brain_sync": True if day_from_brain else False,
     }
 
 

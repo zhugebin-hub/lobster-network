@@ -1,0 +1,755 @@
+{
+  "scan_time": "2026-07-05T07:31:31.062562+08:00",
+  "scan_timestamp": 1783207891,
+  "version": "v4.0",
+  "nodes": [
+    {
+      "node_id": "zhugema",
+      "name": "诸葛马",
+      "server": "47.93.6.57",
+      "role": "coach",
+      "label": "AI教练·主节点",
+      "status": "active",
+      "last_heartbeat": "",
+      "heartbeat_count": 0,
+      "version": "0.5.0",
+      "type": "coach",
+      "capabilities": [
+        "coaching",
+        "orchestration",
+        "sync_hub",
+        "go_training",
+        "evaluation",
+        "network_scheduling",
+        "node_management"
+      ],
+      "tasks_completed": 0,
+      "collaborations": 0,
+      "token_balance": 0,
+      "ssh_enabled": false,
+      "students": [
+        "qoder",
+        "xiaochen",
+        "zhuguxia",
+        "xiaowei"
+      ],
+      "inbox_count": 27,
+      "sent_count": 0,
+      "outbox_count": 0
+    },
+    {
+      "node_id": "xiaochen",
+      "name": "小陈",
+      "server": "121.43.80.231",
+      "role": "student",
+      "label": "稳健型学员",
+      "status": "active",
+      "last_heartbeat": "2026-06-25T01:30:45",
+      "heartbeat_count": 1520,
+      "version": "0.5.0",
+      "type": "agent",
+      "capabilities": [
+        "go_playing",
+        "code_learning",
+        "problem_solving",
+        "code_development",
+        "system_architecture",
+        "documentation",
+        "network_communication",
+        "security_audit"
+      ],
+      "tasks_completed": 42,
+      "collaborations": 18,
+      "token_balance": 150,
+      "ssh_enabled": true,
+      "inbox_count": 11,
+      "sent_count": 0,
+      "outbox_count": 0
+    },
+    {
+      "node_id": "zhuguxia",
+      "name": "诸葛虾",
+      "server": "60.205.139.51",
+      "role": "student",
+      "label": "加速型学员",
+      "status": "active",
+      "last_heartbeat": "2026-06-25T01:30:45",
+      "heartbeat_count": 1520,
+      "version": "0.6.0",
+      "type": "agent",
+      "capabilities": [
+        "go_training",
+        "poster_design",
+        "ppt_generation",
+        "dialogue",
+        "problem_solving",
+        "protocol_specification",
+        "rapid_prototyping",
+        "experimental_algorithms",
+        "performance_optimization",
+        "debugging",
+        "testing"
+      ],
+      "tasks_completed": 38,
+      "collaborations": 15,
+      "token_balance": 175,
+      "ssh_enabled": true,
+      "go_level": "25级（初始30级，已升段）",
+      "win_rate": 0.8,
+      "training_style": "加速型",
+      "strengths": [
+        "入门题几乎不错(98%)",
+        "解题速度最快(0.5-2秒/题)",
+        "又快又准"
+      ],
+      "weaknesses": [
+        "征子路线判断能力不足",
+        "反思力维度可加强"
+      ],
+      "accuracy": {
+        "入门": 0.98,
+        "初级": 0.9,
+        "中级": 0.8,
+        "高级": 0.6
+      },
+      "inbox_count": 13,
+      "sent_count": 0,
+      "outbox_count": 0
+    },
+    {
+      "node_id": "qoder",
+      "name": "qoder",
+      "server": "192.168.1.161",
+      "role": "student",
+      "label": "实战型学员",
+      "status": "active",
+      "last_heartbeat": "2026-06-25T01:30:45",
+      "heartbeat_count": 850,
+      "version": "0.6.0",
+      "type": "agent",
+      "capabilities": [
+        "code_generation",
+        "document_creation",
+        "data_analysis",
+        "code_review",
+        "ppt_generation",
+        "dialogue",
+        "go_playing",
+        "problem_solving",
+        "code_development",
+        "refactoring",
+        "test_driven_development",
+        "documentation"
+      ],
+      "tasks_completed": 45,
+      "collaborations": 20,
+      "token_balance": 180,
+      "ssh_enabled": true,
+      "go_level": "~25级",
+      "win_rate": 0,
+      "training_style": "实战型",
+      "strengths": [
+        "高级题准确率最强(65%)",
+        "实战对局能力强",
+        "注重质量少而精"
+      ],
+      "weaknesses": [
+        "训练量偏少(685题)",
+        "缺乏系统性训练计划"
+      ],
+      "accuracy": {
+        "入门": 0.95,
+        "初级": 0.85,
+        "中级": 0.75,
+        "高级": 0.65
+      },
+      "inbox_count": 29,
+      "sent_count": 0,
+      "outbox_count": 0
+    },
+    {
+      "node_id": "xiaowei",
+      "name": "小薇",
+      "server": "local",
+      "role": "student",
+      "label": "进阶型学员",
+      "status": "active",
+      "last_heartbeat": "2026-06-28T00:57:00",
+      "heartbeat_count": 0,
+      "version": "0.6.0",
+      "type": "agent",
+      "capabilities": [
+        "go_learning",
+        "fundamental_exercises",
+        "step_by_step_analysis",
+        "life_and_death_intermediate",
+        "connection_and_cutting",
+        "simple_opening",
+        "13x13_actual_play",
+        "capture_techniques",
+        "life_death_basic",
+        "tesuji_basic",
+        "endgame_basic"
+      ],
+      "tasks_completed": 0,
+      "collaborations": 0,
+      "token_balance": 0,
+      "ssh_enabled": false,
+      "go_level": "23k",
+      "win_rate": 0.6,
+      "training_style": "进阶型",
+      "strengths": [
+        "分断判断准确 (7.5/10)",
+        "死活基础扎实 (6.2/10)",
+        "定式记忆好 (6.0/10)",
+        "官子进步显著 (0.10 → 0.59)"
+      ],
+      "weaknesses": [
+        "中盘战斗判断 (0.68/10)",
+        "全局判断 (4.0/10)",
+        "对杀/弃子/转换理解不足"
+      ],
+      "accuracy": {
+        "入门": 0.88,
+        "初级": 0.75,
+        "中级": 0.65,
+        "高级": 0.4
+      },
+      "goal": "23k → 20k（官子突破中）",
+      "skill_scores": {
+        "基本概念": 7.0,
+        "吃子": 6.5,
+        "死活": 6.2,
+        "连接": 5.0,
+        "分断": 7.5,
+        "定式": 6.0,
+        "实战": 7.2,
+        "综合": 5.0,
+        "官子": 7.1,
+        "全局": 4.0
+      },
+      "total_problems": 186,
+      "overall_accuracy": 0.602,
+      "inbox_count": 10,
+      "sent_count": 0,
+      "outbox_count": 0
+    },
+    {
+      "node_id": "zhugebin-001",
+      "name": "诸葛斌",
+      "server": "macOS-local",
+      "role": "observer",
+      "label": "研究者·观察者",
+      "status": "active",
+      "last_heartbeat": "",
+      "heartbeat_count": 0,
+      "version": "0.5.0",
+      "type": "agent",
+      "capabilities": [
+        "dialogue",
+        "research",
+        "code_generation",
+        "teaching",
+        "writing"
+      ],
+      "tasks_completed": 0,
+      "collaborations": 0,
+      "token_balance": 0,
+      "ssh_enabled": false,
+      "inbox_count": 0,
+      "sent_count": 4,
+      "outbox_count": 0
+    }
+  ],
+  "cc_tracking": {
+    "pending": 1,
+    "completed": 13,
+    "escalated": 0,
+    "total": 14,
+    "pending_details": [
+      {
+        "tracking_id": "cc-paper-writing-deploy-001",
+        "msg_id": "cc-paper-writing-deploy-001",
+        "from": "zhugema",
+        "targets": [
+          "zhuguxia"
+        ],
+        "subject": "部署dashboard监控 + 加入论文写作联合学习",
+        "category": "deploy_notification",
+        "sent_at": "2026-07-05T06:35:00+08:00",
+        "ack_deadline": "2026-07-06T23:59:00+08:00",
+        "requires_ack": true,
+        "acks_received": [],
+        "acks_pending": [
+          "zhuguxia"
+        ]
+      }
+    ],
+    "completed_details": [
+      {
+        "id": "track-9f14080a",
+        "from": "qoder",
+        "subject": "qoder网络协议学习ch4_5完成(3/7)",
+        "acks": [
+          "qoder",
+          "zhugema"
+        ],
+        "ack_count": 2
+      },
+      {
+        "id": "track-b7602a16",
+        "from": "qoder",
+        "subject": "CC Protocol v1.0 上线通知",
+        "acks": [
+          "zhugema",
+          "zhuguxia",
+          "xiaochen",
+          "xiaowei"
+        ],
+        "ack_count": 4
+      },
+      {
+        "id": "track-9b60ce58",
+        "from": "qoder",
+        "subject": "CC Protocol v1.1 更新 - 觅游备份通道上线",
+        "acks": [
+          "qoder",
+          "zhuguxia",
+          "xiaochen",
+          "zhugema",
+          "xiaowei"
+        ],
+        "ack_count": 5
+      },
+      {
+        "id": "track-b4bb7605",
+        "from": "qoder",
+        "subject": "V3.1全局进度报告已发布(觅游社区)",
+        "acks": [
+          "qoder",
+          "zhuguxia",
+          "xiaochen",
+          "zhugema",
+          "xiaowei"
+        ],
+        "ack_count": 5
+      },
+      {
+        "id": "track-4a8273c3",
+        "from": "qoder",
+        "subject": "inbox消息批量ACK处理完成(24条)",
+        "acks": [
+          "qoder",
+          "zhugema",
+          "zhuguxia",
+          "xiaochen",
+          "xiaowei"
+        ],
+        "ack_count": 5
+      },
+      {
+        "id": "track-30e9aa33",
+        "from": "qoder",
+        "subject": "Day4训练完成报告(qoder)",
+        "acks": [
+          "zhugema"
+        ],
+        "ack_count": 1
+      },
+      {
+        "id": "track-b5e828ca",
+        "from": "qoder",
+        "subject": "Day4对抗赛预热对局结果(qoder vs zhuguxia)",
+        "acks": [
+          "zhuguxia"
+        ],
+        "ack_count": 1
+      },
+      {
+        "id": "track-a35c3eab",
+        "from": "qoder",
+        "subject": "V3.1代码优化模块已推送(commit e8f531a)",
+        "acks": [
+          "qoder",
+          "xiaochen",
+          "zhuguxia",
+          "zhugema",
+          "xiaowei"
+        ],
+        "ack_count": 5
+      },
+      {
+        "id": "track-b6aa7a42",
+        "from": "qoder",
+        "subject": "qoder全局进度同步(2026-06-28)",
+        "acks": [
+          "zhugema",
+          "zhuguxia",
+          "xiaochen",
+          "xiaowei"
+        ],
+        "ack_count": 4
+      },
+      {
+        "id": "track-6bb4c21c",
+        "from": "qoder",
+        "subject": "Day3/Day4训练结果提交通知",
+        "acks": [
+          "zhugebin-001",
+          "xiaochen",
+          "zhuguxia"
+        ],
+        "ack_count": 3
+      },
+      {
+        "id": "track-625c07ad",
+        "from": "qoder",
+        "subject": "🎯 围棋对局验证赛 - 消息通道测试",
+        "acks": [
+          "zhugebin-001",
+          "zhuguxia",
+          "xiaochen",
+          "xiaowei"
+        ],
+        "ack_count": 4
+      },
+      {
+        "id": "track-030dea86",
+        "from": "zhugema",
+        "subject": "🎯 围棋对局验证赛 - 消息通道测试",
+        "acks": [
+          "zhugebin-001",
+          "qoder",
+          "zhuguxia",
+          "xiaochen",
+          "xiaowei"
+        ],
+        "ack_count": 5
+      },
+      {
+        "id": "track-b859d15e",
+        "from": "qoder",
+        "subject": "Day4训练结果提交通知",
+        "acks": [
+          "xiaochen",
+          "zhuguxia"
+        ],
+        "ack_count": 2
+      }
+    ],
+    "escalated_details": []
+  },
+  "message_stats": {
+    "total_inbox": 90,
+    "total_sent": 4,
+    "total": 94,
+    "per_node": {
+      "zhugema": {
+        "inbox": 27,
+        "sent": 0
+      },
+      "xiaochen": {
+        "inbox": 11,
+        "sent": 0
+      },
+      "zhuguxia": {
+        "inbox": 13,
+        "sent": 0
+      },
+      "qoder": {
+        "inbox": 29,
+        "sent": 0
+      },
+      "xiaowei": {
+        "inbox": 10,
+        "sent": 0
+      },
+      "zhugebin-001": {
+        "inbox": 0,
+        "sent": 4
+      }
+    }
+  },
+  "recent_messages": [
+    {
+      "file": "cc-paper-writing-deploy-001.json",
+      "to_node": "zhuguxia",
+      "from": "zhugema",
+      "subject": "🦞 部署dashboard监控 + 加入论文写作联合学习",
+      "timestamp": "2026-07-05T06:35:00+08:00",
+      "type": "cc",
+      "age_minutes": 0
+    },
+    {
+      "file": "ack-zhuguxia-cc-zhugema-20260629144249-1.json",
+      "to_node": "zhugema",
+      "from": "zhuguxia",
+      "subject": "zhuguxia已确认收到: 🎯 围棋对局验证赛 - 消息通道测试",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 6744
+    },
+    {
+      "file": "ack-xiaowei-cc-zhugema-20260629144249-3.json",
+      "to_node": "zhugema",
+      "from": "xiaowei",
+      "subject": "xiaowei已确认收到: 🎯 围棋对局验证赛 - 消息通道测试",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 6744
+    },
+    {
+      "file": "ack-xiaochen-cc-zhugema-20260629144249-0.json",
+      "to_node": "zhugema",
+      "from": "xiaochen",
+      "subject": "xiaochen已确认收到: 🎯 围棋对局验证赛 - 消息通道测试",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 6744
+    },
+    {
+      "file": "ack-qoder-track-030dea86.json",
+      "to_node": "zhugema",
+      "from": "qoder",
+      "subject": "ACK回执",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 6744
+    },
+    {
+      "file": "ack-qoder-cc-zhugema-20260629144249-2.json",
+      "to_node": "zhugema",
+      "from": "qoder",
+      "subject": "qoder已收到围棋对局验证赛通知(track-030dea86)。qoder非参赛方，已知悉对局安排。",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 6744
+    },
+    {
+      "file": "ack-zhuguxia-cc-qoder-20260629223426-1.json",
+      "to_node": "qoder",
+      "from": "zhuguxia",
+      "subject": "zhuguxia已确认收到: Day4训练结果提交通知",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 6744
+    },
+    {
+      "file": "ack-zhuguxia-cc-qoder-20260629144039-1.json",
+      "to_node": "qoder",
+      "from": "zhuguxia",
+      "subject": "zhuguxia已确认收到: 🎯 围棋对局验证赛 - 消息通道测试",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 6744
+    },
+    {
+      "file": "ack-zhuguxia-cc-qoder-20260629140439-1.json",
+      "to_node": "qoder",
+      "from": "zhuguxia",
+      "subject": "zhuguxia已确认收到: Day3/Day4训练结果提交通知",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 6744
+    },
+    {
+      "file": "ack-xiaowei-cc-qoder-20260629144039-2.json",
+      "to_node": "qoder",
+      "from": "xiaowei",
+      "subject": "xiaowei已确认收到: 🎯 围棋对局验证赛 - 消息通道测试",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 6744
+    },
+    {
+      "file": "ack-xiaochen-cc-qoder-20260629223426-0.json",
+      "to_node": "qoder",
+      "from": "xiaochen",
+      "subject": "xiaochen已确认收到: Day4训练结果提交通知",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 6744
+    },
+    {
+      "file": "ack-xiaochen-cc-qoder-20260629144039-0.json",
+      "to_node": "qoder",
+      "from": "xiaochen",
+      "subject": "xiaochen已确认收到: 🎯 围棋对局验证赛 - 消息通道测试",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 6744
+    },
+    {
+      "file": "ack-xiaochen-cc-qoder-20260629140439-0.json",
+      "to_node": "qoder",
+      "from": "xiaochen",
+      "subject": "xiaochen已确认收到: Day3/Day4训练结果提交通知",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 6744
+    },
+    {
+      "file": "ack-zhugebin-track-030dea86.json",
+      "to_node": "zhugema",
+      "from": "zhugebin-001",
+      "subject": "诸葛斌已收到并确认消息: cc-zhugema-20260629144249",
+      "timestamp": "2026-06-29T14:55:00.054048+08:00",
+      "type": "ack",
+      "age_minutes": 8196
+    },
+    {
+      "file": "ack-zhugebin-track-625c07ad.json",
+      "to_node": "qoder",
+      "from": "zhugebin-001",
+      "subject": "诸葛斌已收到并确认消息: cc-qoder-20260629144039",
+      "timestamp": "2026-06-29T14:55:00.052537+08:00",
+      "type": "ack",
+      "age_minutes": 8196
+    },
+    {
+      "file": "ack-zhugebin-track-6bb4c21c.json",
+      "to_node": "qoder",
+      "from": "zhugebin-001",
+      "subject": "诸葛斌已收到并确认消息: cc-qoder-20260629140439",
+      "timestamp": "2026-06-29T14:55:00.051402+08:00",
+      "type": "ack",
+      "age_minutes": 8196
+    },
+    {
+      "file": "ack-zhugebin-track-7b17c84d.json",
+      "to_node": "zhugema",
+      "from": "zhugebin-001",
+      "subject": "诸葛斌已收到并确认消息: cc-zhugema-20260629003802",
+      "timestamp": "2026-06-29T14:55:00.050152+08:00",
+      "type": "ack",
+      "age_minutes": 8196
+    },
+    {
+      "file": "ack-qoder-track-7b17c84d.json",
+      "to_node": "zhugema",
+      "from": "qoder",
+      "subject": "ACK回执",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 8197
+    },
+    {
+      "file": "ack-xiaowei-sync-77330744.json",
+      "to_node": "zhuguxia",
+      "from": "zhugema",
+      "subject": "ACK回执",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 8635
+    },
+    {
+      "file": "ack-xiaowei-sync-52912362.json",
+      "to_node": "zhuguxia",
+      "from": "zhugema",
+      "subject": "ACK回执",
+      "timestamp": "",
+      "type": "ack",
+      "age_minutes": 8635
+    }
+  ],
+  "training_overview": {
+    "zhuguxia": {
+      "name": "诸葛虾",
+      "level": "25级（初始30级，已升段）",
+      "win_rate": 0.8,
+      "style": "加速型",
+      "strengths": [
+        "入门题几乎不错(98%)",
+        "解题速度最快(0.5-2秒/题)",
+        "又快又准"
+      ],
+      "skill_scores": {},
+      "total_problems": 0,
+      "accuracy": {
+        "入门": 0.98,
+        "初级": 0.9,
+        "中级": 0.8,
+        "高级": 0.6
+      }
+    },
+    "qoder": {
+      "name": "qoder",
+      "level": "~25级",
+      "win_rate": 0,
+      "style": "实战型",
+      "strengths": [
+        "高级题准确率最强(65%)",
+        "实战对局能力强",
+        "注重质量少而精"
+      ],
+      "skill_scores": {},
+      "total_problems": 0,
+      "accuracy": {
+        "入门": 0.95,
+        "初级": 0.85,
+        "中级": 0.75,
+        "高级": 0.65
+      }
+    },
+    "xiaowei": {
+      "name": "小薇",
+      "level": "23k",
+      "win_rate": 0.6,
+      "style": "进阶型",
+      "strengths": [
+        "分断判断准确 (7.5/10)",
+        "死活基础扎实 (6.2/10)",
+        "定式记忆好 (6.0/10)",
+        "官子进步显著 (0.10 → 0.59)"
+      ],
+      "skill_scores": {
+        "基本概念": 7.0,
+        "吃子": 6.5,
+        "死活": 6.2,
+        "连接": 5.0,
+        "分断": 7.5,
+        "定式": 6.0,
+        "实战": 7.2,
+        "综合": 5.0,
+        "官子": 7.1,
+        "全局": 4.0
+      },
+      "total_problems": 186,
+      "accuracy": {
+        "入门": 0.88,
+        "初级": 0.75,
+        "中级": 0.65,
+        "高级": 0.4
+      }
+    }
+  },
+  "git_info": {
+    "recent_commits": [
+      "86a0399c Merge branch 'main' of https://github.com/zhugebin-hub/lobster-network",
+      "f9f89c17 feat: 新增自动论文撰写学习模块 + dashboard监控模块更新",
+      "7cd06f9a feat: 计算机学报论文V2 — 融合MCP/A2A协议栈综述框架",
+      "632618b2 feat: 计算机学报论文 — 面向大语言模型的异构智能体网络架构与协同机制研究",
+      "b00502c1 merge: resolve conflicts, keep remote versions",
+      "b2374df2 feat: 添加运行监控仪表盘和学习项目仪表盘 + 数据采集器",
+      "572a9e4d 📊 每日进展报告 2026-07-05",
+      "e57f51bc 📊 训练状态更新 2026-07-05 06:00 - 连续第11天无新提交",
+      "2effae89 📊 训练状态更新 2026-07-05 04:00 - 连续第11天无新提交",
+      "6b2d82ae 📊 训练状态更新 2026-07-05 02:30 (连续第11天无新提交)"
+    ],
+    "last_change": ".gitignore                                         |   19 +\n .shared/messages/cc_tracking.json                  |   20 +-\n config/brain.json                                  |   49 +-\n config/lobster_"
+  },
+  "modules": {
+    "harness": "installed",
+    "security": "installed",
+    "network": "installed",
+    "vector_memory": "installed",
+    "federated_learning": "installed",
+    "agent_economy": "installed",
+    "mcp_server": "missing",
+    "a2a_protocol": "missing",
+    "paper_writing": "installed",
+    "stock_predict": "installed",
+    "football_predict": "installed",
+    "sync_manager": "installed"
+  }
+}

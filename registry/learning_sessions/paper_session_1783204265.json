@@ -1,0 +1,262 @@
+{
+  "session_id": "paper_session_1783204265",
+  "domain": "paper-writing",
+  "student": "zhugebin-001",
+  "student_name": "诸葛斌的工作助手",
+  "created_at": "2026-07-05T06:31:05.558269",
+  "total_problems": 23,
+  "correct": 14,
+  "accuracy": 0.6086956521739131,
+  "details": [
+    {
+      "id": "pw1-001",
+      "type": "concept_choice",
+      "difficulty": "入门",
+      "phase": "phase1",
+      "answer": "引言-方法-结果-讨论-结论",
+      "correct": true
+    },
+    {
+      "id": "pw1-009",
+      "type": "concept_judge",
+      "difficulty": "入门",
+      "phase": "phase1",
+      "answer": "错误",
+      "correct": true
+    },
+    {
+      "id": "pw1-013",
+      "type": "structure_analysis",
+      "difficulty": "初级",
+      "phase": "phase1",
+      "answer": "理论研究型",
+      "correct": true
+    },
+    {
+      "id": "pw1-014",
+      "type": "structure_analysis",
+      "difficulty": "初级",
+      "phase": "phase1",
+      "answer": "数据库选择、检索词、筛选标准",
+      "correct": true
+    },
+    {
+      "id": "pw1-016",
+      "type": "topic_eval",
+      "difficulty": "初级",
+      "phase": "phase1",
+      "answer": "基于CNN的MNIST手写数字识别系统设计与实现",
+      "correct": true
+    },
+    {
+      "id": "pw1-017",
+      "type": "topic_eval",
+      "difficulty": "初级",
+      "phase": "phase1",
+      "answer": "降低选题质量（红海领域）",
+      "correct": true
+    },
+    {
+      "id": "pw1-018",
+      "type": "abstract_eval",
+      "difficulty": "初级",
+      "phase": "phase1",
+      "answer": "目的",
+      "correct": true
+    },
+    {
+      "id": "pw1-019",
+      "type": "abstract_eval",
+      "difficulty": "初级",
+      "phase": "phase1",
+      "answer": "0.4（较差）",
+      "correct": false
+    },
+    {
+      "id": "pw1-020",
+      "type": "citation_check",
+      "difficulty": "初级",
+      "phase": "phase1",
+      "answer": "[1] 张三. 深度学习研究[J]. 计算机学报, 2024, 47(3): 1-15.",
+      "correct": true
+    },
+    {
+      "id": "pw2-001",
+      "type": "literature_review",
+      "difficulty": "中级",
+      "phase": "phase2",
+      "answer": "以上全部",
+      "correct": false
+    },
+    {
+      "id": "pw2-002",
+      "type": "literature_review",
+      "difficulty": "中级",
+      "phase": "phase2",
+      "answer": "0.4（较差）",
+      "correct": true
+    },
+    {
+      "id": "pw2-005",
+      "type": "methodology",
+      "difficulty": "中级",
+      "phase": "phase2",
+      "answer": "确保测量工具的一致性和稳定性",
+      "correct": true
+    },
+    {
+      "id": "pw2-006",
+      "type": "methodology",
+      "difficulty": "中级",
+      "phase": "phase2",
+      "answer": "未说明数据预处理步骤",
+      "correct": true
+    },
+    {
+      "id": "pw2-009",
+      "type": "data_analysis",
+      "difficulty": "中级",
+      "phase": "phase2",
+      "answer": "第一步",
+      "correct": true
+    },
+    {
+      "id": "pw3-001",
+      "type": "paper_eval",
+      "difficulty": "高级",
+      "phase": "phase3",
+      "answer": "方法论(20%)",
+      "correct": false
+    },
+    {
+      "id": "pw3-002",
+      "type": "paper_eval",
+      "difficulty": "高级",
+      "phase": "phase3",
+      "answer": "0.70",
+      "correct": true
+    },
+    {
+      "id": "pw3-004",
+      "type": "peer_review",
+      "difficulty": "高级",
+      "phase": "phase3",
+      "answer": "0.55-0.70",
+      "correct": false
+    },
+    {
+      "id": "pw3-005",
+      "type": "peer_review",
+      "difficulty": "高级",
+      "phase": "phase3",
+      "answer": "研究问题和贡献不清晰",
+      "correct": false
+    },
+    {
+      "id": "pw3-007",
+      "type": "similarity_check",
+      "difficulty": "高级",
+      "phase": "phase3",
+      "answer": "中风险(10-20%)",
+      "correct": true
+    },
+    {
+      "id": "pw3-010",
+      "type": "paper_revision",
+      "difficulty": "高级",
+      "phase": "phase3",
+      "answer": "逐条回应审稿意见+说明修改内容+标注修改位置",
+      "correct": false
+    },
+    {
+      "id": "pw3-013",
+      "type": "cross_disciplinary",
+      "difficulty": "高级",
+      "phase": "phase3",
+      "answer": "不同学科范式和术语的融合",
+      "correct": false
+    },
+    {
+      "id": "pw3-015",
+      "type": "ai_writing",
+      "difficulty": "高级",
+      "phase": "phase3",
+      "answer": "用AI辅助文献检索和语言润色，核心内容自主完成",
+      "correct": false
+    },
+    {
+      "id": "pw3-016",
+      "type": "ai_writing",
+      "difficulty": "高级",
+      "phase": "phase3",
+      "answer": "将复杂写作任务分解为可管理的子任务，提升质量和效率",
+      "correct": false
+    }
+  ],
+  "by_type": {
+    "concept_choice": {
+      "total": 1,
+      "correct": 1
+    },
+    "concept_judge": {
+      "total": 1,
+      "correct": 1
+    },
+    "structure_analysis": {
+      "total": 2,
+      "correct": 2
+    },
+    "topic_eval": {
+      "total": 2,
+      "correct": 2
+    },
+    "abstract_eval": {
+      "total": 2,
+      "correct": 1
+    },
+    "citation_check": {
+      "total": 1,
+      "correct": 1
+    },
+    "literature_review": {
+      "total": 2,
+      "correct": 1
+    },
+    "methodology": {
+      "total": 2,
+      "correct": 2
+    },
+    "data_analysis": {
+      "total": 1,
+      "correct": 1
+    },
+    "paper_eval": {
+      "total": 2,
+      "correct": 1
+    },
+    "peer_review": {
+      "total": 2,
+      "correct": 0
+    },
+    "similarity_check": {
+      "total": 1,
+      "correct": 1
+    },
+    "paper_revision": {
+      "total": 1,
+      "correct": 0
+    },
+    "cross_disciplinary": {
+      "total": 1,
+      "correct": 0
+    },
+    "ai_writing": {
+      "total": 2,
+      "correct": 0
+    }
+  },
+  "participants": [
+    "zhugebin-001",
+    "hermes"
+  ]
+}

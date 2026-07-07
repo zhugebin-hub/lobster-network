@@ -14,9 +14,9 @@ except ImportError:
     HAS_PARAMIKO = False
     paramiko = None
 
-from src.lobster_network.messenger import Transport, ReliableMessage
-from src.lobster_network.registry import TransportConfig
-from src.lobster_network.utils.logger import get_logger
+from ..messenger import Transport, ReliableMessage
+from ..registry import TransportConfig
+from ..utils.logger import get_logger
 
 logger = get_logger(__name__)
 

@@ -1,0 +1,13 @@
+{
+  "trainings": [
+    {
+      "date": "2026-07-05T06:31:05.557024",
+      "student": "zhugebin-001",
+      "total": 23,
+      "correct": 14,
+      "accuracy": 0.6086956521739131
+    }
+  ],
+  "accuracy": {},
+  "streak": 0
+}

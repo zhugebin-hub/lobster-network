@@ -139,8 +139,63 @@ python3 scripts/network_protocol_training.py --all
 
 ---
 
+## 自动论文撰写学习模块（V1.0 - 2026-07-05 新增）
+
+小龙虾网络全员参与，智能体互相学习提升自动论文撰写能力。60 道题目覆盖三阶段，支持6类学员联合学习+交叉评审。
+
+| 阶段 | 名称 | 题数 | 主要内容 |
+|------|------|------|----------|
+| Phase 1 | 论文写作基础（入门篇） | 20 | 论文结构、选题方法、摘要撰写、引用规范、学术道德 |
+| Phase 2 | 论文写作进阶（方法论与文献） | 20 | 文献综述、研究方法、数据分析、方法论评估、引用格式进阶 |
+| Phase 3 | 论文写作高级（实战与评审） | 20 | 论文整体评估、同行评审、查重预估、论文修改、AI辅助写作 |
+
+**核心组件**：
+- `problems/paper_writing_engine.py` — 选题评估/大纲生成/摘要评估/文献综述评估/方法论评估/整体评分/引用检测/查重预估/同行评审模拟
+- `trainers/paper_writing_trainer.py` — 6类学员训练器 + 交叉评审（智能体互相学习）
+- `scripts/paper_writing_training.py` — CLI 工具（--train / --train-all / --eval-topic / --outline / --report / --join-network / --cross-review / --all）
+
+**支持学员**（全员参与）：
+- `xiaochen`（小陈）— 稳健型，重基础概念和结构规范
+- `zhuguxia`（诸葛虾）— 加速型，重方法论和文献综述
+- `zhugebin-001`（诸葛斌的工作助手）— 研究型，全题型+实战评估+同行评审
+- `zhugema`（诸葛马）— 教练型，AI辅助写作+跨学科+高级评审（教练节点）
+- `xiaowei`（小薇）— 实战型，论文修改+查重+投稿策略
+- `qoder` — 技术型，数据分析和引用格式为主
+
+**互相学习机制**：
+1. 学员间交叉评审：`--cross-review <reviewer> <reviewee>`
+2. 共享写作模式和常见错误
+3. 教练(zhugema)定期发布写作技巧
+4. 每周评比最佳论文写作进步奖
+
+```bash
+# 单个学员训练
+python3 scripts/paper_writing_training.py --train zhugebin-001
+
+# 全员训练
+python3 scripts/paper_writing_training.py --train-all
+
+# 选题评估
+python3 scripts/paper_writing_training.py --eval-topic "基于大语言模型的智能体自主任务分解方法研究"
+
+# 大纲生成
+python3 scripts/paper_writing_training.py --outline "论文题目" --type empirical
+
+# 交叉评审（智能体互相学习）
+python3 scripts/paper_writing_training.py --cross-review zhugema zhuguxia
+
+# 加入联合学习
+python3 scripts/paper_writing_training.py --join-network
+
+# 生成报告
+python3 scripts/paper_writing_training.py --report
+```
+
+---
+
 ## 版本
 
 - v1.0.0 (2026-06-25): 初始版本，框架搭建
 - v1.1.0 (2026-06-26): 新增炒股预测学习模块（60题）
 - v1.2.0 (2026-06-28): 新增网络协议学习模块（60题，对齐 Meyo 推送）
+- v1.3.0 (2026-07-05): 新增自动论文撰写学习模块（60题，6学员全员联合学习+交叉评审）

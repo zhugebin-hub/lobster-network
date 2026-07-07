@@ -1,0 +1,227 @@
+{
+  "phase": 2,
+  "name": "论文写作进阶（方法论与文献）",
+  "description": "文献综述写作、研究方法设计、数据分析方法、方法论评估、引用格式进阶",
+  "problems": [
+    {
+      "id": "pw2-001",
+      "type": "literature_review",
+      "difficulty": "中级",
+      "question": "一篇高质量文献综述应具备哪些特征？（多选判断）",
+      "context": {"domain": "文献综述", "quality": "质量标准"},
+      "options": ["覆盖度高（文献数量充足）", "时效性强（近3年文献占比≥40%）", "有批判性分析", "有研究空白识别", "中英文文献平衡"],
+      "answer": "以上全部",
+      "confidence": 0.90,
+      "reasoning": "高质量文献综述需同时满足覆盖度、时效性、批判性、研究空白识别和中英文平衡五个维度"
+    },
+    {
+      "id": "pw2-002",
+      "type": "literature_review",
+      "difficulty": "中级",
+      "question": "如果一篇论文有30篇参考文献，其中近3年文献6篇（20%），时效性评分应为？",
+      "context": {"domain": "文献综述", "recency": "时效性"},
+      "options": ["1.0（优秀）", "0.7（中等）", "0.4（较差）", "0.0（不合格）"],
+      "answer": "0.4（较差）",
+      "confidence": 0.85,
+      "reasoning": "近3年文献占比20% < 25%，时效性评分降为0.4，说明引用文献偏旧，需补充最新研究"
+    },
+    {
+      "id": "pw2-003",
+      "type": "literature_review",
+      "difficulty": "中级",
+      "question": "文献综述中'批判性分析'的含义是？",
+      "context": {"domain": "文献综述", "critique": "批判性"},
+      "options": ["批评已有研究的错误", "评价已有研究的贡献与不足，指明发展方向", "否定已有研究的价值", "支持已有研究的观点"],
+      "answer": "评价已有研究的贡献与不足，指明发展方向",
+      "confidence": 0.90,
+      "reasoning": "批判性分析不是简单批评，而是客观评价已有研究的优点和局限，从中识别研究空白和发展方向"
+    },
+    {
+      "id": "pw2-004",
+      "type": "literature_review",
+      "difficulty": "中级",
+      "question": "一篇论文有45篇参考文献，其中中文15篇、英文30篇，语言平衡度为？",
+      "context": {"domain": "文献综述", "balance": "中英文平衡"},
+      "options": ["1.0", "0.67", "0.50", "0.33"],
+      "answer": "0.67",
+      "confidence": 0.85,
+      "reasoning": "语言平衡度 = 1 - |中-英|/总 = 1 - |15-30|/45 = 1 - 0.333 = 0.667"
+    },
+    {
+      "id": "pw2-005",
+      "type": "methodology",
+      "difficulty": "中级",
+      "question": "实证研究中'信度检验'的作用是？",
+      "context": {"domain": "方法论", "reliability": "信度"},
+      "options": ["验证研究假设", "确保测量工具的一致性和稳定性", "提高样本代表性", "增强统计显著性"],
+      "answer": "确保测量工具的一致性和稳定性",
+      "confidence": 0.90,
+      "reasoning": "信度(Reliability)指测量工具的一致性和稳定性，即重复测量能否得到相似结果，常用Cronbach's α系数"
+    },
+    {
+      "id": "pw2-006",
+      "type": "methodology",
+      "difficulty": "中级",
+      "question": "以下哪种情况表明方法论'可复现性'不足？",
+      "context": {"domain": "方法论", "reproducibility": "可复现性"},
+      "options": ["公开了数据集和代码", "详细描述了实验参数", "未说明数据预处理步骤", "使用了开源框架"],
+      "answer": "未说明数据预处理步骤",
+      "confidence": 0.90,
+      "reasoning": "可复现性要求其他研究者能按论文描述重复实验。未说明数据预处理步骤会导致无法复现"
+    },
+    {
+      "id": "pw2-007",
+      "type": "methodology",
+      "difficulty": "中级",
+      "question": "如果一篇论文有研究设计、数据来源、变量定义、分析方法，但没有信度检验和效度检验，方法论评分约为？",
+      "context": {"domain": "方法论", "score": "评分计算"},
+      "options": ["0.60", "0.45", "0.80", "0.30"],
+      "answer": "0.60",
+      "confidence": 0.85,
+      "reasoning": "有4项(0.20+0.15+0.10+0.15=0.60)，缺少信度(0.10)、效度(0.10)、可复现性(0.10)、创新(0.10)，总评约0.60"
+    },
+    {
+      "id": "pw2-008",
+      "type": "methodology",
+      "difficulty": "中级",
+      "question": "以下哪种属于方法创新？",
+      "context": {"domain": "方法论", "innovation": "方法创新"},
+      "options": ["使用已有工具进行分析", "改进现有算法并验证有效性", "引用经典理论框架", "增加样本量"],
+      "answer": "改进现有算法并验证有效性",
+      "confidence": 0.90,
+      "reasoning": "方法创新指提出新方法或改进已有方法，并通过实验验证其有效性，这是论文方法论部分的创新点"
+    },
+    {
+      "id": "pw2-009",
+      "type": "data_analysis",
+      "difficulty": "中级",
+      "question": "在论文'数据分析'章节中，描述性统计通常放在什么位置？",
+      "context": {"domain": "数据分析", "order": "分析顺序"},
+      "options": ["最后一步", "第一步", "不需要", "附录中"],
+      "answer": "第一步",
+      "confidence": 0.90,
+      "reasoning": "数据分析通常遵循：描述性统计→相关性分析→回归分析/模型检验→稳健性检验的顺序"
+    },
+    {
+      "id": "pw2-010",
+      "type": "data_analysis",
+      "difficulty": "中级",
+      "question": "稳健性检验的作用是？",
+      "context": {"domain": "数据分析", "robustness": "稳健性检验"},
+      "options": ["提高论文字数", "验证主要结论在不同条件下的稳定性", "替代主分析", "展示更多图表"],
+      "answer": "验证主要结论在不同条件下的稳定性",
+      "confidence": 0.90,
+      "reasoning": "稳健性检验通过改变样本、变量定义、模型设定等方式验证主要结论是否稳定，增强结果可信度"
+    },
+    {
+      "id": "pw2-011",
+      "type": "data_analysis",
+      "difficulty": "中级",
+      "question": "论文中报告效应量(Effect Size)的主要目的是？",
+      "context": {"domain": "数据分析", "effect_size": "效应量"},
+      "options": ["替代p值", "衡量效应的实际大小和意义", "增加统计显著性", "减少样本需求"],
+      "answer": "衡量效应的实际大小和意义",
+      "confidence": 0.85,
+      "reasoning": "效应量衡量变量间关系的实际大小，补充p值仅能说明是否显著但不能说明多大的不足"
+    },
+    {
+      "id": "pw2-012",
+      "type": "citation_check",
+      "difficulty": "中级",
+      "question": "GB/T 7714格式中，[M]标识代表什么文献类型？",
+      "context": {"domain": "引用规范", "type_code": "[M]"},
+      "options": ["期刊论文", "专著/图书", "会议论文", "学位论文"],
+      "answer": "专著/图书",
+      "confidence": 0.90,
+      "reasoning": "GB/T 7714文献类型标识：[M]专著、[J]期刊、[C]会议论文集、[D]学位论文、[R]报告、[P]专利"
+    },
+    {
+      "id": "pw2-013",
+      "type": "citation_check",
+      "difficulty": "中级",
+      "question": "APA引用格式中，正文中引用应使用哪种方式？",
+      "context": {"domain": "引用规范", "apa": "APA格式"},
+      "options": ["[1]上标数字", "(作者, 年份)", "作者[1]", "脚注编号"],
+      "answer": "(作者, 年份)",
+      "confidence": 0.90,
+      "reasoning": "APA格式使用作者-年份制，正文中引用格式为(Author, Year)，如(Smith, 2024)"
+    },
+    {
+      "id": "pw2-014",
+      "type": "citation_check",
+      "difficulty": "中级",
+      "question": "IEEE引用格式中，参考文献列表的排序依据是？",
+      "context": {"domain": "引用规范", "ieee": "IEEE格式"},
+      "options": ["按作者姓氏字母排序", "按引用先后顺序编号", "按发表年份排序", "按标题字母排序"],
+      "answer": "按引用先后顺序编号",
+      "confidence": 0.85,
+      "reasoning": "IEEE格式采用数字编号制，按正文中首次引用的先后顺序编号，如[1], [2], [3]..."
+    },
+    {
+      "id": "pw2-015",
+      "type": "methodology",
+      "difficulty": "高级",
+      "question": "定量研究与定性研究的主要区别是？",
+      "context": {"domain": "方法论", "quantitative_vs_qualitative": "定性与定量"},
+      "options": ["定量用数字，定性用文字", "定量重统计检验，定性重深度理解", "定量样本大，定性样本小", "以上都对"],
+      "answer": "以上都对",
+      "confidence": 0.85,
+      "reasoning": "定量研究使用数字和统计检验，样本量大；定性研究使用文字和深度理解，样本量小但深入"
+    },
+    {
+      "id": "pw2-016",
+      "type": "structure_analysis",
+      "difficulty": "中级",
+      "question": "实证研究型论文中哪个章节权重最高（占篇幅最大）？",
+      "context": {"domain": "论文结构", "weight": "章节权重"},
+      "options": ["引言", "文献综述", "研究方法+数据分析", "结论"],
+      "answer": "研究方法+数据分析",
+      "confidence": 0.85,
+      "reasoning": "实证研究中研究方法(15%)+数据分析(15%)共占30%，是权重最高的章节组合"
+    },
+    {
+      "id": "pw2-017",
+      "type": "literature_review",
+      "difficulty": "高级",
+      "question": "PRISMA流程主要用于什么？",
+      "context": {"domain": "文献综述", "prisma": "PRISMA流程"},
+      "options": ["论文排版", "系统综述的文献筛选流程", "数据分析方法", "引用管理"],
+      "answer": "系统综述的文献筛选流程",
+      "confidence": 0.85,
+      "reasoning": "PRISMA(Preferred Reporting Items for Systematic Reviews and Meta-Analyses)是系统综述的标准报告流程"
+    },
+    {
+      "id": "pw2-018",
+      "type": "methodology",
+      "difficulty": "高级",
+      "question": "以下哪种研究设计属于准实验设计？",
+      "context": {"domain": "方法论", "quasi_experiment": "准实验"},
+      "options": ["随机对照试验(RCT)", "自然实验(利用已有政策变化)", "实验室实验", "案例研究"],
+      "answer": "自然实验(利用已有政策变化)",
+      "confidence": 0.80,
+      "reasoning": "准实验设计利用自然发生的事件或政策变化作为实验条件，缺少随机分配但具有实验特征"
+    },
+    {
+      "id": "pw2-019",
+      "type": "data_analysis",
+      "difficulty": "高级",
+      "question": "内生性问题(Endogeneity)的常见来源不包括？",
+      "context": {"domain": "数据分析", "endogeneity": "内生性"},
+      "options": ["遗漏变量", "反向因果", "测量误差", "样本量过大"],
+      "answer": "样本量过大",
+      "confidence": 0.85,
+      "reasoning": "内生性来源包括遗漏变量偏误、反向因果、测量误差和选择偏误，与样本量大小无关"
+    },
+    {
+      "id": "pw2-020",
+      "type": "citation_check",
+      "difficulty": "高级",
+      "question": "同一作者同一年份的多篇文献在APA格式中如何区分？",
+      "context": {"domain": "引用规范", "apa": "同年多篇"},
+      "options": ["不加区分", "用a, b, c后缀，如(2024a)(2024b)", "用数字编号", "用标题区分"],
+      "answer": "用a, b, c后缀，如(2024a)(2024b)",
+      "confidence": 0.90,
+      "reasoning": "APA格式规定同一作者同年多篇文献用小写字母a, b, c区分，按标题字母顺序排列"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "date": "2026-07-06",
+  "standup_time": "21:10",
+  "students": {
+    "qoder": {
+      "name": "qoder小龙虾",
+      "role": "系统架构专家",
+      "level": "六段",
+      "papers_read": 0,
+      "notes_completed": 0,
+      "words_written": 0,
+      "exercises_done": 0,
+      "recent_submissions": 0,
+      "rewards": 0,
+      "status": "inactive",
+      "last_active": "未知"
+    },
+    "xiaochen": {
+      "name": "小陈",
+      "role": "实验数据分析师",
+      "level": "二段",
+      "papers_read": 0,
+      "notes_completed": 0,
+      "words_written": 0,
+      "exercises_done": 0,
+      "recent_submissions": 0,
+      "rewards": 0,
+      "status": "inactive",
+      "last_active": "未知"
+    },
+    "zhuguxia": {
+      "name": "诸葛虾",
+      "role": "工具链与可视化专家",
+      "level": "二段",
+      "papers_read": 0,
+      "notes_completed": 0,
+      "words_written": 0,
+      "exercises_done": 0,
+      "recent_submissions": 0,
+      "rewards": 0,
+      "status": "inactive",
+      "last_active": "未知"
+    },
+    "hermes": {
+      "name": "诸葛马 (Hermes)",
+      "role": "总导师/统稿评审",
+      "level": "八段",
+      "papers_read": 4,
+      "notes_completed": 4,
+      "words_written": 1850,
+      "exercises_done": 3,
+      "recent_submissions": 24,
+      "rewards": 330,
+      "status": "active",
+      "last_active": "今天"
+    }
+  },
+  "total_rewards": 330,
+  "issues": [
+    "qoder小龙虾 昨日无提交",
+    "小陈 昨日无提交",
+    "诸葛虾 昨日无提交"
+  ],
+  "highlights": [
+    "诸葛马 (Hermes) 完成 24 次提交"
+  ]
+}

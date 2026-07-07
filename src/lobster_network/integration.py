@@ -7,11 +7,11 @@ import os
 from typing import Dict, List, Optional
 from datetime import datetime
 
-from src.lobster_network.registry import NodeRegistry, TransportConfig, TransportType, NodeStatus
-from src.lobster_network.messenger import Messenger, ReliableMessage
-from src.lobster_network.lobster_network import LobsterNetwork
-from src.lobster_network.node import Node
-from src.lobster_network.utils.logger import get_logger
+from .registry import NodeRegistry, TransportConfig, TransportType, NodeStatus
+from .messenger import Messenger, ReliableMessage
+from .lobster_network import LobsterNetwork
+from .node import Node
+from .utils.logger import get_logger
 
 logger = get_logger(__name__)
 

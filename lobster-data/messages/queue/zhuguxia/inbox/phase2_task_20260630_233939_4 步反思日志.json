@@ -1,0 +1,14 @@
+{
+  "student_id": "zhuguxia",
+  "student_name": "诸葛虾",
+  "task_name": "4 步反思日志",
+  "focus": "反思力专项突破",
+  "timestamp": "2026-06-30T23:39:39.160940",
+  "require_reflection": true,
+  "reflection_template": {
+    "step1": "我的思路：我当时是怎么想的？",
+    "step2": "正确思路：正确答案是什么？",
+    "step3": "差距分析：差距在哪里？",
+    "step4": "改进策略：下次如何改进？"
+  }
+}

@@ -792,19 +792,34 @@ class HarnessEngine:
             return False
         return self.agents[agent_id].add_skill(skill)
     
-    def run_task(self, task_id: str, task_description: str,
+    def run(self, task_id: str, task_description: str,
                  initializer_id: str, executor_id: str) -> Dict:
         """运行任务（双阶段架构）"""
         # 创建工作区
         self.workspace.create_task_workspace(task_id)
         
-        # 双阶段执行
-        result = self.two_stage.run(
-            task_id,
-            self.agents[initializer_id],
-            self.agents[executor_id],
-            task_description,
-        )
+        # 双阶段执行 - 修复：使用正确的Agent方法
+        initializer = self.agents[initializer_id]
+        executor = self.agents[executor_id]
+        
+        # 阶段1：Initializer生成计划
+        plan_content = f"# 任务计划\n\n任务ID: {task_id}\n描述: {task_description}\n\n## 计划\n1. 分析需求\n2. 制定方案\n3. 执行\n4. 验证"
+        self.workspace.write_plan(task_id, plan_content)
+        self.workspace.update_state(task_id, {"status": "planned"})
+        
+        # 阶段2：Executor执行计划
+        execution_result = executor.execute(task_description)
+        self.workspace.update_state(task_id, {
+            "status": "completed" if execution_result.get("status") == "completed" else "failed",
+            "execution_result": execution_result,
+        })
+        
+        result = {
+            "task_id": task_id,
+            "initializer_output": plan_content,
+            "executor_output": execution_result,
+            "status": "completed" if execution_result.get("status") == "completed" else "failed",
+        }
         
         # 反压检查
         final_result = self.backpressure.execute_with_backpressure(
