@@ -67,7 +67,7 @@ class LobsterNetworkV51:
         # 系统状态
         self.system_status = {
             "started_at": time.time(),
-            "version": "5.1",
+            "version": "V5.1",
             "modules": {
                 "registry": True,
                 "persistence": True,
