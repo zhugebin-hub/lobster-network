@@ -1,0 +1,23 @@
+{
+  "role": "xiaochen",
+  "display_name": "小陈",
+  "specialty": "文献综述与理论框架",
+  "level": 2,
+  "xp": 1030,
+  "tasks_completed": 8,
+  "skill_scores": {
+    "literature_mining": 57,
+    "outline_writing": 50,
+    "section_drafting": 68,
+    "peer_review": 56,
+    "revision_polish": 53,
+    "go_training": 48,
+    "paper_reading": 55
+  },
+  "active_learnings": {
+    "go_training": "Day 3 完成 — 5道中高级死活题",
+    "paper_reading": "CAMEL论文三遍阅读笔记完成",
+    "paper_writing": "第4章实验设计初稿完成（~2800字）"
+  },
+  "updated_at": "2026-07-07 12:00:00"
+}

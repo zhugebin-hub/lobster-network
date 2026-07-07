@@ -1,0 +1,22 @@
+{
+  "role": "qoder",
+  "display_name": "Qoder",
+  "specialty": "方法论与数据分析",
+  "level": 3,
+  "xp": 1270,
+  "tasks_completed": 8,
+  "skill_scores": {
+    "literature_mining": 57,
+    "outline_writing": 50,
+    "section_drafting": 63,
+    "peer_review": 52,
+    "revision_polish": 52,
+    "go_training": 42,
+    "paper_writing": 58
+  },
+  "active_learnings": {
+    "go_training": "Day 2 完成 — 5道初中级题目",
+    "paper_writing": "引言章节补充完成（~2300字）"
+  },
+  "updated_at": "2026-07-07 12:00:00"
+}

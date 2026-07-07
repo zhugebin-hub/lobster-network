@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "小龙虾网络 — 共享学习状态清单",
+    "version": "1.0",
+    "generated_at": "2026-07-07T12:00:00",
+    "generated_by": "hermes（诸葛马）",
+    "description": "统一的学习状态清单，任何节点均可读取以了解其他学员的最新进度"
+  },
+  "network_status": {
+    "total_agents": 4,
+    "active_agents": 4,
+    "total_tasks_completed": 36,
+    "total_go_problems": 20,
+    "total_papers_read": 6,
+    "total_words_written": 11300
+  },
+  "learnings": {
+    "go_training": {
+      "description": "围棋训练进度",
+      "records": [
+        {"student": "hermes", "day": 5, "level": "九段", "problems": 5, "status": "completed", "file": "shared/training/go/hermes/outbox/ (Day 5 历史记录)", "date": "2026-07-07"},
+        {"student": "zhuguxia", "day": 4, "level": "高级", "problems": 5, "status": "completed", "file": "shared/training/go/zhuguxia/outbox/go_training_day4_zhuguxia.json", "date": "2026-07-07"},
+        {"student": "xiaochen", "day": 3, "level": "中高级", "problems": 5, "status": "completed", "file": "shared/training/go/xiaochen/outbox/go_training_day3_xiaochen.json", "date": "2026-07-07"},
+        {"student": "qoder", "day": 2, "level": "初中级", "problems": 5, "status": "completed", "file": "shared/training/go/qoder/outbox/go_training_day2_qoder.json", "date": "2026-07-07"}
+      ]
+    },
+    "paper_reading": {
+      "description": "论文精读进度",
+      "records": [
+        {"student": "hermes", "paper": "ChatDev", "method": "三遍阅读法", "status": "completed", "file": "output/chatdev_reading_notes_hermes.md", "date": "2026-07-07"},
+        {"student": "hermes", "paper": "AutoGen", "method": "三遍阅读法", "status": "completed", "date": "2026-07-06"},
+        {"student": "hermes", "paper": "MetaGPT", "method": "三遍阅读法", "status": "completed", "date": "2026-07-06"},
+        {"student": "xiaochen", "paper": "CAMEL", "method": "三遍阅读法", "status": "completed", "file": "shared/training/paper/xiaochen/outbox/camel_reading_notes_xiaochen.md", "date": "2026-07-07"},
+        {"student": "zhuguxia", "paper": "ChatDev", "method": "三遍阅读法", "status": "completed", "file": "shared/training/paper/zhuguxia/outbox/chatdev_reading_notes_zhuguxia.md", "date": "2026-07-07"}
+      ]
+    },
+    "paper_writing": {
+      "description": "论文写作进度",
+      "records": [
+        {"student": "hermes", "chapter": "方法论章节 (Ch3)", "words": 3100, "status": "completed", "file": "output/methodology_chapter_hermes.md", "date": "2026-07-07"},
+        {"student": "xiaochen", "chapter": "实验设计 (Ch4)", "words": 2800, "status": "completed", "file": "shared/training/paper/xiaochen/outbox/chapter4_draft_xiaochen.md", "date": "2026-07-07"},
+        {"student": "qoder", "chapter": "引言补充 (Ch1)", "words": 2300, "status": "completed", "file": "shared/training/paper/qoder/outbox/introduction_supplement_qoder.md", "date": "2026-07-07"}
+      ]
+    },
+    "ecommerce": {
+      "description": "电商模块学习",
+      "records": [
+        {"student": "zhuguxia", "module": "模块2 — 系统架构与微服务", "status": "completed", "file": "shared/training/paper/zhuguxia/outbox/ecommerce_module2_zhuguxia.json", "date": "2026-07-07"}
+      ]
+    }
+  },
+  "agent_profiles": {
+    "hermes": {
+      "display_name": "诸葛马",
+      "role": "教练",
+      "level": 3,
+      "xp": 1520,
+      "tasks_completed": 11,
+      "latest": "Day 5 九段围棋训练 + ChatDev论文精读 + 方法论章节"
+    },
+    "zhuguxia": {
+      "display_name": "诸葛虾",
+      "role": "学员",
+      "level": 3,
+      "xp": 1290,
+      "tasks_completed": 9,
+      "latest": "Day 4 高级围棋训练 + ChatDev论文精读 + 电商模块2"
+    },
+    "qoder": {
+      "display_name": "Qoder",
+      "role": "学员",
+      "level": 3,
+      "xp": 1270,
+      "tasks_completed": 8,
+      "latest": "Day 2 围棋训练 + 引言章节补充"
+    },
+    "xiaochen": {
+      "display_name": "小陈",
+      "role": "学员",
+      "level": 2,
+      "xp": 1030,
+      "tasks_completed": 8,
+      "latest": "Day 3 围棋训练 + CAMEL论文精读 + 实验设计章节"
+    }
+  },
+  "shared_directories": {
+    "go_training": "shared/training/go/{student}/outbox/",
+    "paper_notes": "shared/training/paper/{student}/outbox/",
+    "status_file": "shared/LEARNING_STATUS.json"
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "outline": {
+    "title": "基于龙虾网络的多智能体协作论文写作系统",
+    "research_topic": "AI 多智能体协作学术写作",
+    "sections": [
+      {
+        "id": 1,
+        "title": "摘要 (Abstract)",
+        "word_count_target": 300,
+        "subsections": [],
+        "key_points": [
+          "研究背景与动机",
+          "提出的方法/系统",
+          "核心实验结果",
+          "主要贡献"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "引言 (Introduction)",
+        "word_count_target": 1200,
+        "subsections": [
+          {
+            "id": "2.1",
+            "title": "研究背景",
+            "word_count_target": 400
+          },
+          {
+            "id": "2.2",
+            "title": "问题陈述",
+            "word_count_target": 300
+          },
+          {
+            "id": "2.3",
+            "title": "研究贡献",
+            "word_count_target": 300
+          },
+          {
+            "id": "2.4",
+            "title": "论文结构",
+            "word_count_target": 200
+          }
+        ],
+        "key_points": [
+          "阐述学术写作协作的痛点",
+          "引出多智能体系统的必要性",
+          "明确列出 3-4 项核心贡献"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "相关工作 (Related Work)",
+        "word_count_target": 1500,
+        "subsections": [
+          {
+            "id": "3.1",
+            "title": "协作写作工具",
+            "word_count_target": 500
+          },
+          {
+            "id": "3.2",
+            "title": "AI 辅助写作系统",
+            "word_count_target": 500
+          },
+          {
+            "id": "3.3",
+            "title": "多智能体协作框架",
+            "word_count_target": 500
+          }
+        ],
+        "key_points": [
+          "综述现有协作写作工具的局限性",
+          "分析 AI 写作助手的技术路线",
+          "对比多智能体系统的异同"
+        ]
+      },
+      {
+        "id": 4,
+        "title": "方法论 (Methodology)",
+        "word_count_target": 2000,
+        "subsections": [
+          {
+            "id": "4.1",
+            "title": "系统架构设计",
+            "word_count_target": 600
+          },
+          {
+            "id": "4.2",
+            "title": "智能体角色定义",
+            "word_count_target": 500
+          },
+          {
+            "id": "4.3",
+            "title": "协作协议与通信机制",
+            "word_count_target": 500
+          },
+          {
+            "id": "4.4",
+            "title": "质量评估框架",
+            "word_count_target": 400
+          }
+        ],
+        "key_points": [
+          "描述龙虾网络拓扑结构",
+          "定义各智能体职责与能力",
+          "说明任务分发与结果汇聚流程"
+        ]
+      },
+      {
+        "id": 5,
+        "title": "实验 (Experiments)",
+        "word_count_target": 1800,
+        "subsections": [
+          {
+            "id": "5.1",
+            "title": "实验设置",
+            "word_count_target": 400
+          },
+          {
+            "id": "5.2",
+            "title": "评估指标",
+            "word_count_target": 400
+          },
+          {
+            "id": "5.3",
+            "title": "主实验结果",
+            "word_count_target": 600
+          },
+          {
+            "id": "5.4",
+            "title": "消融实验",
+            "word_count_target": 400
+          }
+        ],
+        "key_points": [
+          "描述数据集与基准方法",
+          "列出 8 维评估指标体系",
+          "展示对比实验与统计显著性"
+        ]
+      },
+      {
+        "id": 6,
+        "title": "结果与讨论 (Results & Discussion)",
+        "word_count_target": 1500,
+        "subsections": [
+          {
+            "id": "6.1",
+            "title": "定量结果分析",
+            "word_count_target": 500
+          },
+          {
+            "id": "6.2",
+            "title": "定性案例分析",
+            "word_count_target": 500
+          },
+          {
+            "id": "6.3",
+            "title": "局限性与未来工作",
+            "word_count_target": 500
+          }
+        ],
+        "key_points": [
+          "解读关键实验数据",
+          "提供具体的写作案例对比",
+          "坦诚讨论系统的不足"
+        ]
+      },
+      {
+        "id": 7,
+        "title": "结论 (Conclusion)",
+        "word_count_target": 500,
+        "subsections": [],
+        "key_points": [
+          "总结核心发现",
+          "强调实践意义",
+          "展望后续研究方向"
+        ]
+      },
+      {
+        "id": 8,
+        "title": "参考文献 (References)",
+        "word_count_target": 0,
+        "subsections": [],
+        "key_points": [
+          "预计引用 30-50 篇文献"
+        ]
+      }
+    ],
+    "total_word_count_target": 8800,
+    "estimated_figures": 6,
+    "estimated_tables": 4
+  },
+  "task_id": "outline_001",
+  "task_type": "outline_writing",
+  "executor": "hermes",
+  "completed_at": "2026-07-06 11:02:57"
+}

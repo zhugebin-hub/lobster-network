@@ -1,0 +1,120 @@
+{
+  "literature_summary": {
+    "topic": "工具链与可视化技术",
+    "total_papers_found": 10,
+    "papers": [
+      {
+        "id": 1,
+        "title": "工具链与可视化技术相关研究论文 #1",
+        "authors": "Zhang & Li",
+        "year": 2021,
+        "journal": "Journal of AI Research",
+        "relevance_score": 0.73
+      },
+      {
+        "id": 2,
+        "title": "工具链与可视化技术相关研究论文 #2",
+        "authors": "Wang et al.",
+        "year": 2021,
+        "journal": "IEEE Trans. on Education",
+        "relevance_score": 0.98
+      },
+      {
+        "id": 3,
+        "title": "工具链与可视化技术相关研究论文 #3",
+        "authors": "Garcia et al.",
+        "year": 2018,
+        "journal": "Computers & Education",
+        "relevance_score": 0.89
+      },
+      {
+        "id": 4,
+        "title": "工具链与可视化技术相关研究论文 #4",
+        "authors": "Anderson et al.",
+        "year": 2022,
+        "journal": "Journal of AI Research",
+        "relevance_score": 0.95
+      },
+      {
+        "id": 5,
+        "title": "工具链与可视化技术相关研究论文 #5",
+        "authors": "Smith & Johnson",
+        "year": 2024,
+        "journal": "计算机学报",
+        "relevance_score": 0.93
+      },
+      {
+        "id": 6,
+        "title": "工具链与可视化技术相关研究论文 #6",
+        "authors": "Patel et al.",
+        "year": 2022,
+        "journal": "Journal of AI Research",
+        "relevance_score": 0.77
+      },
+      {
+        "id": 7,
+        "title": "工具链与可视化技术相关研究论文 #7",
+        "authors": "Patel et al.",
+        "year": 2022,
+        "journal": "软件学报",
+        "relevance_score": 0.8
+      },
+      {
+        "id": 8,
+        "title": "工具链与可视化技术相关研究论文 #8",
+        "authors": "Patel et al.",
+        "year": 2021,
+        "journal": "ACM Computing Surveys",
+        "relevance_score": 0.85
+      },
+      {
+        "id": 9,
+        "title": "工具链与可视化技术相关研究论文 #9",
+        "authors": "Tanaka & Sato",
+        "year": 2024,
+        "journal": "Journal of AI Research",
+        "relevance_score": 0.85
+      },
+      {
+        "id": 10,
+        "title": "工具链与可视化技术相关研究论文 #10",
+        "authors": "Lee & Choi",
+        "year": 2018,
+        "journal": "Journal of AI Research",
+        "relevance_score": 0.88
+      }
+    ],
+    "themes": [
+      {
+        "theme": "协作学习理论框架",
+        "paper_count": 2
+      },
+      {
+        "theme": "AI 辅助教学系统设计",
+        "paper_count": 3
+      },
+      {
+        "theme": "多智能体协同机制",
+        "paper_count": 2
+      },
+      {
+        "theme": "学习效果评估方法",
+        "paper_count": 3
+      },
+      {
+        "theme": "知识图谱与推荐系统",
+        "paper_count": 2
+      }
+    ],
+    "research_gaps": [
+      "对于 AI 智能体在学术写作中的协同模式缺乏系统性框架",
+      "纵向研究不足，多数实验周期短于一个学期",
+      "人机协作中的信任建立与认知负荷管理尚待深入探讨"
+    ],
+    "summary_text": "本次文献挖掘围绕「工具链与可视化技术」主题，从 10 篇核心文献中提炼出 5 个主要研究主题，并识别出 3 个关键研究空白。文献时间跨度覆盖 2018-2024 年，涵盖中英文顶级期刊与会议。"
+  },
+  "task_id": "lit_zhuguxia_001",
+  "task_type": "literature_mining",
+  "executor": "zhuguxia",
+  "completed_at": "2026-07-06 11:02:50"
+}

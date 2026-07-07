@@ -1,0 +1,15 @@
+{
+  "task_id": "review_qoder_xiaochen",
+  "task_type": "peer_review",
+  "timestamp": "2026-07-06 11:03:50",
+  "xp_gained": 180,
+  "level": 2,
+  "skill_scores": {
+    "literature_mining": 57,
+    "outline_writing": 50,
+    "section_drafting": 63,
+    "peer_review": 52,
+    "revision_polish": 50
+  },
+  "result_file": "/Users/zgb/Library/Application Support/com.tencent.mac.marvis/MarvisData/User/6C3FDD95359B453B0E08EF3623125EE1/workspace/conv_19f22391a05_fee4943de396/lobster-network/shared/training/paper/qoder/outbox/peer_review_review_qoder_xiaochen.json"
+}

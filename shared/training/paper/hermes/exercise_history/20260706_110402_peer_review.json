@@ -1,0 +1,15 @@
+{
+  "task_id": "review_hermes_qoder",
+  "task_type": "peer_review",
+  "timestamp": "2026-07-06 11:04:02",
+  "xp_gained": 180,
+  "level": 3,
+  "skill_scores": {
+    "literature_mining": 57,
+    "outline_writing": 53,
+    "section_drafting": 58,
+    "peer_review": 53,
+    "revision_polish": 50
+  },
+  "result_file": "/Users/zgb/Library/Application Support/com.tencent.mac.marvis/MarvisData/User/6C3FDD95359B453B0E08EF3623125EE1/workspace/conv_19f22391a05_fee4943de396/lobster-network/shared/training/paper/hermes/outbox/peer_review_review_hermes_qoder.json"
+}

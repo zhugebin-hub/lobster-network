@@ -1,0 +1,15 @@
+{
+  "task_id": "lit_xiaochen_001",
+  "task_type": "literature_mining",
+  "timestamp": "2026-07-06 11:02:47",
+  "xp_gained": 120,
+  "level": 1,
+  "skill_scores": {
+    "literature_mining": 57,
+    "outline_writing": 50,
+    "section_drafting": 50,
+    "peer_review": 50,
+    "revision_polish": 50
+  },
+  "result_file": "/Users/zgb/Library/Application Support/com.tencent.mac.marvis/MarvisData/User/6C3FDD95359B453B0E08EF3623125EE1/workspace/conv_19f22391a05_fee4943de396/lobster-network/shared/training/paper/xiaochen/outbox/literature_mining_lit_xiaochen_001.json"
+}

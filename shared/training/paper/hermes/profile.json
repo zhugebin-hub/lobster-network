@@ -1,0 +1,25 @@
+{
+  "role": "hermes",
+  "display_name": "诸葛马",
+  "specialty": "学术指导与论文架构",
+  "level": 3,
+  "xp": 1520,
+  "tasks_completed": 11,
+  "skill_scores": {
+    "literature_mining": 72,
+    "outline_writing": 53,
+    "section_drafting": 67,
+    "peer_review": 53,
+    "revision_polish": 53
+  },
+  "day5_achievements": {
+    "go_training": "5道九段死活题完成",
+    "chatdev_paper": "三遍阅读法精读笔记完成",
+    "methodology_chapter": "3100字方法论章节完成",
+    "spaced_repetition": "R1 AutoGen+MetaGPT+ChatDev复习完成",
+    "poster": "龙虾网络学术海报生成"
+  },
+  "papers_read": ["AutoGen", "MetaGPT", "ChatDev"],
+  "created_at": "2026-07-06T11:02:42.899358",
+  "updated_at": "2026-07-07 08:44:30"
+}

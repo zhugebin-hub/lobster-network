@@ -1,0 +1,15 @@
+{
+  "task_id": "revise_hermes",
+  "task_type": "revision_polish",
+  "timestamp": "2026-07-06 11:04:18",
+  "xp_gained": 160,
+  "level": 3,
+  "skill_scores": {
+    "literature_mining": 57,
+    "outline_writing": 53,
+    "section_drafting": 58,
+    "peer_review": 53,
+    "revision_polish": 53
+  },
+  "result_file": "/Users/zgb/Library/Application Support/com.tencent.mac.marvis/MarvisData/User/6C3FDD95359B453B0E08EF3623125EE1/workspace/conv_19f22391a05_fee4943de396/lobster-network/shared/training/paper/hermes/outbox/revision_polish_revise_hermes.json"
+}

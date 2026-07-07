@@ -1,0 +1,15 @@
+{
+  "task_id": "chatdev-mining-20260707",
+  "task_type": "literature_mining",
+  "timestamp": "2026-07-07 08:44:01",
+  "xp_gained": 120,
+  "level": 3,
+  "skill_scores": {
+    "literature_mining": 65,
+    "outline_writing": 53,
+    "section_drafting": 58,
+    "peer_review": 53,
+    "revision_polish": 53
+  },
+  "result_file": "shared/training/paper/hermes/outbox/literature_mining_chatdev-mining-20260707.json"
+}

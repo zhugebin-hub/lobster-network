@@ -1,0 +1,119 @@
+{
+  "review_report": {
+    "reviewer": "qoder",
+    "author": "unknown",
+    "section_reviewed": "全文",
+    "timestamp": "2026-07-06 11:03:50",
+    "scores": {
+      "structure": {
+        "score": 57,
+        "name": "结构完整性",
+        "description": "IMRaD 格式遵循度、逻辑流畅性"
+      },
+      "abstract": {
+        "score": 81,
+        "name": "摘要质量",
+        "description": "简洁性、完整性、关键词覆盖度"
+      },
+      "literature_review": {
+        "score": 72,
+        "name": "文献综述",
+        "description": "广度、时效性、批判性分析"
+      },
+      "methodology": {
+        "score": 70,
+        "name": "方法论",
+        "description": "严谨性、可复现性、适当性"
+      },
+      "data_analysis": {
+        "score": 66,
+        "name": "数据分析",
+        "description": "统计有效性、可视化质量"
+      },
+      "argumentation": {
+        "score": 78,
+        "name": "论证逻辑",
+        "description": "论点-证据-论据结构"
+      },
+      "formatting": {
+        "score": 71,
+        "name": "格式规范",
+        "description": "LaTeX/Word 标准、图表质量"
+      },
+      "citations": {
+        "score": 68,
+        "name": "引用质量",
+        "description": "引用数量、格式一致性、自引比例"
+      }
+    },
+    "overall_score": 70.4,
+    "feedback": [
+      {
+        "dimension": "structure",
+        "dimension_name": "结构完整性",
+        "score": 57,
+        "verdict": "待改进",
+        "suggestion": "结构完整性需要重点修改，参考相关范例进行重构"
+      },
+      {
+        "dimension": "abstract",
+        "dimension_name": "摘要质量",
+        "score": 81,
+        "verdict": "优秀",
+        "suggestion": "可进一步打磨细节表述"
+      },
+      {
+        "dimension": "literature_review",
+        "dimension_name": "文献综述",
+        "score": 72,
+        "verdict": "良好",
+        "suggestion": "建议加强文献综述方面的深度"
+      },
+      {
+        "dimension": "methodology",
+        "dimension_name": "方法论",
+        "score": 70,
+        "verdict": "良好",
+        "suggestion": "建议加强方法论方面的深度"
+      },
+      {
+        "dimension": "data_analysis",
+        "dimension_name": "数据分析",
+        "score": 66,
+        "verdict": "良好",
+        "suggestion": "建议加强数据分析方面的深度"
+      },
+      {
+        "dimension": "argumentation",
+        "dimension_name": "论证逻辑",
+        "score": 78,
+        "verdict": "良好",
+        "suggestion": "建议加强论证逻辑方面的深度"
+      },
+      {
+        "dimension": "formatting",
+        "dimension_name": "格式规范",
+        "score": 71,
+        "verdict": "良好",
+        "suggestion": "建议加强格式规范方面的深度"
+      },
+      {
+        "dimension": "citations",
+        "dimension_name": "引用质量",
+        "score": 68,
+        "verdict": "良好",
+        "suggestion": "建议加强引用质量方面的深度"
+      }
+    ],
+    "general_comments": "本文由 unknown 撰写，qoder 进行同行评审。综合得分 70.4/100。整体而言，文章具备基本的学术规范，但在论证深度和文献覆盖面上仍有提升空间。建议重点关注得分低于 70 的维度，进行针对性修订。",
+    "revision_priority": [
+      "structure",
+      "data_analysis",
+      "citations"
+    ]
+  },
+  "task_id": "review_qoder_xiaochen",
+  "task_type": "peer_review",
+  "executor": "qoder",
+  "completed_at": "2026-07-06 11:03:50"
+}

@@ -1,0 +1,15 @@
+{
+  "task_id": "draft_zhuguxia_01",
+  "task_type": "section_drafting",
+  "timestamp": "2026-07-06 11:03:25",
+  "xp_gained": 200,
+  "level": 1,
+  "skill_scores": {
+    "literature_mining": 58,
+    "outline_writing": 50,
+    "section_drafting": 54,
+    "peer_review": 50,
+    "revision_polish": 50
+  },
+  "result_file": "/Users/zgb/Library/Application Support/com.tencent.mac.marvis/MarvisData/User/6C3FDD95359B453B0E08EF3623125EE1/workspace/conv_19f22391a05_fee4943de396/lobster-network/shared/training/paper/zhuguxia/outbox/section_drafting_draft_zhuguxia_01.json"
+}
