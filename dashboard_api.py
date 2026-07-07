@@ -14,6 +14,7 @@ from flask import Flask, jsonify, send_from_directory
 sys.path.insert(0, str(Path(__file__).parent))
 from core.dashboard_collector import LobsterDataCollector
 from core.paper_dashboard_collector import PaperDataCollector
+from core.enhanced_dashboard_collector import EnhancedDataCollector
 
 app = Flask(__name__, static_folder='docs', static_url_path='/docs')
 
@@ -27,6 +28,7 @@ CACHE_TTL = 25  # 缓存25秒，API轮询30秒
 
 collector = LobsterDataCollector()
 paper_collector = PaperDataCollector()
+enhanced_collector = EnhancedDataCollector()
 
 def get_cached_data():
     """获取缓存数据，超时则重新采集"""
@@ -39,7 +41,12 @@ def get_cached_data():
 
 @app.route('/')
 def index():
-    """重定向到监控仪表盘"""
+    """重定向到增强版综合仪表盘 V2"""
+    return send_from_directory('docs', 'dashboard_enhanced_v2.html')
+
+@app.route('/v1')
+def index_v1():
+    """重定向到原版监控仪表盘"""
     return send_from_directory('docs', 'dashboard_monitoring.html')
 
 @app.route('/api/status')
@@ -107,6 +114,58 @@ def api_health():
         "cache_age": round(time.time() - _cache["timestamp"], 1),
         "has_cache": _cache["data"] is not None
     })
+
+# ============================================================
+# 增强版综合仪表盘 V2 API
+# ============================================================
+
+@app.route('/api/enhanced/status')
+def api_enhanced_status():
+    """API: 增强版综合状态数据"""
+    data = enhanced_collector.collect_all()
+    return jsonify(data)
+
+@app.route('/api/enhanced/nodes')
+def api_enhanced_nodes():
+    """API: 增强版节点数据"""
+    data = enhanced_collector.collect_all()
+    return jsonify({"nodes": data["nodes"], "timestamp": data["timestamp"]})
+
+@app.route('/api/enhanced/go-training')
+def api_enhanced_go_training():
+    """API: 增强版围棋训练数据"""
+    data = enhanced_collector.collect_all()
+    return jsonify({"go_training": data["go_training"], "timestamp": data["timestamp"]})
+
+@app.route('/api/enhanced/paper-learning')
+def api_enhanced_paper_learning():
+    """API: 增强版论文学习数据"""
+    data = enhanced_collector.collect_all()
+    return jsonify({"paper_learning": data["paper_learning"], "timestamp": data["timestamp"]})
+
+@app.route('/api/enhanced/rewards')
+def api_enhanced_rewards():
+    """API: 增强版奖励数据"""
+    data = enhanced_collector.collect_all()
+    return jsonify({"rewards": data["rewards"], "timestamp": data["timestamp"]})
+
+@app.route('/api/enhanced/health')
+def api_enhanced_health():
+    """API: 增强版健康评分"""
+    data = enhanced_collector.collect_all()
+    return jsonify({"health_score": data["health_score"], "timestamp": data["timestamp"]})
+
+@app.route('/api/enhanced/git')
+def api_enhanced_git():
+    """API: 增强版Git状态"""
+    data = enhanced_collector.collect_all()
+    return jsonify({"git_status": data["git_status"], "timestamp": data["timestamp"]})
+
+@app.route('/api/enhanced/summary')
+def api_enhanced_summary():
+    """API: 增强版汇总数据"""
+    data = enhanced_collector.collect_all()
+    return jsonify({"summary": data["summary"], "timestamp": data["timestamp"]})
 
 # ============================================================
 # 论文写作指挥中心 API

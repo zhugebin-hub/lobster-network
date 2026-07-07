@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦞 小龙虾网络 · 综合仪表盘 V2</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--dim:#64748b;--accent:#fbbf24;--green:#22c55e;--red:#ef4444;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--pink:#ec4899}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.header{background:linear-gradient(135deg,#111827 0%,#1e1b4b 100%);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.header h1{font-size:20px;color:var(--accent);display:flex;align-items:center;gap:8px}
+.global-stats{display:flex;gap:24px;flex-wrap:wrap}
+.global-stat{text-align:center;padding:4px 16px;border-left:1px solid var(--border)}
+.global-stat:first-child{border-left:none}
+.global-stat .val{font-size:22px;font-weight:700;color:var(--accent)}
+.global-stat .label{font-size:11px;color:var(--dim)}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.panel{padding:16px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.panel:nth-child(2n){border-right:none}
+.panel-full{grid-column:1/-1}
+.panel-title{font-size:14px;font-weight:600;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px}
+.node-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.node-card{background:#0f172a;border-radius:10px;padding:12px;border:1px solid var(--border);position:relative;overflow:hidden;transition:all .2s}
+.node-card:hover{border-color:var(--accent);box-shadow:0 0 20px rgba(251,191,36,.1)}
+.node-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.node-card.online::before{background:var(--green)}
+.node-card.offline::before{background:var(--red)}
+.node-card.warning::before{background:var(--orange)}
+.node-name{font-size:14px;font-weight:600;margin-bottom:4px}
+.node-role{font-size:11px;color:var(--dim);margin-bottom:8px}
+.node-stats{font-size:11px;color:var(--text);line-height:1.6}
+.status-badge{padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600}
+.status-online{background:rgba(34,197,94,.15);color:var(--green)}
+.status-offline{background:rgba(239,68,68,.15);color:var(--red)}
+.progress-bar{height:6px;background:#1e293b;border-radius:3px;overflow:hidden;margin:4px 0}
+.progress-fill{height:100%;border-radius:3px;transition:width .3s}
+.student-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.student-card{background:#0f172a;border-radius:10px;padding:12px;border:1px solid var(--border);transition:all .2s}
+.student-card:hover{border-color:var(--accent)}
+.student-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.student-name{font-size:13px;font-weight:600}
+.student-level{font-size:11px;color:var(--dim)}
+.metric-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:12px}
+.metric-label{color:var(--dim)}
+.metric-value{font-weight:600}
+.health-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.health-item{text-align:center;padding:10px;background:#0f172a;border-radius:8px;border:1px solid var(--border)}
+.health-score{font-size:20px;font-weight:700;margin:4px 0}
+.health-label{font-size:10px;color:var(--dim)}
+.reward-list{display:flex;flex-wrap:wrap;gap:8px}
+.reward-item{padding:6px 12px;background:#0f172a;border-radius:8px;border:1px solid var(--border);font-size:12px}
+.reward-amount{color:var(--accent);font-weight:700}
+.git-info{font-size:12px;line-height:1.8}
+.footer{text-align:center;padding:16px;color:var(--dim);font-size:11px;border-top:1px solid var(--border)}
+.refresh-btn{padding:6px 14px;border-radius:8px;font-size:12px;border:1px solid var(--border);background:#0f172a;color:var(--text);cursor:pointer;transition:all .2s}
+.refresh-btn:hover{border-color:var(--accent);color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>🦞 小龙虾网络 · 综合仪表盘 V2</h1>
+    <div class="global-stats">
+        <div class="global-stat">
+            <div class="val" id="activeStudents">3/4</div>
+            <div class="label">活跃学员</div>
+        </div>
+        <div class="global-stat">
+            <div class="val" id="goProblems">31</div>
+            <div class="label">围棋训练题</div>
+        </div>
+        <div class="global-stat">
+            <div class="val" id="paperNotes">5</div>
+            <div class="label">论文精读</div>
+        </div>
+        <div class="global-stat">
+            <div class="val" id="totalWords">4650</div>
+            <div class="label">写作字数</div>
+        </div>
+        <div class="global-stat">
+            <div class="val" id="totalRewards">470🦞</div>
+            <div class="label">龙虾币奖励</div>
+        </div>
+        <div class="global-stat">
+            <div class="val" id="healthScore">4.6/5</div>
+            <div class="label">健康评分</div>
+        </div>
+    </div>
+    <div class="header-actions">
+        <span id="updateTime" style="font-size:11px;color:var(--dim)"></span>
+        <button class="refresh-btn" onclick="refreshData()">🔄 刷新</button>
+    </div>
+</div>
+
+<div class="layout">
+    <!-- 节点状态 -->
+    <div class="panel panel-full">
+        <div class="panel-title">
+            🖥️ 节点状态
+            <span style="font-size:11px;color:var(--dim)">4节点</span>
+        </div>
+        <div class="node-grid" id="nodeGrid">
+            <!-- 动态填充 -->
+        </div>
+    </div>
+
+    <!-- 围棋训练 -->
+    <div class="panel">
+        <div class="panel-title">
+            🎯 围棋训练进度
+            <span style="font-size:11px;color:var(--dim)">31题 | 97%正确率</span>
+        </div>
+        <div class="student-grid" id="goTrainingGrid">
+            <!-- 动态填充 -->
+        </div>
+    </div>
+
+    <!-- 论文学习 -->
+    <div class="panel">
+        <div class="panel-title">
+            📝 论文学习进度
+            <span style="font-size:11px;color:var(--dim)">5篇精读 | 4650字</span>
+        </div>
+        <div class="student-grid" id="paperLearningGrid">
+            <!-- 动态填充 -->
+        </div>
+    </div>
+
+    <!-- 系统健康 -->
+    <div class="panel">
+        <div class="panel-title">
+            📊 系统健康评分
+            <span style="font-size:11px;color:var(--green)">↑2.2 (from 2.4)</span>
+        </div>
+        <div class="health-grid" id="healthGrid">
+            <!-- 动态填充 -->
+        </div>
+    </div>
+
+    <!-- 龙虾币奖励 -->
+    <div class="panel">
+        <div class="panel-title">
+            🦞 龙虾币奖励
+            <span style="font-size:11px;color:var(--accent)">总计470🦞</span>
+        </div>
+        <div id="rewardList">
+            <!-- 动态填充 -->
+        </div>
+    </div>
+
+    <!-- Git状态 -->
+    <div class="panel panel-full">
+        <div class="panel-title">
+            📦 Git仓库状态
+        </div>
+        <div class="git-info" id="gitInfo">
+            <!-- 动态填充 -->
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    🦞 小龙虾网络 V3.3 "效能提升" | 诸葛马 (Hermes) 教练端 | 浙江工商大学数智商研实验室
+</div>
+
+<script>
+// 数据源
+const API_BASE = window.location.origin;
+
+// 节点数据
+const nodes = [
+    {id:"hermes",name:"诸葛马 (Hermes)",role:"教练/调度中心",ip:"172.24.57.34",status:"online",cpu:"4.8%",mem:"1.1G/2G",disk:"76%",expires:"2026-07-16",services:"Dashboard API ✓ | Nginx ✓"},
+    {id:"zhuguxia",name:"诸葛虾",role:"加速型学员",ip:"60.205.139.51",status:"online",cpu:"-",mem:"837MB可用",disk:"73%",expires:"2026-07-12",services:"OpenClaw Gateway ✓ (PID 4188912)"},
+    {id:"qoder",name:"qoder小龙虾",role:"系统架构专家",ip:"-",status:"online",cpu:"-",mem:"-",disk:"-",expires:"-",services:"GitHub Active ✓ (5+ commits)"},
+    {id:"xiaochen",name:"小陈 (小龙虾)",role:"稳健型学员",ip:"121.43.80.231",status:"offline",cpu:"-",mem:"-",disk:"-",expires:"-",services:"SSH连接失败"}
+];
+
+// 围棋训练数据
+const goTraining = [
+    {name:"诸葛马 (Hermes)",level:"八段→九段",day:4,problems:18,accuracy:100,time:"195分钟",difficulty:"高级/九段",content:"定式/死活/手筋/AI布局/金柜角/倒脱靴",color:"#fbbf24"},
+    {name:"诸葛虾",level:"二段→五段",day:2,problems:8,accuracy:100,time:"60分钟",difficulty:"基础",content:"围棋基础训练",color:"#22c55e"},
+    {name:"qoder",level:"六段→八段",day:1,problems:5,accuracy:80,time:"60分钟",difficulty:"中级",content:"死活3+手筋2 (刀把五✓ 丁四✓)",color:"#a855f7"},
+    {name:"小陈",level:"二段→五段",day:0,problems:0,accuracy:0,time:"-",difficulty:"-",content:"未开始",color:"#3b82f6"}
+];
+
+// 论文学习数据
+const paperLearning = [
+    {name:"诸葛马 (Hermes)",level:"八段→九段",papers:4,notes:4,words:1850,content:"AutoGen+MetaGPT+审稿回复信+复习R1",color:"#fbbf24"},
+    {name:"诸葛虾",level:"二段→五段",papers:0,notes:0,words:0,content:"电商模块1完成",color:"#22c55e"},
+    {name:"qoder",level:"六段→八段",papers:1,notes:1,words:2800,content:"MCP-A2A-Survey+文献综述+相关工作",color:"#a855f7"},
+    {name:"小陈",level:"二段→五段",papers:0,notes:0,words:0,content:"未开始",color:"#3b82f6"}
+];
+
+// 健康评分
+const healthScores = [
+    {label:"节点活跃",score:4,max:5,pct:80},
+    {label:"训练完成",score:5,max:5,pct:100},
+    {label:"论文学习",score:5,max:5,pct:100},
+    {label:"基础设施",score:5,max:5,pct:100},
+    {label:"消息系统",score:4,max:5,pct:80}
+];
+
+// 奖励数据
+const rewards = [
+    {name:"诸葛马",total:330,breakdown:"精读200+写作60+站会10+任务60"},
+    {name:"诸葛虾",total:45,breakdown:"围棋20+电商15+技术10"},
+    {name:"qoder",total:95,breakdown:"围棋15+论文80"},
+    {name:"小陈",total:0,breakdown:"未开始"}
+];
+
+// 渲染节点
+function renderNodes() {
+    const grid = document.getElementById('nodeGrid');
+    grid.innerHTML = nodes.map(n => `
+        <div class="node-card ${n.status}">
+            <div class="node-name">${n.name}</div>
+            <div class="node-role">${n.role}</div>
+            <div class="node-stats">
+                <div>IP: ${n.ip || '-'}</div>
+                <div>CPU: ${n.cpu} | MEM: ${n.mem}</div>
+                <div>磁盘: ${n.disk} | 到期: ${n.expires}</div>
+                <div style="margin-top:6px;font-size:10px;color:var(--cyan)">${n.services}</div>
+            </div>
+            <div style="margin-top:8px">
+                <span class="status-badge status-${n.status}">${n.status === 'online' ? '🟢 在线' : '🔴 离线'}</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+// 渲染围棋训练
+function renderGoTraining() {
+    const grid = document.getElementById('goTrainingGrid');
+    grid.innerHTML = goTraining.map(s => `
+        <div class="student-card">
+            <div class="student-header">
+                <div>
+                    <div class="student-name" style="color:${s.color}">${s.name}</div>
+                    <div class="student-level">${s.level} | Day ${s.day}</div>
+                </div>
+                <span class="status-badge ${s.problems > 0 ? 'status-online' : 'status-offline'}">${s.problems > 0 ? '✅ 活跃' : '❌ 未开始'}</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">题目数</span>
+                <span class="metric-value">${s.problems}题</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">正确率</span>
+                <span class="metric-value" style="color:${s.accuracy >= 90 ? 'var(--green)' : s.accuracy >= 70 ? 'var(--orange)' : 'var(--red)'}">${s.accuracy}%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width:${s.accuracy}%;background:${s.color}"></div>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">用时</span>
+                <span class="metric-value">${s.time}</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">内容</span>
+                <span class="metric-value" style="font-size:10px;text-align:right;max-width:60%">${s.content}</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+// 渲染论文学习
+function renderPaperLearning() {
+    const grid = document.getElementById('paperLearningGrid');
+    grid.innerHTML = paperLearning.map(s => `
+        <div class="student-card">
+            <div class="student-header">
+                <div>
+                    <div class="student-name" style="color:${s.color}">${s.name}</div>
+                    <div class="student-level">${s.level}</div>
+                </div>
+                <span class="status-badge ${s.papers > 0 ? 'status-online' : 'status-offline'}">${s.papers > 0 ? '✅ 活跃' : '❌ 未开始'}</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">精读论文</span>
+                <span class="metric-value">${s.papers}篇</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">精读笔记</span>
+                <span class="metric-value">${s.notes}篇</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">写作字数</span>
+                <span class="metric-value">${s.words}字</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">内容</span>
+                <span class="metric-value" style="font-size:10px;text-align:right;max-width:60%">${s.content}</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+// 渲染健康评分
+function renderHealthScores() {
+    const grid = document.getElementById('healthGrid');
+    grid.innerHTML = healthScores.map(h => {
+        const color = h.pct >= 90 ? 'var(--green)' : h.pct >= 70 ? 'var(--accent)' : 'var(--red)';
+        return `
+        <div class="health-item">
+            <div class="health-label">${h.label}</div>
+            <div class="health-score" style="color:${color}">${h.score}/${h.max}</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width:${h.pct}%;background:${color}"></div>
+            </div>
+            <div style="font-size:10px;color:var(--dim)">${h.pct}%</div>
+        </div>`;
+    }).join('');
+}
+
+// 渲染奖励
+function renderRewards() {
+    const list = document.getElementById('rewardList');
+    list.innerHTML = rewards.map(r => `
+        <div class="reward-item">
+            <strong>${r.name}</strong>: <span class="reward-amount">${r.total}🦞</span>
+            <div style="font-size:10px;color:var(--dim)">${r.breakdown}</div>
+        </div>
+    `).join('');
+}
+
+// 渲染Git状态
+function renderGitInfo() {
+    const info = document.getElementById('gitInfo');
+    info.innerHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="card">
+                <div style="font-size:12px;color:var(--dim);margin-bottom:4px">GitHub (origin)</div>
+                <div style="font-size:13px;color:var(--green)">✅ 推送正常</div>
+                <div style="font-size:11px;color:var(--dim)">https://github.com/zhugebin-hub/lobster-network</div>
+            </div>
+            <div class="card">
+                <div style="font-size:12px;color:var(--dim);margin-bottom:4px">Gitee</div>
+                <div style="font-size:13px;color:var(--red)">❌ 超限 (1541MB > 1024MB)</div>
+                <div style="font-size:11px;color:var(--dim)">需创建新仓库 lobster-network-v2</div>
+            </div>
+        </div>
+    `;
+}
+
+// 刷新数据
+function refreshData() {
+    const now = new Date();
+    document.getElementById('updateTime').textContent = `最后更新: ${now.toLocaleString('zh-CN')}`;
+}
+
+// 初始化
+function init() {
+    renderNodes();
+    renderGoTraining();
+    renderPaperLearning();
+    renderHealthScores();
+    renderRewards();
+    renderGitInfo();
+    refreshData();
+    
+    // 每30秒自动刷新
+    setInterval(refreshData, 30000);
+}
+
+init();
+</script>
+</body>
+</html>
