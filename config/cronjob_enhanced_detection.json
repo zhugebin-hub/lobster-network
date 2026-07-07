@@ -1,0 +1,11 @@
+{
+  "job_id": "student_status_detection",
+  "name": "小龙虾网络学员状态检测（增强版）",
+  "schedule": "0 */2 * * *",
+  "prompt": "执行小龙虾网络学员状态检测：\n\n1. 运行增强版检测器：\n   python3 /home/admin/lobster-network/core/enhanced_student_detector.py\n\n2. 检查检测结果，更新学员状态\n\n3. 生成状态报告并推送\n\n检测逻辑优化：\n- 增加GitHub commit检测（24小时内）\n- 增加OpenClaw会话检测\n- 多路径成果识别（共享目录/GitHub/OpenClaw）\n- 避免仅依赖SSH连接判断离线\n",
+  "model": {
+    "provider": "custom",
+    "model": "qwen3.5-plus"
+  },
+  "deliver": "origin"
+}
