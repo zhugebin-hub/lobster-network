@@ -36,7 +36,7 @@ class NetworkConfig:
 
     # 网络配置
     network_name: str = "lobster-network"
-    network_version: str = "0.2.0"
+    network_version: str = "0.4.1"
 
     # ===== 注册中心配置 =====
     heartbeat_interval: int = 30        # 心跳间隔（秒）
@@ -89,7 +89,7 @@ class NetworkConfig:
             log_level=data.get("log_level", "INFO"),
             log_file=data.get("log_file", "lobster_network.log"),
             network_name=data.get("network_name", "lobster-network"),
-            network_version=data.get("network_version", "0.2.0"),
+            network_version=data.get("network_version", "0.4.1"),
             heartbeat_interval=data.get("heartbeat_interval", 30),
             heartbeat_timeout=data.get("heartbeat_timeout", 90),
             auto_cleanup_interval=data.get("auto_cleanup_interval", 300),

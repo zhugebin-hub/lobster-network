@@ -14,6 +14,11 @@ from .smart_contract import SmartContractSystem, SmartContract, ContractConditio
 from .cross_chain import CrossChainSystem, LiquidityPool, CrossChainTransaction, BridgeNode
 from .multi_currency import MultiCurrencySystem, MultiCurrencyWallet, ExchangeRecord
 
+# TODO (P2/v0.5.0): assessment 模块 — 8维度评估引擎 + Clawvard 桥接
+# 当前 assessment/ 子包的源码文件尚未落地，需在新版本中创建并导出以下模块：
+#   from .assessment import AssessmentEngine, ClawvardBridge
+# 相关设计文档见: clawvard-experiment-guide.md, clawvard-token.md
+
 __version__ = "0.4.1"
 __all__ = [
     "Node",
