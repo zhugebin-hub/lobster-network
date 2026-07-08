@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>论文写作指挥中心 · 小龙虾网络</title>
+<style>
+  :root{
+    --bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--dim:#64748b;
+    --accent:#fbbf24;--green:#22c55e;--red:#ef4444;--blue:#3b82f6;
+    --purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--pink:#ec4899;
+    --gold:#f59e0b;--gold-border:#b45309;--purple-card:#7c3aed;--green-card:#059669;
+    --blue-card:#2563eb;--orange-card:#ea580c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+  /* Animations */
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+  @keyframes pulseGlow{0%,100%{box-shadow:0 0 4px rgba(34,197,94,.4)}50%{box-shadow:0 0 16px rgba(34,197,94,.8)}}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes progressPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.3)}}
+  @keyframes slideIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
+  @keyframes countUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+  .pulse{animation:pulse 2s infinite}
+  .pulse-glow{animation:pulseGlow 2s infinite}
+  .fade-in{animation:fadeIn .4s ease-out}
+  .slide-in{animation:slideIn .5s ease-out}
+  .skeleton{background:linear-gradient(90deg,#1e293b 25%,#334155 50%,#1e293b 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px}
+
+  /* Header */
+  .header{background:linear-gradient(135deg,#111827 0%,#1e1b4b 100%);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+  .header h1{font-size:22px;color:var(--accent);letter-spacing:1px}
+  .header-stats{display:flex;gap:20px;flex-wrap:wrap}
+  .header-stat{font-size:12px;color:var(--dim);display:flex;align-items:center;gap:6px}
+  .header-stat .val{color:var(--cyan);font-weight:700;font-family:monospace;font-size:15px}
+  .header-stat .val.gold{color:var(--gold)}
+  .header-stat .val.green{color:var(--green)}
+  .header-actions{display:flex;gap:8px;align-items:center}
+  .btn{padding:6px 14px;border-radius:8px;font-size:12px;border:1px solid var(--border);background:#0f172a;color:var(--text);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn .refresh-icon{display:inline-block;transition:transform .6s}
+  .btn.refreshing .refresh-icon{transform:rotate(360deg)}
+  .auto-refresh-badge{font-size:11px;color:var(--dim);display:flex;align-items:center;gap:4px}
+  .auto-refresh-badge .dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+
+  /* Student row */
+  .student-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:16px 24px;border-bottom:1px solid var(--border)}
+  .student-card{border-radius:12px;padding:16px;position:relative;overflow:hidden;transition:all .25s;cursor:pointer}
+  .student-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+  .student-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+  .student-card.gold{border:1px solid var(--gold-border);background:linear-gradient(135deg,#1a1400,#2a1f00)}
+  .student-card.gold::before{background:linear-gradient(90deg,#f59e0b,#fbbf24,#f59e0b)}
+  .student-card.purple{border:1px solid #6d28d9;background:linear-gradient(135deg,#1a0a2e,#2a0a4e)}
+  .student-card.purple::before{background:linear-gradient(90deg,#7c3aed,#a855f7,#7c3aed)}
+  .student-card.green{border:1px solid #047857;background:linear-gradient(135deg,#0a1a0a,#0a2a1a)}
+  .student-card.green::before{background:linear-gradient(90deg,#059669,#10b981,#059669)}
+  .student-card.blue{border:1px solid #1d4ed8;background:linear-gradient(135deg,#0a0e2e,#0a1a4e)}
+  .student-card.blue::before{background:linear-gradient(90deg,#2563eb,#3b82f6,#2563eb)}
+  .student-card.orange{border:1px solid #c2410c;background:linear-gradient(135deg,#1a0a00,#2a1200)}
+  .student-card.orange::before{background:linear-gradient(90deg,#ea580c,#f97316,#ea580c)}
+  .student-card .sc-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .sc-avatar{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:bold;flex-shrink:0}
+  .sc-avatar.gold-bg{background:rgba(245,158,11,.2);color:var(--gold)}
+  .sc-avatar.purple-bg{background:rgba(168,85,247,.2);color:var(--purple)}
+  .sc-avatar.green-bg{background:rgba(16,185,129,.2);color:var(--green)}
+  .sc-avatar.blue-bg{background:rgba(59,130,246,.2);color:var(--blue)}
+  .sc-avatar.orange-bg{background:rgba(249,115,22,.2);color:var(--orange)}
+  .sc-info{min-width:0}
+  .sc-name{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sc-rank{font-size:11px;color:var(--dim)}
+  .sc-rank b{color:var(--accent)}
+  .sc-role{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;margin:6px 0;font-weight:600}
+  .sc-role.gold-tag{background:rgba(245,158,11,.15);color:var(--gold)}
+  .sc-role.purple-tag{background:rgba(168,85,247,.15);color:var(--purple)}
+  .sc-role.green-tag{background:rgba(16,185,129,.15);color:var(--green)}
+  .sc-role.blue-tag{background:rgba(59,130,246,.15);color:var(--blue)}
+  .sc-role.orange-tag{background:rgba(249,115,22,.15);color:var(--orange)}
+  .sc-task{font-size:11px;color:var(--dim);margin:4px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sc-active{font-size:10px;color:var(--dim);display:flex;align-items:center;gap:4px}
+  .sc-status{width:7px;height:7px;border-radius:50%;display:inline-block}
+  .sc-status.online{background:var(--green);box-shadow:0 0 6px var(--green)}
+  .sc-status.idle{background:var(--accent);box-shadow:0 0 6px var(--accent)}
+  .sc-status.offline{background:var(--dim)}
+
+  /* Timeline */
+  .timeline-section{padding:16px 24px;border-bottom:1px solid var(--border)}
+  .timeline-section h3{font-size:15px;color:var(--accent);margin-bottom:12px;letter-spacing:1px}
+  .timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+  .tl-slot{border-radius:10px;padding:14px 10px;text-align:center;position:relative;overflow:hidden;transition:all .3s}
+  .tl-slot.active{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.3);animation:pulseGlow 3s infinite}
+  .tl-slot.done{background:rgba(34,197,94,.04);border:1px solid rgba(34,197,94,.15)}
+  .tl-slot.pending{background:var(--card);border:1px solid var(--border);opacity:.6}
+  .tl-slot .tl-time{font-size:11px;color:var(--dim);font-family:monospace;margin-bottom:4px}
+  .tl-slot .tl-label{font-size:12px;font-weight:600;margin-bottom:6px}
+  .tl-slot .tl-status{font-size:10px;padding:2px 8px;border-radius:8px;display:inline-block;margin-bottom:6px}
+  .tl-status.in-progress{background:rgba(34,197,94,.15);color:var(--green)}
+  .tl-status.completed{background:rgba(34,197,94,.1);color:var(--green)}
+  .tl-status.waiting{background:rgba(100,116,139,.1);color:var(--dim)}
+  .tl-slot .tl-students{font-size:10px;color:var(--dim);margin-bottom:4px}
+  .tl-slot .tl-output{font-size:10px;color:var(--cyan);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tl-check{display:inline-block;width:18px;height:18px;border-radius:50%;font-size:11px;line-height:18px;margin-bottom:4px}
+  .tl-check.done{background:var(--green);color:#fff}
+  .tl-check.pending{background:var(--dim);color:var(--bg)}
+
+  /* Main content */
+  .main-content{display:grid;grid-template-columns:280px 1fr 320px;gap:0;min-height:500px}
+  .panel{border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px}
+  .panel:last-child{border-right:none}
+  .panel-title{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;letter-spacing:.5px}
+  .panel-sub{font-size:10px;color:var(--dim);font-weight:400}
+
+  /* Version timeline */
+  .ver-timeline{position:relative;padding-left:20px}
+  .ver-timeline::before{content:'';position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:var(--border)}
+  .ver-item{padding:8px 0 12px 8px;position:relative;cursor:pointer;transition:all .2s}
+  .ver-item:hover{background:rgba(251,191,36,.03);border-radius:6px}
+  .ver-item::before{content:'';position:absolute;left:-17px;top:12px;width:10px;height:10px;border-radius:50%;border:2px solid var(--dim);background:var(--bg)}
+  .ver-item.current::before{border-color:var(--accent);background:var(--accent);box-shadow:0 0 8px var(--accent)}
+  .ver-num{font-size:13px;font-weight:700;font-family:monospace}
+  .ver-item.current .ver-num{color:var(--accent)}
+  .ver-time{font-size:10px;color:var(--dim);margin:2px 0}
+  .ver-author{font-size:10px;color:var(--cyan)}
+  .ver-change{font-size:10px;color:var(--dim);margin-top:3px;line-height:1.4}
+  .ver-score{font-size:11px;font-weight:700;margin-top:3px}
+  .ver-score.up{color:var(--green)}
+  .ver-score.down{color:var(--red)}
+
+  /* Radar */
+  .radar-wrap{display:flex;align-items:center;justify-content:center;padding:8px 0}
+  #radarCanvas{width:100%;max-width:320px;height:auto}
+  .radar-legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:8px}
+  .radar-legend-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--dim);cursor:pointer;padding:2px 6px;border-radius:4px;transition:all .2s}
+  .radar-legend-item:hover{background:rgba(255,255,255,.05)}
+  .radar-legend-item.selected{background:rgba(251,191,36,.1);color:var(--accent)}
+  .radar-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+  /* Task queue */
+  .task-queue{margin-top:14px}
+  .task-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;margin-bottom:6px;background:var(--card);border:1px solid var(--border);transition:all .2s}
+  .task-item:hover{border-color:var(--accent)}
+  .task-priority{width:4px;height:24px;border-radius:2px;flex-shrink:0}
+  .task-priority.high{background:var(--red)}
+  .task-priority.medium{background:var(--accent)}
+  .task-priority.low{background:var(--dim)}
+  .task-info{flex:1;min-width:0}
+  .task-type{font-size:11px;font-weight:600;margin-bottom:2px}
+  .task-meta{font-size:10px;color:var(--dim);display:flex;gap:8px}
+  .task-deadline{font-size:10px;color:var(--accent);white-space:nowrap;font-family:monospace}
+
+  /* Activity stream */
+  .activity-feed{max-height:200px;overflow-y:auto}
+  .act-item{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid rgba(30,41,59,.5);font-size:11px;align-items:flex-start}
+  .act-dot{width:6px;height:6px;border-radius:50%;margin-top:4px;flex-shrink:0}
+  .act-dot.relay{background:var(--purple)}
+  .act-dot.review{background:var(--cyan)}
+  .act-dot.commit{background:var(--green)}
+  .act-content{flex:1}
+  .act-time{color:var(--dim);font-family:monospace;font-size:10px}
+  .relay-chain{display:flex;align-items:center;gap:6px;font-size:10px;margin:10px 0;flex-wrap:wrap}
+  .relay-node{padding:3px 8px;border-radius:6px;background:var(--card);border:1px solid var(--border);font-weight:600}
+  .relay-node.current{background:rgba(168,85,247,.15);border-color:var(--purple);color:var(--purple);animation:pulse 2s infinite}
+  .relay-arrow{color:var(--dim)}
+
+  /* Score table */
+  .score-table{width:100%;border-collapse:collapse;font-size:10px}
+  .score-table th{text-align:left;padding:5px 6px;border-bottom:1px solid var(--border);color:var(--dim);font-weight:500;white-space:nowrap}
+  .score-table td{padding:5px 6px;border-bottom:1px solid rgba(30,41,59,.3)}
+  .score-table .name-cell{font-weight:600;font-size:11px}
+  .score-table .total{font-weight:700;font-size:12px}
+  .score-table .trend{font-weight:700}
+  .trend-up{color:var(--green)}
+  .trend-down{color:var(--red)}
+
+  /* Paper preview */
+  .paper-preview{border-top:1px solid var(--border);padding:16px 24px;background:#0a0e17}
+  .paper-preview h3{font-size:15px;color:var(--accent);margin-bottom:10px;letter-spacing:1px}
+  .preview-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .preview-abstract{font-size:12px;color:var(--dim);line-height:1.7;background:var(--card);padding:14px;border-radius:10px;border:1px solid var(--border)}
+  .preview-abstract .title{font-size:14px;color:var(--text);font-weight:700;margin-bottom:6px}
+  .chapter-status{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .ch-item{font-size:11px;display:flex;align-items:center;gap:6px;padding:4px 0}
+  .ch-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+  .ch-dot.done{background:var(--green)}
+  .ch-dot.wip{background:var(--accent);animation:pulse 1.5s infinite}
+  .ch-dot.undone{background:var(--dim)}
+  .ref-stats{font-size:12px;color:var(--dim)}
+  .ref-stats .big{font-size:22px;font-weight:700;color:var(--cyan);font-family:monospace}
+  .ref-stats .row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(30,41,59,.3)}
+
+  /* Responsive */
+  @media(max-width:1200px){
+    .student-row{grid-template-columns:repeat(3,1fr)}
+    .main-content{grid-template-columns:1fr 1fr}
+    .timeline{grid-template-columns:repeat(3,1fr)}
+  }
+  @media(max-width:768px){
+    .student-row{grid-template-columns:1fr 1fr}
+    .main-content{grid-template-columns:1fr}
+    .timeline{grid-template-columns:1fr 1fr}
+    .preview-grid{grid-template-columns:1fr}
+    .header h1{font-size:16px}
+    .header-stats{display:none}
+  }
+
+  /* Tooltip */
+  .improve-hint{font-size:10px;color:var(--dim);margin-top:8px;line-height:1.5;max-width:280px}
+  .improve-hint b{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>🦞 论文写作指挥中心</h1>
+  <div class="header-stats">
+    <div class="header-stat">活跃学员 <span class="val green" id="statActiveStudents">4</span></div>
+    <div class="header-stat">今日完成任务 <span class="val" id="statTasksDone">7</span></div>
+    <div class="header-stat">论文版本 <span class="val gold" id="statVersion">v3.2</span></div>
+    <div class="header-stat">整体评分 <span class="val" id="statOverallScore">76.3</span></div>
+    <div class="header-stat">接力赛 <span class="val gold" id="statRelayRound">3/5</span></div>
+  </div>
+  <div class="header-actions">
+    <div class="auto-refresh-badge"><span class="dot"></span> 30s 自动刷新</div>
+    <button class="btn" id="btnRefresh" onclick="refreshData()">
+      <span class="refresh-icon">↻</span> 立即刷新
+    </button>
+  </div>
+</div>
+
+<!-- Student Cards -->
+<div class="student-row" id="studentRow"></div>
+
+<!-- Timeline -->
+<div class="timeline-section">
+  <h3>📋 每日调度时间线</h3>
+  <div class="timeline" id="timeline"></div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+  <!-- Left: Version Timeline -->
+  <div class="panel">
+    <div class="panel-title">📜 论文版本演进</div>
+    <div class="ver-timeline" id="versionTimeline"></div>
+  </div>
+
+  <!-- Center: Radar + Task Queue -->
+  <div class="panel">
+    <div class="panel-title">🎯 八维能力雷达 <span class="panel-sub">点击图例切换</span></div>
+    <div class="radar-wrap">
+      <canvas id="radarCanvas" width="320" height="320"></canvas>
+    </div>
+    <div class="radar-legend" id="radarLegend"></div>
+    <div class="task-queue">
+      <div class="panel-title">📥 待处理任务队列</div>
+      <div id="taskQueue"></div>
+    </div>
+  </div>
+
+  <!-- Right: Activity + Score -->
+  <div class="panel">
+    <div class="panel-title">🤝 协同学习活动流</div>
+    <div class="relay-chain" id="relayChain"></div>
+    <div class="activity-feed" id="activityFeed"></div>
+    <div class="panel-title" style="margin-top:16px">📊 八维评分看板</div>
+    <table class="score-table" id="scoreTable"></table>
+    <div class="improve-hint" id="improveHint"></div>
+  </div>
+</div>
+
+<!-- Paper Preview -->
+<div class="paper-preview">
+  <h3>📄 论文草稿预览 — <span style="color:var(--accent)" id="previewVersion">v3.2</span></h3>
+  <div class="preview-grid">
+    <div class="preview-abstract" id="previewAbstract"></div>
+    <div>
+      <div style="font-size:12px;color:var(--dim);margin-bottom:8px">各章节完成状态</div>
+      <div class="chapter-status" id="chapterStatus"></div>
+    </div>
+    <div class="ref-stats" id="refStats"></div>
+  </div>
+</div>
+
+<script>
+// ==== Mock Data ====
+const students = [
+  { id:'zhugebin', name:'诸葛斌教授', rank:'七段', score:89, role:'审稿人', roleClass:'gold-tag', cardClass:'gold', avatarClass:'gold-bg', avatarEmoji:'🎓', task:'正在审阅 v3.2 摘要与结构', active:'2 分钟前', status:'online' },
+  { id:'qoder', name:'qoder小龙虾', rank:'四段', score:73, role:'方法论+数据', roleClass:'purple-tag', cardClass:'purple', avatarClass:'purple-bg', avatarEmoji:'🦞', task:'第4章方法论证撰写中', active:'5 分钟前', status:'online' },
+  { id:'zhuguxia', name:'诸葛虾', rank:'三段', score:70, role:'文献综述', roleClass:'green-tag', cardClass:'green', avatarClass:'green-bg', avatarEmoji:'📚', task:'第二章文献综述修改', active:'12 分钟前', status:'idle' },
+  { id:'xiaochen', name:'信电大虾小陈', rank:'三段', score:67, role:'实证研究', roleClass:'blue-tag', cardClass:'blue', avatarClass:'blue-bg', avatarEmoji:'🔬', task:'第5章实验设计与数据分析', active:'8 分钟前', status:'online' },
+  { id:'hermes', name:'Hermes教练', rank:'总调度', score:'-', role:'总调度', roleClass:'orange-tag', cardClass:'orange', avatarClass:'orange-bg', avatarEmoji:'🧭', task:'全局调度与阶段评审', active:'刚刚', status:'online' }
+];
+
+const timelineSlots = [
+  { time:'08:00-09:30', label:'文献检索与阅读', status:'completed', students:'诸葛虾、qoder', output:'27篇文献梳理' },
+  { time:'10:00-12:00', label:'大纲与框架写作', status:'completed', students:'qoder、小陈', output:'框架 v3.2 定稿' },
+  { time:'13:00-15:00', label:'章节起草与初稿', status:'active', students:'全部学员', output:'第3-5章初稿' },
+  { time:'15:30-17:00', label:'同行评审与互评', status:'pending', students:'诸葛虾↔小陈', output:'互评报告' },
+  { time:'19:00-21:00', label:'修改与润色定稿', status:'pending', students:'qoder、教授', output:'终稿 v3.3' }
+];
+
+const versions = [
+  { num:'v1.0', time:'06-28 14:30', author:'qoder', change:'初始框架搭建，八章大纲确立', score:'-', trend:'' },
+  { num:'v1.5', time:'06-29 09:15', author:'诸葛虾', change:'文献综述初稿完成，引用42篇', score:'62', trend:'up' },
+  { num:'v2.0', time:'06-30 17:00', author:'小陈', change:'实验设计章节完成，方法论框架完善', score:'68', trend:'up' },
+  { num:'v2.5', time:'07-02 11:20', author:'qoder', change:'核心算法伪代码完成，数据预处理章节', score:'72', trend:'up' },
+  { num:'v3.0', time:'07-03 16:45', author:'诸葛虾', change:'全文统稿，文献增至58篇，图表优化', score:'74', trend:'up' },
+  { num:'v3.2', time:'07-05 08:30', author:'教授审阅', change:'摘要重写、结构微调、论证链强化', score:'76', trend:'up' }
+];
+
+const radarLabels = ['结构完整性','摘要凝练','文献扎实','方法严谨','数据充分','论证力度','格式规范','引用广度'];
+const radarData = {
+  qoder: [85,70,65,88,80,75,78,65],
+  zhuguxia: [72,60,90,55,45,68,82,92],
+  xiaochen: [70,55,62,75,88,72,68,58],
+  professor: [92,90,85,88,82,90,88,86]
+};
+const radarColors = {
+  qoder: '#a855f7',
+  zhuguxia: '#10b981',
+  xiaochen: '#3b82f6',
+  professor: '#f59e0b'
+};
+
+const tasks = [
+  { type:'文献检索', student:'诸葛虾', deadline:'14:00', priority:'high', desc:'补充GAN网络领域最新文献' },
+  { type:'文献检索', student:'qoder', deadline:'16:00', priority:'medium', desc:'验证引用格式规范性' },
+  { type:'大纲编写', student:'Hermes', deadline:'12:00', priority:'high', desc:'v3.3 章节结构调整方案' },
+  { type:'章节起草', student:'qoder', deadline:'15:00', priority:'high', desc:'第4章方法论证初稿' },
+  { type:'章节起草', student:'小陈', deadline:'15:00', priority:'high', desc:'第5章实验数据整理' },
+  { type:'章节起草', student:'诸葛虾', deadline:'17:00', priority:'medium', desc:'第2章文献综述更新' },
+  { type:'评审', student:'教授', deadline:'17:00', priority:'high', desc:'v3.2 全面评审意见' }
+];
+
+const activities = [
+  { type:'commit', time:'08:32', text:'qoder 提交 v3.2 第4章修订稿 (+320行)' },
+  { type:'relay', time:'09:00', text:'接力赛：诸葛虾完成文献检索 → 交接给小陈' },
+  { type:'review', time:'09:15', text:'小陈对诸葛虾的文献综述提出 5 条修改建议' },
+  { type:'commit', time:'09:48', text:'诸葛虾更新第2章文献综述 (新增 8 篇引用)' },
+  { type:'relay', time:'10:05', text:'接力赛：小陈完成数据预处理 → 交接给qoder' },
+  { type:'review', time:'10:30', text:'教授对 qoder 的方法论初稿批注 12 处' },
+  { type:'commit', time:'11:02', text:'qoder 修正方法论证部分 (响应教授评审意见)' },
+  { type:'relay', time:'11:15', text:'接力赛：qoder完成方法论证 → 交接给诸葛虾' }
+];
+
+const scoreBoard = [
+  { name:'qoder小龙虾', dims:{结构:85,摘要:70,文献:65,方法:88,数据:80,论证:75,格式:78,引用:65}, total:73.4, trend:'↑ +2.1', hint:'方法论证表现突出，建议加强文献视野和摘要凝练' },
+  { name:'诸葛虾', dims:{结构:72,摘要:60,文献:90,方法:55,数据:45,论证:68,格式:82,引用:92}, total:69.8, trend:'↑ +1.5', hint:'文献功底扎实，需补强方法论和数据分析能力' },
+  { name:'信电大虾小陈', dims:{结构:70,摘要:55,文献:62,方法:75,数据:88,论证:72,格式:68,引用:58}, total:67.2, trend:'↑ +0.8', hint:'实验数据能力强，建议提升摘要凝练和引用规范性' },
+  { name:'诸葛斌教授', dims:{结构:92,摘要:90,文献:85,方法:88,数据:82,论证:90,格式:88,引用:86}, total:87.6, trend:'—', hint:'各维度均衡优秀，审稿视角保持高标准' }
+];
+
+const chapters = [
+  { name:'第一章 绪论', status:'done' },
+  { name:'第二章 文献综述', status:'wip' },
+  { name:'第三章 理论基础', status:'done' },
+  { name:'第四章 方法论证', status:'wip' },
+  { name:'第五章 实验与分析', status:'wip' },
+  { name:'第六章 讨论', status:'undone' },
+  { name:'第七章 结论与展望', status:'undone' },
+  { name:'参考文献与附录', status:'done' }
+];
+
+// ==== Render ====
+let selectedRadar = 'qoder';
+let refreshTimer;
+
+function init() {
+  renderStudents();
+  renderTimeline();
+  renderVersions();
+  renderRadarLegend();
+  drawRadar();
+  renderTasks();
+  renderRelayChain();
+  renderActivities();
+  renderScoreTable();
+  renderPaperPreview();
+  startAutoRefresh();
+}
+
+function renderStudents() {
+  const container = document.getElementById('studentRow');
+  container.innerHTML = students.map(s => `
+    <div class="student-card ${s.cardClass} fade-in">
+      <div class="sc-header">
+        <div class="sc-avatar ${s.avatarClass}">${s.avatarEmoji}</div>
+        <div class="sc-info">
+          <div class="sc-name">${s.name}</div>
+          <div class="sc-rank">${s.rank}${s.score!=='-'?' <b>'+s.score+'分</b>':''}</div>
+        </div>
+      </div>
+      <span class="sc-role ${s.roleClass}">${s.role}</span>
+      <div class="sc-task">📝 ${s.task}</div>
+      <div class="sc-active">
+        <span class="sc-status ${s.status}"></span> ${s.active}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTimeline() {
+  const container = document.getElementById('timeline');
+  container.innerHTML = timelineSlots.map(s => {
+    const cls = s.status === 'completed' ? 'done' : s.status === 'active' ? 'active' : 'pending';
+    const statusLabel = s.status === 'completed' ? '已完成' : s.status === 'active' ? '进行中' : '待开始';
+    const statusCls = s.status === 'completed' ? 'completed' : s.status === 'active' ? 'in-progress' : 'waiting';
+    const checkCls = s.status === 'completed' ? 'done' : 'pending';
+    const checkIcon = s.status === 'completed' ? '✓' : '—';
+    return `
+      <div class="tl-slot ${cls}">
+        <div class="tl-check ${checkCls}">${checkIcon}</div>
+        <div class="tl-time">${s.time}</div>
+        <div class="tl-label">${s.label}</div>
+        <span class="tl-status ${statusCls}">${statusLabel}</span>
+        <div class="tl-students">${s.students}</div>
+        <div class="tl-output">${s.output}</div>
+      </div>`;
+  }).join('');
+}
+
+function renderVersions() {
+  const container = document.getElementById('versionTimeline');
+  container.innerHTML = versions.map((v, i) => {
+    const isCurrent = i === versions.length - 1;
+    return `
+      <div class="ver-item ${isCurrent ? 'current slide-in' : ''}">
+        <div class="ver-num">${v.num}</div>
+        <div class="ver-time">${v.time}</div>
+        <div class="ver-author">✎ ${v.author}</div>
+        <div class="ver-change">${v.change}</div>
+        ${v.score !== '-' ? `<div class="ver-score ${v.trend}">${v.score}分 ${v.trend==='up'?'↑':'↓'}</div>` : ''}
+      </div>`;
+  }).join('');
+}
+
+function renderRadarLegend() {
+  const container = document.getElementById('radarLegend');
+  const order = ['qoder', 'zhuguxia', 'xiaochen', 'professor'];
+  const names = {qoder:'qoder小龙虾',zhuguxia:'诸葛虾',xiaochen:'信电大虾小陈',professor:'教授基准'};
+  container.innerHTML = order.map(k => `
+    <div class="radar-legend-item ${k===selectedRadar?'selected':''}" onclick="selectRadar('${k}')">
+      <span class="radar-dot" style="background:${radarColors[k]}"></span> ${names[k]}
+    </div>
+  `).join('');
+}
+
+function selectRadar(key) {
+  selectedRadar = key;
+  renderRadarLegend();
+  drawRadar();
+}
+
+function drawRadar() {
+  const canvas = document.getElementById('radarCanvas');
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width;
+  const h = canvas.height;
+  const cx = w / 2;
+  const cy = h / 2;
+  const maxR = 130;
+  const n = 8;
+  const levels = 5;
+  ctx.clearRect(0, 0, w, h);
+
+  // Background grid
+  for (let l = 1; l <= levels; l++) {
+    const r = (maxR / levels) * l;
+    ctx.beginPath();
+    for (let i = 0; i <= n; i++) {
+      const angle = (Math.PI * 2 / n) * i - Math.PI / 2;
+      const x = cx + r * Math.cos(angle);
+      const y = cy + r * Math.sin(angle);
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = 'rgba(30,41,59,.5)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    
+    // Level labels
+    ctx.fillStyle = '#334155';
+    ctx.font = '9px monospace';
+    ctx.fillText(l * 20, cx + 4, cy - r + 12);
+  }
+
+  // Axis lines
+  for (let i = 0; i < n; i++) {
+    const angle = (Math.PI * 2 / n) * i - Math.PI / 2;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + maxR * Math.cos(angle), cy + maxR * Math.sin(angle));
+    ctx.strokeStyle = 'rgba(30,41,59,.3)';
+    ctx.stroke();
+    
+    // Labels
+    const lx = cx + (maxR + 20) * Math.cos(angle);
+    const ly = cy + (maxR + 20) * Math.sin(angle);
+    ctx.fillStyle = '#64748b';
+    ctx.font = '10px system-ui';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(radarLabels[i], lx, ly);
+  }
+
+  // Draw data
+  const order = ['qoder', 'zhuguxia', 'xiaochen', 'professor'];
+  order.forEach(key => {
+    const data = radarData[key];
+    const alpha = key === selectedRadar ? 1 : 0.2;
+    const lineWidth = key === selectedRadar ? 2.5 : 1;
+    ctx.beginPath();
+    for (let i = 0; i < n; i++) {
+      const angle = (Math.PI * 2 / n) * i - Math.PI / 2;
+      const r = (data[i] / 100) * maxR;
+      const x = cx + r * Math.cos(angle);
+      const y = cy + r * Math.sin(angle);
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = radarColors[key];
+    ctx.lineWidth = lineWidth;
+    ctx.globalAlpha = alpha;
+    ctx.stroke();
+    
+    // Fill for selected
+    if (key === selectedRadar) {
+      ctx.fillStyle = radarColors[key] + '1a';
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    // Dots for selected
+    if (key === selectedRadar) {
+      for (let i = 0; i < n; i++) {
+        const angle = (Math.PI * 2 / n) * i - Math.PI / 2;
+        const r = (data[i] / 100) * maxR;
+        ctx.beginPath();
+        ctx.arc(cx + r * Math.cos(angle), cy + r * Math.sin(angle), 3, 0, Math.PI * 2);
+        ctx.fillStyle = radarColors[key];
+        ctx.fill();
+      }
+    }
+  });
+}
+
+function renderTasks() {
+  const container = document.getElementById('taskQueue');
+  container.innerHTML = tasks.map(t => `
+    <div class="task-item fade-in">
+      <div class="task-priority ${t.priority}"></div>
+      <div class="task-info">
+        <div class="task-type">${t.type}</div>
+        <div class="task-meta">
+          <span>👤 ${t.student}</span>
+          <span>${t.desc}</span>
+        </div>
+      </div>
+      <div class="task-deadline">⏰ ${t.deadline}</div>
+    </div>
+  `).join('');
+}
+
+function renderRelayChain() {
+  const container = document.getElementById('relayChain');
+  const nodes = ['诸葛虾', '小陈', 'qoder', '诸葛虾', '教授'];
+  const currentIdx = 2; // qoder is current
+  container.innerHTML = nodes.map((n, i) => {
+    const cls = i === currentIdx ? 'relay-node current' : 'relay-node';
+    const arrow = i < nodes.length - 1 ? '<span class="relay-arrow">→</span>' : '';
+    return `<span class="${cls}">${n}</span>${arrow}`;
+  }).join('');
+}
+
+function renderActivities() {
+  const container = document.getElementById('activityFeed');
+  container.innerHTML = activities.map(a => `
+    <div class="act-item slide-in">
+      <div class="act-dot ${a.type}"></div>
+      <div class="act-content">
+        <span class="act-time">${a.time}</span> ${a.text}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderScoreTable() {
+  const container = document.getElementById('scoreTable');
+  const dims = ['结构','摘要','文献','方法','数据','论证','格式','引用'];
+  container.innerHTML = `
+    <thead><tr>
+      <th>学员</th>${dims.map(d=>`<th>${d}</th>`).join('')}<th>总分</th><th>趋势</th>
+    </tr></thead>
+    <tbody>${scoreBoard.map(s => `
+      <tr>
+        <td class="name-cell">${s.name}</td>
+        ${dims.map(d=>`<td>${s.dims[d]}</td>`).join('')}
+        <td class="total">${s.total}</td>
+        <td class="trend ${s.trend.includes('↑')?'trend-up':s.trend.includes('↓')?'trend-down':''}">${s.trend}</td>
+      </tr>
+    `).join('')}</tbody>`;
+  
+  document.getElementById('improveHint').innerHTML = scoreBoard.map(s => 
+    `<b>${s.name.split('(')[0]}</b>：${s.hint}`
+  ).join('<br>');
+}
+
+function renderPaperPreview() {
+  document.getElementById('previewAbstract').innerHTML = `
+    <div class="title">基于小龙虾群体智能的分布式网络优化算法研究</div>
+    本文提出一种受小龙虾群体行为启发的分布式网络优化算法（Lobster-Net），通过模拟小龙虾群体觅食、信息素传递和层级决策机制，构建去中心化自组织网络架构。算法在节点异构、链路动态变化等复杂场景下表现出色...
+  `;
+  
+  document.getElementById('chapterStatus').innerHTML = chapters.map(c => `
+    <div class="ch-item">
+      <span class="ch-dot ${c.status}"></span> ${c.name}
+    </div>
+  `).join('');
+  
+  document.getElementById('refStats').innerHTML = `
+    <div class="row"><span>已引用</span><span class="big">58</span></div>
+    <div class="row"><span>计划引用</span><span style="font-size:16px;color:var(--accent)">12</span></div>
+    <div class="row"><span>中文文献</span><span>23</span></div>
+    <div class="row"><span>英文文献</span><span>35</span></div>
+    <div class="row"><span>会议论文</span><span>18</span></div>
+    <div class="row"><span>期刊论文</span><span>40</span></div>
+  `;
+}
+
+function refreshData() {
+  const btn = document.getElementById('btnRefresh');
+  btn.classList.add('refreshing');
+  setTimeout(() => btn.classList.remove('refreshing'), 600);
+  
+  // Simulate data refresh with slight variations
+  document.getElementById('statTasksDone').textContent = (7 + Math.floor(Math.random()*3));
+  document.getElementById('statOverallScore').textContent = (76 + Math.random()*2).toFixed(1);
+  
+  // Re-render
+  renderTimeline();
+  renderVersions();
+  drawRadar();
+  renderTasks();
+  renderActivities();
+}
+
+function startAutoRefresh() {
+  clearInterval(refreshTimer);
+  refreshTimer = setInterval(refreshData, 30000);
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', init);
+</script>
+
+</body>
+</html>

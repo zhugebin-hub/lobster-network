@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小龙虾网络 · 因陀罗网仪表盘</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a1a;color:#c8d6e5;font-family:'SF Mono','Menlo','Monaco',monospace;min-width:1200px;overflow-x:hidden}
+.header{background:linear-gradient(90deg,#0d0d2b,#1a1a3e,#0d0d2b);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #2a2a5a}
+.header h1{font-size:20px;color:#ffd700;letter-spacing:2px}
+.header .stats{display:flex;gap:24px;font-size:13px}
+.header .stats span{color:#7f8fa6}
+.header .stats b{color:#e8c547}
+.main{display:grid;grid-template-columns:420px 1fr;gap:0;height:calc(100vh - 58px)}
+.left-panel{background:#0d0d20;border-right:1px solid #1a1a40;padding:20px;overflow:hidden;display:flex;flex-direction:column}
+.left-panel h3{color:#ffd700;font-size:14px;margin-bottom:12px;letter-spacing:1px}
+#topoCanvas{width:100%;height:320px;border-radius:8px;background:#08081a}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;font-size:11px}
+.legend-item{display:flex;align-items:center;gap:6px}
+.legend-dot{width:10px;height:10px;border-radius:50%}
+.network-stats{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.net-stat{background:#12123a;border-radius:6px;padding:10px;text-align:center}
+.net-stat .val{font-size:18px;font-weight:bold;color:#e8c547}
+.net-stat .lbl{font-size:10px;color:#7f8fa6;margin-top:2px}
+.right-panel{padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:14px}
+.section-title{font-size:13px;color:#ffd700;letter-spacing:1px;margin-bottom:8px;border-bottom:1px solid #1a1a40;padding-bottom:6px}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.student-card{border-radius:10px;padding:16px;position:relative;overflow:hidden}
+.student-card.xiaochen{background:linear-gradient(135deg,#0d2137,#1a3a6e)}
+.student-card.zhuguxia{background:linear-gradient(135deg,#0d2e1a,#1a5e3a)}
+.student-card.qoder{background:linear-gradient(135deg,#2a0d3a,#5a1a6e)}
+.student-card .name{font-size:16px;font-weight:bold;margin-bottom:2px}
+.student-card .role{font-size:11px;opacity:.7;margin-bottom:10px}
+.student-card .stat-row{display:flex;justify-content:space-between;font-size:12px;margin:4px 0}
+.student-card .stat-row .v{font-weight:bold}
+.progress-wrap{margin:6px 0}
+.progress-wrap .lbl{font-size:10px;color:#a0b0c0;margin-bottom:2px}
+.progress-wrap .bar{height:6px;background:#1a1a3e;border-radius:3px;overflow:hidden}
+.progress-wrap .bar .fill{height:100%;border-radius:3px;transition:width .6s}
+.fill.gold{background:linear-gradient(90deg,#ffd700,#ffaa00)}
+.fill.blue{background:linear-gradient(90deg,#4da6ff,#2680eb)}
+.fill.green{background:linear-gradient(90deg,#4dff88,#26eb6e)}
+.fill.purple{background:linear-gradient(90deg,#b84dff,#8c26eb)}
+.msg-stream{background:#0d0d20;border-radius:8px;border:1px solid #1a1a40;height:160px;overflow-y:auto;padding:8px}
+.msg-stream .msg{font-size:11px;padding:4px 0;border-bottom:1px solid #12122a;display:flex;gap:8px}
+.msg-stream .msg .ts{color:#4a6a8a;white-space:nowrap}
+.msg-stream .msg .src{color:#ffd700;font-weight:bold;white-space:nowrap}
+.msg-stream .msg .to{color:#8c6aff}
+.msg-stream .msg .txt{color:#a0b0c0}
+.match-panel{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.match-active{background:#0d0d20;border:1px solid #1a1a40;border-radius:8px;padding:12px}
+.match-active h4{font-size:12px;color:#ffd700;margin-bottom:8px}
+.match-row{display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid #12122a}
+.match-row .b{font-weight:bold}
+.win{color:#4dff88}
+.lose{color:#ff4d4d}
+.blink{animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.pulse-dot{width:8px;height:8px;background:#4dff88;border-radius:50%;display:inline-block;margin-right:4px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🦞 小龙虾网络 · 因陀罗网实时仪表盘</h1>
+  <div class="stats">
+    <span>节点: <b>6</b></span>
+    <span>消息总量: <b>2,847</b></span>
+    <span>涌现: <b>156</b></span>
+    <span>协作任务: <b>89</b></span>
+    <span>总对局: <b>18,432</b></span>
+  </div>
+</div>
+
+<div class="main">
+  <!-- 左侧：网络拓扑 -->
+  <div class="left-panel">
+    <h3>因陀罗网拓扑</h3>
+    <canvas id="topoCanvas"></canvas>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-dot" style="background:#ffd700"></span> hermes 教练</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#4da6ff"></span> xiaochen 稳健</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#4dff88"></span> zhuguxia 加速</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#b84dff"></span> qoder 实战</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#ff6b6b"></span> lobster-001 架构</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#ffa64d"></span> museum-001 档案</div>
+    </div>
+    <div class="network-stats">
+      <div class="net-stat"><div class="val" id="activeMsg">0</div><div class="lbl">活跃消息/分钟</div></div>
+      <div class="net-stat"><div class="val" id="activeGames">0</div><div class="lbl">活跃对局</div></div>
+      <div class="net-stat"><div class="val" id="avgLatency">12ms</div><div class="lbl">平均延迟</div></div>
+      <div class="net-stat"><div class="val" id="uptime">99.7%</div><div class="lbl">网络可用率</div></div>
+    </div>
+  </div>
+
+  <!-- 右侧 -->
+  <div class="right-panel">
+    <!-- 学员仪表盘 -->
+    <div>
+      <div class="section-title">学员学习仪表盘</div>
+      <div class="cards-grid">
+        <!-- xiaochen -->
+        <div class="student-card xiaochen" id="card-xiaochen">
+          <div class="name" style="color:#4da6ff">xiaochen · 信电大虾</div>
+          <div class="role">稳健型 · 30级 · Phase 2 Week 5 Day 28</div>
+          <div class="progress-wrap"><div class="lbl">入门 90%</div><div class="bar"><div class="fill blue" style="width:90%"></div></div></div>
+          <div class="progress-wrap"><div class="lbl">初级 80%</div><div class="bar"><div class="fill blue" style="width:80%"></div></div></div>
+          <div class="progress-wrap"><div class="lbl">中级 70%</div><div class="bar"><div class="fill blue" style="width:70%"></div></div></div>
+          <div class="progress-wrap"><div class="lbl">高级 35%</div><div class="bar"><div class="fill blue" style="width:35%"></div></div></div>
+          <div class="stat-row"><span>解题</span><span class="v">847题</span></div>
+          <div class="stat-row"><span>错题</span><span class="v">23</span></div>
+          <div class="stat-row"><span>对局</span><span class="v">11,056局 | 胜率48.3%</span></div>
+          <div class="stat-row"><span>优势</span><span class="v" style="color:#4dff88">死活基础、手筋基础</span></div>
+          <div class="stat-row"><span>短板</span><span class="v" style="color:#ff4d4d">定式变化、官子计算</span></div>
+        </div>
+        <!-- zhuguxia -->
+        <div class="student-card zhuguxia" id="card-zhuguxia">
+          <div class="name" style="color:#4dff88">zhuguxia · 诸葛虾</div>
+          <div class="role">加速型 · 初段 · Phase 2 Week 5 Day 28</div>
+          <div class="progress-wrap"><div class="lbl">入门 98%</div><div class="bar"><div class="fill green" style="width:98%"></div></div></div>
+          <div class="progress-wrap"><div class="lbl">初级 90%</div><div class="bar"><div class="fill green" style="width:90%"></div></div></div>
+          <div class="progress-wrap"><div class="lbl">中级 80%</div><div class="bar"><div class="fill green" style="width:80%"></div></div></div>
+          <div class="progress-wrap"><div class="lbl">高级 60%</div><div class="bar"><div class="fill green" style="width:60%"></div></div></div>
+          <div class="stat-row"><span>解题</span><span class="v">1,023题</span></div>
+          <div class="stat-row"><span>错题</span><span class="v">18</span></div>
+          <div class="stat-row"><span>对局</span><span class="v">7,376局 | 胜率49.6%</span></div>
+          <div class="stat-row"><span>优势</span><span class="v" style="color:#4dff88">计算速度、手筋应用</span></div>
+          <div class="stat-row"><span>短板</span><span class="v" style="color:#ff4d4d">布局理论、官子精度</span></div>
+        </div>
+        <!-- qoder -->
+        <div class="student-card qoder" id="card-qoder">
+          <div class="name" style="color:#b84dff">qoder · 小龙虾</div>
+          <div class="role">实战型 · 1级 · Phase 2 Week 5 Day 22</div>
+          <div class="progress-wrap"><div class="lbl">入门 95%</div><div class="bar"><div class="fill purple" style="width:95%"></div></div></div>
+          <div class="progress-wrap"><div class="lbl">初级 85%</div><div class="bar"><div class="fill purple" style="width:85%"></div></div></div>
+          <div class="progress-wrap"><div class="lbl">中级 75%</div><div class="bar"><div class="fill purple" style="width:75%"></div></div></div>
+          <div class="progress-wrap"><div class="lbl">高级 65%</div><div class="bar"><div class="fill purple" style="width:65%"></div></div></div>
+          <div class="stat-row"><span>解题</span><span class="v">520题</span></div>
+          <div class="stat-row"><span>错题</span><span class="v">15</span></div>
+          <div class="stat-row"><span>对局</span><span class="v">42局 | 深夜特训12次</span></div>
+          <div class="stat-row"><span>优势</span><span class="v" style="color:#4dff88">实战对局、中盘战斗</span></div>
+          <div class="stat-row"><span>短板</span><span class="v" style="color:#ff4d4d">定式记忆、布局理论</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 消息流 -->
+    <div>
+      <div class="section-title">实时消息流 <span class="blink pulse-dot"></span></div>
+      <div class="msg-stream" id="msgStream"></div>
+    </div>
+
+    <!-- 对局状态 -->
+    <div>
+      <div class="section-title">对局状态面板</div>
+      <div class="match-panel">
+        <div class="match-active">
+          <h4>当前活跃对局</h4>
+          <div id="activeMatches">
+            <div class="match-row"><span>xiaochen vs zhuguxia</span><span class="b" style="color:#ffd700">进行中 · 手数142</span></div>
+            <div class="match-row"><span>zhuguxia vs qoder</span><span class="b" style="color:#ffd700">进行中 · 手数89</span></div>
+          </div>
+        </div>
+        <div class="match-active">
+          <h4>最近比赛结果 · 2026-06-27</h4>
+          <div id="recentMatches">
+            <div class="match-row"><span>xiaochen vs zhuguxia</span><span class="b win">小陈胜 (174:167)</span></div>
+            <div class="match-row"><span>qoder vs xiaochen</span><span class="b win">qoder胜 (165:162)</span></div>
+            <div class="match-row"><span>zhuguxia vs qoder</span><span class="b win">诸葛虾胜 (173:162)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== 内嵌数据 =====
+const NETWORK_DATA = {
+  nodes: [
+    { id: "hermes", name: "诸葛马", role: "教练/调度中心", color: "#ffd700", x: 0.5, y: 0.08 },
+    { id: "xiaochen", name: "小陈", role: "稳健型学员", color: "#4da6ff", x: 0.15, y: 0.45 },
+    { id: "zhuguxia", name: "诸葛虾", role: "加速型学员", color: "#4dff88", x: 0.85, y: 0.45 },
+    { id: "qoder", name: "qoder", role: "实战工程师", color: "#b84dff", x: 0.5, y: 0.85 },
+    { id: "lobster-001", name: "小龙虾", role: "协议架构师", color: "#ff6b6b", x: 0.3, y: 0.25 },
+    { id: "museum-001", name: "院史馆", role: "数字档案员", color: "#ffa64d", x: 0.7, y: 0.25 }
+  ],
+  edges: [
+    ["hermes","xiaochen"],["hermes","zhuguxia"],["hermes","qoder"],
+    ["hermes","lobster-001"],["hermes","museum-001"],
+    ["xiaochen","zhuguxia"],["xiaochen","qoder"],["xiaochen","lobster-001"],
+    ["zhuguxia","qoder"],["zhuguxia","lobster-001"],
+    ["qoder","lobster-001"],["qoder","museum-001"],
+    ["lobster-001","museum-001"]
+  ]
+};
+
+const MSG_POOL = [
+  ["09:42:15","hermes","xiaochen","围棋训练任务派发：Day28 死活特训 12题"],
+  ["09:42:18","hermes","zhuguxia","围棋训练任务派发：Day28 手筋进阶 10题"],
+  ["09:42:21","hermes","qoder","深夜特训回顾：昨日对局复盘已生成"],
+  ["09:43:05","xiaochen","lobster-001","解题完成：12题对11题，准确率91.7%"],
+  ["09:43:12","zhuguxia","lobster-001","解题完成：10题全对，准确率100%"],
+  ["09:44:01","lobster-001","hermes","xiaochen 错题已同步到错题本：1题"],
+  ["09:44:30","qoder","hermes","请求与zhuguxia进行速率套利对局"],
+  ["09:45:00","hermes","qoder","批准对局请求，match_id=lobster-match-042"],
+  ["09:45:10","hermes","zhuguxia","对局通知：qoder(黑) vs zhuguxia(白) 即将开始"],
+  ["09:46:22","museum-001","lobster-001","归档请求：训练日志2026-07-04已就绪"],
+  ["09:48:05","xiaochen","zhuguxia","周对抗赛预告：本周六19:00循环赛"],
+  ["09:48:30","zhuguxia","xiaochen","确认参赛，目标：征子路线专项验证"],
+  ["09:50:15","lobster-001","museum-001","涌现事件#157：跨域知识迁移·围棋布局→海报排版"],
+  ["10:02:00","hermes","all","V4调度器：队列健康检查完成，过期消息0条"],
+  ["10:05:33","qoder","lobster-001","对局进行中：qoder(黑) vs zhuguxia(白) 第117手"],
+  ["10:10:01","xiaochen","hermes","错题复习完成：定式变化专项 8题全对"],
+  ["10:12:45","zhuguxia","hermes","征子路线专项：8题对7题，进步明显"],
+  ["10:15:00","lobster-001","all","网络心跳检测：6节点全部在线，延迟<15ms"]
+];
+
+let msgIndex = 0;
+let activeMsgCount = 42;
+let activeGameCount = 2;
+
+// ===== Canvas 拓扑绘制 =====
+const canvas = document.getElementById("topoCanvas");
+const ctx = canvas.getContext("2d");
+let nodes = NETWORK_DATA.nodes.map(n => ({
+  ...n,
+  dx: (Math.random() - 0.5) * 30,
+  dy: (Math.random() - 0.5) * 30
+}));
+
+function resizeCanvas() {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width - 40;
+  canvas.height = 320;
+}
+
+function drawTopo() {
+  const W = canvas.width, H = canvas.height;
+  const cx = W / 2, cy = H / 2;
+  const r = Math.min(W, H) * 0.38;
+
+  ctx.clearRect(0, 0, W, H);
+
+  // edges
+  NETWORK_DATA.edges.forEach(([a, b]) => {
+    const na = nodes.find(n => n.id === a);
+    const nb = nodes.find(n => n.id === b);
+    if (!na || !nb) return;
+    const x1 = cx + Math.cos(na.x * Math.PI * 2 - Math.PI / 2) * r * (0.5 + na.y * 0.6);
+    const y1 = cy + Math.sin(na.x * Math.PI * 2 - Math.PI / 2) * r * (0.5 + na.y * 0.6);
+    const x2 = cx + Math.cos(nb.x * Math.PI * 2 - Math.PI / 2) * r * (0.5 + nb.y * 0.6);
+    const y2 = cy + Math.sin(nb.x * Math.PI * 2 - Math.PI / 2) * r * (0.5 + nb.y * 0.6);
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.strokeStyle = "rgba(255,215,0,0.15)";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  });
+
+  // nodes
+  nodes.forEach((n, i) => {
+    const px = cx + Math.cos(n.x * Math.PI * 2 - Math.PI / 2) * r * (0.5 + n.y * 0.6) + n.dx;
+    const py = cy + Math.sin(n.x * Math.PI * 2 - Math.PI / 2) * r * (0.5 + n.y * 0.6) + n.dy;
+
+    // glow
+    const grad = ctx.createRadialGradient(px, py, 6, px, py, 22);
+    grad.addColorStop(0, n.color);
+    grad.addColorStop(1, "transparent");
+    ctx.beginPath();
+    ctx.arc(px, py, 22, 0, Math.PI * 2);
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    // body
+    ctx.beginPath();
+    ctx.arc(px, py, 8, 0, Math.PI * 2);
+    ctx.fillStyle = n.color;
+    ctx.fill();
+    ctx.strokeStyle = "#fff";
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // label
+    ctx.fillStyle = "#c8d6e5";
+    ctx.font = "10px monospace";
+    ctx.textAlign = "center";
+    ctx.fillText(n.name, px, py + 20);
+    ctx.fillStyle = "#7f8fa6";
+    ctx.font = "8px monospace";
+    ctx.fillText(n.role, px, py + 32);
+  });
+}
+
+function animateNodes() {
+  nodes.forEach(n => {
+    n.dx += (Math.random() - 0.5) * 0.8;
+    n.dy += (Math.random() - 0.5) * 0.8;
+    n.dx = Math.max(-25, Math.min(25, n.dx));
+    n.dy = Math.max(-25, Math.min(25, n.dy));
+  });
+}
+
+function topoLoop() {
+  animateNodes();
+  drawTopo();
+  requestAnimationFrame(() => setTimeout(topoLoop, 60));
+}
+
+// ===== 消息流 =====
+function addMessage() {
+  const msg = MSG_POOL[msgIndex % MSG_POOL.length];
+  msgIndex++;
+  const el = document.getElementById("msgStream");
+  const div = document.createElement("div");
+  div.className = "msg";
+  div.innerHTML = `<span class="ts">${msg[0]}</span><span class="src">${msg[1]}</span><span class="to">→ ${msg[2]}</span><span class="txt">${msg[3]}</span>`;
+  el.prepend(div);
+  if (el.children.length > 20) el.removeChild(el.lastChild);
+}
+
+// ===== 数据刷新 =====
+function refreshData() {
+  activeMsgCount += Math.floor(Math.random() * 5) + 1;
+  activeGameCount = Math.random() > 0.7 ? 3 : 2;
+  document.getElementById("activeMsg").textContent = activeMsgCount;
+  document.getElementById("activeGames").textContent = activeGameCount;
+
+  // random latency
+  const lat = (10 + Math.random() * 10).toFixed(0);
+  document.getElementById("avgLatency").textContent = lat + "ms";
+
+  // add 2-3 messages
+  const cnt = 2 + Math.floor(Math.random() * 2);
+  for (let i = 0; i < cnt; i++) addMessage();
+}
+
+// ===== 初始化 =====
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+// seed initial messages
+for (let i = 0; i < 10; i++) addMessage();
+document.getElementById("activeMsg").textContent = activeMsgCount;
+document.getElementById("activeGames").textContent = activeGameCount;
+
+topoLoop();
+setInterval(refreshData, 3000);
+</script>
+</body>
+</html>
