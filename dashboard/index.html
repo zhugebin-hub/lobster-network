@@ -3,1001 +3,1253 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🦞 小龙虾网络监控仪表盘</title>
+<title>🦞 小龙虾网络 · 仪表盘中心</title>
 <style>
-  :root {
-    --bg-primary: #0a0e1a;
-    --bg-card: #131826;
-    --bg-card-hover: #1a2033;
-    --border: #2a3050;
-    --text-primary: #e0e6f0;
-    --text-secondary: #8892b0;
-    --text-muted: #5a6378;
-    --accent-red: #e94560;
-    --accent-green: #2ed573;
-    --accent-yellow: #ffa502;
-    --accent-blue: #00d4ff;
-    --accent-purple: #a29bfe;
-    --accent-orange: #ff6b35;
-    --lobster-red: #e94560;
-    --shadow: 0 4px 20px rgba(0,0,0,0.3);
-  }
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--dim:#64748b;
+  --accent:#fbbf24;--green:#22c55e;--red:#ef4444;--blue:#3b82f6;
+  --purple:#a855f7;--orange:#f97316;--cyan:#06b6d4;--pink:#ec4899;
+  --gold:#f59e0b;--gold-border:#b45309;
+  --xiaochen:#3b82f6;--zhuguxia:#22c55e;--qoder:#a855f7;--hermes:#ffd700;
+}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* Header */
+.header{background:linear-gradient(135deg,#111827 0%,#1e1b4b 50%,#111827 100%);border-bottom:1px solid var(--border);padding:10px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.header h1{font-size:17px;color:var(--accent);letter-spacing:1px}
+.header-stats{display:flex;gap:14px;flex-wrap:wrap}
+.header-stat{font-size:10px;color:var(--dim);display:flex;align-items:center;gap:4px}
+.header-stat .val{color:var(--cyan);font-weight:700;font-family:monospace;font-size:12px}
+.header-actions{display:flex;gap:6px;align-items:center}
+.btn{padding:5px 12px;border-radius:8px;font-size:11px;border:1px solid var(--border);background:#0f172a;color:var(--text);cursor:pointer;transition:all .2s}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.active{background:rgba(251,191,36,.15);border-color:var(--accent);color:var(--accent)}
+.health-badge{padding:3px 10px;border-radius:16px;font-size:11px;font-weight:600}
+.health-ok{background:rgba(34,197,94,.15);color:var(--green)}
+.health-warn{background:rgba(251,191,36,.15);color:var(--accent)}
+.health-critical{background:rgba(239,68,68,.15);color:var(--red)}
+.auto-refresh{font-size:10px;color:var(--dim);display:flex;align-items:center;gap:3px}
+.auto-refresh .dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
 
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+/* Tabs */
+.tab-nav{display:flex;border-bottom:1px solid var(--border);background:#0d1117;padding:0 12px;overflow-x:auto}
+.tab-btn{padding:9px 16px;font-size:11px;font-weight:600;color:var(--dim);border:none;background:transparent;cursor:pointer;transition:all .2s;border-bottom:2px solid transparent;white-space:nowrap}
+.tab-btn:hover{color:var(--text);background:rgba(255,255,255,.03)}
+.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent);background:rgba(251,191,36,.05)}
+.tab-content{display:none;padding:14px;overflow-y:auto;height:calc(100vh - 100px)}
+.tab-content.active{display:block}
 
-  /* 动画背景 */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background:
-      radial-gradient(ellipse at 20% 20%, rgba(233,69,96,0.08) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 80%, rgba(0,212,255,0.06) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(162,155,254,0.04) 0%, transparent 60%);
-    z-index: -1;
-    animation: bgPulse 10s ease-in-out infinite;
-  }
-  @keyframes bgPulse {
-    0%,100% { opacity: 0.6; }
-    50% { opacity: 1; }
-  }
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 4px rgba(34,197,94,.4)}50%{box-shadow:0 0 16px rgba(34,197,94,.8)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
+.fade-in{animation:fadeIn .4s ease-out}
+.slide-in{animation:slideIn .5s ease-out}
+.blink{animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-  /* 顶部导航 */
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 28px;
-    background: linear-gradient(135deg, rgba(19,24,38,0.95), rgba(10,14,26,0.95));
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .header-left { display: flex; align-items: center; gap: 16px; }
-  .logo {
-    font-size: 28px;
-    animation: lobsterFloat 3s ease-in-out infinite;
-  }
-  @keyframes lobsterFloat {
-    0%,100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-4px) rotate(5deg); }
-  }
-  .title { font-size: 20px; font-weight: 700; letter-spacing: 1px; }
-  .title span { color: var(--lobster-red); }
-  .version-badge {
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-    color: #000;
-    padding: 2px 10px;
-    border-radius: 12px;
-    font-size: 11px;
-    font-weight: 700;
-  }
-  .header-right { display: flex; align-items: center; gap: 20px; }
-  .refresh-indicator {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
-  .pulse-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent-green);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(46,213,115,0.6); }
-    70% { box-shadow: 0 0 0 8px rgba(46,213,115,0); }
-    100% { box-shadow: 0 0 0 0 rgba(46,213,115,0); }
-  }
-  .scan-time { font-size: 12px; color: var(--text-muted); }
+/* ===== TAB 1: 网络拓扑 ===== */
+.topo-layout{display:grid;grid-template-columns:360px 1fr;gap:0;height:100%}
+.topo-left{background:var(--card);border-right:1px solid var(--border);padding:14px;overflow-y:auto}
+.topo-right{padding:14px;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
+#topoCanvas{width:100%;height:280px;border-radius:8px;background:#08081a}
+.legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px;font-size:10px}
+.legend-item{display:flex;align-items:center;gap:4px}
+.legend-dot{width:8px;height:8px;border-radius:50%}
+.net-stats{margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.net-stat{background:#12123a;border-radius:6px;padding:7px;text-align:center}
+.net-stat .val{font-size:15px;font-weight:bold;color:var(--gold)}
+.net-stat .lbl{font-size:9px;color:var(--dim);margin-top:1px}
 
-  /* 布局 */
-  .container {
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-  }
-  .full-width { grid-column: 1 / -1; }
+/* Student Cards */
+.student-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.student-card{border-radius:10px;padding:12px;position:relative;overflow:hidden;transition:all .25s;cursor:pointer}
+.student-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.student-card.gold{border:1px solid var(--gold-border);background:linear-gradient(135deg,#1a1400,#2a1f00)}
+.student-card.purple{border:1px solid #6d28d9;background:linear-gradient(135deg,#1a0a2e,#2a0a4e)}
+.student-card.green{border:1px solid #047857;background:linear-gradient(135deg,#0a1a0a,#0a2a1a)}
+.student-card.blue{border:1px solid #1d4ed8;background:linear-gradient(135deg,#0a0e2e,#0a1a4e)}
+.sc-header{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.sc-avatar{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:bold;flex-shrink:0}
+.sc-avatar.gold-bg{background:rgba(245,158,11,.2);color:var(--gold)}
+.sc-avatar.purple-bg{background:rgba(168,85,247,.2);color:var(--purple)}
+.sc-avatar.green-bg{background:rgba(16,185,129,.2);color:var(--green)}
+.sc-avatar.blue-bg{background:rgba(59,130,246,.2);color:var(--blue)}
+.sc-info{min-width:0}
+.sc-name{font-size:12px;font-weight:700}
+.sc-rank{font-size:9px;color:var(--dim)}
+.sc-role{display:inline-block;font-size:9px;padding:2px 6px;border-radius:8px;margin:3px 0;font-weight:600}
+.sc-role.gold-tag{background:rgba(245,158,11,.15);color:var(--gold)}
+.sc-role.purple-tag{background:rgba(168,85,247,.15);color:var(--purple)}
+.sc-role.green-tag{background:rgba(16,185,129,.15);color:var(--green)}
+.sc-role.blue-tag{background:rgba(59,130,246,.15);color:var(--blue)}
+.sc-task{font-size:9px;color:var(--dim);margin:2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sc-active{font-size:9px;color:var(--dim);display:flex;align-items:center;gap:3px}
+.sc-status{width:6px;height:6px;border-radius:50%;display:inline-block}
+.sc-status.online{background:var(--green);box-shadow:0 0 6px var(--green)}
+.sc-status.idle{background:var(--accent);box-shadow:0 0 6px var(--accent)}
+.sc-status.offline{background:var(--red)}
 
-  /* 卡片 */
-  .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: var(--shadow);
-    transition: border-color 0.3s;
-  }
-  .card:hover { border-color: var(--accent-blue); }
-  .card-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .card-title .icon { font-size: 18px; }
+/* Progress bars */
+.progress-wrap{margin:3px 0}
+.progress-wrap .lbl{font-size:9px;color:var(--dim);margin-bottom:1px}
+.progress-wrap .bar{height:5px;background:#1e293b;border-radius:3px;overflow:hidden}
+.progress-wrap .fill{height:100%;border-radius:3px;transition:width .6s}
+.fill.gold{background:linear-gradient(90deg,#ffd700,#ffaa00)}
+.fill.blue{background:linear-gradient(90deg,#4da6ff,#2680eb)}
+.fill.green{background:linear-gradient(90deg,#4dff88,#26eb6e)}
+.fill.purple{background:linear-gradient(90deg,#b84dff,#8c26eb)}
 
-  /* 统计概览 */
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 16px;
-  }
-  .stat-item {
-    text-align: center;
-    padding: 16px 8px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    transition: transform 0.2s;
-  }
-  .stat-item:hover { transform: translateY(-3px); }
-  .stat-value {
-    font-size: 28px;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .stat-value.red { background: linear-gradient(135deg, var(--accent-red), var(--accent-orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .stat-value.green { background: linear-gradient(135deg, var(--accent-green), var(--accent-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .stat-value.yellow { background: linear-gradient(135deg, var(--accent-yellow), var(--accent-orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .stat-label {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 4px;
-  }
+/* Message Stream */
+.msg-stream{background:var(--card);border-radius:8px;border:1px solid var(--border);height:120px;overflow-y:auto;padding:5px}
+.msg-stream .msg{font-size:10px;padding:3px 0;border-bottom:1px solid rgba(30,41,59,.3);display:flex;gap:5px}
+.msg-stream .msg .ts{color:#4a6a8a;white-space:nowrap;font-family:monospace}
+.msg-stream .msg .src{color:var(--gold);font-weight:bold;white-space:nowrap}
+.msg-stream .msg .to{color:#8c6aff}
+.msg-stream .msg .txt{color:var(--dim)}
 
-  /* 网络拓扑图 */
-  .topology-container {
-    position: relative;
-    width: 100%;
-    height: 420px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .topology-svg {
-    width: 100%;
-    height: 100%;
-  }
-  .node-circle {
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  .node-circle:hover { filter: brightness(1.3); }
-  .connection-line {
-    stroke-dasharray: 5,5;
-    animation: dashFlow 1.5s linear infinite;
-  }
-  @keyframes dashFlow {
-    to { stroke-dashoffset: -20; }
-  }
-  .hub-pulse {
-    animation: hubPulse 2s ease-in-out infinite;
-  }
-  @keyframes hubPulse {
-    0%,100% { r: 38; opacity: 0.8; }
-    50% { r: 44; opacity: 1; }
-  }
+/* Match Panel */
+.match-panel{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.match-active{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px}
+.match-active h4{font-size:10px;color:var(--gold);margin-bottom:5px}
+.match-row{display:flex;justify-content:space-between;font-size:10px;padding:3px 0;border-bottom:1px solid rgba(30,41,59,.3)}
+.match-row .b{font-weight:bold}
+.win{color:var(--green)}
+.lose{color:var(--red)}
+.pulse-dot{width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block;margin-right:3px}
 
-  /* 节点卡片 */
-  .nodes-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-  }
-  .node-card {
-    background: var(--bg-card-hover);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-  .node-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px;
-    height: 100%;
-  }
-  .node-card.coach::before { background: var(--accent-red); }
-  .node-card.student::before { background: var(--accent-blue); }
-  .node-card.observer::before { background: var(--accent-purple); }
-  .node-card:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
+/* ===== TAB 2: 系统监控 ===== */
+.monitor-layout{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.monitor-panel{padding:12px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.monitor-panel:nth-child(2n){border-right:none}
+.panel-title{font-size:12px;font-weight:600;color:var(--accent);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px;margin-bottom:8px}
 
-  .node-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 10px;
-  }
-  .node-name {
-    font-size: 15px;
-    font-weight: 700;
-  }
-  .node-role-tag {
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 8px;
-    font-weight: 600;
-  }
-  .role-coach { background: rgba(233,69,96,0.2); color: var(--accent-red); }
-  .role-student { background: rgba(0,212,255,0.15); color: var(--accent-blue); }
-  .role-observer { background: rgba(162,155,254,0.15); color: var(--accent-purple); }
+/* Node Grid */
+.node-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.node-card{background:#0f172a;border-radius:8px;padding:10px;border:1px solid var(--border);position:relative;overflow:hidden}
+.node-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.node-card.online::before{background:var(--green)}
+.node-card.offline::before{background:var(--red)}
+.node-card.warning::before{background:var(--accent)}
+.node-name{font-size:12px;font-weight:600;margin-bottom:3px;display:flex;align-items:center;gap:5px}
+.node-ip{font-size:10px;color:var(--dim);font-family:monospace}
+.node-meta{display:flex;justify-content:space-between;margin-top:3px;font-size:10px}
+.node-meta .label{color:var(--dim)}
+.status-indicator{width:7px;height:7px;border-radius:50%;display:inline-block}
+.status-indicator.online{background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite}
+.status-indicator.offline{background:var(--red);box-shadow:0 0 8px var(--red)}
+.status-indicator.warning{background:var(--accent);box-shadow:0 0 8px var(--accent)}
 
-  .node-info {
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-  .node-info .label { color: var(--text-muted); }
-  .node-info .value { color: var(--text-primary); font-weight: 500; }
+/* Score Grid */
+.score-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.score-box{text-align:center;padding:8px 4px;background:#0f172a;border-radius:6px}
+.score-box .num{font-size:16px;font-weight:700}
+.score-box .label{font-size:9px;color:var(--dim);margin-top:1px}
 
-  .node-stats {
-    display: flex;
-    gap: 12px;
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
-  }
-  .node-stat {
-    flex: 1;
-    text-align: center;
-    font-size: 11px;
-  }
-  .node-stat .num { font-size: 16px; font-weight: 700; }
-  .node-stat .lbl { color: var(--text-muted); }
+/* Metric Row */
+.metric-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #1e293b}
+.metric-row:last-child{border-bottom:none}
+.metric-label{font-size:11px;color:var(--dim)}
+.metric-value{font-size:12px;font-weight:600}
 
-  .status-dot {
-    display: inline-block;
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    margin-right: 4px;
-  }
-  .status-active { background: var(--accent-green); box-shadow: 0 0 6px var(--accent-green); }
-  .status-error { background: var(--accent-red); }
-  .status-unknown { background: var(--text-muted); }
+/* Alert List */
+.alert-list{max-height:180px;overflow-y:auto}
+.alert-item{padding:6px 8px;border-radius:5px;margin-bottom:4px;font-size:11px;display:flex;align-items:flex-start;gap:6px}
+.alert-item.critical{background:rgba(239,68,68,.1);border-left:3px solid var(--red)}
+.alert-item.warning{background:rgba(251,191,36,.1);border-left:3px solid var(--accent)}
+.alert-item.info{background:rgba(59,130,246,.1);border-left:3px solid var(--blue)}
+.alert-time{color:var(--dim);font-size:9px;white-space:nowrap}
 
-  /* CC追踪 */
-  .cc-stats {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-  .cc-stat {
-    flex: 1;
-    text-align: center;
-    padding: 12px;
-    border-radius: 8px;
-  }
-  .cc-completed { background: rgba(46,213,115,0.1); border: 1px solid rgba(46,213,115,0.3); }
-  .cc-pending { background: rgba(255,165,2,0.1); border: 1px solid rgba(255,165,2,0.3); }
-  .cc-escalated { background: rgba(233,69,96,0.1); border: 1px solid rgba(233,69,96,0.3); }
-  .cc-stat .num { font-size: 24px; font-weight: 800; }
-  .cc-stat .lbl { font-size: 11px; color: var(--text-muted); }
+/* Badge */
+.badge{padding:2px 8px;border-radius:16px;font-size:10px;font-weight:600}
+.badge-green{background:rgba(34,197,94,.15);color:var(--green)}
+.badge-red{background:rgba(239,68,68,.15);color:var(--red)}
+.badge-yellow{background:rgba(251,191,36,.15);color:var(--accent)}
+.badge-blue{background:rgba(59,130,246,.15);color:var(--blue)}
+.badge-purple{background:rgba(168,85,247,.15);color:var(--purple)}
 
-  .cc-list {
-    max-height: 280px;
-    overflow-y: auto;
-  }
-  .cc-list::-webkit-scrollbar { width: 4px; }
-  .cc-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-  .cc-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 12px;
-  }
-  .cc-item:last-child { border-bottom: none; }
-  .cc-from {
-    font-weight: 600;
-    color: var(--accent-blue);
-    min-width: 70px;
-  }
-  .cc-subject {
-    flex: 1;
-    color: var(--text-secondary);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .cc-acks {
-    display: flex;
-    gap: 3px;
-  }
-  .ack-badge {
-    font-size: 9px;
-    padding: 1px 5px;
-    border-radius: 4px;
-    background: rgba(46,213,115,0.15);
-    color: var(--accent-green);
-  }
+/* Progress Bar */
+.progress-bar{height:5px;background:#1e293b;border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;transition:width 1s ease}
 
-  /* 消息流 */
-  .msg-list {
-    max-height: 360px;
-    overflow-y: auto;
-  }
-  .msg-list::-webkit-scrollbar { width: 4px; }
-  .msg-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-  .msg-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 10px;
-    border-radius: 6px;
-    margin-bottom: 4px;
-    font-size: 12px;
-    transition: background 0.2s;
-  }
-  .msg-item:hover { background: var(--bg-card-hover); }
-  .msg-type-icon {
-    width: 20px; height: 20px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .msg-type-cc { background: rgba(162,155,254,0.2); color: var(--accent-purple); }
-  .msg-type-ack { background: rgba(46,213,115,0.15); color: var(--accent-green); }
-  .msg-type-normal { background: rgba(0,212,255,0.1); color: var(--accent-blue); }
-  .msg-from { font-weight: 600; color: var(--text-primary); min-width: 60px; }
-  .msg-arrow { color: var(--text-muted); }
-  .msg-to { color: var(--text-secondary); min-width: 60px; }
-  .msg-subject { flex: 1; color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .msg-age { color: var(--text-muted); font-size: 10px; white-space: nowrap; }
+/* Domain Table */
+.domain-table{width:100%;border-collapse:collapse;font-size:10px}
+.domain-table th{background:#0f172a;padding:5px 6px;text-align:left;color:var(--dim);border-bottom:1px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap}
+.domain-table td{padding:4px 6px;border-bottom:1px solid rgba(30,41,59,.3);font-size:10px}
+.domain-table tr:hover{background:rgba(251,191,36,.03)}
 
-  /* 训练雷达 */
-  .training-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .training-card {
-    background: var(--bg-card-hover);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px;
-  }
-  .training-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  .training-name { font-size: 14px; font-weight: 700; }
-  .training-level {
-    font-size: 12px;
-    padding: 2px 8px;
-    border-radius: 8px;
-    background: rgba(255,165,2,0.15);
-    color: var(--accent-yellow);
-    font-weight: 600;
-  }
-  .skill-bars {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .skill-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-  }
-  .skill-name { min-width: 50px; color: var(--text-secondary); }
-  .skill-track {
-    flex: 1;
-    height: 6px;
-    background: var(--bg-primary);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  .skill-fill {
-    height: 100%;
-    border-radius: 3px;
-    transition: width 0.8s ease;
-  }
-  .skill-val { min-width: 28px; text-align: right; color: var(--text-primary); font-weight: 600; }
+/* MQTT Topic */
+.mqtt-topic{font-family:monospace;font-size:10px;color:var(--cyan);padding:3px 6px;background:#0f172a;border-radius:4px;margin:2px 0;display:inline-block}
 
-  /* 模块健康 */
-  .modules-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-  }
-  .module-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    background: var(--bg-card-hover);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 12px;
-  }
-  .module-status {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .module-installed { background: var(--accent-green); box-shadow: 0 0 4px var(--accent-green); }
-  .module-missing { background: var(--accent-red); }
+/* ===== TAB 3: 学习进度 ===== */
+.learning-layout{display:grid;grid-template-columns:240px 1fr;gap:0;min-height:100%}
+.learning-sidebar{background:var(--card);border-right:1px solid var(--border);padding:10px;overflow-y:auto}
+.learning-main{padding:10px 14px;overflow-y:auto}
+.section{margin-bottom:12px}
+.section-title{font-size:11px;font-weight:600;color:var(--accent);margin-bottom:6px;display:flex;align-items:center;gap:4px}
 
-  /* Git 活动 */
-  .git-list {
-    font-family: "SF Mono", "Fira Code", monospace;
-    font-size: 11px;
-    line-height: 1.8;
-  }
-  .git-commit {
-    display: flex;
-    gap: 10px;
-    padding: 4px 0;
-    border-bottom: 1px solid rgba(42,48,80,0.5);
-  }
-  .git-commit:last-child { border-bottom: none; }
-  .git-hash { color: var(--accent-yellow); font-weight: 600; }
-  .git-msg { color: var(--text-secondary); }
+/* Student Banner */
+.student-banner{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.student-banner-card{background:var(--card);border:2px solid var(--border);border-radius:10px;padding:10px;display:flex;align-items:center;gap:8px;cursor:pointer;transition:all .3s}
+.student-banner-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.student-banner-card.active{border-color:var(--accent);box-shadow:0 0 14px rgba(251,191,36,.1)}
+.student-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
+.student-info{flex:1;min-width:0}
+.student-info .name{font-size:12px;font-weight:700}
+.student-info .meta{font-size:9px;color:var(--dim);margin-top:1px}
+.student-ring{width:40px;height:40px;flex-shrink:0;position:relative}
+.student-ring svg{transform:rotate(-90deg)}
+.student-ring .pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700}
 
-  /* 加载状态 */
-  .loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    color: var(--text-muted);
-    font-size: 14px;
-  }
-  .spinner {
-    width: 24px; height: 24px;
-    border: 3px solid var(--border);
-    border-top-color: var(--accent-blue);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    margin-right: 10px;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
+/* Stats Grid */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px}
+.stat-box{background:#0f172a;border-radius:6px;padding:7px;text-align:center}
+.stat-box .num{font-size:14px;font-weight:700}
+.stat-box .txt{font-size:9px;color:var(--dim);margin-top:1px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 
-  /* 响应式 */
-  @media (max-width: 1200px) {
-    .container { grid-template-columns: 1fr 1fr; }
-    .stats-grid { grid-template-columns: repeat(3, 1fr); }
-    .nodes-grid { grid-template-columns: repeat(2, 1fr); }
-    .modules-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 768px) {
-    .container { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .nodes-grid { grid-template-columns: 1fr; }
-    .training-section { grid-template-columns: 1fr; }
-  }
+/* ===== TAB 4: 论文/项目指挥 ===== */
+.paper-layout{display:grid;grid-template-columns:220px 1fr 260px;gap:0;min-height:100%}
+.paper-left{background:var(--card);border-right:1px solid var(--border);padding:10px;overflow-y:auto}
+.paper-center{padding:10px;overflow-y:auto}
+.paper-right{background:var(--card);border-left:1px solid var(--border);padding:10px;overflow-y:auto}
+
+/* Version Timeline */
+.ver-timeline{position:relative;padding-left:14px}
+.ver-timeline::before{content:'';position:absolute;left:5px;top:4px;bottom:4px;width:2px;background:var(--border)}
+.ver-item{padding:5px 0 8px 5px;position:relative;cursor:pointer;transition:all .2s}
+.ver-item:hover{background:rgba(251,191,36,.03);border-radius:4px}
+.ver-item::before{content:'';position:absolute;left:-12px;top:8px;width:7px;height:7px;border-radius:50%;border:2px solid var(--dim);background:var(--bg)}
+.ver-item.current::before{border-color:var(--accent);background:var(--accent);box-shadow:0 0 8px var(--accent)}
+.ver-num{font-size:11px;font-weight:700;font-family:monospace}
+.ver-item.current .ver-num{color:var(--accent)}
+.ver-time{font-size:9px;color:var(--dim);margin:1px 0}
+.ver-author{font-size:9px;color:var(--cyan)}
+.ver-change{font-size:9px;color:var(--dim);margin-top:2px;line-height:1.4}
+
+/* Task Queue */
+.task-item{display:flex;align-items:center;gap:5px;padding:5px 6px;border-radius:6px;margin-bottom:3px;background:var(--card);border:1px solid var(--border);transition:all .2s}
+.task-item:hover{border-color:var(--accent)}
+.task-priority{width:3px;height:18px;border-radius:2px;flex-shrink:0}
+.task-priority.high{background:var(--red)}
+.task-priority.medium{background:var(--accent)}
+.task-priority.low{background:var(--dim)}
+.task-info{flex:1;min-width:0}
+.task-type{font-size:10px;font-weight:600;margin-bottom:1px}
+.task-meta{font-size:9px;color:var(--dim);display:flex;gap:5px}
+
+/* Activity Feed */
+.activity-feed{max-height:140px;overflow-y:auto}
+.act-item{display:flex;gap:5px;padding:3px 0;border-bottom:1px solid rgba(30,41,59,.3);font-size:10px;align-items:flex-start}
+.act-dot{width:5px;height:5px;border-radius:50%;margin-top:3px;flex-shrink:0}
+.act-dot.relay{background:var(--purple)}
+.act-dot.review{background:var(--cyan)}
+.act-dot.commit{background:var(--green)}
+.act-content{flex:1}
+.act-time{color:var(--dim);font-family:monospace;font-size:9px}
+
+/* Relay Chain */
+.relay-chain{display:flex;align-items:center;gap:4px;margin:6px 0;flex-wrap:wrap}
+.relay-node{padding:2px 5px;border-radius:4px;background:var(--card);border:1px solid var(--border);font-weight:600;font-size:9px}
+.relay-node.current{background:rgba(168,85,247,.15);border-color:var(--purple);color:var(--purple);animation:pulse 2s infinite}
+.relay-arrow{color:var(--dim)}
+
+/* Radar Legend */
+.radar-legend{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:5px 0}
+.radar-legend-item{display:flex;align-items:center;gap:3px;font-size:9px;color:var(--dim);cursor:pointer;padding:2px 4px;border-radius:3px;transition:all .2s}
+.radar-legend-item:hover{background:rgba(255,255,255,.05)}
+.radar-legend-item.selected{background:rgba(251,191,36,.1);color:var(--accent)}
+
+/* Score Table */
+.score-table{width:100%;border-collapse:collapse;font-size:9px}
+.score-table th{text-align:left;padding:3px 4px;border-bottom:1px solid var(--border);color:var(--dim);font-weight:500;white-space:nowrap}
+.score-table td{padding:3px 4px;border-bottom:1px solid rgba(30,41,59,.3)}
+.score-table .name-cell{font-weight:600;font-size:10px}
+.score-table .total{font-weight:700;font-size:10px}
+
+/* Timeline slots */
+.timeline-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:10px}
+.tl-slot{border-radius:7px;padding:8px 6px;text-align:center;position:relative;overflow:hidden;transition:all .3s}
+.tl-slot.active{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.3);animation:pulseGlow 3s infinite}
+.tl-slot.done{background:rgba(34,197,94,.04);border:1px solid rgba(34,197,94,.15)}
+.tl-slot.pending{background:var(--card);border:1px solid var(--border);opacity:.6}
+.tl-slot .tl-time{font-size:8px;color:var(--dim);font-family:monospace;margin-bottom:2px}
+.tl-slot .tl-label{font-size:9px;font-weight:600;margin-bottom:3px}
+.tl-slot .tl-status{font-size:8px;padding:2px 5px;border-radius:5px;display:inline-block}
+.tl-status.in-progress{background:rgba(34,197,94,.15);color:var(--green)}
+.tl-status.completed{background:rgba(34,197,94,.1);color:var(--green)}
+.tl-status.waiting{background:rgba(100,116,139,.1);color:var(--dim)}
+.tl-slot .tl-students{font-size:8px;color:var(--dim)}
+
+/* Loading */
+.loading{text-align:center;padding:30px;color:var(--dim);font-size:13px}
+.loading::before{content:'🦞';font-size:28px;display:block;margin-bottom:6px}
+
+/* Responsive */
+@media(max-width:1200px){
+  .student-row,.student-banner,.node-grid{grid-template-columns:repeat(2,1fr)}
+  .topo-layout,.learning-layout{grid-template-columns:1fr}
+  .paper-layout{grid-template-columns:1fr 1fr}
+  .timeline-grid{grid-template-columns:repeat(3,1fr)}
+  .score-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:768px){
+  .student-row,.student-banner,.node-grid{grid-template-columns:1fr}
+  .paper-layout{grid-template-columns:1fr}
+  .timeline-grid{grid-template-columns:1fr 1fr}
+  .match-panel{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .monitor-layout{grid-template-columns:1fr}
+  .monitor-panel{border-right:none}
+}
 </style>
 </head>
 <body>
 
-<!-- 顶部导航 -->
+<!-- Header -->
 <div class="header">
-  <div class="header-left">
-    <span class="logo">🦞</span>
-    <div>
-      <div class="title">小龙虾<span>网络</span>监控仪表盘</div>
-    </div>
-    <span class="version-badge" id="versionBadge">v4.0</span>
+  <h1>🦞 小龙虾网络 · 仪表盘中心</h1>
+  <div class="header-stats">
+    <div class="header-stat">节点 <span class="val" id="statNodes">6</span></div>
+    <div class="header-stat">消息 <span class="val" id="statMsgs">--</span></div>
+    <div class="header-stat">CC追踪 <span class="val" id="statCC">--</span></div>
+    <div class="header-stat">涌现 <span class="val" id="statEmergence">--</span></div>
+    <div class="header-stat">论文版本 <span class="val" style="color:var(--gold)" id="statPaperVer">v4.0</span></div>
+    <div class="header-stat">整体评分 <span class="val" id="statScore">--</span></div>
   </div>
-  <div class="header-right">
-    <div class="refresh-indicator">
-      <span class="pulse-dot"></span>
-      <span>实时监控</span>
-    </div>
-    <div class="scan-time" id="scanTime">--</div>
+  <div class="header-actions">
+    <span class="health-badge" id="healthStatus">🔄 加载中</span>
+    <div class="auto-refresh"><span class="dot"></span> <span id="refreshLabel">30s</span></div>
+    <button class="btn" onclick="refreshAll()">↻ 刷新</button>
+    <button class="btn" id="apiBtn" onclick="toggleApi()">🔗 API</button>
   </div>
 </div>
 
-<!-- 主内容区 -->
-<div class="container">
+<!-- Tab Navigation -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('network',event)">🌐 网络拓扑</button>
+  <button class="tab-btn" onclick="switchTab('monitor',event)">📊 系统监控</button>
+  <button class="tab-btn" onclick="switchTab('learning',event)">📚 学习进度</button>
+  <button class="tab-btn" onclick="switchTab('paper',event)">📝 项目指挥</button>
+</div>
 
-  <!-- 统计概览 -->
-  <div class="full-width">
-    <div class="stats-grid" id="statsGrid">
-      <div class="stat-item">
-        <div class="stat-value" id="statNodes">--</div>
-        <div class="stat-label">在线节点</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value green" id="statMsgs">--</div>
-        <div class="stat-label">消息总量</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value yellow" id="statCC">--</div>
-        <div class="stat-label">CC追踪</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value green" id="statAck">--</div>
-        <div class="stat-label">ACK完成</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value red" id="statPending">--</div>
-        <div class="stat-label">待处理</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="statModules">--</div>
-        <div class="stat-label">模块状态</div>
+<!-- ===== TAB 1: 网络拓扑 ===== -->
+<div class="tab-content active" id="tab-network">
+  <div class="topo-layout">
+    <div class="topo-left">
+      <h3 style="color:var(--gold);font-size:12px;margin-bottom:8px;letter-spacing:1px">因陀罗网拓扑</h3>
+      <canvas id="topoCanvas"></canvas>
+      <div class="legend" id="topoLegend"></div>
+      <div class="net-stats">
+        <div class="net-stat"><div class="val" id="activeMsg">0</div><div class="lbl">活跃消息/min</div></div>
+        <div class="net-stat"><div class="val" id="activeGames">0</div><div class="lbl">活跃对局</div></div>
+        <div class="net-stat"><div class="val" id="avgLatency">12ms</div><div class="lbl">平均延迟</div></div>
+        <div class="net-stat"><div class="val" id="uptime">99.7%</div><div class="lbl">网络可用率</div></div>
       </div>
     </div>
-  </div>
-
-  <!-- 网络拓扑图 -->
-  <div class="card full-width">
-    <div class="card-title">
-      <span class="icon">🌐</span> 网络拓扑
-    </div>
-    <div class="topology-container">
-      <svg class="topology-svg" id="topologySvg" viewBox="0 0 800 420">
-        <!-- 连线和节点由JS动态生成 -->
-      </svg>
-    </div>
-  </div>
-
-  <!-- 节点状态 -->
-  <div class="card full-width">
-    <div class="card-title">
-      <span class="icon">📡</span> 节点状态
-    </div>
-    <div class="nodes-grid" id="nodesGrid">
-      <div class="loading"><div class="spinner"></div>加载中...</div>
+    <div class="topo-right">
+      <div class="section-title">学员仪表盘 <span class="blink pulse-dot"></span></div>
+      <div class="student-row" id="studentRow"></div>
+      <div class="section-title">实时消息流 <span class="blink pulse-dot"></span></div>
+      <div class="msg-stream" id="msgStream"></div>
+      <div class="section-title">对局状态</div>
+      <div class="match-panel">
+        <div class="match-active"><h4>当前活跃对局</h4><div id="activeMatches"></div></div>
+        <div class="match-active"><h4>最近比赛结果</h4><div id="recentMatches"></div></div>
+      </div>
     </div>
   </div>
+</div>
 
-  <!-- CC消息追踪 -->
-  <div class="card">
-    <div class="card-title">
-      <span class="icon">📨</span> CC协议追踪
+<!-- ===== TAB 2: 系统监控 ===== -->
+<div class="tab-content" id="tab-monitor">
+  <div class="monitor-layout">
+    <div class="monitor-panel">
+      <div class="panel-title">🖥️ 服务器节点 <span style="font-size:10px;color:var(--dim)" id="nodeCount">6 节点</span></div>
+      <div class="node-grid" id="nodeGrid"><div class="loading">数据采集中...</div></div>
     </div>
-    <div class="cc-stats" id="ccStats">
-      <div class="cc-stat cc-completed"><div class="num" id="ccCompleted">--</div><div class="lbl">已完成</div></div>
-      <div class="cc-stat cc-pending"><div class="num" id="ccPending">--</div><div class="lbl">待确认</div></div>
-      <div class="cc-stat cc-escalated"><div class="num" id="ccEscalated">--</div><div class="lbl">已升级</div></div>
+    <div class="monitor-panel">
+      <div class="panel-title">🏥 系统健康评分</div>
+      <div id="healthSection"><div class="loading">数据采集中...</div></div>
     </div>
-    <div class="cc-list" id="ccList">
-      <div class="loading"><div class="spinner"></div>加载中...</div>
+    <div class="monitor-panel">
+      <div class="panel-title">📨 CC 消息追踪</div>
+      <div id="msgSection"><div class="loading">数据采集中...</div></div>
+    </div>
+    <div class="monitor-panel">
+      <div class="panel-title">🚨 告警中心 <span style="font-size:10px;color:var(--red)" id="alertCount">0 条</span></div>
+      <div class="alert-list" id="alertList"><div class="loading">数据采集中...</div></div>
+    </div>
+    <div class="monitor-panel">
+      <div class="panel-title">📡 MQTT & 通信</div>
+      <div id="mqttSection"><div class="loading">数据采集中...</div></div>
+    </div>
+    <div class="monitor-panel">
+      <div class="panel-title">🔄 Git 同步</div>
+      <div id="gitSection"><div class="loading">数据采集中...</div></div>
+    </div>
+    <div class="monitor-panel">
+      <div class="panel-title">📚 学习栏目进度</div>
+      <div id="domainSection"><div class="loading">数据采集中...</div></div>
+    </div>
+    <div class="monitor-panel">
+      <div class="panel-title">🏗️ 基础设施</div>
+      <div id="infraSection"><div class="loading">数据采集中...</div></div>
     </div>
   </div>
+</div>
 
-  <!-- 消息流 -->
-  <div class="card">
-    <div class="card-title">
-      <span class="icon">💬</span> 实时消息流
+<!-- ===== TAB 3: 学习进度 ===== -->
+<div class="tab-content" id="tab-learning">
+  <div class="student-banner" id="studentBanner"></div>
+  <div class="learning-layout">
+    <div class="learning-sidebar">
+      <div class="section">
+        <div class="section-title">能力雷达图</div>
+        <div class="card" style="padding:6px">
+          <canvas id="radarCanvas" width="220" height="220" style="display:block;margin:0 auto"></canvas>
+          <div style="display:flex;justify-content:center;gap:8px;margin-top:5px;font-size:9px">
+            <span style="color:var(--xiaochen)">● 小陈</span>
+            <span style="color:var(--zhuguxia)">● 诸葛虾</span>
+            <span style="color:var(--qoder)">● qoder</span>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">正确率趋势 (7天)</div>
+        <div class="card" style="padding:6px">
+          <canvas id="trendCanvas" width="220" height="150" style="display:block;margin:0 auto"></canvas>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">错题追踪</div>
+        <div class="card" style="padding:6px;max-height:200px;overflow-y:auto" id="wrongCard"></div>
+      </div>
     </div>
-    <div class="msg-list" id="msgList">
-      <div class="loading"><div class="spinner"></div>加载中...</div>
+    <div class="learning-main">
+      <div class="section">
+        <div class="section-title">学习栏目进度</div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <table class="domain-table">
+            <thead><tr><th>栏目</th><th>进度</th><th>最近活动</th><th>提交数</th><th>状态</th></tr></thead>
+            <tbody id="domainTbody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="section" id="studentDetail"></div>
     </div>
   </div>
+</div>
 
-  <!-- 训练进度 -->
-  <div class="card">
-    <div class="card-title">
-      <span class="icon">🎯</span> 围棋训练进度
+<!-- ===== TAB 4: 项目指挥 ===== -->
+<div class="tab-content" id="tab-paper">
+  <div class="section-title" style="margin-bottom:8px">📋 每日调度时间线</div>
+  <div class="timeline-grid" id="timeline"></div>
+  <div class="paper-layout">
+    <div class="paper-left">
+      <div class="section-title">论文版本演进</div>
+      <div class="ver-timeline" id="versionTimeline"></div>
     </div>
-    <div id="trainingContainer">
-      <div class="loading"><div class="spinner"></div>加载中...</div>
+    <div class="paper-center">
+      <div class="section-title">八维能力雷达 <span style="font-size:9px;color:var(--dim);font-weight:400">点击图例切换</span></div>
+      <div style="display:flex;align-items:center;justify-content:center;padding:2px 0">
+        <canvas id="paperRadarCanvas" width="280" height="280" style="width:100%;max-width:280px;height:auto"></canvas>
+      </div>
+      <div class="radar-legend" id="paperRadarLegend"></div>
+      <div class="section-title" style="margin-top:8px">待处理任务队列</div>
+      <div id="taskQueue"></div>
+    </div>
+    <div class="paper-right">
+      <div class="section-title">协同接力链</div>
+      <div class="relay-chain" id="relayChain"></div>
+      <div class="section-title" style="margin-top:8px">活动流</div>
+      <div class="activity-feed" id="activityFeed"></div>
+      <div class="section-title" style="margin-top:10px">八维评分看板</div>
+      <table class="score-table" id="scoreTable"></table>
     </div>
   </div>
-
-  <!-- 模块健康 -->
-  <div class="card">
-    <div class="card-title">
-      <span class="icon">🔧</span> 模块健康检查
-    </div>
-    <div class="modules-grid" id="modulesGrid">
-      <div class="loading"><div class="spinner"></div>加载中...</div>
-    </div>
-  </div>
-
-  <!-- Git 活动 -->
-  <div class="card">
-    <div class="card-title">
-      <span class="icon">📝</span> Git 提交历史
-    </div>
-    <div class="git-list" id="gitList">
-      <div class="loading"><div class="spinner"></div>加载中...</div>
-    </div>
-  </div>
-
 </div>
 
 <script>
-// ========== 全局状态 ==========
-let lastData = null;
-const REFRESH_INTERVAL = 5000; // 5秒刷新
+// ============================================================
+// DATA MODELS (API fallback + embedded defaults)
+// ============================================================
+let useApi = true;
+const API_URL = '/api/status';
 
-// 节点颜色映射
-const NODE_COLORS = {
-  zhugema: '#e94560',
-  xiaochen: '#00d4ff',
-  zhuguxia: '#2ed573',
-  qoder: '#ffa502',
-  xiaowei: '#a29bfe',
-  'zhugebin-001': '#ff6b35',
+// V4.0 节点配置
+const NODES_CONFIG = {
+  zhugema:    {name:'诸葛马',server:'47.93.6.57',role:'coach',label:'AI教练·主节点',color:'#ffd700'},
+  xiaochen:   {name:'小陈',server:'121.43.80.231',role:'student',label:'稳健型学员',color:'#4da6ff'},
+  zhuguxia:   {name:'诸葛虾',server:'60.205.139.51',role:'student',label:'加速型学员',color:'#4dff88'},
+  qoder:      {name:'qoder',server:'192.168.1.161',role:'student',label:'实战型学员',color:'#b84dff'},
+  xiaowei:    {name:'小薇',server:'local',role:'student',label:'进阶型学员',color:'#ff6b6b'},
+  'zhugebin-001':{name:'诸葛斌',server:'macOS-local',role:'observer',label:'研究者',color:'#ffa64d'},
 };
 
-const NODE_NAMES = {
-  zhugema: '诸葛马',
-  xiaochen: '小陈',
-  zhuguxia: '诸葛虾',
-  qoder: 'qoder',
-  xiaowei: '小薇',
-  'zhugebin-001': '诸葛斌',
+const NETWORK_NODES = [
+  {id:'zhugema',name:'诸葛马',role:'教练/调度',color:'#ffd700',x:0.5,y:0.08},
+  {id:'xiaochen',name:'小陈',role:'稳健型',color:'#4da6ff',x:0.15,y:0.45},
+  {id:'zhuguxia',name:'诸葛虾',role:'加速型',color:'#4dff88',x:0.85,y:0.45},
+  {id:'qoder',name:'qoder',role:'实战型',color:'#b84dff',x:0.5,y:0.85},
+  {id:'xiaowei',name:'小薇',role:'进阶型',color:'#ff6b6b',x:0.3,y:0.25},
+  {id:'zhugebin-001',name:'诸葛斌',role:'观察者',color:'#ffa64d',x:0.7,y:0.25}
+];
+const NETWORK_EDGES=[
+  ['zhugema','xiaochen'],['zhugema','zhuguxia'],['zhugema','qoder'],
+  ['zhugema','xiaowei'],['zhugema','zhugebin-001'],
+  ['xiaochen','zhuguxia'],['xiaochen','qoder'],['xiaochen','xiaowei'],
+  ['zhuguxia','qoder'],['zhuguxia','xiaowei'],
+  ['qoder','xiaowei'],['qoder','zhugebin-001'],
+  ['xiaowei','zhugebin-001']
+];
+
+const MSG_POOL=[
+  ['09:42:15','诸葛马','小陈','围棋训练任务派发：Day28 死活特训 12题'],
+  ['09:42:18','诸葛马','诸葛虾','围棋训练任务派发：Day28 手筋进阶 10题'],
+  ['09:42:21','诸葛马','qoder','深夜特训回顾：昨日对局复盘已生成'],
+  ['09:43:05','小陈','小薇','解题完成：12题对11题，准确率91.7%'],
+  ['09:43:12','诸葛虾','小薇','解题完成：10题全对，准确率100%'],
+  ['09:44:01','小薇','诸葛马','xiaochen 错题已同步到错题本：1题'],
+  ['09:44:30','qoder','诸葛马','请求与诸葛虾进行速率套利对局'],
+  ['09:45:00','诸葛马','qoder','批准对局请求，match_id=lobster-match-042'],
+  ['09:45:10','诸葛马','诸葛虾','对局通知：qoder(黑) vs zhuguxia(白) 即将开始'],
+  ['09:46:22','诸葛斌','小薇','归档请求：训练日志2026-07-08已就绪'],
+  ['09:48:05','小陈','诸葛虾','周对抗赛预告：本周六19:00循环赛'],
+  ['09:48:30','诸葛虾','小陈','确认参赛，目标：征子路线专项验证'],
+  ['09:50:15','小薇','诸葛斌','涌现事件#157：跨域知识迁移·围棋布局→海报排版'],
+  ['10:02:00','诸葛马','all','V4调度器：队列健康检查完成，过期消息0条'],
+  ['10:05:33','qoder','小薇','对局进行中：qoder(黑) vs 诸葛虾(白) 第117手'],
+  ['10:10:01','小陈','诸葛马','错题复习完成：定式变化专项 8题全对'],
+  ['10:12:45','诸葛虾','诸葛马','征子路线专项：8题对7题，进步明显'],
+  ['10:15:00','小薇','all','网络心跳检测：6节点全部在线，延迟<15ms']
+];
+
+const STUDENT_CARDS=[
+  {id:'zhugema',name:'诸葛斌教授',rank:'七段',score:89,role:'审稿人',roleClass:'gold-tag',cardClass:'gold',avatarClass:'gold-bg',emoji:'🎓',task:'正在审阅 v4.0 摘要与结构',active:'2分钟前',status:'online'},
+  {id:'qoder',name:'qoder小龙虾',rank:'四段',score:73,role:'方法论+数据',roleClass:'purple-tag',cardClass:'purple',avatarClass:'purple-bg',emoji:'🦞',task:'第4章方法论证撰写中',active:'5分钟前',status:'online'},
+  {id:'zhuguxia',name:'诸葛虾',rank:'三段',score:70,role:'文献综述',roleClass:'green-tag',cardClass:'green',avatarClass:'green-bg',emoji:'📚',task:'第二章文献综述修改',active:'12分钟前',status:'idle'},
+  {id:'xiaochen',name:'信电大虾小陈',rank:'三段',score:67,role:'实证研究',roleClass:'blue-tag',cardClass:'blue',avatarClass:'blue-bg',emoji:'🔬',task:'第5章实验设计与数据分析',active:'8分钟前',status:'online'},
+  {id:'xiaowei',name:'小薇',rank:'二段',score:62,role:'进阶训练',roleClass:'purple-tag',cardClass:'purple',avatarClass:'purple-bg',emoji:'🤖',task:'围棋实战对局+错题复盘',active:'3分钟前',status:'online'}
+];
+
+const STUDENTS_DATA={
+  xiaochen:{name:'小陈',color:'#3b82f6',type:'稳健型',level:'30级',phase:'Phase 2',day:28,
+    strengths:['死活基础','手筋基础','官子基础'],weaknesses:['定式变化','终盘计算'],
+    abilities:{calc:.65,judge:.60,layout:.55,defense:.70,memory:.75},
+    problems:847,wrong:23,games:11056,winRate:.483},
+  zhuguxia:{name:'诸葛虾',color:'#22c55e',type:'加速型',level:'初段',phase:'Phase 2',day:28,
+    strengths:['计算速度','手筋应用','中盘战斗'],weaknesses:['布局理论','官子精度'],
+    abilities:{calc:.70,judge:.75,layout:.65,defense:.80,memory:.80},
+    problems:1023,wrong:18,games:7376,winRate:.496},
+  qoder:{name:'qoder',color:'#a855f7',type:'实战型',level:'1级',phase:'Phase 2',day:22,
+    strengths:['实战对局','中盘战斗','代码能力'],weaknesses:['定式记忆','布局理论'],
+    abilities:{calc:.60,judge:.70,layout:.65,defense:.80,memory:.70},
+    problems:520,wrong:15,games:42,winRate:.238},
+  xiaowei:{name:'小薇',color:'#ff6b6b',type:'进阶型',level:'23k',phase:'Phase 1',day:14,
+    strengths:['逻辑推理','数据分析','学习能力'],weaknesses:['实战经验','定式记忆'],
+    abilities:{calc:.55,judge:.50,layout:.45,defense:.60,memory:.65},
+    problems:280,wrong:12,games:8,winRate:.125}
 };
 
-// ========== 数据获取 ==========
-async function fetchData() {
-  try {
-    const res = await fetch('/api/status?_=' + Date.now());
-    const data = await res.json();
-    lastData = data;
-    renderAll(data);
-  } catch (e) {
-    console.error('获取数据失败:', e);
-    // 尝试加载快照
-    try {
-      const res = await fetch('status_snapshot.json');
-      const data = await res.json();
-      lastData = data;
-      renderAll(data);
-    } catch (e2) {
-      console.error('快照加载也失败:', e2);
+const TREND_DAYS=['7/2','7/3','7/4','7/5','7/6','7/7','7/8'];
+const ACCURACY_DATA={
+  xiaochen:[62,58,65,70,68,72,65],
+  zhuguxia:[75,78,72,80,82,85,78],
+  qoder:[55,60,58,62,65,60,63],
+  xiaowei:[45,50,55,58,62,60,65]
+};
+
+const DOMAIN_DATA=[
+  {name:'围棋训练',icon:'⚫',pct:40,status:'ready',commits:42,activity:'2小时前'},
+  {name:'炒股预测',icon:'📈',pct:50,status:'active',commits:56,activity:'4小时前'},
+  {name:'世界杯预测',icon:'⚽',pct:50,status:'ready',commits:38,activity:'8小时前'},
+  {name:'网络安全',icon:'🔒',pct:50,status:'ready',commits:28,activity:'12小时前'},
+  {name:'网络协议',icon:'🌐',pct:40,status:'ready',commits:35,activity:'1天前'},
+  {name:'AI/ML',icon:'🤖',pct:55,status:'active',commits:47,activity:'2小时前'},
+  {name:'数据通讯',icon:'📡',pct:45,status:'ready',commits:19,activity:'5天前'},
+  {name:'海报设计',icon:'🎨',pct:40,status:'ready',commits:18,activity:'1天前'},
+  {name:'通用逻辑',icon:'🧠',pct:55,status:'active',commits:47,activity:'2天前'},
+  {name:'论文写作',icon:'📝',pct:35,status:'active',commits:14,activity:'6天前'}
+];
+
+const MONITOR_NODES=[
+  {name:'诸葛马 (Hermes)',ip:'172.24.57.34',public:'47.93.6.57',role:'教练/调度中心',status:'online',disk:'45%',cpu:'12%',mem:'3.2G/8G'},
+  {name:'诸葛虾',ip:'172.24.56.3',public:'60.205.139.51',role:'加速型学员',status:'online',disk:'38%',cpu:'8%',mem:'2.1G/8G'},
+  {name:'小陈 (xiaochen)',ip:'172.27.52.212',public:'121.43.80.231',role:'稳健型学员',status:'online',disk:'52%',cpu:'15%',mem:'4.5G/16G'},
+  {name:'qoder',ip:'192.168.1.161',public:'局域网',role:'实战型学员',status:'warning',disk:'--',cpu:'--',mem:'--'},
+  {name:'小薇',ip:'local',public:'macOS',role:'进阶型学员',status:'online',disk:'86%',cpu:'28%',mem:'6.2G/8G'},
+  {name:'诸葛斌',ip:'macOS-local',public:'--',role:'观察者',status:'online',disk:'--',cpu:'--',mem:'--'}
+];
+
+const MONITOR_MSGS={total_inbox:156,total_pending:23,pending_rate:15,stats:[
+  {name:'小陈',inbox:48,pending:5,status:'normal'},
+  {name:'诸葛虾',inbox:56,pending:8,status:'normal'},
+  {name:'qoder',inbox:52,pending:10,status:'normal'},
+  {name:'小薇',inbox:28,pending:3,status:'normal'}
+]};
+
+const MONITOR_ALERTS=[];
+
+const MONITOR_MQTT={running:true,version:'Mosquitto 2.0.18',address:'0.0.0.0:1883',connections:6,throughput_msg_min:42,port_open:true,
+  topics:['lobster/inbox/','lobster/outbox/','lobster/training/','lobster/match/','lobster/emergence/','lobster/heartbeat/']};
+
+const MONITOR_GIT={repo:'zhugebin-hub/lobster-network',branch:'main',is_clean:true,github_status:'ok',commits_24h:3,
+  recent:['abc123 V4.0 dashboard upgrade','def456 stock predict trainer fix','ghi789 sync_manager V4 enhancement']};
+
+const MONITOR_INFRAS=[
+  {name:'Nginx',status:'online',icon:'🌐',desc:'反向代理'},
+  {name:'Mosquitto',status:'online',icon:'📡',desc:'MQTT Broker'},
+  {name:'Python3',status:'online',icon:'🐍',desc:'3.6.8'},
+  {name:'Node.js',status:'online',icon:'🟢',desc:'v24.14'},
+  {name:'Git',status:'online',icon:'📂',desc:'2.43'},
+  {name:'PM2',status:'online',icon:'⚡',desc:'进程管理'},
+  {name:'OpenClaw',status:'online',icon:'🦞',desc:'框架核心'},
+  {name:'Docker',status:'warning',icon:'🐳',desc:'27.1'}
+];
+
+const PAPER_RADAR_LABELS=['结构完整性','摘要凝练','文献扎实','方法严谨','数据充分','论证力度','格式规范','引用广度'];
+const PAPER_RADAR_DATA={
+  qoder:[85,70,65,88,80,75,78,65],zhuguxia:[72,60,90,55,45,68,82,92],
+  xiaochen:[70,55,62,75,88,72,68,58],xiaowei:[55,45,50,60,65,50,55,40],
+  professor:[92,90,85,88,82,90,88,86]
+};
+const PAPER_RADAR_COLORS={qoder:'#a855f7',zhuguxia:'#10b981',xiaochen:'#3b82f6',xiaowei:'#ff6b6b',professor:'#f59e0b'};
+
+const SCORE_BOARD=[
+  {name:'qoder小龙虾',dims:{结构:85,摘要:70,文献:65,方法:88,数据:80,论证:75,格式:78,引用:65},total:73.4},
+  {name:'诸葛虾',dims:{结构:72,摘要:60,文献:90,方法:55,数据:45,论证:68,格式:82,引用:92},total:69.8},
+  {name:'小陈',dims:{结构:70,摘要:55,文献:62,方法:75,数据:88,论证:72,格式:68,引用:58},total:67.2},
+  {name:'小薇',dims:{结构:55,摘要:45,文献:50,方法:60,数据:65,论证:50,格式:55,引用:40},total:52.5},
+  {name:'诸葛斌教授',dims:{结构:92,摘要:90,文献:85,方法:88,数据:82,论证:90,格式:88,引用:86},total:87.6}
+];
+
+const VERSIONS=[
+  {num:'v1.0',time:'06-28',author:'qoder',change:'初始框架搭建，八章大纲确立',score:'-',trend:''},
+  {num:'v1.5',time:'06-29',author:'诸葛虾',change:'文献综述初稿完成，引用42篇',score:'62',trend:'up'},
+  {num:'v2.0',time:'06-30',author:'小陈',change:'实验设计章节完成',score:'68',trend:'up'},
+  {num:'v2.5',time:'07-02',author:'qoder',change:'核心算法伪代码完成',score:'72',trend:'up'},
+  {num:'v3.0',time:'07-03',author:'诸葛虾',change:'全文统稿，文献增至58篇',score:'74',trend:'up'},
+  {num:'v3.2',time:'07-05',author:'教授',change:'摘要重写、结构微调',score:'76',trend:'up'},
+  {num:'v4.0',time:'07-08',author:'小薇+全体',change:'CC Protocol+sync_manager统一',score:'78',trend:'up'}
+];
+
+const TIMELINE_SLOTS=[
+  {time:'08:00-09:30',label:'文献检索与阅读',status:'completed',students:'诸葛虾、qoder',output:'27篇文献梳理'},
+  {time:'10:00-12:00',label:'大纲与框架写作',status:'completed',students:'qoder、小陈',output:'框架 v4.0 定稿'},
+  {time:'13:00-15:00',label:'章节起草与初稿',status:'active',students:'全部学员',output:'第3-5章初稿'},
+  {time:'15:30-17:00',label:'同行评审与互评',status:'pending',students:'诸葛虾↔小陈',output:'互评报告'},
+  {time:'19:00-21:00',label:'修改与润色定稿',status:'pending',students:'qoder、教授',output:'终稿 v4.1'}
+];
+
+const ACTIVITIES=[
+  {type:'commit',time:'08:32',text:'qoder 提交 v4.0 第4章修订稿 (+320行)'},
+  {type:'relay',time:'09:00',text:'接力赛：诸葛虾完成文献检索 → 交接给小陈'},
+  {type:'review',time:'09:15',text:'小陈对诸葛虾的文献综述提出 5 条修改建议'},
+  {type:'commit',time:'09:48',text:'诸葛虾更新第2章文献综述 (新增 8 篇引用)'},
+  {type:'relay',time:'10:05',text:'接力赛：小陈完成数据预处理 → 交接给qoder'},
+  {type:'commit',time:'11:02',text:'小薇 sync_manager V4 统一同步机制部署'},
+  {type:'relay',time:'11:15',text:'接力赛：qoder完成方法论证 → 交接给诸葛虾'}
+];
+
+const TASKS=[
+  {type:'文献检索',student:'诸葛虾',deadline:'14:00',priority:'high',desc:'补充GAN领域最新文献'},
+  {type:'大纲编写',student:'诸葛马',deadline:'12:00',priority:'high',desc:'v4.1 章节结构调整方案'},
+  {type:'章节起草',student:'qoder',deadline:'15:00',priority:'high',desc:'第4章方法论证初稿'},
+  {type:'章节起草',student:'小陈',deadline:'15:00',priority:'high',desc:'第5章实验数据整理'},
+  {type:'围棋训练',student:'小薇',deadline:'17:00',priority:'medium',desc:'Phase1 Day14 死活特训'},
+  {type:'评审',student:'教授',deadline:'17:00',priority:'high',desc:'v4.0 全面评审意见'}
+];
+
+// ============================================================
+// STATE
+// ============================================================
+let selectedStudent='xiaochen';
+let selectedPaperRadar='qoder';
+let msgIndex=0;
+let activeMsgCount=42;
+let activeGameCount=2;
+let topoNodes;
+let apiData=null;
+
+// ============================================================
+// TAB SWITCHING
+// ============================================================
+function switchTab(tab,ev){
+  document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el=>el.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  ev.target.classList.add('active');
+  if(tab==='network')renderNetworkTab();
+  if(tab==='monitor')renderMonitorTab();
+  if(tab==='learning')renderLearningTab();
+  if(tab==='paper')renderPaperTab();
+}
+
+// ============================================================
+// API / DATA
+// ============================================================
+async function fetchApiData(){
+  if(!useApi)return null;
+  try{
+    const res=await fetch(API_URL+'?_='+Date.now());
+    const data=await res.json();
+    apiData=data;
+    return data;
+  }catch(e){
+    console.log('API unavailable, using embedded data');
+    return null;
+  }
+}
+
+function toggleApi(){
+  useApi=!useApi;
+  document.getElementById('apiBtn').classList.toggle('active',useApi);
+  document.getElementById('apiBtn').textContent=useApi?'🔗 API':'📊 内嵌';
+  refreshAll();
+}
+
+async function refreshAll(){
+  const api=await fetchApiData();
+  renderHeader(api);
+  renderNetworkTab();
+  renderMonitorTab();
+  renderLearningTab();
+  renderPaperTab();
+}
+
+function renderHeader(api){
+  if(api){
+    const active=api.nodes?api.nodes.filter(n=>n.status==='active').length:6;
+    document.getElementById('statNodes').textContent=active;
+    document.getElementById('statMsgs').textContent=api.message_stats?.total||'--';
+    document.getElementById('statCC').textContent=api.cc_tracking?.total||'--';
+    document.getElementById('statEmergence').textContent=api.cc_tracking?.completed||'--';
+    const score=api.training_overview?Object.values(api.training_overview).reduce((a,t)=>a+(t.win_rate||0),0)/Object.keys(api.training_overview).length*100:0;
+    document.getElementById('statScore').textContent=score.toFixed(1);
+    document.getElementById('statPaperVer').textContent=api.version||'v4.0';
+  }else{
+    document.getElementById('statNodes').textContent='6';
+    document.getElementById('statMsgs').textContent='2,847';
+    document.getElementById('statCC').textContent='156';
+    document.getElementById('statEmergence').textContent='89';
+    document.getElementById('statScore').textContent='76.3';
+    document.getElementById('statPaperVer').textContent='v4.0';
+  }
+  // Health badge
+  const badge=document.getElementById('healthStatus');
+  badge.className='health-badge health-ok';
+  badge.textContent='✅ 正常';
+}
+
+// ============================================================
+// TAB 1: NETWORK
+// ============================================================
+function renderNetworkTab(){
+  renderTopoLegend();
+  renderStudentCards();
+  renderMessageStream();
+  renderMatchPanel();
+  initTopo();
+  document.getElementById('activeMsg').textContent=activeMsgCount;
+  document.getElementById('activeGames').textContent=activeGameCount;
+}
+
+function renderTopoLegend(){
+  const el=document.getElementById('topoLegend');
+  el.innerHTML=NETWORK_NODES.map(n=>`<div class="legend-item"><span class="legend-dot" style="background:${n.color}"></span> ${n.id} ${n.role}</div>`).join('');
+}
+
+function renderStudentCards(){
+  document.getElementById('studentRow').innerHTML=STUDENT_CARDS.map(s=>`
+    <div class="student-card ${s.cardClass} fade-in" onclick="selectStudent('${s.id}')">
+      <div class="sc-header">
+        <div class="sc-avatar ${s.avatarClass}">${s.emoji}</div>
+        <div class="sc-info"><div class="sc-name">${s.name}</div><div class="sc-rank">${s.rank}${s.score!=='-'?' <b style="color:var(--accent)">'+s.score+'分</b>':''}</div></div>
+      </div>
+      <span class="sc-role ${s.roleClass}">${s.role}</span>
+      <div class="sc-task">📝 ${s.task}</div>
+      <div class="sc-active"><span class="sc-status ${s.status}"></span> ${s.active}</div>
+    </div>`).join('');
+}
+
+function renderMessageStream(){
+  const el=document.getElementById('msgStream');
+  el.innerHTML='';
+  for(let i=0;i<8;i++){
+    const msg=MSG_POOL[(msgIndex+i)%MSG_POOL.length];
+    const div=document.createElement('div');
+    div.className='msg';
+    div.innerHTML=`<span class="ts">${msg[0]}</span><span class="src">${msg[1]}</span><span class="to">→ ${msg[2]}</span><span class="txt">${msg[3]}</span>`;
+    el.appendChild(div);
+  }
+  msgIndex=(msgIndex+3)%MSG_POOL.length;
+}
+
+function renderMatchPanel(){
+  document.getElementById('activeMatches').innerHTML=`
+    <div class="match-row"><span>小陈 vs 诸葛虾</span><span class="b" style="color:var(--gold)">进行中 · 手数142</span></div>
+    <div class="match-row"><span>诸葛虾 vs qoder</span><span class="b" style="color:var(--gold)">进行中 · 手数89</span></div>`;
+  document.getElementById('recentMatches').innerHTML=`
+    <div class="match-row"><span>小陈 vs 诸葛虾</span><span class="b win">小陈胜 (174:167)</span></div>
+    <div class="match-row"><span>qoder vs 小陈</span><span class="b win">qoder胜 (165:162)</span></div>
+    <div class="match-row"><span>诸葛虾 vs qoder</span><span class="b win">诸葛虾胜 (173:162)</span></div>`;
+}
+
+// Topology Canvas
+function initTopo(){
+  const canvas=document.getElementById('topoCanvas');
+  if(!canvas)return;
+  topoNodes=NETWORK_NODES.map(n=>({...n,dx:(Math.random()-0.5)*15,dy:(Math.random()-0.5)*15}));
+  function resize(){const rect=canvas.parentElement.getBoundingClientRect();canvas.width=rect.width-28;canvas.height=260}
+  resize();
+  window.addEventListener('resize',resize);
+  function animate(){
+    topoNodes.forEach(n=>{n.dx+=(Math.random()-0.5)*0.4;n.dy+=(Math.random()-0.5)*0.4;n.dx=Math.max(-12,Math.min(12,n.dx));n.dy=Math.max(-12,Math.min(12,n.dy))});
+    drawTopo();
+    requestAnimationFrame(()=>setTimeout(animate,60));
+  }
+  animate();
+}
+
+function drawTopo(){
+  const canvas=document.getElementById('topoCanvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const W=canvas.width,H=canvas.height,cx=W/2,cy=H/2;
+  ctx.clearRect(0,0,W,H);
+
+  // BG gradient
+  const bgGrad=ctx.createRadialGradient(cx,cy,20,cx,cy,W/2);
+  bgGrad.addColorStop(0,'#1a1a3e');bgGrad.addColorStop(1,'#08081a');
+  ctx.fillStyle=bgGrad;ctx.fillRect(0,0,W,H);
+
+  // Edges with animation
+  const t=Date.now()/2000;
+  NETWORK_EDGES.forEach(([a,b])=>{
+    const na=topoNodes.find(n=>n.id===a),nb=topoNodes.find(n=>n.id===b);
+    if(!na||!nb)return;
+    const x1=cx+(na.x-0.5)*W*0.8+na.dx,y1=cy+(na.y-0.5)*H*0.8+na.dy;
+    const x2=cx+(nb.x-0.5)*W*0.8+nb.dx,y2=cy+(nb.y-0.5)*H*0.8+nb.dy;
+    ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);
+    ctx.strokeStyle=`rgba(255,215,0,${0.08+0.05*Math.sin(t)})`;ctx.lineWidth=1;ctx.stroke();
+  });
+
+  // Nodes
+  topoNodes.forEach(n=>{
+    const px=cx+(n.x-0.5)*W*0.8+n.dx,py=cy+(n.y-0.5)*H*0.8+n.dy;
+    // glow
+    const grad=ctx.createRadialGradient(px,py,3,px,py,18);
+    grad.addColorStop(0,n.color);grad.addColorStop(1,'transparent');
+    ctx.beginPath();ctx.arc(px,py,18,0,Math.PI*2);ctx.fillStyle=grad;ctx.fill();
+    // body
+    ctx.beginPath();ctx.arc(px,py,6,0,Math.PI*2);ctx.fillStyle=n.color;ctx.fill();
+    ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
+    // label
+    ctx.fillStyle='#c8d6e5';ctx.font='9px monospace';ctx.textAlign='center';
+    ctx.fillText(n.name,px,py+16);
+    ctx.fillStyle='#7f8fa6';ctx.font='7px monospace';
+    ctx.fillText(n.role,px,py+25);
+  });
+}
+
+// ============================================================
+// TAB 2: MONITOR
+// ============================================================
+function renderMonitorTab(){
+  renderMonitorNodes();renderMonitorHealth();renderMonitorMessages();
+  renderMonitorAlerts();renderMonitorMQTT();renderMonitorGit();
+  renderMonitorDomains();renderMonitorInfra();
+}
+
+function renderMonitorNodes(){
+  document.getElementById('nodeCount').textContent=MONITOR_NODES.length+' 节点';
+  document.getElementById('nodeGrid').innerHTML=MONITOR_NODES.map(n=>`
+    <div class="node-card ${n.status}">
+      <div class="node-name"><span class="status-indicator ${n.status}"></span>${n.name}</div>
+      <div class="node-ip">${n.ip}${n.public!=='-'?' | '+n.public:''}</div>
+      <div style="font-size:10px;color:var(--dim);margin-top:2px">${n.role}</div>
+      ${n.disk!=='--'?`<div class="node-meta"><span class="label">磁盘</span><span>${n.disk}</span></div>`:''}
+      ${n.cpu!=='--'?`<div class="node-meta"><span class="label">CPU/内存</span><span>${n.cpu} / ${n.mem}</span></div>`:''}
+    </div>`).join('');
+}
+
+function renderMonitorHealth(){
+  const online=MONITOR_NODES.filter(n=>n.status==='online').length;
+  const nodeScore=online>=5?5:online>=3?4:online>=2?3:2;
+  const msgScore=MONITOR_MSGS.pending_rate<20?5:MONITOR_MSGS.pending_rate<50?3:2;
+  const infraScore=MONITOR_INFRAS.filter(i=>i.status==='online').length>=7?5:MONITOR_INFRAS.filter(i=>i.status==='online').length>=5?4:3;
+  const gitScore=MONITOR_GIT.github_status==='ok'?5:2;
+  const trainingScore=4;
+  const overall=((nodeScore+trainingScore+msgScore+infraScore+gitScore)/5).toFixed(1);
+  const overallPct=(overall/5*100).toFixed(0);
+  const oc=overall>=4?'var(--green)':overall>=3?'var(--accent)':'var(--red)';
+
+  document.getElementById('healthSection').innerHTML=`
+    <div class="score-grid">
+      <div class="score-box"><div class="num" style="color:${nodeScore>=4?'var(--green)':'var(--accent)'}">${nodeScore}/5</div><div class="label">节点 (${online}/${MONITOR_NODES.length})</div></div>
+      <div class="score-box"><div class="num" style="color:var(--green)">${trainingScore}/5</div><div class="label">训练活跃</div></div>
+      <div class="score-box"><div class="num" style="color:var(--green)">${msgScore}/5</div><div class="label">消息 (${MONITOR_MSGS.pending_rate}%)</div></div>
+      <div class="score-box"><div class="num" style="color:var(--green)">${infraScore}/5</div><div class="label">基础设施</div></div>
+      <div class="score-box"><div class="num" style="color:var(--green)">${gitScore}/5</div><div class="label">Git推送</div></div>
+    </div>
+    <div style="margin-top:10px;display:flex;align-items:center;gap:10px">
+      <div style="font-size:30px;font-weight:700;color:${oc}">${overall}</div>
+      <div style="flex:1">
+        <div class="progress-bar" style="height:10px"><div class="progress-fill" style="width:${overallPct}%;background:${oc}"></div></div>
+        <div style="font-size:10px;color:var(--dim);margin-top:3px">综合评分 ${overall}/5</div>
+      </div>
+    </div>`;
+}
+
+function renderMonitorMessages(){
+  const m=MONITOR_MSGS;
+  document.getElementById('msgSection').innerHTML=`
+    <div class="card" style="padding:10px">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center;margin-bottom:8px">
+        <div><div style="font-size:18px;font-weight:700;color:var(--cyan)">${m.total_inbox}</div><div style="font-size:9px;color:var(--dim)">总消息</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:var(--accent)">${m.total_pending}</div><div style="font-size:9px;color:var(--dim)">未处理</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:var(--green)">${m.pending_rate}%</div><div style="font-size:9px;color:var(--dim)">堆积率</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:var(--green)">${m.total_inbox-m.total_pending}</div><div style="font-size:9px;color:var(--dim)">已处理</div></div>
+      </div>
+      <table style="width:100%;font-size:11px;border-collapse:collapse">
+        <thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)"><th style="text-align:left;padding:4px">学员</th><th style="text-align:center">Inbox</th><th style="text-align:center">未处理</th><th>状态</th></tr></thead>
+        <tbody>${m.stats.map(s=>`<tr style="border-bottom:1px solid #1e293b"><td style="padding:4px">${s.name}</td><td style="text-align:center">${s.inbox}</td><td style="text-align:center">${s.pending}</td><td style="text-align:center"><span class="badge badge-green">正常</span></td></tr>`).join('')}</tbody>
+      </table>
+    </div>`;
+}
+
+function renderMonitorAlerts(){
+  document.getElementById('alertCount').textContent=MONITOR_ALERTS.length+' 条';
+  document.getElementById('alertList').innerHTML='<div style="text-align:center;padding:16px;color:var(--green)">✅ 无告警</div>';
+}
+
+function renderMonitorMQTT(){
+  const m=MONITOR_MQTT;
+  document.getElementById('mqttSection').innerHTML=`
+    <div class="card" style="padding:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div><div style="font-size:13px;font-weight:600">${m.version}</div><div style="font-size:10px;color:var(--dim);font-family:monospace">${m.address}</div></div>
+        <span class="badge badge-green">✅ 运行中</span>
+      </div>
+      <div class="metric-row"><span class="metric-label">连接数</span><span class="metric-value">${m.connections}</span></div>
+      <div class="metric-row"><span class="metric-label">吞吐</span><span class="metric-value">~${m.throughput_msg_min} msg/min</span></div>
+      <div class="metric-row"><span class="metric-label">端口</span><span class="metric-value" style="color:var(--green)">✅ 1883</span></div>
+      <div style="margin-top:6px">${m.topics.map(t=>`<span class="mqtt-topic">${t}</span>`).join('')}</div>
+    </div>`;
+}
+
+function renderMonitorGit(){
+  const g=MONITOR_GIT;
+  document.getElementById('gitSection').innerHTML=`
+    <div class="card" style="padding:10px">
+      <div class="metric-row"><span class="metric-label">仓库</span><span class="metric-value" style="font-family:monospace;color:var(--cyan)">${g.repo}</span></div>
+      <div class="metric-row"><span class="metric-label">分支</span><span class="metric-value" style="font-family:monospace;color:var(--cyan)">${g.branch}</span></div>
+      <div class="metric-row"><span class="metric-label">GitHub</span><span class="metric-value" style="color:var(--green)">✅ ${g.github_status}</span></div>
+      <div class="metric-row"><span class="metric-label">工作区</span><span class="metric-value" style="color:var(--green)">✅ 干净</span></div>
+      <div class="metric-row"><span class="metric-label">24h提交</span><span class="metric-value">${g.commits_24h}</span></div>
+      <div style="margin-top:8px;font-size:10px;color:var(--dim)">最近提交</div>
+      ${g.recent.map(r=>`<div style="font-size:10px;color:var(--dim);padding:2px 0;font-family:monospace">${r}</div>`).join('')}
+    </div>`;
+}
+
+function renderMonitorDomains(){
+  document.getElementById('domainSection').innerHTML=`
+    <div class="card" style="padding:10px">
+      <table class="domain-table">
+        <thead><tr><th>栏目</th><th>进度</th><th>提交</th><th>状态</th></tr></thead>
+        <tbody>${DOMAIN_DATA.map(d=>{
+          const sc=d.status==='active'?'badge-green':d.status==='ready'?'badge-blue':'badge-red';
+          return`<tr><td>${d.icon} ${d.name}</td><td><div style="display:flex;align-items:center;gap:4px"><div class="progress-bar" style="flex:1;height:4px"><div class="progress-fill" style="width:${d.pct}%;background:${d.pct>60?'var(--green)':d.pct>30?'var(--accent)':'var(--red)'}"></div></div><span style="font-size:9px;color:var(--dim)">${d.pct}%</span></div></td><td>${d.commits}</td><td><span class="badge ${sc}">${d.status==='active'?'进行中':'就绪'}</span></td></tr>`;
+        }).join('')}</tbody>
+      </table>
+    </div>`;
+}
+
+function renderMonitorInfra(){
+  document.getElementById('infraSection').innerHTML=`
+    <div class="card" style="padding:10px">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px">
+        ${MONITOR_INFRAS.map(i=>`
+          <div style="background:#0f172a;border-radius:6px;padding:8px;text-align:center;border:1px solid var(--border)">
+            <div style="font-size:16px">${i.icon}</div>
+            <div style="font-size:11px;font-weight:600;margin:2px 0">${i.name}</div>
+            <div style="font-size:9px;color:var(--dim)">${i.desc}</div>
+            <div style="margin-top:4px"><span class="status-indicator ${i.status}"></span> <span style="font-size:9px;color:var(--dim)">${i.status==='online'?'正常':'警告'}</span></div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+// ============================================================
+// TAB 3: LEARNING
+// ============================================================
+function selectStudent(id){selectedStudent=id;renderLearningTab()}
+
+function renderLearningTab(){
+  renderStudentBanner();renderRadar();renderTrend();renderWrongCard();renderDomainTable();renderStudentDetail();
+}
+
+function renderStudentBanner(){
+  document.getElementById('studentBanner').innerHTML=Object.entries(STUDENTS_DATA).map(([id,s])=>`
+    <div class="student-banner-card ${selectedStudent===id?'active':''}" onclick="selectStudent('${id}')" style="cursor:pointer">
+      <div class="student-avatar" style="background:${s.color};color:#fff">${s.name[0]}</div>
+      <div class="student-info"><div class="name" style="color:${s.color}">${s.name}</div><div class="meta">${s.type} · ${s.level}</div></div>
+      <div class="student-ring">
+        <svg width="40" height="40"><circle cx="20" cy="20" r="16" fill="none" stroke="#1e293b" stroke-width="4"/><circle cx="20" cy="20" r="16" fill="none" stroke="${s.color}" stroke-width="4" stroke-dasharray="${s.winRate*100.5} ${100.5-s.winRate*100.5}"/></svg>
+        <div class="pct" style="color:${s.color}">${(s.winRate*100).toFixed(0)}%</div>
+      </div>
+    </div>`).join('');
+}
+
+function renderRadar(){
+  const canvas=document.getElementById('radarCanvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const W=220,H=220,cx=W/2,cy=H/2,r=80;
+  ctx.clearRect(0,0,W,H);
+
+  const labels=['计算','判断','布局','防御','记忆'];
+  const n=labels.length;
+
+  // Grid
+  for(let ring=1;ring<=5;ring++){
+    ctx.beginPath();
+    for(let i=0;i<n;i++){
+      const a=(i/n)*Math.PI*2-Math.PI/2;
+      const rr=r*(ring/5);
+      ctx.lineTo(cx+rr*Math.cos(a),cy+rr*Math.sin(a));
     }
-  }
-}
-
-// ========== 渲染 ==========
-function renderAll(data) {
-  renderHeader(data);
-  renderStats(data);
-  renderTopology(data);
-  renderNodes(data);
-  renderCC(data);
-  renderMessages(data);
-  renderTraining(data);
-  renderModules(data);
-  renderGit(data);
-}
-
-function renderHeader(data) {
-  document.getElementById('versionBadge').textContent = data.version || 'v4.0';
-  const t = data.scan_time || '';
-  document.getElementById('scanTime').textContent = t ? '扫描: ' + t.substring(11, 19) : '--';
-}
-
-function renderStats(data) {
-  const activeNodes = data.nodes.filter(n => n.status === 'active').length;
-  document.getElementById('statNodes').textContent = activeNodes;
-  document.getElementById('statMsgs').textContent = data.message_stats?.total || 0;
-  document.getElementById('statCC').textContent = data.cc_tracking?.total || 0;
-  document.getElementById('statAck').textContent = data.cc_tracking?.completed || 0;
-  document.getElementById('statPending').textContent = (data.cc_tracking?.pending || 0) + (data.cc_tracking?.escalated || 0);
-
-  const modules = data.modules || {};
-  const installed = Object.values(modules).filter(v => v === 'installed').length;
-  const total = Object.keys(modules).length;
-  document.getElementById('statModules').textContent = `${installed}/${total}`;
-}
-
-// ========== 拓扑图 ==========
-function renderTopology(data) {
-  const svg = document.getElementById('topologySvg');
-  const cx = 400, cy = 210;
-  const radius = 150;
-
-  // 主节点在中心，其他节点环绕
-  const nodes = data.nodes || [];
-  const hub = nodes.find(n => n.node_id === 'zhugema') || nodes[0];
-  const satellites = nodes.filter(n => n.node_id !== 'zhugema' && n.node_id !== 'zhugebin-001');
-
-  let html = '';
-
-  // 定义渐变
-  html += '<defs>';
-  for (const [nid, color] of Object.entries(NODE_COLORS)) {
-    html += `<radialGradient id="grad-${nid}"><stop offset="0%" stop-color="${color}" stop-opacity="0.3"/><stop offset="100%" stop-color="${color}" stop-opacity="0"/></radialGradient>`;
-  }
-  html += '</defs>';
-
-  // 连接线
-  for (let i = 0; i < satellites.length; i++) {
-    const angle = (i / satellites.length) * 2 * Math.PI - Math.PI / 2;
-    const x = cx + radius * Math.cos(angle);
-    const y = cy + radius * Math.sin(angle);
-    const color = NODE_COLORS[satellites[i].node_id] || '#555';
-    const isCC = satellites[i].inbox_count > 0;
-    html += `<line class="connection-line" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="${color}" stroke-width="${isCC ? 2 : 1}" opacity="${isCC ? 0.6 : 0.3}"/>`;
+    ctx.closePath();ctx.strokeStyle='rgba(30,41,59,.5)';ctx.lineWidth=1;ctx.stroke();
   }
 
-  // 中心节点（诸葛马）
-  const hubColor = NODE_COLORS['zhugema'];
-  html += `<circle cx="${cx}" cy="${cy}" r="50" fill="url(#grad-zhugema)" />`;
-  html += `<circle class="hub-pulse" cx="${cx}" cy="${cy}" r="38" fill="${hubColor}" opacity="0.15" />`;
-  html += `<circle class="node-circle" cx="${cx}" cy="${cy}" r="32" fill="${hubColor}" opacity="0.9" stroke="${hubColor}" stroke-width="2"/>`;
-  html += `<text x="${cx}" y="${cy-2}" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">诸葛马</text>`;
-  html += `<text x="${cx}" y="${cy+14}" text-anchor="middle" fill="#fff" font-size="9" opacity="0.8">AI教练·主节点</text>`;
+  // Labels
+  ctx.fillStyle='var(--dim)';ctx.font='9px sans-serif';ctx.textAlign='center';
+  for(let i=0;i<n;i++){
+    const a=(i/n)*Math.PI*2-Math.PI/2;
+    ctx.fillStyle='#64748b';ctx.fillText(labels[i],cx+(r+18)*Math.cos(a),cy+(r+18)*Math.sin(a)+3);
+  }
 
-  // 环绕节点
-  for (let i = 0; i < satellites.length; i++) {
-    const n = satellites[i];
-    const angle = (i / satellites.length) * 2 * Math.PI - Math.PI / 2;
-    const x = cx + radius * Math.cos(angle);
-    const y = cy + radius * Math.sin(angle);
-    const color = NODE_COLORS[n.node_id] || '#555';
-    const isActive = n.status === 'active';
-    const r = 26;
-    const msgCount = n.inbox_count + n.sent_count;
-
-    // 光晕
-    html += `<circle cx="${x}" cy="${y}" r="${r+12}" fill="url(#grad-${n.node_id})" />`;
-
-    // 节点圆
-    html += `<circle class="node-circle" cx="${x}" cy="${y}" r="${r}" fill="${color}" opacity="${isActive ? 0.85 : 0.4}" stroke="${color}" stroke-width="${isActive ? 2 : 1}"/>`;
-
-    // 消息计数徽章
-    if (msgCount > 0) {
-      html += `<circle cx="${x+r-4}" cy="${y-r+4}" r="9" fill="#e94560" stroke="#0a0e1a" stroke-width="1.5"/>`;
-      html += `<text x="${x+r-4}" y="${y-r+7}" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">${msgCount > 99 ? '99+' : msgCount}</text>`;
+  // Data polygons
+  const students=['xiaochen','zhuguxia','qoder','xiaowei'];
+  students.forEach(sid=>{
+    const s=STUDENTS_DATA[sid];
+    ctx.beginPath();
+    const ab=s.abilities;
+    const vals=[ab.calc,ab.judge,ab.layout,ab.defense,ab.memory];
+    for(let i=0;i<n;i++){
+      const a=(i/n)*Math.PI*2-Math.PI/2;
+      ctx.lineTo(cx+vals[i]*r*Math.cos(a),cy+vals[i]*r*Math.sin(a));
     }
+    ctx.closePath();ctx.fillStyle=s.color+'30';ctx.fill();ctx.strokeStyle=s.color;ctx.lineWidth=1.5;ctx.stroke();
+  });
+}
 
-    // 节点名
-    const name = NODE_NAMES[n.node_id] || n.node_id;
-    html += `<text x="${x}" y="${y+3}" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">${name}</text>`;
+function renderTrend(){
+  const canvas=document.getElementById('trendCanvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const W=220,H=150;
+  ctx.clearRect(0,0,W,H);
 
-    // 角色
-    const roleText = n.role === 'student' ? '学员' : (n.role === 'observer' ? '观察' : '教练');
-    html += `<text x="${x}" y="${y+16}" text-anchor="middle" fill="#fff" font-size="8" opacity="0.7">${roleText}</text>`;
+  const pad=30,gw=W-pad*2,gh=H-pad*2;
+  const maxV=100;
 
-    // 服务器地址
-    if (n.server && n.server !== 'local' && n.server !== 'macOS-local') {
-      const serverText = n.server.length > 15 ? n.server.substring(0, 13) + '..' : n.server;
-      html += `<text x="${x}" y="${y+r+14}" text-anchor="middle" fill="${color}" font-size="8" opacity="0.6">${serverText}</text>`;
+  // Axes
+  ctx.strokeStyle='#1e293b';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(pad,pad);ctx.lineTo(pad,H-pad);ctx.lineTo(W-pad,H-pad);ctx.stroke();
+
+  // Y labels
+  ctx.fillStyle='#64748b';ctx.font='8px monospace';ctx.textAlign='right';
+  for(let v=0;v<=100;v+=25){ctx.fillText(v+'%',pad-4,H-pad-v/maxV*gh)}
+
+  // X labels
+  ctx.textAlign='center';
+  TREND_DAYS.forEach((d,i)=>{ctx.fillText(d,pad+i/(TREND_DAYS.length-1)*gw,H-pad+12)});
+
+  // Lines
+  Object.entries(ACCURACY_DATA).forEach(([sid,data])=>{
+    const color=STUDENTS_DATA[sid]?.color||'#888';
+    ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=1.5;
+    data.forEach((v,i)=>{ctx.lineTo(pad+i/(data.length-1)*gw,H-pad-v/maxV*gh)});
+    ctx.stroke();
+  });
+}
+
+function renderWrongCard(){
+  const s=STUDENTS_DATA[selectedStudent];
+  const problems=s?.weaknesses||[];
+  document.getElementById('wrongCard').innerHTML=problems.map(w=>`
+    <div style="font-size:10px;padding:3px 0;display:flex;align-items:center;gap:4px">
+      <span style="color:var(--red)">⚠</span><span style="color:var(--text)">${w}</span>
+    </div>`).join('')||'<div style="font-size:10px;color:var(--dim);text-align:center;padding:10px">暂无错题记录</div>';
+}
+
+function renderDomainTable(){
+  document.getElementById('domainTbody').innerHTML=DOMAIN_DATA.map(d=>{
+    const sc=d.status==='active'?'badge-green':'badge-blue';
+    return`<tr><td>${d.icon} ${d.name}</td><td><div style="display:flex;align-items:center;gap:4px"><div class="progress-bar" style="flex:1;height:4px"><div class="progress-fill" style="width:${d.pct}%;background:${d.pct>60?'var(--green)':d.pct>30?'var(--accent)':'var(--red)'}"></div></div><span style="font-size:9px">${d.pct}%</span></div></td><td style="font-size:9px;color:var(--dim)">${d.activity}</td><td>${d.commits}</td><td><span class="badge ${sc}" style="font-size:8px">${d.status==='active'?'活跃':'就绪'}</span></td></tr>`;
+  }).join('');
+}
+
+function renderStudentDetail(){
+  const s=STUDENTS_DATA[selectedStudent];
+  if(!s)return;
+  const total=s.problems;
+  const wr=(s.winRate*100).toFixed(1);
+  document.getElementById('studentDetail').innerHTML=`
+    <div class="section-title" style="color:${s.color}">${s.name} 详细数据</div>
+    <div class="two-col">
+      <div class="card" style="padding:10px">
+        <div class="stats-grid">
+          <div class="stat-box"><div class="num" style="color:${s.color}">${s.level}</div><div class="txt">等级</div></div>
+          <div class="stat-box"><div class="num" style="color:${s.color}">${total}</div><div class="txt">解题</div></div>
+          <div class="stat-box"><div class="num" style="color:${s.color}">${wr}%</div><div class="txt">胜率</div></div>
+        </div>
+        <div style="margin-top:6px;font-size:10px;color:var(--green)">✓ ${s.strengths.join(', ')}</div>
+        <div style="font-size:10px;color:var(--red)">⚠ ${s.weaknesses.join(', ')}</div>
+      </div>
+      <div class="card" style="padding:10px">
+        <div style="font-size:11px;font-weight:600;color:var(--accent);margin-bottom:6px">五维能力</div>
+        ${Object.entries(s.abilities).map(([k,v])=>`<div style="display:flex;align-items:center;gap:6px;margin:4px 0;font-size:10px"><span style="min-width:35px;color:var(--dim)">${k==='calc'?'计算':k==='judge'?'判断':k==='layout'?'布局':k==='defense'?'防御':'记忆'}</span><div class="progress-bar" style="flex:1;height:5px"><div class="progress-fill" style="width:${v*100}%;background:${s.color}"></div></div><span style="font-weight:600">${(v*100).toFixed(0)}%</span></div>`).join('')}
+      </div>
+    </div>`;
+}
+
+// ============================================================
+// TAB 4: PAPER / PROJECT COMMAND
+// ============================================================
+function renderPaperTab(){
+  renderTimelineSlots();renderVersionTimeline();renderPaperRadar();
+  renderTaskQueue();renderRelayChain();renderActivityFeed();renderScoreTable();
+}
+
+function renderTimelineSlots(){
+  document.getElementById('timeline').innerHTML=TIMELINE_SLOTS.map(s=>`
+    <div class="tl-slot ${s.status}">
+      <div class="tl-time">${s.time}</div>
+      <div class="tl-label">${s.label}</div>
+      <div class="tl-status ${s.status==='active'?'in-progress':s.status==='completed'?'completed':'waiting'}">${s.status==='active'?'进行中':s.status==='completed'?'已完成':'等待中'}</div>
+      <div class="tl-students">${s.students}</div>
+      ${s.output?`<div style="font-size:8px;color:var(--cyan)">${s.output}</div>`:''}
+    </div>`).join('');
+}
+
+function renderVersionTimeline(){
+  document.getElementById('versionTimeline').innerHTML=VERSIONS.map((v,i)=>`
+    <div class="ver-item ${i===VERSIONS.length-1?'current':''}">
+      <div class="ver-num">${v.num}</div>
+      <div class="ver-time">${v.time}</div>
+      <div class="ver-author">${v.author}</div>
+      <div class="ver-change">${v.change}</div>
+      ${v.score!=='-'?`<div class="ver-score ${v.trend==='up'?'trend-up':''}" style="font-size:10px;font-weight:700;color:${v.trend==='up'?'var(--green)':'var(--dim)'}">${v.score}分 ${v.trend==='up'?'↑':''}</div>`:''}
+    </div>`).join('');
+}
+
+function renderPaperRadar(){
+  const canvas=document.getElementById('paperRadarCanvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const W=280,H=280,cx=W/2,cy=H/2,r=100;
+  ctx.clearRect(0,0,W,H);
+
+  const labels=PAPER_RADAR_LABELS;
+  const n=labels.length;
+
+  // Grid
+  for(let ring=1;ring<=5;ring++){
+    ctx.beginPath();
+    for(let i=0;i<n;i++){
+      const a=(i/n)*Math.PI*2-Math.PI/2;
+      ctx.lineTo(cx+r*(ring/5)*Math.cos(a),cy+r*(ring/5)*Math.sin(a));
     }
-
-    // 活跃状态指示
-    if (isActive) {
-      html += `<circle cx="${x-r+5}" cy="${y-r+5}" r="4" fill="#2ed573" stroke="#0a0e1a" stroke-width="1.5"><animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/></circle>`;
-    }
+    ctx.closePath();ctx.strokeStyle='rgba(30,41,59,.4)';ctx.lineWidth=1;ctx.stroke();
   }
 
-  // 诸葛斌（观察者，放在外围）
-  const observer = nodes.find(n => n.node_id === 'zhugebin-001');
-  if (observer) {
-    const ox = cx, oy = cy - radius - 60;
-    const color = NODE_COLORS['zhugebin-001'];
-    html += `<line x1="${cx}" y1="${cy}" x2="${ox}" y2="${oy}" stroke="${color}" stroke-width="1" stroke-dasharray="3,6" opacity="0.3"/>`;
-    html += `<circle class="node-circle" cx="${ox}" cy="${oy}" r="20" fill="${color}" opacity="0.7" stroke="${color}" stroke-width="1.5"/>`;
-    html += `<text x="${ox}" y="${oy+3}" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">诸葛斌</text>`;
-    html += `<text x="${ox}" y="${oy+14}" text-anchor="middle" fill="#fff" font-size="8" opacity="0.6">观察者</text>`;
+  // Labels
+  ctx.fillStyle='#64748b';ctx.font='10px sans-serif';ctx.textAlign='center';
+  for(let i=0;i<n;i++){
+    const a=(i/n)*Math.PI*2-Math.PI/2;
+    ctx.fillText(labels[i],cx+(r+22)*Math.cos(a),cy+(r+22)*Math.sin(a)+4);
   }
 
-  // 图例
-  html += `<g transform="translate(20, 380)">`;
-  html += `<circle cx="8" cy="8" r="5" fill="#2ed573"/><text x="20" y="12" fill="#8892b0" font-size="10">活跃</text>`;
-  html += `<circle cx="60" cy="8" r="5" fill="#e94560"/><text x="72" y="12" fill="#8892b0" font-size="10">消息数</text>`;
-  html += `<line x1="120" y1="8" x2="140" y2="8" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="5,5"/><text x="146" y="12" fill="#8892b0" font-size="10">同步链路</text>`;
-  html += `</g>`;
+  // Selected data
+  const data=PAPER_RADAR_DATA[selectedPaperRadar]||PAPER_RADAR_DATA.qoder;
+  const color=PAPER_RADAR_COLORS[selectedPaperRadar]||'#a855f7';
+  ctx.beginPath();
+  for(let i=0;i<n;i++){
+    const a=(i/n)*Math.PI*2-Math.PI/2;
+    ctx.lineTo(cx+data[i]/100*r*Math.cos(a),cy+data[i]/100*r*Math.sin(a));
+  }
+  ctx.closePath();ctx.fillStyle=color+'30';ctx.fill();ctx.strokeStyle=color;ctx.lineWidth=2;ctx.stroke();
 
-  svg.innerHTML = html;
+  // Points
+  for(let i=0;i<n;i++){
+    const a=(i/n)*Math.PI*2-Math.PI/2;
+    ctx.beginPath();ctx.arc(cx+data[i]/100*r*Math.cos(a),cy+data[i]/100*r*Math.sin(a),3,0,Math.PI*2);
+    ctx.fillStyle=color;ctx.fill();
+  }
+
+  // Legend
+  document.getElementById('paperRadarLegend').innerHTML=Object.entries(PAPER_RADAR_COLORS).map(([k,c])=>{
+    const names={qoder:'qoder',zhuguxia:'诸葛虾',xiaochen:'小陈',xiaowei:'小薇',professor:'教授'};
+    return`<div class="radar-legend-item ${selectedPaperRadar===k?'selected':''}" onclick="selectPaperRadar('${k}')">
+      <span style="width:6px;height:6px;border-radius:50%;background:${c};display:inline-block"></span>${names[k]||k}
+    </div>`;
+  }).join('');
 }
 
-// ========== 节点卡片 ==========
-function renderNodes(data) {
-  const grid = document.getElementById('nodesGrid');
-  const nodes = data.nodes || [];
+function selectPaperRadar(k){selectedPaperRadar=k;renderPaperRadar()}
 
-  grid.innerHTML = nodes.map(n => {
-    const roleClass = n.role || 'student';
-    const statusClass = n.status === 'active' ? 'status-active' : (n.status === 'error' ? 'status-error' : 'status-unknown');
-    const goLevel = n.go_level || n.goal || '';
-
-    return `
-    <div class="node-card ${roleClass}">
-      <div class="node-header">
-        <div class="node-name">${n.name}</div>
-        <span class="node-role-tag role-${roleClass}">${n.label || n.role}</span>
+function renderTaskQueue(){
+  document.getElementById('taskQueue').innerHTML=TASKS.map(t=>`
+    <div class="task-item">
+      <div class="task-priority ${t.priority}"></div>
+      <div class="task-info">
+        <div class="task-type">${t.type}</div>
+        <div class="task-meta"><span>${t.student}</span><span style="color:var(--accent)">${t.deadline}</span></div>
+        <div style="font-size:9px;color:var(--dim)">${t.desc}</div>
       </div>
-      <div class="node-info">
-        <div><span class="status-dot ${statusClass}"></span><span class="label">状态:</span> <span class="value">${n.status || 'unknown'}</span></div>
-        <div><span class="label">服务器:</span> <span class="value">${n.server || '—'}</span></div>
-        ${goLevel ? `<div><span class="label">围棋:</span> <span class="value">${goLevel}</span></div>` : ''}
-        ${n.training_style ? `<div><span class="label">风格:</span> <span class="value">${n.training_style}</span></div>` : ''}
-        ${n.tasks_completed ? `<div><span class="label">任务:</span> <span class="value">${n.tasks_completed} | 协作: ${n.collaborations || 0}</span></div>` : ''}
-      </div>
-      <div class="node-stats">
-        <div class="node-stat"><div class="num" style="color:var(--accent-blue)">${n.inbox_count || 0}</div><div class="lbl">收件</div></div>
-        <div class="node-stat"><div class="num" style="color:var(--accent-green)">${n.sent_count || 0}</div><div class="lbl">已发</div></div>
-        <div class="node-stat"><div class="num" style="color:var(--accent-yellow)">${n.token_balance || 0}</div><div class="lbl">代币</div></div>
-      </div>
-    </div>`;
-  }).join('');
+    </div>`).join('');
 }
 
-// ========== CC追踪 ==========
-function renderCC(data) {
-  const cc = data.cc_tracking || {};
-  document.getElementById('ccCompleted').textContent = cc.completed || 0;
-  document.getElementById('ccPending').textContent = cc.pending || 0;
-  document.getElementById('ccEscalated').textContent = cc.escalated || 0;
-
-  const list = document.getElementById('ccList');
-  const details = cc.completed_details || [];
-
-  if (details.length === 0) {
-    list.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;">暂无CC消息记录</div>';
-    return;
-  }
-
-  list.innerHTML = details.slice(0, 15).map(d => {
-    const ackBadges = (d.acks || []).map(a => {
-      const name = NODE_NAMES[a] || a;
-      return `<span class="ack-badge">${name}</span>`;
-    }).join('');
-    return `
-    <div class="cc-item">
-      <span class="cc-from">${NODE_NAMES[d.from] || d.from}</span>
-      <span class="cc-subject">${d.subject}</span>
-      <span class="cc-acks">${ackBadges}</span>
-    </div>`;
-  }).join('');
+function renderRelayChain(){
+  document.getElementById('relayChain').innerHTML=`
+    <span class="relay-node">诸葛虾(文献)</span><span class="relay-arrow">→</span>
+    <span class="relay-node">小陈(数据)</span><span class="relay-arrow">→</span>
+    <span class="relay-node current">qoder(方法)</span><span class="relay-arrow">→</span>
+    <span class="relay-node">教授(评审)</span>`;
 }
 
-// ========== 消息流 ==========
-function renderMessages(data) {
-  const list = document.getElementById('msgList');
-  const msgs = data.recent_messages || [];
-
-  if (msgs.length === 0) {
-    list.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;">暂无消息</div>';
-    return;
-  }
-
-  list.innerHTML = msgs.map(m => {
-    const typeIcon = m.type === 'cc' ? 'CC' : (m.type === 'ack' ? '✓' : '→');
-    const typeClass = `msg-type-${m.type}`;
-    const fromName = NODE_NAMES[m.from] || m.from || '?';
-    const toName = NODE_NAMES[m.to_node] || m.to_node || '?';
-    const ageText = m.age_minutes < 60 ? `${m.age_minutes}分钟前` : `${Math.floor(m.age_minutes/60)}小时前`;
-
-    return `
-    <div class="msg-item">
-      <div class="msg-type-icon ${typeClass}">${typeIcon}</div>
-      <span class="msg-from">${fromName}</span>
-      <span class="msg-arrow">→</span>
-      <span class="msg-to">${toName}</span>
-      <span class="msg-subject">${m.subject}</span>
-      <span class="msg-age">${ageText}</span>
-    </div>`;
-  }).join('');
+function renderActivityFeed(){
+  document.getElementById('activityFeed').innerHTML=ACTIVITIES.map(a=>`
+    <div class="act-item">
+      <div class="act-dot ${a.type}"></div>
+      <div class="act-content">${a.text}</div>
+      <span class="act-time">${a.time}</span>
+    </div>`).join('');
 }
 
-// ========== 训练进度 ==========
-function renderTraining(data) {
-  const container = document.getElementById('trainingContainer');
-  const training = data.training_overview || {};
-  const entries = Object.entries(training);
-
-  if (entries.length === 0) {
-    container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;">暂无训练数据</div>';
-    return;
-  }
-
-  container.innerHTML = entries.map(([nid, t]) => {
-    const skills = t.skill_scores || {};
-    const skillBars = Object.entries(skills).map(([name, val]) => {
-      const pct = (val / 10) * 100;
-      const color = val >= 7 ? 'var(--accent-green)' : (val >= 5 ? 'var(--accent-yellow)' : 'var(--accent-red)');
-      return `
-      <div class="skill-bar">
-        <span class="skill-name">${name}</span>
-        <div class="skill-track"><div class="skill-fill" style="width:${pct}%;background:${color}"></div></div>
-        <span class="skill-val">${val.toFixed(1)}</span>
-      </div>`;
-    }).join('');
-
-    const winRate = t.win_rate ? (t.win_rate * 100).toFixed(0) + '%' : '';
-    const totalProblems = t.total_problems || '';
-
-    return `
-    <div class="training-card">
-      <div class="training-header">
-        <span class="training-name">${t.name}</span>
-        <span class="training-level">${t.level || ''} ${winRate ? '| ' + winRate : ''}</span>
-      </div>
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">
-        ${t.style || ''} ${totalProblems ? '| ' + totalProblems + '题' : ''}
-      </div>
-      ${skillBars || '<div style="font-size:11px;color:var(--text-muted);">无技能评分</div>'}
-      ${t.strengths && t.strengths.length ? `<div style="font-size:10px;color:var(--accent-green);margin-top:8px;">✓ ${t.strengths[0]}</div>` : ''}
-    </div>`;
-  }).join('');
+function renderScoreTable(){
+  const ths=PAPER_RADAR_LABELS.map(l=>`<th>${l.substring(0,2)}</th>`).join('');
+  document.getElementById('scoreTable').innerHTML=`
+    <thead><tr><th>姓名</th>${ths}<th>总分</th></tr></thead>
+    <tbody>${SCORE_BOARD.map(s=>`
+      <tr><td class="name-cell">${s.name}</td>${Object.values(s.dims).map(v=>`<td>${v}</td>`).join('')}<td class="total" style="color:${s.total>=70?'var(--green)':s.total>=50?'var(--accent)':'var(--red)'}">${s.total}</td></tr>
+    `).join('')}</tbody>`;
 }
 
-// ========== 模块健康 ==========
-function renderModules(data) {
-  const grid = document.getElementById('modulesGrid');
-  const modules = data.modules || {};
-  const names = {
-    harness: 'Harness工程',
-    security: '安全模块',
-    network: '网络通信',
-    vector_memory: '向量记忆',
-    federated_learning: '联邦学习',
-    agent_economy: '智能体经济',
-    mcp_server: 'MCP服务',
-    a2a_protocol: 'A2A协议',
-  };
+// ============================================================
+// AUTO-REFRESH & INIT
+// ============================================================
+function startAutoRefresh(){setInterval(()=>{msgIndex=(msgIndex+3)%MSG_POOL.length;activeMsgCount+=Math.floor(Math.random()*3)+1;activeGameCount=Math.random()>0.7?3:2;renderNetworkTab()},3000)}
 
-  grid.innerHTML = Object.entries(modules).map(([key, status]) => {
-    const displayName = names[key] || key;
-    const statusClass = status === 'installed' ? 'module-installed' : 'module-missing';
-    return `
-    <div class="module-item">
-      <span class="module-status ${statusClass}"></span>
-      <span>${displayName}</span>
-    </div>`;
-  }).join('');
-}
-
-// ========== Git 历史 ==========
-function renderGit(data) {
-  const list = document.getElementById('gitList');
-  const commits = data.git_info?.recent_commits || [];
-
-  if (commits.length === 0) {
-    list.innerHTML = '<div style="color:var(--text-muted);">无Git信息</div>';
-    return;
-  }
-
-  list.innerHTML = commits.map(line => {
-    const parts = line.split(' ', 1);
-    const hash = parts[0];
-    const msg = line.substring(hash.length + 1);
-    return `
-    <div class="git-commit">
-      <span class="git-hash">${hash}</span>
-      <span class="git-msg">${msg}</span>
-    </div>`;
-  }).join('');
-}
-
-// ========== 启动 ==========
-fetchData();
-setInterval(fetchData, REFRESH_INTERVAL);
+// Init
+renderHeader(null);
+renderNetworkTab();
+startAutoRefresh();
 </script>
-
 </body>
 </html>
