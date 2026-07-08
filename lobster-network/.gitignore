@@ -19,6 +19,12 @@ __pycache__/
 *.swp
 *.bak
 
+# 课题申报书（敏感文档，不推送到GitHub）
+proposal/*申报书*.docx
+proposal/*申报书*.md
+proposal/*proposal*.docx
+proposal/*proposal*.md
+
 # 本地配置
 .local/
 config.local.yaml
