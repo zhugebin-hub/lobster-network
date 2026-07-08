@@ -1,14 +1,14 @@
-<<<<<<< HEAD
 # Node modules
 node_modules/
 ppt-opening/node_modules/
+package-lock.json
 
 # Reports
 reports/
 
 # Research data
 research/simulation/results/
-research/simulation/__pycache__/
+research/simulation/__pycache__
 research/data_collection/*.db
 
 # Generated PDFs and zips
@@ -17,15 +17,6 @@ research/data_collection/*.db
 *.pptx
 
 # Python cache
-__pycache__/
-*.pyc
-
-# Temp files
-*.tmp
-/tmp/
-=======
-node_modules/
-package-lock.json
 __pycache__/
 *.pyc
 .pytest_cache/
@@ -40,4 +31,9 @@ poller_*.log
 
 # 临时结果
 results/*/match_*.json
->>>>>>> a552ed0
+
+# ===== 申报书相关文件（不推送到GitHub） =====
+docs/新药创制*.docx
+docs/申报书*.docx
+docs/*申报指南*
+# ==========================================
