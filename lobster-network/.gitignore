@@ -1,6 +1,9 @@
 # 忽略上级目录
 ../
 
+# Node.js
+node_modules/
+
 # 日志文件
 *.log
 logs/
