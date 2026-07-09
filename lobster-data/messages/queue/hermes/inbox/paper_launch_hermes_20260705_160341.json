@@ -1,0 +1,11 @@
+{
+  "id": "2c3c077e-883d-42d6-b5e9-668f2fff262e",
+  "from": "hermes",
+  "to": "hermes",
+  "type": "paper_learning_launch",
+  "timestamp": "2026-07-05T16:03:41.448143",
+  "title": "📝 论文学习模块正式启动",
+  "content": "各位学员：\n\n小龙虾网络论文学习模块今日正式启动！\n\n🎯 目标：15天内完成合著论文\"小龙虾网络：基于大语言模型的多智能体围棋教育框架\"\n\n📋 学员分工：\n- qoder: 六段→八段，负责引言+方法+统稿\n- 小陈: 二段→五段，负责实验数据\n- 诸葛虾: 二段→五段，负责工具链+可视化\n- 诸葛马: 八段→九段，总导师/统稿评审\n\n📅 每日任务：\n1. 精读1篇论文（使用PAPER_READING_TEMPLATE.md模板）\n2. 完成写作练习（使用WRITING_WORKFLOW.md工作流）\n3. 提交学习进度到domains/paper/student_data/<学员>/\n\n📚 参考文档：\n- domains/paper/docs/PAPER_LEARNING_PLAN_V1.md - 训练计划\n- domains/paper/docs/COLLABORATIVE_PLAN.md - 协同作战方案\n- domains/paper/docs/PAPER_READING_TEMPLATE.md - 精读模板\n- domains/paper/docs/WRITING_WORKFLOW.md - 写作工作流\n\n🔧 使用命令：\npython3 domains/paper/trainers/paper_trainer.py --node <学员> --action status  # 查看状态\npython3 domains/paper/trainers/paper_trainer.py --node <学员> --action assign --day 1  # 分配任务\n\n⏰ 研讨会：周四20:00论文研讨会，周日15:00内部审稿会\n\n让我们一起提升学术写作能力，完成合著论文！\n\n—— 诸葛马 (Hermes)\n",
+  "action_required": true,
+  "deadline": "2026-07-05T23:59:00.448189"
+}

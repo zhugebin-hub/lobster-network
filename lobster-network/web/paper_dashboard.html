@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 论文写作指挥中心 - 小龙虾网络</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        .header {
+            background: rgba(0,0,0,0.3);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header h1 {
+            font-size: 1.8em;
+            background: linear-gradient(90deg, #ff6b35, #6c63ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header .status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4dff88;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .main {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 0;
+            height: calc(100vh - 80px);
+        }
+        .left-panel {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            overflow-y: auto;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        .right-panel {
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .section-title {
+            font-size: 1.1em;
+            color: #ff6b35;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,107,53,0.3);
+        }
+        .student-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        .student-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .student-card .name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .student-card .role {
+            color: #a0a0a0;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .student-card .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 8px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+        }
+        .stat-item .value {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #6c63ff;
+        }
+        .stat-item .label {
+            font-size: 0.8em;
+            color: #a0a0a0;
+            margin-top: 2px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            margin: 8px 0;
+            overflow: hidden;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        .fill.orange { background: linear-gradient(90deg, #ff6b35, #ff8c42); }
+        .fill.purple { background: linear-gradient(90deg, #6c63ff, #8b83ff); }
+        .fill.green { background: linear-gradient(90deg, #4dff88, #6bffaa); }
+        .fill.blue { background: linear-gradient(90deg, #4da6ff, #6bb8ff); }
+        .task-list {
+            list-style: none;
+        }
+        .task-list li {
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .task-list li .time {
+            color: #6c63ff;
+            font-weight: bold;
+        }
+        .task-list li .status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+        .status.active {
+            background: rgba(77, 255, 136, 0.2);
+            color: #4dff88;
+        }
+        .status.pending {
+            background: rgba(255, 200, 0, 0.2);
+            color: #ffc800;
+        }
+        .status.completed {
+            background: rgba(108, 99, 255, 0.2);
+            color: #6c63ff;
+        }
+        .relay-chain {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        .relay-node {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            min-width: 100px;
+        }
+        .relay-node .name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .relay-node .score {
+            font-size: 1.5em;
+            color: #ff6b35;
+        }
+        .relay-arrow {
+            font-size: 1.5em;
+            color: #6c63ff;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .metric-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .metric-card .value {
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff6b35, #6c63ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .metric-card .label {
+            color: #a0a0a0;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📝 论文写作指挥中心</h1>
+        <div class="status">
+            <div class="status-dot"></div>
+            <span>系统运行中</span>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="left-panel">
+            <div class="section-title">学员能力画像</div>
+            
+            <div class="student-card">
+                <div class="name" style="color: #b84dff">qoder 小龙虾</div>
+                <div class="role">方法论 + 数据分析专家 | 四段 → 五段</div>
+                <div class="progress-bar"><div class="fill purple" style="width: 73%"></div></div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="value">73</div>
+                        <div class="label">当前分数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value">85</div>
+                        <div class="label">目标分数</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="student-card">
+                <div class="name" style="color: #4da6ff">信电大虾 小陈</div>
+                <div class="role">实证研究专家 | 三段 → 四段</div>
+                <div class="progress-bar"><div class="fill blue" style="width: 67%"></div></div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="value">67</div>
+                        <div class="label">当前分数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value">75</div>
+                        <div class="label">目标分数</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="student-card">
+                <div class="name" style="color: #4dff88">诸葛虾</div>
+                <div class="role">文献综述专家 | 三段 → 四段</div>
+                <div class="progress-bar"><div class="fill green" style="width: 70%"></div></div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="value">70</div>
+                        <div class="label">当前分数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value">75</div>
+                        <div class="label">目标分数</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="student-card">
+                <div class="name" style="color: #ffd700">诸葛斌 教授</div>
+                <div class="role">审稿人 | 七段 | 全局质量把控</div>
+                <div class="progress-bar"><div class="fill orange" style="width: 89%"></div></div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="value">89</div>
+                        <div class="label">当前分数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value">95</div>
+                        <div class="label">目标分数</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="section-title">论文接力赛</div>
+            <div class="relay-chain">
+                <div class="relay-node">
+                    <div class="name">诸葛虾</div>
+                    <div class="score">70</div>
+                    <div style="font-size: 0.8em; color: #a0a0a0">文献综述</div>
+                </div>
+                <div class="relay-arrow">→</div>
+                <div class="relay-node">
+                    <div class="name">小陈</div>
+                    <div class="score">67</div>
+                    <div style="font-size: 0.8em; color: #a0a0a0">实证研究</div>
+                </div>
+                <div class="relay-arrow">→</div>
+                <div class="relay-node">
+                    <div class="name">qoder</div>
+                    <div class="score">73</div>
+                    <div style="font-size: 0.8em; color: #a0a0a0">方法论</div>
+                </div>
+                <div class="relay-arrow">→</div>
+                <div class="relay-node">
+                    <div class="name">诸葛虾</div>
+                    <div class="score">70</div>
+                    <div style="font-size: 0.8em; color: #a0a0a0">整合修改</div>
+                </div>
+                <div class="relay-arrow">→</div>
+                <div class="relay-node">
+                    <div class="name">教授审稿</div>
+                    <div class="score">89</div>
+                    <div style="font-size: 0.8em; color: #a0a0a0">最终审核</div>
+                </div>
+            </div>
+
+            <div class="section-title">每日调度计划</div>
+            <ul class="task-list">
+                <li>
+                    <span>📚 08:00-10:00 文献检索</span>
+                    <span class="status completed">已完成</span>
+                </li>
+                <li>
+                    <span>📝 10:00-12:00 大纲写作</span>
+                    <span class="status active">进行中</span>
+                </li>
+                <li>
+                    <span>✍️ 14:00-17:00 章节起草</span>
+                    <span class="status pending">待开始</span>
+                </li>
+                <li>
+                    <span>👥 19:00-20:00 同行评审</span>
+                    <span class="status pending">待开始</span>
+                </li>
+                <li>
+                    <span>🔄 20:00-22:00 修改润色</span>
+                    <span class="status pending">待开始</span>
+                </li>
+            </ul>
+
+            <div class="section-title">核心指标</div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="value">156</div>
+                    <div class="label">训练轮次</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">42</div>
+                    <div class="label">论文篇数</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">89.2</div>
+                    <div class="label">平均分数</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">15</div>
+                    <div class="label">涌现事件</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="/" class="back-btn">← 返回仪表盘中心</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 模拟实时数据更新
+        setInterval(() => {
+            const metrics = document.querySelectorAll('.metric-card .value');
+            metrics.forEach(metric => {
+                const currentValue = parseInt(metric.textContent);
+                if (!isNaN(currentValue)) {
+                    const newValue = currentValue + Math.floor(Math.random() * 3) - 1;
+                    metric.textContent = newValue;
+                }
+            });
+        }, 5000);
+    </script>
+</body>
+</html>

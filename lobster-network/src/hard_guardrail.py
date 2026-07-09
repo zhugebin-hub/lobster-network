@@ -331,6 +331,3 @@ if __name__ == "__main__":
     print("\n=== 测试 4: 冒犯内容 ===")
     result = guardrail.validate_and_execute("send_message", "你真笨，这都不会")
     print(f"结果: {json.dumps(result, ensure_ascii=False, indent=2)}")
-EOF
-
-echo "硬护栏系统已创建"

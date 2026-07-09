@@ -13,6 +13,8 @@ from flask import Flask, jsonify, send_from_directory
 # 添加路径
 sys.path.insert(0, str(Path(__file__).parent))
 from core.dashboard_collector import LobsterDataCollector
+from core.paper_dashboard_collector import PaperDataCollector
+from core.enhanced_dashboard_collector import EnhancedDataCollector
 
 app = Flask(__name__, static_folder='docs', static_url_path='/docs')
 
@@ -25,6 +27,8 @@ _cache = {
 CACHE_TTL = 25  # 缓存25秒，API轮询30秒
 
 collector = LobsterDataCollector()
+paper_collector = PaperDataCollector()
+enhanced_collector = EnhancedDataCollector()
 
 def get_cached_data():
     """获取缓存数据，超时则重新采集"""
@@ -37,7 +41,12 @@ def get_cached_data():
 
 @app.route('/')
 def index():
-    """重定向到监控仪表盘"""
+    """重定向到增强版综合仪表盘 V2"""
+    return send_from_directory('docs', 'dashboard_enhanced_v2.html')
+
+@app.route('/v1')
+def index_v1():
+    """重定向到原版监控仪表盘"""
     return send_from_directory('docs', 'dashboard_monitoring.html')
 
 @app.route('/api/status')
@@ -106,12 +115,151 @@ def api_health():
         "has_cache": _cache["data"] is not None
     })
 
+# ============================================================
+# 增强版综合仪表盘 V2 API
+# ============================================================
+
+@app.route('/api/enhanced/status')
+def api_enhanced_status():
+    """API: 增强版综合状态数据"""
+    data = enhanced_collector.collect_all()
+    return jsonify(data)
+
+@app.route('/api/enhanced/nodes')
+def api_enhanced_nodes():
+    """API: 增强版节点数据"""
+    data = enhanced_collector.collect_all()
+    return jsonify({"nodes": data["nodes"], "timestamp": data["timestamp"]})
+
+@app.route('/api/enhanced/go-training')
+def api_enhanced_go_training():
+    """API: 增强版围棋训练数据"""
+    data = enhanced_collector.collect_all()
+    return jsonify({"go_training": data["go_training"], "timestamp": data["timestamp"]})
+
+@app.route('/api/enhanced/paper-learning')
+def api_enhanced_paper_learning():
+    """API: 增强版论文学习数据"""
+    data = enhanced_collector.collect_all()
+    return jsonify({"paper_learning": data["paper_learning"], "timestamp": data["timestamp"]})
+
+@app.route('/api/enhanced/rewards')
+def api_enhanced_rewards():
+    """API: 增强版奖励数据"""
+    data = enhanced_collector.collect_all()
+    return jsonify({"rewards": data["rewards"], "timestamp": data["timestamp"]})
+
+@app.route('/api/enhanced/health')
+def api_enhanced_health():
+    """API: 增强版健康评分"""
+    data = enhanced_collector.collect_all()
+    return jsonify({"health_score": data["health_score"], "timestamp": data["timestamp"]})
+
+@app.route('/api/enhanced/git')
+def api_enhanced_git():
+    """API: 增强版Git状态"""
+    data = enhanced_collector.collect_all()
+    return jsonify({"git_status": data["git_status"], "timestamp": data["timestamp"]})
+
+@app.route('/api/enhanced/summary')
+def api_enhanced_summary():
+    """API: 增强版汇总数据"""
+    data = enhanced_collector.collect_all()
+    return jsonify({"summary": data["summary"], "timestamp": data["timestamp"]})
+
+# ============================================================
+# 论文写作指挥中心 API
+# ============================================================
+
+@app.route('/paper')
+def paper_dashboard():
+    """重定向到论文写作指挥中心"""
+    return send_from_directory('docs', 'paper_dashboard.html')
+
+@app.route('/api/paper/status')
+def api_paper_status():
+    """API: 论文写作全部数据"""
+    data = paper_collector.collect_all()
+    return jsonify(data)
+
+@app.route('/api/paper/students')
+def api_paper_students():
+    """API: 学员数据"""
+    data = paper_collector.collect_all()
+    return jsonify(data["students"])
+
+@app.route('/api/paper/student/<student_id>')
+def api_paper_student_detail(student_id):
+    """API: 单个学员详情"""
+    data = paper_collector.collect_all()
+    students = data["students"]
+    if student_id in students:
+        return jsonify(students[student_id])
+    return jsonify({"error": "学员不存在"}), 404
+
+@app.route('/api/paper/paper')
+def api_paper_paper():
+    """API: 合著论文进度"""
+    data = paper_collector.collect_all()
+    return jsonify(data["paper"])
+
+@app.route('/api/paper/tasks')
+def api_paper_tasks():
+    """API: 训练任务"""
+    data = paper_collector.collect_all()
+    return jsonify(data["tasks"])
+
+@app.route('/api/paper/tasks/<student_id>')
+def api_paper_student_tasks(student_id):
+    """API: 学员训练任务"""
+    data = paper_collector.collect_all()
+    tasks = data["tasks"]
+    if student_id in tasks:
+        return jsonify(tasks[student_id])
+    return jsonify({"error": "学员不存在"}), 404
+
+@app.route('/api/paper/documents')
+def api_paper_documents():
+    """API: 文档状态"""
+    data = paper_collector.collect_all()
+    return jsonify(data["documents"])
+
+@app.route('/api/paper/schedule')
+def api_paper_schedule():
+    """API: 日程安排"""
+    data = paper_collector.collect_all()
+    return jsonify(data["schedule"])
+
+@app.route('/api/paper/problem-bank')
+def api_paper_problem_bank():
+    """API: 练习题库"""
+    data = paper_collector.collect_all()
+    return jsonify(data["problem_bank"])
+
+@app.route('/api/paper/force-refresh')
+def api_paper_force_refresh():
+    """API: 强制刷新论文数据"""
+    data = paper_collector.collect_all()
+    return jsonify({"status": "refreshed", "timestamp": data["timestamp"]})
+
+@app.route('/api/paper/health')
+def api_paper_health():
+    """API: 论文服务健康检查"""
+    return jsonify({
+        "status": "ok",
+        "service": "paper_dashboard",
+        "timestamp": datetime.now().isoformat()
+    })
+
+from datetime import datetime
+
 if __name__ == '__main__':
     print("=" * 50)
     print("🦞 小龙虾网络仪表盘 API 服务")
     print("=" * 50)
     print(f"监听: 0.0.0.0:5000")
     print(f"监控仪表盘: http://<IP>:5000/")
+    print(f"论文指挥中心: http://<IP>:5000/paper")
     print(f"API端点: http://<IP>:5000/api/status")
     print("=" * 50)
     

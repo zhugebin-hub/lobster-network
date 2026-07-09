@@ -1,0 +1,115 @@
+{
+  "xiaochen": {
+    "student_id": "xiaochen",
+    "name": "小陈",
+    "role": "稳健型学员",
+    "skills": {
+      "title_writing": 0.6,
+      "abstract_writing": 0.5,
+      "literature_review": 0.7,
+      "methodology": 0.4,
+      "experiment_design": 0.5,
+      "data_analysis": 0.6,
+      "argumentation": 0.7,
+      "language_expression": 0.8,
+      "critical_thinking": 0.5,
+      "citation_management": 0.6
+    },
+    "papers_written": 0,
+    "papers_reviewed": 1,
+    "average_score": 0.0,
+    "improvement_rate": 0.0,
+    "weaknesses": [],
+    "strengths": [
+      "language_expression"
+    ]
+  },
+  "zhuguxia": {
+    "student_id": "zhuguxia",
+    "name": "诸葛虾",
+    "role": "加速型学员",
+    "skills": {
+      "title_writing": 0.7,
+      "abstract_writing": 0.8,
+      "literature_review": 0.5,
+      "methodology": 0.6,
+      "experiment_design": 0.7,
+      "data_analysis": 0.8,
+      "argumentation": 0.6,
+      "language_expression": 0.5,
+      "critical_thinking": 0.7,
+      "citation_management": 0.5
+    },
+    "papers_written": 0,
+    "papers_reviewed": 1,
+    "average_score": 0.0,
+    "improvement_rate": 0.0,
+    "weaknesses": [],
+    "strengths": [
+      "abstract_writing",
+      "data_analysis"
+    ]
+  },
+  "qoder": {
+    "student_id": "qoder",
+    "name": "qoder",
+    "role": "实战工程师",
+    "skills": {
+      "title_writing": 0.5,
+      "abstract_writing": 0.6,
+      "literature_review": 0.4,
+      "methodology": 0.8,
+      "experiment_design": 0.9,
+      "data_analysis": 0.7,
+      "argumentation": 0.5,
+      "language_expression": 0.4,
+      "critical_thinking": 0.6,
+      "citation_management": 0.3
+    },
+    "papers_written": 0,
+    "papers_reviewed": 0,
+    "average_score": 0.0,
+    "improvement_rate": 0.0,
+    "weaknesses": [
+      "citation_management"
+    ],
+    "strengths": [
+      "methodology",
+      "experiment_design"
+    ]
+  },
+  "hermes": {
+    "student_id": "hermes",
+    "name": "诸葛马",
+    "role": "教练",
+    "skills": {
+      "title_writing": 0.9,
+      "abstract_writing": 0.9,
+      "literature_review": 0.9,
+      "methodology": 0.9,
+      "experiment_design": 0.8,
+      "data_analysis": 0.8,
+      "argumentation": 0.9,
+      "language_expression": 0.9,
+      "critical_thinking": 0.9,
+      "citation_management": 0.9
+    },
+    "papers_written": 0,
+    "papers_reviewed": 1,
+    "average_score": 0.0,
+    "improvement_rate": 0.0,
+    "weaknesses": [],
+    "strengths": [
+      "title_writing",
+      "abstract_writing",
+      "literature_review",
+      "methodology",
+      "experiment_design",
+      "data_analysis",
+      "argumentation",
+      "language_expression",
+      "critical_thinking",
+      "citation_management"
+    ]
+  }
+}

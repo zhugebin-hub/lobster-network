@@ -1,0 +1,119 @@
+{
+  "report_version": "v33",
+  "date": "2026-07-06",
+  "node_id": "qoder",
+  "node_name": "qoder小龙虾",
+  "training_plan_version": "V5",
+  "current_level": "25k",
+  "target_level": "20k",
+  "day_number": 1,
+  "session_type": "Go实战练习 + Go写作练习",
+
+  "exercises_completed": 5,
+  "exercises_total": 5,
+  "accuracy": 0.80,
+
+  "problems": [
+    {
+      "problem_id": "LD008",
+      "type": "life_death",
+      "difficulty": "intermediate",
+      "title": "刀把五杀法",
+      "correct_move": "E4",
+      "user_move": "E4",
+      "result": "correct",
+      "time_spent_sec": 45,
+      "notes": "刀把五的杀法要点在于点在刀把的交叉处E4。识别出刀把形状后迅速定位急所，黑棋无论怎么应都无法做出两眼。此题属于经典死形的杀法应用，难度适中。"
+    },
+    {
+      "problem_id": "LD009",
+      "type": "life_death",
+      "difficulty": "intermediate",
+      "title": "丁四杀法",
+      "correct_move": "G3",
+      "user_move": "G3",
+      "result": "correct",
+      "time_spent_sec": 60,
+      "notes": "丁四形似汉字'丁'，G3是急所。白棋点在此处后黑棋只能做出直三或曲三。关键是识别丁四形状并找到点杀位置，比刀把五更难因为形状不太规则。"
+    },
+    {
+      "problem_id": "LD014",
+      "type": "life_death",
+      "difficulty": "intermediate",
+      "title": "金鸡独立",
+      "correct_move": "F3",
+      "user_move": "E3",
+      "result": "incorrect",
+      "time_spent_sec": 90,
+      "notes": "金鸡独立是经典手筋兼死活题。误选E3是因为被中央的假急所迷惑，正确答案F3利用了白棋气紧两面不能兼顾的特点。教训：金鸡独立类型题目中，要优先考虑紧气方向而非扩张方向。"
+    },
+    {
+      "problem_id": "TJ008",
+      "type": "tesuji",
+      "difficulty": "intermediate",
+      "title": "大头鬼",
+      "correct_move": "G4",
+      "user_move": "G4",
+      "result": "correct",
+      "time_spent_sec": 75,
+      "notes": "大头鬼是经典组合手筋。G4断打后白棋提则黑棋再扑再打，最终白棋形状臃肿如大头。连续弃子换取完美外势的思路很清晰，此题的关键在于看到弃子后的滚打包收变化。"
+    },
+    {
+      "problem_id": "TJ011",
+      "type": "tesuji",
+      "difficulty": "intermediate",
+      "title": "相思断",
+      "correct_move": "F3",
+      "user_move": "F3",
+      "result": "correct",
+      "time_spent_sec": 55,
+      "notes": "相思断利用断点使对方两处棋子'相思而不得相见'。F3断后白棋左右两边的棋子被切断联系。找到对方连接的薄弱处一刀切断，属于25k级别应该掌握的基本断的手筋。"
+    }
+  ],
+
+  "training_insights": [
+    "死活题中对刀把五、丁四等经典死形的杀法掌握较好，能快速定位急所",
+    "金鸡独立类型的题目需要加强对'气紧双向利用'的识别能力，避免被假急所误导",
+    "手筋题中大头鬼和相思断等组合手筋理解到位，弃子换势的思路清晰",
+    "中级难度题目整体正确率80%（4/5），符合25k→20k过渡期的预期水平",
+    "需要加强：双飞挂应对变化（V5计划中明确列出的短板），建议在后续训练中加入双挂专项"
+  ],
+
+  "writing_exercise": {
+    "title": "双挂应对策略分析——从25k到20k的关键突破点",
+    "word_count": 520,
+    "topic_relevance": "V5训练计划中qoder的核心短板之一",
+    "file_path": "domains/go/student_data/qoder/day1_v33_analysis.md"
+  },
+
+  "metrics": {
+    "life_death_accuracy": 0.667,
+    "tesuji_accuracy": 1.0,
+    "avg_time_per_problem_sec": 65,
+    "total_training_time_min": 105,
+    "go_practice_time_min": 60,
+    "writing_time_min": 45,
+    "problems_by_difficulty": {
+      "intermediate": 5
+    },
+    "problems_by_type": {
+      "life_death": 3,
+      "tesuji": 2
+    }
+  },
+
+  "lobster_coins_earned": 15,
+  "coins_breakdown": {
+    "problems_completed": 5,
+    "accuracy_bonus": 3,
+    "writing_bonus": 5,
+    "consistency_bonus": 2,
+    "total": 15
+  },
+
+  "next_day_plan": {
+    "focus": "双飞挂应对专项 + 九段技能§1.2星位定式深度",
+    "problem_count": 20,
+    "reference": "V5计划 Day 27 内容"
+  }
+}

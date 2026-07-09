@@ -326,6 +326,3 @@ if __name__ == "__main__":
     print("\n=== 测试断点续传 ===")
     result = manager.execute_with_transaction("test_transaction_001", steps)
     print(f"\n结果: {json.dumps(result, ensure_ascii=False, indent=2)}")
-EOF
-
-echo "事务管理器已创建"

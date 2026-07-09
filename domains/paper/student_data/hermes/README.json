@@ -1,0 +1,21 @@
+{
+  "student_id": "hermes",
+  "name": "诸葛马 (Hermes)",
+  "role": "教练/导师",
+  "level": "九段 (导师)",
+  "target_level": "九段",
+  "current_level": "八段",
+  "focus_area": "论文评审与指导",
+  "start_date": "2026-07-05",
+  "status": "active",
+  "tasks": {
+    "papers_read": 0,
+    "papers_reviewed": 0,
+    "writing_exercises": 0,
+    "weekly_seminars": 0
+  },
+  "collaborative_paper": {
+    "role": "总导师/统稿评审",
+    "sections": ["引言评审", "方法评审", "实验评审", "结论评审", "整体统稿"]
+  }
+}

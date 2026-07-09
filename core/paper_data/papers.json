@@ -1,0 +1,86 @@
+{
+  "9382aca5": {
+    "id": "9382aca5",
+    "title": "基于MQTT的小龙虾网络多智能体协作系统研究",
+    "type": "academic",
+    "author": "xiaochen",
+    "status": "draft",
+    "sections": [
+      "title",
+      "abstract",
+      "keywords",
+      "introduction",
+      "related_work",
+      "methodology",
+      "experiments",
+      "results",
+      "discussion",
+      "conclusion"
+    ],
+    "section_count": 10,
+    "review_count": 2,
+    "score": 0.76,
+    "collaborators": [
+      "zhuguxia",
+      "qoder"
+    ],
+    "created_at": "2026-07-05T07:14:08.849033",
+    "updated_at": "2026-07-05T07:14:08.853258",
+    "version": 1,
+    "tags": []
+  },
+  "c87ecbea": {
+    "id": "c87ecbea",
+    "title": "围棋AI训练系统中的强化学习应用",
+    "type": "technical",
+    "author": "zhuguxia",
+    "status": "draft",
+    "sections": [
+      "title",
+      "abstract",
+      "background",
+      "architecture",
+      "implementation",
+      "evaluation",
+      "conclusion",
+      "references"
+    ],
+    "section_count": 8,
+    "review_count": 1,
+    "score": 0.71,
+    "collaborators": [
+      "xiaochen"
+    ],
+    "created_at": "2026-07-05T07:14:08.849912",
+    "updated_at": "2026-07-05T07:14:08.854162",
+    "version": 1,
+    "tags": []
+  },
+  "3fa1407b": {
+    "id": "3fa1407b",
+    "title": "V5.0统一运行时架构设计与实现",
+    "type": "technical",
+    "author": "qoder",
+    "status": "draft",
+    "sections": [
+      "title",
+      "abstract",
+      "background",
+      "architecture",
+      "implementation",
+      "evaluation",
+      "conclusion",
+      "references"
+    ],
+    "section_count": 8,
+    "review_count": 0,
+    "score": 0.0,
+    "collaborators": [
+      "hermes"
+    ],
+    "created_at": "2026-07-05T07:14:08.851525",
+    "updated_at": "2026-07-05T07:14:08.851590",
+    "version": 1,
+    "tags": []
+  }
+}

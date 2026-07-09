@@ -1,0 +1,10 @@
+{
+  "id": "a225bb74-12cb-444a-8c7b-52d0fa5d2129",
+  "from": "hermes",
+  "to": "zhuguxia",
+  "type": "daily_standup_reminder",
+  "timestamp": "2026-07-06T21:07:23.839183",
+  "title": "📅 每日站会提醒",
+  "content": "诸葛虾，昨日无提交记录。请完成今日任务并提交到 domains/paper/student_data/zhuguxia/",
+  "action_required": true
+}

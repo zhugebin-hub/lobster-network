@@ -1,0 +1,32 @@
+[
+  {
+    "id": "MCP-A2A-Survey-2026",
+    "paper_title": "MCP-A2A-Survey-2026",
+    "submitted_at": "2026-07-06T21:12:37.796498",
+    "submitted_by": "qoder",
+    "score": null,
+    "status": "in_progress",
+    "reviews": {
+      "R1": {
+        "planned_date": "2026-07-07",
+        "completed": false,
+        "remembered": null
+      },
+      "R2": {
+        "planned_date": "2026-07-09",
+        "completed": false,
+        "remembered": null
+      },
+      "R3": {
+        "planned_date": "2026-07-13",
+        "completed": false,
+        "remembered": null
+      },
+      "R4": {
+        "planned_date": "2026-07-20",
+        "completed": false,
+        "remembered": null
+      }
+    }
+  }
+]

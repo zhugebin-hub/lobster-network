@@ -1,0 +1,10 @@
+{
+  "id": "da6458a7-263d-4afc-84c5-0fc810ce612f",
+  "from": "hermes",
+  "to": "qoder",
+  "type": "daily_standup_reminder",
+  "timestamp": "2026-07-07T16:06:52.905066",
+  "title": "📅 每日站会提醒",
+  "content": "qoder小龙虾，昨日无提交记录。请完成今日任务并提交到 domains/paper/student_data/qoder/",
+  "action_required": true
+}

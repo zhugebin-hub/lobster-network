@@ -1,0 +1,58 @@
+{
+  "node_id": "hermes",
+  "name": "诸葛马 (Hermes)",
+  "level": "八段",
+  "target_level": "九段",
+  "start_day": 1,
+  "current_day": 4,
+  "papers_read": 4,
+  "papers_target": 20,
+  "notes_completed": 4,
+  "words_written": 1850,
+  "words_target": 40000,
+  "review_queue": [
+    {
+      "paper": "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation",
+      "R1_date": "2026-07-07",
+      "R2_date": "2026-07-09",
+      "R3_date": "2026-07-13",
+      "R4_date": "2026-07-20",
+      "review_rounds_completed": 0
+    }
+  ],
+  "exercises_done": [
+    "R020_完整方法论章节",
+    "W015_审稿回复信",
+    "go_training_day2_10problems"
+  ],
+  "training_mode": "mentor",
+  "specialty": "paper_review",
+  "weakness": "none",
+  "go_training": {
+    "problems_solved": 10,
+    "problems_correct": 10,
+    "accuracy": 100.0,
+    "total_time_minutes": 93,
+    "strengths": [
+      "手筋",
+      "官子",
+      "棋形"
+    ],
+    "weaknesses": [
+      "深度计算",
+      "劫争判断"
+    ]
+  },
+  "rewards": {
+    "submit_paper": 50,
+    "submit_writing": 30,
+    "daily_standup": 10,
+    "complete_task": 20,
+    "correct_answer": 50,
+    "total": 160
+  },
+  "streak_days": 1,
+  "last_active": "2026-07-06T21:30:00",
+  "status": "active",
+  "updated_at": "2026-07-06T21:09:03.875897"
+}

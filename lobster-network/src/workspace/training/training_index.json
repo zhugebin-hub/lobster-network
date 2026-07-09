@@ -1,0 +1,15 @@
+{
+  "agents": {
+    "test_agent": {
+      "last_update": 1783269123.81757,
+      "total_results": 1,
+      "latest_file": ""
+    },
+    "test_agent_1": {
+      "last_update": 1783269129.1611297,
+      "total_results": 1,
+      "latest_file": ""
+    }
+  },
+  "last_update": null
+}

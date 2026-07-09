@@ -1,0 +1,31 @@
+# 忽略上级目录
+../
+
+# Node.js
+node_modules/
+
+# 日志文件
+*.log
+logs/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 临时文件
+*.tmp
+*.swp
+*.bak
+
+# 本地配置
+.local/
+config.local.yaml
+
+# Node.js
+node_modules/
+
+# 系统文件
+.DS_Store
+Thumbs.db

@@ -221,6 +221,3 @@ if __name__ == "__main__":
     # print("\n=== 实际清理 ===")
     # cleanup_result = gardener.cleanup(dry_run=False)
     # print(f"结果: {json.dumps(cleanup_result, ensure_ascii=False, indent=2)}")
-EOF
-
-echo "文档园丁已创建"

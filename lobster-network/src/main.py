@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-小龙虾网络 V4.1 集成入口
+小龙虾网络V5.1 集成入口
 融合 Agent Harness工程实践 + 多智能体协作框架
 
 核心模块：
@@ -15,6 +15,7 @@ import json
 import os
 import sys
 from pathlib import Path
+from typing import Dict
 
 # 添加 src 目录到路径
 sys.path.insert(0, str(Path(__file__).parent))
@@ -28,7 +29,7 @@ from doc_gardener import DocGardener
 
 class LobsterNetworkV41:
     """
-    小龙虾网络 V4.1
+    小龙虾网络 V5.1
     集成所有优化模块
     """
     
@@ -45,7 +46,7 @@ class LobsterNetworkV41:
         self.guardrail = HardGuardrail(str(self.workspace_dir))
         self.doc_gardener = DocGardener(str(self.workspace_dir))
         
-        print("[LobsterNetwork V4.1] 初始化完成")
+        print("[LobsterNetwork V5.1] 初始化完成")
     
     def schedule_task(self, task: Dict) -> Dict:
         """
@@ -126,7 +127,7 @@ class LobsterNetworkV41:
             Dict: 系统状态
         """
         return {
-            "version": "V4.1",
+            "version": "V5.1",
             "workspace": str(self.workspace_dir),
             "agents": self.agent_manager.list_agents(),
             "doc_status": self.doc_gardener.get_status()
@@ -136,7 +137,7 @@ class LobsterNetworkV41:
 def main():
     """主函数"""
     print("=" * 60)
-    print("🦞 小龙虾网络 V4.1")
+    print("🦞 小龙虾网络 V5.1")
     print("=" * 60)
     
     # 初始化
@@ -180,6 +181,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-EOF
-
-echo "集成入口已创建"

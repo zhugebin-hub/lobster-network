@@ -1,0 +1,49 @@
+{
+  "alerts": [
+    {
+      "agent_id": "test_agent",
+      "type": "training_stagnation",
+      "elapsed_hours": 25.000000000860958,
+      "threshold_hours": 24.0,
+      "message": "学员 test_agent 训练停滞 25.0 小时（阈值：24.0 小时）",
+      "timestamp": 1783269123.894249,
+      "datetime": "2026-07-06T00:32:03.894250",
+      "severity": "medium",
+      "id": "alert_1783269123_1"
+    },
+    {
+      "agent_id": "xiaochen",
+      "type": "training_stagnation",
+      "elapsed_hours": 120.00000000450346,
+      "threshold_hours": 24.0,
+      "message": "学员 xiaochen 训练停滞 120.0 小时（阈值：24.0 小时）",
+      "timestamp": 1783269129.1546247,
+      "datetime": "2026-07-06T00:32:09.154627",
+      "severity": "high",
+      "id": "alert_1783269129_2"
+    },
+    {
+      "agent_id": "zhuguxia",
+      "type": "training_stagnation",
+      "elapsed_hours": 168.00000022649766,
+      "threshold_hours": 24.0,
+      "message": "学员 zhuguxia 训练停滞 168.0 小时（阈值：24.0 小时）",
+      "timestamp": 1783269129.1554089,
+      "datetime": "2026-07-06T00:32:09.155444",
+      "severity": "high",
+      "id": "alert_1783269129_3"
+    },
+    {
+      "agent_id": "qoder",
+      "type": "training_stagnation",
+      "elapsed_hours": 72.00000047054556,
+      "threshold_hours": 24.0,
+      "message": "学员 qoder 训练停滞 72.0 小时（阈值：24.0 小时）",
+      "timestamp": 1783269129.1562803,
+      "datetime": "2026-07-06T00:32:09.156282",
+      "severity": "high",
+      "id": "alert_1783269129_4"
+    }
+  ],
+  "last_update": 1783269129.157275
+}

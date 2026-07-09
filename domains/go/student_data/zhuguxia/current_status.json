@@ -1,0 +1,64 @@
+{
+  "student_id": "zhuguxia",
+  "name": "诸葛虾",
+  "role": "工具链与可视化专家",
+  "level": "二段",
+  "target_level": "五段",
+  "status": "active",
+  "last_active": "2026-07-07T20:45:04.039936",
+  "node_health": {
+    "openclaw_gateway": "running",
+    "pid": 4188912,
+    "port": 11676,
+    "disk_usage": "73%",
+    "memory_available": "837MB",
+    "session_active": true
+  },
+  "today_progress": {
+    "go_training": {
+      "day": 2,
+      "problems": 8,
+      "accuracy": 100.0,
+      "file": "go-training/week1-day2.md"
+    },
+    "ecommerce_learning": {
+      "module": 1,
+      "days": [
+        1,
+        2
+      ],
+      "status": "completed",
+      "path": "ecommerce-learning/module1-文案/笔记/"
+    },
+    "tech_work": {
+      "github_commits": 5,
+      "tasks": [
+        "V5.1总结",
+        "版本统一",
+        "GitHub推送"
+      ]
+    }
+  },
+  "learning_style": "加速型",
+  "strengths": [
+    "快速原型",
+    "手筋应用",
+    "中盘战斗"
+  ],
+  "weaknesses": [
+    "布局理论",
+    "官子精度",
+    "深度分析"
+  ],
+  "current_day": 2,
+  "total_days": 15,
+  "papers_read": 0,
+  "notes_completed": 0,
+  "words_written": 0,
+  "exercises_done": 8,
+  "wrong_book": [],
+  "rewards": 0,
+  "streak_days": 1,
+  "github_active": true,
+  "last_github_commit": "2026-07-07T20:45:04.039967"
+}

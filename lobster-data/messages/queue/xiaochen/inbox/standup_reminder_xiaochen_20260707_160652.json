@@ -1,0 +1,10 @@
+{
+  "id": "02372e1e-97dc-432f-8703-d7643b2d4297",
+  "from": "hermes",
+  "to": "xiaochen",
+  "type": "daily_standup_reminder",
+  "timestamp": "2026-07-07T16:06:52.905066",
+  "title": "📅 每日站会提醒",
+  "content": "小陈，昨日无提交记录。请完成今日任务并提交到 domains/paper/student_data/xiaochen/",
+  "action_required": true
+}

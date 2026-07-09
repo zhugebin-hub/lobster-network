@@ -1,0 +1,10 @@
+{
+  "id": "0fbdf6fd-e072-4ee9-8482-6a51b52b9c2f",
+  "from": "hermes",
+  "to": "zhuguxia",
+  "type": "node_offline_reminder",
+  "timestamp": "2026-07-07T16:06:54.070212",
+  "title": "🚨 节点离线提醒",
+  "content": "诸葛虾，您的节点已离线超过72小时。请检查SSH连接并完成今日学习任务。",
+  "action_required": true
+}

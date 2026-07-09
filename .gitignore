@@ -1,5 +1,22 @@
+# Node modules
 node_modules/
+ppt-opening/node_modules/
 package-lock.json
+
+# Reports
+reports/
+
+# Research data
+research/simulation/results/
+research/simulation/__pycache__
+research/data_collection/*.db
+
+# Generated PDFs and zips
+*.pdf
+*.zip
+*.pptx
+
+# Python cache
 __pycache__/
 *.pyc
 .pytest_cache/
@@ -12,24 +29,11 @@ build/
 .poller_state_*.json
 poller_*.log
 
-<<<<<<< HEAD
 # 临时结果
 results/*/match_*.json
-=======
-# Project specific
-config/*.json
-!config/.gitkeep
-shared/
-logs/
 
-# Core module runtime data
-core/harness/logs/
-core/orchestrator/logs/
-core/economy/data/
-core/observability/data/
-
-# Sensitive data
-*.pem
-*.key
-id_rsa*
->>>>>>> fbc3017db51a546a289ef16bd15ae36823f768d7
+# ===== 申报书相关文件（不推送到GitHub） =====
+docs/新药创制*.docx
+docs/申报书*.docx
+docs/*申报指南*
+# ==========================================
