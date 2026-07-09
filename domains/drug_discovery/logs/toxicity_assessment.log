@@ -1,0 +1,30 @@
+2026-07-09 08:48:00,654 | INFO | ToxicityAssessmentAgent 初始化完成 | 脱靶面板: 10 靶点
+2026-07-09 08:48:00,654 | INFO | assess_toxicity: 综合评估 [CPD_TEST_001]
+2026-07-09 08:48:00,655 | INFO | assess_toxicity: [CPD_TEST_001] A (Excellent) (score=0.902)
+2026-07-09 08:48:00,655 | INFO | safety_report: 生成报告 [CPD_TEST_001]
+2026-07-09 08:48:00,655 | INFO | safety_report: [CPD_TEST_001] A (Excellent) | risks=1 recommendations=1
+2026-07-09 08:48:16,595 | INFO | ToxicityAssessmentAgent 初始化完成 | 脱靶面板: 10 靶点
+2026-07-09 08:48:16,596 | INFO | assess_toxicity: 综合评估 [CPD_TEST_001]
+2026-07-09 08:48:16,596 | INFO | assess_toxicity: [CPD_TEST_001] A (Excellent) (score=0.927)
+2026-07-09 08:48:16,596 | INFO | safety_report: 生成报告 [CPD_TEST_001]
+2026-07-09 08:48:16,596 | INFO | safety_report: [CPD_TEST_001] A (Excellent) | risks=1 recommendations=1
+2026-07-09 08:48:16,610 | INFO | ToxicityAssessmentAgent 初始化完成 | 脱靶面板: 10 靶点
+2026-07-09 08:48:16,651 | INFO | assess_toxicity: 综合评估 [CPD_BTK_0001]
+2026-07-09 08:48:16,651 | INFO | assess_toxicity: [CPD_BTK_0001] A (Excellent) (score=0.892)
+2026-07-09 08:48:16,651 | INFO | safety_report: 生成报告 [CPD_BTK_0001]
+2026-07-09 08:48:16,651 | INFO | safety_report: [CPD_BTK_0001] A (Excellent) | risks=1 recommendations=1
+2026-07-09 08:48:43,170 | INFO | ToxicityAssessmentAgent 初始化完成 | 脱靶面板: 10 靶点
+2026-07-09 08:48:43,211 | INFO | assess_toxicity: 综合评估 [CPD_BTK_0001]
+2026-07-09 08:48:43,211 | INFO | assess_toxicity: [CPD_BTK_0001] A (Excellent) (score=0.828)
+2026-07-09 08:48:43,211 | INFO | safety_report: 生成报告 [CPD_BTK_0001]
+2026-07-09 08:48:43,211 | INFO | safety_report: [CPD_BTK_0001] A (Excellent) | risks=1 recommendations=1
+2026-07-09 08:54:49,984 | INFO | ToxicityAssessmentAgent 初始化完成 | 脱靶面板: 10 靶点
+2026-07-09 08:54:49,984 | INFO | assess_toxicity: 综合评估 [CPD_TEST_001]
+2026-07-09 08:54:49,984 | INFO | assess_toxicity: [CPD_TEST_001] A (Excellent) (score=0.941)
+2026-07-09 08:54:49,984 | INFO | safety_report: 生成报告 [CPD_TEST_001]
+2026-07-09 08:54:49,984 | INFO | safety_report: [CPD_TEST_001] A (Excellent) | risks=1 recommendations=1
+2026-07-09 08:54:49,996 | INFO | ToxicityAssessmentAgent 初始化完成 | 脱靶面板: 10 靶点
+2026-07-09 08:54:50,044 | INFO | assess_toxicity: 综合评估 [CPD_BTK_0001]
+2026-07-09 08:54:50,045 | INFO | assess_toxicity: [CPD_BTK_0001] A (Excellent) (score=0.968)
+2026-07-09 08:54:50,045 | INFO | safety_report: 生成报告 [CPD_BTK_0001]
+2026-07-09 08:54:50,045 | INFO | safety_report: [CPD_BTK_0001] A (Excellent) | risks=1 recommendations=1

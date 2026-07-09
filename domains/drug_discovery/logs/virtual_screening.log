@@ -1,0 +1,36 @@
+2026-07-09 08:48:00,650 | INFO | VirtualScreeningAgent 初始化完成
+2026-07-09 08:48:00,650 | INFO | screen_library: 靶点=FCE_RI 库大小=500
+2026-07-09 08:48:00,653 | INFO | screen_library: 完成 | 命中=7 (1.4%) | top score=-9.146
+2026-07-09 08:48:00,653 | INFO | dock: 化合物=CPD_TEST_001 靶点=FCE_RI
+2026-07-09 08:48:00,654 | INFO | dock: [CPD_TEST_001] -> [FCE_RI] score=-7.412 Ki=3651.87 nM
+2026-07-09 08:48:00,654 | INFO | rank_hits: 排序 top 20
+2026-07-09 08:48:00,654 | INFO | rank_hits: 完成 | top score=-9.146 | EF_1%=83.3
+2026-07-09 08:48:16,591 | INFO | VirtualScreeningAgent 初始化完成
+2026-07-09 08:48:16,591 | INFO | screen_library: 靶点=FCE_RI 库大小=500
+2026-07-09 08:48:16,594 | INFO | screen_library: 完成 | 命中=9 (1.8%) | top score=-10.536
+2026-07-09 08:48:16,594 | INFO | dock: 化合物=CPD_TEST_001 靶点=FCE_RI
+2026-07-09 08:48:16,594 | INFO | dock: [CPD_TEST_001] -> [FCE_RI] score=-4.993 Ki=217323.91 nM
+2026-07-09 08:48:16,594 | INFO | rank_hits: 排序 top 20
+2026-07-09 08:48:16,594 | INFO | rank_hits: 完成 | top score=-10.536 | EF_1%=83.3
+2026-07-09 08:48:16,610 | INFO | VirtualScreeningAgent 初始化完成
+2026-07-09 08:48:16,620 | INFO | screen_library: 靶点=BTK 库大小=5000
+2026-07-09 08:48:16,649 | INFO | screen_library: 完成 | 命中=107 (2.14%) | top score=-10.455
+2026-07-09 08:48:16,649 | INFO | rank_hits: 排序 top 50
+2026-07-09 08:48:16,650 | INFO | rank_hits: 完成 | top score=-10.455 | EF_1%=98.0
+2026-07-09 08:48:43,170 | INFO | VirtualScreeningAgent 初始化完成
+2026-07-09 08:48:43,179 | INFO | screen_library: 靶点=BTK 库大小=5000
+2026-07-09 08:48:43,209 | INFO | screen_library: 完成 | 命中=103 (2.06%) | top score=-10.715
+2026-07-09 08:48:43,209 | INFO | rank_hits: 排序 top 50
+2026-07-09 08:48:43,210 | INFO | rank_hits: 完成 | top score=-10.715 | EF_1%=98.0
+2026-07-09 08:54:49,979 | INFO | VirtualScreeningAgent 初始化完成
+2026-07-09 08:54:49,979 | INFO | screen_library: 靶点=FCE_RI 库大小=500
+2026-07-09 08:54:49,982 | INFO | screen_library: 完成 | 命中=12 (2.4%) | top score=-9.959
+2026-07-09 08:54:49,982 | INFO | dock: 化合物=CPD_TEST_001 靶点=FCE_RI
+2026-07-09 08:54:49,982 | INFO | dock: [CPD_TEST_001] -> [FCE_RI] score=-7.078 Ki=6420.07 nM
+2026-07-09 08:54:49,982 | INFO | rank_hits: 排序 top 20
+2026-07-09 08:54:49,983 | INFO | rank_hits: 完成 | top score=-9.959 | EF_1%=83.3
+2026-07-09 08:54:49,995 | INFO | VirtualScreeningAgent 初始化完成
+2026-07-09 08:54:50,012 | INFO | screen_library: 靶点=BTK 库大小=5000
+2026-07-09 08:54:50,043 | INFO | screen_library: 完成 | 命中=102 (2.04%) | top score=-11.286
+2026-07-09 08:54:50,043 | INFO | rank_hits: 排序 top 50
+2026-07-09 08:54:50,044 | INFO | rank_hits: 完成 | top score=-11.286 | EF_1%=98.0

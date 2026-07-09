@@ -1,0 +1,227 @@
+{
+  "version": "1.0",
+  "domain": "food_allergy",
+  "last_updated": "2026-04-01",
+  "existing_drugs": [
+    {
+      "id": "OMALIZUMAB",
+      "name": "Omalizumab (Xolair)",
+      "modality": "monoclonal_antibody",
+      "target": "IgE",
+      "mechanism": "Binds free IgE, prevents FcepsilonRI binding",
+      "phase": "Approved (FDA 2024 for food allergy)",
+      "route": "Subcutaneous injection",
+      "properties": {
+        "molecular_weight_kda": 149.0,
+        "isotype": "IgG1",
+        "half_life_days": 26,
+        "dosing_interval": "2-4 weeks"
+      },
+      "developer": "Genentech/Novartis",
+      "key_reference": "Sampson et al., NEJM 2024"
+    },
+    {
+      "id": "DUPILUMAB",
+      "name": "Dupilumab (Dupixent)",
+      "modality": "monoclonal_antibody",
+      "target": "IL-4Ralpha",
+      "mechanism": "Blocks IL-4 and IL-13 signaling via shared IL-4Ralpha",
+      "phase": "Phase III for food allergy",
+      "route": "Subcutaneous injection",
+      "properties": {
+        "molecular_weight_kda": 147.0,
+        "isotype": "IgG4",
+        "half_life_days": 28,
+        "dosing_interval": "2 weeks"
+      },
+      "developer": "Regeneron/Sanofi",
+      "key_reference": "Bégin et al., JACI 2023"
+    },
+    {
+      "id": "LIGELIZUMAB",
+      "name": "Ligelizumab (QGE031)",
+      "modality": "monoclonal_antibody",
+      "target": "IgE",
+      "mechanism": "High-affinity anti-IgE, 8-10x stronger than omalizumab",
+      "phase": "Phase II for food allergy",
+      "route": "Subcutaneous injection",
+      "properties": {
+        "molecular_weight_kda": 149.0,
+        "isotype": "IgG1",
+        "half_life_days": 21,
+        "dosing_interval": "2-4 weeks"
+      },
+      "developer": "Novartis",
+      "key_reference": "Adel et al., JACI 2022"
+    },
+    {
+      "id": "AR101",
+      "name": "AR101 (Palforzia)",
+      "modality": "oral_immunotherapy",
+      "target": "Multiple peanut allergens (Ara h 1, 2, 3)",
+      "mechanism": "Gradual oral desensitization with standardized peanut protein",
+      "phase": "Approved (FDA 2020)",
+      "route": "Oral capsule/powder",
+      "properties": {
+        "maintenance_dose_mg": 300,
+        "escalation_period_months": 6,
+        "sustained_unresponsiveness_rate": "20-30%"
+      },
+      "developer": "Aimmune Therapeutics/Nestle Health Science",
+      "key_reference": "Vickery et al., NEJM 2018 (PALISADE)"
+    },
+    {
+      "id": "DBV712",
+      "name": "Viaskin Peanut (DBV712)",
+      "modality": "epicutaneous_immunotherapy",
+      "target": "Peanut allergens via skin",
+      "mechanism": "Epicutaneous patch delivery of peanut allergen for immune tolerance",
+      "phase": "Phase III",
+      "route": "Epicutaneous patch",
+      "properties": {
+        "dose_mcg": 250,
+        "application_hours": 24,
+        "duration_months": 12
+      },
+      "developer": "DBV Technologies",
+      "key_reference": "Sampson et al., JACI 2020"
+    }
+  ],
+  "investigational_compounds": [
+    {
+      "id": "BTK_INH_01",
+      "name": "RN486 (BTK inhibitor, investigational)",
+      "modality": "small_molecule",
+      "target": "BTK",
+      "mechanism": "Irreversible BTK inhibition, blocks FcepsilonRI signaling in mast cells",
+      "phase": "Preclinical",
+      "properties": {
+        "molecular_weight": 391.4,
+        "logp": 2.8,
+        "hbd": 2,
+        "hba": 6,
+        "tpsa": 78.5,
+        "smiles": "CC(C)C1=CC=C(C=C1)C2=CN=C3C(=NN3C3CCN(C3)C(C)=O)C2=O",
+        "bioavailability_pct": "estimated 60-80%"
+      },
+      "developer": "Roche (research compound)",
+      "key_reference": "MacLeod et al., J Immunol 2015"
+    },
+    {
+      "id": "SYK_INH_01",
+      "name": "Entospletinib (GS-9973)",
+      "modality": "small_molecule",
+      "target": "Syk",
+      "mechanism": "Selective Syk kinase inhibitor, blocks mast cell degranulation",
+      "phase": "Phase II (for allergic diseases)",
+      "properties": {
+        "molecular_weight": 458.6,
+        "logp": 3.2,
+        "hbd": 2,
+        "hba": 8,
+        "tpsa": 105.2,
+        "smiles": "CC1=CC(=CC=C1)NC2=NC=CC3=C2C=CN3C4CCN(CC4)C5=CC=CC=C5O",
+        "bioavailability_pct": "estimated 70%"
+      },
+      "developer": "Gilead Sciences",
+      "key_reference": "Currie et al., Blood 2014"
+    },
+    {
+      "id": "JAK_INH_01",
+      "name": "Upadacitinib (Rinvoq)",
+      "modality": "small_molecule",
+      "target": "JAK1",
+      "mechanism": "Selective JAK1 inhibition, blocks IL-4/IL-13 signaling downstream",
+      "phase": "Phase II for atopic dermatitis (food allergy related)",
+      "properties": {
+        "molecular_weight": 380.4,
+        "logp": 2.2,
+        "hbd": 2,
+        "hba": 6,
+        "tpsa": 93.7,
+        "smiles": "CC1CN(CC1)C2=C3C=CN=C3N(C2=O)C4CC4",
+        "bioavailability_pct": 65
+      },
+      "developer": "AbbVie",
+      "key_reference": "Guttman-Yassky et al., Lancet 2020"
+    },
+    {
+      "id": "EP2_ANTAG_01",
+      "name": "CRTh2 antagonist (Investigational)",
+      "modality": "small_molecule",
+      "target": "CRTh2 (DP2 receptor)",
+      "mechanism": "Blocks PGD2 signaling to Th2 cells, reduces allergic inflammation",
+      "phase": "Phase II",
+      "properties": {
+        "molecular_weight": 420.5,
+        "logp": 3.5,
+        "hbd": 1,
+        "hba": 5,
+        "tpsa": 62.3,
+        "smiles": "CC(=O)N1CCN(CC1)C2=CC=C(C=C2)OC3=CC=CC=C3",
+        "bioavailability_pct": "estimated 55%"
+      },
+      "developer": "Various (research stage)",
+      "key_reference": "Uller et al., Respir Res 2007"
+    }
+  ],
+  "natural_products": [
+    {
+      "id": "QUERCETIN",
+      "name": "Quercetin",
+      "modality": "natural_product",
+      "target": "Mast cell stabilizer (multiple targets)",
+      "mechanism": "Inhibits histamine release, stabilizes mast cell membrane, anti-inflammatory",
+      "phase": "Supplement / Research",
+      "properties": {
+        "molecular_weight": 302.2,
+        "logp": 1.5,
+        "hbd": 5,
+        "hba": 7,
+        "tpsa": 127.4,
+        "smiles": "C1=CC(=C(C=C1C2=C(C(=O)C3=C(C=C(C=C3O2)O)O)O)O)O",
+        "bioavailability_pct": "low (1-2%)"
+      },
+      "evidence": "In vitro mast cell stabilization, limited clinical data",
+      "key_reference": "Mlcek et al., Molecules 2016"
+    },
+    {
+      "id": "RESVERATROL",
+      "name": "Resveratrol",
+      "modality": "natural_product",
+      "target": "Mast cell stabilizer / anti-inflammatory",
+      "mechanism": "Inhibits Syk pathway, reduces mast cell degranulation",
+      "phase": "Supplement / Research",
+      "properties": {
+        "molecular_weight": 228.2,
+        "logp": 3.1,
+        "hbd": 3,
+        "hba": 3,
+        "tpsa": 60.7,
+        "smiles": "C1=CC(=CC=C1/C=C/C2=CC(=CC(=C2)O)O)O",
+        "bioavailability_pct": "low (0.5-1%)"
+      },
+      "evidence": "In vitro inhibition of Syk, animal model data",
+      "key_reference": "Zhang et al., Int Immunopharmacol 2015"
+    },
+    {
+      "id": "CURCUMIN",
+      "name": "Curcumin",
+      "modality": "natural_product",
+      "target": "NF-kB inhibitor / anti-inflammatory",
+      "mechanism": "Inhibits NF-kB activation in mast cells, reduces cytokine production",
+      "phase": "Supplement / Research",
+      "properties": {
+        "molecular_weight": 368.4,
+        "logp": 3.2,
+        "hbd": 2,
+        "hba": 6,
+        "tpsa": 93.1,
+        "smiles": "COC1=CC(=CC(=C1)/C=C/C(=O)CC(=O)/C=C/C2=CC(=C(C=C2)O)OC)O",
+        "bioavailability_pct": "very low (<1%)"
+      },
+      "evidence": "Broad anti-inflammatory, in vitro mast cell effects",
+      "key_reference": "Kurup et al., J Nutr Biochem 2007"
+    }
+  ]
+}

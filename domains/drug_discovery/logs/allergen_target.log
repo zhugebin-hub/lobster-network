@@ -1,0 +1,36 @@
+2026-07-09 08:48:00,642 | INFO | AllergenTargetAgent 初始化完成 | 过敏原: 9 | 靶点: 9 | 通路: 4
+2026-07-09 08:48:00,642 | INFO | discover_targets: 开始靶点发现...
+2026-07-09 08:48:00,648 | INFO | discover_targets: 完成 | 高优先级过敏原: 5 | 可药靶点: 5 | 关联: 0
+2026-07-09 08:48:00,649 | INFO | validate_target: 验证靶点 [FCE_RI]
+2026-07-09 08:48:00,649 | INFO | validate_target: [FCE_RI] HIGH (score=0.836, inhibitors=2)
+2026-07-09 08:48:00,650 | INFO | generate_hypothesis: HYP_FCE_RI_20260709084800 | efficacy=0.848 confidence=0.764
+2026-07-09 08:48:16,582 | INFO | AllergenTargetAgent 初始化完成 | 过敏原: 9 | 靶点: 9 | 通路: 4
+2026-07-09 08:48:16,582 | INFO | discover_targets: 开始靶点发现...
+2026-07-09 08:48:16,589 | INFO | discover_targets: 完成 | 高优先级过敏原: 5 | 可药靶点: 5 | 关联: 0
+2026-07-09 08:48:16,589 | INFO | validate_target: 验证靶点 [FCE_RI]
+2026-07-09 08:48:16,589 | INFO | validate_target: [FCE_RI] HIGH (score=0.836, inhibitors=2)
+2026-07-09 08:48:16,590 | INFO | generate_hypothesis: HYP_FCE_RI_20260709084816 | efficacy=0.848 confidence=0.764
+2026-07-09 08:48:16,610 | INFO | AllergenTargetAgent 初始化完成 | 过敏原: 9 | 靶点: 9 | 通路: 4
+2026-07-09 08:48:16,611 | INFO | discover_targets: 开始靶点发现...
+2026-07-09 08:48:16,617 | INFO | discover_targets: 完成 | 高优先级过敏原: 5 | 可药靶点: 5 | 关联: 0
+2026-07-09 08:48:16,617 | INFO | validate_target: 验证靶点 [BTK]
+2026-07-09 08:48:16,618 | INFO | validate_target: [BTK] HIGH (score=0.817, inhibitors=3)
+2026-07-09 08:48:16,618 | INFO | generate_hypothesis: HYP_BTK_20260709084816 | efficacy=0.831 confidence=0.748
+2026-07-09 08:48:43,169 | INFO | AllergenTargetAgent 初始化完成 | 过敏原: 9 | 靶点: 9 | 通路: 4
+2026-07-09 08:48:43,170 | INFO | discover_targets: 开始靶点发现...
+2026-07-09 08:48:43,177 | INFO | discover_targets: 完成 | 高优先级过敏原: 5 | 可药靶点: 5 | 关联: 0
+2026-07-09 08:48:43,177 | INFO | validate_target: 验证靶点 [BTK]
+2026-07-09 08:48:43,177 | INFO | validate_target: [BTK] HIGH (score=0.817, inhibitors=3)
+2026-07-09 08:48:43,177 | INFO | generate_hypothesis: HYP_BTK_20260709084843 | efficacy=0.831 confidence=0.748
+2026-07-09 08:54:49,962 | INFO | AllergenTargetAgent 初始化完成 | 过敏原: 9 | 靶点: 9 | 通路: 4
+2026-07-09 08:54:49,970 | INFO | discover_targets: 开始靶点发现...
+2026-07-09 08:54:49,976 | INFO | discover_targets: 完成 | 高优先级过敏原: 5 | 可药靶点: 5 | 关联: 0
+2026-07-09 08:54:49,976 | INFO | validate_target: 验证靶点 [FCE_RI]
+2026-07-09 08:54:49,977 | INFO | validate_target: [FCE_RI] HIGH (score=0.836, inhibitors=2)
+2026-07-09 08:54:49,977 | INFO | generate_hypothesis: HYP_FCE_RI_20260709085449 | efficacy=0.848 confidence=0.764
+2026-07-09 08:54:49,995 | INFO | AllergenTargetAgent 初始化完成 | 过敏原: 9 | 靶点: 9 | 通路: 4
+2026-07-09 08:54:50,003 | INFO | discover_targets: 开始靶点发现...
+2026-07-09 08:54:50,010 | INFO | discover_targets: 完成 | 高优先级过敏原: 5 | 可药靶点: 5 | 关联: 0
+2026-07-09 08:54:50,010 | INFO | validate_target: 验证靶点 [BTK]
+2026-07-09 08:54:50,011 | INFO | validate_target: [BTK] HIGH (score=0.817, inhibitors=3)
+2026-07-09 08:54:50,011 | INFO | generate_hypothesis: HYP_BTK_20260709085450 | efficacy=0.831 confidence=0.748

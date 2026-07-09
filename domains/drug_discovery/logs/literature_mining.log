@@ -1,0 +1,78 @@
+2026-07-09 08:48:00,655 | INFO | LiteratureMiningAgent 初始化完成 | 策展文献: 10 篇
+2026-07-09 08:48:00,655 | INFO | search_papers: query='food allergy IgE' max=5
+2026-07-09 08:48:00,655 | INFO | search_papers: 找到 6 篇，返回 5 篇
+2026-07-09 08:48:00,655 | INFO | extract_targets: 从 5 篇文献中提取靶点
+2026-07-09 08:48:00,655 | INFO | extract_targets: 提取 9 个靶点
+2026-07-09 08:48:00,655 | INFO | extract_compounds: 从 5 篇文献中提取化合物
+2026-07-09 08:48:00,655 | INFO | extract_compounds: 提取 6 个化合物
+2026-07-09 08:48:00,655 | INFO | trend_analysis: 主题='food allergy'
+2026-07-09 08:48:00,656 | INFO | trend_analysis: 完成 | 总发文量=801 | 新兴方向=4
+2026-07-09 08:48:00,656 | INFO | generate_review: 主题='food allergy treatment'
+2026-07-09 08:48:00,656 | INFO | search_papers: query='food allergy treatment' max=10
+2026-07-09 08:48:00,656 | INFO | search_papers: 找到 6 篇，返回 6 篇
+2026-07-09 08:48:00,656 | INFO | extract_targets: 从 6 篇文献中提取靶点
+2026-07-09 08:48:00,656 | INFO | extract_targets: 提取 11 个靶点
+2026-07-09 08:48:00,656 | INFO | extract_compounds: 从 6 篇文献中提取化合物
+2026-07-09 08:48:00,656 | INFO | extract_compounds: 提取 8 个化合物
+2026-07-09 08:48:00,656 | INFO | generate_review: 完成 | sections=5 refs=6
+2026-07-09 08:48:16,596 | INFO | LiteratureMiningAgent 初始化完成 | 策展文献: 10 篇
+2026-07-09 08:48:16,596 | INFO | search_papers: query='food allergy IgE' max=5
+2026-07-09 08:48:16,596 | INFO | search_papers: 找到 6 篇，返回 5 篇
+2026-07-09 08:48:16,597 | INFO | extract_targets: 从 5 篇文献中提取靶点
+2026-07-09 08:48:16,597 | INFO | extract_targets: 提取 9 个靶点
+2026-07-09 08:48:16,597 | INFO | extract_compounds: 从 5 篇文献中提取化合物
+2026-07-09 08:48:16,597 | INFO | extract_compounds: 提取 6 个化合物
+2026-07-09 08:48:16,597 | INFO | trend_analysis: 主题='food allergy'
+2026-07-09 08:48:16,597 | INFO | trend_analysis: 完成 | 总发文量=826 | 新兴方向=4
+2026-07-09 08:48:16,597 | INFO | generate_review: 主题='food allergy treatment'
+2026-07-09 08:48:16,597 | INFO | search_papers: query='food allergy treatment' max=10
+2026-07-09 08:48:16,597 | INFO | search_papers: 找到 6 篇，返回 6 篇
+2026-07-09 08:48:16,597 | INFO | extract_targets: 从 6 篇文献中提取靶点
+2026-07-09 08:48:16,597 | INFO | extract_targets: 提取 11 个靶点
+2026-07-09 08:48:16,597 | INFO | extract_compounds: 从 6 篇文献中提取化合物
+2026-07-09 08:48:16,597 | INFO | extract_compounds: 提取 8 个化合物
+2026-07-09 08:48:16,597 | INFO | generate_review: 完成 | sections=5 refs=6
+2026-07-09 08:48:16,610 | INFO | LiteratureMiningAgent 初始化完成 | 策展文献: 10 篇
+2026-07-09 08:48:16,618 | INFO | search_papers: query='food allergy drug discovery' max=10
+2026-07-09 08:48:16,618 | INFO | search_papers: 找到 6 篇，返回 6 篇
+2026-07-09 08:48:16,619 | INFO | extract_targets: 从 6 篇文献中提取靶点
+2026-07-09 08:48:16,619 | INFO | extract_targets: 提取 11 个靶点
+2026-07-09 08:48:16,619 | INFO | extract_compounds: 从 6 篇文献中提取化合物
+2026-07-09 08:48:16,619 | INFO | extract_compounds: 提取 8 个化合物
+2026-07-09 08:48:16,619 | INFO | trend_analysis: 主题='food allergy drug discovery'
+2026-07-09 08:48:16,619 | INFO | trend_analysis: 完成 | 总发文量=812 | 新兴方向=4
+2026-07-09 08:48:43,169 | INFO | LiteratureMiningAgent 初始化完成 | 策展文献: 10 篇
+2026-07-09 08:48:43,178 | INFO | search_papers: query='food allergy drug discovery' max=10
+2026-07-09 08:48:43,178 | INFO | search_papers: 找到 6 篇，返回 6 篇
+2026-07-09 08:48:43,178 | INFO | extract_targets: 从 6 篇文献中提取靶点
+2026-07-09 08:48:43,178 | INFO | extract_targets: 提取 11 个靶点
+2026-07-09 08:48:43,178 | INFO | extract_compounds: 从 6 篇文献中提取化合物
+2026-07-09 08:48:43,178 | INFO | extract_compounds: 提取 8 个化合物
+2026-07-09 08:48:43,178 | INFO | trend_analysis: 主题='food allergy drug discovery'
+2026-07-09 08:48:43,178 | INFO | trend_analysis: 完成 | 总发文量=761 | 新兴方向=4
+2026-07-09 08:54:49,984 | INFO | LiteratureMiningAgent 初始化完成 | 策展文献: 10 篇
+2026-07-09 08:54:49,985 | INFO | search_papers: query='food allergy IgE' max=5
+2026-07-09 08:54:49,985 | INFO | search_papers: 找到 6 篇，返回 5 篇
+2026-07-09 08:54:49,985 | INFO | extract_targets: 从 5 篇文献中提取靶点
+2026-07-09 08:54:49,985 | INFO | extract_targets: 提取 9 个靶点
+2026-07-09 08:54:49,985 | INFO | extract_compounds: 从 5 篇文献中提取化合物
+2026-07-09 08:54:49,985 | INFO | extract_compounds: 提取 6 个化合物
+2026-07-09 08:54:49,985 | INFO | trend_analysis: 主题='food allergy'
+2026-07-09 08:54:49,985 | INFO | trend_analysis: 完成 | 总发文量=765 | 新兴方向=4
+2026-07-09 08:54:49,985 | INFO | generate_review: 主题='food allergy treatment'
+2026-07-09 08:54:49,985 | INFO | search_papers: query='food allergy treatment' max=10
+2026-07-09 08:54:49,985 | INFO | search_papers: 找到 6 篇，返回 6 篇
+2026-07-09 08:54:49,985 | INFO | extract_targets: 从 6 篇文献中提取靶点
+2026-07-09 08:54:49,985 | INFO | extract_targets: 提取 11 个靶点
+2026-07-09 08:54:49,985 | INFO | extract_compounds: 从 6 篇文献中提取化合物
+2026-07-09 08:54:49,986 | INFO | extract_compounds: 提取 8 个化合物
+2026-07-09 08:54:49,986 | INFO | generate_review: 完成 | sections=5 refs=6
+2026-07-09 08:54:49,995 | INFO | LiteratureMiningAgent 初始化完成 | 策展文献: 10 篇
+2026-07-09 08:54:50,011 | INFO | search_papers: query='food allergy drug discovery' max=10
+2026-07-09 08:54:50,011 | INFO | search_papers: 找到 6 篇，返回 6 篇
+2026-07-09 08:54:50,011 | INFO | extract_targets: 从 6 篇文献中提取靶点
+2026-07-09 08:54:50,011 | INFO | extract_targets: 提取 11 个靶点
+2026-07-09 08:54:50,011 | INFO | extract_compounds: 从 6 篇文献中提取化合物
+2026-07-09 08:54:50,011 | INFO | extract_compounds: 提取 8 个化合物
+2026-07-09 08:54:50,011 | INFO | trend_analysis: 主题='food allergy drug discovery'
+2026-07-09 08:54:50,011 | INFO | trend_analysis: 完成 | 总发文量=779 | 新兴方向=4

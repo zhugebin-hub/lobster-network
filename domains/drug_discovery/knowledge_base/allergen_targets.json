@@ -1,0 +1,268 @@
+{
+  "version": "1.0",
+  "domain": "food_allergy",
+  "last_updated": "2026-04-01",
+  "allergens": [
+    {
+      "id": "ARA_H1",
+      "name": "Ara h 1",
+      "source": "Peanut (Arachis hypogaea)",
+      "protein_family": "Cupin (7S vicilin)",
+      "molecular_weight_kda": 63.5,
+      "epitopes": ["p33-46", "p79-90", "p225-238"],
+      "ige_binding_affinity": "high",
+      "prevalence": "92% of peanut-allergic patients",
+      "stability": "heat-resistant, digestion-resistant",
+      "uniprot_id": "P43235"
+    },
+    {
+      "id": "ARA_H2",
+      "name": "Ara h 2",
+      "source": "Peanut (Arachis hypogaea)",
+      "protein_family": "Conglutin (2S albumin)",
+      "molecular_weight_kda": 17.0,
+      "epitopes": ["p27-36", "p57-66", "p107-116"],
+      "ige_binding_affinity": "high",
+      "prevalence": "96% of peanut-allergic patients",
+      "stability": "highly stable, resistant to roasting",
+      "uniprot_id": "Q6PSU2"
+    },
+    {
+      "id": "CAS_S1",
+      "name": "Bos d 8 (Casein)",
+      "source": "Cow's milk (Bos domesticus)",
+      "protein_family": "Casein (phosphoprotein)",
+      "molecular_weight_kda": 23.6,
+      "epitopes": ["p29-42", "p83-96", "p173-186"],
+      "ige_binding_affinity": "high",
+      "prevalence": "60-70% of milk-allergic patients",
+      "stability": "heat-stable, acid-resistant",
+      "uniprot_id": "P02663"
+    },
+    {
+      "id": "TRO_P1",
+      "name": "Pen a 1 (Tropomyosin)",
+      "source": "Shrimp (Penaeus aztecus)",
+      "protein_family": "Tropomyosin",
+      "molecular_weight_kda": 34.0,
+      "epitopes": ["p40-55", "p153-161", "p243-255"],
+      "ige_binding_affinity": "high",
+      "prevalence": "80-90% of shellfish-allergic patients",
+      "stability": "heat-stable, resistant to proteolysis",
+      "uniprot_id": "P45728"
+    },
+    {
+      "id": "OVA_L1",
+      "name": "Gal d 2 (Ovalbumin)",
+      "source": "Hen's egg white (Gallus domesticus)",
+      "protein_family": "Serpin (ovalbumin)",
+      "molecular_weight_kda": 45.0,
+      "epitopes": ["p30-38", "p175-186", "p380-391"],
+      "ige_binding_affinity": "moderate",
+      "prevalence": "50-60% of egg-allergic patients",
+      "stability": "heat-labile (denatured by extensive heating)",
+      "uniprot_id": "P01012"
+    },
+    {
+      "id": "PAR_V1",
+      "name": "Cyp c 1 (Parvalbumin)",
+      "source": "Atlantic salmon (Salmo salar)",
+      "protein_family": "Parvalbumin (EF-hand calcium-binding)",
+      "molecular_weight_kda": 12.0,
+      "epitopes": ["p13-25", "p51-63", "p86-97"],
+      "ige_binding_affinity": "high",
+      "prevalence": "95% of fish-allergic patients",
+      "stability": "heat-stable, resistant to digestion",
+      "uniprot_id": "P02622"
+    },
+    {
+      "id": "GLI_A1",
+      "name": "Gliadin (alpha-gliadin)",
+      "source": "Wheat (Triticum aestivum)",
+      "protein_family": "Prolamin (gliadin)",
+      "molecular_weight_kda": 33.0,
+      "epitopes": ["p33-43", "p57-68", "p206-217"],
+      "ige_binding_affinity": "moderate",
+      "prevalence": "20-30% of wheat-allergic patients",
+      "stability": "resistant to gastric digestion",
+      "uniprot_id": "P08453"
+    },
+    {
+      "id": "SES_I1",
+      "name": "Ses i 1",
+      "source": "Sesame (Sesamum indicum)",
+      "protein_family": "2S albumin",
+      "molecular_weight_kda": 9.0,
+      "epitopes": ["p15-24", "p35-44", "p60-69"],
+      "ige_binding_affinity": "high",
+      "prevalence": "70-80% of sesame-allergic patients",
+      "stability": "heat-stable, resistant to digestion",
+      "uniprot_id": "Q9FZR6"
+    },
+    {
+      "id": "PRU_P3",
+      "name": "Pru p 3",
+      "source": "Peach (Prunus persica)",
+      "protein_family": "nsLTP (non-specific lipid transfer protein)",
+      "molecular_weight_kda": 9.0,
+      "epitopes": ["p31-41", "p61-71", "p79-89"],
+      "ige_binding_affinity": "high",
+      "prevalence": "60-70% of peach-allergic patients",
+      "stability": "heat-stable, resistant to pepsin",
+      "uniprot_id": "Q9M3X0"
+    }
+  ],
+  "therapeutic_targets": [
+    {
+      "id": "FCE_RI",
+      "name": "FcepsilonRI (High-affinity IgE receptor)",
+      "type": "receptor",
+      "pathway": "Mast cell degranulation",
+      "cell_types": ["mast cells", "basophils", "dendritic cells"],
+      "drug_modalities": ["small_molecule", "biologic", "peptide"],
+      "known_inhibitors": ["Omalizumab (Xolair)", "Ligelizumab"],
+      "druggability_score": 0.85,
+      "pdb_structures": ["1F6A", "4J4P", "2Y7Q"]
+    },
+    {
+      "id": "IGHE",
+      "name": "IgE (Immunoglobulin E)",
+      "type": "antibody",
+      "pathway": "Allergen sensitization and effector activation",
+      "cell_types": ["B cells", "plasma cells"],
+      "drug_modalities": ["biologic", "antisense", "small_molecule"],
+      "known_inhibitors": ["Omalizumab", "Ligelizumab", "Quilizumab"],
+      "druggability_score": 0.90,
+      "pdb_structures": ["4GRN", "2WQR", "5G6B"]
+    },
+    {
+      "id": "SYK",
+      "name": "Syk (Spleen tyrosine kinase)",
+      "type": "kinase",
+      "pathway": "FcepsilonRI downstream signaling",
+      "cell_types": ["mast cells", "B cells", "macrophages"],
+      "drug_modalities": ["small_molecule"],
+      "known_inhibitors": ["Fostamatinib (R406)", "Entospletinib (GS-9973)"],
+      "druggability_score": 0.92,
+      "pdb_structures": ["4FL5", "4XMX", "3FUE"]
+    },
+    {
+      "id": "BTK",
+      "name": "BTK (Bruton's tyrosine kinase)",
+      "type": "kinase",
+      "pathway": "BCR and FcepsilonRI signaling",
+      "cell_types": ["B cells", "mast cells"],
+      "drug_modalities": ["small_molecule"],
+      "known_inhibitors": ["Ibrutinib", "Acalabrutinib", "Zanubrutinib"],
+      "druggability_score": 0.95,
+      "pdb_structures": ["5P9J", "6J6M", "7K71"]
+    },
+    {
+      "id": "KIT",
+      "name": "KIT (c-Kit / CD117, Stem cell factor receptor)",
+      "type": "receptor_tyrosine_kinase",
+      "pathway": "Mast cell development and survival",
+      "cell_types": ["mast cells", "hematopoietic stem cells"],
+      "drug_modalities": ["small_molecule", "biologic"],
+      "known_inhibitors": ["Imatinib", "Masitinib", "Midostaurin"],
+      "druggability_score": 0.88,
+      "pdb_structures": ["1T46", "2H9Q", "6GQK"]
+    },
+    {
+      "id": "IL4R",
+      "name": "IL-4Ralpha (Interleukin-4 receptor alpha)",
+      "type": "cytokine_receptor",
+      "pathway": "Th2 polarization and IgE class switching",
+      "cell_types": ["T cells", "B cells", "epithelial cells"],
+      "drug_modalities": ["biologic", "small_molecule"],
+      "known_inhibitors": ["Dupilumab (Dupixent)"],
+      "druggability_score": 0.82,
+      "pdb_structures": ["3BPL", "1IAR"]
+    },
+    {
+      "id": "IL13R",
+      "name": "IL-13Ralpha1 (Interleukin-13 receptor alpha 1)",
+      "type": "cytokine_receptor",
+      "pathway": "Th2 inflammation and mucus production",
+      "cell_types": ["epithelial cells", "smooth muscle cells"],
+      "drug_modalities": ["biologic"],
+      "known_inhibitors": ["Tralokinumab", "Lebrikizumab"],
+      "druggability_score": 0.78,
+      "pdb_structures": ["3BP0"]
+    },
+    {
+      "id": "TSLP",
+      "name": "TSLP (Thymic stromal lymphopoietin)",
+      "type": "cytokine",
+      "pathway": "Epithelial barrier alarmin and Th2 initiation",
+      "cell_types": ["epithelial cells", "dendritic cells"],
+      "drug_modalities": ["biologic"],
+      "known_inhibitors": ["Tezepelumab (Aimovig)"],
+      "druggability_score": 0.80,
+      "pdb_structures": ["4NN7", "5J5Y"]
+    },
+    {
+      "id": "OX40L",
+      "name": "OX40L (CD252 ligand)",
+      "type": "co_stimulatory",
+      "pathway": "Th2 memory and allergic inflammation",
+      "cell_types": ["dendritic cells", "B cells", "mast cells"],
+      "drug_modalities": ["biologic"],
+      "known_inhibitors": ["Rocatinlimab (AMG 451)", "Amlitelimab"],
+      "druggability_score": 0.75,
+      "pdb_structures": ["2X2P"]
+    }
+  ],
+  "pathways": [
+    {
+      "id": "MAST_ACTIVATION",
+      "name": "Mast cell activation pathway",
+      "description": "IgE-mediated mast cell degranulation triggered by allergen crosslinking of FcepsilonRI-bound IgE",
+      "key_mediators": ["histamine", "tryptase", "leukotrienes", "prostaglandins", "TNF-alpha", "IL-4", "IL-5", "IL-13"],
+      "therapeutic_intervention_points": [
+        "FcepsilonRI crosslinking inhibition",
+        "Syk activation blockade",
+        "degranulation inhibition",
+        "mediator release blockade"
+      ],
+      "key_kinases": ["Lyn", "Syk", "BTK", "PLCgamma", "PKC"]
+    },
+    {
+      "id": "TH2_POLARIZATION",
+      "name": "Th2 immune polarization",
+      "description": "T helper type 2 cell differentiation driving allergic inflammation",
+      "key_mediators": ["IL-4", "IL-5", "IL-13", "IL-25", "IL-33", "TSLP"],
+      "therapeutic_intervention_points": [
+        "IL-4R signaling blockade",
+        "IL-13 neutralization",
+        "TSLP inhibition",
+        "OX40/OX40L axis blockade"
+      ],
+      "key_kinases": ["JAK1", "JAK3", "STAT6"]
+    },
+    {
+      "id": "IGE_PRODUCTION",
+      "name": "IgE class switch and production",
+      "description": "B cell class switch recombination to IgE driven by IL-4/IL-13",
+      "key_mediators": ["IL-4", "IL-13", "CD40L", "AID (activation-induced cytidine deaminase)"],
+      "therapeutic_intervention_points": [
+        "CD40/CD40L interaction blockade",
+        "IgE membrane expression targeting",
+        "plasma cell depletion"
+      ],
+      "key_kinases": ["SYK", "BTK", "PI3K"]
+    },
+    {
+      "id": "ORAL_TOLERANCE",
+      "name": "Oral tolerance induction",
+      "description": "Immune tolerance mechanisms through oral allergen exposure (OIT)",
+      "key_mediators": ["TGF-beta", "IL-10", "retinoic acid", "Treg cells"],
+      "therapeutic_intervention_points": [
+        "Treg expansion",
+        "dendritic cell tolerization",
+        "gut barrier enhancement"
+      ],
+      "key_kinases": ["mTOR", "PI3K", "AKT"]
+    }
+  ]
+}
