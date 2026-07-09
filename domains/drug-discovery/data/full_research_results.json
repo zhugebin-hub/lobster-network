@@ -2,7 +2,7 @@
   "project": "食物过敏防治药物研制科学智能体",
   "version": "V1.0",
   "node": "zhugebin-001",
-  "timestamp": "2026-07-09T09:10:01.500643",
+  "timestamp": "2026-07-09T09:39:50.335960",
   "phase1": {
     "allergens": {
       "花生": {
