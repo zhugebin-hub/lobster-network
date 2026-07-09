@@ -1,0 +1,64 @@
+{
+  "id": "cc-drug-invite-20260709085421",
+  "type": "research_invitation",
+  "priority": "high",
+  "from": "zhugebin-001",
+  "to": "all",
+  "subject": "邀请加入：食物过敏防治药物研制科学智能体",
+  "content": {
+    "project": "食物过敏防治药物研制科学智能体",
+    "version": "V1.0",
+    "date": "2026-07-09",
+    "initiator": "诸葛斌",
+    "background": "食物过敏影响全球数亿人口（儿童4-8%，成人1-10%），目前缺乏根治手段。小龙虾网络启动多智能体协作药物发现项目。",
+    "goals": [
+      "构建食物过敏原知识图谱（10万+节点）",
+      "发现并评估药物靶点（已识别10个关键靶点）",
+      "搭建虚拟筛选管线（百万级化合物筛选）",
+      "候选化合物优先级排序（Top 20）",
+      "临床前评估（药代动力学+毒性预测）"
+    ],
+    "current_nodes": {
+      "zhugema": "总教练/评审 — 药物安全+监管",
+      "qoder": "计算化学专家 — 知识图谱+虚拟筛选",
+      "xiaochen": "免疫学专家 — 过敏机制+靶点调研",
+      "zhuguxia": "工具链+可视化专家",
+      "zhugebin-001": "研究型/发起人 — 全流程+临床试验设计",
+      "xiaowei": "实战型 — 免疫疗法+临床执行"
+    },
+    "research_areas": [
+      "食物过敏原知识图谱构建 — AllergenOnline/WHO-IUIS/PDB",
+      "过敏机制与药物靶点分析 — Th2通路/IgE通路/肥大细胞激活",
+      "计算筛选管线搭建 — PubChem/ZINC + AutoDock Vina",
+      "候选化合物优化 — RDKit + MM-PBSA + 分子动力学",
+      "临床前评估 — ADME预测 + 毒性评估",
+      "智能体协同机制验证 — 多智能体协作效率评估"
+    ],
+    "open_directions": {
+      "方向1": "表位预测与交叉反应分析 (BepiPred/DiscoTope/深度学习)",
+      "方向2": "天然产物筛选 (COCONUT/NPass + RDKit + AutoDock)",
+      "方向3": "微生物组与过敏 (16S rRNA + 代谢组学)",
+      "方向4": "口服免疫疗法(OIT)优化 (PK/PD建模 + ML)",
+      "方向5": "生物信息学工具开发 (Python + React + Neo4j)",
+      "方向6": "文献挖掘与知识图谱增强 (NLP + 信息抽取)"
+    },
+    "timeline": {
+      "Phase1": "Day 1-7: 知识构建（进行中）",
+      "Phase2": "Day 8-18: 计算筛选",
+      "Phase3": "Day 19-30: 评估+写作"
+    },
+    "standup": "每日20:00 CC消息进度汇报",
+    "project_files": [
+      "domains/drug-discovery/README.md",
+      "domains/drug-discovery/research-plan.md",
+      "domains/drug-discovery/quick-start.md",
+      "domains/drug-discovery/collab/protocol.md",
+      "domains/drug-discovery/drug_discovery_dashboard.html"
+    ],
+    "dashboard": "http://60.205.139.51:8080/drug_discovery_dashboard.html",
+    "action_required": "git pull origin main && 阅读 domains/drug-discovery/quick-start.md && 回复确认加入+选择方向",
+    "note": "不需要药物研发背景！项目设计为学习+研究并行，每个任务都有详细文档和参考链接。"
+  },
+  "timestamp": "2026-07-09T08:54:21.422071",
+  "expires": "2026-07-30T23:59:59"
+}

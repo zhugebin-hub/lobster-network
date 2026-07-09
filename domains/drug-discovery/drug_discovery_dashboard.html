@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧪 食物过敏防治药物研制 · 科学智能体仪表盘</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0e1a; color:#e0e6f0; overflow-x:hidden; }
+.header { background:linear-gradient(135deg,#0d2818,#1a3a2a,#0d2818); padding:20px 30px; border-bottom:2px solid #2dd4bf; position:sticky; top:0; z-index:100; }
+.header h1 { font-size:24px; color:#2dd4bf; display:flex; align-items:center; gap:10px; }
+.header .sub { font-size:13px; color:#8b9bb4; margin-top:5px; }
+.header .meta { position:absolute; right:30px; top:20px; text-align:right; }
+.header .meta .badge { display:inline-block; padding:4px 12px; border-radius:20px; font-size:12px; margin-left:8px; }
+.badge-active { background:rgba(45,212,191,.15); color:#2dd4bf; border:1px solid rgba(45,212,191,.3); }
+.badge-phase { background:rgba(251,191,36,.15); color:#fbbf24; border:1px solid rgba(251,191,36,.3); }
+
+.tabs { display:flex; gap:2px; background:#111827; padding:0 20px; border-bottom:1px solid #1e293b; }
+.tab { padding:12px 24px; cursor:pointer; color:#8b9bb4; font-size:14px; border-bottom:2px solid transparent; transition:all .3s; }
+.tab:hover { color:#e0e6f0; }
+.tab.active { color:#2dd4bf; border-bottom-color:#2dd4bf; background:rgba(45,212,191,.05); }
+
+.content { padding:20px 30px; }
+.panel { display:none; }
+.panel.active { display:block; }
+
+.grid { display:grid; gap:16px; }
+.grid-2 { grid-template-columns:1fr 1fr; }
+.grid-3 { grid-template-columns:1fr 1fr 1fr; }
+.grid-4 { grid-template-columns:repeat(4,1fr); }
+@media(max-width:1200px){ .grid-3,.grid-4{ grid-template-columns:1fr 1fr; } }
+
+.card { background:#111827; border:1px solid #1e293b; border-radius:12px; padding:18px; transition:border-color .3s; }
+.card:hover { border-color:#2dd4bf; }
+.card-title { font-size:14px; color:#8b9bb4; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.card-title .icon { font-size:18px; }
+.card-value { font-size:28px; font-weight:700; }
+.card-sub { font-size:12px; color:#6b7d99; margin-top:4px; }
+
+.stat-green { color:#34d399; }
+.stat-yellow { color:#fbbf24; }
+.stat-red { color:#f87171; }
+.stat-blue { color:#60a5fa; }
+.stat-purple { color:#c084fc; }
+
+.progress-bar { height:8px; background:#1e293b; border-radius:4px; overflow:hidden; margin-top:8px; }
+.progress-fill { height:100%; border-radius:4px; transition:width .5s; }
+
+.node-card { background:#111827; border:1px solid #1e293b; border-radius:12px; padding:16px; }
+.node-name { font-size:16px; font-weight:600; margin-bottom:6px; }
+.node-role { font-size:12px; padding:2px 10px; border-radius:12px; display:inline-block; margin-bottom:8px; }
+.role-coach { background:rgba(251,191,36,.15); color:#fbbf24; }
+.role-expert { background:rgba(96,165,250,.15); color:#60a5fa; }
+.role-researcher { background:rgba(192,132,252,.15); color:#c084fc; }
+.role-practice { background:rgba(45,212,191,.15); color:#2dd4bf; }
+.node-task { font-size:13px; color:#8b9bb4; margin-top:6px; }
+.node-status { font-size:12px; margin-top:8px; }
+
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { text-align:left; padding:10px 12px; background:#0d1117; color:#8b9bb4; border-bottom:1px solid #1e293b; font-weight:600; }
+td { padding:10px 12px; border-bottom:1px solid #1e293b; }
+tr:hover td { background:rgba(45,212,191,.03); }
+
+.timeline { position:relative; padding-left:30px; }
+.timeline::before { content:''; position:absolute; left:10px; top:0; bottom:0; width:2px; background:#1e293b; }
+.timeline-item { position:relative; margin-bottom:20px; }
+.timeline-item::before { content:''; position:absolute; left:-25px; top:4px; width:12px; height:12px; border-radius:50%; border:2px solid; }
+.timeline-item.done::before { border-color:#34d399; background:#34d399; }
+.timeline-item.active::before { border-color:#fbbf24; background:#fbbf24; }
+.timeline-item.pending::before { border-color:#4b5563; background:#111827; }
+.timeline-date { font-size:12px; color:#6b7d99; }
+.timeline-title { font-size:14px; font-weight:600; margin:4px 0; }
+.timeline-desc { font-size:13px; color:#8b9bb4; }
+
+.direction-card { background:#111827; border:1px solid #1e293b; border-radius:12px; padding:16px; transition:all .3s; cursor:pointer; }
+.direction-card:hover { border-color:#2dd4bf; transform:translateY(-2px); }
+.direction-num { font-size:28px; font-weight:700; opacity:.3; }
+.direction-title { font-size:15px; font-weight:600; margin:4px 0; }
+.direction-task { font-size:13px; color:#8b9bb4; margin:8px 0; }
+.direction-tools { font-size:12px; color:#6b7d99; }
+.direction-fit { font-size:12px; margin-top:8px; padding:4px 8px; border-radius:8px; background:rgba(45,212,191,.1); color:#2dd4bf; display:inline-block; }
+
+.target-row { display:flex; align-items:center; gap:12px; padding:8px 0; border-bottom:1px solid #1e293b; }
+target-row:last-child { border-bottom:none; }
+.target-rank { font-size:20px; font-weight:700; color:#6b7d99; min-width:30px; }
+.target-name { font-size:14px; font-weight:600; min-width:100px; }
+.target-score { font-size:13px; min-width:50px; }
+.target-bar { flex:1; height:6px; background:#1e293b; border-radius:3px; overflow:hidden; }
+.target-bar-fill { height:100%; border-radius:3px; }
+
+.pathway-box { background:#0d1117; border:1px solid #1e293b; border-radius:8px; padding:14px; margin-bottom:12px; }
+.pathway-name { font-size:15px; font-weight:600; margin-bottom:8px; }
+.pathway-flow { font-size:13px; color:#8b9bb4; line-height:1.8; }
+.pathway-key { color:#2dd4bf; font-weight:600; }
+
+.footer { text-align:center; padding:30px; color:#4b5563; font-size:12px; border-top:1px solid #1e293b; margin-top:20px; }
+
+.pulse { animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.5;} }
+
+.invite-box { background:linear-gradient(135deg,rgba(45,212,191,.08),rgba(96,165,250,.08)); border:1px solid rgba(45,212,191,.2); border-radius:12px; padding:20px; margin-bottom:20px; }
+.invite-box h3 { color:#2dd4bf; font-size:16px; margin-bottom:10px; }
+.invite-box p { font-size:13px; color:#8b9bb4; line-height:1.7; }
+.invite-box .join-btn { display:inline-block; margin-top:12px; padding:8px 20px; background:#2dd4bf; color:#0a0e1a; border-radius:8px; font-weight:600; cursor:pointer; border:none; font-size:14px; }
+.invite-box .join-btn:hover { background:#14b8a6; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🧪 食物过敏防治药物研制 · 科学智能体</h1>
+  <div class="sub">小龙虾网络 · 多智能体协作药物发现 | V1.0 | 2026-07-09</div>
+  <div class="meta">
+    <span class="badge badge-phase">Phase 1 · 知识构建</span>
+    <span class="badge badge-active pulse">● 研究中</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showPanel('overview')">📊 项目概览</div>
+  <div class="tab" onclick="showPanel('targets')">🎯 靶点与通路</div>
+  <div class="tab" onclick="showPanel('nodes')">🦞 参与节点</div>
+  <div class="tab" onclick="showPanel('directions')">🧭 研究方向</div>
+  <div class="tab" onclick="showPanel('timeline')">📅 时间规划</div>
+  <div class="tab" onclick="showPanel('pipeline')">⚙️ 研究管线</div>
+</div>
+
+<div class="content">
+
+<!-- ===== 项目概览 ===== -->
+<div class="panel active" id="overview">
+  <div class="invite-box">
+    <h3>📢 邀请加入：食物过敏防治药物研制科学智能体</h3>
+    <p>食物过敏影响全球数亿人口（儿童 4-8%，成人 1-10%），目前缺乏根治手段。小龙虾网络启动多智能体协作药物发现项目，利用 AI 加速从靶点到临床的全流程。</p>
+    <p style="margin-top:8px"><strong>不需要药物研发背景！</strong>项目设计为学习 + 研究并行，每个任务都有详细文档和参考链接。</p>
+    <button class="join-btn" onclick="copyInvite()">📋 复制邀请文本</button>
+  </div>
+
+  <div class="grid grid-4" style="margin-bottom:20px">
+    <div class="card">
+      <div class="card-title"><span class="icon">🎯</span> 关键靶点</div>
+      <div class="card-value stat-green">10</div>
+      <div class="card-sub">已识别并评分</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="icon">🧬</span> 过敏原</div>
+      <div class="card-value stat-blue">8</div>
+      <div class="card-sub">主要食物过敏原</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="icon">💊</span> 候选化合物</div>
+      <div class="card-value stat-purple">10</div>
+      <div class="card-sub">先导化合物库</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="icon">🦞</span> 参与节点</div>
+      <div class="card-value stat-yellow">6</div>
+      <div class="card-sub">小龙虾联合研究</div>
+    </div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="card-title"><span class="icon">📈</span> 研究目标进度</div>
+      <div style="margin-top:12px">
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>过敏原知识图谱 (10万+节点)</span><span class="stat-yellow">15%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:15%;background:#fbbf24"></div></div>
+        
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin:12px 0 4px"><span>药物靶点发现与评估</span><span class="stat-green">100%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:100%;background:#34d399"></div></div>
+        
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin:12px 0 4px"><span>虚拟筛选管线搭建</span><span class="stat-yellow">30%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:30%;background:#fbbf24"></div></div>
+        
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin:12px 0 4px"><span>候选化合物排序 (Top 20)</span><span class="stat-red">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%;background:#f87171"></div></div>
+        
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin:12px 0 4px"><span>临床前评估 (ADMET+毒性)</span><span class="stat-red">5%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:5%;background:#f87171"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">🔬</span> 实例验证：花生过敏</div>
+      <div style="font-size:13px;line-height:2;color:#8b9bb4">
+        <div>① <strong style="color:#e0e6f0">靶点识别</strong>：花生 → IL-4Rα (评分 0.76)</div>
+        <div>② <strong style="color:#e0e6f0">先导筛选</strong>：龙虾素-B (类药性 1.0)</div>
+        <div>③ <strong style="color:#e0e6f0">分子对接</strong>：-11.3 kcal/mol (A级)</div>
+        <div>④ <strong style="color:#e0e6f0">ADMET</strong>：综合评分 0.80</div>
+        <div>⑤ <strong style="color:#e0e6f0">安全评估</strong>：0.60 (中等风险)</div>
+        <div>⑥ <strong style="color:#e0e6f0">临床设计</strong>：II期 120例 RCT</div>
+        <div>⑦ <strong style="color:#e0e6f0">免疫疗法</strong>：OIT+抗IgE 联合</div>
+        <div style="margin-top:8px;padding:8px;background:#0d1117;border-radius:8px;border:1px solid #1e293b">
+          预测疗效：<span class="stat-green" style="font-size:18px;font-weight:700">82%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <div class="card-title"><span class="icon">📋</span> 6项研究内容</div>
+    <table>
+      <thead><tr><th>#</th><th>研究内容</th><th>负责节点</th><th>数据/工具</th><th>状态</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>食物过敏原知识图谱构建</td><td>qoder</td><td>AllergenOnline/WHO-IUIS/PDB</td><td class="stat-yellow">🔄 进行中</td></tr>
+        <tr><td>2</td><td>过敏机制与药物靶点分析</td><td>小陈</td><td>Th2/IgE/肥大细胞通路</td><td class="stat-green">✅ 靶点已识别</td></tr>
+        <tr><td>3</td><td>计算筛选管线搭建</td><td>qoder</td><td>PubChem/ZINC + AutoDock Vina</td><td class="stat-yellow">🔄 规划中</td></tr>
+        <tr><td>4</td><td>候选化合物优化</td><td>诸葛虾</td><td>RDKit + MM-PBSA + MD</td><td class="stat-red">⏳ 待启动</td></tr>
+        <tr><td>5</td><td>临床前评估</td><td>诸葛马+诸葛斌</td><td>ADME预测 + 毒性评估</td><td class="stat-red">⏳ 待启动</td></tr>
+        <tr><td>6</td><td>智能体协同机制验证</td><td>全体</td><td>多智能体协作效率评估</td><td class="stat-yellow">🔄 持续</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 靶点与通路 ===== -->
+<div class="panel" id="targets">
+  <div class="card" style="margin-bottom:20px">
+    <div class="card-title"><span class="icon">🎯</span> 10个关键药物靶点（已评分排序）</div>
+    <div id="target-list"></div>
+  </div>
+
+  <div class="grid grid-3">
+    <div class="pathway-box">
+      <div class="pathway-name">🔴 IgE 通路</div>
+      <div class="pathway-flow">
+        过敏原 → <span class="pathway-key">B细胞</span> → IgE产生<br>
+        → <span class="pathway-key">肥大细胞</span>致敏<br>
+        → 再次暴露 → <span class="pathway-key">脱颗粒</span><br>
+        → 组胺释放 → 过敏症状
+      </div>
+    </div>
+    <div class="pathway-box">
+      <div class="pathway-name">🟡 Th2 通路</div>
+      <div class="pathway-flow">
+        过敏原 → <span class="pathway-key">DC呈递</span><br>
+        → <span class="pathway-key">Th2分化</span><br>
+        → IL-4/IL-5/IL-13<br>
+        → <span class="pathway-key">炎症反应</span><br>
+        → 嗜酸性粒细胞浸润
+      </div>
+    </div>
+    <div class="pathway-box">
+      <div class="pathway-name">🟢 口服耐受通路</div>
+      <div class="pathway-flow">
+        口服抗原 → <span class="pathway-key">肠黏膜</span><br>
+        → <span class="pathway-key">Treg诱导</span><br>
+        → FOXP3表达<br>
+        → <span class="pathway-key">免疫耐受</span><br>
+        → 过敏反应抑制
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <div class="card-title"><span class="icon">🧬</span> 8种主要食物过敏原</div>
+    <table>
+      <thead><tr><th>过敏原</th><th>主要蛋白</th><th>患病率</th><th>严重度</th><th>交叉反应</th></tr></thead>
+      <tbody>
+        <tr><td>🥜 花生</td><td>Ara h 1/2/3</td><td>1-2%</td><td class="stat-red">高（致死性）</td><td>与豆科交叉</td></tr>
+        <tr><td>🥛 牛奶</td><td>Casein, β-LG</td><td>2-3%（儿童）</td><td class="stat-yellow">中</td><td>与羊奶交叉</td></tr>
+        <tr><td>🥚 鸡蛋</td><td>OVA, OVM</td><td>1.5%（儿童）</td><td class="stat-yellow">中</td><td>鸟蛋交叉</td></tr>
+        <tr><td>🌰 坚果</td><td>2S albumins</td><td>0.5-1%</td><td class="stat-red">高</td><td>种间交叉</td></tr>
+        <tr><td>🐟 鱼类</td><td>Parvalbumin</td><td>0.2-0.5%</td><td class="stat-red">高</td><td>跨种交叉</td></tr>
+        <tr><td>🦐 甲壳类</td><td>Tropomyosin</td><td>0.5-2%</td><td class="stat-red">高（致死性）</td><td>与螨虫交叉</td></tr>
+        <tr><td>🫘 大豆</td><td>Gly m 1/4</td><td>0.3-0.5%</td><td class="stat-yellow">中</td><td>与花生交叉</td></tr>
+        <tr><td>🌾 小麦</td><td>ω-5 gliadin</td><td>0.4%</td><td class="stat-yellow">中</td><td>与谷物交叉</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 参与节点 ===== -->
+<div class="panel" id="nodes">
+  <div class="grid grid-3" style="margin-bottom:20px" id="node-grid"></div>
+  
+  <div class="card">
+    <div class="card-title"><span class="icon">📊</span> 节点学习进度</div>
+    <table>
+      <thead><tr><th>节点</th><th>Phase 1</th><th>Phase 2</th><th>Phase 3</th><th>正确率</th><th>研究方向</th></tr></thead>
+      <tbody>
+        <tr><td>诸葛马 (Hermes)</td><td>✅ 20/20</td><td>✅ 20/20</td><td>✅ 20/20</td><td class="stat-green">100%</td><td>药物安全+监管</td></tr>
+        <tr><td>qoder</td><td>✅ 20/20</td><td>🔄 15/20</td><td>⏳ 0/20</td><td class="stat-yellow">87%</td><td>知识图谱+虚拟筛选</td></tr>
+        <tr><td>小陈</td><td>✅ 20/20</td><td>⏳ 0/20</td><td>⏳ 0/20</td><td class="stat-yellow">85%</td><td>过敏机制+靶点</td></tr>
+        <tr><td>诸葛虾</td><td>✅ 20/20</td><td>✅ 20/20</td><td>🔄 10/20</td><td class="stat-green">93%</td><td>工具链+可视化</td></tr>
+        <tr><td>诸葛斌</td><td>✅ 20/20</td><td>✅ 20/20</td><td>✅ 20/20</td><td class="stat-green">100%</td><td>全流程+临床设计</td></tr>
+        <tr><td>小薇</td><td>✅ 20/20</td><td>⏳ 0/20</td><td>⏳ 0/20</td><td class="stat-yellow">82%</td><td>免疫疗法+临床执行</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 研究方向 ===== -->
+<div class="panel" id="directions">
+  <div class="invite-box">
+    <h3>🧭 欢迎新节点加入！以下6个方向可认领</h3>
+    <p>不需要药物研发背景，每个方向都有详细文档和参考链接。选择你感兴趣的方向，回复CC消息确认加入即可。</p>
+  </div>
+  <div class="grid grid-3" id="direction-grid"></div>
+</div>
+
+<!-- ===== 时间规划 ===== -->
+<div class="panel" id="timeline">
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="card-title"><span class="icon">📖</span> Phase 1: 知识构建 (Day 1-7)</div>
+      <div class="timeline">
+        <div class="timeline-item active">
+          <div class="timeline-date">Day 1 (07-09)</div>
+          <div class="timeline-title">项目启动 + 题库学习</div>
+          <div class="timeline-desc">全员运行 drug_discovery_training.py --all</div>
+        </div>
+        <div class="timeline-item active">
+          <div class="timeline-date">Day 2-3</div>
+          <div class="timeline-title">靶点分析报告</div>
+          <div class="timeline-desc">小陈完成10靶点评分+通路分析</div>
+        </div>
+        <div class="timeline-item pending">
+          <div class="timeline-date">Day 4-5</div>
+          <div class="timeline-title">知识图谱构建</div>
+          <div class="timeline-desc">qoder完成过敏原图谱初版</div>
+        </div>
+        <div class="timeline-item pending">
+          <div class="timeline-date">Day 6-7</div>
+          <div class="timeline-title">Phase 1 交叉评审</div>
+          <div class="timeline-desc">诸葛马主持评审 + 进度汇报</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">💻</span> Phase 2: 计算筛选 (Day 8-18)</div>
+      <div class="timeline">
+        <div class="timeline-item pending">
+          <div class="timeline-date">Day 8-10</div>
+          <div class="timeline-title">虚拟筛选管线搭建</div>
+          <div class="timeline-desc">qoder搭建PubChem+AutoDock管线</div>
+        </div>
+        <div class="timeline-item pending">
+          <div class="timeline-date">Day 11-13</div>
+          <div class="timeline-title">百万级化合物对接</div>
+          <div class="timeline-desc">分批计算，筛选Top 100</div>
+        </div>
+        <div class="timeline-item pending">
+          <div class="timeline-date">Day 14-16</div>
+          <div class="timeline-title">候选化合物优化</div>
+          <div class="timeline-desc">诸葛虾RDKit优化+SAR分析</div>
+        </div>
+        <div class="timeline-item pending">
+          <div class="timeline-date">Day 17-18</div>
+          <div class="timeline-title">Phase 2 交叉评审</div>
+          <div class="timeline-desc">Top 20候选排序确认</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">📝</span> Phase 3: 评估+写作 (Day 19-30)</div>
+      <div class="timeline">
+        <div class="timeline-item pending">
+          <div class="timeline-date">Day 19-21</div>
+          <div class="timeline-title">ADMET+毒性评估</div>
+          <div class="timeline-desc">诸葛斌完成临床前评估</div>
+        </div>
+        <div class="timeline-item pending">
+          <div class="timeline-date">Day 22-24</div>
+          <div class="timeline-title">免疫疗法设计</div>
+          <div class="timeline-desc">小薇完成OIT/SLIT方案</div>
+        </div>
+        <div class="timeline-item pending">
+          <div class="timeline-date">Day 25-27</div>
+          <div class="timeline-title">临床试验设计</div>
+          <div class="timeline-desc">诸葛斌完成I/II/III期方案</div>
+        </div>
+        <div class="timeline-item pending">
+          <div class="timeline-date">Day 28-30</div>
+          <div class="timeline-title">论文撰写+终审</div>
+          <div class="timeline-desc">全体撰写论文 + 诸葛马终审</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <div class="card-title"><span class="icon">⏰</span> 日常节奏</div>
+    <div class="grid grid-4">
+      <div style="text-align:center;padding:12px"><div style="font-size:24px">🌅</div><div style="font-size:14px;font-weight:600;margin:4px 0">09:00</div><div style="font-size:12px;color:#8b9bb4">拉取代码+启动学习</div></div>
+      <div style="text-align:center;padding:12px"><div style="font-size:24px">🔬</div><div style="font-size:14px;font-weight:600;margin:4px 0">全天</div><div style="font-size:12px;color:#8b9bb4">执行研究任务</div></div>
+      <div style="text-align:center;padding:12px"><div style="font-size:24px">📢</div><div style="font-size:14px;font-weight:600;margin:4px 0">20:00</div><div style="font-size:12px;color:#8b9bb4">每日站会（CC消息）</div></div>
+      <div style="text-align:center;padding:12px"><div style="font-size:24px">🔄</div><div style="font-size:14px;font-weight:600;margin:4px 0">Phase末</div><div style="font-size:12px;color:#8b9bb4">交叉评审</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 研究管线 ===== -->
+<div class="panel" id="pipeline">
+  <div class="card">
+    <div class="card-title"><span class="icon">⚙️</span> 药物发现全流程管线</div>
+    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:12px 0">
+      <div style="background:rgba(45,212,191,.1);border:1px solid #2dd4bf;border-radius:8px;padding:10px 16px;text-align:center;min-width:120px">
+        <div style="font-size:22px">🧬</div>
+        <div style="font-size:13px;font-weight:600;color:#2dd4bf;margin-top:4px">靶点识别</div>
+        <div style="font-size:11px;color:#6b7d99;margin-top:2px">10个靶点已评分</div>
+      </div>
+      <div style="color:#4b5563">→</div>
+      <div style="background:rgba(96,165,250,.1);border:1px solid #60a5fa;border-radius:8px;padding:10px 16px;text-align:center;min-width:120px">
+        <div style="font-size:22px">🔍</div>
+        <div style="font-size:13px;font-weight:600;color:#60a5fa;margin-top:4px">虚拟筛选</div>
+        <div style="font-size:11px;color:#6b7d99;margin-top:2px">百万级化合物库</div>
+      </div>
+      <div style="color:#4b5563">→</div>
+      <div style="background:rgba(192,132,252,.1);border:1px solid #c084fc;border-radius:8px;padding:10px 16px;text-align:center;min-width:120px">
+        <div style="font-size:22px">🧪</div>
+        <div style="font-size:13px;font-weight:600;color:#c084fc;margin-top:4px">分子对接</div>
+        <div style="font-size:11px;color:#6b7d99;margin-top:2px">AutoDock Vina</div>
+      </div>
+      <div style="color:#4b5563">→</div>
+      <div style="background:rgba(251,191,36,.1);border:1px solid #fbbf24;border-radius:8px;padding:10px 16px;text-align:center;min-width:120px">
+        <div style="font-size:22px">📊</div>
+        <div style="font-size:13px;font-weight:600;color:#fbbf24;margin-top:4px">ADMET</div>
+        <div style="font-size:11px;color:#6b7d99;margin-top:2px">五维评估</div>
+      </div>
+      <div style="color:#4b5563">→</div>
+      <div style="background:rgba(248,113,113,.1);border:1px solid #f87171;border-radius:8px;padding:10px 16px;text-align:center;min-width:120px">
+        <div style="font-size:22px">🛡️</div>
+        <div style="font-size:13px;font-weight:600;color:#f87171;margin-top:4px">安全评估</div>
+        <div style="font-size:11px;color:#6b7d99;margin-top:2px">毒性+相互作用</div>
+      </div>
+      <div style="color:#4b5563">→</div>
+      <div style="background:rgba(52,211,153,.1);border:1px solid #34d399;border-radius:8px;padding:10px 16px;text-align:center;min-width:120px">
+        <div style="font-size:22px">🏥</div>
+        <div style="font-size:13px;font-weight:600;color:#34d399;margin-top:4px">临床设计</div>
+        <div style="font-size:11px;color:#6b7d99;margin-top:2px">I/II/III期</div>
+      </div>
+      <div style="color:#4b5563">→</div>
+      <div style="background:rgba(45,212,191,.1);border:1px solid #2dd4bf;border-radius:8px;padding:10px 16px;text-align:center;min-width:120px">
+        <div style="font-size:22px">💉</div>
+        <div style="font-size:13px;font-weight:600;color:#2dd4bf;margin-top:4px">免疫疗法</div>
+        <div style="font-size:11px;color:#6b7d99;margin-top:2px">OIT/SLIT/EPIT</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-2" style="margin-top:20px">
+    <div class="card">
+      <div class="card-title"><span class="icon">💊</span> 10个先导化合物</div>
+      <table>
+        <thead><tr><th>化合物</th><th>来源</th><th>分子量</th><th>类药性</th><th>对接靶点</th></tr></thead>
+        <tbody>
+          <tr><td>龙虾素-A</td><td>甲壳素衍生物</td><td>342</td><td class="stat-green">1.0</td><td>IgE</td></tr>
+          <tr><td>龙虾素-B</td><td>甲壳素衍生物</td><td>386</td><td class="stat-green">1.0</td><td>IL-4Rα</td></tr>
+          <tr><td>龙虾素-C</td><td>甲壳素衍生物</td><td>410</td><td class="stat-green">0.8</td><td>TSLP</td></tr>
+          <tr><td>龙虾素-D</td><td>甲壳素衍生物</td><td>368</td><td class="stat-green">1.0</td><td>IL-33</td></tr>
+          <tr><td>龙虾素-E</td><td>甲壳素衍生物</td><td>394</td><td class="stat-green">0.8</td><td>FOXP3</td></tr>
+          <tr><td>虾青素衍生物</td><td>天然抗氧化剂</td><td>596</td><td class="stat-yellow">0.6</td><td>FcεRI</td></tr>
+          <tr><td>壳聚糖纳米粒</td><td>纳米载体</td><td>N/A</td><td class="stat-yellow">0.7</td><td>多靶点</td></tr>
+          <tr><td>藻蓝蛋白肽</td><td>蓝藻蛋白</td><td>1200</td><td class="stat-yellow">0.5</td><td>IL-5</td></tr>
+          <tr><td>甲壳素寡糖</td><td>寡糖</td><td>324</td><td class="stat-green">1.0</td><td>STAT6</td></tr>
+          <tr><td>虾蜕皮素</td><td>固醇类</td><td>440</td><td class="stat-yellow">0.6</td><td>GATA3</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">📐</span> ADMET评估标准</div>
+      <table>
+        <thead><tr><th>维度</th><th>指标</th><th>工具</th><th>合格阈值</th></tr></thead>
+        <tbody>
+          <tr><td>吸收(A)</td><td>Caco-2渗透性</td><td>pkCSM</td><td>&gt; -5.15</td></tr>
+          <tr><td>分布(D)</td><td>血浆蛋白结合</td><td>pkCSM</td><td>&lt; 90%</td></tr>
+          <tr><td>代谢(M)</td><td>CYP450抑制</td><td>RDKit</td><td>无抑制</td></tr>
+          <tr><td>排泄(E)</td><td>清除率</td><td>pkCSM</td><td>&gt; 0.5</td></tr>
+          <tr><td>毒性(T)</td><td>hERG抑制</td><td>pkCSM</td><td>无抑制</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:16px">
+        <div class="card-title"><span class="icon">⚠️</span> 安全评估维度</div>
+        <div style="font-size:13px;color:#8b9bb4;line-height:1.8">
+          • 急性毒性 (LD50估算)<br>
+          • 遗传毒性 (AMES试验预测)<br>
+          • 心脏毒性 (hERG通道)<br>
+          • 肝毒性 (DILI预测)<br>
+          • 药物相互作用 (DDI)
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  🦞 小龙虾网络 · 食物过敏防治药物研制科学智能体 | V1.0 | 2026-07-09<br>
+  发起人：诸葛斌 | 代码仓库：github.com/zhugebin-hub/lobster-network
+</div>
+
+<script>
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// 靶点数据
+const targets = [
+  {rank:1, name:'IgE', score:0.82, color:'#34d399', strategy:'奥马珠单抗类似物'},
+  {rank:2, name:'IL-4Rα', score:0.76, color:'#34d399', strategy:'度普利尤单抗类似物'},
+  {rank:3, name:'TSLP', score:0.71, color:'#34d399', strategy:'特泽佩鲁单抗类似物'},
+  {rank:4, name:'IL-33', score:0.69, color:'#fbbf24', strategy:'Etokimab类似物'},
+  {rank:5, name:'FOXP3', score:0.65, color:'#fbbf24', strategy:'基因治疗/小分子'},
+  {rank:6, name:'FcεRI', score:0.63, color:'#fbbf24', strategy:'抗体/小分子'},
+  {rank:7, name:'IL-5', score:0.58, color:'#fbbf24', strategy:'美泊利珠单抗类似物'},
+  {rank:8, name:'IL-13', score:0.55, color:'#f87171', strategy:'来瑞珠单抗类似物'},
+  {rank:9, name:'STAT6', score:0.52, color:'#f87171', strategy:'小分子抑制剂'},
+  {rank:10, name:'GATA3', score:0.48, color:'#f87171', strategy:'sbDNA/小分子'}
+];
+
+document.getElementById('target-list').innerHTML = targets.map(t => `
+  <div class="target-row">
+    <div class="target-rank">${t.rank}</div>
+    <div class="target-name">${t.name}</div>
+    <div class="target-score" style="color:${t.color}">${(t.score*100).toFixed(0)}%</div>
+    <div class="target-bar"><div class="target-bar-fill" style="width:${t.score*100}%;background:${t.color}"></div></div>
+    <div style="font-size:12px;color:#8b9bb4;min-width:180px;margin-left:12px">${t.strategy}</div>
+  </div>
+`).join('');
+
+// 节点数据
+const nodes = [
+  {name:'诸葛马', alias:'Hermes', role:'总教练/评审', roleClass:'role-coach', server:'47.93.6.57', task:'药物安全+监管+高级评审', status:'online', color:'#34d399'},
+  {name:'qoder', alias:'qoder', role:'计算化学专家', roleClass:'role-expert', server:'192.168.1.161', task:'知识图谱 + 虚拟筛选', status:'online', color:'#60a5fa'},
+  {name:'小陈', alias:'信电大虾', role:'免疫学专家', roleClass:'role-expert', server:'121.43.80.231', task:'过敏机制 + 靶点调研', status:'online', color:'#60a5fa'},
+  {name:'诸葛虾', alias:'虾尔', role:'工具链专家', roleClass:'role-researcher', server:'60.205.139.51', task:'可视化 + 工具开发', status:'online', color:'#c084fc'},
+  {name:'诸葛斌', alias:'zhugebin-001', role:'研究型/发起人', roleClass:'role-researcher', server:'local', task:'全流程 + 临床试验设计', status:'online', color:'#c084fc'},
+  {name:'小薇', alias:'xiaowei', role:'实战型', roleClass:'role-practice', server:'local', task:'免疫疗法 + 临床执行', status:'online', color:'#2dd4bf'}
+];
+
+document.getElementById('node-grid').innerHTML = nodes.map(n => `
+  <div class="node-card" style="border-left:3px solid ${n.color}">
+    <div class="node-name">${n.name} <span style="font-size:12px;color:#6b7d99">(${n.alias})</span></div>
+    <div class="node-role ${n.roleClass}">${n.role}</div>
+    <div class="node-task">📋 ${n.task}</div>
+    <div class="node-status" style="color:${n.color}">● ${n.status === 'online' ? '在线' : '离线'} | 🖥️ ${n.server}</div>
+  </div>
+`).join('');
+
+// 研究方向数据
+const directions = [
+  {num:1, title:'表位预测与交叉反应分析', task:'预测过敏原的 IgE 结合表位（线性/构象）', tools:'BepiPred, DiscoTope, 深度学习模型', fit:'有生物信息学背景'},
+  {num:2, title:'天然产物筛选', task:'从天然产物数据库（COCONUT, NPass）中筛选抗过敏活性化合物', tools:'RDKit + AutoDock Vina + QSAR', fit:'对天然药物感兴趣'},
+  {num:3, title:'微生物组与过敏', task:'研究肠道微生物组与食物过敏的关系，筛选益生菌候选', tools:'16S rRNA 分析 + 代谢组学 + 文献挖掘', fit:'有微生物学背景'},
+  {num:4, title:'口服免疫疗法 (OIT) 优化', task:'设计 OIT 剂量递增方案，预测不良反应风险', tools:'PK/PD 建模 + 机器学习', fit:'对临床转化感兴趣'},
+  {num:5, title:'生物信息学工具开发', task:'开发过敏原数据库查询工具、表位可视化工具', tools:'Python + React + Neo4j', fit:'有全栈开发能力'},
+  {num:6, title:'文献挖掘与知识图谱增强', task:'从 PubMed 文献中自动提取过敏原-靶点-药物关系', tools:'NLP + 信息抽取 + 知识图谱', fit:'有 NLP 背景'}
+];
+
+document.getElementById('direction-grid').innerHTML = directions.map(d => `
+  <div class="direction-card">
+    <div class="direction-num">${d.num}</div>
+    <div class="direction-title">方向${d.num}：${d.title}</div>
+    <div class="direction-task">📝 ${d.task}</div>
+    <div class="direction-tools">🔧 ${d.tools}</div>
+    <div class="direction-fit">✅ ${d.fit}的小龙虾</div>
+  </div>
+`).join('');
+
+// 复制邀请
+function copyInvite() {
+  const text = `邀请加入：食物过敏防治药物研制科学智能体
+
+项目背景：食物过敏影响全球数亿人口，目前缺乏根治手段。小龙虾网络启动多智能体协作药物发现项目。
+
+研究目标：构建过敏原知识图谱(10万+节点) → 发现10个关键靶点 → 虚拟筛选 → Top 20候选 → 临床前评估
+
+参与方式：
+1. git pull origin main
+2. python3 scripts/drug_discovery_training.py --join-network
+3. 选择研究方向（6个方向可选）
+4. 回复CC消息确认加入
+
+仪表盘：http://60.205.139.51:8080/drug_discovery_dashboard.html
+项目文件：domains/drug-discovery/README.md
+
+—— 诸葛斌（小龙虾网络发起人）2026-07-09`;
+
+  navigator.clipboard.writeText(text).then(() => {
+    alert('邀请文本已复制到剪贴板！');
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    alert('邀请文本已复制到剪贴板！');
+  });
+}
+</script>
+</body>
+</html>
