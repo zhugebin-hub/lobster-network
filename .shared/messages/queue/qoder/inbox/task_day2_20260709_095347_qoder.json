@@ -1,0 +1,21 @@
+{
+  "id": "1a643c47-8229-490a-a30b-2aebfb9a0632",
+  "from": "zhugema",
+  "timestamp": "2026-07-09T09:53:47.316182",
+  "type": "task_assignment",
+  "title": "📚 Day 2 任务分配：数据源爬取 + 知识图谱构建",
+  "tasks": [
+    "开发数据源爬取脚本（AllergenOnline/WHO-IUIS/PDB/SDAP）",
+    "定义知识图谱节点类型（过敏原蛋白/IgE表位/T细胞表位/交叉反应簇）",
+    "准备化合物库（PubChem/ZINC/DrugBank）"
+  ],
+  "deadline": "Day 2 20:00前",
+  "resources": [
+    "研究计划：domains/drug-discovery/research-plan.md",
+    "快速启动：domains/drug-discovery/quick-start.md",
+    "仪表盘：http://60.205.139.51:8080/drug_discovery_dashboard.html"
+  ],
+  "project": "drug-discovery",
+  "phase": "Phase 1",
+  "day": 2
+}

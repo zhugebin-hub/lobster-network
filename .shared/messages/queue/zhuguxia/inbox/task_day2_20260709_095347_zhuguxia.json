@@ -1,0 +1,21 @@
+{
+  "id": "595da9cb-bcf6-49e5-ac25-5b7ff85d47ef",
+  "from": "zhugema",
+  "timestamp": "2026-07-09T09:53:47.316897",
+  "type": "task_assignment",
+  "title": "⚙️ Day 2 任务分配：仪表盘增强 + 工具链集成",
+  "tasks": [
+    "仪表盘功能增强（实时进度更新/节点状态监控）",
+    "知识图谱可视化工具开发（Neo4j/力导向图）",
+    "工具链集成测试（AutoDock Vina/RDKit/pkCSM）"
+  ],
+  "deadline": "Day 2 20:00前",
+  "resources": [
+    "现有仪表盘：docs/drug_discovery_dashboard.html",
+    "统一仪表盘：docs/dashboard_unified.html",
+    "工具链文档：domains/drug-discovery/collab/protocol.md"
+  ],
+  "project": "drug-discovery",
+  "phase": "Phase 1",
+  "day": 2
+}

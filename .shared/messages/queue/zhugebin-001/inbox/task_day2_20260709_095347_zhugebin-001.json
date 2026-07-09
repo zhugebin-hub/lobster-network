@@ -1,0 +1,21 @@
+{
+  "id": "3da43deb-c671-48f8-88a8-f001a4cf02c6",
+  "from": "zhugema",
+  "timestamp": "2026-07-09T09:53:47.317252",
+  "type": "task_assignment",
+  "title": "🏥 Day 2 任务分配：临床试验设计 + 合作协调",
+  "tasks": [
+    "搭建临床试验设计框架（I期/II期/III期）",
+    "设计免疫疗法方案（OIT/SLIT/EPIT/生物制剂联合）",
+    "协调傅玲琳团队（浙江工商大学食品学院）合作事宜"
+  ],
+  "deadline": "Day 2 20:00前",
+  "resources": [
+    "申报书V5.0：docs/新药创制科学智能体_申报书V5.0_过敏药实例版.docx",
+    "研究计划：domains/drug-discovery/research-plan.md",
+    "综合报告：domains/drug-discovery/reports/comprehensive_report.md"
+  ],
+  "project": "drug-discovery",
+  "phase": "Phase 1",
+  "day": 2
+}

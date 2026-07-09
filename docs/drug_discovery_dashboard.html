@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ð§¬ é£ç©è¿æé²æ²»è¯ç©ç å¶ç§å­¦æºè½ä½ - å°é¾è¾ç½ç»</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 50%, #24243e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        .header {
+            background: rgba(0,0,0,0.3);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header h1 {
+            font-size: 1.6em;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header .status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4dff88;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .main {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 0;
+            height: calc(100vh - 80px);
+        }
+        .left-panel {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            overflow-y: auto;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        .right-panel {
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .section-title {
+            font-size: 1.1em;
+            color: #00d2ff;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(0,210,255,0.3);
+        }
+        .student-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        .student-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .student-card .name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .student-card .role {
+            color: #a0a0a0;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .student-card .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 8px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+        }
+        .stat-item .value {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+        .stat-item .label {
+            font-size: 0.8em;
+            color: #a0a0a0;
+            margin-top: 2px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            margin: 8px 0;
+            overflow: hidden;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        .fill.blue { background: linear-gradient(90deg, #00d2ff, #3a7bd5); }
+        .fill.green { background: linear-gradient(90deg, #4dff88, #6bffaa); }
+        .fill.orange { background: linear-gradient(90deg, #ff6b35, #ff8c42); }
+        .fill.purple { background: linear-gradient(90deg, #6c63ff, #8b83ff); }
+        .fill.cyan { background: linear-gradient(90deg, #00f2fe, #4facfe); }
+        .task-list {
+            list-style: none;
+        }
+        .task-list li {
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .task-list li .time {
+            color: #00d2ff;
+            font-weight: bold;
+        }
+        .task-list li .status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+        .status.active {
+            background: rgba(77, 255, 136, 0.2);
+            color: #4dff88;
+        }
+        .status.pending {
+            background: rgba(255, 200, 0, 0.2);
+            color: #ffc800;
+        }
+        .status.completed {
+            background: rgba(108, 99, 255, 0.2);
+            color: #6c63ff;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .metric-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .metric-card .value {
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .metric-card .label {
+            color: #a0a0a0;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        .pipeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .pipeline-step {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            min-width: 120px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .pipeline-step.active {
+            border-color: #4dff88;
+            box-shadow: 0 0 15px rgba(77, 255, 136, 0.3);
+        }
+        .pipeline-step .step-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+        .pipeline-step .step-status {
+            font-size: 0.75em;
+            color: #a0a0a0;
+        }
+        .pipeline-arrow {
+            font-size: 1.2em;
+            color: #00d2ff;
+        }
+        .allergen-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .allergen-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .allergen-card .emoji {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+        .allergen-card .name {
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .allergen-card .count {
+            font-size: 0.8em;
+            color: #a0a0a0;
+            margin-top: 3px;
+        }
+        .target-list {
+            list-style: none;
+        }
+        .target-list li {
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .target-list li .target-name {
+            font-weight: bold;
+            color: #00d2ff;
+        }
+        .target-list li .target-stage {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+        .stage-approved {
+            background: rgba(77, 255, 136, 0.2);
+            color: #4dff88;
+        }
+        .stage-clinical {
+            background: rgba(255, 200, 0, 0.2);
+            color: #ffc800;
+        }
+        .stage-preclinical {
+            background: rgba(108, 99, 255, 0.2);
+            color: #8b83ff;
+        }
+        .stage-research {
+            background: rgba(255, 107, 53, 0.2);
+            color: #ff6b35;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        .phase-banner {
+            background: linear-gradient(90deg, rgba(0,210,255,0.2), rgba(58,123,213,0.2));
+            border: 1px solid rgba(0,210,255,0.3);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .phase-banner .phase-name {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #00d2ff;
+        }
+        .phase-banner .phase-progress {
+            font-size: 0.9em;
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ð§¬ é£ç©è¿æé²æ²»è¯ç©ç å¶ç§å­¦æºè½ä½</h1>
+        <div class="status">
+            <div class="status-dot"></div>
+            <span>Phase 1 è¿è¡ä¸­</span>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="left-panel">
+            <div class="section-title">èç¹åå·¥</div>
+            
+            <div class="student-card">
+                <div class="name" style="color: #ffd700">è¯¸èé©¬ (Hermes)</div>
+                <div class="role">æ»æç» / è¯å®¡ / ç»ç¨¿</div>
+                <div class="progress-bar"><div class="fill orange" style="width: 40%"></div></div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="value" style="color: #ffd700">8æ®µ</div>
+                        <div class="label">å½åæ®µä½</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value" style="color: #ffd700">9æ®µ</div>
+                        <div class="label">ç®æ æ®µä½</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="student-card">
+                <div class="name" style="color: #b84dff">qoder å°é¾è¾</div>
+                <div class="role">è®¡ç®åå­¦ä¸å®¶ | ç¥è¯å¾è°± + èæç­é</div>
+                <div class="progress-bar"><div class="fill purple" style="width: 35%"></div></div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="value" style="color: #b84dff">6æ®µ</div>
+                        <div class="label">å½åæ®µä½</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value" style="color: #b84dff">8æ®µ</div>
+                        <div class="label">ç®æ æ®µä½</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="student-card">
+                <div class="name" style="color: #4da6ff">ä¿¡çµå¤§è¾ å°é</div>
+                <div class="role">åç«å­¦ä¸å®¶ | è¿ææºå¶ + é¶ç¹è°ç </div>
+                <div class="progress-bar"><div class="fill blue" style="width: 25%"></div></div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="value" style="color: #4da6ff">2æ®µ</div>
+                        <div class="label">å½åæ®µä½</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value" style="color: #4da6ff">5æ®µ</div>
+                        <div class="label">ç®æ æ®µä½</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="student-card">
+                <div class="name" style="color: #4dff88">è¯¸èè¾ (è¾å°)</div>
+                <div class="role">å·¥å·é¾ + å¯è§åä¸å®¶</div>
+                <div class="progress-bar"><div class="fill green" style="width: 30%"></div></div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="value" style="color: #4dff88">2æ®µ</div>
+                        <div class="label">å½åæ®µä½</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value" style="color: #4dff88">5æ®µ</div>
+                        <div class="label">ç®æ æ®µä½</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="phase-banner">
+                <div>
+                    <div class="phase-name">ð¬ Phase 1: ç¥è¯æå»º (Day 1-7)</div>
+                    <div class="phase-progress">2026-07-09 å¯å¨ | å·²è¿è¡ 1 å¤©</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 1.5em; font-weight: bold; color: #00d2ff;">14%</div>
+                    <div style="font-size: 0.8em; color: #a0a0a0;">æ´ä½è¿åº¦</div>
+                </div>
+            </div>
+
+            <div class="section-title">å«å¤§è¿æåæ°æ®åº</div>
+            <div class="allergen-grid">
+                <div class="allergen-card">
+                    <div class="emoji">ð¥</div>
+                    <div class="name">çå¥¶</div>
+                    <div class="count">4ç§è¿æå</div>
+                </div>
+                <div class="allergen-card">
+                    <div class="emoji">ð¥</div>
+                    <div class="name">é¸¡è</div>
+                    <div class="count">4ç§è¿æå</div>
+                </div>
+                <div class="allergen-card">
+                    <div class="emoji">ð¥</div>
+                    <div class="name">è±ç</div>
+                    <div class="count">5ç§è¿æå</div>
+                </div>
+                <div class="allergen-card">
+                    <div class="emoji">ð°</div>
+                    <div class="name">åæ</div>
+                    <div class="count">4ç§è¿æå</div>
+                </div>
+                <div class="allergen-card">
+                    <div class="emoji">ð</div>
+                    <div class="name">é±¼ç±»</div>
+                    <div class="count">2ç§è¿æå</div>
+                </div>
+                <div class="allergen-card">
+                    <div class="emoji">ð¦</div>
+                    <div class="name">ç²å£³ç±»</div>
+                    <div class="count">2ç§è¿æå</div>
+                </div>
+                <div class="allergen-card">
+                    <div class="emoji">ð«</div>
+                    <div class="name">å¤§è±</div>
+                    <div class="count">3ç§è¿æå</div>
+                </div>
+                <div class="allergen-card">
+                    <div class="emoji">ð¾</div>
+                    <div class="name">å°éº¦</div>
+                    <div class="count">2ç§è¿æå</div>
+                </div>
+            </div>
+
+            <div class="section-title">è¯ç©ç åç®¡çº¿</div>
+            <div class="pipeline">
+                <div class="pipeline-step active">
+                    <div class="step-name">ð ç¥è¯å¾è°±</div>
+                    <div class="step-status">10ä¸+èç¹</div>
+                </div>
+                <div class="pipeline-arrow">â</div>
+                <div class="pipeline-step active">
+                    <div class="step-name">ð¯ é¶ç¹åç°</div>
+                    <div class="step-status">10ä¸ªé¶ç¹</div>
+                </div>
+                <div class="pipeline-arrow">â</div>
+                <div class="pipeline-step">
+                    <div class="step-name">ð èæç­é</div>
+                    <div class="step-status">ç¾ä¸ååç©</div>
+                </div>
+                <div class="pipeline-arrow">â</div>
+                <div class="pipeline-step">
+                    <div class="step-name">âï¸ åå­å¯¹æ¥</div>
+                    <div class="step-status">AutoDock</div>
+                </div>
+                <div class="pipeline-arrow">â</div>
+                <div class="pipeline-step">
+                    <div class="step-name">ð QSARé¢æµ</div>
+                    <div class="step-status">æ´»æ§+ADME</div>
+                </div>
+                <div class="pipeline-arrow">â</div>
+                <div class="pipeline-step">
+                    <div class="step-name">ð åéæåº</div>
+                    <div class="step-status">Top 20</div>
+                </div>
+            </div>
+
+            <div class="section-title">æ ¸å¿è¯ç©é¶ç¹</div>
+            <ul class="target-list">
+                <li>
+                    <span class="target-name">IgE</span>
+                    <span>Omalizumab (Xolair)</span>
+                    <span class="target-stage stage-approved">å·²ä¸å¸</span>
+                </li>
+                <li>
+                    <span class="target-name">IL-4RÎ±</span>
+                    <span>Dupilumab (Dupixent)</span>
+                    <span class="target-stage stage-approved">å·²ä¸å¸</span>
+                </li>
+                <li>
+                    <span class="target-name">TSLP</span>
+                    <span>Tezepelumab (Tezspire)</span>
+                    <span class="target-stage stage-approved">å·²ä¸å¸</span>
+                </li>
+                <li>
+                    <span class="target-name">FCÎµRI</span>
+                    <span>Lumiliximab</span>
+                    <span class="target-stage stage-clinical">ä¸´åºIIæ</span>
+                </li>
+                <li>
+                    <span class="target-name">JAK1/3</span>
+                    <span>Ruxolitinib</span>
+                    <span class="target-stage stage-preclinical">ä¸´åºå</span>
+                </li>
+                <li>
+                    <span class="target-name">SYK</span>
+                    <span>Fostamatinib</span>
+                    <span class="target-stage stage-preclinical">ä¸´åºå</span>
+                </li>
+                <li>
+                    <span class="target-name">CRTH2</span>
+                    <span>Fevipiprant</span>
+                    <span class="target-stage stage-clinical">ä¸´åºIIæ</span>
+                </li>
+                <li>
+                    <span class="target-name">Orai1</span>
+                    <span>GSK-831 / CM46</span>
+                    <span class="target-stage stage-research">æ©æç ç©¶</span>
+                </li>
+            </ul>
+
+            <div class="section-title">æ¯æ¥ä»»å¡</div>
+            <ul class="task-list">
+                <li>
+                    <span>ð 08:00-10:00 æ°æ®æ¶é + ç¥è¯å¾è°±æ­å»º</span>
+                    <span class="status active">è¿è¡ä¸­</span>
+                </li>
+                <li>
+                    <span>ð¬ 10:00-12:00 é¶ç¹æç®è°ç </span>
+                    <span class="status active">è¿è¡ä¸­</span>
+                </li>
+                <li>
+                    <span>âï¸ 14:00-17:00 å·¥å·é¾éææµè¯</span>
+                    <span class="status pending">å¾å¼å§</span>
+                </li>
+                <li>
+                    <span>ð¥ 19:00-20:00 äº¤åè¯å®¡</span>
+                    <span class="status pending">å¾å¼å§</span>
+                </li>
+                <li>
+                    <span>ð 20:00-21:00 è¿åº¦æ±æ¥</span>
+                    <span class="status pending">å¾å¼å§</span>
+                </li>
+            </ul>
+
+            <div class="section-title">æ ¸å¿ææ </div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="value">8</div>
+                    <div class="label">è¿æåç§ç±»</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">10</div>
+                    <div class="label">è¯ç©é¶ç¹</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">4</div>
+                    <div class="label">åä½èç¹</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">30</div>
+                    <div class="label">ç ç©¶å¤©æ°</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="index.html" class="back-btn">â è¿åå°é¾è¾ç½ç» Â· ç»ä¸ææ¥ä¸­å¿</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // æ¨¡æå®æ¶æ°æ®æ´æ°
+        setInterval(() => {
+            const metrics = document.querySelectorAll('.metric-card .value');
+            metrics.forEach(metric => {
+                const currentValue = parseInt(metric.textContent);
+                if (!isNaN(currentValue)) {
+                    const newValue = currentValue + Math.floor(Math.random() * 2) - 1;
+                    if (newValue > 0) metric.textContent = newValue;
+                }
+            });
+        }, 8000);
+    </script>
+</body>
+</html>

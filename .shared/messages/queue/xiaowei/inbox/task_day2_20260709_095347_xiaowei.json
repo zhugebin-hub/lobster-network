@@ -1,0 +1,21 @@
+{
+  "id": "028702b3-48a7-4335-a0a2-ca5e00a4ffb8",
+  "from": "zhugema",
+  "timestamp": "2026-07-09T09:53:47.317505",
+  "type": "task_assignment",
+  "title": "💉 Day 2 任务分配：OIT方案设计 + 免疫疗法调研",
+  "tasks": [
+    "设计OIT剂量递增方案",
+    "建立不良反应风险预测模型",
+    "免疫疗法文献调研（OIT/SLIT/EPIT/生物制剂联合）"
+  ],
+  "deadline": "Day 2 20:00前",
+  "resources": [
+    "研究计划：domains/drug-discovery/research-plan.md",
+    "综合报告：domains/drug-discovery/reports/comprehensive_report.md",
+    "快速启动：domains/drug-discovery/quick-start.md"
+  ],
+  "project": "drug-discovery",
+  "phase": "Phase 1",
+  "day": 2
+}

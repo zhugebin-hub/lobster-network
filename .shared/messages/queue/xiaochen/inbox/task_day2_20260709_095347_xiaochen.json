@@ -1,0 +1,21 @@
+{
+  "id": "3732dfab-8683-493b-b641-19517291f83c",
+  "from": "zhugema",
+  "timestamp": "2026-07-09T09:53:47.316620",
+  "type": "task_assignment",
+  "title": "🔬 Day 2 任务分配：靶点评分 + 通路分析",
+  "tasks": [
+    "完善10个靶点评分报告（IgE/IL-4Rα/TSLP/IL-33/FOXP3/FcεRI/IL-5/IL-13/STAT6/GATA3）",
+    "绘制三大信号通路分析图（IgE通路/Th2通路/口服耐受通路）",
+    "过敏机制文献调研（Th2分化/IgE产生/肥大细胞脱颗粒）"
+  ],
+  "deadline": "Day 2 20:00前",
+  "resources": [
+    "研究计划：domains/drug-discovery/research-plan.md",
+    "靶点数据：domains/drug-discovery/data/full_research_results.json",
+    "仪表盘：http://60.205.139.51:8080/drug_discovery_dashboard.html"
+  ],
+  "project": "drug-discovery",
+  "phase": "Phase 1",
+  "day": 2
+}
