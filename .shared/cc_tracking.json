@@ -27,6 +27,34 @@
         }
       },
       "timestamp": "2026-07-09T08:55:46.038779"
+    },
+    "science-invitation-001": {
+      "from": "zhugebin",
+      "category": "science_invitation",
+      "subject": "邀请加入：食物过敏防治药物研制科学智能体",
+      "to_nodes": {
+        "qoder": {
+          "status": "sent",
+          "sent_at": "2026-07-09T08:58:20.793899",
+          "ack_deadline": "2026-07-11T08:58:20.793887"
+        },
+        "xiaochen": {
+          "status": "sent",
+          "sent_at": "2026-07-09T08:58:20.793901",
+          "ack_deadline": "2026-07-11T08:58:20.793887"
+        },
+        "zhuguxia": {
+          "status": "sent",
+          "sent_at": "2026-07-09T08:58:20.793903",
+          "ack_deadline": "2026-07-11T08:58:20.793887"
+        },
+        "zhugema": {
+          "status": "sent",
+          "sent_at": "2026-07-09T08:58:20.793904",
+          "ack_deadline": "2026-07-11T08:58:20.793887"
+        }
+      },
+      "timestamp": "2026-07-09T08:58:20.793906"
     }
   }
 }
