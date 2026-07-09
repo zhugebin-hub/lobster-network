@@ -19,6 +19,13 @@
     "stock": {
       "problems": 0,
       "accuracy": "N/A"
+    },
+    "drug_discovery": {
+      "role": "lead_researcher",
+      "specialization": "compound_design_and_screening",
+      "agents_assigned": ["compound-design-agent", "virtual-screening-agent"],
+      "tasks_completed": 0,
+      "hypotheses_generated": 0
     }
   },
   "composite_score": 47.7,

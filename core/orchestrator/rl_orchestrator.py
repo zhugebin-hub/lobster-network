@@ -56,6 +56,7 @@ class AgentType(str, Enum):
     STUDENT = "student"    # 学生虾
     BUSINESS = "business"  # 业务虾
     ROUTER = "router"      # 路由虾
+    SCIENTIST = "scientist"  # 科学智能体
 
 
 @dataclass
@@ -679,5 +680,42 @@ def create_default_agents() -> List[AgentCard]:
             capabilities=["routing", "orchestration", "matching", "search", "retrieval"],
             cost=0.8, speed=0.85, quality=0.9,
             max_concurrent=5,
+        ),
+        # === 科学智能体：食物过敏防治药物研制 ===
+        AgentCard(
+            agent_id="allergen-target-agent",
+            agent_type=AgentType.SCIENTIST,
+            capabilities=["target_discovery", "hypothesis_generation", "knowledge_graph", "food_allergy", "epitope_mapping"],
+            cost=0.8, speed=0.7, quality=0.88,
+        ),
+        AgentCard(
+            agent_id="compound-design-agent",
+            agent_type=AgentType.SCIENTIST,
+            capabilities=["compound_design", "lead_optimization", "molecular_generation", "food_allergy"],
+            cost=0.9, speed=0.6, quality=0.85,
+        ),
+        AgentCard(
+            agent_id="virtual-screening-agent",
+            agent_type=AgentType.SCIENTIST,
+            capabilities=["virtual_screening", "molecular_docking", "hit_ranking", "food_allergy"],
+            cost=0.7, speed=0.9, quality=0.82,
+        ),
+        AgentCard(
+            agent_id="admet-prediction-agent",
+            agent_type=AgentType.SCIENTIST,
+            capabilities=["admet_prediction", "drug_likeness", "pharmacokinetics", "cyp450", "food_allergy"],
+            cost=0.6, speed=0.85, quality=0.87,
+        ),
+        AgentCard(
+            agent_id="toxicity-assessment-agent",
+            agent_type=AgentType.SCIENTIST,
+            capabilities=["toxicity_assessment", "safety_evaluation", "herg_prediction", "off_target", "food_allergy"],
+            cost=0.7, speed=0.8, quality=0.86,
+        ),
+        AgentCard(
+            agent_id="literature-mining-agent",
+            agent_type=AgentType.SCIENTIST,
+            capabilities=["literature_mining", "knowledge_extraction", "trend_analysis", "review_generation", "food_allergy"],
+            cost=0.5, speed=0.9, quality=0.83,
         ),
     ]

@@ -19,6 +19,13 @@
     "stock": {
       "problems": 0,
       "accuracy": "N/A"
+    },
+    "drug_discovery": {
+      "role": "researcher",
+      "specialization": "safety_and_admet_evaluation",
+      "agents_assigned": ["admet-prediction-agent", "toxicity-assessment-agent"],
+      "tasks_completed": 0,
+      "hypotheses_generated": 0
     }
   },
   "composite_score": 40.3,
