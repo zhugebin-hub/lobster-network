@@ -1,0 +1,187 @@
+{
+  "phase": 2,
+  "name": "先导化合物筛选与ADMET评估",
+  "description": "虚拟筛选、分子对接、ADMET预测、类药性评估、结构优化",
+  "problems": [
+    {
+      "id": "dd2-001",
+      "type": "lead_screening",
+      "difficulty": "入门",
+      "question": "Lipinski五规则中，可旋转键的数量对口服生物利用度有何影响？",
+      "options": ["可旋转键越多，口服生物利用度越低", "可旋转键越多越好", "无影响", "可旋转键必须为0"],
+      "answer": "可旋转键越多，口服生物利用度越低",
+      "reasoning": "可旋转键过多会增加分子的构象熵，降低与靶点的结合亲和力，同时影响口服吸收。通常建议可旋转键≤10以保证良好的口服生物利用度"
+    },
+    {
+      "id": "dd2-002",
+      "type": "lead_screening",
+      "difficulty": "入门",
+      "question": "在先导化合物筛选中，TPSA(拓扑极性表面积)的口服药物推荐上限是？",
+      "options": ["140 Å²", "70 Å²", "300 Å²", "500 Å²"],
+      "answer": "140 Å²",
+      "reasoning": "TPSA≤140 Å²是口服药物肠道吸收良好的阈值，TPSA过大意味着分子极性过强，难以通过被动扩散穿越肠道上皮细胞膜"
+    },
+    {
+      "id": "dd2-003",
+      "type": "molecular_docking",
+      "difficulty": "初级",
+      "question": "分子对接中，结合自由能(ΔG)的值越负表示什么？",
+      "options": ["结合越强", "结合越弱", "无意义", "毒性越高"],
+      "answer": "结合越强",
+      "reasoning": "结合自由能ΔG越负，表示配体与受体结合越稳定，亲和力越高。通常ΔG≤-7 kcal/mol被认为有较好的结合活性，ΔG≤-10 kcal/mol为极强结合"
+    },
+    {
+      "id": "dd2-004",
+      "type": "molecular_docking",
+      "difficulty": "初级",
+      "question": "根据结合自由能估算抑制常数Ki的公式是？(RT=0.593 kcal/mol, 298K)",
+      "options": ["Ki = exp(ΔG / RT)", "Ki = ΔG × RT", "Ki = ΔG / RT", "Ki = RT / ΔG"],
+      "answer": "Ki = exp(ΔG / RT)",
+      "reasoning": "Ki = exp(ΔG/RT)，其中ΔG为结合自由能，RT为气体常数×温度(0.593 kcal/mol at 298K)。ΔG越负，Ki越小，抑制活性越强"
+    },
+    {
+      "id": "dd2-005",
+      "type": "admet",
+      "difficulty": "入门",
+      "question": "ADMET预测中的'M'代表什么？",
+      "options": ["代谢(Metabolism)", "分子量(Mass)", "膜穿透(Membrane)", "机制(Mechanism)"],
+      "answer": "代谢(Metabolism)",
+      "reasoning": "ADMET分别代表吸收(Absorption)、分布(Distribution)、代谢(Metabolism)、排泄(Excretion)和毒性(Toxicity)，是评估药物药代动力学和安全性的五维指标"
+    },
+    {
+      "id": "dd2-006",
+      "type": "admet",
+      "difficulty": "入门",
+      "question": "CYP3A4在药物代谢中的重要性体现在？",
+      "options": ["代谢约50%的临床药物", "仅代谢抗生素", "与药物代谢无关", "只在肝脏中表达"],
+      "answer": "代谢约50%的临床药物",
+      "reasoning": "CYP3A4是肝脏和小肠中最重要的药物代谢酶，负责约50%临床药物的I相代谢，其活性影响药物的首过效应和清除率，是DDI(药物相互作用)评估的关键"
+    },
+    {
+      "id": "dd2-007",
+      "type": "admet",
+      "difficulty": "初级",
+      "question": "hERG通道抑制风险评估在ADMET中的重要性是？",
+      "options": ["预测心脏毒性(长QT综合征)", "预测肝毒性", "预测肾毒性", "预测神经毒性"],
+      "answer": "预测心脏毒性(长QT综合征)",
+      "reasoning": "hERG钾通道抑制可导致QT间期延长和致死性心律失常(尖端扭转型室速)，是药物撤市的主要原因之一，因此hERG抑制风险评估是临床前毒理学的必检项目"
+    },
+    {
+      "id": "dd2-008",
+      "type": "lead_screening",
+      "difficulty": "初级",
+      "question": "药物化学中'类药性'(Drug-likeness)评估通常基于哪个规则？",
+      "options": ["Lipinski五规则", "Henderson-Hasselbalch方程", "Michaelis-Menten方程", "Arrhenius方程"],
+      "answer": "Lipinski五规则",
+      "reasoning": "Lipinski五规则(MW≤500, logP≤5, HBD≤5, HBA≤10)是评估类药性的经典准则，违反2条及以上规则的分子口服生物利用度通常较差"
+    },
+    {
+      "id": "dd2-009",
+      "type": "molecular_docking",
+      "difficulty": "初级",
+      "question": "在IgE靶点分子对接中，Cε3结构域的关键残基通常包括？",
+      "options": ["R330, K351, D371", "A1, B2, C3", "H1, H2, H3", "S1, S2, S3"],
+      "answer": "R330, K351, D371",
+      "reasoning": "IgE的Cε3结构域是与FcεRI结合的关键区域，R330、K351、D371等残基参与氢键网络和盐桥形成，是抗IgE药物设计的重点结合位点"
+    },
+    {
+      "id": "dd2-010",
+      "type": "admet",
+      "difficulty": "初级",
+      "question": "血浆蛋白结合率(PPB)过高的药物可能存在什么问题？",
+      "options": ["游离药物浓度低，药效降低且易受DDI影响", "半衰期过短", "口服吸收差", "代谢过快"],
+      "answer": "游离药物浓度低，药效降低且易受DDI影响",
+      "reasoning": "PPB>95%时，游离药物浓度低(药效取决于游离浓度)，且容易被其他高PPB药物置换导致游离浓度骤增，增加DDI风险和个体差异"
+    },
+    {
+      "id": "dd2-011",
+      "type": "lead_screening",
+      "difficulty": "初级",
+      "question": "对于多肽类药物(如龙虾素系列环肽)，以下哪个参数最可能超出Lipinski五规则？",
+      "options": ["分子量(MW>500)", "logP", "氢键供体数", "氢键受体数"],
+      "answer": "分子量(MW>500)",
+      "reasoning": "多肽类药物天然分子量大，通常超过500 Da，违反Lipinski五规则，但通过环化等策略可改善代谢稳定性和膜渗透性，属于beyond Rule-of-5范畴"
+    },
+    {
+      "id": "dd2-012",
+      "type": "molecular_docking",
+      "difficulty": "初级",
+      "question": "分子对接评分函数中，氢键数量与结合亲和力的关系是？",
+      "options": ["氢键越多通常结合越强，但过多可能影响选择性", "氢键越少越好", "氢键数量与结合无关", "氢键只影响溶解度"],
+      "answer": "氢键越多通常结合越强，但过多可能影响选择性",
+      "reasoning": "氢键是配体-受体结合的重要驱动力，适度氢键增强亲和力和特异性，但过多氢键可能导致脱靶效应和口服吸收变差(TPSA增大)"
+    },
+    {
+      "id": "dd2-013",
+      "type": "admet",
+      "difficulty": "初级",
+      "question": "药物半衰期(t½)与表观分布容积(Vd)和清除率(CL)的关系是？",
+      "options": ["t½ = 0.693 × Vd / CL", "t½ = Vd × CL", "t½ = CL / Vd", "t½ = 0.693 × CL / Vd"],
+      "answer": "t½ = 0.693 × Vd / CL",
+      "reasoning": "半衰期公式t½ = 0.693 × Vd / CL(ln2≈0.693)。Vd越大(药物分布广)半衰期越长，CL越大(清除快)半衰期越短。理想口服药物半衰期通常为2-24小时"
+    },
+    {
+      "id": "dd2-014",
+      "type": "lead_screening",
+      "difficulty": "初级",
+      "question": "虚拟筛选中'命中化合物'(Hit)与'先导化合物'(Lead)的区别是？",
+      "options": ["Hit是初步筛选命中，Lead是优化后的可开发候选", "两者完全相同", "Hit比Lead更好", "Lead是Hit的前体"],
+      "answer": "Hit是初步筛选命中，Lead是优化后的可开发候选",
+      "reasoning": "Hit→Lead→Candidate是药物发现的递进流程。Hit是虚拟/高通量筛选的初步命中，Lead是经过初步优化(SAR、ADMET改善)后具有开发潜力的先导化合物"
+    },
+    {
+      "id": "dd2-015",
+      "type": "admet",
+      "difficulty": "初级",
+      "question": "Ames试验在ADMET评估中用于检测什么？",
+      "options": ["致突变性(遗传毒性)", "心脏毒性", "肝毒性", "肾毒性"],
+      "answer": "致突变性(遗传毒性)",
+      "reasoning": "Ames试验利用鼠伤寒沙门氏菌回复突变检测化合物的致突变性，是FDA/ICH要求的临床前遗传毒性评价组合的核心试验，阳性结果通常导致开发终止"
+    },
+    {
+      "id": "dd2-016",
+      "type": "molecular_docking",
+      "difficulty": "初级",
+      "question": "对于IL-4Rα靶点，度普利尤单抗的结合位点关键残基包括？",
+      "options": ["R53, Y83, Y127", "A1, B2, C3", "K100, D200", "S50, T75"],
+      "answer": "R53, Y83, Y127",
+      "reasoning": "IL-4Rα胞外域的R53、Y83、Y127等残基参与与IL-4/IL-13的结合界面，度普利尤单抗通过占据这些位点竞争性阻断细胞因子-受体结合"
+    },
+    {
+      "id": "dd2-017",
+      "type": "lead_screening",
+      "difficulty": "初级",
+      "question": "logP值对药物膜渗透性的影响规律是？",
+      "options": ["logP在1-3时渗透性最佳", "logP越高越好", "logP越低越好", "logP与渗透性无关"],
+      "answer": "logP在1-3时渗透性最佳",
+      "reasoning": "logP反映脂溶性。logP过低(<0)水溶性过大难以穿越脂质膜，过高(>5)则水溶性差且易蓄积。logP在1-3时兼顾水溶性和膜渗透性，是口服药物的最优区间"
+    },
+    {
+      "id": "dd2-018",
+      "type": "admet",
+      "difficulty": "初级",
+      "question": "血脑屏障(BBB)穿透性评估对食物过敏药物的意义是？",
+      "options": ["食物过敏药物通常不需要进入中枢，BBB穿透性应低", "必须高BBB穿透", "BBB与食物过敏无关", "所有药物都需评估BBB"],
+      "answer": "食物过敏药物通常不需要进入中枢，BBB穿透性应低",
+      "reasoning": "食物过敏的靶点在外周免疫系统，BBB穿透性高反而增加中枢副作用风险(如嗜睡)，因此食物过敏药物通常要求BBB穿透性低以减少中枢不良反应"
+    },
+    {
+      "id": "dd2-019",
+      "type": "lead_screening",
+      "difficulty": "初级",
+      "question": "在化合物优化中，'结构-活性关系'(SAR)研究的核心目标是？",
+      "options": ["找到活性与结构的规律以指导优化", "确定分子量", "测定溶解度", "评估市场前景"],
+      "answer": "找到活性与结构的规律以指导优化",
+      "reasoning": "SAR通过系统改变分子结构(如取代基替换)并测试活性变化，揭示结构特征与生物活性的关系，指导先导化合物优化以提高效价、选择性和ADMET性质"
+    },
+    {
+      "id": "dd2-020",
+      "type": "admet",
+      "difficulty": "初级",
+      "question": "以下哪个参数最适合评估药物的肝毒性风险？",
+      "options": ["肝毒性风险评分(基于logP和MW等)", "口服生物利用度", "血浆蛋白结合率", "半衰期"],
+      "answer": "肝毒性风险评分(基于logP和MW等)",
+      "reasoning": "肝毒性风险评估综合考虑logP(高脂溶性易蓄积)、分子量(>450风险增加)、活性代谢物生成等因素，是临床前毒理学评价的重要组成部分"
+    }
+  ]
+}

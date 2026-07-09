@@ -1,0 +1,187 @@
+{
+  "phase": 1,
+  "name": "药物发现基础与食物过敏机制",
+  "description": "新药创制流程、靶点识别基础、食物过敏免疫机制、过敏原分类",
+  "problems": [
+    {
+      "id": "dd1-001",
+      "type": "target_identification",
+      "difficulty": "入门",
+      "question": "新药创制的基本流程通常包含哪些阶段？",
+      "options": ["靶点发现→先导化合物→临床前→临床→上市", "化合物合成→动物实验→人体试验", "文献调研→实验设计→数据分析", "市场调研→配方设计→生产"],
+      "answer": "靶点发现→先导化合物→临床前→临床→上市",
+      "reasoning": "现代新药创制标准流程：靶点发现与验证→先导化合物筛选与优化→临床前研究(药效/药代/毒理)→I/II/III期临床试验→上市审批"
+    },
+    {
+      "id": "dd1-002",
+      "type": "target_identification",
+      "difficulty": "入门",
+      "question": "食物过敏中最核心的免疫球蛋白是哪种？",
+      "options": ["IgG", "IgE", "IgA", "IgM"],
+      "answer": "IgE",
+      "reasoning": "IgE是介导速发型食物过敏反应的核心抗体。过敏原刺激B细胞发生IgE类别转换后，IgE结合肥大细胞表面的FcεRI受体，再次接触过敏原时发生交联脱颗粒"
+    },
+    {
+      "id": "dd1-003",
+      "type": "allergy_mechanism",
+      "difficulty": "入门",
+      "question": "IgE介导的食物过敏反应通常在摄入过敏原后多久出现症状？",
+      "options": ["数分钟至2小时", "6-12小时", "24-48小时", "一周以上"],
+      "answer": "数分钟至2小时",
+      "reasoning": "IgE介导的速发型过敏反应通常在接触过敏原后数分钟至2小时内出现症状，因为肥大细胞脱颗粒释放组胺等介质是即时反应"
+    },
+    {
+      "id": "dd1-004",
+      "type": "allergy_mechanism",
+      "difficulty": "入门",
+      "question": "以下哪种食物过敏原的致死性过敏风险最高？",
+      "options": ["花生", "牛奶", "鸡蛋", "小麦"],
+      "answer": "花生",
+      "reasoning": "花生过敏的严重性最高，致死性过敏风险显著，且仅约20%儿童可自然耐受，是食物过敏药物研发的重点目标过敏原"
+    },
+    {
+      "id": "dd1-005",
+      "type": "target_identification",
+      "difficulty": "初级",
+      "question": "肥大细胞表面与IgE结合的高亲和力受体是？",
+      "options": ["FcεRI", "FcγRI", "FcαRI", "CD23"],
+      "answer": "FcεRI",
+      "reasoning": "FcεRI(高亲和力IgE受体)是肥大细胞和嗜碱性粒细胞表面的关键受体，IgE通过其Fc段结合FcεRI的α链，是过敏反应的关键启动环节"
+    },
+    {
+      "id": "dd1-006",
+      "type": "allergy_mechanism",
+      "difficulty": "初级",
+      "question": "Th2型免疫反应中，促进B细胞发生IgE类别转换的关键细胞因子是？",
+      "options": ["IL-4和IL-13", "IFN-γ和IL-2", "IL-17和IL-22", "TGF-β和IL-10"],
+      "answer": "IL-4和IL-13",
+      "reasoning": "Th2细胞分泌的IL-4和IL-13是驱动B细胞发生IgE类别转换的关键细胞因子，它们通过激活STAT6通路促进IgE重链恒定区(Cε)的转录"
+    },
+    {
+      "id": "dd1-007",
+      "type": "drug_class",
+      "difficulty": "入门",
+      "question": "奥马珠单抗(Omalizumab)的药物靶点是什么？",
+      "options": ["IgE Fc片段", "IL-4受体α链", "IL-5", "TSLP"],
+      "answer": "IgE Fc片段",
+      "reasoning": "奥马珠单抗是抗IgE单克隆抗体，特异性结合游离IgE的Cε3结构域(Fc片段)，阻断IgE与FcεRI的结合，是首个用于食物过敏的生物制剂"
+    },
+    {
+      "id": "dd1-008",
+      "type": "drug_class",
+      "difficulty": "初级",
+      "question": "度普利尤单抗(Dupilumab)通过阻断哪个信号通路发挥治疗作用？",
+      "options": ["IL-4/IL-13信号通路", "IgE-FcεRI通路", "IL-5信号通路", "TSLP信号通路"],
+      "answer": "IL-4/IL-13信号通路",
+      "reasoning": "度普利尤单抗靶向IL-4Rα，同时阻断IL-4和IL-13信号，抑制Th2分化、IgE类别转换和嗜酸性粒细胞招募，目前在食物过敏适应症开展III期临床"
+    },
+    {
+      "id": "dd1-009",
+      "type": "allergen_classification",
+      "difficulty": "入门",
+      "question": "花生中最主要的过敏原蛋白Ara h 2属于哪个蛋白质家族？",
+      "options": ["2S白蛋白", "7S球蛋白", "11S球蛋白", "脂质转移蛋白"],
+      "answer": "2S白蛋白",
+      "reasoning": "Ara h 2属于2S白蛋白家族，是花生中最主要的致敏蛋白之一，与严重过敏反应高度相关，通过二硫键稳定结构使其耐热耐消化"
+    },
+    {
+      "id": "dd1-010",
+      "type": "allergen_classification",
+      "difficulty": "入门",
+      "question": "牛奶过敏在儿童中的自然耐受率约为多少？",
+      "options": ["约80%在5岁前耐受", "约20%在5岁前耐受", "通常持续终生", "约50%在成年后耐受"],
+      "answer": "约80%在5岁前耐受",
+      "reasoning": "牛奶过敏是儿童最常见的食物过敏之一，但预后较好，约80%的儿童在5岁前可自然获得耐受，这与免疫系统的成熟和口服耐受机制的建立有关"
+    },
+    {
+      "id": "dd1-011",
+      "type": "allergy_mechanism",
+      "difficulty": "初级",
+      "question": "食物过敏中的'口服免疫耐受'主要由哪种细胞维持？",
+      "options": ["调节性T细胞(Treg)", "效应T细胞(Teff)", "B细胞", "NK细胞"],
+      "answer": "调节性T细胞(Treg)",
+      "reasoning": "口服免疫耐受由CD103+树突状细胞诱导的FOXP3+调节性T细胞(Treg)维持，Treg通过分泌IL-10和TGF-β抑制过敏免疫反应，其功能缺陷与食物过敏发病密切相关"
+    },
+    {
+      "id": "dd1-012",
+      "type": "target_identification",
+      "difficulty": "初级",
+      "question": "胸腺基质淋巴细胞生成素(TSLP)在食物过敏中的作用是？",
+      "options": ["上皮细胞释放的警报素，激活DC→Th2通路", "直接中和过敏原", "促进Treg分化", "抑制肥大细胞脱颗粒"],
+      "answer": "上皮细胞释放的警报素，激活DC→Th2通路",
+      "reasoning": "TSLP是上皮细胞在损伤或过敏原刺激下释放的警报素(alarm)，激活树突状细胞表达OX40L，促进Th2分化和过敏致敏，是上游靶点"
+    },
+    {
+      "id": "dd1-013",
+      "type": "drug_class",
+      "difficulty": "初级",
+      "question": "Lipinski五规则中，口服药物的分子量上限是多少？",
+      "options": ["500 Da", "300 Da", "700 Da", "1000 Da"],
+      "answer": "500 Da",
+      "reasoning": "Lipinski五规则规定口服药物应满足：MW≤500, logP≤5, HBD≤5, HBA≤10。分子量过大影响口服吸收，是小分子药物筛选的基本准则"
+    },
+    {
+      "id": "dd1-014",
+      "type": "drug_class",
+      "difficulty": "初级",
+      "question": "以下哪个参数最适合评估口服药物的肠道渗透性？",
+      "options": ["Caco-2细胞渗透性", "血浆蛋白结合率", "半衰期", "清除率"],
+      "answer": "Caco-2细胞渗透性",
+      "reasoning": "Caco-2细胞模型模拟人肠道上皮屏障，是评估口服药物肠道渗透性和吸收特性的金标准方法，渗透性高的药物口服生物利用度更好"
+    },
+    {
+      "id": "dd1-015",
+      "type": "allergy_mechanism",
+      "difficulty": "初级",
+      "question": "双盲安慰剂对照食物激发试验(DBPCFC)在食物过敏诊断中的作用是？",
+      "options": ["确诊食物过敏的金标准", "筛查工具", "疗效监测", "预后评估"],
+      "answer": "确诊食物过敏的金标准",
+      "reasoning": "DBPCFC是食物过敏诊断的金标准，通过双盲随机给予可疑过敏原或安慰剂，客观评估过敏反应，排除心理因素和主观偏差"
+    },
+    {
+      "id": "dd1-016",
+      "type": "target_identification",
+      "difficulty": "初级",
+      "question": "IL-33在食物过敏通路中的角色是？",
+      "options": ["上皮警报素，激活ILC2→Th2", "直接诱导IgE产生", "促进Treg分化", "抑制组胺释放"],
+      "answer": "上皮警报素，激活ILC2→Th2",
+      "reasoning": "IL-33是上皮细胞释放的警报素，通过ST2受体激活固有淋巴细胞2型(ILC2)，分泌IL-5和IL-13，驱动Th2型免疫和嗜酸性粒细胞招募"
+    },
+    {
+      "id": "dd1-017",
+      "type": "allergen_classification",
+      "difficulty": "入门",
+      "question": "海鲜(甲壳类)过敏的主要过敏原蛋白是？",
+      "options": ["原肌球蛋白(Tropomyosin)", "乳清蛋白", "卵白蛋白", "麦醇溶蛋白"],
+      "answer": "原肌球蛋白(Tropomyosin)",
+      "reasoning": "甲壳类海鲜的主要过敏原是原肌球蛋白，它在不同甲壳类之间高度保守，导致交叉反应性强，且与尘螨原肌球蛋白也有交叉反应"
+    },
+    {
+      "id": "dd1-018",
+      "type": "allergy_mechanism",
+      "difficulty": "初级",
+      "question": "口服免疫疗法(OIT)治疗食物过敏的基本原理是？",
+      "options": ["逐步递增过敏原剂量诱导免疫耐受", "完全回避过敏原", "使用抗组胺药缓解症状", "手术切除过敏组织"],
+      "answer": "逐步递增过敏原剂量诱导免疫耐受",
+      "reasoning": "OIT通过从极低剂量开始逐步递增过敏原口服剂量，诱导免疫偏离(从Th2转向Th1/Treg)和IgG4升高，最终实现免疫耐受和脱敏"
+    },
+    {
+      "id": "dd1-019",
+      "type": "drug_class",
+      "difficulty": "初级",
+      "question": "FDA批准的首个花生口服免疫疗法产品名称是？",
+      "options": ["Palforzia", "EpiPen", "Dupixent", "Xolair"],
+      "answer": "Palforzia",
+      "reasoning": "Palforzia(花生粉胶囊)是FDA于2020年批准的首个花生口服免疫疗法产品，用于4-17岁花生过敏儿童的脱敏治疗，标志着食物过敏免疫疗法的里程碑"
+    },
+    {
+      "id": "dd1-020",
+      "type": "allergy_mechanism",
+      "difficulty": "初级",
+      "question": "在食物过敏免疫耐受评估中，IgG4水平升高的意义是？",
+      "options": ["免疫耐受的标志，阻断IgE介导反应", "过敏加重标志", "与疗效无关", "表示感染"],
+      "answer": "免疫耐受的标志，阻断IgE介导反应",
+      "reasoning": "IgG4是免疫耐受的标志性抗体，在OIT过程中IgG4升高可竞争性阻断过敏原与IgE的结合(阻断性抗体)，是脱敏成功的免疫学标志"
+    }
+  ]
+}

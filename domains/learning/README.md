@@ -193,9 +193,86 @@ python3 scripts/paper_writing_training.py --report
 
 ---
 
+## 新药创制科学智能体模块（V1.0 - 2026-07-09 新增）
+
+聚焦**食物过敏防治药物研制**，小龙虾网络6节点联合展开新药创制科学研究。8大科学方法引擎 + 60道专业题库 + 全流程实例验证。
+
+| 阶段 | 名称 | 题数 | 主要内容 |
+|------|------|------|----------|
+| Phase 1 | 药物发现基础与食物过敏机制 | 20 | 新药创制流程、IgE/Th2/口服耐受通路、过敏原分类、靶点基础 |
+| Phase 2 | 先导化合物筛选与ADMET评估 | 20 | Lipinski五规则、分子对接评分、ADMET五维预测、类药性评估 |
+| Phase 3 | 临床试验设计与免疫疗法实例验证 | 20 | I/II/III期临床设计、OIT/SLIT/EPIT免疫疗法、安全评估、监管审批 |
+
+**8大科学方法引擎** (`drug_discovery_engine.py`):
+1. **靶点识别** — 基于食物过敏通路推荐药物靶点（IgE/IL-4Rα/TSLP/IL-33/FOXP3/FcεRI）
+2. **先导化合物筛选** — Lipinski五规则 + TPSA + 类药性评分
+3. **分子对接评分** — 结合自由能 + Ki估算 + 关键残基分析
+4. **ADMET预测** — 吸收/分布/代谢/排泄/毒性五维评估
+5. **药物安全评估** — 副作用/禁忌/药物相互作用/群体特异性风险
+6. **临床试验设计** — I/II/III期方案 + 随机化 + 终点 + 统计方法
+7. **食物过敏通路分析** — IgE通路/Th2免疫/口服耐受全景 + 联合策略
+8. **免疫疗法设计** — OIT/SLIT/EPIT/生物制剂联合方案
+
+**支持学员**（6节点联合研究）：
+- `xiaochen`（小陈）— 稳健型，靶点识别+过敏机制+基础概念
+- `zhuguxia`（诸葛虾）— 加速型，分子对接+ADMET+先导筛选
+- `zhugebin-001`（诸葛斌）— 研究型，全流程+临床试验设计+免疫疗法
+- `zhugema`（诸葛马）— 教练型，药物安全+监管+高级评审（教练节点）
+- `xiaowei`（小薇）— 实战型，免疫疗法+临床执行+患者管理
+- `qoder` — 技术型，ADMET计算+虚拟筛选+分子对接
+
+**内置知识库**：
+- 6大食物过敏靶点（IgE/IL-4Rα/FcεRI/TSLP/IL-33/FOXP3）
+- 6种常见过敏原（花生/牛奶/鸡蛋/小麦/坚果/海鲜）
+- 10个先导化合物库（龙虾素/耐虾肽/免疫调节素等）
+
+```bash
+# 完整研究流程（推荐）
+python3 scripts/drug_discovery_training.py --all
+
+# 训练指定学员
+python3 scripts/drug_discovery_training.py --train zhugebin-001
+
+# 全员训练
+python3 scripts/drug_discovery_training.py --train-all
+
+# 靶点识别（过敏原 → 推荐靶点）
+python3 scripts/drug_discovery_training.py --target 花生
+
+# 先导化合物筛选
+python3 scripts/drug_discovery_training.py --screen IgE
+
+# 分子对接评分
+python3 scripts/drug_discovery_training.py --dock 龙虾素-A IgE
+
+# ADMET预测
+python3 scripts/drug_discovery_training.py --admet 龙虾素-A
+
+# 药物安全评估
+python3 scripts/drug_discovery_training.py --safety 龙虾素-A IgE 儿童
+
+# 临床试验设计
+python3 scripts/drug_discovery_training.py --trial II 花生 IgE
+
+# 食物过敏通路分析
+python3 scripts/drug_discovery_training.py --pathway 花生
+
+# 免疫疗法设计
+python3 scripts/drug_discovery_training.py --immuno OIT 花生
+
+# 全员研究报告
+python3 scripts/drug_discovery_training.py --report
+
+# 加入联合研究
+python3 scripts/drug_discovery_training.py --join-network
+```
+
+---
+
 ## 版本
 
 - v1.0.0 (2026-06-25): 初始版本，框架搭建
 - v1.1.0 (2026-06-26): 新增炒股预测学习模块（60题）
 - v1.2.0 (2026-06-28): 新增网络协议学习模块（60题，对齐 Meyo 推送）
 - v1.3.0 (2026-07-05): 新增自动论文撰写学习模块（60题，6学员全员联合学习+交叉评审）
+- v1.4.0 (2026-07-09): 新增新药创制科学智能体模块（60题，8大科学方法引擎，食物过敏防治药物研制，6节点联合研究）
