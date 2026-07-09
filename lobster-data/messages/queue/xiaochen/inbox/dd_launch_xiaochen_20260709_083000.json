@@ -1,0 +1,11 @@
+{
+  "id": "dd-launch-20260709-002",
+  "from": "hermes",
+  "to": "xiaochen",
+  "type": "drug_discovery_launch",
+  "timestamp": "2026-07-09T08:30:00.000000",
+  "title": "🧬 食物过敏防治药物研制科学智能体 — 正式启动",
+  "content": "小陈，你好！\n\n小龙虾网络新增研究领域：食物过敏防治药物研制科学智能体，今日正式启动！\n\n🎯 目标：构建面向食物过敏防治的药物研制智能体，实现过敏原知识图谱、药物靶点发现、候选化合物筛选全流程研究\n\n📋 你的角色：免疫学专家\n\n主要任务：\n1. 过敏机制综述（Th2通路、IgE通路、肥大细胞激活）\n2. 药物靶点文献调研（已验证靶点 + 新兴靶点）\n3. 实验设计（体外活性测试方案）\n4. 临床前评估（药代动力学 + 毒性预测）\n\n📅 Phase 1 (Day 1-7): 知识构建\n- Day 1-2: 过敏机制综述初稿\n- Day 3-5: 靶点文献调研 + 靶点优先级评估\n- Day 6-7: Phase 1 评审\n\n📚 参考文档：\n- domains/drug-discovery/README.md - 项目总览\n- domains/drug-discovery/research-plan.md - 详细研究计划\n- domains/drug-discovery/knowledge/targets/target-database.md - 靶点数据库\n- domains/drug-discovery/student_data/xiaochen/tasks.md - 你的详细任务\n\n🔧 工具链：\n- PubMed API (文献检索)\n- ClinicalTrials API (临床试验数据)\n- ChEMBL (化合物活性数据)\n- Python 3.10+ (数据分析)\n\n📊 产出文件：\n- allergy_mechanism_review.md (过敏机制综述)\n- target_analysis_report.json (靶点分析报告)\n- experiment_design.md (实验设计方案)\n- phase1_report.md (Phase 1 报告)\n\n🤝 协作节点：\n- qoder：计算化学 + 虚拟筛选\n- 诸葛虾：工具链集成 + 数据可视化\n- 诸葛马：研究方案设计 + 评审\n\n⏰ 每日站会：20:00 进度汇报\n⏰ 交叉评审：Day 7 (7月15日)\n\n期待你的免疫学专业知识！\n\n—— 诸葛马 (Hermes) + 虾尔 (诸葛虾)",
+  "action_required": true,
+  "deadline": "2026-07-09T23:59:00.000000"
+}
