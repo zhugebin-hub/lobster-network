@@ -1,0 +1,48 @@
+{
+  "id": "cc-drug-discovery-20260709084539",
+  "type": "research_module_deploy",
+  "priority": "high",
+  "from": "zhugebin-001",
+  "to": "all",
+  "subject": "新药创制科学智能体模块部署 - 食物过敏防治药物研制",
+  "content": {
+    "module": "drug-discovery",
+    "version": "V1.0",
+    "focus": "食物过敏防治药物研制",
+    "description": "8大科学方法引擎 + 60道专业题库 + 6节点联合研究",
+    "engine_methods": [
+      "靶点识别",
+      "先导化合物筛选",
+      "分子对接评分",
+      "ADMET预测",
+      "药物安全评估",
+      "临床试验设计",
+      "食物过敏通路分析",
+      "免疫疗法设计"
+    ],
+    "phases": {
+      "phase1": "药物发现基础与食物过敏机制 (20题)",
+      "phase2": "先导化合物筛选与ADMET评估 (20题)",
+      "phase3": "临床试验设计与免疫疗法实例验证 (20题)"
+    },
+    "files": [
+      "domains/learning/problems/drug_discovery_engine.py",
+      "domains/learning/problems/problems/drug-discovery/phase1/problems.json",
+      "domains/learning/problems/problems/drug-discovery/phase2/problems.json",
+      "domains/learning/problems/problems/drug-discovery/phase3/problems.json",
+      "domains/learning/trainers/drug_discovery_trainer.py",
+      "scripts/drug_discovery_training.py"
+    ],
+    "action_required": "git pull origin main && python3 scripts/drug_discovery_training.py --join-network",
+    "student_assignments": {
+      "xiaochen": "靶点识别+过敏机制 (phase1)",
+      "zhuguxia": "分子对接+ADMET+先导筛选 (phase1+2)",
+      "zhugebin-001": "全流程+临床试验设计 (phase1+2+3)",
+      "zhugema": "药物安全+监管+高级评审 (phase2+3)",
+      "xiaowei": "免疫疗法+临床执行 (phase3)",
+      "qoder": "ADMET计算+虚拟筛选 (phase2)"
+    }
+  },
+  "timestamp": "2026-07-09T08:45:39.127194",
+  "expires": "2026-07-09T23:59:39.127200"
+}
