@@ -1,0 +1,156 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-10T01:51:01.498079",
+    "nodes": 24,
+    "edges": 4
+  },
+  "allergens": [
+    {
+      "id": "allergen_花生",
+      "name": "花生",
+      "type": "allergen"
+    },
+    {
+      "id": "allergen_牛奶",
+      "name": "牛奶",
+      "type": "allergen"
+    },
+    {
+      "id": "allergen_鸡蛋",
+      "name": "鸡蛋",
+      "type": "allergen"
+    },
+    {
+      "id": "allergen_坚果",
+      "name": "坚果",
+      "type": "allergen"
+    },
+    {
+      "id": "allergen_鱼类",
+      "name": "鱼类",
+      "type": "allergen"
+    },
+    {
+      "id": "allergen_甲壳类",
+      "name": "甲壳类",
+      "type": "allergen"
+    },
+    {
+      "id": "allergen_大豆",
+      "name": "大豆",
+      "type": "allergen"
+    },
+    {
+      "id": "allergen_小麦",
+      "name": "小麦",
+      "type": "allergen"
+    }
+  ],
+  "targets": [
+    {
+      "id": "target_IL-4Rα",
+      "name": "IL-4Rα",
+      "type": "target"
+    },
+    {
+      "id": "target_IgE",
+      "name": "IgE",
+      "type": "target"
+    },
+    {
+      "id": "target_TSLP",
+      "name": "TSLP",
+      "type": "target"
+    },
+    {
+      "id": "target_IL-33",
+      "name": "IL-33",
+      "type": "target"
+    },
+    {
+      "id": "target_FOXP3",
+      "name": "FOXP3",
+      "type": "target"
+    },
+    {
+      "id": "target_FcεRI",
+      "name": "FcεRI",
+      "type": "target"
+    },
+    {
+      "id": "target_IL-5",
+      "name": "IL-5",
+      "type": "target"
+    },
+    {
+      "id": "target_IL-13",
+      "name": "IL-13",
+      "type": "target"
+    },
+    {
+      "id": "target_STAT6",
+      "name": "STAT6",
+      "type": "target"
+    },
+    {
+      "id": "target_GATA3",
+      "name": "GATA3",
+      "type": "target"
+    }
+  ],
+  "drugs": [
+    {
+      "id": "drug_奥马珠单抗",
+      "name": "奥马珠单抗",
+      "type": "drug"
+    },
+    {
+      "id": "drug_度普利尤单抗",
+      "name": "度普利尤单抗",
+      "type": "drug"
+    },
+    {
+      "id": "drug_特泽佩鲁单抗",
+      "name": "特泽佩鲁单抗",
+      "type": "drug"
+    },
+    {
+      "id": "drug_Etokimab",
+      "name": "Etokimab",
+      "type": "drug"
+    },
+    {
+      "id": "drug_美泊利珠单抗",
+      "name": "美泊利珠单抗",
+      "type": "drug"
+    },
+    {
+      "id": "drug_来瑞珠单抗",
+      "name": "来瑞珠单抗",
+      "type": "drug"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "allergen_花生",
+      "target": "target_IgE",
+      "type": "induces"
+    },
+    {
+      "source": "target_IgE",
+      "target": "drug_奥马珠单抗",
+      "type": "targeted_by"
+    },
+    {
+      "source": "allergen_牛奶",
+      "target": "target_IL-4Rα",
+      "type": "induces"
+    },
+    {
+      "source": "target_IL-4Rα",
+      "target": "drug_度普利尤单抗",
+      "type": "targeted_by"
+    }
+  ]
+}

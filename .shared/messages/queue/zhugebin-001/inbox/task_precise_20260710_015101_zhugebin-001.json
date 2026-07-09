@@ -1,0 +1,13 @@
+{
+  "id": "1d2a4381-46a0-4db7-8ac0-a7aedaac3e7b",
+  "from": "zhugema",
+  "timestamp": "2026-07-10T01:51:01.459742",
+  "type": "task_assignment",
+  "title": "📋 精准任务分配 - zhugebin-001",
+  "tasks": [
+    "搭建临床试验设计框架",
+    "设计免疫疗法方案"
+  ],
+  "deadline": "20:00",
+  "priority": "高"
+}

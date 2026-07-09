@@ -1,0 +1,47 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-10T01:51:01.544622",
+    "database": "PubChem",
+    "total_compounds": 110000000,
+    "filters": [
+      "Lipinski五规则",
+      "TPSA ≤ 140",
+      "可旋转键 ≤ 10",
+      "分子量 200-500",
+      "logP ≤ 5"
+    ]
+  },
+  "steps": [
+    {
+      "step": 1,
+      "name": "数据下载",
+      "description": "从PubChem下载化合物数据",
+      "status": "待启动"
+    },
+    {
+      "step": 2,
+      "name": "Lipinski过滤",
+      "description": "应用Lipinski五规则过滤",
+      "status": "待启动"
+    },
+    {
+      "step": 3,
+      "name": "分子对接",
+      "description": "使用AutoDock Vina进行分子对接",
+      "status": "待启动"
+    },
+    {
+      "step": 4,
+      "name": "ADMET预测",
+      "description": "预测ADMET性质",
+      "status": "待启动"
+    },
+    {
+      "step": 5,
+      "name": "优先级排序",
+      "description": "综合评分排序",
+      "status": "待启动"
+    }
+  ]
+}

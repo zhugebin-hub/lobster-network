@@ -1,0 +1,8 @@
+{
+  "id": "c872ccdb-de3e-40e5-a84a-2ce3e128d693",
+  "from": "zhugema",
+  "timestamp": "2026-07-10T01:51:01.457132",
+  "type": "standup_reminder",
+  "title": "📋 每日站会提醒",
+  "content": "请每日20:00前发送站会汇报到inbox。格式：【今日完成】+【明日计划】+【遇到的问题】。诸葛马每日21:00评审。"
+}

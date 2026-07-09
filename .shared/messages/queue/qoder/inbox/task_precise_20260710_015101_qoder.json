@@ -1,0 +1,13 @@
+{
+  "id": "0af29d91-bfb6-4ee8-9abb-4ed58af50289",
+  "from": "zhugema",
+  "timestamp": "2026-07-10T01:51:01.458428",
+  "type": "task_assignment",
+  "title": "📋 精准任务分配 - qoder",
+  "tasks": [
+    "加速数据源爬取脚本开发（AllergenOnline/WHO-IUIS/PDB/SDAP）",
+    "构建过敏原-靶点-药物10万+节点知识图谱"
+  ],
+  "deadline": "20:00",
+  "priority": "高"
+}

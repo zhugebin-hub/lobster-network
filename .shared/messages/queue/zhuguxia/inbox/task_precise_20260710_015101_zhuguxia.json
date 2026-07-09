@@ -1,0 +1,13 @@
+{
+  "id": "99f935dc-e429-42a8-874a-0ae77b18d003",
+  "from": "zhugema",
+  "timestamp": "2026-07-10T01:51:01.459497",
+  "type": "task_assignment",
+  "title": "📋 精准任务分配 - zhuguxia",
+  "tasks": [
+    "仪表盘功能增强（实时进度更新/节点状态监控）",
+    "知识图谱可视化工具开发"
+  ],
+  "deadline": "20:00",
+  "priority": "中"
+}

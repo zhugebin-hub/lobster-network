@@ -1,0 +1,13 @@
+{
+  "id": "c5e83c5b-fa19-4258-a21e-1192cb5e7631",
+  "from": "zhugema",
+  "timestamp": "2026-07-10T01:51:01.459163",
+  "type": "task_assignment",
+  "title": "📋 精准任务分配 - xiaochen",
+  "tasks": [
+    "完善10个靶点评分报告",
+    "绘制三大信号通路分析图"
+  ],
+  "deadline": "20:00",
+  "priority": "高"
+}

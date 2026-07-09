@@ -1,0 +1,13 @@
+{
+  "id": "6e1dcd89-3217-4cbd-a16c-16270226ef01",
+  "from": "zhugema",
+  "timestamp": "2026-07-10T01:51:01.459902",
+  "type": "task_assignment",
+  "title": "📋 精准任务分配 - xiaowei",
+  "tasks": [
+    "设计OIT剂量递增方案",
+    "建立不良反应风险预测模型"
+  ],
+  "deadline": "20:00",
+  "priority": "中"
+}
