@@ -1,0 +1,280 @@
+{
+  "project": "食物过敏防治药物研制科学智能体",
+  "version": "V1.0",
+  "node": "zhugebin-001",
+  "timestamp": "2026-07-09T09:10:01.500643",
+  "phase1": {
+    "allergens": {
+      "花生": {
+        "severity": "高(致死性过敏风险)",
+        "recommended": "抗IgE + 口服免疫疗法(OIT)",
+        "strategies": [
+          "抗IgE + 口服免疫疗法(OIT)",
+          "抗IL-4Rα + 益生菌",
+          "抗TSLP + 抗IgE"
+        ]
+      },
+      "牛奶": {
+        "severity": "中",
+        "recommended": "抗IgE + 口服免疫疗法(OIT)",
+        "strategies": [
+          "抗IgE + 口服免疫疗法(OIT)",
+          "抗IL-4Rα + 益生菌",
+          "抗TSLP + 抗IgE"
+        ]
+      },
+      "鸡蛋": {
+        "severity": "中",
+        "recommended": "抗IgE + 口服免疫疗法(OIT)",
+        "strategies": [
+          "抗IgE + 口服免疫疗法(OIT)",
+          "抗IL-4Rα + 益生菌",
+          "抗TSLP + 抗IgE"
+        ]
+      },
+      "小麦": {
+        "severity": "中(运动诱发加重)",
+        "recommended": "抗IgE + 口服免疫疗法(OIT)",
+        "strategies": [
+          "抗IgE + 口服免疫疗法(OIT)",
+          "抗IL-4Rα + 益生菌",
+          "抗TSLP + 抗IgE"
+        ]
+      },
+      "坚果": {
+        "severity": "高(致死性过敏风险)",
+        "recommended": "抗IgE + 口服免疫疗法(OIT)",
+        "strategies": [
+          "抗IgE + 口服免疫疗法(OIT)",
+          "抗IL-4Rα + 益生菌",
+          "抗TSLP + 抗IgE"
+        ]
+      },
+      "海鲜": {
+        "severity": "中-高",
+        "recommended": "抗IgE + 口服免疫疗法(OIT)",
+        "strategies": [
+          "抗IgE + 口服免疫疗法(OIT)",
+          "抗IL-4Rα + 益生菌",
+          "抗TSLP + 抗IgE"
+        ]
+      }
+    },
+    "targets": {
+      "IgE": {
+        "name": "免疫球蛋白E",
+        "overall": 0.732,
+        "recommendation": "推荐推进",
+        "clinical_stage": "已上市/III期"
+      },
+      "IL-4Rα": {
+        "name": "白细胞介素4受体α链",
+        "overall": 0.758,
+        "recommendation": "推荐推进",
+        "clinical_stage": "III期(食物过敏适应症)"
+      },
+      "FcεRI": {
+        "name": "高亲和力IgE受体",
+        "overall": 0.52,
+        "recommendation": "需进一步验证",
+        "clinical_stage": "临床前"
+      },
+      "TSLP": {
+        "name": "胸腺基质淋巴细胞生成素",
+        "overall": 0.72,
+        "recommendation": "推荐推进",
+        "clinical_stage": "II期(食物过敏探索)"
+      },
+      "IL-33": {
+        "name": "白细胞介素33",
+        "overall": 0.695,
+        "recommendation": "推荐推进",
+        "clinical_stage": "II期"
+      },
+      "FOXP3": {
+        "name": "叉头框蛋白P3(调节性T细胞)",
+        "overall": 0.57,
+        "recommendation": "需进一步验证",
+        "clinical_stage": "I期/临床前"
+      }
+    }
+  },
+  "phase2": {
+    "screening": {
+      "total": 10,
+      "passed": 8,
+      "rate": 0.8
+    },
+    "candidates": [
+      {
+        "compound": "耐虾肽-1",
+        "best_target": "IgE",
+        "binding_energy": -12.32,
+        "grade": "A+ (极强结合)",
+        "ki": 0.001,
+        "admet_score": 0.805,
+        "safety_score": 0.6,
+        "drug_likeness": 1.0
+      },
+      {
+        "compound": "免疫调节素-C",
+        "best_target": "IgE",
+        "binding_energy": -11.68,
+        "grade": "A+ (极强结合)",
+        "ki": 0.003,
+        "admet_score": 0.797,
+        "safety_score": 0.6,
+        "drug_likeness": 1.0
+      },
+      {
+        "compound": "耐受因子-E",
+        "best_target": "IgE",
+        "binding_energy": -11.58,
+        "grade": "A+ (极强结合)",
+        "ki": 0.003,
+        "admet_score": 0.788,
+        "safety_score": 0.6,
+        "drug_likeness": 0.75
+      },
+      {
+        "compound": "脱敏素-D",
+        "best_target": "IgE",
+        "binding_energy": -11.42,
+        "grade": "A+ (极强结合)",
+        "ki": 0.004,
+        "admet_score": 0.785,
+        "safety_score": 0.6,
+        "drug_likeness": 1.0
+      },
+      {
+        "compound": "龙虾素-B",
+        "best_target": "IgE",
+        "binding_energy": -11.38,
+        "grade": "A+ (极强结合)",
+        "ki": 0.005,
+        "admet_score": 0.8,
+        "safety_score": 0.6,
+        "drug_likeness": 1.0
+      },
+      {
+        "compound": "龙虾素-A",
+        "best_target": "IgE",
+        "binding_energy": -11.27,
+        "grade": "A+ (极强结合)",
+        "ki": 0.006,
+        "admet_score": 0.81,
+        "safety_score": 0.6,
+        "drug_likeness": 0.9
+      },
+      {
+        "compound": "Th2调节素-G",
+        "best_target": "IgE",
+        "binding_energy": -11.25,
+        "grade": "A+ (极强结合)",
+        "ki": 0.006,
+        "admet_score": 0.826,
+        "safety_score": 0.6,
+        "drug_likeness": 0.85
+      },
+      {
+        "compound": "IgE阻断肽-F",
+        "best_target": "IgE",
+        "binding_energy": -11.01,
+        "grade": "A+ (极强结合)",
+        "ki": 0.009,
+        "admet_score": 0.803,
+        "safety_score": 0.6,
+        "drug_likeness": 1.0
+      }
+    ]
+  },
+  "phase3": {
+    "trials": {
+      "花生": {
+        "trial_id": "FA-IL-4Rα-II-20260709",
+        "design": "随机双盲安慰剂对照",
+        "sample": 120
+      },
+      "牛奶": {
+        "trial_id": "FA-IL-4Rα-II-20260709",
+        "design": "随机双盲安慰剂对照",
+        "sample": 120
+      },
+      "鸡蛋": {
+        "trial_id": "FA-IL-4Rα-II-20260709",
+        "design": "随机双盲安慰剂对照",
+        "sample": 120
+      },
+      "小麦": {
+        "trial_id": "FA-IL-4Rα-II-20260709",
+        "design": "随机双盲安慰剂对照",
+        "sample": 120
+      },
+      "坚果": {
+        "trial_id": "FA-IL-4Rα-II-20260709",
+        "design": "随机双盲安慰剂对照",
+        "sample": 120
+      },
+      "海鲜": {
+        "trial_id": "FA-IL-4Rα-II-20260709",
+        "design": "随机双盲安慰剂对照",
+        "sample": 120
+      }
+    },
+    "immunotherapy": {
+      "OIT": {
+        "name": "口服免疫疗法",
+        "efficacy": 0.7,
+        "protocol": {
+          "初始日剂量": "0.5 mg 蛋白",
+          "递增期": "每2周递增, 1mg→5mg→15mg→50mg→100mg→300mg",
+          "维持剂量": "300 mg 蛋白/日",
+          "维持期": "≥2年(建议3-5年)",
+          "总疗程": "约3-5年"
+        }
+      },
+      "SLIT": {
+        "name": "舌下免疫疗法",
+        "efficacy": 0.5,
+        "protocol": {
+          "初始日剂量": "0.05 mg 蛋白",
+          "递增期": "每周递增, 0.05→0.1→0.5→1→2→5 mg",
+          "维持剂量": "5-7 mg 蛋白/日",
+          "维持期": "≥3年",
+          "总疗程": "约3-5年"
+        }
+      },
+      "EPIT": {
+        "name": "经皮免疫疗法",
+        "efficacy": 0.4,
+        "protocol": {
+          "初始剂量": "100 μg 蛋白贴片",
+          "递增期": "24小时贴敷→48小时贴敷(逐渐延长)",
+          "维持剂量": "250 μg 蛋白贴片/48h",
+          "维持期": "≥2年",
+          "总疗程": "约2-3年"
+        }
+      },
+      "生物制剂联合": {
+        "name": "生物制剂+OIT联合",
+        "efficacy": 0.82,
+        "protocol": {
+          "预处理": "抗IgE(奥马珠单抗) 150-375mg q2-4周 × 8周",
+          "OIT启动": "预处理后启动标准OIT方案",
+          "联合维持": "抗IgE + OIT 300mg/日 维持6-12月",
+          "脱联合": "逐步停用抗IgE, 继续OIT维持",
+          "总疗程": "约2-3年"
+        }
+      }
+    }
+  },
+  "summary": {
+    "allergens": 6,
+    "targets": 6,
+    "compounds_passed": 8,
+    "best_candidate": "耐虾肽-1",
+    "best_binding": -12.32,
+    "best_immuno": "生物制剂联合",
+    "best_immuno_efficacy": 0.82
+  }
+}
