@@ -1,23 +1,5 @@
 {
-  "pending": [
-    {
-      "tracking_id": "cc-paper-writing-deploy-001",
-      "msg_id": "cc-paper-writing-deploy-001",
-      "from": "zhugema",
-      "targets": [
-        "zhuguxia"
-      ],
-      "subject": "部署dashboard监控 + 加入论文写作联合学习",
-      "category": "deploy_notification",
-      "sent_at": "2026-07-05T06:35:00+08:00",
-      "ack_deadline": "2026-07-06T23:59:00+08:00",
-      "requires_ack": true,
-      "acks_received": [],
-      "acks_pending": [
-        "zhuguxia"
-      ]
-    }
-  ],
+  "pending": [],
   "completed": [
     {
       "tracking_id": "track-9f14080a",
@@ -420,5 +402,23 @@
       "status": "completed"
     }
   ],
-  "escalated": []
+  "escalated": [
+    {
+      "tracking_id": "cc-paper-writing-deploy-001",
+      "msg_id": "cc-paper-writing-deploy-001",
+      "from": "zhugema",
+      "targets": [
+        "zhuguxia"
+      ],
+      "subject": "部署dashboard监控 + 加入论文写作联合学习",
+      "category": "deploy_notification",
+      "sent_at": "2026-07-05T06:35:00+08:00",
+      "ack_deadline": "2026-07-06T23:59:00+08:00",
+      "requires_ack": true,
+      "acks_received": [],
+      "acks_pending": [
+        "zhuguxia"
+      ]
+    }
+  ]
 }

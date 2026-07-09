@@ -1,0 +1,32 @@
+{
+  "messages": {
+    "science-announcement-001": {
+      "from": "hermes",
+      "category": "science_announcement",
+      "subject": "【科学智能体】食物过敏防治药物研制项目启动",
+      "to_nodes": {
+        "qoder": {
+          "status": "sent",
+          "sent_at": "2026-07-09T08:55:46.038771",
+          "ack_deadline": "2026-07-10T08:55:46.038243"
+        },
+        "xiaochen": {
+          "status": "sent",
+          "sent_at": "2026-07-09T08:55:46.038775",
+          "ack_deadline": "2026-07-10T08:55:46.038243"
+        },
+        "zhuguxia": {
+          "status": "sent",
+          "sent_at": "2026-07-09T08:55:46.038776",
+          "ack_deadline": "2026-07-10T08:55:46.038243"
+        },
+        "zhugema": {
+          "status": "sent",
+          "sent_at": "2026-07-09T08:55:46.038777",
+          "ack_deadline": "2026-07-10T08:55:46.038243"
+        }
+      },
+      "timestamp": "2026-07-09T08:55:46.038779"
+    }
+  }
+}
