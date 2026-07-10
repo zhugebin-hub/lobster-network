@@ -1,0 +1,15 @@
+{
+  "id": "07075e09-695d-4f87-a63e-605372eca82e",
+  "from": "zhugema",
+  "timestamp": "2026-07-10T09:14:03.422083",
+  "type": "ack_reminder",
+  "title": "📋 ACK回复催促 - xiaochen",
+  "content": "xiaochen，请确认收到任务通知并回复ACK。格式：【收到】+【预计完成时间】。今日任务截止时间：20:00。",
+  "tasks": [
+    "确认收到任务通知",
+    "回复ACK（【收到】+【预计完成时间】）",
+    "执行分配的任务"
+  ],
+  "deadline": "20:00",
+  "priority": "高"
+}

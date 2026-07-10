@@ -1,0 +1,15 @@
+{
+  "id": "0f12cf78-fb00-4614-a5ff-9c7d862f969b",
+  "from": "zhugema",
+  "timestamp": "2026-07-10T09:14:03.421595",
+  "type": "ack_reminder",
+  "title": "📋 ACK回复催促 - qoder",
+  "content": "qoder，请确认收到任务通知并回复ACK。格式：【收到】+【预计完成时间】。今日任务截止时间：20:00。",
+  "tasks": [
+    "确认收到任务通知",
+    "回复ACK（【收到】+【预计完成时间】）",
+    "执行分配的任务"
+  ],
+  "deadline": "20:00",
+  "priority": "高"
+}
