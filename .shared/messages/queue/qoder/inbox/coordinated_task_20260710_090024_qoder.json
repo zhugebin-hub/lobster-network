@@ -1,0 +1,15 @@
+{
+  "id": "3b56b31b-cc72-45f4-bfd8-d02d22836ea2",
+  "from": "zhugema",
+  "timestamp": "2026-07-10T09:00:24.669070",
+  "type": "task_assignment",
+  "title": "📚 qoder - 药物模块MQTT集成任务",
+  "content": "qoder，请完成以下任务：\n1. 将MQTT集成到药物发现模块\n2. 实现药物数据MQTT传输\n3. 加速数据源爬取脚本开发\n截止时间：20:00",
+  "tasks": [
+    "将MQTT集成到药物发现模块",
+    "实现药物数据MQTT传输",
+    "加速数据源爬取脚本开发"
+  ],
+  "deadline": "20:00",
+  "priority": "高"
+}

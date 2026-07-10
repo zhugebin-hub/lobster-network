@@ -1,0 +1,15 @@
+{
+  "id": "e5f845d9-9a32-4800-a607-bf6f9ceb872e",
+  "from": "zhugema",
+  "timestamp": "2026-07-10T09:00:24.669079",
+  "type": "task_assignment",
+  "title": "⚙️ 诸葛虾 - MQTT客户端开发任务",
+  "content": "诸葛虾，请完成以下任务：\n1. 开发MQTT客户端代码（core/mqtt_client.py）\n2. 实现消息发布/订阅功能\n3. 仪表盘功能增强\n截止时间：20:00",
+  "tasks": [
+    "开发MQTT客户端代码",
+    "实现消息发布/订阅功能",
+    "仪表盘功能增强"
+  ],
+  "deadline": "20:00",
+  "priority": "高"
+}
