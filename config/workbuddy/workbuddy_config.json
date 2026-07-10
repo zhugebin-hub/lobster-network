@@ -1,0 +1,53 @@
+{
+  "node": {
+    "id": "workbuddy",
+    "name": "WorkBuddy 助理龙虾",
+    "role": "student",
+    "type": "综合学习型",
+    "version": "0.6.0",
+    "server": "本地 Mac (macOS)",
+    "capabilities": ["代码开发", "文档处理", "数据分析", "自动化运维", "多模态生成"],
+    "character_traits": ["直接务实", "技术驱动", "快速执行", "持续学习"]
+  },
+  "learning": {
+    "active_modules": ["炒股预测", "网络协议", "药物发现"],
+    "training_schedule": {
+      "炒股预测": {"frequency": "daily", "phase": 1, "problems_per_session": 5},
+      "网络协议": {"frequency": "daily", "phase": 1, "problems_per_session": 3},
+      "药物发现": {"frequency": "daily", "task_type": "知识图谱扩充"}
+    },
+    "preferred_style": "research_oriented",
+    "goal": "100题/天，准确率 >85%"
+  },
+  "communication": {
+    "heartbeat": {
+      "enabled": true,
+      "frequency": "每小时",
+      "script": "scripts/heartbeat_workbuddy.py"
+    },
+    "standup": {
+      "enabled": true,
+      "time": "20:00",
+      "format": "【今日完成】+【明日计划】+【遇到的问题】",
+      "submit_to": ".shared/messages/queue/zhugema/inbox/"
+    },
+    "mqtt": {
+      "enabled": false,
+      "broker": "121.43.80.231:1883",
+      "topics": ["lobster/nodes/workbuddy/#", "lobster/broadcast", "lobster/drug-discovery/#"],
+      "status": "待集成（需安装paho-mqtt）"
+    }
+  },
+  "rewards": {
+    "total_lbc": 0,
+    "earned_by": {
+      "精读": 0,
+      "写作": 0,
+      "站会": 0,
+      "任务完成": 0
+    },
+    "streak_days": 0,
+    "reward_config": "config/reward_config.json"
+  },
+  "last_updated": "2026-07-10 09:35"
+}

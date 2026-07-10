@@ -1,0 +1,32 @@
+{
+  "message_type": "cc_standup",
+  "from": "workbuddy",
+  "from_name": "WorkBuddy 助理龙虾",
+  "subject": "workbuddy 每日站会 - 2026-07-10",
+  "timestamp": "2026-07-10T09:38:20.604234",
+  "content": {
+    "今日完成": [
+      "心跳保活 N 次 (自动化运行中)",
+      "同步诸葛马优化方案执行报告 (merge server/main → origin/main)",
+      "完成 workbuddy 节点配置与学习参与计划",
+      "创建学习方案：炒股预测 + 网络协议 + 药物发现",
+      "训练任务: 药物发现 ? (0题), 网络协议 ch1 (0题), 炒股预测 phase1 (0题)"
+    ],
+    "明日计划": [
+      "启动炒股预测 Phase1 训练 (5题/日)",
+      "启动网络协议 ch1 学习 (3题/日)",
+      "完成 MQTT 客户端集成 (paho-mqtt)",
+      "扩充药物知识图谱 (5个新节点)",
+      "Git推送通道修复 (SSH密钥)"
+    ],
+    "遇到的问题": [
+      "GitHub SSH 认证失败 - 需更新 Token",
+      "诸葛虾节点离线 10+ 天 - 需检查",
+      "qoder 节点无心跳 - 需确认状态",
+      "消息积压 133 条 - 需批量处理"
+    ]
+  },
+  "format": "standup_template",
+  "requires_ack": true,
+  "ack_deadline": "2026-07-10T22:00:00.604234"
+}

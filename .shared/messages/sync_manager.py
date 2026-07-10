@@ -37,8 +37,10 @@ STANDARD_DIRS = {
     'to_qoder': f'{MESSAGES_DIR}/to-qoder',
     'from_zhugema': f'{MESSAGES_DIR}/from-zhugema',
     'from_xiaowei': f'{MESSAGES_DIR}/from-xiaowei',
+    'from_workbuddy': f'{MESSAGES_DIR}/from-workbuddy',
     'to_zhugema': f'{MESSAGES_DIR}/to-zhugema',
     'to_xiaowei': f'{MESSAGES_DIR}/to-xiaowei',
+    'to_workbuddy': f'{MESSAGES_DIR}/to-workbuddy',
     'results': f'{TRAINING_DIR}/results',
     'queue': f'{MESSAGES_DIR}/queue',
 }
@@ -71,6 +73,12 @@ STUDENTS = {
         'server': 'local',
         'inbox': f'{MESSAGES_DIR}/queue/xiaowei/inbox/',
         'role': '围棋训练节点',
+    },
+    'workbuddy': {
+        'name': 'WorkBuddy 助理龙虾',
+        'server': 'local',
+        'inbox': f'{MESSAGES_DIR}/queue/workbuddy/inbox/',
+        'role': '综合学习型节点',
     },
 }
 

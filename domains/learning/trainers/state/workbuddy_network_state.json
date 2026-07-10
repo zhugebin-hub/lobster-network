@@ -1,0 +1,40 @@
+{
+  "student": "workbuddy",
+  "student_name": "WorkBuddy 助理龙虾",
+  "module": "网络协议",
+  "style": "research_oriented",
+  "current_phase": "ch1",
+  "completed_count": 0,
+  "total_completed": 0,
+  "accuracy": 0.0,
+  "streak_days": 0,
+  "last_training_date": null,
+  "phases": {
+    "ch1": {
+      "total": 10,
+      "completed": 0,
+      "correct": 0
+    },
+    "ch2": {
+      "total": 10,
+      "completed": 0,
+      "correct": 0
+    },
+    "ch3": {
+      "total": 10,
+      "completed": 0,
+      "correct": 0
+    },
+    "ch4": {
+      "total": 10,
+      "completed": 0,
+      "correct": 0
+    },
+    "ch5": {
+      "total": 10,
+      "completed": 0,
+      "correct": 0
+    }
+  },
+  "initialized_at": "2026-07-10T09:37:55.922886"
+}

@@ -1,0 +1,30 @@
+{
+  "student": "workbuddy",
+  "student_name": "WorkBuddy 助理龙虾",
+  "module": "炒股预测",
+  "style": "research_oriented",
+  "current_phase": "phase1",
+  "completed_count": 0,
+  "total_completed": 0,
+  "accuracy": 0.0,
+  "streak_days": 0,
+  "last_training_date": null,
+  "phases": {
+    "phase1": {
+      "total": 20,
+      "completed": 0,
+      "correct": 0
+    },
+    "phase2": {
+      "total": 20,
+      "completed": 0,
+      "correct": 0
+    },
+    "phase3": {
+      "total": 20,
+      "completed": 0,
+      "correct": 0
+    }
+  },
+  "initialized_at": "2026-07-10T09:37:55.922568"
+}
