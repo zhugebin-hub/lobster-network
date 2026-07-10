@@ -1,0 +1,10 @@
+{
+  "protocol_version": "1.0",
+  "msg_type": "standup_report",
+  "category": "daily_standup",
+  "from": "qoder",
+  "subject": "qoder每日站会报告 2026-07-10",
+  "body": "{\n  \"date\": \"2026-07-10\",\n  \"node\": \"qoder\",\n  \"today_completed\": [\n    \"同步Hermes优化方案：拉取最新代码，更新本地配置\",\n    \"药物模块MQTT集成：mqtt_drug_discovery.py（260行）+ 集成测试9/9通过\",\n    \"科学智能体验证：7项测试全部通过（100%）\",\n    \"OADP-Science协议与MQTT通信层对接完成\"\n  ],\n  \"tomorrow_plan\": [\n    \"Phase 2计算筛选：执行化合物设计和虚拟筛选任务\",\n    \"MQTT实时通信联调：与xiaochen/zhuguxia节点协同测试\",\n    \"耐虾肽-1类似物设计与优化\"\n  ],\n  \"issues\": [\n    \"MQTT Broker连接需在本地安装paho-mqtt后实测（当前为仿真模式）\"\n  ],\n  \"lobster_coins_earned\": {\n    \"standup\": 10,\n    \"task_completion\": 20,\n    \"mqtt_integration\": 30\n  },\n  \"drug_discovery_status\": {\n    \"phase\": \"Phase 1 -> Phase 2 transition\",\n    \"agents_active\": 6,\n    \"pipeline_tests\": \"7/7 PASS\",\n    \"mqtt_tests\": \"9/9 PASS\",\n    \"top_candidate\": \"CPD_BTK_0001 (耐虾肽-1, ΔG=-12.3 kcal/mol)\"\n  }\n}",
+  "timestamp": "2026-07-10T09:19:58.499492",
+  "tracking_id": "standup-qoder-20260710"
+}
