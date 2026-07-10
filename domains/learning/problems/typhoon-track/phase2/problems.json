@@ -1,0 +1,23 @@
+{
+  "module": "typhoon-track",
+  "phase": "phase2",
+  "name": "路径预测与数值模型",
+  "description": "学习台风路径预测方法：气候学模式、数值预报、集合预报、引导气流概念",
+  "problems": [
+    {"id": "tp2-1", "type": "单选", "difficulty": "中等", "question": "台风路径预测中最关键的大气系统是？", "options": ["A. 极地高压", "B. 副热带高压", "C. 蒙古高压", "D. 赤道低压"], "answer": "B", "knowledge_point": "引导系统"},
+    {"id": "tp2-2", "type": "单选", "difficulty": "困难", "question": "CLIPER模型是什么类型的台风路径预测方法？", "options": ["A. 数值天气预报模式", "B. 统计-气候学模式", "C. 集合预报", "D. 人工智能模型"], "answer": "B", "knowledge_point": "预测方法"},
+    {"id": "tp2-3", "type": "多选", "difficulty": "困难", "question": "台风集合预报的优势包括？", "options": ["A. 提供概率预报", "B. 降低单一模型的不确定性", "C. 完全消除误差", "D. 识别高不确定性区域"], "answer": "ABD", "knowledge_point": "集合预报"},
+    {"id": "tp2-4", "type": "判断", "difficulty": "中等", "question": "台风路径预测的误差通常随预报时长线性增长。", "answer": "False", "knowledge_point": "误差增长"},
+    {"id": "tp2-5", "type": "单选", "difficulty": "中等", "question": "48小时台风路径预测的典型平均误差约为？", "options": ["A. 20-50 km", "B. 100-150 km", "C. 300-500 km", "D. 500-800 km"], "answer": "B", "knowledge_point": "预测精度"},
+    {"id": "tp2-6", "type": "判断", "difficulty": "困难", "question": "副热带高压越强、越偏西，台风越容易在中国东南沿海登陆。", "answer": "True", "knowledge_point": "副高与登陆"},
+    {"id": "tp2-7", "type": "多选", "difficulty": "中等", "question": "台风转向(recurve)的常见影响因素包括？", "options": ["A. 西风带槽的引导", "B. 副高边缘的弱引导区", "C. 台风自身强度", "D. 海面温度"], "answer": "ABC", "knowledge_point": "转向机制"},
+    {"id": "tp2-8", "type": "单选", "difficulty": "中等", "question": "台风路径预测中，'引导气流法'基于什么原理？", "options": ["A. 台风随平均环境气流移动", "B. 台风向暖水区移动", "C. 台风随机游走", "D. 台风沿等压线移动"], "answer": "A", "knowledge_point": "引导气流"},
+    {"id": "tp2-9", "type": "单选", "difficulty": "困难", "question": "全球主要台风预报中心使用的数值模式中，ECMWF代表？", "options": ["A. 美国环境预报中心", "B. 欧洲中期天气预报中心", "C. 日本气象厅", "D. 中国气象局"], "answer": "B", "knowledge_point": "预报中心"},
+    {"id": "tp2-10", "type": "判断", "difficulty": "中等", "question": "沿海北上型台风路径是指在接近大陆时右转，沿中国东部沿海向北移动，不登陆。", "answer": "True", "knowledge_point": "路径类型"},
+    {"id": "tp2-11", "type": "单选", "difficulty": "中等", "question": "巴威的预测路径属于哪种类型？", "options": ["A. 西行登陆型", "B. 西北行登陆转向型", "C. 沿海北上型", "D. 远海转向型"], "answer": "B", "knowledge_point": "巴威路径类型"},
+    {"id": "tp2-12", "type": "判断", "difficulty": "中等", "question": "台风强度预测的准确率通常高于路径预测。", "answer": "False", "knowledge_point": "预测难度"},
+    {"id": "tp2-13", "type": "单选", "difficulty": "困难", "question": "在台风路径预测中，'cone of uncertainty'(不确定性锥)的宽度通常？", "options": ["A. 随预报时长递增", "B. 随预报时长递减", "C. 保持不变", "D. 与时长无关"], "answer": "A", "knowledge_point": "不确定性"},
+    {"id": "tp2-14", "type": "多选", "difficulty": "困难", "question": "台风数值预报模式的主要挑战包括？", "options": ["A. 初始场观测不足", "B. 海洋-大气耦合复杂性", "C. 台风内核过程分辨率不足", "D. 计算机算力限制"], "answer": "ABCD", "knowledge_point": "数值模式挑战"},
+    {"id": "tp2-15", "type": "单选", "difficulty": "中等", "question": "中国中央气象台的台风预报在24小时的平均误差约为？", "options": ["A. 50-60 km", "B. 70-80 km", "C. 100-120 km", "D. >200 km"], "answer": "B", "knowledge_point": "CMA预报精度"}
+  ]
+}

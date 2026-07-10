@@ -1,0 +1,1081 @@
+{
+  "prediction_id": "bavi_20260710_225117",
+  "model_version": "TyphoonPredictEngine v1.0",
+  "initial_conditions": {
+    "name": "巴威 (Bavi)",
+    "number": "2026-09",
+    "time": "2026-07-10T17:00:00+08:00",
+    "lat": 22.2,
+    "lon": 126.6,
+    "heading": 315.0,
+    "speed": 22.5,
+    "intensity": 40.0,
+    "pressure": 960.0,
+    "radius_7": 490,
+    "radius_10": 315,
+    "radius_12": 115
+  },
+  "prediction_time": "2026-07-10T22:51:17.164151",
+  "track": [
+    {
+      "time": "2026-07-10T17:00:00",
+      "hour": 0,
+      "lat": 22.2,
+      "lon": 126.6,
+      "heading": 315.0,
+      "speed": 22.5,
+      "intensity": 40.0,
+      "pressure": 960.0,
+      "level_cn": "台风",
+      "level_en": "TY",
+      "on_land": false,
+      "is_landfall": false
+    },
+    {
+      "time": "2026-07-10T23:00:00",
+      "hour": 6,
+      "lat": 22.4,
+      "lon": 125.94,
+      "heading": 272.6,
+      "speed": 21.7,
+      "intensity": 38.9,
+      "pressure": 962.8,
+      "level_cn": "台风",
+      "level_en": "TY",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 23.09,
+          "lon": 125.71
+        },
+        "steering_flow": {
+          "lat": 21.14,
+          "lon": 126.38
+        },
+        "inertial": {
+          "lat": 23.07,
+          "lon": 125.69
+        },
+        "recurve": {
+          "lat": 23.08,
+          "lon": 125.7
+        }
+      }
+    },
+    {
+      "time": "2026-07-11T05:00:00",
+      "hour": 12,
+      "lat": 22.09,
+      "lon": 125.12,
+      "heading": 241.1,
+      "speed": 20.8,
+      "intensity": 37.8,
+      "pressure": 965.5,
+      "level_cn": "台风",
+      "level_en": "TY",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 22.51,
+          "lon": 124.68
+        },
+        "steering_flow": {
+          "lat": 21.36,
+          "lon": 125.95
+        },
+        "inertial": {
+          "lat": 22.47,
+          "lon": 124.68
+        },
+        "recurve": {
+          "lat": 22.49,
+          "lon": 124.68
+        }
+      }
+    },
+    {
+      "time": "2026-07-11T11:00:00",
+      "hour": 18,
+      "lat": 21.42,
+      "lon": 124.49,
+      "heading": 217.4,
+      "speed": 20.0,
+      "intensity": 36.7,
+      "pressure": 968.2,
+      "level_cn": "台风",
+      "level_en": "TY",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 21.59,
+          "lon": 124.04
+        },
+        "steering_flow": {
+          "lat": 21.11,
+          "lon": 125.31
+        },
+        "inertial": {
+          "lat": 21.57,
+          "lon": 124.05
+        },
+        "recurve": {
+          "lat": 21.58,
+          "lon": 124.05
+        }
+      }
+    },
+    {
+      "time": "2026-07-11T17:00:00",
+      "hour": 24,
+      "lat": 20.55,
+      "lon": 124.12,
+      "heading": 199.3,
+      "speed": 19.2,
+      "intensity": 35.7,
+      "pressure": 970.8,
+      "level_cn": "台风",
+      "level_en": "TY",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 20.58,
+          "lon": 123.75
+        },
+        "steering_flow": {
+          "lat": 20.51,
+          "lon": 124.79
+        },
+        "inertial": {
+          "lat": 20.57,
+          "lon": 123.77
+        },
+        "recurve": {
+          "lat": 20.58,
+          "lon": 123.75
+        }
+      }
+    },
+    {
+      "time": "2026-07-11T23:00:00",
+      "hour": 30,
+      "lat": 19.63,
+      "lon": 124.0,
+      "heading": 185.2,
+      "speed": 18.4,
+      "intensity": 34.7,
+      "pressure": 973.3,
+      "level_cn": "台风",
+      "level_en": "TY",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 19.59,
+          "lon": 123.72
+        },
+        "steering_flow": {
+          "lat": 19.72,
+          "lon": 124.51
+        },
+        "inertial": {
+          "lat": 19.58,
+          "lon": 123.74
+        },
+        "recurve": {
+          "lat": 19.59,
+          "lon": 123.72
+        }
+      }
+    },
+    {
+      "time": "2026-07-12T05:00:00",
+      "hour": 36,
+      "lat": 18.73,
+      "lon": 124.08,
+      "heading": 174.1,
+      "speed": 17.6,
+      "intensity": 33.7,
+      "pressure": 975.7,
+      "level_cn": "台风",
+      "level_en": "TY",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 18.65,
+          "lon": 123.87
+        },
+        "steering_flow": {
+          "lat": 18.87,
+          "lon": 124.45
+        },
+        "inertial": {
+          "lat": 18.65,
+          "lon": 123.89
+        },
+        "recurve": {
+          "lat": 18.65,
+          "lon": 123.87
+        }
+      }
+    },
+    {
+      "time": "2026-07-12T11:00:00",
+      "hour": 42,
+      "lat": 17.87,
+      "lon": 124.3,
+      "heading": 165.3,
+      "speed": 16.8,
+      "intensity": 32.8,
+      "pressure": 978.1,
+      "level_cn": "台风",
+      "level_en": "TY",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 17.78,
+          "lon": 124.15
+        },
+        "steering_flow": {
+          "lat": 18.04,
+          "lon": 124.57
+        },
+        "inertial": {
+          "lat": 17.78,
+          "lon": 124.17
+        },
+        "recurve": {
+          "lat": 17.78,
+          "lon": 124.15
+        }
+      }
+    },
+    {
+      "time": "2026-07-12T17:00:00",
+      "hour": 48,
+      "lat": 17.08,
+      "lon": 124.62,
+      "heading": 158.1,
+      "speed": 16.1,
+      "intensity": 31.9,
+      "pressure": 980.4,
+      "level_cn": "强热带风暴",
+      "level_en": "STS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 16.99,
+          "lon": 124.51
+        },
+        "steering_flow": {
+          "lat": 17.25,
+          "lon": 124.81
+        },
+        "inertial": {
+          "lat": 16.99,
+          "lon": 124.53
+        },
+        "recurve": {
+          "lat": 16.99,
+          "lon": 124.51
+        }
+      }
+    },
+    {
+      "time": "2026-07-12T23:00:00",
+      "hour": 54,
+      "lat": 16.36,
+      "lon": 125.01,
+      "heading": 152.2,
+      "speed": 15.3,
+      "intensity": 31.0,
+      "pressure": 982.6,
+      "level_cn": "强热带风暴",
+      "level_en": "STS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 16.27,
+          "lon": 124.93
+        },
+        "steering_flow": {
+          "lat": 16.52,
+          "lon": 125.14
+        },
+        "inertial": {
+          "lat": 16.27,
+          "lon": 124.94
+        },
+        "recurve": {
+          "lat": 16.27,
+          "lon": 124.93
+        }
+      }
+    },
+    {
+      "time": "2026-07-13T05:00:00",
+      "hour": 60,
+      "lat": 15.7,
+      "lon": 125.44,
+      "heading": 147.3,
+      "speed": 14.6,
+      "intensity": 30.1,
+      "pressure": 984.8,
+      "level_cn": "强热带风暴",
+      "level_en": "STS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 15.62,
+          "lon": 125.39
+        },
+        "steering_flow": {
+          "lat": 15.85,
+          "lon": 125.53
+        },
+        "inertial": {
+          "lat": 15.62,
+          "lon": 125.4
+        },
+        "recurve": {
+          "lat": 15.62,
+          "lon": 125.39
+        }
+      }
+    },
+    {
+      "time": "2026-07-13T11:00:00",
+      "hour": 66,
+      "lat": 15.1,
+      "lon": 125.9,
+      "heading": 143.1,
+      "speed": 13.9,
+      "intensity": 29.3,
+      "pressure": 986.9,
+      "level_cn": "强热带风暴",
+      "level_en": "STS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 15.02,
+          "lon": 125.86
+        },
+        "steering_flow": {
+          "lat": 15.23,
+          "lon": 125.96
+        },
+        "inertial": {
+          "lat": 15.03,
+          "lon": 125.87
+        },
+        "recurve": {
+          "lat": 15.02,
+          "lon": 125.86
+        }
+      }
+    },
+    {
+      "time": "2026-07-13T17:00:00",
+      "hour": 72,
+      "lat": 14.55,
+      "lon": 126.37,
+      "heading": 139.6,
+      "speed": 13.3,
+      "intensity": 28.5,
+      "pressure": 989.0,
+      "level_cn": "强热带风暴",
+      "level_en": "STS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 14.48,
+          "lon": 126.35
+        },
+        "steering_flow": {
+          "lat": 14.67,
+          "lon": 126.42
+        },
+        "inertial": {
+          "lat": 14.49,
+          "lon": 126.36
+        },
+        "recurve": {
+          "lat": 14.48,
+          "lon": 126.35
+        }
+      }
+    },
+    {
+      "time": "2026-07-13T23:00:00",
+      "hour": 78,
+      "lat": 14.05,
+      "lon": 126.85,
+      "heading": 136.5,
+      "speed": 12.7,
+      "intensity": 27.7,
+      "pressure": 991.0,
+      "level_cn": "强热带风暴",
+      "level_en": "STS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 13.99,
+          "lon": 126.84
+        },
+        "steering_flow": {
+          "lat": 14.17,
+          "lon": 126.88
+        },
+        "inertial": {
+          "lat": 14.0,
+          "lon": 126.84
+        },
+        "recurve": {
+          "lat": 13.99,
+          "lon": 126.84
+        }
+      }
+    },
+    {
+      "time": "2026-07-14T05:00:00",
+      "hour": 84,
+      "lat": 13.6,
+      "lon": 127.33,
+      "heading": 133.8,
+      "speed": 12.1,
+      "intensity": 26.9,
+      "pressure": 992.9,
+      "level_cn": "强热带风暴",
+      "level_en": "STS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 13.54,
+          "lon": 127.32
+        },
+        "steering_flow": {
+          "lat": 13.71,
+          "lon": 127.35
+        },
+        "inertial": {
+          "lat": 13.55,
+          "lon": 127.33
+        },
+        "recurve": {
+          "lat": 13.54,
+          "lon": 127.32
+        }
+      }
+    },
+    {
+      "time": "2026-07-14T11:00:00",
+      "hour": 90,
+      "lat": 13.19,
+      "lon": 127.81,
+      "heading": 131.4,
+      "speed": 11.5,
+      "intensity": 26.1,
+      "pressure": 994.8,
+      "level_cn": "强热带风暴",
+      "level_en": "STS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 13.14,
+          "lon": 127.8
+        },
+        "steering_flow": {
+          "lat": 13.28,
+          "lon": 127.81
+        },
+        "inertial": {
+          "lat": 13.14,
+          "lon": 127.81
+        },
+        "recurve": {
+          "lat": 13.14,
+          "lon": 127.8
+        }
+      }
+    },
+    {
+      "time": "2026-07-14T17:00:00",
+      "hour": 96,
+      "lat": 12.81,
+      "lon": 128.27,
+      "heading": 129.2,
+      "speed": 11.0,
+      "intensity": 25.4,
+      "pressure": 996.6,
+      "level_cn": "强热带风暴",
+      "level_en": "STS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 12.76,
+          "lon": 128.27
+        },
+        "steering_flow": {
+          "lat": 12.9,
+          "lon": 128.27
+        },
+        "inertial": {
+          "lat": 12.77,
+          "lon": 128.28
+        },
+        "recurve": {
+          "lat": 12.76,
+          "lon": 128.27
+        }
+      }
+    },
+    {
+      "time": "2026-07-14T23:00:00",
+      "hour": 102,
+      "lat": 12.47,
+      "lon": 128.73,
+      "heading": 127.3,
+      "speed": 10.5,
+      "intensity": 24.7,
+      "pressure": 998.4,
+      "level_cn": "强热带风暴",
+      "level_en": "STS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 12.43,
+          "lon": 128.73
+        },
+        "steering_flow": {
+          "lat": 12.55,
+          "lon": 128.73
+        },
+        "inertial": {
+          "lat": 12.43,
+          "lon": 128.74
+        },
+        "recurve": {
+          "lat": 12.43,
+          "lon": 128.73
+        }
+      }
+    },
+    {
+      "time": "2026-07-15T05:00:00",
+      "hour": 108,
+      "lat": 12.16,
+      "lon": 129.18,
+      "heading": 125.5,
+      "speed": 10.0,
+      "intensity": 24.0,
+      "pressure": 1000.1,
+      "level_cn": "热带风暴",
+      "level_en": "TS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 12.12,
+          "lon": 129.18
+        },
+        "steering_flow": {
+          "lat": 12.23,
+          "lon": 129.17
+        },
+        "inertial": {
+          "lat": 12.12,
+          "lon": 129.19
+        },
+        "recurve": {
+          "lat": 12.12,
+          "lon": 129.18
+        }
+      }
+    },
+    {
+      "time": "2026-07-15T11:00:00",
+      "hour": 114,
+      "lat": 11.87,
+      "lon": 129.61,
+      "heading": 123.8,
+      "speed": 9.5,
+      "intensity": 23.3,
+      "pressure": 1001.8,
+      "level_cn": "热带风暴",
+      "level_en": "TS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 11.83,
+          "lon": 129.61
+        },
+        "steering_flow": {
+          "lat": 11.94,
+          "lon": 129.6
+        },
+        "inertial": {
+          "lat": 11.84,
+          "lon": 129.62
+        },
+        "recurve": {
+          "lat": 11.83,
+          "lon": 129.61
+        }
+      }
+    },
+    {
+      "time": "2026-07-15T17:00:00",
+      "hour": 120,
+      "lat": 11.61,
+      "lon": 130.03,
+      "heading": 122.3,
+      "speed": 9.1,
+      "intensity": 22.6,
+      "pressure": 1003.4,
+      "level_cn": "热带风暴",
+      "level_en": "TS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 11.57,
+          "lon": 130.03
+        },
+        "steering_flow": {
+          "lat": 11.67,
+          "lon": 130.01
+        },
+        "inertial": {
+          "lat": 11.58,
+          "lon": 130.04
+        },
+        "recurve": {
+          "lat": 11.57,
+          "lon": 130.03
+        }
+      }
+    },
+    {
+      "time": "2026-07-15T23:00:00",
+      "hour": 126,
+      "lat": 11.37,
+      "lon": 130.43,
+      "heading": 120.9,
+      "speed": 8.6,
+      "intensity": 22.0,
+      "pressure": 1005.0,
+      "level_cn": "热带风暴",
+      "level_en": "TS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 11.33,
+          "lon": 130.44
+        },
+        "steering_flow": {
+          "lat": 11.43,
+          "lon": 130.42
+        },
+        "inertial": {
+          "lat": 11.34,
+          "lon": 130.44
+        },
+        "recurve": {
+          "lat": 11.33,
+          "lon": 130.44
+        }
+      }
+    },
+    {
+      "time": "2026-07-16T05:00:00",
+      "hour": 132,
+      "lat": 11.15,
+      "lon": 130.82,
+      "heading": 119.6,
+      "speed": 8.2,
+      "intensity": 21.4,
+      "pressure": 1006.5,
+      "level_cn": "热带风暴",
+      "level_en": "TS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 11.12,
+          "lon": 130.83
+        },
+        "steering_flow": {
+          "lat": 11.2,
+          "lon": 130.81
+        },
+        "inertial": {
+          "lat": 11.12,
+          "lon": 130.84
+        },
+        "recurve": {
+          "lat": 11.12,
+          "lon": 130.83
+        }
+      }
+    },
+    {
+      "time": "2026-07-16T11:00:00",
+      "hour": 138,
+      "lat": 10.95,
+      "lon": 131.2,
+      "heading": 118.4,
+      "speed": 7.8,
+      "intensity": 20.8,
+      "pressure": 1008.0,
+      "level_cn": "热带风暴",
+      "level_en": "TS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 10.92,
+          "lon": 131.21
+        },
+        "steering_flow": {
+          "lat": 11.0,
+          "lon": 131.18
+        },
+        "inertial": {
+          "lat": 10.92,
+          "lon": 131.21
+        },
+        "recurve": {
+          "lat": 10.92,
+          "lon": 131.21
+        }
+      }
+    },
+    {
+      "time": "2026-07-16T17:00:00",
+      "hour": 144,
+      "lat": 10.76,
+      "lon": 131.56,
+      "heading": 117.2,
+      "speed": 7.4,
+      "intensity": 20.2,
+      "pressure": 1009.5,
+      "level_cn": "热带风暴",
+      "level_en": "TS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 10.74,
+          "lon": 131.57
+        },
+        "steering_flow": {
+          "lat": 10.81,
+          "lon": 131.54
+        },
+        "inertial": {
+          "lat": 10.74,
+          "lon": 131.57
+        },
+        "recurve": {
+          "lat": 10.74,
+          "lon": 131.57
+        }
+      }
+    },
+    {
+      "time": "2026-07-16T23:00:00",
+      "hour": 150,
+      "lat": 10.59,
+      "lon": 131.91,
+      "heading": 116.1,
+      "speed": 7.1,
+      "intensity": 19.6,
+      "pressure": 1010,
+      "level_cn": "热带风暴",
+      "level_en": "TS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 10.57,
+          "lon": 131.92
+        },
+        "steering_flow": {
+          "lat": 10.64,
+          "lon": 131.89
+        },
+        "inertial": {
+          "lat": 10.57,
+          "lon": 131.92
+        },
+        "recurve": {
+          "lat": 10.57,
+          "lon": 131.92
+        }
+      }
+    },
+    {
+      "time": "2026-07-17T05:00:00",
+      "hour": 156,
+      "lat": 10.44,
+      "lon": 132.24,
+      "heading": 115.1,
+      "speed": 6.8,
+      "intensity": 19.1,
+      "pressure": 1010,
+      "level_cn": "热带风暴",
+      "level_en": "TS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 10.41,
+          "lon": 132.25
+        },
+        "steering_flow": {
+          "lat": 10.48,
+          "lon": 132.23
+        },
+        "inertial": {
+          "lat": 10.42,
+          "lon": 132.26
+        },
+        "recurve": {
+          "lat": 10.41,
+          "lon": 132.25
+        }
+      }
+    },
+    {
+      "time": "2026-07-17T11:00:00",
+      "hour": 162,
+      "lat": 10.3,
+      "lon": 132.57,
+      "heading": 114.1,
+      "speed": 6.4,
+      "intensity": 18.6,
+      "pressure": 1010,
+      "level_cn": "热带风暴",
+      "level_en": "TS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 10.27,
+          "lon": 132.58
+        },
+        "steering_flow": {
+          "lat": 10.33,
+          "lon": 132.55
+        },
+        "inertial": {
+          "lat": 10.28,
+          "lon": 132.58
+        },
+        "recurve": {
+          "lat": 10.27,
+          "lon": 132.58
+        }
+      }
+    },
+    {
+      "time": "2026-07-17T17:00:00",
+      "hour": 168,
+      "lat": 10.16,
+      "lon": 132.87,
+      "heading": 113.2,
+      "speed": 6.1,
+      "intensity": 18.1,
+      "pressure": 1010,
+      "level_cn": "热带风暴",
+      "level_en": "TS",
+      "on_land": false,
+      "is_landfall": false,
+      "model_details": {
+        "climatology": {
+          "lat": 10.14,
+          "lon": 132.88
+        },
+        "steering_flow": {
+          "lat": 10.2,
+          "lon": 132.85
+        },
+        "inertial": {
+          "lat": 10.15,
+          "lon": 132.88
+        },
+        "recurve": {
+          "lat": 10.14,
+          "lon": 132.88
+        }
+      }
+    }
+  ],
+  "comparison_with_official": {
+    "comparisons": [
+      {
+        "hour": 0,
+        "official": {
+          "lat": 22.2,
+          "lon": 126.6
+        },
+        "our": {
+          "lat": 22.2,
+          "lon": 126.6
+        },
+        "distance_error_km": 0.0
+      },
+      {
+        "hour": 12,
+        "official": {
+          "lat": 23.5,
+          "lon": 124.5
+        },
+        "our": {
+          "lat": 22.09,
+          "lon": 125.12
+        },
+        "distance_error_km": 169.2
+      },
+      {
+        "hour": 24,
+        "official": {
+          "lat": 25.2,
+          "lon": 122.5
+        },
+        "our": {
+          "lat": 20.55,
+          "lon": 124.12
+        },
+        "distance_error_km": 543.0
+      },
+      {
+        "hour": 36,
+        "official": {
+          "lat": 27.0,
+          "lon": 120.8
+        },
+        "our": {
+          "lat": 18.73,
+          "lon": 124.08
+        },
+        "distance_error_km": 978.9
+      },
+      {
+        "hour": 48,
+        "official": {
+          "lat": 28.5,
+          "lon": 119.2
+        },
+        "our": {
+          "lat": 17.08,
+          "lon": 124.62
+        },
+        "distance_error_km": 1385.5
+      },
+      {
+        "hour": 60,
+        "official": {
+          "lat": 30.0,
+          "lon": 117.8
+        },
+        "our": {
+          "lat": 15.7,
+          "lon": 125.44
+        },
+        "distance_error_km": 1770.9
+      },
+      {
+        "hour": 72,
+        "official": {
+          "lat": 31.5,
+          "lon": 117.0
+        },
+        "our": {
+          "lat": 14.55,
+          "lon": 126.37
+        },
+        "distance_error_km": 2112.1
+      },
+      {
+        "hour": 84,
+        "official": {
+          "lat": 33.0,
+          "lon": 116.5
+        },
+        "our": {
+          "lat": 13.6,
+          "lon": 127.33
+        },
+        "distance_error_km": 2420.3
+      },
+      {
+        "hour": 96,
+        "official": {
+          "lat": 34.5,
+          "lon": 117.0
+        },
+        "our": {
+          "lat": 12.81,
+          "lon": 128.27
+        },
+        "distance_error_km": 2666.2
+      },
+      {
+        "hour": 108,
+        "official": {
+          "lat": 36.0,
+          "lon": 118.0
+        },
+        "our": {
+          "lat": 12.16,
+          "lon": 129.18
+        },
+        "distance_error_km": 2878.3
+      },
+      {
+        "hour": 120,
+        "official": {
+          "lat": 37.5,
+          "lon": 119.5
+        },
+        "our": {
+          "lat": 11.61,
+          "lon": 130.03
+        },
+        "distance_error_km": 3064.3
+      },
+      {
+        "hour": 132,
+        "official": {
+          "lat": 38.5,
+          "lon": 121.0
+        },
+        "our": {
+          "lat": 11.15,
+          "lon": 130.82
+        },
+        "distance_error_km": 3193.7
+      }
+    ],
+    "average_distance_error_km": 1765.2,
+    "compared_points": 12
+  }
+}

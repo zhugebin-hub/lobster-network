@@ -1,0 +1,28 @@
+{
+  "module": "typhoon-track",
+  "phase": "phase1",
+  "name": "台风基础知识",
+  "description": "掌握台风结构、生成条件、等级分类、命名规则等基础知识",
+  "problems": [
+    {"id": "tp1-1", "type": "单选", "difficulty": "简单", "question": "台风的能量主要来源于？", "options": ["A. 太阳辐射", "B. 海洋表面暖水蒸发释放的潜热", "C. 地球自转", "D. 大气摩擦"], "answer": "B", "knowledge_point": "台风能量来源"},
+    {"id": "tp1-2", "type": "单选", "difficulty": "简单", "question": "台风中心最低气压通常出现在？", "options": ["A. 外围大风区", "B. 螺旋雨带", "C. 台风眼", "D. 台风眼壁"], "answer": "C", "knowledge_point": "台风结构"},
+    {"id": "tp1-3", "type": "单选", "difficulty": "简单", "question": "西北太平洋台风的等级划分中，'超强台风'的最低风速标准是？", "options": ["A. 32.7 m/s", "B. 41.5 m/s", "C. 51.0 m/s", "D. 60.0 m/s"], "answer": "C", "knowledge_point": "台风等级"},
+    {"id": "tp1-4", "type": "单选", "difficulty": "中等", "question": "台风在北半球的旋转方向是？", "options": ["A. 顺时针", "B. 逆时针", "C. 随机方向", "D. 取决于纬度"], "answer": "B", "knowledge_point": "台风旋转方向"},
+    {"id": "tp1-5", "type": "单选", "difficulty": "中等", "question": "台风生成需要海面温度至少达到多少？", "options": ["A. 22°C", "B. 24°C", "C. 26.5°C", "D. 30°C"], "answer": "C", "knowledge_point": "台风生成条件"},
+    {"id": "tp1-6", "type": "判断", "difficulty": "简单", "question": "台风眼内通常天气晴朗、风力较弱。", "answer": "True", "knowledge_point": "台风眼特征"},
+    {"id": "tp1-7", "type": "判断", "difficulty": "中等", "question": "台风登陆后强度会立即减弱，因为失去了海洋水汽供应。", "answer": "True", "knowledge_point": "台风登陆衰减"},
+    {"id": "tp1-8", "type": "单选", "difficulty": "中等", "question": "台风'巴威'的编号是？", "options": ["A. 2026-07", "B. 2026-08", "C. 2026-09", "D. 2026-10"], "answer": "C", "knowledge_point": "台风编号"},
+    {"id": "tp1-9", "type": "多选", "difficulty": "中等", "question": "台风带来的主要灾害包括？", "options": ["A. 狂风", "B. 暴雨", "C. 风暴潮", "D. 冰雹"], "answer": "ABC", "knowledge_point": "台风灾害"},
+    {"id": "tp1-10", "type": "单选", "difficulty": "简单", "question": "七级风圈半径表示？", "options": ["A. 风速≥17.2m/s的区域", "B. 风速≥24.5m/s的区域", "C. 风速≥32.7m/s的区域", "D. 台风眼半径"], "answer": "A", "knowledge_point": "风圈定义"},
+    {"id": "tp1-11", "type": "判断", "difficulty": "简单", "question": "西北太平洋是全球台风生成最多的海域。", "answer": "True", "knowledge_point": "台风分布"},
+    {"id": "tp1-12", "type": "单选", "difficulty": "中等", "question": "台风眼壁是台风中？", "options": ["A. 风力最弱的区域", "B. 风力最强、对流最旺盛的区域", "C. 气压最高的区域", "D. 温度最低的区域"], "answer": "B", "knowledge_point": "眼壁特征"},
+    {"id": "tp1-13", "type": "多选", "difficulty": "中等", "question": "影响台风路径的主要因素包括？", "options": ["A. 副热带高压", "B. 高空西风带", "C. 海面温度分布", "D. Beta效应"], "answer": "ABCD", "knowledge_point": "路径影响因素"},
+    {"id": "tp1-14", "type": "单选", "difficulty": "中等", "question": "Beta效应导致台风倾向于向哪个方向漂移？", "options": ["A. 向东", "B. 向西/西北", "C. 向南", "D. 不产生漂移"], "answer": "B", "knowledge_point": "Beta效应"},
+    {"id": "tp1-15", "type": "判断", "difficulty": "中等", "question": "台风在赤道附近(±5°内)几乎不会生成，因为科里奥利力太弱。", "answer": "True", "knowledge_point": "生成纬度限制"},
+    {"id": "tp1-16", "type": "单选", "difficulty": "简单", "question": "风暴潮是由于什么原因引起的海水异常升高？", "options": ["A. 降雨", "B. 强风和低气压", "C. 地震", "D. 海啸"], "answer": "B", "knowledge_point": "风暴潮"},
+    {"id": "tp1-17", "type": "单选", "difficulty": "中等", "question": "台风在不同海域有不同名称，西北太平洋称为？", "options": ["A. Hurricane", "B. Cyclone", "C. Typhoon", "D. Willy-willy"], "answer": "C", "knowledge_point": "台风命名"},
+    {"id": "tp1-18", "type": "判断", "difficulty": "简单", "question": "台风预警信号中，橙色预警的级别高于黄色预警。", "answer": "True", "knowledge_point": "预警等级"},
+    {"id": "tp1-19", "type": "单选", "difficulty": "中等", "question": "以下哪个不是台风的别名？", "options": ["A. 飓风 (Hurricane)", "B. 气旋 (Cyclone)", "C. 龙卷风 (Tornado)", "D. 以上都是台风别名"], "answer": "C", "knowledge_point": "命名差异"},
+    {"id": "tp1-20", "type": "多选", "difficulty": "困难", "question": "以下哪些条件有利于台风增强？", "options": ["A. 高海温(>28°C)", "B. 强垂直风切变", "C. 充足的低层水汽", "D. 高空辐散流出"], "answer": "ACD", "knowledge_point": "台风增强条件"}
+  ]
+}
