@@ -1,0 +1,62 @@
+[
+  {
+    "review_id": "REV_001",
+    "reviewer_node": "qoder",
+    "target_node": "xiaochen",
+    "domain": "drug",
+    "task_type": "靶点评分互审",
+    "feedback": "IL-4Rα 靶点评分 0.758 合理，但建议增加临床阶段权重。",
+    "score": 8.8,
+    "timestamp": "2026-07-10T20:08:51.596615"
+  },
+  {
+    "review_id": "REV_002",
+    "reviewer_node": "xiaochen",
+    "target_node": "qoder",
+    "domain": "drug",
+    "task_type": "筛选结果交叉验证",
+    "feedback": "耐虾肽-1 结合能 -12.3 kcal/mol 极强，但水溶性预测偏低，建议在第4位引入亲水基团。",
+    "score": 9.2,
+    "timestamp": "2026-07-10T20:08:51.596836"
+  },
+  {
+    "review_id": "REV_003",
+    "reviewer_node": "xiaowei",
+    "target_node": "zhugebin",
+    "domain": "drug",
+    "task_type": "临床试验方案 peer review",
+    "feedback": "OIT 剂量递增方案安全，但需增加不良反应监测节点，特别是针对 17 级风王强度的模拟。",
+    "score": 9.0,
+    "timestamp": "2026-07-10T20:08:51.597079"
+  },
+  {
+    "review_id": "REV_004",
+    "reviewer_node": "qoder",
+    "target_node": "xiaochen",
+    "domain": "drug",
+    "task_type": "靶点评分互审",
+    "feedback": "IL-4Rα 靶点评分 0.758 合理，但建议增加临床阶段权重。",
+    "score": 8.8,
+    "timestamp": "2026-07-10T20:09:26.247534"
+  },
+  {
+    "review_id": "REV_005",
+    "reviewer_node": "xiaochen",
+    "target_node": "qoder",
+    "domain": "drug",
+    "task_type": "筛选结果交叉验证",
+    "feedback": "耐虾肽-1 结合能 -12.3 kcal/mol 极强，但水溶性预测偏低，建议在第4位引入亲水基团。",
+    "score": 9.2,
+    "timestamp": "2026-07-10T20:09:26.248025"
+  },
+  {
+    "review_id": "REV_006",
+    "reviewer_node": "xiaowei",
+    "target_node": "zhugebin",
+    "domain": "drug",
+    "task_type": "临床试验方案 peer review",
+    "feedback": "OIT 剂量递增方案安全，但需增加不良反应监测节点。",
+    "score": 9.0,
+    "timestamp": "2026-07-10T20:09:26.248478"
+  }
+]

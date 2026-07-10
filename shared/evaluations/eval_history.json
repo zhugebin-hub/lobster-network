@@ -1,0 +1,36 @@
+[
+  {
+    "eval_id": "EVAL_001",
+    "target_id": "NAIXIA_PEPTIDE_1_OPTIMIZED",
+    "domain": "drug",
+    "scores": {
+      "norm": 9.0,
+      "innovation": 9.5,
+      "logic": 8.8,
+      "depth": 9.2,
+      "clinical_feasibility": 8.9,
+      "oit_safety": 9.1,
+      "statistical_power": 8.7
+    },
+    "weighted_score": 9.07,
+    "feedback": "结构优化合理，临床转化路径清晰。建议补充长期毒性数据。",
+    "timestamp": "2026-07-10T20:08:51.597447"
+  },
+  {
+    "eval_id": "EVAL_002",
+    "target_id": "NAIXIA_PEPTIDE_1_OPTIMIZED",
+    "domain": "drug",
+    "scores": {
+      "norm": 9.0,
+      "innovation": 9.5,
+      "logic": 8.8,
+      "depth": 9.2,
+      "clinical_feasibility": 8.9,
+      "oit_safety": 9.1,
+      "statistical_power": 8.7
+    },
+    "weighted_score": 9.07,
+    "feedback": "结构优化合理，临床转化路径清晰。建议补充长期毒性数据。",
+    "timestamp": "2026-07-10T20:09:26.248964"
+  }
+]
