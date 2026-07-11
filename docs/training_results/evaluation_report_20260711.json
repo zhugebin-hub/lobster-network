@@ -1,0 +1,34 @@
+{
+  "report_id": "RPT_20260711_0759",
+  "timestamp": "2026-07-11T07:59:12.706326",
+  "evaluation_period": "2026-06-24 ~ 2026-07-11",
+  "students": {
+    "xiaochen": {
+      "status": "🟢 心跳正常，但无训练产出",
+      "last_heartbeat": "2026-07-11 06:59",
+      "consecutive_days_no_submit": 17,
+      "root_cause": "任务激励不足 + 缺乏正向反馈循环",
+      "risk_level": "中"
+    },
+    "zhuguxia": {
+      "status": "🟡 离线11天，磁盘告警",
+      "last_heartbeat": "2026-06-30 06:47",
+      "consecutive_days_no_submit": 17,
+      "root_cause": "磁盘空间不足(81.1%) + SSH连接中断 + 消息积压",
+      "risk_level": "高"
+    },
+    "qoder": {
+      "status": "🔴 完全无活动",
+      "last_heartbeat": "无",
+      "consecutive_days_no_submit": 17,
+      "root_cause": "节点配置缺失 + 任务未送达 + 技术栈不匹配",
+      "risk_level": "极高"
+    }
+  },
+  "system_status": {
+    "mqtt": "✅ 运行中",
+    "git_push": "❌ GitHub超时, Gitee超限",
+    "disk_usage": "78% (29G/40G)",
+    "cron_jobs": "22个正常运行"
+  }
+}
