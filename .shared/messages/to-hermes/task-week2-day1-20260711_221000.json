@@ -1,0 +1,36 @@
+{
+  "type": "task_assignment",
+  "task_id": "task-week2-day1-hermes-20260711",
+  "from": "诸葛斌",
+  "to": "诸葛马/Hermes",
+  "timestamp": "2026-07-11T22:10:00+08:00",
+  "priority": "high",
+  "title": "🎯 Week2 Day1 教练任务 - 任务下发+评审准备",
+  "tasks": [
+    {
+      "module": "教练协调",
+      "task": "下发Week2 Day1训练任务",
+      "details": "向三个学员节点（诸葛虾/qoder/小陈）下发训练任务，确认ACK收到",
+      "deadline": "2026-07-11T23:00:00+08:00"
+    },
+    {
+      "module": "评审准备",
+      "task": "准备Week1训练结果评审",
+      "details": "汇总Week1各节点训练数据（围棋/金融/CC协议），生成评审报告，识别落后节点",
+      "deadline": "2026-07-12T12:00:00+08:00"
+    },
+    {
+      "module": "系统优化",
+      "task": "NFS替代方案评估",
+      "details": "评估HTTP传输层（端口8199）作为NFS替代方案的可行性，生成部署建议",
+      "deadline": "2026-07-12T20:00:00+08:00"
+    }
+  ],
+  "reward": {
+    "coordination": 30,
+    "review": 40,
+    "system": 50
+  },
+  "ack_required": true,
+  "ack_deadline_hours": 2
+}
