@@ -1,7 +1,7 @@
 {
-  "last_check": "2026-07-12 00:03",
+  "last_check": "2026-07-12 05:03",
   "new_results": false,
-  "reason": "三位学员连续17+天无新训练提交",
+  "reason": "三位学员连续15-17天无新训练提交",
   "students": {
     "xiaochen": {
       "status": "心跳活跃",
@@ -9,13 +9,13 @@
       "new": false
     },
     "zhuguxia": {
-      "status": "离线11+天",
-      "last_submission": "2026-06-27",
+      "status": "离线12+天",
+      "last_submission": "2026-07-01",
       "new": false
     },
     "qoder": {
       "status": "无活跃连接",
-      "last_submission": "无",
+      "last_submission": "2026-07-03",
       "new": false
     }
   }
