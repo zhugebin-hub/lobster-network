@@ -1,28 +1,38 @@
 {
-  "report_id": "RPT_20260711_0759",
-  "timestamp": "2026-07-11T07:59:12.706326",
+  "report_id": "RPT_20260711_2132",
+  "timestamp": "2026-07-11T21:32:46.228403",
   "evaluation_period": "2026-06-24 ~ 2026-07-11",
+  "new_results_found": false,
   "students": {
     "xiaochen": {
       "status": "🟢 心跳正常，但无训练产出",
       "last_heartbeat": "2026-07-11 06:59",
       "consecutive_days_no_submit": 17,
       "root_cause": "任务激励不足 + 缺乏正向反馈循环",
-      "risk_level": "中"
+      "risk_level": "中",
+      "level": 30,
+      "total_problems": 133,
+      "total_games": 22
     },
     "zhuguxia": {
       "status": "🟡 离线11天，磁盘告警",
       "last_heartbeat": "2026-06-30 06:47",
       "consecutive_days_no_submit": 17,
       "root_cause": "磁盘空间不足(81.1%) + SSH连接中断 + 消息积压",
-      "risk_level": "高"
+      "risk_level": "高",
+      "level": 30,
+      "total_problems": 0,
+      "total_games": 0
     },
     "qoder": {
       "status": "🔴 完全无活动",
       "last_heartbeat": "无",
       "consecutive_days_no_submit": 17,
       "root_cause": "节点配置缺失 + 任务未送达 + 技术栈不匹配",
-      "risk_level": "极高"
+      "risk_level": "极高",
+      "level": 30,
+      "total_problems": 720,
+      "total_games": 64
     }
   },
   "system_status": {
