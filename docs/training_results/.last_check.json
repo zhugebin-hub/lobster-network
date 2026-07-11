@@ -1,7 +1,1 @@
-{
-  "timestamp": "2026-07-11T13:35:31.378391",
-  "status": "no_new_results",
-  "push_status": "failed",
-  "push_error": "GitHub connection timeout; Gitee repo size exceeds 1024MB quota",
-  "note": "连续17+天无新训练提交，无新结果可报告。本地commit成功(60ddb4d8)，远程推送失败。"
-}
+{"last_check": "2026-07-11T20:00:00", "result": "no_new_results", "push_status": "pending"}
