@@ -1,0 +1,72 @@
+{
+  "PROP_001": {
+    "proposal_id": "PROP_001",
+    "proposer": "qoder",
+    "title": "耐虾肽-1 水溶性优化",
+    "description": "通过引入亲水基团提升耐虾肽-1的水溶性",
+    "required_expertise": [
+      "screening",
+      "docking"
+    ],
+    "estimated_lbc": 100,
+    "deadline": "2026-07-15",
+    "status": "open",
+    "timestamp": "2026-07-12T00:22:53.572916"
+  },
+  "PROP_002": {
+    "proposal_id": "PROP_002",
+    "proposer": "qoder",
+    "title": "耐虾肽-1 水溶性优化",
+    "description": "通过引入亲水基团提升耐虾肽-1的水溶性",
+    "required_expertise": [
+      "screening",
+      "docking"
+    ],
+    "estimated_lbc": 100,
+    "deadline": "2026-07-15",
+    "status": "open",
+    "timestamp": "2026-07-12T00:23:24.901244"
+  },
+  "PROP_003": {
+    "proposal_id": "PROP_003",
+    "proposer": "qoder",
+    "title": "耐虾肽-1 水溶性优化",
+    "description": "通过引入亲水基团提升耐虾肽-1的水溶性",
+    "required_expertise": [
+      "screening",
+      "docking"
+    ],
+    "estimated_lbc": 100,
+    "deadline": "2026-07-15",
+    "status": "open",
+    "timestamp": "2026-07-12T00:23:34.263807"
+  },
+  "PROP_004": {
+    "proposal_id": "PROP_004",
+    "proposer": "qoder",
+    "title": "耐虾肽-1 水溶性优化",
+    "description": "通过引入亲水基团提升耐虾肽-1的水溶性",
+    "required_expertise": [
+      "screening",
+      "docking"
+    ],
+    "estimated_lbc": 100,
+    "deadline": "2026-07-15",
+    "status": "team_formed",
+    "timestamp": "2026-07-12T00:23:55.763407"
+  },
+  "PROP_005": {
+    "proposal_id": "PROP_005",
+    "proposer": "xiaochen",
+    "title": "台风巴威 路径预测修正",
+    "description": "基于最新副高数据修正巴威路径预测",
+    "required_expertise": [
+      "pathway",
+      "impact"
+    ],
+    "estimated_lbc": 80,
+    "deadline": "2026-07-13",
+    "status": "team_formed",
+    "timestamp": "2026-07-12T00:23:55.764146"
+  }
+}

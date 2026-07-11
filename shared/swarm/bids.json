@@ -1,0 +1,46 @@
+{
+  "PROP_004": [
+    {
+      "bid_id": "BID_001",
+      "proposal_id": "PROP_004",
+      "bidder": "xiaochen",
+      "proposed_role": "靶点分析",
+      "capability_match": 0.85,
+      "timestamp": "2026-07-12T00:23:55.767109"
+    },
+    {
+      "bid_id": "BID_002",
+      "proposal_id": "PROP_004",
+      "bidder": "xiaowei",
+      "proposed_role": "临床评估",
+      "capability_match": 0.9,
+      "timestamp": "2026-07-12T00:23:55.767837"
+    },
+    {
+      "bid_id": "BID_003",
+      "proposal_id": "PROP_004",
+      "bidder": "zhuguxia",
+      "proposed_role": "可视化",
+      "capability_match": 0.75,
+      "timestamp": "2026-07-12T00:23:55.768507"
+    }
+  ],
+  "PROP_005": [
+    {
+      "bid_id": "BID_001",
+      "proposal_id": "PROP_005",
+      "bidder": "qoder",
+      "proposed_role": "数据清洗",
+      "capability_match": 0.8,
+      "timestamp": "2026-07-12T00:23:55.769131"
+    },
+    {
+      "bid_id": "BID_002",
+      "proposal_id": "PROP_005",
+      "bidder": "zhuguxia",
+      "proposed_role": "仪表盘开发",
+      "capability_match": 0.88,
+      "timestamp": "2026-07-12T00:23:55.769812"
+    }
+  ]
+}
