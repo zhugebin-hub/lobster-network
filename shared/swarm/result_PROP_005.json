@@ -1,0 +1,14 @@
+{
+  "proposal_id": "PROP_005",
+  "title": "台风巴威 路径预测修正",
+  "status": "completed",
+  "submission_time": "2026-07-12T10:16:14.953525",
+  "contributions": {
+    "zhuguxia": {
+      "role": "仪表盘开发",
+      "output": "bavi_dashboard_v2.html",
+      "quality_score": 0.92,
+      "lbc_share": 1.0
+    }
+  }
+}

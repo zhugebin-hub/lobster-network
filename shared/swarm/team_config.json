@@ -65,5 +65,7 @@
       "current_load": 2,
       "history": []
     }
-  ]
+  ],
+  "max_concurrent_projects": 2,
+  "quality_weight": 0.6
 }

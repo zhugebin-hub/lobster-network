@@ -68,5 +68,23 @@
     "deadline": "2026-07-13",
     "status": "team_formed",
     "timestamp": "2026-07-12T00:23:55.764146"
+  },
+  "PROP_007": {
+    "proposal_id": "PROP_007",
+    "proposer": "xiaowei",
+    "title": "围棋定式库构建",
+    "description": "构建包含10万+定式的围棋知识图谱",
+    "required_expertise": [
+      "go",
+      "knowledge_graph"
+    ],
+    "estimated_lbc": 120,
+    "deadline": "2026-07-20",
+    "status": "incubating",
+    "votes": {
+      "xiaowei": 15,
+      "zhuguxia": 25
+    },
+    "total_votes": 40
   }
 }

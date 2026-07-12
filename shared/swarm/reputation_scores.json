@@ -1,0 +1,20 @@
+{
+  "xiaowei": {
+    "score": 167.0,
+    "total_lbc": 38,
+    "tasks_completed": 1,
+    "level": "B"
+  },
+  "xiaochen": {
+    "score": 164.0,
+    "total_lbc": 36,
+    "tasks_completed": 1,
+    "level": "B"
+  },
+  "zhuguxia": {
+    "score": 255.0,
+    "total_lbc": 90,
+    "tasks_completed": 2,
+    "level": "B"
+  }
+}

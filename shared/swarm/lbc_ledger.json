@@ -1,0 +1,41 @@
+{
+  "xiaowei": {
+    "total_lbc": 38,
+    "history": [
+      {
+        "task": "PROP_004",
+        "role": "临床评估",
+        "reward": 38,
+        "timestamp": "2026-07-12T10:16:14.954132"
+      }
+    ]
+  },
+  "xiaochen": {
+    "total_lbc": 36,
+    "history": [
+      {
+        "task": "PROP_004",
+        "role": "靶点分析",
+        "reward": 36,
+        "timestamp": "2026-07-12T10:16:14.954154"
+      }
+    ]
+  },
+  "zhuguxia": {
+    "total_lbc": 90,
+    "history": [
+      {
+        "task": "PROP_004",
+        "role": "可视化",
+        "reward": 17,
+        "timestamp": "2026-07-12T10:16:14.954159"
+      },
+      {
+        "task": "PROP_005",
+        "role": "仪表盘开发",
+        "reward": 73,
+        "timestamp": "2026-07-12T10:16:14.954165"
+      }
+    ]
+  }
+}

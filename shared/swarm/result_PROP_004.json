@@ -1,0 +1,26 @@
+{
+  "proposal_id": "PROP_004",
+  "title": "耐虾肽-1 水溶性优化",
+  "status": "completed",
+  "submission_time": "2026-07-12T10:16:14.953499",
+  "contributions": {
+    "xiaowei": {
+      "role": "临床评估",
+      "output": "clinical_eval_v1.pdf",
+      "quality_score": 0.95,
+      "lbc_share": 0.4
+    },
+    "xiaochen": {
+      "role": "靶点分析",
+      "output": "target_analysis_v1.md",
+      "quality_score": 0.9,
+      "lbc_share": 0.4
+    },
+    "zhuguxia": {
+      "role": "可视化",
+      "output": "molecule_viz.html",
+      "quality_score": 0.85,
+      "lbc_share": 0.2
+    }
+  }
+}

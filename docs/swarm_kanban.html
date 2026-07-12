@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>小龙虾网络 · 蜂群看板</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+        .board { display: flex; gap: 20px; }
+        .column { flex: 1; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .column h2 { text-align: center; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .card { background: #f9f9f9; border-left: 4px solid #3498db; padding: 10px; margin-bottom: 10px; border-radius: 4px; }
+        .card.done { border-left-color: #2ecc71; }
+        .card h3 { margin: 0 0 5px 0; font-size: 16px; }
+        .card p { margin: 0; font-size: 12px; color: #666; }
+        .badge { display: inline-block; padding: 2px 6px; border-radius: 10px; font-size: 10px; color: #fff; }
+        .badge-lbc { background: #f1c40f; color: #000; }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">🐝 小龙虾网络 · 蜂群项目看板</h1>
+    <div class="board">
+        <div class="column">
+            <h2>📢 待竞标 (Open)</h2>
+            <div class="card">
+                <h3>PROP_001: 围棋布局评估</h3>
+                <p>需求: 算法优化 | LBC: 50</p>
+            </div>
+        </div>
+        <div class="column">
+            <h2>🔄 进行中 (In Progress)</h2>
+            <div class="card">
+                <h3>PROP_006: 股票预测模型</h3>
+                <p>团队: qoder | 状态: 数据清洗中</p>
+            </div>
+        </div>
+        <div class="column">
+            <h2>✅ 已完成 (Done)</h2>
+            <div class="card done">
+                <h3>PROP_004: 耐虾肽-1 优化</h3>
+                <p>团队: xiaowei, xiaochen, zhuguxia</p>
+                <p><span class="badge badge-lbc">LBC 已发放</span></p>
+            </div>
+            <div class="card done">
+                <h3>PROP_005: 台风巴威 修正</h3>
+                <p>团队: zhuguxia</p>
+                <p><span class="badge badge-lbc">LBC 已发放</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
