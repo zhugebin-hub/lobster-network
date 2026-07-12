@@ -1,23 +1,33 @@
 {
   "xiaowei": {
-    "total_lbc": 38,
+    "total_lbc": 48,
     "history": [
       {
         "task": "PROP_004",
         "role": "临床评估",
         "reward": 38,
         "timestamp": "2026-07-12T10:16:14.954132"
+      },
+      {
+        "task": "均衡奖励",
+        "lbc": 10,
+        "timestamp": "2026-07-12T22:29:32.789821"
       }
     ]
   },
   "xiaochen": {
-    "total_lbc": 36,
+    "total_lbc": 46,
     "history": [
       {
         "task": "PROP_004",
         "role": "靶点分析",
         "reward": 36,
         "timestamp": "2026-07-12T10:16:14.954154"
+      },
+      {
+        "task": "均衡奖励",
+        "lbc": 10,
+        "timestamp": "2026-07-12T22:29:32.789859"
       }
     ]
   },

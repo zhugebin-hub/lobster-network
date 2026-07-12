@@ -10,8 +10,9 @@
     ],
     "estimated_lbc": 100,
     "deadline": "2026-07-15",
-    "status": "open",
-    "timestamp": "2026-07-12T00:22:53.572916"
+    "status": "closed",
+    "timestamp": "2026-07-12T00:22:53.572916",
+    "closed_reason": "过期提案，已合并至 PROP_004"
   },
   "PROP_002": {
     "proposal_id": "PROP_002",
@@ -24,8 +25,9 @@
     ],
     "estimated_lbc": 100,
     "deadline": "2026-07-15",
-    "status": "open",
-    "timestamp": "2026-07-12T00:23:24.901244"
+    "status": "closed",
+    "timestamp": "2026-07-12T00:23:24.901244",
+    "closed_reason": "过期提案，已合并至 PROP_004"
   },
   "PROP_003": {
     "proposal_id": "PROP_003",
@@ -38,8 +40,9 @@
     ],
     "estimated_lbc": 100,
     "deadline": "2026-07-15",
-    "status": "open",
-    "timestamp": "2026-07-12T00:23:34.263807"
+    "status": "closed",
+    "timestamp": "2026-07-12T00:23:34.263807",
+    "closed_reason": "过期提案，已合并至 PROP_004"
   },
   "PROP_004": {
     "proposal_id": "PROP_004",
