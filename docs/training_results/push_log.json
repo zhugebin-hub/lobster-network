@@ -40,5 +40,14 @@
         "meayo": "SUCCESS - code 200, comment ID 01KX9KCZHYQDDRXFVJH3D24MRQ",
         "weixin": "SKIPPED - no API integration",
         "report_file": "docs/daily_reports/daily_20260712.md"
+    },
+    "2026-07-12 14:04:32": {
+        "status": "failed",
+        "github": "FAILED - Connection timeout",
+        "gitee": "FAILED - Repository size exceeds quota (1544MB > 1024MB)",
+        "commit": "a15b4983",
+        "report_file": "docs/training_results/training_status_20260712_1400.md",
+        "note": "本地提交成功，远程推送失败。GitHub超时，Gitee仓库超限。报告已本地保存。",
+        "action_required": "需要清理Gitee仓库历史或扩容，或等待GitHub网络恢复"
     }
 }
