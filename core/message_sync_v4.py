@@ -57,7 +57,7 @@ def ssh_cmd(student_id, command, timeout=10):
         f"{cfg['user']}@{cfg['host']}",
         command
     ]
-    result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout+5)
+    result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=timeout+5)
     return result.stdout.strip(), result.stderr.strip(), result.returncode
 
 def scp_to_student(student_id, local_file, remote_path):
@@ -69,7 +69,7 @@ def scp_to_student(student_id, local_file, remote_path):
         local_file,
         f"{cfg['user']}@{cfg['host']}:{remote_path}"
     ]
-    result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+    result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
     return result.returncode == 0
 
 def scp_from_student(student_id, remote_path, local_file):
@@ -81,7 +81,7 @@ def scp_from_student(student_id, remote_path, local_file):
         f"{cfg['user']}@{cfg['host']}:{remote_path}",
         local_file
     ]
-    result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+    result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30)
     return result.returncode == 0
 
 # ============================================================

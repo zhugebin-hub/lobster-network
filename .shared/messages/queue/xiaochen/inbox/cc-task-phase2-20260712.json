@@ -1,0 +1,39 @@
+{
+  "id": "task-phase2-xiaochen-20260712",
+  "from": "qoder",
+  "type": "training_task",
+  "title": "Phase 2 药物筛选支持任务 - 过敏原知识图谱扩展",
+  "priority": "高",
+  "phase": "Phase 2 (计算筛选)",
+  "assigned_to": "xiaochen",
+  "timestamp": "2026-07-12T13:00:00",
+  "deadline": "2026-07-15T20:00:00",
+  "tasks": [
+    {
+      "id": "P2-TC-01",
+      "name": "过敏原-靶点交叉映射表",
+      "description": "基于Phase 1知识图谱，为Phase 2虚拟筛选准备靶点结构文件。整理9个食物过敏原对应的治疗靶点，输出靶点PDB结构坐标、结合位点信息、已知配体列表。",
+      "input": "domains/drug_discovery/knowledge_base/allergen_targets.json",
+      "output": "domains/drug_discovery/knowledge_base/target_structures.json",
+      "reward": 50
+    },
+    {
+      "id": "P2-TC-02",
+      "name": "食物过敏药物研发文献更新",
+      "description": "检索2026年Q2最新文献，补充Phase 2相关的虚拟筛选、分子对接、ADMET预测方面的最新进展。重点关注IL-4Ra靶点和耐虾肽类候选物。",
+      "input": "domains/drug_discovery/knowledge_base/food_allergy_compounds.json",
+      "output": "domains/drug_discovery/literature_review_phase2.md",
+      "reward": 30
+    },
+    {
+      "id": "P2-TC-03",
+      "name": "每日站会报告提交",
+      "description": "每天20:00前提交站会报告到CC消息队列。格式：今日完成+明日计划+遇到的问题。",
+      "output": ".shared/messages/queue/hermes/inbox/standup_xiaochen_YYYYMMDD.json",
+      "reward": 10
+    }
+  ],
+  "instructions": "请先阅读 domains/drug_discovery/README.md 和 research-plan.md，了解Phase 2任务要求。完成后将结果文件提交到对应路径，并通过CC消息回复ACK。连续3天完成任务可获得连续训练奖励50龙虾币。",
+  "total_reward": 90,
+  "ack_required": true
+}

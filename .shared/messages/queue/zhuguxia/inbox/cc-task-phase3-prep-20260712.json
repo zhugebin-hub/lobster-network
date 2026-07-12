@@ -1,0 +1,39 @@
+{
+  "id": "task-phase2-zhuguxia-20260712",
+  "from": "qoder",
+  "type": "training_task",
+  "title": "Phase 3 准备任务 - ADMET预测框架预研",
+  "priority": "高",
+  "phase": "Phase 3 预研",
+  "assigned_to": "zhuguxia",
+  "timestamp": "2026-07-12T13:00:00",
+  "deadline": "2026-07-18T20:00:00",
+  "tasks": [
+    {
+      "id": "P3-TC-01",
+      "name": "ADMET预测模型评估",
+      "description": "评估现有ADMET预测工具（SwissADME、pkCSM、admetSAR）在食物过敏药物候选物上的表现。对比各工具的预测精度、速度、覆盖度。",
+      "input": "domains/drug_discovery/agents/admet_agent.py",
+      "output": "domains/drug_discovery/admet_evaluation.md",
+      "reward": 50
+    },
+    {
+      "id": "P3-TC-02",
+      "name": "毒性评估流程设计",
+      "description": "设计Phase 3的完整毒性评估流程，包括hERG心脏毒性、肝毒性、基因毒性、免疫毒性四个维度。参考domains/drug_discovery/agents/toxicity_agent.py。",
+      "input": "domains/drug_discovery/agents/toxicity_agent.py",
+      "output": "domains/drug_discovery/toxicity_assessment_plan.md",
+      "reward": 50
+    },
+    {
+      "id": "P3-TC-03",
+      "name": "节点状态恢复报告",
+      "description": "节点离线12天，请恢复后第一时间检查服务状态、更新代码（git pull），并回复本消息ACK确认在线。",
+      "output": ".shared/messages/queue/qoder/inbox/ack-zhuguxia-recovery-20260712.json",
+      "reward": 20
+    }
+  ],
+  "instructions": "注意：节点已离线12天，请优先执行任务P3-TC-03恢复节点状态。恢复后按顺序执行P3-TC-01和P3-TC-02。连续完成可获得连续训练奖励。",
+  "total_reward": 120,
+  "ack_required": true
+}
