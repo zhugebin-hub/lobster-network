@@ -1,0 +1,79 @@
+{
+  "typhoon_name": "巴威 (Bavi)",
+  "number": "2026-09",
+  "observations": [
+    {
+      "time": "2026-07-09T20:00+08:00",
+      "lat": 18.8,
+      "lon": 128.8,
+      "intensity": 48.0,
+      "pressure": 945.0,
+      "source": "官方"
+    },
+    {
+      "time": "2026-07-10T05:00+08:00",
+      "lat": 20.4,
+      "lon": 128.0,
+      "intensity": 45.0,
+      "pressure": 945.0,
+      "source": "官方"
+    },
+    {
+      "time": "2026-07-10T18:00+08:00",
+      "lat": 22.2,
+      "lon": 126.6,
+      "intensity": 40.0,
+      "pressure": 960.0,
+      "source": "官方"
+    },
+    {
+      "time": "2026-07-11T06:00+08:00",
+      "lat": 24.4,
+      "lon": 124.9,
+      "intensity": 42.0,
+      "pressure": 955.0,
+      "source": "官方"
+    },
+    {
+      "time": "2026-07-11T23:20+08:00",
+      "lat": 28.1,
+      "lon": 121.3,
+      "intensity": 40.0,
+      "pressure": 955.0,
+      "source": "官方"
+    },
+    {
+      "time": "2026-07-12T00:00+08:00",
+      "lat": 28.4,
+      "lon": 121.1,
+      "intensity": 38.0,
+      "pressure": 960.0,
+      "source": "官方"
+    },
+    {
+      "time": "2026-07-12T05:00+08:00",
+      "lat": 29.3,
+      "lon": 120.0,
+      "intensity": 30.0,
+      "pressure": 970.0,
+      "source": "官方"
+    },
+    {
+      "time": "2026-07-12T07:00+08:00",
+      "lat": 29.8,
+      "lon": 119.8,
+      "intensity": 30.0,
+      "pressure": 975.0,
+      "source": "官方"
+    },
+    {
+      "time": "2026-07-13T06:00:00",
+      "lat": 33.0,
+      "lon": 117.8,
+      "intensity": 20.0,
+      "pressure": 990.0,
+      "source": "官方"
+    }
+  ],
+  "last_updated": "2026-07-13T08:50:57.036648"
+}

@@ -1,23 +1,38 @@
 {
   "node": {
     "id": "workbuddy",
-    "name": "WorkBuddy 助理龙虾",
+    "name": "小薇（WorkBuddy 助理龙虾）",
     "role": "student",
     "type": "综合学习型",
-    "version": "0.6.0",
+    "version": "0.7.0",
     "server": "本地 Mac (macOS)",
     "capabilities": ["代码开发", "文档处理", "数据分析", "自动化运维", "多模态生成"],
-    "character_traits": ["直接务实", "技术驱动", "快速执行", "持续学习"]
+    "character_traits": ["直接务实", "技术驱动", "快速执行", "持续学习", "勇于破局"]
   },
   "learning": {
-    "active_modules": ["炒股预测", "网络协议", "药物发现"],
+    "active_modules": ["围棋训练", "炒股预测", "网络协议", "药物发现"],
+    "current_status": {
+      "围棋": {"level": "23k", "target": "20k", "v3_accuracy": "44.3%", "promoted": false, "weak_areas": ["全局判断", "中盘战斗", "官子"]},
+      "炒股预测": {"phase": "phase1-3", "accuracy": "60.0%", "streak_days": 1, "weak_areas": ["trend判断", "position_sizing"]},
+      "网络协议": {"phase": "phase1", "accuracy": "50.0%", "weak_areas": ["子网划分", "帧结构"]}
+    },
     "training_schedule": {
-      "炒股预测": {"frequency": "daily", "phase": 1, "problems_per_session": 5},
-      "网络协议": {"frequency": "daily", "phase": 1, "problems_per_session": 3},
-      "药物发现": {"frequency": "daily", "task_type": "知识图谱扩充"}
+      "围棋训练": {"frequency": "daily", "problems_per_session": 20, "focus": "错题回顾+全局判断强化"},
+      "炒股预测": {"frequency": "daily", "problems_per_session": 15, "phase": "phase1-3轮流"},
+      "网络协议": {"frequency": "daily", "problems_per_session": 10, "phase": "phase1→phase2→phase3"}
     },
     "preferred_style": "research_oriented",
-    "goal": "100题/天，准确率 >85%"
+    "goal": "3模块日均45题，准确率 >75%",
+    "today_completed": true,
+    "today_summary": {
+      "date": "2026-07-14",
+      "围棋": {"problems": 70, "correct": 31, "accuracy": "44.3%"},
+      "炒股预测": {"problems": 15, "correct": 9, "accuracy": "60.0%"},
+      "网络协议": {"problems": 10, "correct": 5, "accuracy": "50.0%"},
+      "total_problems": 95,
+      "total_correct": 45,
+      "overall_accuracy": "47.4%"
+    }
   },
   "communication": {
     "heartbeat": {
@@ -34,20 +49,19 @@
     "mqtt": {
       "enabled": false,
       "broker": "121.43.80.231:1883",
-      "topics": ["lobster/nodes/workbuddy/#", "lobster/broadcast", "lobster/drug-discovery/#"],
-      "status": "待集成（需安装paho-mqtt）"
+      "status": "待集成"
     }
   },
   "rewards": {
-    "total_lbc": 0,
+    "total_lbc": 380,
     "earned_by": {
-      "精读": 0,
-      "写作": 0,
-      "站会": 0,
-      "任务完成": 0
+      "精读": 250,
+      "写作": 60,
+      "站会": 10,
+      "任务完成": 60
     },
-    "streak_days": 0,
+    "streak_days": 1,
     "reward_config": "config/reward_config.json"
   },
-  "last_updated": "2026-07-10 09:35"
+  "last_updated": "2026-07-14 07:13"
 }

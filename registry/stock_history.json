@@ -20,6 +20,20 @@
       "total": 10,
       "correct": 9,
       "accuracy": 0.9
+    },
+    {
+      "date": "2026-07-14T07:12:28.822385",
+      "student": "workbuddy",
+      "total": 15,
+      "correct": 10,
+      "accuracy": 0.6666666666666666
+    },
+    {
+      "date": "2026-07-14T07:12:51.739024",
+      "student": "workbuddy",
+      "total": 15,
+      "correct": 9,
+      "accuracy": 0.6
     }
   ],
   "accuracy": {},

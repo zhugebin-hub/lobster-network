@@ -98,14 +98,21 @@ def load_all_predictions():
     return predictions
 
 
+def _naive(dt):
+    """将 datetime 转为 offset-naive（去掉时区信息），确保可做减法"""
+    if dt.tzinfo is not None:
+        return dt.replace(tzinfo=None)
+    return dt
+
+
 def find_closest_point(track, target_time):
     """在轨迹中找到最接近目标时间的点"""
     best = None
     best_diff = float("inf")
-    target = datetime.fromisoformat(target_time)
+    target = _naive(datetime.fromisoformat(target_time))
 
     for p in track:
-        pt = datetime.fromisoformat(p["time"])
+        pt = _naive(datetime.fromisoformat(p["time"]))
         diff = abs((pt - target).total_seconds())
         if diff < best_diff:
             best_diff = diff

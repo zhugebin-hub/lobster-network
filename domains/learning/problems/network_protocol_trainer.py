@@ -43,6 +43,14 @@ STUDENT_CONFIG = {
         "target_accuracy": 0.92,
         "learning_rate": 0.08,
     },
+    "workbuddy": {
+        "name": "小薇（综合学习型）",
+        "description": "从零开始追赶，同步覆盖各学习模块",
+        "phases": ["phase1", "phase2", "phase3"],
+        "questions_per_day": 10,
+        "target_accuracy": 0.85,
+        "learning_rate": 0.08,
+    },
 }
 
 
