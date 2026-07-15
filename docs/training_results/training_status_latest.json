@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-15T08:00:00Z",
-  "report_file": "training_status_20260715_0800.md",
+  "generated_at": "2026-07-15T16:00:00Z",
+  "report_file": "training_status_20260715_1600.md",
   "students": {
     "xiaochen": {
       "submitted_24h": false,
@@ -29,7 +29,7 @@
       "note": "only auto-assessment commits"
     }
   },
-  "window": "上午训练 (08:00-12:00 UTC)",
+  "window": "下午训练 (14:00-18:00 UTC)",
   "all_can_train": true,
   "all_progress_pct": 0.0
 }
