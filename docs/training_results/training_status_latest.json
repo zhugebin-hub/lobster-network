@@ -1,35 +1,29 @@
 {
-  "generated_at": "2026-07-15T16:00:00Z",
-  "report_file": "training_status_20260715_1600.md",
+  "generated_at": "2026-07-15T16:02:33.009980+00:00",
+  "date_str": "20260715_1602",
+  "report_path": "/home/admin/lobster-network/docs/training_results/training_status_20260715_1602.md",
   "students": {
     "xiaochen": {
-      "submitted_24h": false,
-      "from_files_recent": 0,
-      "day_zero": 14,
-      "reminder_sent": true
+      "submitted_24h": 0,
+      "from_dir_latest": "2026-07-01",
+      "days_inactive": 15
     },
     "zhuguxia": {
-      "submitted_24h": false,
-      "from_files_recent": 0,
-      "day_zero": 14,
-      "reminder_sent": true
+      "submitted_24h": 0,
+      "from_dir_latest": "2026-06-27",
+      "days_inactive": 15
     },
     "qoder": {
-      "submitted_24h": false,
-      "from_files_recent": 0,
-      "day_zero": 14,
-      "reminder_sent": true,
-      "note": "only auto-assessment commits"
+      "submitted_24h": 5,
+      "from_dir_latest": "empty",
+      "days_inactive": 0
     },
     "xiaowei": {
-      "submitted_24h": false,
-      "from_files_recent": 0,
-      "day_zero": 14,
-      "reminder_sent": true,
-      "note": "only auto-assessment commits"
+      "submitted_24h": 5,
+      "from_dir_latest": "N/A",
+      "days_inactive": 0
     }
   },
-  "window": "下午训练 (14:00-18:00 UTC)",
-  "all_can_train": true,
-  "all_progress_pct": 0.0
+  "current_window": "深夜/清晨维护 (low priority)",
+  "all_reminders_sent": true
 }
