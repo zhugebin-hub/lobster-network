@@ -1,4 +1,35 @@
 {
-  "latest": "training_status_20260715_0000.md",
-  "generated": "2026-07-15T00:00:00Z"
+  "generated_at": "2026-07-15T08:00:00Z",
+  "report_file": "training_status_20260715_0800.md",
+  "students": {
+    "xiaochen": {
+      "submitted_24h": false,
+      "from_files_recent": 0,
+      "day_zero": 14,
+      "reminder_sent": true
+    },
+    "zhuguxia": {
+      "submitted_24h": false,
+      "from_files_recent": 0,
+      "day_zero": 14,
+      "reminder_sent": true
+    },
+    "qoder": {
+      "submitted_24h": false,
+      "from_files_recent": 0,
+      "day_zero": 14,
+      "reminder_sent": true,
+      "note": "only auto-assessment commits"
+    },
+    "xiaowei": {
+      "submitted_24h": false,
+      "from_files_recent": 0,
+      "day_zero": 14,
+      "reminder_sent": true,
+      "note": "only auto-assessment commits"
+    }
+  },
+  "window": "上午训练 (08:00-12:00 UTC)",
+  "all_can_train": true,
+  "all_progress_pct": 0.0
 }
