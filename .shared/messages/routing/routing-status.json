@@ -1,6 +1,7 @@
 {
-  "timestamp": "2026-07-16T02:03:36.279330",
+  "timestamp": "2026-07-16T12:04:27.519068",
   "pending_replies": 0,
   "timeout_alerts": 3,
-  "details": {}
+  "details": {},
+  "check_note": "3条超时告警均为6月28日历史数据，当前无新超时"
 }
