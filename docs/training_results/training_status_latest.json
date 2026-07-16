@@ -1,29 +1,28 @@
 {
-  "generated_at": "2026-07-15T16:02:33.009980+00:00",
-  "date_str": "20260715_1602",
-  "report_path": "/home/admin/lobster-network/docs/training_results/training_status_20260715_1602.md",
+  "timestamp": "2026-07-16T00:02:22.957024+00:00",
+  "report_file": "training_status_20260716_0002.md",
   "students": {
     "xiaochen": {
-      "submitted_24h": 0,
-      "from_dir_latest": "2026-07-01",
-      "days_inactive": 15
+      "submitted": false,
+      "consecutive_days_zero": 16,
+      "heartbeat": "2026-07-16T07:53"
     },
     "zhuguxia": {
-      "submitted_24h": 0,
-      "from_dir_latest": "2026-06-27",
-      "days_inactive": 15
+      "submitted": false,
+      "consecutive_days_zero": 16,
+      "heartbeat": "2026-06-30T06:47"
     },
     "qoder": {
-      "submitted_24h": 5,
-      "from_dir_latest": "empty",
-      "days_inactive": 0
+      "submitted": false,
+      "consecutive_days_zero": 16,
+      "heartbeat": null
     },
     "xiaowei": {
-      "submitted_24h": 5,
-      "from_dir_latest": "N/A",
-      "days_inactive": 0
+      "submitted": false,
+      "consecutive_days_zero": 16,
+      "heartbeat": null
     }
   },
-  "current_window": "深夜/清晨维护 (low priority)",
-  "all_reminders_sent": true
+  "training_window": "上午训练 (08:00-12:00 UTC)",
+  "overall_status": "critical"
 }
