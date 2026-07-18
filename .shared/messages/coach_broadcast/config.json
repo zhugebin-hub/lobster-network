@@ -1,0 +1,37 @@
+{
+  "broadcast_version": "1.0",
+  "coach_id": "zhugema",
+  "default_audience": [
+    "xiaochen",
+    "zhuguxia",
+    "qoder"
+  ],
+  "all_students": [
+    "xiaochen",
+    "zhuguxia",
+    "qoder",
+    "xiaowei"
+  ],
+  "active_students": [
+    "xiaochen",
+    "zhuguxia",
+    "qoder"
+  ],
+  "sync_targets": {
+    "xiaochen": {
+      "server": "121.43.80.231",
+      "inbox": "/home/admin/lobster-network/.shared/messages/queue/xiaochen/inbox/",
+      "ssh_enabled": true
+    },
+    "zhuguxia": {
+      "server": "172.24.56.3",
+      "inbox": "/home/admin/lobster-network/.shared/messages/queue/zhuguxia/inbox/",
+      "ssh_enabled": true
+    },
+    "qoder": {
+      "server": "192.168.1.161",
+      "inbox": "/home/admin/lobster-network/.shared/messages/queue/qoder/inbox/",
+      "ssh_enabled": false
+    }
+  }
+}
