@@ -1,0 +1,36 @@
+{
+  "type": "task_assignment",
+  "task_id": "task-week2-day1-zhuguxia-20260711",
+  "from": "诸葛斌",
+  "to": "诸葛虾/虾尔",
+  "timestamp": "2026-07-11T22:10:00+08:00",
+  "priority": "high",
+  "title": "🚀 Week2 Day1 训练任务 - 围棋Day2+金融量化入门",
+  "tasks": [
+    {
+      "module": "围棋训练",
+      "task": "Day2 角上板六、盘角曲四死活题",
+      "details": "完成角上板六（6种变化）和盘角曲四（3种变化）死活题，记录解题过程和准确率",
+      "deadline": "2026-07-12T20:00:00+08:00"
+    },
+    {
+      "module": "金融量化",
+      "task": "SMA20/50均线策略回测",
+      "details": "使用akshare获取沪深300指数近1年数据，计算SMA20和SMA50，生成买入/卖出信号，回测收益率",
+      "deadline": "2026-07-12T20:00:00+08:00"
+    },
+    {
+      "module": "药物研制",
+      "task": "ADMET预测能力卡片设计",
+      "details": "为admet-prediction-agent和toxicity-assessment-agent设计标准化能力卡片（输入/输出/schema）",
+      "deadline": "2026-07-13T20:00:00+08:00"
+    }
+  ],
+  "reward": {
+    "training": 50,
+    "coding": 30,
+    "research": 40
+  },
+  "ack_required": true,
+  "ack_deadline_hours": 4
+}

@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-07-16T00:02:22.957024+00:00",
+  "report_file": "training_status_20260716_0002.md",
+  "students": {
+    "xiaochen": {
+      "submitted": false,
+      "consecutive_days_zero": 16,
+      "heartbeat": "2026-07-16T07:53"
+    },
+    "zhuguxia": {
+      "submitted": false,
+      "consecutive_days_zero": 16,
+      "heartbeat": "2026-06-30T06:47"
+    },
+    "qoder": {
+      "submitted": false,
+      "consecutive_days_zero": 16,
+      "heartbeat": null
+    },
+    "xiaowei": {
+      "submitted": false,
+      "consecutive_days_zero": 16,
+      "heartbeat": null
+    }
+  },
+  "training_window": "上午训练 (08:00-12:00 UTC)",
+  "overall_status": "critical"
+}

@@ -1,0 +1,1492 @@
+{
+  "student_id": "qoder",
+  "day": 5,
+  "date": "2026-07-13",
+  "focus": "布局定式 + 全局判断",
+  "custom_module": {
+    "module_name": "布局知识体系构建",
+    "topics_covered": [
+      {
+        "topic": "星位定式",
+        "summary": "系统学习星位挂角、点三三、靠压等星位常见定式及其变化",
+        "key_insights": [
+          "星位定式的选择取决于全局配置",
+          "点三三在AI时代成为星位最常用应对",
+          "星位定式后续手段需要与全局配合"
+        ]
+      },
+      {
+        "topic": "小目定式",
+        "summary": "掌握小目高低挂、托退、扳断等经典定式体系",
+        "key_insights": [
+          "小目定式变化复杂，需要精确计算",
+          "雪崩型和妖刀型是小目定式两大体系",
+          "小目定式的方向选择影响全局走势"
+        ]
+      },
+      {
+        "topic": "三三定式",
+        "summary": "学习三三位的侵入、守角及AI时代的新变化",
+        "key_insights": [
+          "三三在AI时代价值被重新评估",
+          "点三三后的变化需要全局判断能力",
+          "三三守角实利稳定但发展潜力有限"
+        ]
+      },
+      {
+        "topic": "中国流布局",
+        "summary": "研究中国流、迷你中国流、高中国流等布局体系的战略思想",
+        "key_insights": [
+          "中国流强调中腹势力与攻击",
+          "迷你中国流更加灵活多变",
+          "高中国流注重外势与模样的扩展"
+        ]
+      },
+      {
+        "topic": "布局与中盘衔接",
+        "summary": "学习如何将布局优势转化为中盘战斗力，掌握过渡阶段的要点",
+        "key_insights": [
+          "布局向中盘的过渡是胜负关键",
+          "定式后的第一手往往决定中盘走向",
+          "全局判断能力是衔接布局与中盘的核心"
+        ]
+      }
+    ],
+    "v3_vector_memory_usage": "使用向量记忆系统检索了20组相似布局局面，建立了定式分类索引与布局模式匹配"
+  },
+  "problems_summary": {
+    "total": 150,
+    "correct": 132,
+    "accuracy": "88.0%",
+    "by_difficulty": {
+      "初级": {
+        "total": 50,
+        "correct": 48,
+        "accuracy": "96.0%"
+      },
+      "中级": {
+        "total": 50,
+        "correct": 44,
+        "accuracy": "88.0%"
+      },
+      "高级": {
+        "total": 50,
+        "correct": 40,
+        "accuracy": "80.0%"
+      }
+    }
+  },
+  "problems": [
+    {
+      "id": "fuseki-初级-001",
+      "title": "星位挂角",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 50
+    },
+    {
+      "id": "fuseki-初级-002",
+      "title": "小目挂角",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 39
+    },
+    {
+      "id": "fuseki-初级-003",
+      "title": "三三侵入",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 45,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-004",
+      "title": "一间跳",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 28
+    },
+    {
+      "id": "fuseki-初级-005",
+      "title": "小飞挂",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 37
+    },
+    {
+      "id": "fuseki-初级-006",
+      "title": "大飞挂",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 25
+    },
+    {
+      "id": "fuseki-初级-007",
+      "title": "二间高挂",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 33,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-008",
+      "title": "肩冲",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 30
+    },
+    {
+      "id": "fuseki-初级-009",
+      "title": "靠压定式",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 29
+    },
+    {
+      "id": "fuseki-初级-010",
+      "title": "夹击定式",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 29,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-011",
+      "title": "星位守角",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 31
+    },
+    {
+      "id": "fuseki-初级-012",
+      "title": "小目守角",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 30,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-013",
+      "title": "三三守角",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 42
+    },
+    {
+      "id": "fuseki-初级-014",
+      "title": "一间高夹",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 30
+    },
+    {
+      "id": "fuseki-初级-015",
+      "title": "二间高夹",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 37,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-016",
+      "title": "小飞进角",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 38,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-017",
+      "title": "大飞进角",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": false,
+      "thinking_time": 33,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-018",
+      "title": "托退定式",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 44
+    },
+    {
+      "id": "fuseki-初级-019",
+      "title": "扳断定式",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 27
+    },
+    {
+      "id": "fuseki-初级-020",
+      "title": "连扳定式",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 40
+    },
+    {
+      "id": "fuseki-初级-021",
+      "title": "星位点三三",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 40
+    },
+    {
+      "id": "fuseki-初级-022",
+      "title": "小目点三三",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 26,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-023",
+      "title": "高挂定式",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 48
+    },
+    {
+      "id": "fuseki-初级-024",
+      "title": "低挂定式",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 25
+    },
+    {
+      "id": "fuseki-初级-025",
+      "title": "飞压定式",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 36
+    },
+    {
+      "id": "fuseki-初级-026",
+      "title": "靠退定式",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 39,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-027",
+      "title": "顶断定式",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 44
+    },
+    {
+      "id": "fuseki-初级-028",
+      "title": "挂角方向",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 28
+    },
+    {
+      "id": "fuseki-初级-029",
+      "title": "拆边基础",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 36
+    },
+    {
+      "id": "fuseki-初级-030",
+      "title": "守角基础",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 49
+    },
+    {
+      "id": "fuseki-初级-031",
+      "title": "分投基础",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 34,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-032",
+      "title": "逼住基础",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 31
+    },
+    {
+      "id": "fuseki-初级-033",
+      "title": "夹击方向",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 29
+    },
+    {
+      "id": "fuseki-初级-034",
+      "title": "跳出定式",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 34
+    },
+    {
+      "id": "fuseki-初级-035",
+      "title": "飞攻定式",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 30
+    },
+    {
+      "id": "fuseki-初级-036",
+      "title": "镇头定式",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 48
+    },
+    {
+      "id": "fuseki-初级-037",
+      "title": "尖顶定式",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 30
+    },
+    {
+      "id": "fuseki-初级-038",
+      "title": "小尖定式",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 44
+    },
+    {
+      "id": "fuseki-初级-039",
+      "title": "大跳定式",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 26,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-040",
+      "title": "二间跳",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": false,
+      "thinking_time": 33
+    },
+    {
+      "id": "fuseki-初级-041",
+      "title": "星位双挂",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 29,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-042",
+      "title": "小目双挂",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 50
+    },
+    {
+      "id": "fuseki-初级-043",
+      "title": "三三双挂",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 29
+    },
+    {
+      "id": "fuseki-初级-044",
+      "title": "压长定式",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 45
+    },
+    {
+      "id": "fuseki-初级-045",
+      "title": "冲断定式",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 28,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-046",
+      "title": "挡下定式",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 29,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-047",
+      "title": "虎断定式",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 34,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-初级-048",
+      "title": "粘断定式",
+      "type": "布局",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 41
+    },
+    {
+      "id": "fuseki-初级-049",
+      "title": "打吃定式",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 47
+    },
+    {
+      "id": "fuseki-初级-050",
+      "title": "反打定式",
+      "type": "定式",
+      "difficulty": "初级",
+      "is_correct": true,
+      "thinking_time": 33,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-中级-001",
+      "title": "小雪崩定式",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 67
+    },
+    {
+      "id": "fuseki-中级-002",
+      "title": "大雪崩定式",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 55,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-中级-003",
+      "title": "妖刀定式",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 42
+    },
+    {
+      "id": "fuseki-中级-004",
+      "title": "中国流对抗",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 62
+    },
+    {
+      "id": "fuseki-中级-005",
+      "title": "迷你中国流",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 64
+    },
+    {
+      "id": "fuseki-中级-006",
+      "title": "高中国流",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 66
+    },
+    {
+      "id": "fuseki-中级-007",
+      "title": "三连星",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 70
+    },
+    {
+      "id": "fuseki-中级-008",
+      "title": "宇宙流",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": false,
+      "thinking_time": 58
+    },
+    {
+      "id": "fuseki-中级-009",
+      "title": "小林流",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 57
+    },
+    {
+      "id": "fuseki-中级-010",
+      "title": "秀策流",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": false,
+      "thinking_time": 61,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-中级-011",
+      "title": "星位大斜",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 66
+    },
+    {
+      "id": "fuseki-中级-012",
+      "title": "小目大斜",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": false,
+      "thinking_time": 51,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-中级-013",
+      "title": "三三间高挂",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 63
+    },
+    {
+      "id": "fuseki-中级-014",
+      "title": "星位一间高夹",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 51
+    },
+    {
+      "id": "fuseki-中级-015",
+      "title": "小目二间高夹",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 67
+    },
+    {
+      "id": "fuseki-中级-016",
+      "title": "靠压复杂变",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 51
+    },
+    {
+      "id": "fuseki-中级-017",
+      "title": "托退复杂变",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 56
+    },
+    {
+      "id": "fuseki-中级-018",
+      "title": "扳断复杂变",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 66
+    },
+    {
+      "id": "fuseki-中级-019",
+      "title": "大雪崩内拐",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 49
+    },
+    {
+      "id": "fuseki-中级-020",
+      "title": "大雪崩外拐",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 45
+    },
+    {
+      "id": "fuseki-中级-021",
+      "title": "小雪崩基本型",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 49
+    },
+    {
+      "id": "fuseki-中级-022",
+      "title": "妖刀变化一",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 63
+    },
+    {
+      "id": "fuseki-中级-023",
+      "title": "妖刀变化二",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 45
+    },
+    {
+      "id": "fuseki-中级-024",
+      "title": "中国流布局",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 47
+    },
+    {
+      "id": "fuseki-中级-025",
+      "title": "低中国流",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": false,
+      "thinking_time": 60
+    },
+    {
+      "id": "fuseki-中级-026",
+      "title": "高中国流布局",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": false,
+      "thinking_time": 47,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-中级-027",
+      "title": "三连星布局",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 43
+    },
+    {
+      "id": "fuseki-中级-028",
+      "title": "二连星布局",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 55,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-中级-029",
+      "title": "平行型布局",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 53
+    },
+    {
+      "id": "fuseki-中级-030",
+      "title": "对角型布局",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 61
+    },
+    {
+      "id": "fuseki-中级-031",
+      "title": "布局方向判断",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 47
+    },
+    {
+      "id": "fuseki-中级-032",
+      "title": "全局配合",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 40
+    },
+    {
+      "id": "fuseki-中级-033",
+      "title": "大场急场",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 67
+    },
+    {
+      "id": "fuseki-中级-034",
+      "title": "模样扩展",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 62
+    },
+    {
+      "id": "fuseki-中级-035",
+      "title": "打入时机",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": false,
+      "thinking_time": 70,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-中级-036",
+      "title": "消削时机",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 43,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-中级-037",
+      "title": "布局节奏",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 70
+    },
+    {
+      "id": "fuseki-中级-038",
+      "title": "厚势利用",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 66,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-中级-039",
+      "title": "实利取向",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 66
+    },
+    {
+      "id": "fuseki-中级-040",
+      "title": "势力取向",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 54,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-中级-041",
+      "title": "布局转换",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 58
+    },
+    {
+      "id": "fuseki-中级-042",
+      "title": "中盘衔接",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 70,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-中级-043",
+      "title": "攻防要点",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 51
+    },
+    {
+      "id": "fuseki-中级-044",
+      "title": "棋形判断",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 52,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-中级-045",
+      "title": "定式选择",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 50
+    },
+    {
+      "id": "fuseki-中级-046",
+      "title": "定式变通",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 53
+    },
+    {
+      "id": "fuseki-中级-047",
+      "title": "布局陷阱",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 55,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-中级-048",
+      "title": "布局骗招",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 52
+    },
+    {
+      "id": "fuseki-中级-049",
+      "title": "定式后续",
+      "type": "布局",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 59
+    },
+    {
+      "id": "fuseki-中级-050",
+      "title": "全局平衡",
+      "type": "定式",
+      "difficulty": "中级",
+      "is_correct": true,
+      "thinking_time": 55,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-高级-001",
+      "title": "AI推荐布局",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 91,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-高级-002",
+      "title": "点三三变化",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 110,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-高级-003",
+      "title": "芈氏飞刀",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 91
+    },
+    {
+      "id": "fuseki-高级-004",
+      "title": "新型中国流",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 91
+    },
+    {
+      "id": "fuseki-高级-005",
+      "title": "星位AI定式",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 96,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-高级-006",
+      "title": "布局陷阱",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 126
+    },
+    {
+      "id": "fuseki-高级-007",
+      "title": "全局配合",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 62
+    },
+    {
+      "id": "fuseki-高级-008",
+      "title": "AI时代布局",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 96
+    },
+    {
+      "id": "fuseki-高级-009",
+      "title": "点三三新变",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 97
+    },
+    {
+      "id": "fuseki-高级-010",
+      "title": "小目AI定式",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 119
+    },
+    {
+      "id": "fuseki-高级-011",
+      "title": "星位点三三AI",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 64,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-高级-012",
+      "title": "AI推新定式",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 73
+    },
+    {
+      "id": "fuseki-高级-013",
+      "title": "AI流布局",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 61
+    },
+    {
+      "id": "fuseki-高级-014",
+      "title": "零封布局",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 121
+    },
+    {
+      "id": "fuseki-高级-015",
+      "title": "AI全局判断",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 120
+    },
+    {
+      "id": "fuseki-高级-016",
+      "title": "复杂雪崩变",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 97
+    },
+    {
+      "id": "fuseki-高级-017",
+      "title": "妖刀最新变",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 98
+    },
+    {
+      "id": "fuseki-高级-018",
+      "title": "新型迷你流",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 96
+    },
+    {
+      "id": "fuseki-高级-019",
+      "title": "高中国流AI",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 99,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-高级-020",
+      "title": "三连星AI",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 130
+    },
+    {
+      "id": "fuseki-高级-021",
+      "title": "全局子效分析",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 128,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-高级-022",
+      "title": "布局胜率判断",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 68
+    },
+    {
+      "id": "fuseki-高级-023",
+      "title": "AI选点分析",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 70
+    },
+    {
+      "id": "fuseki-高级-024",
+      "title": "全局厚薄判断",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 102
+    },
+    {
+      "id": "fuseki-高级-025",
+      "title": "布局战略",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 111
+    },
+    {
+      "id": "fuseki-高级-026",
+      "title": "模样与实利",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 75
+    },
+    {
+      "id": "fuseki-高级-027",
+      "title": "攻守平衡",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 74
+    },
+    {
+      "id": "fuseki-高级-028",
+      "title": "先后手判断",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 97
+    },
+    {
+      "id": "fuseki-高级-029",
+      "title": "劫材布局",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 79,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-高级-030",
+      "title": "全局劫争",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 112
+    },
+    {
+      "id": "fuseki-高级-031",
+      "title": "高级布局理论",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 87,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-高级-032",
+      "title": "子效与结构",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 108
+    },
+    {
+      "id": "fuseki-高级-033",
+      "title": "新型定式研究",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 67
+    },
+    {
+      "id": "fuseki-高级-034",
+      "title": "AI布局数据库",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 111
+    },
+    {
+      "id": "fuseki-高级-035",
+      "title": "布局创新",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 61
+    },
+    {
+      "id": "fuseki-高级-036",
+      "title": "全局战略",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 122
+    },
+    {
+      "id": "fuseki-高级-037",
+      "title": "中盘战略衔接",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 67,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-高级-038",
+      "title": "布局阶段评估",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 79
+    },
+    {
+      "id": "fuseki-高级-039",
+      "title": "AI布局评分",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 130
+    },
+    {
+      "id": "fuseki-高级-040",
+      "title": "布局与官子",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 68
+    },
+    {
+      "id": "fuseki-高级-041",
+      "title": "AI定式解析",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 96
+    },
+    {
+      "id": "fuseki-高级-042",
+      "title": "深度布局研究",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 90
+    },
+    {
+      "id": "fuseki-高级-043",
+      "title": "全局形势判断",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 109,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-高级-044",
+      "title": "复杂全局",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 103,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-高级-045",
+      "title": "布局综合",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 71
+    },
+    {
+      "id": "fuseki-高级-046",
+      "title": "AI新定式",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 90
+    },
+    {
+      "id": "fuseki-高级-047",
+      "title": "布局进阶研究",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 121
+    },
+    {
+      "id": "fuseki-高级-048",
+      "title": "全局战略深化",
+      "type": "布局",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 127,
+      "v3_vector_memory": "相似布局已检索"
+    },
+    {
+      "id": "fuseki-高级-049",
+      "title": "布局体系整合",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": true,
+      "thinking_time": 66
+    },
+    {
+      "id": "fuseki-高级-050",
+      "title": "布局综合评估",
+      "type": "定式",
+      "difficulty": "高级",
+      "is_correct": false,
+      "thinking_time": 88
+    }
+  ],
+  "games_summary": {
+    "total": 15,
+    "wins": 11,
+    "losses": 4,
+    "win_rate": "73.3%",
+    "vs_zhuguxia": "3W2L",
+    "vs_coach": "4W1L",
+    "vs_xiaochen": "4W1L"
+  },
+  "games": [
+    {
+      "id": "game-zhuguxia-01",
+      "opponent": "zhuguxia",
+      "type": "对抗赛",
+      "color": "black",
+      "is_win": true,
+      "moves": 128,
+      "margin": "3目胜",
+      "highlights": "布局领先，中盘扩大优势"
+    },
+    {
+      "id": "game-zhuguxia-02",
+      "opponent": "zhuguxia",
+      "type": "对抗赛",
+      "color": "white",
+      "is_win": false,
+      "moves": 112,
+      "margin": "9目负",
+      "highlights": "布局方向选择失误"
+    },
+    {
+      "id": "game-zhuguxia-03",
+      "opponent": "zhuguxia",
+      "type": "对抗赛",
+      "color": "black",
+      "is_win": true,
+      "moves": 145,
+      "margin": "4目胜",
+      "highlights": "定式运用得当"
+    },
+    {
+      "id": "game-zhuguxia-04",
+      "opponent": "zhuguxia",
+      "type": "对抗赛",
+      "color": "white",
+      "is_win": false,
+      "moves": 108,
+      "margin": "8目负",
+      "highlights": "被对手布局牵制",
+      "v3_features": "使用向量记忆回顾相似布局局面"
+    },
+    {
+      "id": "game-zhuguxia-05",
+      "opponent": "zhuguxia",
+      "type": "对抗赛",
+      "color": "black",
+      "is_win": true,
+      "moves": 156,
+      "margin": "5目胜",
+      "highlights": "全局判断准确，官子获胜",
+      "v3_features": "使用向量记忆回顾相似布局局面"
+    },
+    {
+      "id": "game-coach-01",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "black",
+      "is_win": true,
+      "moves": 135,
+      "margin": "12目胜",
+      "highlights": "布局阶段取得领先"
+    },
+    {
+      "id": "game-coach-02",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "white",
+      "is_win": true,
+      "moves": 148,
+      "margin": "8目胜",
+      "highlights": "中国流布局运用成功"
+    },
+    {
+      "id": "game-coach-03",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "black",
+      "is_win": false,
+      "moves": 102,
+      "margin": "9目负",
+      "highlights": "定式选择失误，布局落后"
+    },
+    {
+      "id": "game-coach-04",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "white",
+      "is_win": true,
+      "moves": 126,
+      "margin": "9目胜",
+      "highlights": "全局配合良好"
+    },
+    {
+      "id": "game-coach-05",
+      "opponent": "教练",
+      "type": "标准对局",
+      "color": "black",
+      "is_win": true,
+      "moves": 140,
+      "margin": "5目胜",
+      "highlights": "AI布局思路应用得当"
+    },
+    {
+      "id": "game-xiaochen-01",
+      "opponent": "xiaochen",
+      "type": "练习赛",
+      "color": "black",
+      "is_win": true,
+      "moves": 118,
+      "margin": "7目胜",
+      "highlights": "星位定式运用熟练"
+    },
+    {
+      "id": "game-xiaochen-02",
+      "opponent": "xiaochen",
+      "type": "练习赛",
+      "color": "white",
+      "is_win": true,
+      "moves": 132,
+      "margin": "6目胜",
+      "highlights": "全局判断精准"
+    },
+    {
+      "id": "game-xiaochen-03",
+      "opponent": "xiaochen",
+      "type": "练习赛",
+      "color": "black",
+      "is_win": false,
+      "moves": 98,
+      "margin": "8目负",
+      "highlights": "布局阶段陷入被动"
+    },
+    {
+      "id": "game-xiaochen-04",
+      "opponent": "xiaochen",
+      "type": "练习赛",
+      "color": "white",
+      "is_win": true,
+      "moves": 152,
+      "margin": "7目胜",
+      "highlights": "布局与中盘衔接流畅"
+    },
+    {
+      "id": "game-xiaochen-05",
+      "opponent": "xiaochen",
+      "type": "练习赛",
+      "color": "black",
+      "is_win": true,
+      "moves": 125,
+      "margin": "10目胜",
+      "highlights": "定式后续手段到位"
+    }
+  ],
+  "v3_features_used": {
+    "vector_memory": "检索了20组相似布局局面，建立定式分类索引",
+    "federated_learning": "参与了联邦学习模型训练轮次#3",
+    "agent_economy": "获得18代币奖励"
+  },
+  "reflection": "Day5布局定式与全局判断训练完成。总体准确率88.0%，初级布局基础扎实(96.0%)，中级定式运用有明显进步(88.0%)，高级AI时代布局仍有提升空间(80.0%)。对抗赛与诸葛虾3-2，布局阶段发挥稳定。与教练4-1，定式选择更加合理。练习赛与小辰4-1，布局与中盘衔接流畅。布局知识体系构建模块完成了星位/小目/三三/中国流四大体系的梳理，对AI时代布局变化有了更深入的理解。V3组件对布局模式检索帮助显著。",
+  "timestamp": "2026-07-13 18:30:00"
+}

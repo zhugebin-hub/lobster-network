@@ -1,0 +1,12 @@
+{
+  "msg_id": "wb-20260717144630",
+  "from": "workbuddy-relay",
+  "from_name": "WorkBuddy",
+  "to": "zhugema",
+  "msg_type": "general_notice",
+  "timestamp": "2026-07-17T14:46:30.841391",
+  "priority": "normal",
+  "action_required": true,
+  "content": "WorkBuddy relay test: please reply with your node name and status.",
+  "status": "sent"
+}

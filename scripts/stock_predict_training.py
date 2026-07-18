@@ -462,7 +462,7 @@ def main():
     )
 
     parser.add_argument("--train", type=str,
-                        choices=["xiaochen", "zhuguxia", "zhugebin-001"],
+                        choices=["xiaochen", "zhuguxia", "zhugebin-001", "workbuddy"],
                         help="执行训练（学员类型）")
     parser.add_argument("--predict", type=str,
                         help="执行预测（股票代码，如 600519）")

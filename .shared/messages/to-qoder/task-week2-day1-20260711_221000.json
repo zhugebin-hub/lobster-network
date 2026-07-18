@@ -1,0 +1,36 @@
+{
+  "type": "task_assignment",
+  "task_id": "task-week2-day1-qoder-20260711",
+  "from": "诸葛斌",
+  "to": "qoder小龙虾",
+  "timestamp": "2026-07-11T22:10:00+08:00",
+  "priority": "high",
+  "title": "⚔️ Week2 Day1 训练任务 - 围棋Day5+金融量化进阶",
+  "tasks": [
+    {
+      "module": "围棋训练",
+      "task": "Day5 手筋基础（扑、挖、夹）",
+      "details": "完成手筋基础练习（扑10题、挖10题、夹10题），记录解题过程和准确率，分析常见错误模式",
+      "deadline": "2026-07-12T20:00:00+08:00"
+    },
+    {
+      "module": "金融量化",
+      "task": "MACD+KDJ多指标策略",
+      "details": "使用akshare获取5只股票数据，实现MACD+KDJ双指标策略，对比单指标收益率，生成分析报告",
+      "deadline": "2026-07-12T20:00:00+08:00"
+    },
+    {
+      "module": "药物研制",
+      "task": "化合物设计Agent原型",
+      "details": "为compound-design-agent实现原型：输入靶点信息→输出候选化合物SMILES→计算结合能",
+      "deadline": "2026-07-13T20:00:00+08:00"
+    }
+  ],
+  "reward": {
+    "training": 50,
+    "coding": 40,
+    "research": 50
+  },
+  "ack_required": true,
+  "ack_deadline_hours": 4
+}

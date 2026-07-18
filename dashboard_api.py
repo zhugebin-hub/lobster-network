@@ -167,6 +167,73 @@ def api_enhanced_summary():
     data = enhanced_collector.collect_all()
     return jsonify({"summary": data["summary"], "timestamp": data["timestamp"]})
 
+
+@app.route('/join')
+def lobster_join():
+    """🦞 小龙虾网络 · 新节点注册指南（仪表盘风格渲染）"""
+    import markdown
+    from flask import Response
+    
+    guide_path = Path(__file__).parent / 'docs' / '新小龙虾注册指南_V1.0_20260715.md'
+    if not guide_path.exists():
+        return "注册指南文件不存在", 404
+    
+    with open(guide_path, 'r', encoding='utf-8') as f:
+        md_content = f.read()
+    
+    html_body = markdown.markdown(md_content, extensions=['tables', 'fenced_code'])
+    
+    page = """<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦞 小龙虾网络 · 新节点注册指南</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--dim:#64748b;--accent:#fbbf24;--green:#22c55e;--red:#ef4444;--blue:#3b82f6;--purple:#a855f7;--cyan:#06b6d4}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.8}
+.header{background:linear-gradient(135deg,#111827 0%,#1e1b4b 100%);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.header h1{font-size:20px;color:var(--accent)}
+.header a{color:var(--dim);font-size:13px;text-decoration:none}
+.header a:hover{color:var(--accent)}
+.content{max-width:900px;margin:0 auto;padding:24px}
+.content h1{font-size:22px;color:var(--accent);margin:24px 0 12px;border-bottom:1px solid var(--border);padding-bottom:8px}
+.content h2{font-size:18px;color:var(--cyan);margin:20px 0 10px;border-bottom:1px solid var(--border);padding-bottom:6px}
+.content h3{font-size:15px;color:var(--purple);margin:16px 0 8px}
+.content p{margin:8px 0}
+.content strong{color:var(--accent)}
+.content em{color:var(--dim)}
+.content table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+.content th{background:#1e293b;color:var(--accent);padding:8px 10px;text-align:left;border:1px solid var(--border)}
+.content td{padding:6px 10px;border:1px solid var(--border);background:#0f172a}
+.content code{background:#1e293b;padding:2px 6px;border-radius:4px;font-size:12px;color:var(--cyan)}
+.content pre{background:#0f172a;border:1px solid var(--border);border-radius:8px;padding:14px;overflow-x:auto;margin:12px 0}
+.content pre code{background:none;padding:0;color:var(--text)}
+.content blockquote{border-left:3px solid var(--accent);padding:8px 14px;margin:12px 0;background:rgba(251,191,36,.05);color:var(--dim);font-style:italic}
+.content ul,.content ol{padding-left:24px;margin:8px 0}
+.content li{margin:4px 0}
+.content a{color:var(--blue);text-decoration:none}
+.content a:hover{text-decoration:underline}
+.footer{text-align:center;padding:24px;color:var(--dim);font-size:11px;border-top:1px solid var(--border);margin-top:32px}
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>🦞 小龙虾网络 · 新节点注册指南</h1>
+    <a href="/">← 返回仪表盘</a>
+</div>
+<div class="content">
+PLACEHOLDER_HTML
+</div>
+<div class="footer">
+    🦞 小龙虾网络 V3.3 | 诸葛马 (Hermes) 教练端 | 浙江工商大学数智商研实验室
+</div>
+</body>
+</html>"""
+    
+    return Response(page.replace('PLACEHOLDER_HTML', html_body), mimetype='text/html')
+
 # ============================================================
 # 论文写作指挥中心 API
 # ============================================================

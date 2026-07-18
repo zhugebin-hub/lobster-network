@@ -79,6 +79,26 @@ STUDENT_CONFIG = {
         "phases": ["phase1", "phase2", "phase3"],
         "base_accuracy": {"入门": 0.92, "初级": 0.80, "中级": 0.62, "高级": 0.50},
     },
+    "workbuddy": {  # 小薇-综合学习型：全面覆盖 + 实战导向
+        "name": "小薇",
+        "type": "综合学习型",
+        "config": {
+            "concept_choice": 2,
+            "concept_judge": 2,
+            "basic_calc": 1,
+            "kline_pattern": 2,
+            "indicator_analysis": 2,
+            "trend": 2,
+            "price_range": 1,
+            "amplitude": 1,
+            "position_sizing": 1,
+            "portfolio": 1,
+        },
+        "phases": ["phase1", "phase2", "phase3"],
+        "base_accuracy": {"入门": 0.90, "初级": 0.75, "中级": 0.55, "高级": 0.40},
+        "target_accuracy": 0.85,
+        "daily_goal": 5,
+    },
 }
 
 

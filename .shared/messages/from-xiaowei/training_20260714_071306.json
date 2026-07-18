@@ -1,0 +1,48 @@
+{
+  "type": "training_submission",
+  "from": "xiaowei",
+  "name": "小薇",
+  "timestamp": "2026-07-14T07:13:06.141361",
+  "date": "2026-07-14",
+  "submitter": "workbuddy",
+  "modules": {
+    "go": {
+      "module": "围棋训练",
+      "version": "V3",
+      "problems": 70,
+      "correct": 31,
+      "accuracy": 0.443,
+      "promoted": false,
+      "level": "23k",
+      "target": "20k",
+      "skill_scores": {
+        "连接": 6.7,
+        "实战": 4.2,
+        "连接分断综合": 4.0,
+        "官子": 4.0,
+        "综合": 4.0,
+        "全局": 0.0
+      }
+    },
+    "stock": {
+      "module": "炒股预测",
+      "problems": 15,
+      "correct": 9,
+      "accuracy": 0.6,
+      "phase": "phase1-3",
+      "streak": 1
+    },
+    "network": {
+      "module": "网络协议",
+      "problems": 10,
+      "correct": 5,
+      "accuracy": 0.5,
+      "phase": "phase1"
+    }
+  },
+  "total_problems": 95,
+  "total_correct": 45,
+  "overall_accuracy": 0.474,
+  "new_training_start": true,
+  "message": "小薇今日完成首日训练：围棋V3(70题)、炒股预测(15题)、网络协议(10题)。虽准确率不高但已打破零提交僵局，将持续改进。"
+}

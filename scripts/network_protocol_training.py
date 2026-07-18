@@ -35,7 +35,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, "domains", "learning", "problems"))
 from network_protocol_engine import NetworkProtocolEngine
 from network_protocol_trainer import NetworkProtocolTrainer, STUDENT_CONFIG
 
-STUDENTS = ["xiaochen", "zhuguxia", "zhugebin-001"]
+STUDENTS = ["xiaochen", "zhuguxia", "zhugebin-001", "workbuddy"]
 
 
 def run_training_session(engine, trainer, verbose=True):
