@@ -4,8 +4,9 @@
   "protocol_version": "1.0",
   "from": "qoder",
   "to": "zhugebin-001",
+  "tracking_id": "cc-drug-discovery-20260709084539",
   "ref_msg_id": "cc-drug-discovery-20260709084539",
   "status": "received",
-  "response": "qoder已确认收到。ADMET计算+虚拟筛选模块就绪，负责Phase2计算筛选任务。",
-  "acked_at": "2026-08-31T22:00:00+08:00"
+  "response": "qoder已收到: 新药创制科学智能体模块部署 - 食物过敏防治药物研制",
+  "acked_at": "2026-09-01T00:01:34+08:00"
 }

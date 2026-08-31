@@ -4,8 +4,9 @@
   "protocol_version": "1.0",
   "from": "qoder",
   "to": "zhugebin-001",
+  "tracking_id": "cc-drug-research-20260709091135",
   "ref_msg_id": "cc-drug-research-20260709091135",
   "status": "received",
-  "response": "qoder已收到Day1研究成果汇报。耐虾肽-1展现最强靶点亲和力(Ki=0.001μM)，继续推进Phase2计算筛选工作。",
-  "acked_at": "2026-08-31T22:00:00+08:00"
+  "response": "qoder已收到: Day1研究成果汇报：食物过敏防治药物研制全流程验证完成",
+  "acked_at": "2026-09-01T00:01:34+08:00"
 }

@@ -330,14 +330,11 @@ def check_acks():
             print(f"[DONE] {entry['subject']}: 全部ACK已收到")
         elif entry["requires_ack"]:
             # 检查是否超时
-<<<<<<< HEAD
             # 过滤已知问题
             if entry.get('status') == 'known_issue':
                 new_pending.append(entry)
                 continue
             
-=======
->>>>>>> fbc3017db51a546a289ef16bd15ae36823f768d7
             try:
                 deadline = datetime.fromisoformat(entry["ack_deadline"])
                 if datetime.now(CST) > deadline:
