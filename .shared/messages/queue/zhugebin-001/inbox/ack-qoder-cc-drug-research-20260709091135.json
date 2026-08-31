@@ -1,0 +1,11 @@
+{
+  "msg_id": "ack-qoder-cc-drug-research-20260709091135",
+  "msg_type": "cc_ack",
+  "protocol_version": "1.0",
+  "from": "qoder",
+  "to": "zhugebin-001",
+  "ref_msg_id": "cc-drug-research-20260709091135",
+  "status": "received",
+  "response": "qoder已收到Day1研究成果汇报。耐虾肽-1展现最强靶点亲和力(Ki=0.001μM)，继续推进Phase2计算筛选工作。",
+  "acked_at": "2026-08-31T22:00:00+08:00"
+}

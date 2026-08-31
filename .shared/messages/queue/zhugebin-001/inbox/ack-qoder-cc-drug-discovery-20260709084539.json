@@ -1,0 +1,11 @@
+{
+  "msg_id": "ack-qoder-cc-drug-discovery-20260709084539",
+  "msg_type": "cc_ack",
+  "protocol_version": "1.0",
+  "from": "qoder",
+  "to": "zhugebin-001",
+  "ref_msg_id": "cc-drug-discovery-20260709084539",
+  "status": "received",
+  "response": "qoder已确认收到。ADMET计算+虚拟筛选模块就绪，负责Phase2计算筛选任务。",
+  "acked_at": "2026-08-31T22:00:00+08:00"
+}
